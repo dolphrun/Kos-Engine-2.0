@@ -25,7 +25,10 @@
             ]
         },
         "AudioScript": {
-            "GUID": "00000000-0000-0000-0000-000000000000"
+            "GUID": "00000000-0000-0000-0000-000000000000",
+            "elapsedTime": 0.0,
+            "speed": 1.0,
+            "radius": 5.0
         },
         "NameComponent": {
             "entityName": "Audio Test",
@@ -38,7 +41,7 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 0.0,
+                    "x": 5.0,
                     "y": 0.0,
                     "z": 0.0
                 },
@@ -55,7 +58,7 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 0.0,
+                    "x": 5.0,
                     "y": 0.0,
                     "z": 0.0
                 },
@@ -74,6 +77,9 @@
     },
     {
         "entityGUID": "35a9dd7e-89de-2059-ed51-1271ff22898e",
+        "AudioListenerComponent": {
+            "active": true
+        },
         "CameraComponent": {
             "cameraType": 0,
             "fov": 45.0,

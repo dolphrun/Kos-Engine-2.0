@@ -21,6 +21,7 @@ namespace ecs{
 		RegisterComponent<SpriteComponent>();
 		RegisterComponent<CameraComponent>();
 		RegisterComponent<AudioComponent>();
+		RegisterComponent<AudioListenerComponent>();
 		RegisterComponent<TextComponent>();
 		RegisterComponent<MeshFilterComponent>();
 		RegisterComponent<CanvasRendererComponent>();

@@ -28,6 +28,20 @@ namespace ecs {
 
 	void AudioSystem::Update() {
 
+		const auto& listenerEntities = m_ecs.GetComponentsEnties("AudioListenerComponent");
+
+		for (EntityID id : listenerEntities) {
+			auto* listener = m_ecs.GetComponent<AudioListenerComponent>(id);
+			auto* transform = m_ecs.GetComponent<TransformComponent>(id);
+
+			if (!listener || !transform) continue;
+			if (!listener->active)       continue;
+
+			m_listenerPos = transform->WorldTransformation.position;
+
+			break;
+		}
+
 		if (auto* core = m_audioManager.GetCore()) {
 			FMOD_VECTOR p = ToF(m_listenerPos);
 			FMOD_VECTOR v{ 0,0,0 };
@@ -52,6 +66,11 @@ namespace ecs {
 				if (af.use3D && transform && af.channel) {
 					FMOD::Channel* ch = static_cast<FMOD::Channel*>(af.channel);
 					glm::vec3 pos = transform->WorldTransformation.position;
+
+					std::cout << "[AudioSystem] 3D source '"
+						<< (nameComp ? nameComp->entityName : "<no name>")
+						<< "' pos = (" << pos.x << ", " << pos.y << ", " << pos.z << ")\n";
+
 					FMOD_VECTOR fpos{ pos.x, pos.y, pos.z };
 					FMOD_VECTOR fvel{ 0,0,0 };
 					ch->set3DAttributes(&fpos, &fvel);
