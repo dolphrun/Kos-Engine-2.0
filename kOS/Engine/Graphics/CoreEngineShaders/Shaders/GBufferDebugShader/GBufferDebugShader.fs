@@ -24,10 +24,10 @@ struct Material
 };
 uniform Material material;
 uniform int entityID=-1;
-uniform vec3 color;
+in vec4 vColor;
 void main()
 {    
-    gAlbedoSpec.rgb =color;
+    gAlbedoSpec.rgb =vColor.rgb;
     gMaterial.b=shaderType;
 }
 )"

@@ -345,6 +345,12 @@ void main()
     vec3 envMap = texture(cubeTexture, vec3(texture(gReflect, TexCoords)) ).rgb;
     vec3 newMat=vec3(texture(gMaterial, TexCoords));
 
+    //Check whether to render shader as per normal
+    if(newMat.b>0.f){
+        //Just render color as is
+        FragColor = vec4(diffuseColor.r,diffuseColor.g,diffuseColor.b, 1.0);
+        return;;
+    }
 
     vec3 normalMap=normalize(vec3(texture(gNormal, TexCoords)));
     vec3 positionMap=vec3(texture(gPosition, TexCoords));
@@ -362,13 +368,12 @@ void main()
     vec3 oldPos=positionMap;
     positionMap=vec3(view * vec4(positionMap, 1.0));
 
-   for(int i=0;i<pointLightNo;i++){
-        if(light[i].shadowCon==true||light[i].bakedCon==true){
-            pointShadow+=ShadowCalculationPoint(vec4(oldPos, 1.0).xyz-light[i].position,oldPos,positionMap,i);        
-        }
-    }
+
     pointShadow = clamp(pointShadow, 0.0, 1.0);
     for(int i=0;i<pointLightNo;i++){
+       if(light[i].shadowCon==true||light[i].bakedCon==true){
+            pointShadow+=ShadowCalculationPoint(vec4(oldPos, 1.0).xyz-light[i].position,oldPos,positionMap,i);        
+        }
         newLight+=microfacetModel(positionMap, normalMap,diffuseColor,newMat.g,i);
     }
     for(int i=0;i<spotLightNo;i++){

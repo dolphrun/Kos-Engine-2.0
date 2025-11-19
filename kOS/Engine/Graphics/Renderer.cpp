@@ -388,9 +388,18 @@ void SpriteRenderer::RenderScreenSprites(const CameraData& camera, Shader& shade
 	}
 }
 
+void SpriteRenderer::RenderWorldSprites(const CameraData& camera, Shader& shader) {
+	for (const ScreenSpriteData& screenSprite : worldSpriteToDraw)
+	{
+		screenSpriteMesh.DrawMeshWorld(screenSprite, shader, camera);
+	}
+
+}
+
 void SpriteRenderer::Clear()
 {
 	screenSpritesToDraw.clear();
+	worldSpriteToDraw.clear();
 }
 
 void LightRenderer::Clear()
@@ -597,17 +606,26 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
 		instancedBasicParticles.reserve(std::accumulate(particlesToDraw.begin(), particlesToDraw.end(), size_t(0),
 			[](size_t sum, const BasicParticleData& p) { return sum + p.particlePositions.size(); }));
 
-		for (const auto& p : particlesToDraw)
+		for (int i = 0; i < particlesToDraw.size(); ++i)
 		{
+			BasicParticleData& p = particlesToDraw[i];
+			//std::transform(p.particlePositions.begin(), p.particlePositions.end(),
+			//	std::back_inserter(instancedBasicParticles),
+			//	[&](const glm::vec3& pos) {
+			//		return BasicParticleInstance{ pos,p.sizes[i], p.colors[i], p.rotates[i]};
+			//	});
+
+			//CHANGES TO RENDERING LET SEAN KNOW
 			std::transform(p.particlePositions.begin(), p.particlePositions.end(),
 				std::back_inserter(instancedBasicParticles),
-				[&](const glm::vec3& pos) {
-					return BasicParticleInstance{ pos,p.scale, p.color, p.rotate };
+				[&, j = 0](const glm::vec3& pos) mutable {
+					return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++] };
 				});
 		}
 		particlesToDraw.clear();
 	}
 	shader.Use();
+	shader.SetFloat("uShaderType", 2.1f);
 	shader.SetTrans("projection", camera.GetPerspMtx());
 	shader.SetTrans("view", camera.GetViewMtx());
 	if (!instancedBasicParticles.empty())
@@ -649,6 +667,7 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
 			std::cout << "after 3 OpenGL Error: " << err << std::endl;
 		}
 	}
+	shader.Disuse();
 		
 }
 

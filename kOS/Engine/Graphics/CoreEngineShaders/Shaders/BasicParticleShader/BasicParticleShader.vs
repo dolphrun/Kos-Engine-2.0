@@ -11,6 +11,8 @@ out vec4 vColor;
 
 uniform mat4 view;
 uniform mat4 projection;
+uniform float uShaderType;
+out float shaderType;
 
 void main()
 {
@@ -33,5 +35,6 @@ void main()
 
     gl_Position = projection * view * vec4(worldPos, 1.0);
     vColor = instanceColor;
+    shaderType=uShaderType;
 }
 )"
