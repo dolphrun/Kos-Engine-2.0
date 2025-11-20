@@ -2,8 +2,7 @@
 #define PARTICLESYSTEM_H
 #include "ECS/ECS.h"
 #include "System.h"
-#include "Flex/NvFlex.h"
-#include "Flex/NvFlexExt.h"
+
 
 namespace ecs {
 
@@ -28,6 +27,33 @@ namespace ecs {
 
 
     class ParticleSystem : public ISystem {
+    private:
+    private:
+        // Fast xorshift32 RNG using only 32-bit unsigned int
+        struct FastRNG {
+            unsigned int state;
+
+            FastRNG(unsigned int seed = 0) {
+                state = seed ? seed : 0x12345678u;
+            }
+
+            inline unsigned int next() {
+                // Xorshift algorithm (Marsaglia 2003)
+                unsigned int x = state;
+                x ^= x << 13;
+                x ^= x >> 17;
+                x ^= x << 5;
+                state = x;
+                return x;
+            }
+
+            inline float nextFloat() {
+                // Convert to [0, 1) range
+                return (next() >> 8) * 5.960464477539063e-8f; // / 16777216.0f
+            }
+        };
+
+        FastRNG m_rng;
     public:
         using ISystem::ISystem;
         void Init() override;
@@ -37,16 +63,13 @@ namespace ecs {
 
         // Spawn a new particle
         void EmitParticle(EntityID entityId, const glm::vec3& particle_position,
-        const glm::vec3& velocity, float lifetime, ParticleComponent*& particle, glm::vec4* position,
-        glm::vec3* velocities, float* lifetime_list, float* lifetime_Counter_list);
+        const glm::vec3& velocity, float lifetime, ParticleComponent*& particle);
         // Update particle lifetimes and kill dead particles
-        void UpdateParticleLifetimes(float dt, ParticleComponent*& particle, glm::vec4* positions, glm::vec3* velocities,
-        float* lifetime_list, float* lifetime_Counter_list);    
+        void UpdateParticleLifetimes(float dt, ParticleComponent*& particle);    
         // Handle particle emission from emitter components
-        void UpdateEmitters(float dt, EntityID id, ParticleComponent*& particleComp,  TransformComponent* transform,
-        glm::vec4* position, glm::vec3* velocities, float* lifetime_list, float* lifetime_Counter_list);
-        void SyncActiveBuffer(ParticleComponent* particle);
-        void ExtractParticleDataOptimized(ParticleComponent* particle, ParticleInstance& data, glm::vec4* positions);
+        void UpdateEmitters(float dt, EntityID id, ParticleComponent*& particleComp,  TransformComponent* transform);
+       
+        void ExtractParticleDataOptimized(ParticleComponent* particle, ParticleInstance& data);
 
 
         //===========================================
@@ -77,24 +100,23 @@ namespace ecs {
         void* getVoid(ParticleComponent* particle, STATE state);
        
         inline float RandomRange(float minValue, float maxValue) {
-            static std::mt19937 generator(std::random_device{}());      // create once
-            std::uniform_real_distribution<float> distribution(glm::min(minValue, maxValue), glm::max(minValue, maxValue));
-            return distribution(generator);
+            return minValue + m_rng.nextFloat() * (maxValue - minValue);
         }
 
-        inline float AbsRandomRange(float minValue, float maxValue){
-            static std::mt19937 generator(std::random_device{}());      // create once
-            std::uniform_real_distribution<float> distribution(glm::min(glm::abs(minValue),glm::abs(maxValue)),glm::max(glm::abs(minValue), glm::abs(maxValue)));
-            return distribution(generator);
+        inline float AbsRandomRange(float minValue, float maxValue) {
+            float absMin = std::abs(minValue);
+            float absMax = std::abs(maxValue);
+            if (absMin > absMax) std::swap(absMin, absMax);
+            return absMin + m_rng.nextFloat() * (absMax - absMin);
         }
 
-        inline glm::vec4 RandomColourRange(glm::vec4 color_Start, glm::vec4 color_End) {
-            glm::vec4 ret;
-            ret.r = AbsRandomRange(color_Start.r, color_End.r);
-            ret.g = AbsRandomRange(color_Start.g, color_End.g);
-            ret.b = AbsRandomRange(color_Start.b, color_End.b);
-            ret.a = 1.f;
-            return ret;
+        inline glm::vec4 RandomColourRange(const glm::vec4& color_Start, const glm::vec4& color_End) {
+            return glm::vec4(
+                color_Start.r + m_rng.nextFloat() * (color_End.r - color_Start.r),
+                color_Start.g + m_rng.nextFloat() * (color_End.g - color_Start.g),
+                color_Start.b + m_rng.nextFloat() * (color_End.b - color_Start.b),
+                1.0f
+            );
         }
         // Apply random chaos to direction
         glm::vec3 ApplyRandomDirection(const glm::vec3& direction, float randomAmount);

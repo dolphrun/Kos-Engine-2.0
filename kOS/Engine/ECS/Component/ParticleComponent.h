@@ -5,13 +5,26 @@
 
 
 namespace ecs {
-	//For each particle
-	struct ParticleVisual {
-		glm::vec4 color = glm::vec4(1.f);
-		float size = 1.f;
-		float rotation = 0.f;
-		
+	//USING SOA
+	struct ParticleVisual_List {
+		std::vector<glm::vec4> colors;
+		std::vector<glm::vec2> sizes;
+		std::vector<float> rotation;
 	};
+
+
+	struct ParticleData {
+		glm::vec4 color;
+		glm::vec3 position;
+		float size;
+		glm::vec3 velocity;
+		float lifespan;
+		float lifetime;
+		float rotation;
+		glm::vec2 padding;
+
+	};
+
 	enum class PlayState {
 		PLAY,
 		PAUSE,
@@ -158,16 +171,17 @@ namespace ecs {
 
 		//Drag Gravity Damping
 		glm::vec3 gravity = glm::vec3(0.0f, -9.8f, 0.0f);
+		glm::vec3 gravity_Prev = gravity;
  
-		//NvFlex 
-		void* pointers[6];
-		void* library;
-		void* solver;
 
 		//FOR THE ALIVE PARTICLES
 		std::vector<short> freeIndices;                       
 		std::vector<short> alive_Particles;
-		
+		int alive_no_Of_Particles = 0;
+		std::vector<ParticleData> particle_List;
+
+
+
 		//EMISSTION RATE
 		float emitterTime = 0.f;
 		float durationCounter = 0.f;
@@ -175,8 +189,7 @@ namespace ecs {
 
 
 		//Per particle visual data
-		std::vector<ParticleVisual> visualData;
-
+		ParticleVisual_List visualData_List;
 
 		REFLECTABLE(ParticleComponent, duration, looping, play_On_Awake, 
 					start_Lifetime, end_Lifetime, lifetime_Random_Enable,
