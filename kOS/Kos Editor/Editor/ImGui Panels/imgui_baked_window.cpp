@@ -91,7 +91,7 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 			bool matchcon = false;
 			for (std::string& tag : addedTags) {
 				if (tag == nc->entityTag) {
-					matchcon - true;
+					matchcon = true;
 					break;;
 				}
 			}
@@ -100,8 +100,12 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 			if (matchcon&&mfc) {
 				//Add mesh renderer to entity
 				//Get resource
+				std::vector<PBRMaterial>pbrTmpList;
+				pbrTmpList.push_back(PBRMaterial{});
+
 				std::shared_ptr<R_Model> mesh = m_resourceManager.GetResource<R_Model>(mfc->meshGUID);
-				m_graphicsManager.gm_PushMeshData(MeshData{ mesh,std::make_shared<PBRMaterialList>(), transform->transformation,go }, nc->Layer);
+				std::cout << "Mesh stuff " << mfc->meshGUID.GetToString()<<' '<<go << '\n';
+				if(mesh)md.emplace_back(MeshData{ mesh,std::make_shared<PBRMaterialList>(pbrTmpList,true), transform->transformation,go });
 
 			}
 		}
@@ -116,11 +120,12 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 				continue;;
 			}
 			std::cout << m_clickedEntityId << "<- SELECTED LIGHT ENTITY\n\n";
-
+		
+			std::cout<<"Material list Size " << reinterpret_cast<PBRMaterialList*>(md[0].meshMaterial.get())->pbrMatList.size() << '\n';
 			//EVENTUALLY MAKE IT DO ITS OWN DEPTH BUFFER CREATION
 			//Get DCM, make a faux depth map renderer
 			//Get all objects
-			m_graphicsManager.gm_FillDepthCube(CameraData{}, 0, m_ecs.GetComponent<ecs::TransformComponent>(lcComp)->LocalTransformation.position);
+			m_graphicsManager.gm_FillDepthCube(CameraData{}, 0, m_ecs.GetComponent<ecs::TransformComponent>(lcComp)->LocalTransformation.position,md);
 			
 			//Asset creation
 			//Generate GUID

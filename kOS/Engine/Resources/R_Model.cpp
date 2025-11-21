@@ -431,6 +431,7 @@ void R_Model::PBRDraw(Shader& shader, std::shared_ptr<PBRMaterial> const& pbrMat
     shader.SetBool("isNotRigged", false);
     std::vector<PBRMaterial>& pbr = reinterpret_cast<PBRMaterialList*>(pbrMat.get())->pbrMatList;
         for (unsigned int i = 0,j=0; i < meshes.size(); i++) {
+            //std::cout << pbr.size() << '\n';
             j = j < pbr.size()-1  ? j + 1 : j;
             meshes[i].PBRDraw(shader, pbr[j]);
         }

@@ -45,7 +45,7 @@ namespace ecs {
 			if (!nameComp || !audioComp) continue;
 
 			if (nameComp->hide) continue;
-
+			
 			//Loop through all audio files
 			for (auto& af : audioComp->audioFiles) {
 

@@ -97,7 +97,7 @@
             "WorldTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 1.4600000381469727,
+                    "y": -3.440000057220459,
                     "z": 12.960000038146973
                 },
                 "rotation": {
@@ -114,7 +114,7 @@
             "LocalTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 1.4600000381469727,
+                    "y": -3.440000057220459,
                     "z": 12.960000038146973
                 },
                 "rotation": {
@@ -378,7 +378,7 @@
             "WorldTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": -22.899999618530273,
                     "z": 0.0
                 },
                 "rotation": {
@@ -395,7 +395,7 @@
             "LocalTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": -22.899999618530273,
                     "z": 0.0
                 },
                 "rotation": {
@@ -435,7 +435,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 0.0,
+                            "y": -22.899999618530273,
                             "z": 0.0
                         },
                         "rotation": {
@@ -491,7 +491,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 0.0,
+                            "y": -22.899999618530273,
                             "z": 0.0
                         },
                         "rotation": {
@@ -619,56 +619,6 @@
                 "rotation": {
                     "x": 0.0,
                     "y": 0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        }
-    },
-    {
-        "entityGUID": "173044ff-5e71-293e-d119-d103c74e5a85",
-        "MeshFilterComponent": {
-            "meshGUID": "1b24abdb-864c-b924-5d58-c999e401d55b"
-        },
-        "NameComponent": {
-            "entityName": "Evelyn",
-            "Layer": 0,
-            "entityTag": "Default",
-            "isPrefab": false,
-            "prefabName": "",
-            "hide": false
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": -28.009658813476563
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": -28.009658813476563
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
                     "z": 0.0
                 },
                 "scale": {
