@@ -50,6 +50,16 @@ namespace ecs {
 			core->set3DListenerAttributes(0, &p, &v, &f, &u);
 		}
 
+		if (auto* studio = m_audioManager.GetStudio()) {
+			FMOD_3D_ATTRIBUTES lis{};
+			lis.position = ToF(m_listenerPos);
+			lis.forward = ToF(m_listenerFwd);
+			lis.up = ToF(m_listenerUp);
+			lis.velocity = FMOD_VECTOR{ 0.0f, 0.0f, 0.0f };
+
+			studio->setListenerAttributes(0, &lis);
+		}
+
 		const auto& entities = m_entities.Data();
 		for (const EntityID id : entities) {
 			auto* transform = m_ecs.GetComponent<TransformComponent>(id);
@@ -150,9 +160,8 @@ namespace ecs {
 		}
 
 		//Update sound every frame
-		if (auto* core = m_audioManager.GetCore()) {
-			core->update();
-		}
+		m_audioManager.Update();
+
 	}
 
 	void AudioSystem::SetListener(const glm::vec3& pos,
