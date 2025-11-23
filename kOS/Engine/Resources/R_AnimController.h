@@ -18,7 +18,7 @@ struct AnimPin {
 	std::string name;
 	int fromParentId{};
 	int toParentId{};
-	REFLECTABLE(AnimPin, id, kind, name);
+	REFLECTABLE(AnimPin, id, kind, name, fromParentId, toParentId);
 };
 
 //The lines
@@ -42,9 +42,9 @@ struct AnimState {
 	float playSpeed = 1.0f;
 	bool isLooping = true;
 	bool isDefault = false;
-	std::vector<AnimTransition> transitions;
+	std::vector<AnimTransition> outgoingTransitions;
 
-	REFLECTABLE(AnimState, id, inputs, outputs, name, animationGUID, playSpeed, isLooping, transitions);
+	REFLECTABLE(AnimState, id, inputs, outputs, name, animationGUID, playSpeed, isLooping, outgoingTransitions);
 };
 
 

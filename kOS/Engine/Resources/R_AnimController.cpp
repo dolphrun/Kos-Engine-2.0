@@ -1,10 +1,9 @@
 #include "Config/pch.h"
 #include "R_AnimController.h"
 #include "..\DeSerialization\json_handler.h"
-void R_Material::Load()
+void R_AnimController::Load()
 {
-	this->md = serialization::ReadJsonFile<AnimControllerData>(this->GetFilePath().string());
-	std::cout << "MATERIAL PATH" << this->GetFilePath().string() << '\n';
-	std::cout << "MATERIAL LOADED" << this->md.diffuseMaterialGUID.GetToString() << '\n';
+	this->m_AnimControllerData = serialization::ReadJsonFile<AnimControllerData>(this->GetFilePath().string());
+	std::cout << "CONTROLLER PATH" << this->GetFilePath().string() << '\n';
 }
-void R_Material::Unload() {}
+void R_AnimController::Unload() {}

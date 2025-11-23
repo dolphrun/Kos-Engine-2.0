@@ -123,8 +123,8 @@ void gui::ImGuiHandler::DrawAnimatorControllerWindow()
             if (ImGui::Button("Create", ImVec2(120, 0)))
             {
                 // Build final file name
-                std::string finalName = std::string(controllerNameBuffer) + ".controller";
-                std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/Animation Controller/" + finalName;
+                //std::string finalName = std::string(controllerNameBuffer) + ".controller";
+                //std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/Animation Controller/" + finalName;
 
                 // Save it
                 //serialization::WriteJsonFile(filepath, &m_activeController->controller);
@@ -266,18 +266,20 @@ void gui::ImGuiHandler::DrawAnimatorControllerWindow()
                 t.fromPinId = startPin.Get();
                 t.toPinId = endPin.Get();
                 t.condition = ""; // allow editing in inspector
-                /// store transitions
-                /// Find state by pin id
-                /// find resulting state to end pin
-                /// 
+                AnimState* fromState = FindStateFromPin(states, t.fromPinId);
+                //AnimState* toState = FindStateFromPin(states, t.toPinId);
+                fromState->outgoingTransitions.push_back(t);
             }
         }
     }
     ed::EndCreate();
 
     // --- Draw links ---
-    for (auto& t : transitions)
-        ed::Link(t.id, t.fromPinId, t.toPinId);
+    for (auto& state : states)
+    {
+        for (auto& t : state.outgoingTransitions)
+            ed::Link(t.id, t.fromPinId, t.toPinId);
+    }
 
     // --- Detect node selection ---
     static ed::NodeId selectedNode;
@@ -317,74 +319,61 @@ void gui::ImGuiHandler::DrawAnimatorControllerWindow()
     // --- Always-visible property window ---
     ImGui::Begin("Selected Animator Node");
 
-    //float windowWidth = ImGui::GetContentRegionAvail().x;
-    //float buttonWidth = 100.0f; // Width of your button
-    //ImGui::SetCursorPosX((windowWidth - buttonWidth) * 0.5f); // Center horizontally
-    //if (ImGui::Button("Create", ImVec2(buttonWidth, 0))) {
-    //    if (!controllerData.name.empty()) {
-    //        std::string fileName = controllerData.name + ".controller";
-    //        std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/Animation Controller/" + fileName;
-
-    //        serialization::WriteJsonFile(filepath, &controllerData.controller);
-    //        // std::cout << "TEST CREATION\n";
-    //        LOGGING_POPUP("Animator Controller Successfully Added");
-    //    }
-    //    else {
-    //        LOGGING_WARN("Animator Controller Name cannot be empty");
-    //    }
-    //}
-
     // --- TRANSITION INSPECTOR ---
     if (selectedLink)
     {
         int linkId = selectedLink.Get();
 
-        for (auto& t : transitions)
+        for (auto& state : states)
         {
-            if (t.id == linkId)
+            for (auto& t : state.outgoingTransitions)
             {
-                ImGui::Separator();
-                ImGui::Text("Transition Properties");
-
-                char buf[256];
-                strcpy(buf, t.condition.c_str());
-                if (ImGui::InputText("Condition", buf, sizeof(buf)))
-                    t.condition = buf;
-
-                AnimState* fromState = FindStateFromPin(states, t.fromPinId);
-                AnimState* toState = FindStateFromPin(states, t.toPinId);
-
-                AnimPin* fromPin = FindPin(states, t.fromPinId);
-                AnimPin* toPin = FindPin(states, t.toPinId);
-
-                ImGui::Separator();
-                ImGui::Text("Transition Endpoints");
-
-                if (fromState)
+                if (t.id == linkId)
                 {
-                    ImGui::Text("From State: %s", fromState->name.c_str());
-                    if (fromPin)
-                        ImGui::Text("  Pin: %s", fromPin->name.c_str());
-                }
-                else ImGui::Text("From State: <Unknown>");
+                    ImGui::Separator();
+                    ImGui::Text("Transition Properties");
 
-                if (toState)
-                {
-                    ImGui::Text("To State: %s", toState->name.c_str());
-                    if (toPin)
-                        ImGui::Text("  Pin: %s", toPin->name.c_str());
-                }
-                else ImGui::Text("To State: <Unknown>");
+                    char buf[256];
+                    strcpy(buf, t.condition.c_str());
+                    if (ImGui::InputText("Condition", buf, sizeof(buf)))
+                        t.condition = buf;
 
-                ImGui::Separator();
-                ImGui::End();
-                return;
+                    AnimState* fromState = FindStateFromPin(states, t.fromPinId);
+                    AnimState* toState = FindStateFromPin(states, t.toPinId);
+
+                    AnimPin* fromPin = FindPin(states, t.fromPinId);
+                    AnimPin* toPin = FindPin(states, t.toPinId);
+
+                    ImGui::Separator();
+                    ImGui::Text("Transition Endpoints");
+
+                    if (fromState)
+                    {
+                        ImGui::Text("From State: %s", fromState->name.c_str());
+                        if (fromPin)
+                            ImGui::Text("  Pin: %s", fromPin->name.c_str());
+                    }
+                    else ImGui::Text("From State: <Unknown>");
+
+                    if (toState)
+                    {
+                        ImGui::Text("To State: %s", toState->name.c_str());
+                        if (toPin)
+                            ImGui::Text("  Pin: %s", toPin->name.c_str());
+                    }
+                    else ImGui::Text("To State: <Unknown>");
+
+                    ImGui::Separator();
+                    ImGui::End();
+                    return;
+                }
             }
         }
+        
     }
 
     // --- STATE INSPECTOR ---
-    if (selectedNode && states.contains(selectedNode.Get()))
+    if (selectedNode && selectedNode.Get() < states.size())
     {
         AnimState& state = states[selectedNode.Get()];
         state.ApplyFunction(DrawComponents{ state.Names() });
@@ -393,8 +382,6 @@ void gui::ImGuiHandler::DrawAnimatorControllerWindow()
     {
         ImGui::TextDisabled("No node or link selected.");
     }
-
-
 
     ImGui::End();
 }
