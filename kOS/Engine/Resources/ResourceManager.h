@@ -44,7 +44,6 @@ public:
 		RegisterResourceType<R_DepthMapCube>(".dcm");
 		RegisterResourceType<R_DepthMapCube>(".prefab");
 		RegisterResourceType<R_AnimController>(".controller");
-        //Wait for texture type
     }
 
 	~ResourceManager() = default;

@@ -8,7 +8,6 @@
 #include "TextComponent.h"
 #include "CanvasRendererComponent.h"
 #include "MeshFilterComponent.h"
-#include "MeshRendererComponent.h"
 #include "SkinnedMeshRendererComponent.h"
 #include "AnimatorComponent.h"
 #include "LightComponent.h"

@@ -78,7 +78,7 @@ void R_Font::Load()
     }
 
     uint32_t numChars = read_u32();
-    std::cout << "Reading " << numChars << " characters...\n";
+    //std::cout << "Reading " << numChars << " characters...\n";
 
     for (uint32_t i = 0; i < numChars; ++i) {
         uint8_t ch = read_u8();
@@ -135,7 +135,7 @@ void R_Font::Load()
         kv.second.m_textureID = textureID;
     }
 
-    std::cout << "Loaded atlas texture (ID=" << textureID << ")\n";
+    //std::cout << "Loaded atlas texture (ID=" << textureID << ")\n";
 }
 
 

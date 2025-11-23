@@ -166,7 +166,7 @@ public:
 	}
 
 	void Draw(Shader& shader);
-	void PBRDraw(Shader& shader, PBRMaterial const& pbrMat);
+	void PBRDraw(Shader& shader, std::shared_ptr < PBRMaterial> const& pbrMat);
 	void DrawAnimation(Shader& shader, PBRMaterial const& pbrMat, const std::vector<glm::mat4>& boneMatrices);
 
 	const std::vector<Animation>& GetAnimations() const { return animations; }
@@ -180,6 +180,8 @@ public:
 	/// TEMPORARY HERE
 	/// </summary>
 	std::vector<Animation> animations;
+	// model data
+	std::vector<Mesh> meshes;
 
 	REFLECTABLE(R_Model);
 
@@ -189,8 +191,6 @@ private:
 	std::vector<Textures> textures_loaded;
 	std::unordered_map<std::string, int> bones_loaded;
 	std::vector<BoneInfo> bone_info; // Only contains the matrices of the bones not the bone itself
-	// model data
-	std::vector<Mesh> meshes;
 
 	std::string directory;
 

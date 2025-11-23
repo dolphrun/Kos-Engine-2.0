@@ -23,45 +23,134 @@ std::string GenerateRandomGUIDBaked() {
 void gui::ImGuiHandler::DrawBakedWindow() {
 
 	ImGui::Begin("Baked Lighting");
+
+	//Get list og GO tags
+
+	static int selected = 0;
+	static std::vector<std::string> addedTags;
+
+	// Dropdown to select what to add
+	ImGui::Text("Add Item:");
+	ImGui::SameLine();
+	if (ImGui::BeginCombo("##itemSelect", m_tags[selected].c_str()))
+	{
+		for (int i = 0; i < m_tags.size(); i++)
+		{
+			bool isSelected = (selected == i);
+			if (ImGui::Selectable(m_tags[i].c_str(), isSelected))
+				selected = i;
+
+			if (isSelected)
+				ImGui::SetItemDefaultFocus();
+		}
+		ImGui::EndCombo();
+	}
+
+	ImGui::SameLine();
+	if (ImGui::Button("Add"))
+	{
+		addedTags.push_back(m_tags[selected]);
+	}
+	//Display list of tags
+	ImGui::Separator();
+	ImGui::Text("Tags:");
+	if(!addedTags.size())ImGui::Text("All");
+	for (int i = 0; i < addedTags.size(); i++)
+	{
+		// Name
+		ImGui::Text("%s", addedTags[i].c_str());
+		ImGui::SameLine();
+
+		// Push to the right side (optional)
+		// ImGui::SameLine(ImGui::GetWindowContentRegionMax().x - 80);
+
+		// Remove button
+		if (ImGui::SmallButton(("Remove##" + std::to_string(i)).c_str()))
+		{
+			addedTags.erase(addedTags.begin() + i);
+			i--; // adjust index after erase
+			continue;
+		}
+	}
 	if (ImGui::Button("Bake Lights"))
 	{
 
 		LOGGING_INFO("It's a piece of cake to bake a pretty cake");
 		//Just bake first light first
-		PointLightData* pld;
+		//PointLightData* pld;
 		int i = 0;
-		for (auto& lcComp: m_ecs.GetComponentsEnties("LightComponent"))
-		{
-			pld = &m_graphicsManager.lightRenderer.pointLightsToDraw[i];
-			//Add shadow setting later as well
-			if (!pld->bakedCon)continue;;
-			std::cout << lcComp << "<- LIGHT ENTITY\n";
 
+		auto sceneData =m_ecs.GetSceneData(m_ecs.GetSceneByEntityID(m_clickedEntityId));
+		//Get all mesh data with tags
+		std::vector<MeshData>md;
+		for (auto& go : sceneData.sceneIDs)
+		{
+			//Check name tag
+			ecs::NameComponent* nc=m_ecs.GetComponent<NameComponent>(go);
+			//Check if game object tags match
+			bool matchcon = false;
+			for (std::string& tag : addedTags) {
+				if (tag == nc->entityTag) {
+					matchcon = true;
+					break;;
+				}
+			}
+			TransformComponent* transform = m_ecs.GetComponent<TransformComponent>(go);
+			MeshFilterComponent* mfc = m_ecs.GetComponent<MeshFilterComponent>(go);
+			if (matchcon&&mfc) {
+				//Add mesh renderer to entity
+				//Get resource
+				std::vector<PBRMaterial>pbrTmpList;
+				pbrTmpList.push_back(PBRMaterial{});
+
+				std::shared_ptr<R_Model> mesh = m_resourceManager.GetResource<R_Model>(mfc->meshGUID);
+				std::cout << "Mesh stuff " << mfc->meshGUID.GetToString()<<' '<<go << '\n';
+				if(mesh)md.emplace_back(MeshData{ mesh,std::make_shared<PBRMaterialList>(pbrTmpList,true), transform->transformation,go });
+
+			}
+		}
+		for (auto& lcComp: sceneData.sceneIDs)
+		{
+			if (!m_ecs.HasComponent<LightComponent>(lcComp))continue;;
+			std::cout << lcComp << "<- LIGHT ENTITY\n";
+			std::cout << "INDEX: " << i << '\n';
+			//Add shadow setting later as well
+			if (!m_ecs.GetComponent<ecs::LightComponent>(lcComp)->bakedLighting) {
+				i++;
+				continue;;
+			}
+			std::cout << m_clickedEntityId << "<- SELECTED LIGHT ENTITY\n\n";
+		
+			std::cout<<"Material list Size " << reinterpret_cast<PBRMaterialList*>(md[0].meshMaterial.get())->pbrMatList.size() << '\n';
 			//EVENTUALLY MAKE IT DO ITS OWN DEPTH BUFFER CREATION
 			//Get DCM, make a faux depth map renderer
 			//Get all objects
-			m_graphicsManager.gm_FillDepthCube(CameraData{}, i);
+			m_graphicsManager.gm_FillDepthCube(CameraData{}, 0, m_ecs.GetComponent<ecs::TransformComponent>(lcComp)->LocalTransformation.position,md);
 			
 			//Asset creation
 			//Generate GUID
 			// Attach name
 			//KEEP THIS
 			std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/DepthMap/" + std::to_string(lcComp) + ".dcm";
-			m_graphicsManager.lightRenderer.dcm[i].SaveDepthCubeMap(filepath);
+			m_graphicsManager.lightRenderer.dcm[0].SaveDepthCubeMap(filepath);
 
 			
 			//Add and load asset and assign it to light component
 			//Need to change entity itself
-			m_ecs.GetComponent<ecs::LightComponent>(lcComp)->depthMapGUID= m_assetManager.RegisterAsset(filepath);
+			std::cout << lcComp << '\n';
+			m_ecs.GetComponent<ecs::LightComponent>(lcComp)->depthMapGUID.SetFromString( m_assetManager.RegisterAsset(filepath).GetToString());
+			std::cout << "Depth map GUID " << m_ecs.GetComponent<ecs::LightComponent>(lcComp)->depthMapGUID.GetToString();
 			m_assetManager.Compilefile(filepath);
-			//Retrieve GUID from file path
 			i++;
+
+			//Retrieve GUID from file path
 		}
 	}
 	if (ImGui::Button("Test Lights")) {
-		m_graphicsManager.lightRenderer.dcm[0].LoadDepthCubeMap("D:/CJJJ2/kOS/Kos Editor/Assets/DepthMap/test.dcm");
-		m_graphicsManager.lightRenderer.dcm[1].LoadDepthCubeMap("D:/CJJJ2/kOS/Kos Editor/Assets/DepthMap/test.dcm");
-
+		for (int i = 0; i < addedTags.size(); i++)
+		{
+			std::cout << addedTags[i] << '\n';
+		}
 	}
 	ImGui::End();
 }

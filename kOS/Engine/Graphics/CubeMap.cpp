@@ -66,7 +66,7 @@ void CubeMap::LoadCubeTexture(std::vector<std::string> faces) {
 }
 
 void CubeMap::LoadCubeTextureDDS(std::vector<std::string> faces) {
-    std::cout << "LAODING CUBE MAP DDS\n";
+    //std::cout << "LAODING CUBE MAP DDS\n";
     
     // Generate texture ID
     glGenTextures(1, &texID);
@@ -324,6 +324,6 @@ void DepthCubeMap::LoadDepthCubeMap(std::string inputPath) {
     glDrawBuffer(GL_NONE);
     glReadBuffer(GL_NONE);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    std::cout << "LOADED DEPTH MAP DATA\n";
+    //std::cout << "LOADED DEPTH MAP DATA\n";
     file.close();
 }

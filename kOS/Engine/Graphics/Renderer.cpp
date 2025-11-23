@@ -169,40 +169,71 @@ void MeshRenderer::Render(const CameraData& camera, Shader& shader)
 {
 	shader.SetBool("isNotRigged", true);
 	shader.SetVec3("color", glm::vec3{1.f,1.f,1.f});
-	for (MeshData& mesh : meshesToDraw)
-	{
-		shader.SetTrans("model", mesh.transformation);
-		shader.SetInt("entityID", mesh.entityID+1);
-
-		mesh.meshToUse->PBRDraw(shader, mesh.meshMaterial);
+	for (std::vector<MeshData>& meshData : meshesToDraw) {
+		for (MeshData& mesh : meshData)
+		{
+			shader.SetTrans("model", mesh.transformation);
+			shader.SetInt("entityID", mesh.entityID + 1);
+			mesh.meshToUse->PBRDraw(shader, mesh.meshMaterial);
+		}
 	}
-}
 
+
+}
+void MeshRenderer::Render(const CameraData& camera, Shader& shader, layer::LAYERS layer)
+{
+	shader.SetBool("isNotRigged", true);
+	shader.SetVec3("color", glm::vec3{ 1.f,1.f,1.f });
+		for (MeshData& mesh : meshesToDraw[layer])
+		{
+			shader.SetTrans("model", mesh.transformation);
+			shader.SetInt("entityID", mesh.entityID + 1);
+			mesh.meshToUse->PBRDraw(shader, mesh.meshMaterial);
+		}
+	
+
+
+}
 void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader)
 {
 	shader.SetBool("isNotRigged", false);
 	shader.SetVec3("color", glm::vec3{ 1.f,1.f,1.f });
-	for (SkinnedMeshData& mesh : skinnedMeshesToDraw)
-	{
-		shader.SetTrans("model", mesh.transformation);
-		shader.SetInt("entityID", mesh.entityID+1);
-		if (mesh.animationToUse)
+	for (std::vector<SkinnedMeshData>& meshData : skinnedMeshesToDraw) {
+		for (SkinnedMeshData& mesh : meshData)
 		{
-			mesh.animationToUse->Update(mesh.currentDuration, glm::mat4(1.f), glm::mat4(1.f), mesh.meshToUse->GetBoneMap(), mesh.meshToUse->GetBoneInfo());
-			mesh.meshToUse->DrawAnimation(shader, mesh.meshMaterial, mesh.animationToUse->GetBoneFinalMatrices());
-		}
-		else
-		{
-			mesh.meshToUse->PBRDraw(shader, mesh.meshMaterial);
-		}
+			shader.SetTrans("model", mesh.transformation);
+			shader.SetInt("entityID", mesh.entityID + 1);
+			if (mesh.animationToUse)
+			{
+				mesh.animationToUse->Update(mesh.currentDuration, glm::mat4(1.f), glm::mat4(1.f), mesh.meshToUse->GetBoneMap(), mesh.meshToUse->GetBoneInfo());
+				mesh.meshToUse->DrawAnimation(shader, *mesh.meshMaterial, mesh.animationToUse->GetBoneFinalMatrices());
+			}
+			else
+			{
+				mesh.meshToUse->PBRDraw(shader, mesh.meshMaterial);
+			}
 
+		}
 	}
 }
+
+void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader, layer::LAYERS layer)
+{
+	shader.SetBool("isNotRigged", true);
+	shader.SetVec3("color", glm::vec3{ 1.f,1.f,1.f });
+	for (SkinnedMeshData& mesh : skinnedMeshesToDraw[layer])
+	{
+		shader.SetTrans("model", mesh.transformation);
+		shader.SetInt("entityID", mesh.entityID + 1);
+		mesh.meshToUse->PBRDraw(shader, mesh.meshMaterial);
+	}
+}
+
 void LightRenderer::InitializeLightRenderer() {
 	for (int i{ 0 }; i < 16; i++) {
 		dcm[i].InitializeMap();
 	}
-	testDCM.LoadDepthCubeMap("D:/CJJJ2/kOS/Kos Editor/Assets/DepthMap/test.dcm");
+	//testDCM.LoadDepthCubeMap("D:/CJJJ2/kOS/Kos Editor/Assets/DepthMap/test.dcm");
 
 	LOGGING_INFO("Initialized shadow maps\n");
 }
@@ -248,19 +279,21 @@ void LightRenderer::DebugRender(const CameraData& camera, Shader& shader) {
 	for (size_t i = 0; i < pointLightsToDraw.size(); i++)
 	{
 		PointLightData& pointLight = pointLightsToDraw[i];
-		//Draw debug sphere
-
 	}
 }
 
 void MeshRenderer::Clear()
 {
-	meshesToDraw.clear();
+	for (std::vector<MeshData>& md : meshesToDraw) {
+		md.clear();
+	}
 }
 
 void SkinnedMeshRenderer::Clear()
 {
-	skinnedMeshesToDraw.clear();
+	for (std::vector<SkinnedMeshData>& md : skinnedMeshesToDraw) {
+		md.clear();
+	}
 }
 void CubeRenderer::Render(const CameraData& camera, Shader& shader, Cube* cubePtr) {
 	for (CubeData& cd : cubesToDraw) {
@@ -304,7 +337,7 @@ void CubeRenderer::Clear() {
 
 void SphereRenderer::Render(const CameraData& camera, Shader& shader, Sphere* spherePtr) {
 	for (SphereData& cd : spheresToDraw) {
-		std::cout << "RENDERING SPHERE\n";
+		//std::cout << "RENDERING SPHERE\n";
 		shader.SetTrans("model", cd.transformation);
 		shader.SetVec3("color", glm::vec3{ 1.f,1.f,1.f });
 		shader.SetInt("entityID", cd.entityID + 1);
@@ -355,9 +388,18 @@ void SpriteRenderer::RenderScreenSprites(const CameraData& camera, Shader& shade
 	}
 }
 
+void SpriteRenderer::RenderWorldSprites(const CameraData& camera, Shader& shader) {
+	for (const ScreenSpriteData& screenSprite : worldSpriteToDraw)
+	{
+		screenSpriteMesh.DrawMeshWorld(screenSprite, shader, camera);
+	}
+
+}
+
 void SpriteRenderer::Clear()
 {
 	screenSpritesToDraw.clear();
+	worldSpriteToDraw.clear();
 }
 
 void LightRenderer::Clear()
@@ -518,21 +560,47 @@ void ParticleRenderer::InitializeParticleRendererMeshes()
 		 0.5f,  0.5f, 0.0f
 	};
 
+	// Texture coordinates matching triangle strip layout
+	static const float quadUVs[] = {
+		// U, V
+		0.0f, 0.0f,   // bottom-left
+		1.0f, 0.0f,   // bottom-right
+		0.0f, 1.0f,   // top-left
+		1.0f, 1.0f    // top-right
+	};
+
 	GLuint quadVBO;
+	GLuint uvVBO;   // NEW: UV buffer
+
 	glGenVertexArrays(1, &basicParticleMesh.vaoid);
 	glGenBuffers(1, &quadVBO);
+	glGenBuffers(1, &uvVBO);                        // NEW
 	glGenBuffers(1, &basicParticleMesh.vboid);
 
 	glBindVertexArray(basicParticleMesh.vaoid);
-	// Set up base vertex buffer (quad geometry)
+
+	//---------------------------------------------------------
+	// Position buffer (attribute 0)
+	//---------------------------------------------------------
 	glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
+	//---------------------------------------------------------
+	// UV buffer (attribute 1)
+	//---------------------------------------------------------
+	glBindBuffer(GL_ARRAY_BUFFER, uvVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(quadUVs), quadUVs, GL_STATIC_DRAW);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
+
+	//---------------------------------------------------------
+	// Instance buffer
+	//---------------------------------------------------------
 	glBindBuffer(GL_ARRAY_BUFFER, basicParticleMesh.vboid);
 
-	constexpr int MAX_PARTICLES = 100000;
+	constexpr int MAX_PARTICLES = 10000;
 	glBufferData(GL_ARRAY_BUFFER, MAX_PARTICLES * sizeof(BasicParticleInstance), nullptr, GL_DYNAMIC_DRAW);
 
 	GLsizei stride = sizeof(BasicParticleInstance);
@@ -549,32 +617,67 @@ void ParticleRenderer::InitializeParticleRendererMeshes()
 	glEnableVertexAttribArray(5);
 	glVertexAttribPointer(5, 1, GL_FLOAT, GL_FALSE, stride, (void*)offsetof(BasicParticleInstance, rotation));
 
-	// Tell OpenGL this is per-instance data
+	glEnableVertexAttribArray(6);
+	glVertexAttribIPointer(
+		6,                                  // location of attribute
+		1,                                  // number of components (1 int)
+		GL_INT,                             // type
+		stride,
+		(void*)offsetof(BasicParticleInstance, textureID)
+	);
+
+	// Per instance divisor
 	glVertexAttribDivisor(2, 1);
 	glVertexAttribDivisor(3, 1);
 	glVertexAttribDivisor(4, 1);
 	glVertexAttribDivisor(5, 1);
+	glVertexAttribDivisor(6, 1);
 
 }
 
 void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
 {
+	static std::vector<int> textureIDs{};
+	static std::unordered_map<int, GLuint> storedIDs; //subscript, texture ID
+
 	if (!particlesToDraw.empty())
 	{
+		textureIDs.clear();
+		storedIDs.clear();
+
 		instancedBasicParticles.reserve(std::accumulate(particlesToDraw.begin(), particlesToDraw.end(), size_t(0),
 			[](size_t sum, const BasicParticleData& p) { return sum + p.particlePositions.size(); }));
 
-		for (const auto& p : particlesToDraw)
+		for (int i = 0; i < particlesToDraw.size(); ++i)
 		{
+			BasicParticleData& p = particlesToDraw[i];
 			std::transform(p.particlePositions.begin(), p.particlePositions.end(),
 				std::back_inserter(instancedBasicParticles),
-				[&](const glm::vec3& pos) {
-					return BasicParticleInstance{ pos,p.scale, p.color, p.rotate };
+				[&, j = 0](const glm::vec3& pos) mutable {
+					if (p.texture_IDs != nullptr) {
+						if (storedIDs.contains(p.texture_IDs->RetrieveTexture()))
+						{
+							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], storedIDs[p.texture_IDs->RetrieveTexture()]};
+						}
+						else
+						{
+							int size = textureIDs.size();
+							storedIDs[p.texture_IDs->RetrieveTexture()] = textureIDs.size();
+							textureIDs.push_back(p.texture_IDs->RetrieveTexture());
+							int currentID = storedIDs[p.texture_IDs->RetrieveTexture()];
+							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], storedIDs[p.texture_IDs->RetrieveTexture()] };
+						}
+					}
+					else {
+						return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], 200 };
+					}
 				});
 		}
 		particlesToDraw.clear();
+		storedIDs.clear();
 	}
 	shader.Use();
+	shader.SetFloat("uShaderType", 2.1f);
 	shader.SetTrans("projection", camera.GetPerspMtx());
 	shader.SetTrans("view", camera.GetViewMtx());
 	if (!instancedBasicParticles.empty())
@@ -586,6 +689,21 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
 		}
 		glEnable(GL_DEPTH_TEST);
 
+		for (int i = 0; i < textureIDs.size(); i++)
+		{
+			glActiveTexture(GL_TEXTURE0 + i);
+			GLint tex = textureIDs[i];
+			glBindTexture(GL_TEXTURE_2D, tex);
+		}
+
+		int units[32];
+		for (int i = 0; i < textureIDs.size(); i++)
+			units[i] = i; // 0..N-1 texture unit indices
+
+
+		glUniform1iv(glGetUniformLocation(shader.ID, "textures"),
+			textureIDs.size(),
+			units);
 
 		glBindVertexArray(basicParticleMesh.vaoid);
 		glBindBuffer(GL_ARRAY_BUFFER, basicParticleMesh.vboid);
@@ -607,6 +725,7 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
 			//LOGGING_ERROR("First OpenGL Error: 0x%X", err);h
 			std::cout << "after 2 OpenGL Error: " << err << std::endl;
 		}
+
 		glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, static_cast<GLsizei>(instancedBasicParticles.size()));
 		glDisable(GL_DEPTH_TEST);
 
@@ -616,6 +735,7 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
 			std::cout << "after 3 OpenGL Error: " << err << std::endl;
 		}
 	}
+	shader.Disuse();
 		
 }
 

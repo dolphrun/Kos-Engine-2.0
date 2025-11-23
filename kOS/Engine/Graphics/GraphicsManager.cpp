@@ -81,8 +81,10 @@ void GraphicsManager::gm_Render()
 
 	//Force only first camera to be active for now
 	currentGameCameraIndex = 0;
+	//Iterate through game cameras and render each of them,
 	if (currentGameCameraIndex + 1 <= gameCameras.size()) {
 		gm_RenderToGameFrameBuffer();
+
 		//std::cout << "REDNERED TO GAME BUFFER\n";
 	}
 	if (editorCameraActive) {
@@ -144,12 +146,10 @@ void GraphicsManager::gm_RenderToEditorFrameBuffer()
 
 	gm_RenderCubeMap(editorCamera);
 	gm_RenderDeferredObjects(editorCamera);
-	gm_RenderDebugObjects(editorCamera);
-	gm_RenderParticles(editorCamera);
+	//gm_RenderDebugObjects(editorCamera);
 	//Particle buffer
 
 	framebufferManager.UIBuffer.BindForDrawing();
-	gm_RenderParticles(editorCamera);
 	gm_RenderUIObjects(editorCamera);
 
 	Shader* fboCompositeShader{ &shaderManager.engineShaders.find("FBOCompositeShader")->second };
@@ -162,12 +162,27 @@ void GraphicsManager::gm_RenderToEditorFrameBuffer()
 void GraphicsManager::gm_RenderToGameFrameBuffer()
 {
 	//Render deffered rendering
-	gm_FillDataBuffersGame(gameCameras[currentGameCameraIndex]);
-
+	//Iterate through GOS and render to this gbuffer and defferred buffer
 	framebufferManager.sceneBuffer.BindForDrawing();
+	//gm_RenderCubeMap(cd);
+	for (CameraData& cd : gameCameras) {
+		//Clear G buffer at the start maybe
+		//Bind and clear g buffer
+		if (!cd.culling) {
+			gm_FillDataBuffersGame(cd);
+		}
+		else {
+			//Only render those that have been culled
+			gm_FillDataBuffersGame(cd, cd.layer);
 
-	gm_RenderCubeMap(gameCameras[currentGameCameraIndex]);
-	gm_RenderDeferredObjects(gameCameras[currentGameCameraIndex]);
+		}
+		glBindFramebuffer(GL_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
+		glViewport(0, 0, static_cast<GLsizei>(framebufferManager.sceneBuffer.width), static_cast<GLsizei>(framebufferManager.sceneBuffer.height));
+
+		gm_RenderDeferredObjects(cd);
+
+
+	}
 	glDisable(GL_DEPTH_TEST);
 	//Render UI
 	framebufferManager.UIBuffer.BindForDrawing();
@@ -192,6 +207,12 @@ void GraphicsManager::gm_FillDataBuffersGame(const CameraData& camera)
 	gm_FillDepthBuffer(camera);
 	gm_FillDepthCube(camera);
 }
+void GraphicsManager::gm_FillDataBuffersGame(const CameraData& camera, layer::LAYERS layer)
+{
+	gm_FillGBufferGame(camera, layer);
+	gm_FillDepthBuffer(camera);
+	gm_FillDepthCube(camera);
+}
 void GraphicsManager::gm_FillGBuffer(const CameraData& camera)
 {
 	glDisable(GL_BLEND);
@@ -200,6 +221,7 @@ void GraphicsManager::gm_FillGBuffer(const CameraData& camera)
 	framebufferManager.gBuffer.BindGBuffer();
 	Shader* gBufferPBRShader{ &shaderManager.engineShaders.find("GBufferPBRShader")->second };
 	Shader* gBufferDebugShader{ &shaderManager.engineShaders.find("GBufferDebugShader")->second };
+	Shader* worldSpriteShader{ &shaderManager.engineShaders.find("GBufferWorldShader")->second };
 
 	gBufferPBRShader->Use();
 	gBufferPBRShader->SetTrans("projection", camera.GetPerspMtx()); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
@@ -217,6 +239,11 @@ void GraphicsManager::gm_FillGBuffer(const CameraData& camera)
 	
 	gBufferPBRShader->Disuse();
 
+	//Render particles
+	gm_RenderParticles(editorCamera);
+
+	//Fill world space UI
+	spriteRenderer.RenderWorldSprites(camera, *worldSpriteShader);
 	gBufferDebugShader->Use();
 	gBufferDebugShader->SetTrans("view", camera.GetViewMtx());
 	gBufferDebugShader->SetTrans("projection", camera.GetPerspMtx()); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
@@ -250,6 +277,29 @@ void GraphicsManager::gm_FillGBufferGame(const CameraData& camera) {
 	gBufferPBRShader->Disuse();
 
 }
+void GraphicsManager::gm_FillGBufferGame(const CameraData& camera, layer::LAYERS layer) {
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+	//Render to G buffer 
+	framebufferManager.gBuffer.BindGBuffer();
+	Shader* gBufferPBRShader{ &shaderManager.engineShaders.find("GBufferPBRShader")->second };
+	Shader* gBufferDebugShader{ &shaderManager.engineShaders.find("GBufferDebugShader")->second };
+
+	gBufferPBRShader->Use();
+	gBufferPBRShader->SetTrans("projection", camera.GetPerspMtx()); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
+	gBufferPBRShader->SetTrans("view", camera.GetViewMtx());
+	gBufferPBRShader->SetVec3("cameraPosition", camera.position);
+	gBufferPBRShader->SetFloat("uShaderType", 0.f);
+
+	//Render all meshes
+	meshRenderer.Render(camera, *gBufferPBRShader,layer);
+	skinnedMeshRenderer.Render(camera, *gBufferPBRShader);
+	cubeRenderer.Render(camera, *gBufferPBRShader, &this->cube);
+	sphereRenderer.Render(camera, *gBufferPBRShader, &this->sphere);
+	gBufferPBRShader->Disuse();
+
+}
+
 void GraphicsManager::gm_FillDepthBuffer(const CameraData& camera)
 {
 	//Render to Depth buffer
@@ -324,15 +374,21 @@ void GraphicsManager::gm_FillDepthCube(const CameraData& camera) {
 		}
 		pointShadowShader->SetFloat("far_plane", lightRenderer.dcm[i].far_plane);
 		pointShadowShader->SetVec3("lightPos", lightRenderer.pointLightsToDraw[i].position);
-		for (MeshData& md : meshRenderer.meshesToDraw) {
-			pointShadowShader->SetTrans("model", md.transformation);
-			md.meshToUse->PBRDraw(*pointShadowShader, md.meshMaterial);
+		for (std::vector<MeshData>& meshData : meshRenderer.meshesToDraw) {
+			for (MeshData& md : meshData)
+			{
+				pointShadowShader->SetTrans("model", md.transformation);
+				md.meshToUse->PBRDraw(*pointShadowShader, md.meshMaterial);
+			}
 
 		}
-		for (SkinnedMeshData& md : skinnedMeshRenderer.skinnedMeshesToDraw) {
-			pointShadowShader->SetTrans("model", md.transformation);
-			md.meshToUse->PBRDraw(*pointShadowShader, md.meshMaterial);
+		for (std::vector<SkinnedMeshData>& meshData : skinnedMeshRenderer.skinnedMeshesToDraw) {
+			for (SkinnedMeshData& md : meshData)
+			{
+				pointShadowShader->SetTrans("model", md.transformation);
+				md.meshToUse->PBRDraw(*pointShadowShader, md.meshMaterial);
 
+			}
 		}
 		cubeRenderer.Render(camera, *pointShadowShader, &this->cube);
 
@@ -343,7 +399,7 @@ void GraphicsManager::gm_FillDepthCube(const CameraData& camera) {
 
 }
 
-void GraphicsManager::gm_FillDepthCube(const CameraData& camera, int index) {
+void GraphicsManager::gm_FillDepthCube(const CameraData& camera, int index,glm::vec3 lighPos) {
 	Shader* pointShadowShader{ &shaderManager.engineShaders.find("PointShadowShader")->second };
 	glCullFace(GL_FRONT);
 
@@ -351,21 +407,27 @@ void GraphicsManager::gm_FillDepthCube(const CameraData& camera, int index) {
 	glBindFramebuffer(GL_FRAMEBUFFER, lightRenderer.dcm[index].GetFBO());
 	glClear(GL_DEPTH_BUFFER_BIT);
 	pointShadowShader->Use();
-	lightRenderer.dcm[index].FillMap(lightRenderer.pointLightsToDraw[index].position);
+	lightRenderer.dcm[index].FillMap(lighPos);
 	for (unsigned int j = 0; j < 6; ++j) {
 		pointShadowShader->SetMat4("shadowMatrices[" + std::to_string(j) + "]", lightRenderer.dcm[index].shadowTransforms[j]);
 	}
 	pointShadowShader->SetFloat("far_plane", lightRenderer.dcm[index].far_plane);
-	pointShadowShader->SetVec3("lightPos", lightRenderer.pointLightsToDraw[index].position);
-	for (MeshData& md : meshRenderer.meshesToDraw) {
-		pointShadowShader->SetTrans("model", md.transformation);
-		md.meshToUse->PBRDraw(*pointShadowShader, md.meshMaterial);
+	pointShadowShader->SetVec3("lightPos", lighPos);
+	for (std::vector<MeshData>& meshData : meshRenderer.meshesToDraw) {
+		for (MeshData& md : meshData)
+		{
+			pointShadowShader->SetTrans("model", md.transformation);
+			md.meshToUse->PBRDraw(*pointShadowShader, md.meshMaterial);
+		}
 
 	}
-	for (SkinnedMeshData& md : skinnedMeshRenderer.skinnedMeshesToDraw) {
-		pointShadowShader->SetTrans("model", md.transformation);
-		md.meshToUse->PBRDraw(*pointShadowShader, md.meshMaterial);
+	for (std::vector<SkinnedMeshData>& meshData : skinnedMeshRenderer.skinnedMeshesToDraw) {
+		for (SkinnedMeshData& md : meshData)
+		{
+			pointShadowShader->SetTrans("model", md.transformation);
+			md.meshToUse->PBRDraw(*pointShadowShader, md.meshMaterial);
 
+		}
 	}
 	cubeRenderer.Render(camera, *pointShadowShader, &this->cube);
 
@@ -375,6 +437,37 @@ void GraphicsManager::gm_FillDepthCube(const CameraData& camera, int index) {
 	pointShadowShader->Disuse();
 	glCullFace(GL_BACK);
 }
+
+void GraphicsManager::gm_FillDepthCube(const CameraData& camera, int index, glm::vec3 lighPos, std::vector<MeshData>const& meshList) {
+	Shader* pointShadowShader{ &shaderManager.engineShaders.find("PointShadowShader")->second };
+	glCullFace(GL_FRONT);
+
+	glViewport(0, 0, static_cast<GLsizei>(1024.f), static_cast<GLsizei>(1024.f));
+	glBindFramebuffer(GL_FRAMEBUFFER, lightRenderer.dcm[index].GetFBO());
+	glClear(GL_DEPTH_BUFFER_BIT);
+	pointShadowShader->Use();
+	lightRenderer.dcm[index].FillMap(lighPos);
+	for (unsigned int j = 0; j < 6; ++j) {
+		pointShadowShader->SetMat4("shadowMatrices[" + std::to_string(j) + "]", lightRenderer.dcm[index].shadowTransforms[j]);
+	}
+	pointShadowShader->SetFloat("far_plane", lightRenderer.dcm[index].far_plane);
+	pointShadowShader->SetVec3("lightPos", lighPos);
+
+	//Draw meshes based on meshList
+	for (MeshData const& md : meshList)
+	{
+		pointShadowShader->SetTrans("model", md.transformation);
+		md.meshToUse->PBRDraw(*pointShadowShader, md.meshMaterial);
+	}
+	cubeRenderer.Render(camera, *pointShadowShader, &this->cube);
+
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+
+	pointShadowShader->Disuse();
+	glCullFace(GL_BACK);
+}
+
 void GraphicsManager::gm_DrawMaterial(const PBRMaterial& md,FrameBuffer& fb) {
 
 	//Fill g buffer first
@@ -463,7 +556,8 @@ void GraphicsManager::gm_RenderDeferredObjects(const CameraData& camera)
 
 	Shader* deferredPBRShader{ &shaderManager.engineShaders.find("DeferredPBRShader")->second };
 
-
+	glDisable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
 	lightRenderer.RenderAllLights(camera, *deferredPBRShader);
 
 	//Render everything else
@@ -552,8 +646,8 @@ void GraphicsManager::gm_RenderUIObjects(const CameraData& camera)
 
 void GraphicsManager::gm_RenderParticles(const CameraData& camera)
 {
-	Shader* basicParticleShader{ &shaderManager.engineShaders.find("BasicParticleShader")->second };
-	particleRenderer.Render(camera, *basicParticleShader);
+	Shader* gBufferParticleShader{ &shaderManager.engineShaders.find("GBufferParticleShader")->second };
+	particleRenderer.Render(camera, *gBufferParticleShader);
 }
 
 void GraphicsManager::gm_ClearGBuffer()
@@ -566,11 +660,12 @@ void GraphicsManager::gm_ClearGBuffer()
 }
 
 void GraphicsManager::gm_UpdateBuffers(int width,int height) {
+	if (width <= 0 || height <= 0)return;
 
 	if (this->windowWidth != width || this->windowHeight != height) {
 		framebufferManager.Update(width, height);
-		this->windowWidth = width;
-		this->windowHeight = height;
+		this->windowWidth = static_cast<float>(width);
+		this->windowHeight = static_cast<float>(height);
 	}
 }
 void GraphicsManager::gm_RenderGameBuffer(){

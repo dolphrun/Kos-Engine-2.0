@@ -1,12 +1,12 @@
 [
     {
         "SceneData": {
-            "collisionData": "000000000|001000100|010000000|000000000|000001000|000010000|010000000|000000000|000000000|",
             "skyBoxGUID": [],
             "ambientIntensity": 1.0
         }
     },
     {
+        "entityGUID": "77fecbdd-8165-fa23-9443-57195a43fb72",
         "AudioComponent": {
             "audioFiles": [
                 {
@@ -17,26 +17,30 @@
                     "hasPlayed": false,
                     "pan": 0.0,
                     "isBGM": false,
-                    "isSFX": true
+                    "isSFX": true,
+                    "use3D": true,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0
                 }
             ]
         },
         "AudioScript": {
-            "GUID": ""
+            "GUID": "00000000-0000-0000-0000-000000000000"
         },
         "NameComponent": {
             "entityName": "Audio Test",
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
-            "prefabName": ""
+            "prefabName": "",
+            "hide": false
         },
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 12.817800521850586,
-                    "y": 0.8654597997665405,
-                    "z": -31.58481788635254
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -51,9 +55,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 12.817800521850586,
-                    "y": 0.8654597997665405,
-                    "z": -31.58481788635254
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -69,6 +73,7 @@
         }
     },
     {
+        "entityGUID": "35a9dd7e-89de-2059-ed51-1271ff22898e",
         "CameraComponent": {
             "cameraType": 0,
             "fov": 45.0,
@@ -83,14 +88,17 @@
                 "y": -0.4000000059604645,
                 "z": -1.600000023841858
             },
-            "active": false
+            "active": false,
+            "culling": false,
+            "layer": 0
         },
         "NameComponent": {
             "entityName": "camera",
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
-            "prefabName": ""
+            "prefabName": "",
+            "hide": false
         },
         "TransformComponent": {
             "WorldTransformation": {

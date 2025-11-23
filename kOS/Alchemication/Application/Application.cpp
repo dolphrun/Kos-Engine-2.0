@@ -19,9 +19,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 /********************************************************************/
 
 
-
-
-
 #include "Application.h"
 #include "ApplicationData.h"
 #include "Resources/ResourceManager.h"
@@ -51,6 +48,7 @@ namespace Application {
         /*--------------------------------------------------------------
            INITIALIZE OPENGL WINDOW
         --------------------------------------------------------------*/
+        lvWindow.enabledFullScreen = true; //set to true for fullscreen launch
         lvWindow.init(windowData.windowWidth, windowData.windowHeight);
         LOGGING_INFO("Load Window Successful");
 
@@ -64,12 +62,6 @@ namespace Application {
 
 
         /*--------------------------------------------------------------
-          INITIALIZE GRAPHICS PIPE
-        --------------------------------------------------------------*/
-        graphicsManager.gm_Initialize(static_cast<float>(windowData.gameResWidth), static_cast<float>(windowData.gameResHeight));
-        LOGGING_INFO("Load Graphic Pipeline Successful");
-
-        /*--------------------------------------------------------------
            INITIALIZE Resource Manager
         --------------------------------------------------------------*/
         resourceManager.Init(configpath::resourceFilePath);
@@ -78,6 +70,11 @@ namespace Application {
         INITIALIZE SCIRPT
         --------------------------------------------------------------*/
         scriptManager.Init(exePath.string());
+
+        /*--------------------------------------------------------------
+        INITIALIZE AUDIO manager
+        --------------------------------------------------------------*/
+        audioManager.Init();
 
         /*--------------------------------------------------------------
            INITIALIZE Start Scene
@@ -92,17 +89,6 @@ namespace Application {
         --------------------------------------------------------------*/
         graphicsManager.gm_Initialize(static_cast<float>(windowData.windowWidth), static_cast<float>(windowData.windowHeight));
         LOGGING_INFO("Load Graphic Pipeline Successful");
-
-        /*--------------------------------------------------------------
-           INITIALIZE Input
-        --------------------------------------------------------------*/
-        //call back must happen before imgui
-        input.SetCallback(lvWindow.window);
-        LOGGING_INFO("Set Input Call Back Successful");
-
-
-
-
 
 
 
@@ -150,16 +136,17 @@ namespace Application {
                     accumulatedTime -= static_cast<float>(fixedDeltaTime);
                     ++currentNumberOfSteps;
                 }
-                /*--------------------------------------------------------------
-                    Update SceneManager // STAY THE FIRST ON TOP
-                --------------------------------------------------------------*/
-                sceneManager.Update();
 
                 /*--------------------------------------------------------------
                     UPDATE INPUT
                 --------------------------------------------------------------*/
-
                 input.InputUpdate(deltaTime);
+
+                /*--------------------------------------------------------------
+                 Update Window
+                --------------------------------------------------------------*/
+                lvWindow.Update();
+
                 /*--------------------------------------------------------------
                     UPDATE ECS
                 --------------------------------------------------------------*/
@@ -168,15 +155,12 @@ namespace Application {
                 /*--------------------------------------------------------------
                     UPDATE INPUT FRAME EXIT
                 --------------------------------------------------------------*/
-
                 input.InputExitFrame(deltaTime);
 
-                int fbw, fbh;
-                glfwGetFramebufferSize(lvWindow.window, &fbw, &fbh);
-                graphicsManager.gm_UpdateBuffers(fbw, fbh);
                 /*--------------------------------------------------------------
                     UPDATE Render Pipeline
                 --------------------------------------------------------------*/
+                graphicsManager.gm_UpdateBuffers(static_cast<int>(lvWindow.windowWidth), static_cast<int>(lvWindow.windowHeight));
                 graphicsManager.gm_Update();
 
                 /*--------------------------------------------------------------
@@ -192,10 +176,14 @@ namespace Application {
                 graphicsManager.gm_ResetFrameBuffer();
 
                 /*--------------------------------------------------------------
-                 DRAWING/RENDERING Window
+                    SceneManager EndFrame
                 --------------------------------------------------------------*/
-                lvWindow.Draw();
+                sceneManager.EndFrame();
 
+                /*--------------------------------------------------------------
+                    ecs Endframe
+                --------------------------------------------------------------*/
+                ecs.EndFrame();
 
                 graphicsManager.gm_ClearGBuffer();
 

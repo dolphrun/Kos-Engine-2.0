@@ -2,15 +2,21 @@ R"(
 #version 460 core
 
 layout(location = 0) in vec3 inPos;       // base quad vertex (-0.5..0.5)
+layout(location = 1) in vec2 texCoords;
 layout(location = 2) in vec3 instancePos; // per-particle center
 layout(location = 3) in vec2 instanceScale;
 layout(location = 4) in vec4 instanceColor;
 layout(location = 5) in float instanceRot; // per-particle rotation (around view axis)
+layout(location = 6) in int textureID;
 
 out vec4 vColor;
+out flat int vTexture;
+out vec2 TexCoords;
 
 uniform mat4 view;
 uniform mat4 projection;
+uniform float uShaderType;
+out float shaderType;
 
 void main()
 {
@@ -33,5 +39,8 @@ void main()
 
     gl_Position = projection * view * vec4(worldPos, 1.0);
     vColor = instanceColor;
+    vTexture = textureID;   
+    TexCoords = texCoords;
+    shaderType=uShaderType;
 }
 )"

@@ -24,6 +24,8 @@ out vec3 ReflectDir;
 out mat3 tangentToWorld;
 out float shaderType;
 
+out flat int vTexture;
+
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
@@ -35,12 +37,14 @@ uniform mat4 bones[MAX_BONES];
 
 //Debug con
 uniform float uShaderType;
-
+uniform vec3 color;
+out vec4 vColor;
 void main()
 {
 
     gl_Position = projection * view * model * vec4(aPos, 1.0);
     TexCoords = aTexCoords;  
     shaderType=uShaderType;
+    vColor=vec4(color,1.0);
 }
 )"

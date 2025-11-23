@@ -1,33 +1,157 @@
 [
     {
         "SceneData": {
-            "collisionData": "",
             "skyBoxGUID": [],
             "ambientIntensity": 1.0
         }
     },
     {
+        "entityGUID": "d78ad123-3cf6-b72f-c687-7ec91b4f8476",
         "NameComponent": {
             "entityName": "Particle",
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
-            "prefabName": ""
+            "prefabName": "",
+            "hide": false
         },
         "ParticleComponent": {
             "duration": 5.0,
             "looping": true,
+            "play_On_Awake": true,
             "start_Lifetime": 5.0,
+            "end_Lifetime": 7.0,
+            "lifetime_Random_Enable": true,
+            "textureGUID": "5ceb4815-dcd3-0390-d12a-c10d4b5add97",
             "start_Velocity": 5.0,
-            "size": 1.0,
-            "rotation": 1.0,
-            "color": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0,
-                "w": 1.0
+            "playback_State": 0,
+            "velocityModule": {
+                "enabled": false,
+                "mode": 0,
+                "velocity_Modifier": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
             },
-            "play_On_Awake": true
+            "forceModule": {
+                "enabled": false,
+                "force": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "shapeModule": {
+                "type": 1,
+                "emission_Direction": {
+                    "x": 0.0,
+                    "y": 1.0,
+                    "z": 0.0
+                },
+                "box_Size": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "sphere_Radius": 0.0,
+                "emit_From_Shell": false,
+                "cone_Angle": 0.0,
+                "cone_Direction": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "cone_Radius": 0.0,
+                "circle_Radius": 0.0,
+                "circle_Arc": 0.0,
+                "emit_From_Edge": false,
+                "edge_Length": 0.0,
+                "random_Direction_Amount": 0.0
+            },
+            "colorModule": {
+                "enabled": false,
+                "start_Color": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0,
+                    "w": 1.0
+                },
+                "end_Color": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                }
+            },
+            "sizeModule": {
+                "enabled": false,
+                "start_Size": 1.0,
+                "end_Size": 1.0
+            },
+            "rotationModule": {
+                "enabled": false,
+                "start_Rotation": 0.0,
+                "end_Rotation": 0.0,
+                "rotation_Modifier": 0.0
+            },
+            "attractorModule": {
+                "enabled": false,
+                "targetPosition": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "attractionStrength": 0.0,
+                "explosionStrength": 0.0,
+                "whirlpoolStrength": 0.0,
+                "whirlpoolRadius": 1.0,
+                "useInverseFalloff": true
+            },
+            "gravityModule": {
+                "enabled": false,
+                "gravity": {
+                    "x": 0.0,
+                    "y": -9.800000190734863,
+                    "z": 0.0
+                }
+            },
+            "trailingModule": {
+                "enabled": false,
+                "startPoint": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "endPoint": {
+                    "x": 20.0,
+                    "y": 20.0,
+                    "z": 20.0
+                },
+                "rotateEndPoint": true,
+                "rotationSpeed": 2.0,
+                "rotationRadius": 5.0,
+                "rotationCenter": {
+                    "x": 20.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotationAxis": {
+                    "x": 0.0,
+                    "y": 1.0,
+                    "z": 0.0
+                },
+                "spawnDuration": 5.0,
+                "spawnRate": 40.0,
+                "spiralRadius": 5.0,
+                "spiralFrequency": 3.0,
+                "spiralIntensityCurve": 0.5,
+                "pathSpeed": 2.0,
+                "arrivalThreshold": 0.5,
+                "timeAccum": 0.0,
+                "spawnAccum": 0.0
+            },
+            "emissionInterval": 0.10000000149011612
         },
         "TransformComponent": {
             "WorldTransformation": {

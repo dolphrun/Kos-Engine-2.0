@@ -39,7 +39,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Physics/PhysicsManager.h"
 #include "Scene/SceneManager.h"
 #include "Scripting/ScriptManager.h"
-
+#include "Audio/AudioManager.h"
 
 namespace ecs {
 
@@ -53,27 +53,30 @@ namespace ecs {
 		Input::InputSystem& m_inputSystem;
 		physics::PhysicsManager& m_physicsManager;
 		ScriptManager& m_scriptManager;
+		audio::AudioManager& m_audioManager;
 
 	public:
 
 
-		ECS(Peformance& peformance, GraphicsManager& graphics, ResourceManager& rm, Input::InputSystem& is, physics::PhysicsManager& pm, ScriptManager& sm) :
+		ECS(Peformance& peformance, GraphicsManager& graphics, ResourceManager& rm, Input::InputSystem& is, physics::PhysicsManager& pm, ScriptManager& sm, audio::AudioManager& audiom) :
 			m_performance(peformance),
 			m_graphicsManager(graphics),
 			m_resourceManager(rm),
 			m_inputSystem(is),
 			m_physicsManager(pm),
-			m_scriptManager(sm)
+			m_scriptManager(sm),
+			m_audioManager(audiom)
 		{}
 
 		void Load();
 		void Init();
 		void Update(float DeltaTime);
+		void EndFrame();
 		void Unload();
 
-		EntityID CreateEntity(std::string scene);
+		EntityID CreateEntity(const std::string& scene);
 		EntityID DuplicateEntity(EntityID, std::string scene = {});
-		bool DeleteEntity(EntityID);
+		void DeleteEntity(EntityID);
 
 		template<typename T>
 		T* AddComponent(EntityID ID);
@@ -89,15 +92,14 @@ namespace ecs {
 		void ResetComponent(EntityID ID);
 
 		//Hierachy Logic
-
 		void SetParent(EntityID parent, EntityID child, bool updateTransform = false);
-
 		void RemoveParent(EntityID child, bool updateTransform = false);
-
 		std::optional<EntityID> GetParent(EntityID child);
-
 		std::optional<std::vector<EntityID>> GetChild(EntityID parent);
 
+
+		//Set Active Entity
+		void SetActive(EntityID ID, bool active);
 
 
 
@@ -123,7 +125,7 @@ namespace ecs {
 
 		//ENTITY DATA GETTERS
 		void InsertGUID(const utility::GUID& guid, ecs::EntityID id) {
-			m_GUIDtoEntityID.insert({ guid, id });
+			m_GUIDtoEntityID[guid] = id;
 		}
 
 		void DeleteGUID(const utility::GUID& guid) {
@@ -190,6 +192,8 @@ namespace ecs {
 		
 
 	private:
+
+		void DeleteEntityImmediate(EntityID);
 		//modify from set next state
 		GAMESTATE m_nextState{ STOP };
 		GAMESTATE m_state{ STOP };
@@ -211,7 +215,7 @@ namespace ecs {
 		EntityID m_entityCount{};
 		std::stack<EntityID> m_availableEntityID;
 		std::unordered_map<utility::GUID, ecs::EntityID> m_GUIDtoEntityID;
-
+		std::vector<EntityID> m_deletedEntities;
 
 	};
 
@@ -271,7 +275,7 @@ namespace ecs {
 		// reversed order expansion
 		(..., signature.set(GetComponentKey(Components::classname())));
 
-		m_systemMap[T::classname()] = std::make_shared<T>(*this, m_graphicsManager, m_resourceManager, m_inputSystem, m_physicsManager, m_scriptManager, m_performance);
+		m_systemMap[T::classname()] = std::make_shared<T>(*this, m_graphicsManager, m_resourceManager, m_inputSystem, m_physicsManager, m_scriptManager, m_performance,m_audioManager);
 		m_systemMap[T::classname()]->AssignSignature(signature);
 
 		std::bitset<GAMESTATE_COUNT> gameState;

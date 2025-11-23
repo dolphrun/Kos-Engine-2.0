@@ -17,11 +17,9 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Config/pch.h"
 #include "R_Audio.h"
 
-FMOD::System* R_Audio::s_globalSystem = nullptr;
-
 void R_Audio::Load()
 {
-	FMOD::System* sys = m_system ? m_system : s_globalSystem;
+	FMOD::System* sys = m_system;
 	if (!sys) {
 		return;
 	}
@@ -39,7 +37,8 @@ void R_Audio::Load()
 	//Reset sound if have sound
 	if (m_sound) { 
 		m_sound->release(); 
-		m_sound = nullptr; }
+		m_sound = nullptr; 
+}
 
 	unsigned int flags = FMOD_DEFAULT;
 	if (m_createFlags != 0) {
@@ -58,9 +57,8 @@ void R_Audio::Load()
 
 void R_Audio::Unload()
 {
-	//Release all sounds
 	if (m_sound) {
-		m_sound->release();
+		FMOD_RESULT r = m_sound->release();
 		m_sound = nullptr;
 	}
 }
