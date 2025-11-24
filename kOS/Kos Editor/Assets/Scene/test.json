@@ -8,8 +8,7 @@
     {
         "entityGUID": "13ddfe1d-908e-e46f-65f1-2be64b5dd012",
         "AnimatorComponent": {
-            "controllerGUID": "",
-            "avatarGUID": "",
+            "controllerGUID": "44765b35-1077-9acb-9793-efa35035cc28",
             "m_PlaybackSpeed": 1.0,
             "m_CurrentTime": 4.799399375915527,
             "m_IsPlaying": false
@@ -30,9 +29,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 4.553796768188477,
-                    "y": -10.30642318725586,
-                    "z": -12.693450927734375
+                    "x": 10.430788040161133,
+                    "y": -9.657245635986328,
+                    "z": -14.251800537109375
                 },
                 "rotation": {
                     "x": 179.9990997314453,
@@ -47,13 +46,13 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 4.553796768188477,
-                    "y": -10.30642318725586,
-                    "z": -12.693450927734375
+                    "x": 10.430788040161133,
+                    "y": -9.657245635986328,
+                    "z": -14.251800537109375
                 },
                 "rotation": {
                     "x": 179.9990997314453,
-                    "y": 0.318505197763443,
+                    "y": 0.3185051679611206,
                     "z": 179.99989318847656
                 },
                 "scale": {
@@ -145,8 +144,7 @@
     {
         "entityGUID": "b11b8045-ba5d-3c4e-cd7d-b73208475971",
         "AnimatorComponent": {
-            "controllerGUID": "",
-            "avatarGUID": "",
+            "controllerGUID": "00000000-0000-0000-0000-000000000000",
             "m_PlaybackSpeed": 1.0,
             "m_CurrentTime": 4.798798561096191,
             "m_IsPlaying": true

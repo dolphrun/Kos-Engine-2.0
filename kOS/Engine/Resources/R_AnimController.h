@@ -61,6 +61,9 @@ struct AnimControllerData
 	int nextStateID{ 1 };
 	int nextPinID{ 100 };
 	int nextLinkID{ 200 };
+
+	AnimState* currentState;
+
 	REFLECTABLE(AnimControllerData, name, states, nextStateID, nextPinID, nextLinkID);
 };
 
