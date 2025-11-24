@@ -77,7 +77,7 @@ public:
 		glShaderSource(vertex, 1, &vertexSourceCode, NULL);
 		glCompileShader(vertex);
 		glGetShaderiv(vertex, GL_COMPILE_STATUS, &success);
-
+		std::cout << "TEST\n";
 		if (!success) {
 			std::cout << "Vertex Shader did not compile" << '\n';
 			int log_len;
@@ -95,7 +95,7 @@ public:
 		fragment = glCreateShader(GL_FRAGMENT_SHADER);
 		glShaderSource(fragment, 1, &fragmentSourceCode, NULL);
 		glCompileShader(fragment);
-		glGetShaderiv(vertex, GL_COMPILE_STATUS, &success);
+		glGetShaderiv(fragment, GL_COMPILE_STATUS, &success);
 
 		if (!success) {
 			std::cout << "Fragment shader did not compile";

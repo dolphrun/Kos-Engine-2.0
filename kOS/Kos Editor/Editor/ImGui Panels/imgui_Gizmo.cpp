@@ -5,6 +5,11 @@
 #include "ECS/ecs.h"
 
 namespace gui {
+    //floats to use
+    float posSnap[3] {1.f, 1.f, 1.f};
+    float rotSnap = 15.f;
+    float scaleSnap = 0.1f;
+    const float* snapVal;
     void ImGuiHandler::DrawGizmo(float renderPosX, float renderPosY, float renderWidth, float renderHeight)
     {
         ecs::TransformComponent* transComp = m_ecs.GetComponent<ecs::TransformComponent>(m_clickedEntityId);
@@ -33,6 +38,21 @@ namespace gui {
             useSnap = false;
         }
 
+        //if (ImGui::IsKeyDown(ImGuiKey_LeftShift)) {
+        //    //Move based on given offset
+        //    switch (mCurrentGizmoOperation) {
+        //    case ImGuizmo::TRANSLATE:
+        //        snapVal = posSnap;
+        //        break;;
+        //    case ImGuizmo::ROTATE:
+        //        snapVal = &rotSnap;
+        //        break;;
+        //    case ImGuizmo::SCALE:
+        //        snapVal = &scaleSnap;
+        //        break;;
+        //    }
+        //}
+
         glm::mat4 cameraView = m_isUi ? glm::mat4{ 1.f } : EditorCamera::editorCamera.GetViewMtx();
 
         //Change projection based on type... how ah
@@ -54,6 +74,7 @@ namespace gui {
         if (ImGuizmo::IsUsing()) {
             glm::vec3 newPosition, newRotation, newScale;
             ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(transformation), glm::value_ptr(newPosition), glm::value_ptr(newRotation), glm::value_ptr(newScale));
+            //Check if shfit is being held
             TransformSystem::SetImmediateWorldPosition(m_ecs, transComp, std::move(newPosition));
             TransformSystem::SetImmediateWorldRotation(m_ecs, transComp, std::move(newRotation));
             TransformSystem::SetImmediateWorldScale(m_ecs, transComp, std::move(newScale));
