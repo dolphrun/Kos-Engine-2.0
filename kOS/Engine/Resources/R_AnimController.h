@@ -37,7 +37,7 @@ struct AnimState {
 	std::vector<AnimPin> inputs;
 	std::vector<AnimPin> outputs;
 
-	std::string name;
+	std::string name{};
 	utility::GUID animationGUID;
 	float playSpeed = 1.0f;
 	bool isLooping = true;
@@ -50,10 +50,12 @@ struct AnimState {
 
 struct AnimControllerData
 { 
-	std::string name;
-	std::vector<AnimState> states;
-	int currentID;
-	REFLECTABLE(AnimControllerData, name, states, currentID);
+	std::string name{};
+	std::vector<AnimState> states{};
+	int currentStateID{ 1 };
+	int currentPinID{ 100 };
+	int currentLinkID{ 200 };
+	REFLECTABLE(AnimControllerData, name, states, currentStateID, currentPinID, currentLinkID);
 };
 
 class R_AnimController :public Resource

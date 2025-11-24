@@ -64,6 +64,7 @@ namespace gui {
         //Node editor plugin
         ax::NodeEditor::EditorContext* m_animControllerContext = nullptr;
         R_AnimController* m_activeController = nullptr;
+        utility::GUID cachedControllerGUID;
 
     public:
         /******************************************************************/

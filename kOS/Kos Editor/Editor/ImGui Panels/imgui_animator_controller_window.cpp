@@ -43,47 +43,13 @@ AnimPin* FindPin(std::vector<AnimState>& states, int pinId)
     return nullptr;
 }
 
-
-/// <summary> To do list
-/// I need to be able to label which controller im currently working with
-/// which means
-/// if there is no controller selected, i need an option to create a new controller or load an exisiting controller, the controller will not be displayed
-/// 
-/// 
-/// 
-/// I need to link the current controller whenever, do this by adding R_Controller inside the component window and checking if its open
-/// the controller will always be related to the animator component of the currently selected object
-/// 
-/// add animation guid for each node
-/// 
-/// draw outline on the node for animation playing
-/// 
-/// in animator system, any outputs will change the animation to the corresponding input node, unless node is looping
-/// 
-/// 
-/// </summary>
 void gui::ImGuiHandler::DrawAnimatorControllerWindow()
 {
     ImGui::Begin("Animator Controller");
-
-    constexpr int startingStateId = 1;
-    constexpr int startingPinId = 100;
-    constexpr int startingLink = 200;
-
-    static int nextStateId = startingStateId;
-    static int nextPinId = startingPinId;
-    static int nextLinkId = startingLink;
-
-    static std::vector<AnimState> states;
-    //static std::vector<AnimTransition> transitions;
-
-    // --- Context & Node Editor ---
-   // static ed::EditorContext* context = nullptr;
-    //if (!context)
-    //    context = ed::CreateEditor();
     ed::SetCurrentEditor(m_animControllerContext);
 
-    if (!m_activeController)
+    std::string test = selectedAsset.Type;
+    if (test != "R_AnimController")
     {
         ImGui::Text("No Animator Controller selected.");
 
@@ -122,21 +88,13 @@ void gui::ImGuiHandler::DrawAnimatorControllerWindow()
 
             if (ImGui::Button("Create", ImVec2(120, 0)))
             {
-                // Build final file name
-                //std::string finalName = std::string(controllerNameBuffer) + ".controller";
-                //std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/Animation Controller/" + finalName;
-
-                // Save it
-                //serialization::WriteJsonFile(filepath, &m_activeController->controller);
-
                  ///Create controller here
+                controllerData.name = controllerNameBuffer;
                 std::string fileName = controllerData.name + ".controller";
-                std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/Animation Controller/" + fileName;
+                std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/Controllers/" + fileName;
                 serialization::WriteJsonFile(filepath, &controllerData.controller);
                 std::cout << "TEST CREATION\n";
                 LOGGING_POPUP("Animator Controller Successfully Added");
-
-                LOGGING_POPUP("Animator Controller Created");
                 ImGui::CloseCurrentPopup();
             }
 
@@ -153,20 +111,28 @@ void gui::ImGuiHandler::DrawAnimatorControllerWindow()
 
             ImGui::EndPopup();
         }
-
-        if (ImGui::Button("Load Existing Controller", ImVec2(250, 30)))
-        {
-            // Call your file dialog here
-            //LoadControllerFromFile("Assets/Controllers/Example.controller");
-            ///Load controller here
-        }
         ImGui::EndGroup();
         ImGui::End();
         return; // stop drawing node editor
     }
 
-    ed::Begin("AnimationGraph");
+    if (cachedControllerGUID != selectedAsset.GUID)
+    {
+        cachedControllerGUID = selectedAsset.GUID;
+        m_activeController = m_resourceManager.GetResource<R_AnimController>(selectedAsset.GUID).get();
+    }
 
+    if (!m_activeController)
+    {
+        return;
+    }
+
+    std::vector<AnimState>& states = m_activeController->m_AnimControllerData.states;
+    int& nextStateId = m_activeController->m_AnimControllerData.currentStateID;
+    int& nextPinId = m_activeController->m_AnimControllerData.currentPinID;
+    int& nextLinkId = m_activeController->m_AnimControllerData.currentLinkID;
+
+    ed::Begin("AnimationGraph");
     ImGui::Text("Controller: %s", m_activeController->m_AnimControllerData.name.c_str());
     ImGui::Separator();
 
@@ -214,18 +180,6 @@ void gui::ImGuiHandler::DrawAnimatorControllerWindow()
         ed::SetNodePosition(s.id, ImVec2(100 + 50.0f * states.size(), 100));
     }
     ImGui::SameLine();
-
-    if (ImGui::Button("Create New", ImVec2(120, 30)))
-    {
-        ///Create new
-    }
-
-    ImGui::SameLine();
-
-    if (ImGui::Button("Load", ImVec2(80, 30)))
-    {
-       /// Load existing
-    }
     ImGui::EndGroup();
 
     ImGui::Separator();
@@ -373,9 +327,9 @@ void gui::ImGuiHandler::DrawAnimatorControllerWindow()
     }
 
     // --- STATE INSPECTOR ---
-    if (selectedNode && selectedNode.Get() < states.size())
+    if (selectedNode && selectedNode.Get() <= states.size())
     {
-        AnimState& state = states[selectedNode.Get()];
+        AnimState& state = states[selectedNode.Get() - 1];
         state.ApplyFunction(DrawComponents{ state.Names() });
     }
     else

@@ -59,6 +59,14 @@ struct DepthMapCubeCompiler {
 	REFLECTABLE(R_DepthMapCube, path, outputExtension, inputExtensions);
 
 };
+
+struct AnimControllerCompiler {
+	std::string type = R_AnimController::classname();
+	std::string path;
+	std::string outputExtension;
+	std::vector<std::string> inputExtensions;
+	REFLECTABLE(R_AnimController, path, outputExtension, inputExtensions);
+};
 struct CompilerData {
 	MeshCompiler meshCompiler;
 	TextureCompiler textureCompiler;
@@ -67,7 +75,8 @@ struct CompilerData {
 	AudioCompiler audioCompiler;
 	MaterialCompiler materialCompiler;
 	DepthMapCubeCompiler dmcCompiler;
-	REFLECTABLE(CompilerData, meshCompiler,textureCompiler, fontCompiler, sceneCompiler, audioCompiler, materialCompiler, dmcCompiler);
+	AnimControllerCompiler animControllerCompiler;
+	REFLECTABLE(CompilerData, meshCompiler,textureCompiler, fontCompiler, sceneCompiler, audioCompiler, materialCompiler, dmcCompiler, animControllerCompiler);
 };
 
 
