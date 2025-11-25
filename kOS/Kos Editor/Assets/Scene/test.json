@@ -8,7 +8,7 @@
     {
         "entityGUID": "13ddfe1d-908e-e46f-65f1-2be64b5dd012",
         "AnimatorComponent": {
-            "controllerGUID": "9b13227b-0dbe-5523-7432-7c940d604a49",
+            "controllerGUID": "6b82d92a-4f0b-a3d4-14cc-d865cd6f1724",
             "m_PlaybackSpeed": 1.0,
             "m_CurrentTime": 4.799399375915527,
             "m_IsPlaying": false
@@ -28,9 +28,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 10.430788040161133,
-                    "y": -9.657245635986328,
-                    "z": -14.251800537109375
+                    "x": 9.991739273071289,
+                    "y": -10.008426666259766,
+                    "z": -14.13250732421875
                 },
                 "rotation": {
                     "x": 179.9990997314453,
@@ -45,9 +45,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 10.430788040161133,
-                    "y": -9.657245635986328,
-                    "z": -14.251800537109375
+                    "x": 9.991739273071289,
+                    "y": -10.008426666259766,
+                    "z": -14.13250732421875
                 },
                 "rotation": {
                     "x": 179.9990997314453,
