@@ -661,7 +661,7 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
 					if (p.texture_IDs != nullptr) {
 						if (storedIDs.contains(p.texture_IDs->RetrieveTexture()))
 						{
-							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], glm::vec3(p.rotates[j++]), storedIDs[p.texture_IDs->RetrieveTexture()]};
+							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], storedIDs[p.texture_IDs->RetrieveTexture()], p.particleType};
 						}
 						else
 						{
@@ -669,11 +669,11 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
 							storedIDs[p.texture_IDs->RetrieveTexture()] = textureIDs.size();
 							textureIDs.push_back(p.texture_IDs->RetrieveTexture());
 							int currentID = storedIDs[p.texture_IDs->RetrieveTexture()];
-							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], glm::vec3(p.rotates[j++]), storedIDs[p.texture_IDs->RetrieveTexture()] };
+							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], storedIDs[p.texture_IDs->RetrieveTexture()] , p.particleType };
 						}
 					}
 					else {
-						return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], glm::vec3(p.rotates[j++]), 200 };
+						return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], 200,  p.particleType };
 					}
 				});
 		}
@@ -692,7 +692,7 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
 			std::cout << "before OpenGL Error: " << err << std::endl;
 		}
 		glEnable(GL_DEPTH_TEST);
-
+		glDisable(GL_CULL_FACE);  
 		for (int i = 0; i < textureIDs.size(); i++)
 		{
 			glActiveTexture(GL_TEXTURE0 + i);
@@ -738,6 +738,8 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
 			//LOGGING_ERROR("First OpenGL Error: 0x%X", err);h
 			std::cout << "after 3 OpenGL Error: " << err << std::endl;
 		}
+
+		glEnable(GL_CULL_FACE);
 	}
 	shader.Disuse();
 		

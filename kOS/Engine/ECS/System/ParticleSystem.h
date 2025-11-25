@@ -10,7 +10,7 @@ namespace ecs {
         std::vector<glm::vec3> positions_Particle;
         std::vector<glm::vec4> colors;
         std::vector<glm::vec2> sizes;
-        std::vector<float>     rotates;
+        std::vector<glm::vec3> rotates;
     };
     struct EmissionData {
         glm::vec3 positionOffset;  // Offset from emitter position
@@ -119,6 +119,15 @@ namespace ecs {
                 1.0f
             );
         }
+
+        inline glm::vec3 RandomRange(const glm::vec3& start, const glm::vec3& end) {
+            return glm::vec3(
+                start.x + m_rng.nextFloat() * (end.x - start.x),
+                start.y + m_rng.nextFloat() * (end.y - start.y),
+                start.z + m_rng.nextFloat() * (end.z - start.z)
+            );
+        }
+
         // Apply random chaos to direction
         glm::vec3 ApplyRandomDirection(const glm::vec3& direction, float randomAmount);
 

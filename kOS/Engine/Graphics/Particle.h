@@ -6,7 +6,7 @@ public:
     std::vector<glm::vec3> particlePositions;
     std::vector<glm::vec4> colors;
     std::vector<glm::vec2> sizes;
-    std::vector<float> rotates;
+    std::vector<glm::vec3> rotates;
     R_Texture* texture_IDs;
     float particleType{};
 };

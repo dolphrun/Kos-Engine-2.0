@@ -16,14 +16,15 @@
             "hide": false
         },
         "ParticleComponent": {
+            "particleType": 0,
             "duration": 5.0,
             "looping": true,
             "play_On_Awake": true,
             "start_Lifetime": 5.0,
             "end_Lifetime": 7.0,
             "lifetime_Random_Enable": true,
-            "textureGUID": "5ceb4815-dcd3-0390-d12a-c10d4b5add97",
-            "start_Velocity": 5.0,
+            "textureGUID": "8631c627-a6ad-5431-d19f-7fad7f7c9490",
+            "start_Velocity": 1.0,
             "playback_State": 0,
             "velocityModule": {
                 "enabled": false,
@@ -56,7 +57,7 @@
                 },
                 "sphere_Radius": 0.0,
                 "emit_From_Shell": false,
-                "cone_Angle": 0.0,
+                "cone_Angle": 25.0,
                 "cone_Direction": {
                     "x": 0.0,
                     "y": 0.0,
@@ -91,9 +92,21 @@
             },
             "rotationModule": {
                 "enabled": false,
-                "start_Rotation": 0.0,
-                "end_Rotation": 0.0,
-                "rotation_Modifier": 0.0
+                "start_Rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "end_Rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation_Modifier": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
             },
             "attractorModule": {
                 "enabled": false,
@@ -156,9 +169,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 5.0,
-                    "y": 5.0,
-                    "z": 5.0
+                    "x": 3.911526679992676,
+                    "y": 2.5796890258789063,
+                    "z": 8.457000732421875
                 },
                 "rotation": {
                     "x": 0.0,
@@ -173,9 +186,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 5.0,
-                    "y": 5.0,
-                    "z": 5.0
+                    "x": 3.911526679992676,
+                    "y": 2.5796890258789063,
+                    "z": 8.457000732421875
                 },
                 "rotation": {
                     "x": 0.0,

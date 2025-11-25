@@ -13,7 +13,7 @@ namespace ecs {
 		glm::vec3 velocity;
 		float lifespan;
 		float lifetime;
-		float rotation;
+		glm::vec3 rotation;
 		int textureID;
 	};
 
@@ -122,9 +122,9 @@ namespace ecs {
 
 	struct RotationOverLifetimeModule {
 		bool enabled = false;
-		float start_Rotation = 0.f;
-		float end_Rotation = 0.f;
-		float rotation_Modifier = 0.f;
+		glm::vec3 start_Rotation = glm::vec3(0.f);
+		glm::vec3 end_Rotation = glm::vec3(0.f);
+		glm::vec3 rotation_Modifier = glm::vec3(0.f);
 
 		REFLECTABLE(RotationOverLifetimeModule, enabled, start_Rotation, end_Rotation, rotation_Modifier);
 	};

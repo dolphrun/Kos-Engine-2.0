@@ -24,7 +24,52 @@ void main()
 
 if (particleType > 0.f) //three dimesional rotation
 {
+        // Extract full camera basis from view matrix
+    vec3 cameraRight   = vec3(view[0][0], view[1][0], view[2][0]);
+    vec3 cameraUp      = vec3(view[0][1], view[1][1], view[2][1]);
+    vec3 cameraForward = -vec3(view[0][2], view[1][2], view[2][2]); // negative because view looks down -Z
     
+    // QUAD local vertex before rotation
+    vec3 local = vec3(inPos.xy * instanceScale, 0.0);
+    
+    // Build rotation matrix from Euler angles
+    float cx = cos(instanceRot.x); float sx = sin(instanceRot.x);
+    float cy = cos(instanceRot.y); float sy = sin(instanceRot.y);
+    float cz = cos(instanceRot.z); float sz = sin(instanceRot.z);
+    
+    // Rotation matrices
+    mat3 rotX = mat3(
+        1,  0,   0,
+        0,  cx, -sx,
+        0,  sx,  cx
+    );
+    mat3 rotY = mat3(
+         cy, 0, sy,
+         0,  1, 0,
+        -sy, 0, cy
+    );
+    mat3 rotZ = mat3(
+        cz, -sz, 0,
+        sz,  cz, 0,
+        0,    0, 1
+    );
+    
+    mat3 rot3D = rotZ * rotY * rotX;
+    
+    // Rotate quad in local space
+    vec3 rotated = rot3D * local;
+    
+    // Transform to world space using camera billboard basis
+    vec3 worldPos = instancePos
+        + cameraRight   * rotated.x
+        + cameraUp      * rotated.y
+        + cameraForward * rotated.z;  // Use camera forward, not world Z
+    
+    gl_Position = projection * view * vec4(worldPos, 1.0);
+    vColor     = instanceColor;
+    vTexture   = textureID;
+    TexCoords  = texCoords;
+    shaderType = uShaderType;
 }
 else // two dimensional rotation
 {
@@ -32,7 +77,7 @@ else // two dimensional rotation
         vec3 cameraRight = vec3(view[0][0], view[1][0], view[2][0]);
         vec3 cameraUp    = vec3(view[0][1], view[1][1], view[2][1]);
 
-        // Local rotation (around Z/view axis)
+        // Local rotation (around Z/view axis)o.o
         float c = cos(instanceRot.x);
         float s = sin(instanceRot.x);
         mat2 rot = mat2(c, -s, s, c);
