@@ -53,6 +53,18 @@ inline void ToPhysXContraints(PxRigidDynamic* actor, Constraints constraints) {
 		case Constraints::FreezePositionZ:
 			flags |= PxRigidDynamicLockFlag::eLOCK_LINEAR_Z;
 			break;
+		case Constraints::FreezePositionXY:
+			flags |= PxRigidDynamicLockFlag::eLOCK_LINEAR_X;
+			flags |= PxRigidDynamicLockFlag::eLOCK_LINEAR_Y;
+			break;
+		case Constraints::FreezePositionXZ:
+			flags |= PxRigidDynamicLockFlag::eLOCK_LINEAR_X;
+			flags |= PxRigidDynamicLockFlag::eLOCK_LINEAR_Z;
+			break;
+		case Constraints::FreezePositionYZ:
+			flags |= PxRigidDynamicLockFlag::eLOCK_LINEAR_Y;
+			flags |= PxRigidDynamicLockFlag::eLOCK_LINEAR_Z;
+			break;
 		case Constraints::FreezeRotationX:
 			flags |= PxRigidDynamicLockFlag::eLOCK_ANGULAR_X;
 			break;
@@ -60,6 +72,18 @@ inline void ToPhysXContraints(PxRigidDynamic* actor, Constraints constraints) {
 			flags |= PxRigidDynamicLockFlag::eLOCK_ANGULAR_Y;
 			break;
 		case Constraints::FreezeRotationZ:
+			flags |= PxRigidDynamicLockFlag::eLOCK_ANGULAR_Z;
+			break;
+		case Constraints::FreezeRotationXY:
+			flags |= PxRigidDynamicLockFlag::eLOCK_ANGULAR_X;
+			flags |= PxRigidDynamicLockFlag::eLOCK_ANGULAR_Y;
+			break;
+		case Constraints::FreezeRotationXZ:
+			flags |= PxRigidDynamicLockFlag::eLOCK_ANGULAR_X;
+			flags |= PxRigidDynamicLockFlag::eLOCK_ANGULAR_Z;
+			break;
+		case Constraints::FreezeRotationYZ:
+			flags |= PxRigidDynamicLockFlag::eLOCK_ANGULAR_Y;
 			flags |= PxRigidDynamicLockFlag::eLOCK_ANGULAR_Z;
 			break;
 		case Constraints::FreezePosition:

@@ -41,12 +41,23 @@ namespace ecs {
 
 	enum class Constraints : uint32_t {
 		None = 0,
+
 		FreezePositionX,
 		FreezePositionY,
 		FreezePositionZ,
+
+		FreezePositionXY,
+		FreezePositionXZ,
+		FreezePositionYZ,
+
 		FreezeRotationX,
 		FreezeRotationY,
 		FreezeRotationZ,
+
+		FreezeRotationXY,
+		FreezeRotationXZ,
+		FreezeRotationYZ,
+
 		FreezePosition,
 		FreezeRotation,
 		FreezeAll
