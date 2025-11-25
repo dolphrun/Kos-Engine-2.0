@@ -60,7 +60,7 @@ namespace ecs{
 
 		RegisterSystem<CanvasTextRenderSystem, TransformComponent, CanvasRendererComponent>();
 		RegisterSystem<CanvasSpriteRenderSystem, TransformComponent, CanvasRendererComponent>();
-		RegisterSystem<AnimatorSystem, TransformComponent, AnimatorComponent>();
+		RegisterSystem<AnimatorSystem, TransformComponent, AnimatorComponent>(RUNNING);
 		RegisterSystem<LightingSystem, TransformComponent, LightComponent>();
 		RegisterSystem<DebugBoxColliderRenderSystem, TransformComponent, BoxColliderComponent>();
 		RegisterSystem<DebugCapsuleColliderRenderSystem, TransformComponent, CapsuleColliderComponent>();

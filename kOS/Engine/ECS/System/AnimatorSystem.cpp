@@ -23,9 +23,23 @@ namespace ecs {
             if ( nameComp->hide)
                 continue;
 
-            // TODO: Advance playback time
-            // TODO: Sample animation curves
-            // TODO: Update bone transforms (stored in ECS transform hierarchy)
+            R_AnimController* controller{};
+            R_Animation* animation{};
+
+            controller = m_resourceManager.GetResource<R_AnimController>(animator->controllerGUID).get();
+
+            if (controller)
+                animation = m_resourceManager.GetResource<R_Animation>(controller->m_AnimControllerData.currentState->animationGUID).get();
+
+            if (animation && animator->m_IsPlaying)
+            {
+                int steps = m_physicsManager.FrameCount();
+                //  for (int i = 0; i < steps; i++)
+                {
+                    animator->m_CurrentTime += animation->GetTicksPerSecond() * m_physicsManager.FixedDeltaTime() * animator->m_PlaybackSpeed;
+                    animator->m_CurrentTime = fmod(animator->m_CurrentTime, animation->GetDuration());
+                }
+            }
         }
     }
 

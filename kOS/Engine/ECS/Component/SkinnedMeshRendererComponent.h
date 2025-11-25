@@ -33,9 +33,8 @@ namespace ecs {
     public:
         utility::GUID skinnedMeshGUID{}; // Skinned mesh asset
         utility::GUID materialGUID{};    // Material asset
-        utility::GUID skeletonGUID{};
 
-        REFLECTABLE(SkinnedMeshRendererComponent, skinnedMeshGUID, materialGUID, skeletonGUID);
+        REFLECTABLE(SkinnedMeshRendererComponent, skinnedMeshGUID, materialGUID);
 
         utility::GUID cachedSkinnedMeshGUID{};
         utility::GUID cachedMaterialGUID{};

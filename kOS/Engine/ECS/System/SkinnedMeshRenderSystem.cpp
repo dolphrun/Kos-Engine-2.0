@@ -58,7 +58,7 @@ namespace ecs
             {
 
                 skinnedMesh->cachedSkinnedMeshGUID = skinnedMesh->skinnedMeshGUID;
-                skinnedMesh->cachedSkinnedMeshResource = static_cast<void *>(mesh);
+                skinnedMesh->cachedSkinnedMeshResource = static_cast<void*>(mesh);
 
                 std::shared_ptr<R_Material> mat = m_resourceManager.GetResource<R_Material>(skinnedMesh->materialGUID);
                 if (!mat)
@@ -72,15 +72,7 @@ namespace ecs
                 if (controller)
                     animation = m_resourceManager.GetResource<R_Animation>(controller->m_AnimControllerData.currentState->animationGUID).get();
 
-                if (animation && anim->m_IsPlaying)
-                {
-                    int steps = m_physicsManager.FrameCount();
-                  //  for (int i = 0; i < steps; i++)
-                    {
-                        anim->m_CurrentTime += animation->GetTicksPerSecond() * m_physicsManager.FixedDeltaTime() * anim->m_PlaybackSpeed;
-                        anim->m_CurrentTime = fmod(anim->m_CurrentTime, animation->GetDuration());
-                    }
-                }
+
                 std::shared_ptr<R_Texture> diff = m_resourceManager.GetResource<R_Texture>(mat->md.diffuseMaterialGUID);
                 std::shared_ptr<R_Texture> spec = m_resourceManager.GetResource<R_Texture>(mat->md.specularMaterialGUID);
                 std::shared_ptr<R_Texture> norm = m_resourceManager.GetResource<R_Texture>(mat->md.normalMaterialGUID);
