@@ -540,6 +540,7 @@ void DebugRenderer::RenderDebugCapsules(const CameraData& camera, Shader& shader
 	for (size_t i = 0; i < basicDebugCapsules.size(); i++) {
 		shader.SetTrans("model", basicDebugCapsules[i].worldTransform);
 		shader.SetFloat("uShaderType", 2.1f);
+		shader.SetVec3("color", glm::vec3{ 0.f,1.f,0.f });
 		debugCapsule.DrawMesh();
 	}
 }
