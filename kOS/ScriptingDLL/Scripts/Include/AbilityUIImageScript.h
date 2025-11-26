@@ -6,7 +6,7 @@
 
 class AbilityUIImageScript : public TemplateSC {
 public:
-    std::string currAbility = "none"; // Tracks current power-up
+    std::string currAbility = "NONE"; // Tracks current power-up
     std::string lastAbility = "";     // Tracks last power-up to avoid redundant updates
 
     utility::GUID playerObject;       // Reference to the player object
@@ -32,7 +32,27 @@ public:
     void Update() override {
         // Fetch the current power-up from PlayerManagerScript
         if (auto* playerMgr = ecsPtr->GetComponent<PlayerManagerScript>(playerObjectID)) {
-            currAbility = playerMgr->currentPowerup;
+            if (playerMgr->playerPowerupHeld == 0) {
+                currAbility = "NONE";
+            }
+            else if (playerMgr->playerPowerupHeld == 1) {
+                currAbility = "FIRE";
+            }
+            else if (playerMgr->playerPowerupHeld == 2) {
+                currAbility = "ACID";
+            }
+            else if (playerMgr->playerPowerupHeld == 3) {
+                currAbility = "LIGHTNING";
+            }
+            else if (playerMgr->playerPowerupHeld == 4) {
+                currAbility = "FIREACID";
+            }
+            else if (playerMgr->playerPowerupHeld == 5) {
+                currAbility = "FIRELIGHTNING";
+            }
+            else if (playerMgr->playerPowerupHeld == 6) {
+                currAbility = "ACIDLIGHTNING";
+            }
         }
 
         // Only update the sprite if the ability changed
@@ -45,12 +65,12 @@ public:
 private:
     void UpdateAbilitySprite() {
         if (auto* sc = ecsPtr->GetComponent<ecs::SpriteComponent>(entity)) {
-            if (currAbility == "fire") sc->spriteGUID = fireSprite;
-            else if (currAbility == "lightning") sc->spriteGUID = lightningSprite;
-            else if (currAbility == "acid") sc->spriteGUID = acidSprite;
-            else if (currAbility == "firelightning") sc->spriteGUID = fireLightningSprite;
-            else if (currAbility == "fireacid") sc->spriteGUID = fireAcidSprite;
-            else if (currAbility == "lightningacid") sc->spriteGUID = lightningAcidSprite;
+            if (currAbility == "FIRE") sc->spriteGUID = fireSprite;
+            else if (currAbility == "LIGHTNING") sc->spriteGUID = lightningSprite;
+            else if (currAbility == "ACID") sc->spriteGUID = acidSprite;
+            else if (currAbility == "FIRELIGHTNING") sc->spriteGUID = fireLightningSprite;
+            else if (currAbility == "FIREACID") sc->spriteGUID = fireAcidSprite;
+            else if (currAbility == "ACIDLIGHTNING") sc->spriteGUID = lightningAcidSprite;
             else sc->spriteGUID = noneSprite; // Default for "none" or unknown abilities
         }
     }

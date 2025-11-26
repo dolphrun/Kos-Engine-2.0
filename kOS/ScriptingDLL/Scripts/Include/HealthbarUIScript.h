@@ -31,7 +31,7 @@ public:
     void Update() override {
         // Fetch the health from PlayerManagerScript
         if (auto* playerMgr = ecsPtr->GetComponent<PlayerManagerScript>(playerObjectID)) {
-            healthValue = playerMgr->playerHealth;
+            healthValue = playerMgr->currPlayerHitPoints;
         }
 
         // Only update the sprite if health has changed

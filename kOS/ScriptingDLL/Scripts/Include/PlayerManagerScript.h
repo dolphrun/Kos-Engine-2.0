@@ -17,10 +17,10 @@ public:
 	int maxPlayerHitPoints = 10;
 	int currPlayerHitPoints;
 
-	float maxPlayerMovSpeed = 8.5f;
+	float maxPlayerMovSpeed = 10.5f;
 	float currPlayerMovSpeed;
 
-	float maxPlayerJumpForce = 400.f;
+	float maxPlayerJumpForce = 800.f;
 	float currPlayerJumpForce;
 
 	float playerCameraSpeedX = 0.65f;
@@ -38,7 +38,7 @@ public:
 	float playerSprintFOV = 100.f;
 	float playerNormalFOV = 85.f;
 
-	float playerVelocityBeforeSlide = 2.5f;
+	float playerVelocityBeforeSlide = 6.5f;
 
 	float playerGunModelSwaySpeed = 15.f;
 	float playerGunModelWalkBobbingSpeed = 2.5f;
