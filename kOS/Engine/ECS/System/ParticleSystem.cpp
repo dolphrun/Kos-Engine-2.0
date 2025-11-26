@@ -68,7 +68,10 @@ namespace ecs {
             // ==========================================
 
             std::shared_ptr<R_Texture> textureResource = m_resourceManager.GetResource<R_Texture>(particle->textureGUID);
-            m_graphicsManager.gm_PushBasicParticleData(BasicParticleData{ sending.positions_Particle, sending.colors, sending.sizes, sending.rotates , textureResource.get()});
+            float type = 0.f;
+            if (particle->particleType == ParticleComponent::ParticleType::THREE_DIMENSIONAL_ROTATION_BILLBOARD)
+                type = 1.f;
+            m_graphicsManager.gm_PushBasicParticleData(BasicParticleData{ sending.positions_Particle, sending.colors, sending.sizes, sending.rotates , textureResource.get(), type });
         }
     }
 
@@ -118,7 +121,7 @@ namespace ecs {
         const glm::vec4 colorDelta = updateColor ? (particle->colorModule.end_Color - particle->colorModule.start_Color) : glm::vec4(0);
         const glm::vec4 colorStart = particle->colorModule.start_Color;
 
-        const float rotModRad = glm::radians(particle->rotationModule.rotation_Modifier) * dt;
+        const glm::vec3 rotModRad = glm::radians(particle->rotationModule.rotation_Modifier) * dt;
 
         // Pre-compute attractor values
         const glm::vec3 attractorTarget = particle->attractorModule.targetPosition;

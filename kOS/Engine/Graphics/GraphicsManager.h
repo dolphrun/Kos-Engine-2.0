@@ -95,6 +95,7 @@ public:
 	//I want my DCMs
 	LightRenderer lightRenderer;
 
+	glm::vec2 mousePosition;
 private:
 
 	//Initialize functions

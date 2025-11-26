@@ -17,9 +17,31 @@ struct MaterialFB {
 DisplayMaterial materialData;
 MaterialFB mfb;
 //Camera data
-
+std::string lastGUID;
 void gui::ImGuiHandler::DrawMaterialWindow() {
+    if (lastGUID != selectedAsset.GUID.GetToString()&&selectedAsset.Type=="R_Material") {
+        lastGUID =  selectedAsset.GUID.GetToString();
+        //Update parameters
+        //Getresource
+        std::shared_ptr<R_Material> testMat = m_resourceManager.GetResource<R_Material>(selectedAsset.GUID);
+        if (testMat) {
+            //Update material list
+            materialData.data.diffuseMaterialGUID = testMat->md.diffuseMaterialGUID;
+            materialData.data.specularMaterialGUID = testMat->md.specularMaterialGUID;
+            materialData.data.normalMaterialGUID = testMat->md.normalMaterialGUID;
+            materialData.data.ambientOcclusionMaterialGUID = testMat->md.ambientOcclusionMaterialGUID;
+            materialData.data.roughnessMaterialGUID = testMat->md.roughnessMaterialGUID;
 
+        }
+        else {
+            //Update material list
+            materialData.data.diffuseMaterialGUID = utility::GUID{};
+            materialData.data.specularMaterialGUID = utility::GUID{};
+            materialData.data.normalMaterialGUID = utility::GUID{};
+            materialData.data.ambientOcclusionMaterialGUID = utility::GUID{};
+            materialData.data.roughnessMaterialGUID = utility::GUID{};
+        }
+    }
     if (!mfb.startCon) {
         mfb.fb.InitializeFBO(350, 350);
         mfb.startCon = true;

@@ -20,7 +20,6 @@ uniform sampler2D texture_specular1;
 uniform sampler2D texture_normal1;
 uniform sampler2D texture_ao1;
 uniform sampler2D texture_roughness1;
-uniform sampler2D textures[192];
 
 struct Material 
 {

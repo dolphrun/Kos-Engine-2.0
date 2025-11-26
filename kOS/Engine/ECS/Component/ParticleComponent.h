@@ -13,7 +13,7 @@ namespace ecs {
 		glm::vec3 velocity;
 		float lifespan;
 		float lifetime;
-		float rotation;
+		glm::vec3 rotation;
 		int textureID;
 	};
 
@@ -122,9 +122,9 @@ namespace ecs {
 
 	struct RotationOverLifetimeModule {
 		bool enabled = false;
-		float start_Rotation = 0.f;
-		float end_Rotation = 0.f;
-		float rotation_Modifier = 0.f;
+		glm::vec3 start_Rotation = glm::vec3(0.f);
+		glm::vec3 end_Rotation = glm::vec3(0.f);
+		glm::vec3 rotation_Modifier = glm::vec3(0.f);
 
 		REFLECTABLE(RotationOverLifetimeModule, enabled, start_Rotation, end_Rotation, rotation_Modifier);
 	};
@@ -170,6 +170,13 @@ namespace ecs {
 
 	class ParticleComponent : public Component {
 	public:
+
+		enum ParticleType
+		{
+			TWO_DIMENSIONAL_ROTATION_BILLBOARD,
+			THREE_DIMENSIONAL_ROTATION_BILLBOARD
+		} particleType;
+
 		//NO CHANGES
 		int max_Particles = 255; //max particle size
 		float duration = 5.0f;
@@ -224,7 +231,7 @@ namespace ecs {
 		float durationCounter = 0.f;
 		float emissionInterval = 0.1f;
 
-		REFLECTABLE(ParticleComponent, duration, looping, play_On_Awake, 
+		REFLECTABLE(ParticleComponent, particleType, duration, looping, play_On_Awake, 
 					start_Lifetime, end_Lifetime, lifetime_Random_Enable,
 					textureGUID,
 					start_Velocity, playback_State,
