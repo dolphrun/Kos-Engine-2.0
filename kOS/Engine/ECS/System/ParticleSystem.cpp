@@ -107,9 +107,15 @@ namespace ecs {
         const bool updateRotation = particle->rotationModule.enabled;
         const bool updateVelocity = particle->velocityModule.enabled;
         const bool updateForce = particle->forceModule.enabled;
-        const bool updateAttractor = particle->attractorModule.enabled;
+        //const bool updateAttractor = particle->attractorModule.enabled;
         const bool updateGravity = particle->gravityModule.enabled;
         const bool updateTrailing = particle->trailingModule.enabled;
+
+        const bool updateNoise = particle->noiseModule.enabled;
+
+        if (updateNoise) {
+            m_noiseTime += dt;
+        }
 
         // Pre-compute deltas
         const float sizeDelta = updateSize ? (particle->sizeModule.end_Size - particle->sizeModule.start_Size) : 0.0f;
@@ -120,38 +126,31 @@ namespace ecs {
 
         const float rotModRad = glm::radians(particle->rotationModule.rotation_Modifier) * dt;
 
-        // Pre-compute attractor values
-        const glm::vec3 attractorTarget = particle->attractorModule.targetPosition;
-        const float attractStrength = particle->attractorModule.attractionStrength;
-        const float explosionStrength = particle->attractorModule.explosionStrength;
-        const float whirlpoolStrength = particle->attractorModule.whirlpoolStrength;
-        const bool useInverseFalloff = particle->attractorModule.useInverseFalloff;
-
         // Update trailing module's rotating end point
-        if (updateTrailing && particle->trailingModule.rotateEndPoint) {
-            auto& trail = particle->trailingModule;
+        //if (updateTrailing && particle->trailingModule.rotateEndPoint) {
+        //    auto& trail = particle->trailingModule;
 
-            // Update rotation angle
-            float angle = trail.timeAccum * trail.rotationSpeed;
+        //    // Update rotation angle
+        //    float angle = trail.timeAccum * trail.rotationSpeed;
 
-            // Calculate new end point position on circular orbit
-            glm::vec3 axis = glm::normalize(trail.rotationAxis);
+        //    // Calculate new end point position on circular orbit
+        //    glm::vec3 axis = glm::normalize(trail.rotationAxis);
 
-            // Find two perpendicular vectors to the rotation axis
-            glm::vec3 perpAxis1, perpAxis2;
-            if (fabs(axis.y) > 0.9f) {
-                perpAxis1 = glm::normalize(glm::cross(axis, glm::vec3(1, 0, 0)));
-            }
-            else {
-                perpAxis1 = glm::normalize(glm::cross(axis, glm::vec3(0, 1, 0)));
-            }
-            perpAxis2 = glm::normalize(glm::cross(axis, perpAxis1));
+        //    // Find two perpendicular vectors to the rotation axis
+        //    glm::vec3 perpAxis1, perpAxis2;
+        //    if (fabs(axis.y) > 0.9f) {
+        //        perpAxis1 = glm::normalize(glm::cross(axis, glm::vec3(1, 0, 0)));
+        //    }
+        //    else {
+        //        perpAxis1 = glm::normalize(glm::cross(axis, glm::vec3(0, 1, 0)));
+        //    }
+        //    perpAxis2 = glm::normalize(glm::cross(axis, perpAxis1));
 
-            // Calculate rotating end point
-            trail.endPoint = trail.rotationCenter +
-                perpAxis1 * cos(angle) * trail.rotationRadius +
-                perpAxis2 * sin(angle) * trail.rotationRadius;
-        }
+        //    // Calculate rotating end point
+        //    trail.endPoint = trail.rotationCenter +
+        //        perpAxis1 * cos(angle) * trail.rotationRadius +
+        //        perpAxis2 * sin(angle) * trail.rotationRadius;
+        //}
 
         // === OPTIMIZED LOOP ===
         for (int i = static_cast<int>(particle->particle_List.size()) - 1; i >= 0; --i) {
@@ -185,43 +184,6 @@ namespace ecs {
                 pd.velocity += particle->forceModule.force * dt;
             }
 
-            // === OPTIMIZED ATTRACTORS ===
-            if (updateAttractor) {
-                glm::vec3 particlePos = pd.position;
-                glm::vec3 dir = attractorTarget - particlePos;
-                float distSq = glm::dot(dir, dir);
-
-                if (distSq > 0.000001f) {
-                    float dist = glm::sqrt(distSq);
-                    glm::vec3 dirNorm = dir / dist;
-
-                    // Attraction
-                    if (attractStrength > 0.0f) {
-                        float strength = attractStrength;
-                        if (useInverseFalloff) strength /= (distSq + 0.01f);
-                        pd.velocity += dirNorm * strength * dt;
-                    }
-
-                    // Explosion
-                    if (explosionStrength != 0.0f) {
-                        pd.velocity += -dirNorm * explosionStrength * dt;
-                    }
-
-                    // Whirlpool
-                    if (whirlpoolStrength > 0.0f) {
-                        glm::vec3 up = (glm::abs(dirNorm.y) > 0.9f) ? glm::vec3(1, 0, 0) : glm::vec3(0, 1, 0);
-                        glm::vec3 tangential = glm::normalize(glm::cross(dirNorm, up));
-
-                        float strength = whirlpoolStrength;
-                        if (useInverseFalloff) strength /= (dist + 0.1f);
-
-                        glm::vec3 force = dirNorm * (strength * 0.25f) + tangential * strength;
-                        pd.velocity += force * dt;
-                    }
-                }
-            }
-
-
             // === OPTIMIZED VISUAL UPDATES ===
             if (updateSize) {
                 pd.size = glm::vec2(sizeStart + sizeDelta * t);
@@ -234,6 +196,20 @@ namespace ecs {
             if (updateRotation) {
                 pd.rotation += rotModRad;
             }
+
+            if (updateNoise) {
+                glm::vec3 noiseForce = CalculateNoiseForce(pd, particle->noiseModule, m_noiseTime, t);
+
+                if (particle->noiseModule.damping) {
+                    float velocityMag = glm::length(pd.velocity);
+                    float dampFactor = 1.0f / (1.0f + velocityMag * 0.1f);
+                    pd.velocity += noiseForce * dampFactor * dt;
+                }
+                else {
+                    pd.velocity += noiseForce * dt;
+                }
+            }
+
 
             // ENHANCED TRAILING MODULE - Twister Effect
             if (updateTrailing) {
@@ -791,7 +767,145 @@ namespace ecs {
     }
 
 
+    float ParticleSystem::PerlinNoise1D(float x) {
+        float i = glm::floor(x);
+        float f = glm::fract(x);
+
+        float u = f * f * (3.0f - 2.0f * f);
+
+        return glm::mix(Hash(i), Hash(i + 1.0f), u) * 2.0f - 1.0f;
+    }
+
+    float ParticleSystem::PerlinNoise2D(float x, float y) {
+        float ix = glm::floor(x);
+        float iy = glm::floor(y);
+        float fx = glm::fract(x);
+        float fy = glm::fract(y);
+
+        float ux = fx * fx * (3.0f - 2.0f * fx);
+        float uy = fy * fy * (3.0f - 2.0f * fy);
+
+        float a = Hash2D(ix, iy);
+        float b = Hash2D(ix + 1.0f, iy);
+        float c = Hash2D(ix, iy + 1.0f);
+        float d = Hash2D(ix + 1.0f, iy + 1.0f);
+
+        float result = glm::mix(
+            glm::mix(a, b, ux),
+            glm::mix(c, d, ux),
+            uy
+        );
+
+        return result * 2.0f - 1.0f;
+    }
+
+    float ParticleSystem::PerlinNoise3D(float x, float y, float z) {
+        float ix = glm::floor(x);
+        float iy = glm::floor(y);
+        float iz = glm::floor(z);
+        float fx = glm::fract(x);
+        float fy = glm::fract(y);
+        float fz = glm::fract(z);
+
+        float ux = fx * fx * (3.0f - 2.0f * fx);
+        float uy = fy * fy * (3.0f - 2.0f * fy);
+        float uz = fz * fz * (3.0f - 2.0f * fz);
+
+        float c000 = Hash3D(ix, iy, iz);
+        float c100 = Hash3D(ix + 1.0f, iy, iz);
+        float c010 = Hash3D(ix, iy + 1.0f, iz);
+        float c110 = Hash3D(ix + 1.0f, iy + 1.0f, iz);
+        float c001 = Hash3D(ix, iy, iz + 1.0f);
+        float c101 = Hash3D(ix + 1.0f, iy, iz + 1.0f);
+        float c011 = Hash3D(ix, iy + 1.0f, iz + 1.0f);
+        float c111 = Hash3D(ix + 1.0f, iy + 1.0f, iz + 1.0f);
+
+        float result = glm::mix(
+            glm::mix(
+                glm::mix(c000, c100, ux),
+                glm::mix(c010, c110, ux),
+                uy
+            ),
+            glm::mix(
+                glm::mix(c001, c101, ux),
+                glm::mix(c011, c111, ux),
+                uy
+            ),
+            uz
+        );
+
+        return result * 2.0f - 1.0f;
+    }
+
+    float ParticleSystem::FractalNoise3D(const glm::vec3& pos, int octaves, float persistence, float lacunarity) {
+        float total = 0.0f;
+        float amplitude = 1.0f;
+        float maxValue = 0.0f;
+        float frequency = 1.0f;
+
+        for (int i = 0; i < octaves; i++) {
+            glm::vec3 p = pos * frequency;
+            total += PerlinNoise3D(p.x, p.y, p.z) * amplitude;
+
+            maxValue += amplitude;
+            amplitude *= persistence;
+            frequency *= lacunarity;
+        }
+
+        return total / maxValue;
+    }
+
+    glm::vec3 ParticleSystem::CalculateNoiseForce(const ParticleData& pd, const NoiseModule& noise, float time, float lifeProgress) {
+        glm::vec3 samplePos = pd.position * noise.frequency + noise.positionOffset;
+        samplePos += noise.scrollSpeed * time;
+
+        glm::vec3 noiseForce(0.0f);
+
+        switch (noise.quality) {
+        case NoiseModule::LOW: {
+            noiseForce.x = PerlinNoise1D(samplePos.x);
+            noiseForce.y = PerlinNoise1D(samplePos.y + 100.0f);
+            noiseForce.z = PerlinNoise1D(samplePos.z + 200.0f);
+            break;
+        }
+        case NoiseModule::MEDIUM: {
+            noiseForce.x = PerlinNoise2D(samplePos.y, samplePos.z);
+            noiseForce.y = PerlinNoise2D(samplePos.z, samplePos.x);
+            noiseForce.z = PerlinNoise2D(samplePos.x, samplePos.y);
+            break;
+        }
+        case NoiseModule::HIGH: {
+            if (noise.octaves > 1) {
+                noiseForce.x = FractalNoise3D(samplePos, noise.octaves, noise.octaveMultiplier, noise.octaveScale);
+                noiseForce.y = FractalNoise3D(samplePos + glm::vec3(100, 0, 0), noise.octaves, noise.octaveMultiplier, noise.octaveScale);
+                noiseForce.z = FractalNoise3D(samplePos + glm::vec3(0, 100, 0), noise.octaves, noise.octaveMultiplier, noise.octaveScale);
+            }
+            else {
+                noiseForce.x = PerlinNoise3D(samplePos.x, samplePos.y, samplePos.z);
+                noiseForce.y = PerlinNoise3D(samplePos.x + 100.0f, samplePos.y, samplePos.z);
+                noiseForce.z = PerlinNoise3D(samplePos.x, samplePos.y + 100.0f, samplePos.z);
+            }
+            break;
+        }
+        }
+
+        noiseForce *= noise.strength;
+        noiseForce *= noise.strengthMultiplier;
+
+        if (noise.remapEnabled) {
+            float remapValue = glm::mix(noise.remapCurveStart, noise.remapCurveEnd, lifeProgress);
+            noiseForce *= remapValue;
+        }
+
+        return noiseForce;
+    }
 
 
-
+    void ParticleSystem::setTrailPoint(ParticleComponent* particle, const glm::vec3& start, const glm::vec3 end) {
+        particle->trailingModule.startPoint = start;
+        particle->trailingModule.endPoint = end;
+    }
+    void ParticleSystem::updateTrailEndPoint(ParticleComponent* particle, const glm::vec3& end) {
+        particle->trailingModule.endPoint = end;
+    }
 }
