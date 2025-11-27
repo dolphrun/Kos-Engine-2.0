@@ -23,10 +23,10 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 namespace FMOD { class System; class Sound; }
 
-enum class AudioAssetType {
-    CoreSound,  
-    StudioBank 
-};
+//enum class AudioAssetType {
+//    CoreSound,  
+//    StudioBank 
+//};
 
 class R_Audio : public Resource {
 public:
@@ -41,23 +41,23 @@ public:
     FMOD::System* GetSystem() const { return m_system; }
     void SetSystem(FMOD::System* sys) { m_system = sys; }
 
-    FMOD::Studio::Bank* GetBank()   const { return m_bank; }
-    FMOD::Studio::System* GetStudio() const { return m_studio; }
-    void SetStudio(FMOD::Studio::System* studio) { m_studio = studio; }
+    //FMOD::Studio::Bank* GetBank()   const { return m_bank; }
+    //FMOD::Studio::System* GetStudio() const { return m_studio; }
+    //void SetStudio(FMOD::Studio::System* studio) { m_studio = studio; }
 
-    AudioAssetType GetType() const { return m_type; }
+    //AudioAssetType GetType() const { return m_type; }
 
 
     REFLECTABLE(R_Audio);
 
 private:
-    AudioAssetType m_type = AudioAssetType::CoreSound;
+    //AudioAssetType m_type = AudioAssetType::CoreSound;
 
     FMOD::System* m_system = nullptr;        
     FMOD::Sound* m_sound = nullptr;       
 
-    FMOD::Studio::System* m_studio = nullptr;
-    FMOD::Studio::Bank* m_bank = nullptr;
+    //FMOD::Studio::System* m_studio = nullptr;
+    //FMOD::Studio::Bank* m_bank = nullptr;
 
     unsigned int  m_createFlags = 0;
 };

@@ -43,6 +43,15 @@ struct AudioCompiler {
 	REFLECTABLE(AudioCompiler, path, outputExtension, inputExtensions);
 
 };
+
+struct AudioStudioCompiler {
+	std::string type = R_AudioStudio::classname();
+	std::string path;
+	std::string outputExtension;
+	std::vector<std::string> inputExtensions;
+	REFLECTABLE(AudioStudioCompiler, path, outputExtension, inputExtensions);
+};
+
 struct MaterialCompiler {
 	std::string type = R_Material::classname();
 	std::string path;
@@ -65,9 +74,10 @@ struct CompilerData {
 	FontCompiler fontCompiler;
 	SceneCompiler sceneCompiler;
 	AudioCompiler audioCompiler;
+	AudioStudioCompiler audioStudioCompiler;
 	MaterialCompiler materialCompiler;
 	DepthMapCubeCompiler dmcCompiler;
-	REFLECTABLE(CompilerData, meshCompiler,textureCompiler, fontCompiler, sceneCompiler, audioCompiler, materialCompiler, dmcCompiler);
+	REFLECTABLE(CompilerData, meshCompiler,textureCompiler, fontCompiler, sceneCompiler, audioCompiler, audioStudioCompiler, materialCompiler, dmcCompiler);
 };
 
 

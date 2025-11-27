@@ -10,17 +10,52 @@
         "AudioComponent": {
             "audioFiles": [
                 {
-                    "audioGUID": "24a5edf7-efac-9bb6-0644-ef7909f212bc",
+                    "audioGUID": "00000000-0000-0000-0000-000000000000",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": false,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 1,
+                    "audioBankGUID": "d62d4e85-1ba3-cbe8-c8de-86cccba247b2",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "00000000-0000-0000-0000-000000000000",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": false,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 1,
+                    "audioBankGUID": "fe4b43bc-ca3e-ee63-00ae-a1fcc7eaafc7",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "00000000-0000-0000-0000-000000000000",
                     "volume": 1.0,
                     "loop": true,
                     "playOnStart": true,
                     "hasPlayed": false,
                     "pan": 0.0,
                     "isBGM": false,
-                    "isSFX": true,
+                    "isSFX": false,
                     "use3D": true,
                     "minDistance": 1.0,
-                    "maxDistance": 20.0
+                    "maxDistance": 20.0,
+                    "sourceType": 1,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": "event:/New Event"
                 }
             ]
         },

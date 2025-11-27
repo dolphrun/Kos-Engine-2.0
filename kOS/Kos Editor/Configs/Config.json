@@ -52,6 +52,15 @@
           }
         ]
       },
+      "audioStudioCompiler": {
+        "path": "null",
+        "outputExtension": ".bank",
+        "inputExtensions": [
+          {
+            "inputExtensions": ".bank"
+          }
+        ]
+      },
       "materialCompiler": {
         "path": "null",
         "outputExtension": ".mat",

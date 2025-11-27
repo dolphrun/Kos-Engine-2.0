@@ -8,11 +8,12 @@
 
 class AudioScript : public TemplateSC {
 public:
+
     utility::GUID GUID;
 
     float elapsedTime = 0.0f;
-    float speed = 1.0f;  
-    float radius = 5.0f;  
+    float speed = 1.0f;
+    float radius = 5.0f;
 
     std::chrono::high_resolution_clock::time_point prevTime{};
 
@@ -23,24 +24,73 @@ public:
         auto* tr = ecsPtr->GetComponent<ecs::TransformComponent>(entity);
         if (!ac || ac->audioFiles.empty() || !tr) return;
 
-        for (auto& af : ac->audioFiles) {
-            if (!af.playOnStart || af.audioGUID.Empty())
-                continue;
+        ecs::AudioFile* selected = nullptr;
 
-            GUID = af.audioGUID;
+        if (!GUID.Empty()) {
+            for (auto& af : ac->audioFiles) {
+                if (!af.playOnStart)
+                    continue;
 
-            af.requestPlay = true;
+                if (af.sourceType == AudioSourceType::Core) {
+                    if (af.audioGUID.Empty())
+                        continue;
+                    if (!(af.audioGUID == GUID))
+                        continue;
+                }
+                else if (af.sourceType == AudioSourceType::Studio) {
+                    if (af.studioEventPath.empty())
+                        continue;
+                    if (af.audioBankGUID.Empty() && GUID.Empty())
+                        continue;
+                    if (!af.audioBankGUID.Empty() && !(af.audioBankGUID == GUID))
+                        continue;
+                    if (af.audioBankGUID.Empty() && !GUID.Empty()) {
+                        af.audioBankGUID = GUID;
+                    }
+                }
 
-            af.use3D = true;
-            af.minDistance = 1.0f;
-            af.maxDistance = 25.0f;
-
-            const auto& pos = tr->WorldTransformation.position;
-            std::cout << "[AudioScript] 3D audio started at ("
-                << pos.x << ", " << pos.y << ", " << pos.z << ")\n";
-
-            break;
+                selected = &af;
+                break;
+            }
         }
+
+        if (!selected) {
+            for (auto& af : ac->audioFiles) {
+                if (!af.playOnStart)
+                    continue;
+
+                if (af.sourceType == AudioSourceType::Core) {
+                    if (af.audioGUID.Empty())
+                        continue;
+                }
+                else if (af.sourceType == AudioSourceType::Studio) {
+                    if (af.studioEventPath.empty())
+                        continue;
+                    if (af.audioBankGUID.Empty() && GUID.Empty())
+                        continue;
+                    if (af.audioBankGUID.Empty() && !GUID.Empty()) {
+                        af.audioBankGUID = GUID;
+                    }
+                }
+
+                selected = &af;
+                break;
+            }
+        }
+
+        if (!selected)
+            return;
+
+        selected->requestPlay = true;
+        selected->use3D = true;
+        selected->minDistance = 1.0f;
+        selected->maxDistance = 25.0f;
+
+        const auto& pos = tr->WorldTransformation.position;
+        std::cout << "[AudioScript] 3D "
+            << (selected->sourceType == AudioSourceType::Studio ? "Studio" : "Core")
+            << " audio started at ("
+            << pos.x << ", " << pos.y << ", " << pos.z << ")\n";
     }
 
     void Update() override {

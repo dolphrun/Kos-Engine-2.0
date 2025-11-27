@@ -26,6 +26,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Resources/R_Scene.h"
 #include "Resources/R_Animation.h"
 #include "Resources/R_Audio.h"
+#include "Resources/R_AudioStudio.h"
 #include "Resources/R_Material.h"
 #include "Resources/R_DepthMapCube.h"
 class ResourceManager {
@@ -39,6 +40,7 @@ public:
 		RegisterResourceType<R_Scene>(".scene");
 		RegisterResourceType<R_Animation>(".anim");
 		RegisterResourceType<R_Audio>(".wav");
+		RegisterResourceType<R_AudioStudio>(".bank");
 		RegisterResourceType<R_Material>(".mat");
 		RegisterResourceType<R_DepthMapCube>(".dcm");
         //Wait for texture type

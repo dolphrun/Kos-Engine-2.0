@@ -22,6 +22,42 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 namespace ecs {
 
 	void AudioSystem::Init() {
+		m_audioManager.Init();
+
+		auto* studio = m_audioManager.GetStudio();
+		if (!studio) {
+			std::cout << "[AudioSystem] Studio system is null in Init()\n";
+
+			return;
+		}
+
+		const auto& entities = m_entities.Data();
+
+		for (EntityID id : entities) {
+			auto* audioComp = m_ecs.GetComponent<AudioComponent>(id);
+			if (!audioComp) continue;
+
+			for (auto& af : audioComp->audioFiles) {
+
+				if (af.sourceType != AudioSourceType::Studio)
+					continue;
+
+				if (af.audioBankGUID.Empty())
+					continue;
+
+				// Load bank 
+				auto bankRes = m_resourceManager.GetResource<R_AudioStudio>(af.audioBankGUID);
+				if (!bankRes) {
+					std::cout << "[AudioSystem] No R_AudioStudio resource for bank GUID\n";
+					continue;
+				}
+				bankRes->SetStudio(studio);
+
+				if (!bankRes->GetBank()) {
+					bankRes->Load();
+				}
+			}
+		}
 	}
 
 	inline FMOD_VECTOR ToF(const glm::vec3& v) { return FMOD_VECTOR{ v.x, v.y, v.z }; }
@@ -135,7 +171,10 @@ namespace ecs {
 					}
 
 					FMOD::Studio::EventDescription* desc = nullptr;
-					if (studio->getEvent(af.studioEventPath.c_str(), &desc) != FMOD_OK || !desc) {
+					FMOD_RESULT ev = studio->getEvent(af.studioEventPath.c_str(), &desc);
+					if (ev != FMOD_OK || !desc) {
+						std::cout << "[AudioSystem] getEvent FAILED for '"
+							<< af.studioEventPath << "' result = " << ev << "\n";
 						af.requestPlay = false;
 						continue;
 					}
