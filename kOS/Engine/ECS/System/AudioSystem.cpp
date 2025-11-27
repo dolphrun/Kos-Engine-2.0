@@ -65,26 +65,21 @@ namespace ecs {
 
 	void AudioSystem::Update() {
 
-		//AudioListenerSystem.UpdateListenerFromComponents(m_ecs, m_listenerPos);
-		
-		//ecs::AudioListenerSystem::UpdateListenerFromComponents(m_ecs, m_listenerPos);
+		//const auto& listenerEntities = m_ecs.GetComponentsEnties("AudioListenerComponent");
 
-			//const auto& listenerEntities = m_ecs.GetComponentsEnties("AudioListenerComponent");
+		//for (EntityID id : listenerEntities) {
+		//	auto* listener = m_ecs.GetComponent<AudioListenerComponent>(id);
+		//	auto* transform = m_ecs.GetComponent<TransformComponent>(id);
 
-			//for (EntityID id : listenerEntities) {
-			//	auto* listener = m_ecs.GetComponent<AudioListenerComponent>(id);
-			//	auto* transform = m_ecs.GetComponent<TransformComponent>(id);
+		//	if (!listener || !transform) continue;
+		//	if (!listener->active)       continue;
 
-			//	if (!listener || !transform) continue;
-			//	if (!listener->active)       continue;
+		//	m_listenerPos = transform->WorldTransformation.position;
 
-			//	m_listenerPos = transform->WorldTransformation.position;
+		//	break;
+		//}
 
-			//	break;
-			//}
-
-		ecs::UpdateListenerFromComponents(m_ecs, m_listenerPos);
-
+		//ecs::UpdateListenerFromComponents(m_ecs, m_listenerPos);
 
 		if (auto* core = m_audioManager.GetCore()) {
 			FMOD_VECTOR p = ToF(m_listenerPos);

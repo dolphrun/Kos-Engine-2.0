@@ -1,5 +1,6 @@
 #include "Config/pch.h"
 #include "AudioListenerSystem.h"
+#include "Resources/ResourceManager.h"
 
 namespace ecs
 {
@@ -11,11 +12,12 @@ namespace ecs
     {
     }
 
-    void UpdateListenerFromComponents(ECS& ecs, glm::vec3& outPos)
+    void AudioListenerSystem::UpdateListenerFromComponents(ECS& ecs, glm::vec3& outPos)
     {
-        const auto& listenerEntities = ecs.GetComponentsEnties("AudioListenerComponent");
+        //const auto& listenerEntities = ecs.GetComponentsEnties("AudioListenerComponent");
+        const auto& entities = m_entities.Data();
 
-        for (EntityID id : listenerEntities)
+        for (EntityID id : entities)
         {
             auto* listener = ecs.GetComponent<AudioListenerComponent>(id);
             auto* transform = ecs.GetComponent<TransformComponent>(id);

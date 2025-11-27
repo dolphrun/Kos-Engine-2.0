@@ -13,11 +13,12 @@ namespace ecs
 
         void Init() override;
         void Update() override;
+        void UpdateListenerFromComponents(ECS& ecs, glm::vec3& outPos);
 
         REFLECTABLE(AudioListenerSystem)
     };
 
-    void UpdateListenerFromComponents(ECS& ecs, glm::vec3& outPos);
+   // void UpdateListenerFromComponents(ECS& ecs, glm::vec3& outPos);
 }
 
 #endif
