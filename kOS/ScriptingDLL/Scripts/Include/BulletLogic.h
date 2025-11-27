@@ -1,6 +1,7 @@
 #pragma once
 #include "ScriptAdapter/TemplateSC.h"
 #include "EnemyManagerScript.h"
+#include "ScoreManagerScript.h"
 
 class BulletLogic : public TemplateSC {
 public:
@@ -11,9 +12,20 @@ public:
 	float timeBeforeDeath = 2.5f;
 	float currentTimer = 0.f;
 
+	ScoreManagerScript* scoreManager = nullptr;
+	int scoreValue = 100;
+
 	utility::GUID enemyDeathSfxGUID; //gonna remove this when stuff are fixed
 
 	void Start() override {
+
+		for (const auto& [entityID, signature] : ecsPtr->GetEntitySignatureData()) {
+			if (ecsPtr->HasComponent<ScoreManagerScript>(entityID)) {
+				scoreManager = ecsPtr->GetComponent<ScoreManagerScript>(entityID);
+				break;
+			}
+		}
+
 		physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
 				// ADD SFX OF ENEMY DEATH HERE
@@ -29,6 +41,10 @@ public:
 				ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth -= bulletDamage;
 
 				if (ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth <= 0) {
+					if (scoreManager) {
+						scoreManager->AddScore(scoreValue); // or whatever value you want per kill
+					}
+
 					ecsPtr->DeleteEntity(col.otherEntityID);
 				}
 			}
