@@ -63,15 +63,15 @@ namespace ecs {
 
         // Spawn a new particle
         void EmitParticle(EntityID entityId, const glm::vec3& particle_position,
-        const glm::vec3& velocity, float lifetime, ParticleComponent*& particle);
+        const glm::vec3& velocity, float lifetime, ParticleComponent*& particle, TransformComponent*& transform);
         // Update particle lifetimes and kill dead particles
         void UpdateParticleLifetimes(float dt, ParticleComponent*& particle);    
         // Handle particle emission from emitter components
-        void UpdateEmitters(float dt, EntityID id, ParticleComponent*& particleComp,  TransformComponent* transform);
+        void UpdateEmitters(float dt, EntityID id, ParticleComponent*& particleComp,  TransformComponent*& transform);
        
         void ExtractParticleDataOptimized(ParticleComponent* particle, ParticleInstance& data);
 
-        void EmitTrailParticles(float dt, ParticleComponent* particle,const glm::vec3& start, const glm::vec3& end,EntityID id);
+        void EmitTrailParticles(float dt, ParticleComponent* particle,const glm::vec3& start, const glm::vec3& end,EntityID id, TransformComponent*& transform);
         
         //===========================================
         // Play state FUNCTION

@@ -45,6 +45,8 @@ namespace ecs {
                 continue;
             }
 
+
+
             //===========================================
             // Update emitter
             //===========================================
@@ -76,7 +78,7 @@ namespace ecs {
     }
 
 
-    void ParticleSystem::EmitParticle(EntityID entityId, const glm::vec3& particle_position, const glm::vec3& velocity, float lifetime, ParticleComponent*& particle) {
+    void ParticleSystem::EmitParticle(EntityID entityId, const glm::vec3& particle_position, const glm::vec3& velocity, float lifetime, ParticleComponent*& particle, TransformComponent*& transform) {
         // Check if we have any free slots
         if (particle->particle_List.size() >= particle->max_Particles) {
             LOGGING_WARN("No free particle slots for entity %d\n", entityId);
@@ -88,9 +90,10 @@ namespace ecs {
         pd.lifetime = lifetime;
         pd.color = particle->colorModule.enabled ? RandomColourRange(particle->colorModule.start_Color, particle->colorModule.end_Color) : particle->colorModule.start_Color;
         pd.size = glm::vec2(particle->sizeModule.enabled ? AbsRandomRange(particle->sizeModule.start_Size, particle->sizeModule.end_Size) : particle->sizeModule.start_Size);
-        pd.rotation = particle->rotationModule.enabled ? glm::radians(RandomRange(particle->rotationModule.start_Rotation, particle->rotationModule.end_Rotation)) : glm::radians(particle->rotationModule.start_Rotation);
         pd.velocity = velocity;
         pd.position = particle_position;
+        pd.rotation = particle->rotationModule.enabled ? glm::radians(RandomRange(particle->rotationModule.start_Rotation, particle->rotationModule.end_Rotation)) : glm::radians(particle->rotationModule.start_Rotation);
+
 
         //init particle data
         particle->particle_List.emplace_back(pd);
@@ -312,7 +315,7 @@ namespace ecs {
         } 
     }
 
-    void ParticleSystem::UpdateEmitters(float dt,EntityID id, ParticleComponent*& particleComp,  TransformComponent* transform) {
+    void ParticleSystem::UpdateEmitters(float dt,EntityID id, ParticleComponent*& particleComp,  TransformComponent*& transform) {
         //const auto& entities = m_entities.Data();
         if (particleComp->playback_State == PlayState::PAUSE) {
             return;
@@ -377,8 +380,27 @@ namespace ecs {
 
                 // ===== APPLY SPEED TO DIRECTION =====
                 // direction is already normalized, multiply by speed
-                glm::vec3 vel = emission.direction * particleComp->start_Velocity;              
-                glm::vec3 pos = transform->WorldTransformation.position + emission.positionOffset;
+                //glm::vec3 vel = emission.direction * particleComp->start_Velocity;        
+
+               // Apply world rotation to emission direction
+                glm::vec3 dir = emission.direction;
+                glm::vec3 offset = emission.positionOffset;
+
+                // Rotate direction by WORLD rotation (includes parent + local)
+                glm::quat worldQ = glm::quat(glm::radians(transform->WorldTransformation.rotation));
+                dir = worldQ * dir;
+
+                // Rotate offset by LOCAL rotation only (entity's own rotation)
+                glm::quat localQ = glm::quat(glm::radians(transform->LocalTransformation.rotation));
+                offset = localQ * offset;
+
+                // Set velocity using rotated direction
+                glm::vec3 vel = dir * particleComp->start_Velocity;
+
+                // WorldTransformation.position already includes parent position!
+                glm::vec3 pos = transform->WorldTransformation.position + offset;
+
+
                 particleComp->particle_Spawn_Location = transform->WorldTransformation.position;
                 //random to the lifetime
                 float particle_Lifetime = particleComp->start_Lifetime;
@@ -391,10 +413,10 @@ namespace ecs {
                     glm::vec3 start = particleComp->trailingModule.startPoint;
                     glm::vec3 end = particleComp->trailingModule.endPoint;
 
-                    EmitTrailParticles(dt, particleComp, start, end, id);
+                    EmitTrailParticles(dt, particleComp, start, end, id, transform);
                 }
                 else {
-                    EmitParticle(id, pos, vel, particle_Lifetime, particleComp);
+                    EmitParticle(id, pos, vel, particle_Lifetime, particleComp, transform);
                 }
                 particleComp->emitterTime -= emissionInterval;
             }
@@ -731,7 +753,8 @@ namespace ecs {
         ParticleComponent* particle,
         const glm::vec3& start,
         const glm::vec3& end,
-        EntityID id)
+        EntityID id,
+        TransformComponent*& transform)
     {
         auto& trail = particle->trailingModule;
 
@@ -766,7 +789,7 @@ namespace ecs {
                 life = RandomRange(particle->start_Lifetime, particle->end_Lifetime);
             }
 
-            EmitParticle(id, pos, vel, life, particle);
+            EmitParticle(id, pos, vel, life, particle, transform);
         }
     }
 
