@@ -18,6 +18,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "AudioSystem.h"
 #include "Resources/ResourceManager.h"
 #include "Audio/AudioManager.h"
+#include "AudioListenerSystem.h"
 
 namespace ecs {
 
@@ -64,19 +65,26 @@ namespace ecs {
 
 	void AudioSystem::Update() {
 
-		const auto& listenerEntities = m_ecs.GetComponentsEnties("AudioListenerComponent");
+		//AudioListenerSystem.UpdateListenerFromComponents(m_ecs, m_listenerPos);
+		
+		//ecs::AudioListenerSystem::UpdateListenerFromComponents(m_ecs, m_listenerPos);
 
-		for (EntityID id : listenerEntities) {
-			auto* listener = m_ecs.GetComponent<AudioListenerComponent>(id);
-			auto* transform = m_ecs.GetComponent<TransformComponent>(id);
+			//const auto& listenerEntities = m_ecs.GetComponentsEnties("AudioListenerComponent");
 
-			if (!listener || !transform) continue;
-			if (!listener->active)       continue;
+			//for (EntityID id : listenerEntities) {
+			//	auto* listener = m_ecs.GetComponent<AudioListenerComponent>(id);
+			//	auto* transform = m_ecs.GetComponent<TransformComponent>(id);
 
-			m_listenerPos = transform->WorldTransformation.position;
+			//	if (!listener || !transform) continue;
+			//	if (!listener->active)       continue;
 
-			break;
-		}
+			//	m_listenerPos = transform->WorldTransformation.position;
+
+			//	break;
+			//}
+
+		ecs::UpdateListenerFromComponents(m_ecs, m_listenerPos);
+
 
 		if (auto* core = m_audioManager.GetCore()) {
 			FMOD_VECTOR p = ToF(m_listenerPos);
