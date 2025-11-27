@@ -17,7 +17,7 @@ public:
 	int maxPlayerHitPoints = 10;
 	int currPlayerHitPoints;
 
-	float maxPlayerMovSpeed = 10.5f;
+	float maxPlayerMovSpeed = 18.5f;
 	float currPlayerMovSpeed;
 
 	float maxPlayerJumpForce = 800.f;
@@ -122,6 +122,10 @@ public:
 
 		if (!playerRigidbody) {
 			return;
+		}
+
+		if (GroundCheck() && Input->GetHorizontal() <= 0.1f && Input->GetHorizontal() >= -0.1f && Input->GetVertical() <= 0.1f && Input->GetVertical() >= -0.1f) {
+			playerRigidbody->velocity = glm::vec3(0.f, playerRigidbody->velocity.y, 0.f);
 		}
 
 		//

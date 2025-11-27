@@ -25,7 +25,12 @@ public:
 						}
 					}
 				}
-				ecsPtr->DeleteEntity(col.otherEntityID);
+
+				ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth -= bulletDamage;
+
+				if (ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth <= 0) {
+					ecsPtr->DeleteEntity(col.otherEntityID);
+				}
 			}
 
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Ground" || ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Default") {

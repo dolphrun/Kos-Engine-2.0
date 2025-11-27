@@ -4,6 +4,8 @@
 #include "EnemyScript.h"
 #include "AudioScript.h"
 
+#include "GameManager.h"
+
 #include "BulletLogic.h"
 #include "EnemyManagerScript.h"
 #include "PowerupManagerScript.h"
@@ -22,6 +24,8 @@
 #include "PlayerManagerScript.h"
 #include "AbilityUIScript.h"
 #include "EventColliderScript.h"
+
+#include "EnemyHurtboxScript.h"
 
 #include "HealthbarUIScript.h"
 #include "WinUIScreenScript.h"
