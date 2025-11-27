@@ -20,7 +20,7 @@ public:
 	float maxPlayerMovSpeed = 18.5f;
 	float currPlayerMovSpeed;
 
-	float maxPlayerJumpForce = 800.f;
+	float maxPlayerJumpForce = 400.f;
 	float currPlayerJumpForce;
 
 	float playerCameraSpeedX = 0.65f;

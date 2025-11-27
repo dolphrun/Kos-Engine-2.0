@@ -484,7 +484,8 @@
                     },
                     "active": false,
                     "culling": true,
-                    "layer": 1
+                    "layer": 1,
+                    "renderOrder": 0
                 },
                 "NameComponent": {
                     "entityName": "Player Arm Model Camera",
@@ -850,7 +851,8 @@
                             },
                             "active": false,
                             "culling": false,
-                            "layer": 0
+                            "layer": 0,
+                            "renderOrder": 0
                         },
                         "NameComponent": {
                             "entityName": "Player Camera",
