@@ -65,7 +65,11 @@ public:
 	inline void gm_PushDirectionalLightData(DirectionalLightData&& directionalLightData) { lightRenderer.directionLightsToDraw.emplace_back(std::move(directionalLightData)); };
 	inline void gm_PushSpotLightData(SpotLightData&& spotLightData) { lightRenderer.spotLightsToDraw.emplace_back(std::move(spotLightData)); };
 	inline void gm_MoveEditorCameraData(const CameraData& camera) { editorCamera = camera; editorCameraActive = true; };
-	inline void gm_PushGameCameraData(CameraData&& camera) { gameCameras.emplace_back(std::move(camera)); };
+	inline void gm_PushGameCameraData(CameraData&& camera) { 
+		//Push and sort
+		gameCameras.emplace_back(std::move(camera)); 
+		std::sort(gameCameras.begin(), gameCameras.end(), [](const CameraData& a, const CameraData& b) {return a.renderOrder > b.renderOrder; });
+	};
 	inline void gm_PushCubeDebugData(BasicDebugData&& data) { debugRenderer.basicDebugCubes.emplace_back(std::move(data)); };
 	inline void gm_PushCapsuleDebugData(BasicDebugData&& data) { debugRenderer.basicDebugCapsules.emplace_back(std::move(data)); }
 	inline void gm_PushSphereDebugData(BasicDebugData&& data) { debugRenderer.basicDebugSpheres.emplace_back(std::move(data)); }

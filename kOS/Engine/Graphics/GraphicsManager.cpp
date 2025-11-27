@@ -277,7 +277,7 @@ void GraphicsManager::gm_FillGBufferGame(const CameraData& camera) {
 	sphereRenderer.Render(camera, *gBufferPBRShader, &this->sphere);
 	gBufferPBRShader->Disuse();
 	//Render particles
-	gm_RenderParticles(editorCamera);
+	gm_RenderParticles(camera);
 
 	//Fill world space UI
 	spriteRenderer.RenderWorldSprites(camera, *worldSpriteShader);
@@ -652,8 +652,11 @@ void GraphicsManager::gm_RenderUIObjects(const CameraData& camera)
 
 void GraphicsManager::gm_RenderParticles(const CameraData& camera)
 {
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	Shader* gBufferParticleShader{ &shaderManager.engineShaders.find("GBufferParticleShader")->second };
 	particleRenderer.Render(camera, *gBufferParticleShader);
+	glDisable(GL_BLEND);
 }
 
 void GraphicsManager::gm_ClearGBuffer()
