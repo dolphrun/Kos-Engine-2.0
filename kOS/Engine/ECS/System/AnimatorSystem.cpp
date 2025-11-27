@@ -32,7 +32,8 @@ namespace ecs {
             {
                 if (animator->m_currentState)
                 {
-                    for (const AnimTransition& transition : static_cast<AnimState*>(animator->m_currentState)->outgoingTransitions)
+                    std::vector<AnimTransition>& transitions = static_cast<AnimState*>(animator->m_currentState)->outgoingTransitions;
+                    for (const AnimTransition& transition : transitions)
                     {
                         if (static_cast<AnimState*>(animator->m_currentState)->CanTransition(transition))
                         {

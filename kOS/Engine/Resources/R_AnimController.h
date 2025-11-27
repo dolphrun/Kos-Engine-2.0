@@ -85,10 +85,12 @@ struct AnimState {
 
 
     // Setters for different condition types
-    void SetBool(const std::string& name, bool v) { parameterMap[name].boolValue = v; }
-    void SetTrigger(const std::string& name) { parameterMap[name].triggerValue = true; }
-    void SetFloat(const std::string& name, float v) { parameterMap[name].floatValue = v; }
-    void SetInt(const std::string& name, int v) { parameterMap[name].intValue = v; }
+    void CheckExistence(const std::string& name) { if (!parameterMap.contains(name)) parameterMap[name] = {}; };
+    void SetBool(const std::string& name, bool v) { CheckExistence(name);  parameterMap[name].boolValue = v; }
+    void SetTrigger(const std::string& name) { CheckExistence(name); parameterMap[name].triggerValue = true; }
+    void SetFloat(const std::string& name, float v) { CheckExistence(name); parameterMap[name].floatValue = v; }
+    void SetInt(const std::string& name, int v) { CheckExistence(name); parameterMap[name].intValue = v; }
+    void SetOperator(const std::string& name, AnimCondition::CompareOp op) { CheckExistence(name); parameterMap[name].op = op; };
 
 
     // Evaluates conditions for transitions
@@ -137,6 +139,10 @@ struct AnimState {
     // Check if a transition is valid
     bool CanTransition(const AnimTransition& t)
     {
+        if (t.conditions.empty())
+        {
+            return false;
+        }
         for (auto& cond : t.conditions)
         {
             if (!EvaluateCondition(cond))
