@@ -253,7 +253,6 @@ void gui::ImGuiHandler::DrawAnimatorControllerWindow()
                 t.id = nextLinkId++;
                 t.fromPinId = startPin.Get();
                 t.toPinId = endPin.Get();
-                t.condition = {"", false};
                 AnimState* fromState = FindStateFromPin(states, t.fromPinId);
                 //AnimState* toState = FindStateFromPin(states, t.toPinId);
                 fromState->outgoingTransitions.push_back(t);
@@ -318,44 +317,8 @@ void gui::ImGuiHandler::DrawAnimatorControllerWindow()
             {
                 if (t.id == linkId)
                 {
-                    ImGui::Separator();
-                    ImGui::Text("Transition Properties");
-
-                    char buf[256];
-                    strcpy(buf, t.condition.name.c_str());
-                    if (ImGui::InputText("Condition", buf, sizeof(buf)))
-                        t.condition.name = buf;
-
-                    ///Add checkbox for boolean state
-
-                    AnimState* fromState = FindStateFromPin(states, t.fromPinId);
-                    AnimState* toState = FindStateFromPin(states, t.toPinId);
-
-                    AnimPin* fromPin = FindPin(states, t.fromPinId);
-                    AnimPin* toPin = FindPin(states, t.toPinId);
-
-                    ImGui::Separator();
-                    ImGui::Text("Transition Endpoints");
-
-                    if (fromState)
-                    {
-                        ImGui::Text("From State: %s", fromState->name.c_str());
-                        if (fromPin)
-                            ImGui::Text("  Pin: %s", fromPin->name.c_str());
-                    }
-                    else ImGui::Text("From State: <Unknown>");
-
-                    if (toState)
-                    {
-                        ImGui::Text("To State: %s", toState->name.c_str());
-                        if (toPin)
-                            ImGui::Text("  Pin: %s", toPin->name.c_str());
-                    }
-                    else ImGui::Text("To State: <Unknown>");
-
-                    ImGui::Separator();
-                    ImGui::End();
-                    return;
+                    t.ApplyFunction(DrawComponents{ t.Names() });
+                    break;
                 }
             }
         }
@@ -367,6 +330,7 @@ void gui::ImGuiHandler::DrawAnimatorControllerWindow()
     {
         AnimState& state = states[selectedNode.Get() - 1];
         state.ApplyFunction(DrawComponents{ state.Names() });
+
         //Unfortunately, this is going to update every frame
         m_nodeEditorModified = true;
     }

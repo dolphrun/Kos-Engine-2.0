@@ -30,8 +30,21 @@ namespace ecs {
 
             if (controller)
             {
-               if (animator->m_currentState)
+                if (animator->m_currentState)
+                {
+                    for (const AnimTransition& transition : static_cast<AnimState*>(animator->m_currentState)->outgoingTransitions)
+                    {
+                        if (static_cast<AnimState*>(animator->m_currentState)->CanTransition(transition))
+                        {
+                            animator->m_currentState = controller->FindStateFromPin(transition.toPinId);
+                            if (animator->m_currentState == nullptr) return;
+                            break;
+                        }
+                    }
+                    
                     animation = m_resourceManager.GetResource<R_Animation>(static_cast<AnimState*>(animator->m_currentState)->animationGUID).get();
+                }
+                   
 
             }
                 

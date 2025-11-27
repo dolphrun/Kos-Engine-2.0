@@ -9,10 +9,10 @@
         "entityGUID": "13ddfe1d-908e-e46f-65f1-2be64b5dd012",
         "AnimationTestScript": {},
         "AnimatorComponent": {
-            "controllerGUID": "6b82d92a-4f0b-a3d4-14cc-d865cd6f1724",
+            "controllerGUID": "58dd1228-cc35-f444-3d68-09f2edfb0df8",
             "m_PlaybackSpeed": 1.0,
             "m_CurrentTime": 4.799399375915527,
-            "m_IsPlaying": false
+            "m_IsPlaying": true
         },
         "NameComponent": {
             "entityName": "animated mesh",
@@ -29,7 +29,7 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": -11.847871780395508,
+                    "x": -27.51503562927246,
                     "y": -10.008426666259766,
                     "z": -14.13250732421875
                 },
@@ -46,7 +46,7 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": -11.847871780395508,
+                    "x": -27.51503562927246,
                     "y": -10.008426666259766,
                     "z": -14.13250732421875
                 },
@@ -145,7 +145,7 @@
         "entityGUID": "b11b8045-ba5d-3c4e-cd7d-b73208475971",
         "AnimationTestScript": {},
         "AnimatorComponent": {
-            "controllerGUID": "dda8cf21-7aa1-bbb7-c64c-286b89fd95d5",
+            "controllerGUID": "00000000-0000-0000-0000-000000000000",
             "m_PlaybackSpeed": 1.0,
             "m_CurrentTime": 0.0,
             "m_IsPlaying": true
