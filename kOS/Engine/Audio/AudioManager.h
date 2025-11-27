@@ -2,9 +2,6 @@
 #include <FMOD/fmod.hpp>
 #include <FMOD/fmod_studio.hpp>
 
-namespace ecs { 
-    class AudioSystem; 
-}
 
 namespace FMOD {
     class System;
