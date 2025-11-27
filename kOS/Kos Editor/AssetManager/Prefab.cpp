@@ -221,6 +221,15 @@ namespace prefab
 
         if (!childsA.has_value() && !childsB.has_value()) return; // both id do not have children
 
+        //delete child Bs children
+        if (childsB.has_value()) {
+            for (EntityID id : childsB.value()) {
+                m_ecs.RemoveParent(id);
+                m_ecs.DeleteEntity(id);
+            }
+        }
+        childsB = m_ecs.GetChild(idB);
+
         int countA = 0, countB = 0; //number of children both id have
 
         if (childsA.has_value()) {

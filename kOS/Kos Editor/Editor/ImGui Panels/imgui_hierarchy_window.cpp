@@ -284,7 +284,7 @@ namespace gui
             // Covers the Collapsing Header Space
             if (ImGui::BeginDragDropTarget())
             {
-                if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload("Entity"))
+                if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload("EntityPayload"))
                 {
                     IM_ASSERT(payload->DataSize == sizeof(ecs::EntityID));
                     ecs::EntityID Id = *static_cast<ecs::EntityID *>(payload->Data);
@@ -368,10 +368,14 @@ namespace gui
                         if (m_prefabSceneMode)
                         {
                             m_ecs.SetParent(m_ecs.sceneMap.find(m_activeScene)->second.prefabID, Id);
+
+
+
                         }
                         else
                         {
                             m_ecs.RemoveParent(Id, true);
+
                         }
                     }
 
@@ -611,24 +615,21 @@ namespace gui
             ImGui::EndDragDropTarget();
         }
 
-        // no reordering of child prefabs
-        if (!transCom->m_haveParent || !m_ecs.GetComponent<ecs::NameComponent>(transCom->m_parentID)->isPrefab ||
-            m_ecs.GetComponent<ecs::NameComponent>(transCom->m_parentID)->prefabName != nc->prefabName || m_prefabSceneMode)
-        {
-            if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None))
-            {
-                auto *nc = m_ecs.GetComponent<ecs::NameComponent>(id);
-                if (nc)
-                {
-                    EntityPayload payload{id, nc->entityGUID};
 
-                    ImGui::SetDragDropPayload("EntityPayload", &payload, sizeof(EntityPayload));
-                    ImGui::Text("%s", nc->entityName.c_str());
-                    if (!nc->entityGUID.Empty())
-                        ImGui::Text("%s", nc->entityGUID.GetToString().c_str());
-                }
-                ImGui::EndDragDropSource();
+
+        if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None))
+        {
+            auto* nc = m_ecs.GetComponent<ecs::NameComponent>(id);
+            if (nc)
+            {
+                EntityPayload payload{ id, nc->entityGUID };
+
+                ImGui::SetDragDropPayload("EntityPayload", &payload, sizeof(EntityPayload));
+                ImGui::Text("%s", nc->entityName.c_str());
+                if (!nc->entityGUID.Empty())
+                    ImGui::Text("%s", nc->entityGUID.GetToString().c_str());
             }
+            ImGui::EndDragDropSource();
         }
 
         if (open)

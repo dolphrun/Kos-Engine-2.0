@@ -429,6 +429,37 @@ namespace ecs{
 		TransformComponent* childTransform = GetComponent<TransformComponent>(child);
 		childTransform->m_haveParent = false;
 		childTransform->m_parentID = -1;
+
+		
+
+		std::function<void(EntityID)> UpdatePrefabStatus = [&](EntityID id)
+		{
+			NameComponent* nc = GetComponent<NameComponent>(id);
+			if (nc->isPrefab) {
+				nc->isPrefab = false;
+				TransformComponent* tc = GetComponent<TransformComponent>(child);
+
+				auto childIds = GetChild(id);
+
+				if (childIds.has_value()) {
+					for (EntityID id : childIds.value()) {
+						UpdatePrefabStatus(id);
+					}
+				}
+
+			}
+			
+
+
+		};
+		
+		UpdatePrefabStatus(child);
+		
+
+		
+
+
+
 		//Updating Transformation Mtxs
 		if (updateTransform) {
 			childTransform->localTransform = childTransform->transformation;
