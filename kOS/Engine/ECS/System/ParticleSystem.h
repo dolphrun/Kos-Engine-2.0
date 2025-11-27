@@ -162,11 +162,11 @@ namespace ecs {
         void setTrailPoint(ParticleComponent* particle, const glm::vec3& start, const glm::vec3 end);
         void updateTrailEndPoint(ParticleComponent* particle, const glm::vec3& end);
 
-        void setSize(ParticleComponent* particle, const glm::vec3& start, const glm::vec3 end);
-        void setColor();
-        void setRotation();
-        void setVelocity();
-        void setForce();
+        void setSize(ParticleComponent* particle, const float& start, const float& end, bool enable);
+        void setColor(ParticleComponent* particle, const glm::vec4& start, const glm::vec4 end, bool enable);
+        void setRotation(ParticleComponent* particle, const glm::vec3& start, const glm::vec3 end, const glm::vec3 modifier, bool enable);
+        void setVelocityModifier(ParticleComponent* particle, const glm::vec3& velocity_Modifier, const Velocity_Mode mode, bool enable);
+        void setForce(ParticleComponent* particle, const glm::vec3& force, bool enable);
 
 
 

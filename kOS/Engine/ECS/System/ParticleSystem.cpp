@@ -905,6 +905,9 @@ namespace ecs {
     }
 
 
+    // ========================================
+    // Scripting Helper function
+    // ========================================
     void ParticleSystem::setTrailPoint(ParticleComponent* particle, const glm::vec3& start, const glm::vec3 end) {
         particle->trailingModule.startPoint = start;
         particle->trailingModule.endPoint = end;
@@ -912,4 +915,33 @@ namespace ecs {
     void ParticleSystem::updateTrailEndPoint(ParticleComponent* particle, const glm::vec3& end) {
         particle->trailingModule.endPoint = end;
     }
+
+    void ParticleSystem::setSize(ParticleComponent* particle, const float& start, const float& end, bool enable) {
+        particle->sizeModule.enabled = enable;
+        particle->sizeModule.start_Size = start;
+        particle->sizeModule.end_Size = end;
+    }
+    void ParticleSystem::setColor(ParticleComponent* particle, const glm::vec4& start, const glm::vec4 end, bool enable) {
+        particle->colorModule.enabled = enable;
+        particle->colorModule.start_Color = start;
+        particle->colorModule.end_Color = end;
+    }
+    void ParticleSystem::setRotation(ParticleComponent* particle, const glm::vec3& start, const glm::vec3 end, const glm::vec3 modifier, bool enable) {
+        particle->rotationModule.enabled = enable;
+        particle->rotationModule.start_Rotation = start;
+        particle->rotationModule.end_Rotation = end;
+        particle->rotationModule.rotation_Modifier = modifier;
+    }
+    void ParticleSystem::setVelocityModifier(ParticleComponent* particle, const glm::vec3& velocity_Modifier, const Velocity_Mode mode, bool enable) {
+        particle->velocityModule.enabled = enable;
+        particle->velocityModule.mode = mode;
+        particle->velocityModule.velocity_Modifier = velocity_Modifier;
+
+    }
+    void ParticleSystem::setForce(ParticleComponent* particle, const glm::vec3& force, bool enable) {
+        particle->forceModule.enabled = enable;
+        particle->forceModule.force = force;
+    }
+
+
 }
