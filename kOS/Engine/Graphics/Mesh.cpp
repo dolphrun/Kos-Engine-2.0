@@ -575,18 +575,18 @@ void DebugNavMesh::DrawMesh() {}
 
 void DebugNavMesh::DrawTri() {
     glBindVertexArray(vaoTri);
-    glDrawArrays(GL_TRIANGLES, 0, triVerts.size());
+    glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(triVerts.size()));
     glBindVertexArray(0);
 }
 
 void DebugNavMesh::DrawLine() {
     glBindVertexArray(vaoLines);
-    glDrawArrays(GL_LINES, 0, lineVerts.size());
+    glDrawArrays(GL_LINES, 0, static_cast<GLsizei>(lineVerts.size()));
     glBindVertexArray(0);
 }
 
 void DebugNavMesh::DrawVertex() {
     glBindVertexArray(vaoPoints);
-    glDrawArrays(GL_POINTS, 0, pointVerts.size());
+    glDrawArrays(GL_POINTS, 0, static_cast<GLsizei>(pointVerts.size()));
     glBindVertexArray(0);
 }

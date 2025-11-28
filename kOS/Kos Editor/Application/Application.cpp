@@ -96,7 +96,11 @@ namespace Application {
         //resourceManager->GetResource<R_Scene>(windowData.startScene);
         LOGGING_INFO("Load Asset Successful");
 
-        
+        /*--------------------------------------------------------------
+           INITIALIZE NAVMESH AND NAVMESHMANAGER
+        --------------------------------------------------------------*/
+        navMeshManager.Init();
+
         /*--------------------------------------------------------------
             INITIALIZE EDITOR // LAST INIT
          --------------------------------------------------------------*/
@@ -176,14 +180,17 @@ namespace Application {
                     UPDATE Render Pipeline
                 --------------------------------------------------------------*/
                 graphicsManager.gm_Update();
-                navMeshManager.Update();
+
+                /*--------------------------------------------------------------
+                    UPDATE NavMesh
+                --------------------------------------------------------------*/
+                navMeshManager.Update(deltaTime);
 
                 /*--------------------------------------------------------------
                     Execute Render Pipeline
                 --------------------------------------------------------------*/
                 graphicsManager.gm_Render();
                 
-
                 /*--------------------------------------------------------------
                     Draw IMGUI FRAME
                 --------------------------------------------------------------*/
@@ -193,8 +200,6 @@ namespace Application {
                    Reset Framebuffer
                 --------------------------------------------------------------*/
                 graphicsManager.gm_ResetFrameBuffer();
-
-
 
                 /*--------------------------------------------------------------
                     SceneManager EndFrame
@@ -228,5 +233,4 @@ namespace Application {
 
         return 0;
 	}
-
 }

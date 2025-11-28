@@ -284,7 +284,7 @@ namespace gui {
 			onSaveAll.Invoke("");
 		}
 
-		if (m_input.currentMousePos != m_input.prevMousePos && m_input.cursorHidden) {
+		if (m_input.currentMousePos != m_input.prevMousePos && !m_input.cursorHidden) {
 			double mouseX, mouseY;
 			int winX, winY;
 			glfwGetWindowPos(m_window.window, &winX, &winY);

@@ -53,9 +53,6 @@ void gui::ImGuiHandler::DrawComponentWindow()
             initComponentName = true;
         }
 
-
-       
-
         int ComponentTypeIndex = 0;
         if (ImGui::Combo("##ADDCOMPONENT", &ComponentTypeIndex, componentNames.data(), static_cast<int>(componentNames.size()))) {
             std::string componentName = componentNames[ComponentTypeIndex];

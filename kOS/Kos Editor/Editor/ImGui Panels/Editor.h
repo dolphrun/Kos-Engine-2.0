@@ -60,7 +60,7 @@ namespace gui {
 		ScriptManager& m_scriptManager;
 		Peformance& m_performance;
         audio::AudioManager& m_audioManager;
-        navmesh::NavMeshManager& m_navMeshManager;
+        NavMeshManager& m_navMeshManager;
     public:
         /******************************************************************/
         /*!
@@ -73,7 +73,7 @@ namespace gui {
             ecs::ECS& ecs, scenes::SceneManager& sm,  serialization::Serialization& slm, 
             Fields& field, Input::InputSystem& input, physics::PhysicsManager& pm, 
             layer::LayerStack& ls, ResourceManager& rm, ScriptManager& scriptm, 
-            Peformance& peformance, audio::AudioManager& audioM, navmesh::NavMeshManager& navmesh):
+            Peformance& peformance, audio::AudioManager& audioM, NavMeshManager& navmesh):
             m_window(window), 
             m_assetManager(am),
             m_graphicsManager(gm),
@@ -205,6 +205,7 @@ namespace gui {
         void ScriptHotReload();
 
         void DrawNavMeshWindow();
+
         /***********PreferenceTab*************/
         bool openPreferencesTab = false;
         /******************************/

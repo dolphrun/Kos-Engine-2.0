@@ -27,10 +27,10 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Physics/PhysicsManager.h"
 #include "DeSerialization/json_handler.h"
 #include "Reflection/Field.h"
+#include "Pathfinding/NavMesh.h"
 #include "ECS/ecs.h"
 #include "ECS/Layers.h"
 #include "Audio/AudioManager.h"
-#include "Pathfinding/NavMesh.h"
 
 /******************************************************************/
 /*!
@@ -53,13 +53,13 @@ namespace Application {
 			, resourceManager()
 			, physicsManager()
 			, graphicsManager()
-			, navMeshManager(ecs, resourceManager, graphicsManager)
+			, navMeshManager(ecs, resourceManager, graphicsManager, sceneManager)
 			, ecs(peformance, graphicsManager, resourceManager, input, physicsManager, scriptManager, audioManager)
 			, lvWindow(ecs, input)
 			, layersManager(ecs)
 			, serialization(ecs)
 			, sceneManager(ecs, serialization, resourceManager)
-			, scriptManager(ecs, sceneManager, input, physicsManager, resourceManager, reflectionField)
+			, scriptManager(ecs, sceneManager, input, physicsManager, resourceManager, reflectionField, navMeshManager)
 			, audioManager()
 		{
 		}
@@ -85,7 +85,7 @@ namespace Application {
 		Fields reflectionField;
 		layer::LayerStack layersManager;
 		audio::AudioManager audioManager;
-		navmesh::NavMeshManager navMeshManager;
+		NavMeshManager navMeshManager;
 	};
 }
 
