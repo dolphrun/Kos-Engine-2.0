@@ -160,7 +160,7 @@ namespace prefab
             const auto& sceneData = m_ecs.sceneMap.at(prefabName);
             ecs::EntityID prefabID = sceneData.prefabID;
 
-            DeepUpdatePrefab(prefabID, id);
+            DeepUpdatePrefab(id, prefabID);
         }
     }
 
@@ -174,7 +174,7 @@ namespace prefab
             ecs::NameComponent* nc = m_ecs.GetComponent<ecs::NameComponent>(id);
             ecs::TransformComponent* tc = m_ecs.GetComponent<ecs::TransformComponent>(id);
             if (!(tc->m_haveParent) && nc->isPrefab && (nc->prefabName == prefabSceneName)) {
-                DeepUpdatePrefab(id, prefabID);
+                DeepUpdatePrefab(prefabID, id);
             }
         }
     }
