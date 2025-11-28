@@ -462,19 +462,33 @@ public:
 				std::shared_ptr<R_Scene> starfall = resource->GetResource<R_Scene>(acidLightningPrefab);
 				
 				if (starfall) {
+					// Update later
+					//std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+					//ecs::EntityID starfallID = DuplicatePrefabIntoScene<R_Scene>(currentScene, acidLightningPrefab);
+				
+					//if (auto* starfallTransform = ecsPtr->GetComponent<TransformComponent>(starfallID)) {
+					//	starfallTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
+					//}
+				
+					//glm::vec3 dir = GetPlayerCameraFrontDirection();
+					//for (int i = 0; i < ecsPtr->GetComponent<TransformComponent>(starfallID)->m_childID.size(); ++i) {
+					//	// TODO: RANDOMIZE THE DIRECTION OF THE STARFALL PROJECTILE HERE OR SOMETHING
+					//	ecsPtr->GetComponent<LightningAcidPowerupManagerScript>(ecsPtr->GetComponent<TransformComponent>(starfallID)->m_childID[i])->direction = dir;
+					//}
+				
+					//playerPowerupHeld = Powerup::NONE;
+
 					std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-					ecs::EntityID starfallID = DuplicatePrefabIntoScene<R_Scene>(currentScene, acidLightningPrefab);
-				
-					if (auto* starfallTransform = ecsPtr->GetComponent<TransformComponent>(starfallID)) {
-						starfallTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
+					ecs::EntityID fireballID = DuplicatePrefabIntoScene<R_Scene>(currentScene, firePrefab);
+
+					if (auto* fireballTransform = ecsPtr->GetComponent<TransformComponent>(fireballID)) {
+						fireballTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
 					}
-				
-					glm::vec3 dir = GetPlayerCameraFrontDirection();
-					for (int i = 0; i < ecsPtr->GetComponent<TransformComponent>(starfallID)->m_childID.size(); ++i) {
-						// TODO: RANDOMIZE THE DIRECTION OF THE STARFALL PROJECTILE HERE OR SOMETHING
-						ecsPtr->GetComponent<LightningAcidPowerupManagerScript>(ecsPtr->GetComponent<TransformComponent>(starfallID)->m_childID[i])->direction = dir;
+
+					if (auto* fireballScript = ecsPtr->GetComponent<FirePowerupManagerScript>(fireballID)) {
+						fireballScript->direction = GetPlayerCameraFrontDirection();
 					}
-				
+
 					playerPowerupHeld = Powerup::NONE;
 				}
 			}

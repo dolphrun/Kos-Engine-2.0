@@ -20,7 +20,7 @@
                     "isSFX": true,
                     "use3D": true,
                     "minDistance": 1.0,
-                    "maxDistance": 20.0,
+                    "maxDistance": 100.0,
                     "sourceType": 0,
                     "audioBankGUID": "00000000-0000-0000-0000-000000000000",
                     "studioEventPath": ""
@@ -36,7 +36,7 @@
                     "isSFX": true,
                     "use3D": true,
                     "minDistance": 1.0,
-                    "maxDistance": 20.0,
+                    "maxDistance": 100.0,
                     "sourceType": 0,
                     "audioBankGUID": "00000000-0000-0000-0000-000000000000",
                     "studioEventPath": ""
@@ -52,7 +52,7 @@
                     "isSFX": true,
                     "use3D": true,
                     "minDistance": 1.0,
-                    "maxDistance": 20.0,
+                    "maxDistance": 100.0,
                     "sourceType": 0,
                     "audioBankGUID": "00000000-0000-0000-0000-000000000000",
                     "studioEventPath": ""

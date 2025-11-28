@@ -3,18 +3,7 @@
 namespace audio {
     AudioManager::AudioManager() { s_fmod = nullptr; s_paused = false; }
 
-    AudioManager::~AudioManager(){
-        if (m_studio) {
-            m_studio->unloadAll();
-            m_studio->release();
-            m_studio = nullptr;
-            s_fmod = nullptr; 
-        }
-        else if (s_fmod) {
-            s_fmod->release();
-            s_fmod = nullptr;
-        }
-    }
+    AudioManager::~AudioManager(){}
 
     void AudioManager::Init() {
 

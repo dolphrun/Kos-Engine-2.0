@@ -202,7 +202,7 @@ namespace Application {
         physicsManager.Shutdown();
         lvWindow.CleanUp();
         glfwTerminate();
-
+        
         LOGGING_INFO("Application Closed");
 
         return 0;

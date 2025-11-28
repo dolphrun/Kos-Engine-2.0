@@ -1,10 +1,70 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "83dbb9b0-a6fd-1c40-3cf6-3002eb56764f",
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": true,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": true,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "ef772eb3-1923-0835-dd9b-683167c10659",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": true,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
+        },
         "BulletLogic": {
             "bulletDamage": 5,
             "bulletSpeed": 200.0,
-            "enemyDeathSfxGUID": "314ec378-2be3-9009-8894-a86884eb7ccf"
+            "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+            "enemyDeathSfxGUID_2": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+            "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659"
         },
         "MaterialComponent": {
             "materialGUID": [
