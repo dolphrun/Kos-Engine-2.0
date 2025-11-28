@@ -275,7 +275,8 @@
                 "entityGUID": "6e5fba01-5840-6878-28b2-c1ca60a7a7a4",
                 "GameManager": {
                     "enemyObjectPrefab": "a3a69a24-9a78-f0fd-f0a9-744fc055ecb2",
-                    "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1"
+                    "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1",
+                    "gameBGM": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "Game Manager",
@@ -394,9 +395,13 @@
                     "lightningPrefab": "ea36b838-cef9-7c8c-584a-29654652024a",
                     "fireAcidPrefab": "465c7d56-0555-0051-8bbe-9d7b2b4e8ede",
                     "fireLightningPrefab": "0e0349c9-02d8-f6b8-df3c-f7f6943e81bf",
-                    "acidLightningPrefab": "4c9702d6-127d-fc41-6704-bc63dc2b0998",
+                    "acidLightningPrefab": "a489a9c4-2ad1-24e0-9ad5-f1b1ef81e4b7",
                     "gunSfxGUID_1": "d98d60d5-127f-8dc2-b051-dc6d6b883682",
-                    "gunSfxGUID_2": "f73fbd2e-15e7-5d4b-1662-91a2f4132644"
+                    "gunSfxGUID_2": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
+                    "pauseMenuManagerObject": "00000000-0000-0000-0000-000000000000",
+                    "healthUIObject": "00000000-0000-0000-0000-000000000000",
+                    "loseScreenCanvasObject": "00000000-0000-0000-0000-000000000000",
+                    "winScreenCanvasObject": "00000000-0000-0000-0000-000000000000"
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,
