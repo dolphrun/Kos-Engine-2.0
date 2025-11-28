@@ -153,8 +153,8 @@ class R_Model : public Resource {
 	};
 
 public:
-
 	using Resource::Resource;
+	class Mesh;
 
 	void Load() override;
 
@@ -176,6 +176,7 @@ public:
 	glm::mat4 GetGlobalInverse() const { return globalInverseTransform; }
 	void LoadMesh(std::string meshFile);
 
+	const std::vector<Mesh>& GetMeshes() const { return meshes; }
 	/// <summary>
 	/// TEMPORARY HERE
 	/// </summary>

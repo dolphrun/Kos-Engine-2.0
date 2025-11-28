@@ -89,7 +89,7 @@ namespace scenes {
 		//void AssignEntityNewScene(const std::string& scene, ecs::EntityID id);
 		//EVENTS
 
-		Delegate<const SceneData&> onSceneLoaded;
+		Delegate<const std::string&> onSceneLoaded;
 
 
 

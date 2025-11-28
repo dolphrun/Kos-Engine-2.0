@@ -10,22 +10,60 @@
         "AudioComponent": {
             "audioFiles": [
                 {
-                    "audioGUID": "24a5edf7-efac-9bb6-0644-ef7909f212bc",
+                    "audioGUID": "00000000-0000-0000-0000-000000000000",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": false,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 1,
+                    "audioBankGUID": "d62d4e85-1ba3-cbe8-c8de-86cccba247b2",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "00000000-0000-0000-0000-000000000000",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": false,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 1,
+                    "audioBankGUID": "fe4b43bc-ca3e-ee63-00ae-a1fcc7eaafc7",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "00000000-0000-0000-0000-000000000000",
                     "volume": 1.0,
                     "loop": true,
                     "playOnStart": true,
                     "hasPlayed": false,
                     "pan": 0.0,
                     "isBGM": false,
-                    "isSFX": true,
+                    "isSFX": false,
                     "use3D": true,
                     "minDistance": 1.0,
-                    "maxDistance": 20.0
+                    "maxDistance": 20.0,
+                    "sourceType": 1,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": "event:/New Event"
                 }
             ]
         },
         "AudioScript": {
-            "GUID": "00000000-0000-0000-0000-000000000000"
+            "GUID": "00000000-0000-0000-0000-000000000000",
+            "elapsedTime": 0.0,
+            "speed": 1.0,
+            "radius": 5.0
         },
         "NameComponent": {
             "entityName": "Audio Test",
@@ -74,6 +112,9 @@
     },
     {
         "entityGUID": "35a9dd7e-89de-2059-ed51-1271ff22898e",
+        "AudioListenerComponent": {
+            "active": true
+        },
         "CameraComponent": {
             "cameraType": 0,
             "fov": 45.0,
@@ -103,9 +144,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": -11.001245498657227,
+                    "x": 0.0,
                     "y": 0.0,
-                    "z": 33.099998474121094
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -120,9 +161,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": -11.001245498657227,
+                    "x": 0.0,
                     "y": 0.0,
-                    "z": 33.099998474121094
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,

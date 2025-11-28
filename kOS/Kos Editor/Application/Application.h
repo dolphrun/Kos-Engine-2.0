@@ -53,17 +53,17 @@ namespace Application {
 			, reflectionField()
 			, resourceManager()
 			, physicsManager()
-			, graphicsManager() 
-			, ecs(peformance, graphicsManager, resourceManager, input, physicsManager, scriptManager,audioManager)
+			, graphicsManager()
+			, ecs(peformance, graphicsManager, resourceManager, input, physicsManager, scriptManager, audioManager)
 			, lvWindow(ecs, input)
 			, layersManager(ecs)
 			, serialization(ecs)
 			, sceneManager(ecs, serialization, resourceManager)
-			, scriptManager(ecs, sceneManager, input, physicsManager,resourceManager, reflectionField)
+			, navMeshManager(ecs, resourceManager, graphicsManager, sceneManager)
+			, scriptManager(ecs, sceneManager, input, physicsManager, resourceManager, reflectionField, navMeshManager)
 			, audioManager()
 			, assetManager()
-			, Editor(lvWindow, assetManager, graphicsManager, ecs, sceneManager, serialization, reflectionField, input, physicsManager, layersManager, resourceManager, scriptManager, peformance, audioManager)
-		
+			, Editor(lvWindow, assetManager, graphicsManager, ecs, sceneManager, serialization, reflectionField, input, physicsManager, layersManager, resourceManager, scriptManager, peformance, audioManager, navMeshManager)
 		{
 		}
 		~Application() = default;
@@ -89,6 +89,7 @@ namespace Application {
 		layer::LayerStack layersManager;
 		AssetManager assetManager;
 		audio::AudioManager audioManager;
+		NavMeshManager navMeshManager;
 		gui::ImGuiHandler Editor;
 
 		

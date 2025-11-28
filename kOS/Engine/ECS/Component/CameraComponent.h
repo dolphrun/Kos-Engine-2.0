@@ -51,7 +51,8 @@ namespace ecs {
 		bool active{ false };
         bool culling{ false };
         layer::LAYERS layer;
-		REFLECTABLE(CameraComponent, cameraType, fov, nearPlane, farPlane, size, target, active,culling,layer);
+        int renderOrder{ 0 };
+		REFLECTABLE(CameraComponent, cameraType, fov, nearPlane, farPlane, size, target, active,culling,layer,renderOrder);
     };
 
 }

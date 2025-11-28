@@ -37,6 +37,11 @@ namespace ecs {
 		EDGE        
 	};
 
+	enum ParticleFade {
+		Color,
+		Lifetime
+	};
+
 	struct ShapeModule {
 		EmissionShape type = EmissionShape::CONE;
 		glm::vec3 emission_Direction = glm::vec3(0.f, 1.f, 0.f);
@@ -220,6 +225,8 @@ namespace ecs {
 
 		PlayState playback_State = PlayState::PLAY;
 
+		ParticleFade particleFade = ParticleFade::Lifetime;
+
 		//Color over lifetime
 		ColorOverLifetimeModule colorModule;
 
@@ -264,7 +271,7 @@ namespace ecs {
 		REFLECTABLE(ParticleComponent, particleType, duration, looping, play_On_Awake, 
 					start_Lifetime, end_Lifetime, lifetime_Random_Enable,
 					textureGUID,
-					start_Velocity, playback_State,
+					start_Velocity, playback_State, particleFade,
 					velocityModule,forceModule, shapeModule, colorModule, sizeModule, rotationModule, gravityModule, trailingModule, noiseModule,
 					emissionInterval);
 	};

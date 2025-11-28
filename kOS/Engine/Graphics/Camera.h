@@ -32,7 +32,7 @@ class CameraData {
 public:  
 
 	CameraData() = default;
-	CameraData(float fov, float nearPlane, float farPlane, glm::vec2 size, glm::vec3 position,glm::vec3 rot,glm::vec3 target, bool active,bool culling, layer::LAYERS layer);
+	CameraData(float fov, float nearPlane, float farPlane, glm::vec2 size, glm::vec3 position,glm::vec3 rot,glm::vec3 target, bool active,bool culling, layer::LAYERS layer,int renderOrder);
 
 	virtual glm::mat4 CalculateViewMtx();
 	glm::mat4 CalculatePerspMtx();
@@ -56,6 +56,7 @@ public:
 	bool active{ false };
 	bool culling{ false };
 	layer::LAYERS layer;
+	int renderOrder{ 0 };
 	glm::vec3 target{ 0.f };   // Target point that the camera is looking at
 	float r{ glm::length(position) };
 	float alpha{ glm::asin(position.y / r) };

@@ -98,6 +98,7 @@ namespace gui {
 		RegisterComponent<ecs::CharacterControllerComponent>();
 		RegisterComponent<ecs::ScriptComponent>();
 		RegisterComponent<ecs::AudioComponent>();
+		RegisterComponent<ecs::AudioListenerComponent>();
 		RegisterComponent<ecs::OctreeGeneratorComponent>();
 		RegisterComponent<ecs::PathfinderComponent>();
 		RegisterComponent<ecs::PathfinderTargetComponent>();
@@ -142,7 +143,7 @@ namespace gui {
 		openAndLoadSceneDialog();
 
 		//set style
-		SetStyle();
+		//SetStyle();
 
 		//set first active scene
 		for (auto& scene : m_ecs.sceneMap) {
@@ -230,6 +231,7 @@ namespace gui {
 				DrawMaterialWindow();
 				DrawBakedWindow();
 				DrawAnimatorControllerWindow();
+				DrawNavMeshWindow();
 			}
 
 		}
@@ -294,7 +296,7 @@ namespace gui {
 			onSaveAll.Invoke("");
 		}
 
-		if (m_input.currentMousePos != m_input.prevMousePos && m_input.cursorHidden) {
+		if (m_input.currentMousePos != m_input.prevMousePos && !m_input.cursorHidden) {
 			double mouseX, mouseY;
 			int winX, winY;
 			glfwGetWindowPos(m_window.window, &winX, &winY);

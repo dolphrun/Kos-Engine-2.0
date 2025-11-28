@@ -18,15 +18,68 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "AudioSystem.h"
 #include "Resources/ResourceManager.h"
 #include "Audio/AudioManager.h"
+#include "AudioListenerSystem.h"
 
 namespace ecs {
 
 	void AudioSystem::Init() {
+		m_audioManager.Init();
+
+		auto* studio = m_audioManager.GetStudio();
+		if (!studio) {
+			std::cout << "[AudioSystem] Studio system is null in Init()\n";
+
+			return;
+		}
+
+		const auto& entities = m_entities.Data();
+
+		for (EntityID id : entities) {
+			auto* audioComp = m_ecs.GetComponent<AudioComponent>(id);
+			if (!audioComp) continue;
+
+			for (auto& af : audioComp->audioFiles) {
+
+				if (af.sourceType != AudioSourceType::Studio)
+					continue;
+
+				if (af.audioBankGUID.Empty())
+					continue;
+
+				// Load bank 
+				auto bankRes = m_resourceManager.GetResource<R_AudioStudio>(af.audioBankGUID);
+				if (!bankRes) {
+					std::cout << "[AudioSystem] No R_AudioStudio resource for bank GUID\n";
+					continue;
+				}
+				bankRes->SetStudio(studio);
+
+				if (!bankRes->GetBank()) {
+					bankRes->Load();
+				}
+			}
+		}
 	}
 
 	inline FMOD_VECTOR ToF(const glm::vec3& v) { return FMOD_VECTOR{ v.x, v.y, v.z }; }
 
 	void AudioSystem::Update() {
+
+		//const auto& listenerEntities = m_ecs.GetComponentsEnties("AudioListenerComponent");
+
+		//for (EntityID id : listenerEntities) {
+		//	auto* listener = m_ecs.GetComponent<AudioListenerComponent>(id);
+		//	auto* transform = m_ecs.GetComponent<TransformComponent>(id);
+
+		//	if (!listener || !transform) continue;
+		//	if (!listener->active)       continue;
+
+		//	m_listenerPos = transform->WorldTransformation.position;
+
+		//	break;
+		//}
+
+		//ecs::UpdateListenerFromComponents(m_ecs, m_listenerPos);
 
 		if (auto* core = m_audioManager.GetCore()) {
 			FMOD_VECTOR p = ToF(m_listenerPos);
@@ -34,6 +87,16 @@ namespace ecs {
 			FMOD_VECTOR f = ToF(m_listenerFwd);
 			FMOD_VECTOR u = ToF(m_listenerUp);
 			core->set3DListenerAttributes(0, &p, &v, &f, &u);
+		}
+
+		if (auto* studio = m_audioManager.GetStudio()) {
+			FMOD_3D_ATTRIBUTES lis{};
+			lis.position = ToF(m_listenerPos);
+			lis.forward = ToF(m_listenerFwd);
+			lis.up = ToF(m_listenerUp);
+			lis.velocity = FMOD_VECTOR{ 0.0f, 0.0f, 0.0f };
+
+			studio->setListenerAttributes(0, &lis);
 		}
 
 		const auto& entities = m_entities.Data();
@@ -49,15 +112,107 @@ namespace ecs {
 			//Loop through all audio files
 			for (auto& af : audioComp->audioFiles) {
 
-				if (af.use3D && transform && af.channel) {
+				if (af.sourceType == AudioSourceType::Core && af.use3D && transform && af.channel) {
 					FMOD::Channel* ch = static_cast<FMOD::Channel*>(af.channel);
 					glm::vec3 pos = transform->WorldTransformation.position;
+
+					std::cout << "[AudioSystem] 3D source '"
+						<< (nameComp ? nameComp->entityName : "<no name>")
+						<< "' pos = (" << pos.x << ", " << pos.y << ", " << pos.z << ")\n";
+
 					FMOD_VECTOR fpos{ pos.x, pos.y, pos.z };
 					FMOD_VECTOR fvel{ 0,0,0 };
 					ch->set3DAttributes(&fpos, &fvel);
 				}
 
+				//update audio volume
+				if (af.sourceType == AudioSourceType::Core && af.channel) {
+					FMOD::Channel* ch = static_cast<FMOD::Channel*>(af.channel);
+
+					bool isPlaying = false;
+					if (ch->isPlaying(&isPlaying) == FMOD_OK && isPlaying) {
+						if (af.volume != af.lastVolume) {
+							ch->setVolume(std::clamp(af.volume, 0.0f, 1.0f));
+							af.lastVolume = af.volume;
+						}
+					}
+
+					else {
+						af.channel = nullptr;
+					}
+				}
+
+				if (af.sourceType == AudioSourceType::Studio && af.studioInstance) {
+					auto* inst = static_cast<FMOD::Studio::EventInstance*>(af.studioInstance);
+
+					FMOD_STUDIO_PLAYBACK_STATE state{};
+					if (inst->getPlaybackState(&state) != FMOD_OK ||
+						state == FMOD_STUDIO_PLAYBACK_STOPPED) {
+						inst->release();
+
+						af.studioInstance = nullptr;
+					}
+					else if (af.volume != af.lastVolume) {
+						inst->setVolume(std::clamp(af.volume, 0.0f, 1.0f));
+						af.lastVolume = af.volume;
+					}
+
+				}
 				if (!af.requestPlay) continue;
+
+				if (af.sourceType == AudioSourceType::Studio) {
+
+					auto* studio = m_audioManager.GetStudio();
+					if (!studio) {
+						af.requestPlay = false; 
+						continue;
+					}
+
+					if (af.studioEventPath.empty()) {
+						af.requestPlay = false;
+						continue;
+					}
+
+					FMOD::Studio::EventDescription* desc = nullptr;
+					FMOD_RESULT ev = studio->getEvent(af.studioEventPath.c_str(), &desc);
+					if (ev != FMOD_OK || !desc) {
+						std::cout << "[AudioSystem] getEvent FAILED for '"
+							<< af.studioEventPath << "' result = " << ev << "\n";
+						af.requestPlay = false;
+						continue;
+					}
+
+					FMOD::Studio::EventInstance* inst = nullptr;
+					if (desc->createInstance(&inst) != FMOD_OK || !inst) {
+						af.requestPlay = false;
+						continue;
+					}
+
+					// Volume
+					inst->setVolume(std::clamp(af.volume, 0.0f, 1.0f));
+
+					if (af.use3D && transform) {
+						const glm::vec3 pos = transform->WorldTransformation.position;
+
+						FMOD_3D_ATTRIBUTES attrs{};
+						attrs.position = FMOD_VECTOR{ pos.x, pos.y, pos.z };
+						attrs.forward = FMOD_VECTOR{ 0.0f, 0.0f, 1.0f };
+						attrs.up = FMOD_VECTOR{ 0.0f, 1.0f, 0.0f };
+						attrs.velocity = FMOD_VECTOR{ 0.0f, 0.0f, 0.0f };
+
+						inst->set3DAttributes(&attrs);
+					}
+
+					inst->start();
+					//inst->release();
+
+					af.studioInstance = inst;
+					af.lastVolume = af.volume;
+					af.hasPlayed = true;
+					af.requestPlay = false;
+					continue;
+				}
+
 				if (af.audioGUID.Empty()) continue;
 
 				//Get GUID
@@ -131,9 +286,8 @@ namespace ecs {
 		}
 
 		//Update sound every frame
-		if (auto* core = m_audioManager.GetCore()) {
-			core->update();
-		}
+		m_audioManager.Update();
+
 	}
 
 	void AudioSystem::SetListener(const glm::vec3& pos,

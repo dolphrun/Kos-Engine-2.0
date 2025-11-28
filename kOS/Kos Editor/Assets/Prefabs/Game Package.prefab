@@ -70,7 +70,8 @@
                     },
                     "active": false,
                     "culling": true,
-                    "layer": 1
+                    "layer": 1,
+                    "renderOrder": 0
                 },
                 "NameComponent": {
                     "entityName": "Player Arm Model Camera",
@@ -274,7 +275,8 @@
                 "entityGUID": "6e5fba01-5840-6878-28b2-c1ca60a7a7a4",
                 "GameManager": {
                     "enemyObjectPrefab": "a3a69a24-9a78-f0fd-f0a9-744fc055ecb2",
-                    "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1"
+                    "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1",
+                    "gameBGM": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "Game Manager",
@@ -323,6 +325,42 @@
             },
             {
                 "entityGUID": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "d98d60d5-127f-8dc2-b051-dc6d6b883682",
+                            "volume": 0.30000001192092896,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
+                            "volume": 0.30000001192092896,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
                 "CapsuleColliderComponent": {
                     "isTrigger": false,
                     "capsule": {
@@ -357,8 +395,13 @@
                     "lightningPrefab": "ea36b838-cef9-7c8c-584a-29654652024a",
                     "fireAcidPrefab": "465c7d56-0555-0051-8bbe-9d7b2b4e8ede",
                     "fireLightningPrefab": "0e0349c9-02d8-f6b8-df3c-f7f6943e81bf",
-                    "acidLightningPrefab": "4c9702d6-127d-fc41-6704-bc63dc2b0998",
-                    "gunSfxGUID": "5bdf561d-0450-1649-f051-3a99755974cc"
+                    "acidLightningPrefab": "a489a9c4-2ad1-24e0-9ad5-f1b1ef81e4b7",
+                    "gunSfxGUID_1": "d98d60d5-127f-8dc2-b051-dc6d6b883682",
+                    "gunSfxGUID_2": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
+                    "pauseMenuManagerObject": "00000000-0000-0000-0000-000000000000",
+                    "healthUIObject": "00000000-0000-0000-0000-000000000000",
+                    "loseScreenCanvasObject": "00000000-0000-0000-0000-000000000000",
+                    "winScreenCanvasObject": "00000000-0000-0000-0000-000000000000"
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,
@@ -420,6 +463,9 @@
                 "children": [
                     {
                         "entityGUID": "401c12be-d52c-d521-768f-a871850b8151",
+                        "AudioListenerComponent": {
+                            "active": true
+                        },
                         "CameraComponent": {
                             "cameraType": 0,
                             "fov": 85.0,
@@ -436,7 +482,8 @@
                             },
                             "active": false,
                             "culling": false,
-                            "layer": 0
+                            "layer": 0,
+                            "renderOrder": 0
                         },
                         "NameComponent": {
                             "entityName": "Player Camera",

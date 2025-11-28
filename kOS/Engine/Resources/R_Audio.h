@@ -19,8 +19,14 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Config/pch.h"
 #include "Resource.h"
 #include <FMOD/fmod.hpp>
+#include <FMOD/fmod_studio.hpp>
 
 namespace FMOD { class System; class Sound; }
+
+//enum class AudioAssetType {
+//    CoreSound,  
+//    StudioBank 
+//};
 
 class R_Audio : public Resource {
 public:
@@ -33,13 +39,25 @@ public:
 
     FMOD::Sound* GetSound()  const { return m_sound; }
     FMOD::System* GetSystem() const { return m_system; }
-
     void SetSystem(FMOD::System* sys) { m_system = sys; }
+
+    //FMOD::Studio::Bank* GetBank()   const { return m_bank; }
+    //FMOD::Studio::System* GetStudio() const { return m_studio; }
+    //void SetStudio(FMOD::Studio::System* studio) { m_studio = studio; }
+
+    //AudioAssetType GetType() const { return m_type; }
+
 
     REFLECTABLE(R_Audio);
 
 private:
+    //AudioAssetType m_type = AudioAssetType::CoreSound;
+
     FMOD::System* m_system = nullptr;        
     FMOD::Sound* m_sound = nullptr;       
+
+    //FMOD::Studio::System* m_studio = nullptr;
+    //FMOD::Studio::Bank* m_bank = nullptr;
+
     unsigned int  m_createFlags = 0;
 };

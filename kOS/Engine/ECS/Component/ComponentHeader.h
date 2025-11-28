@@ -5,6 +5,7 @@
 #include "SpriteComponent.h"
 #include "CameraComponent.h"
 #include "AudioComponent.h"
+#include "AudioListenerComponent.h"
 #include "TextComponent.h"
 #include "CanvasRendererComponent.h"
 #include "MeshFilterComponent.h"

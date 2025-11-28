@@ -33,11 +33,11 @@ void main()
 {          
             if(vTexture < 32){
                 vec4 texColor = texture(textures[vTexture], TexCoords) * vColor;
-                gAlbedoSpec.rgb = texColor.rgb;
+                gAlbedoSpec = texColor;
                 gMaterial.b=shaderType;
             } else{
                 
-                gAlbedoSpec.rgb = vColor.rgb;
+                gAlbedoSpec = vColor;
                 gMaterial.b=shaderType;
             }
 }

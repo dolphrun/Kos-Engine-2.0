@@ -37,6 +37,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Scripting/ScriptManager.h"
 #include "Debugging/Performance.h"
 #include "Audio/AudioManager.h"
+#include "Pathfinding/NavMesh.h"
 
 namespace gui {
     
@@ -60,8 +61,7 @@ namespace gui {
 		ScriptManager& m_scriptManager;
 		Peformance& m_performance;
         audio::AudioManager& m_audioManager;
-
-       
+        NavMeshManager& m_navMeshManager;
 
     public:
         /******************************************************************/
@@ -74,7 +74,8 @@ namespace gui {
         ImGuiHandler(Application::AppWindow& window, AssetManager& am, GraphicsManager& gm, 
             ecs::ECS& ecs, scenes::SceneManager& sm,  serialization::Serialization& slm, 
             Fields& field, Input::InputSystem& input, physics::PhysicsManager& pm, 
-            layer::LayerStack& ls, ResourceManager& rm, ScriptManager& scriptm, Peformance& peformance, audio::AudioManager& audioM):
+            layer::LayerStack& ls, ResourceManager& rm, ScriptManager& scriptm, 
+            Peformance& peformance, audio::AudioManager& audioM, NavMeshManager& navmesh):
             m_window(window), 
             m_assetManager(am),
             m_graphicsManager(gm),
@@ -89,7 +90,8 @@ namespace gui {
 			m_resourceManager(rm),
 			m_scriptManager(scriptm),
 			m_performance(peformance),
-            m_audioManager(audioM)
+            m_audioManager(audioM),
+            m_navMeshManager(navmesh)
         {
 
 
@@ -206,6 +208,8 @@ namespace gui {
         void ShutdownAnimatorLayout();
 
         void ScriptHotReload();
+
+        void DrawNavMeshWindow();
 
         /***********PreferenceTab*************/
         bool openPreferencesTab = false;

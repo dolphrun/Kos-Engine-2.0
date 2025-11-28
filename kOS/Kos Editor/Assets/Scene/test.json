@@ -44,7 +44,8 @@
             "entityTag": "Default",
             "isPrefab": false,
             "prefabName": "",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -98,7 +99,8 @@
             "entityTag": "Default",
             "isPrefab": false,
             "prefabName": "",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "SkinnedMeshRendererComponent": {
             "skinnedMeshGUID": "71cf2a25-5f6e-7b8a-c908-f0c9765e15ba",
@@ -159,7 +161,8 @@
             "entityTag": "Default",
             "isPrefab": false,
             "prefabName": "",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "TransformComponent": {
             "WorldTransformation": {
