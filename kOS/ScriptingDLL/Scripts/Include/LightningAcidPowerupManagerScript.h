@@ -17,9 +17,24 @@ public:
 	utility::GUID enemyDeathSfxGUID_3;
 	std::vector<utility::GUID> enemyDeathSfxGUIDs;
 
-	void Start() override {
-		// ADD SFX OF STARFALL HERE
+	utility::GUID starFallSfxGUID;
 
+	void Start() override {
+		enemyDeathSfxGUIDs.clear();
+		if (!enemyDeathSfxGUID_1.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_1);
+		if (!enemyDeathSfxGUID_2.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_2);
+		if (!enemyDeathSfxGUID_3.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_3);
+
+		// ADD SFX OF STARFALL HERE - Code here but need adjust
+		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+			for (auto& af : ac->audioFiles) {
+				if (af.audioGUID == starFallSfxGUID && af.isSFX) {
+					af.requestPlay = true;
+					break;
+				}
+			}
+		}
 		physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
 				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
@@ -80,5 +95,5 @@ public:
 		std::cout << "[BulletLogic] Playing enemy death SFX index " << idx << "\n";
 	}
 
-	REFLECTABLE(LightningAcidPowerupManagerScript, starfallDamage, starfallForce, lingerTime, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3)
+	REFLECTABLE(LightningAcidPowerupManagerScript, starfallDamage, starfallForce, lingerTime, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3, starFallSfxGUID)
 };

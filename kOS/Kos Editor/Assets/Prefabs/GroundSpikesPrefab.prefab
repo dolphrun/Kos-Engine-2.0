@@ -56,6 +56,22 @@
                     "sourceType": 0,
                     "audioBankGUID": "00000000-0000-0000-0000-000000000000",
                     "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "21a322e9-e611-7eda-0642-0ce7a74dc340",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
                 }
             ]
         },
@@ -64,7 +80,8 @@
             "lingerTime": 0.3499999940395355,
             "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
             "enemyDeathSfxGUID_2": "ef772eb3-1923-0835-dd9b-683167c10659",
-            "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659"
+            "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659",
+            "groundSpikeSfxGUID": "21a322e9-e611-7eda-0642-0ce7a74dc340"
         },
         "NameComponent": {
             "entityName": "GroundSpikesPrefab",

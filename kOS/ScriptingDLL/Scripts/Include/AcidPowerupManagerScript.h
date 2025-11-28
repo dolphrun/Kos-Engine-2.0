@@ -20,6 +20,11 @@ public:
 	utility::GUID acidSpraySfxGUID;
 
 	void Start() override {
+		enemyDeathSfxGUIDs.clear();
+		if (!enemyDeathSfxGUID_1.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_1);
+		if (!enemyDeathSfxGUID_2.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_2);
+		if (!enemyDeathSfxGUID_3.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_3);
+
 		// ADD SFX OF ACID SPRAY HERE - Done
 		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 

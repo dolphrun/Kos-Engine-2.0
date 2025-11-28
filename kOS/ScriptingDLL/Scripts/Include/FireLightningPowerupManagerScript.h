@@ -14,8 +14,24 @@ public:
 	utility::GUID enemyDeathSfxGUID_3;
 	std::vector<utility::GUID> enemyDeathSfxGUIDs;
 
+	utility::GUID groundSpikeSfxGUID;
+
 	void Start() override {
-		// ADD SFX OF GROUNDSPIKES HERE
+		enemyDeathSfxGUIDs.clear();
+		if (!enemyDeathSfxGUID_1.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_1);
+		if (!enemyDeathSfxGUID_2.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_2);
+		if (!enemyDeathSfxGUID_3.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_3);
+
+		// ADD SFX OF GROUNDSPIKES HERE - Done
+		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+			for (auto& af : ac->audioFiles) {
+				if (af.audioGUID == groundSpikeSfxGUID && af.isSFX) {
+					af.requestPlay = true;
+					break;
+				}
+			}
+		}
 
 		physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
@@ -80,5 +96,5 @@ public:
 		std::cout << "[BulletLogic] Playing enemy death SFX index " << idx << "\n";
 	}
 
-	REFLECTABLE(FireLightningPowerupManagerScript, groundSpikesDamage, lingerTime, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3)
+	REFLECTABLE(FireLightningPowerupManagerScript, groundSpikesDamage, lingerTime, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3, groundSpikeSfxGUID)
 };
