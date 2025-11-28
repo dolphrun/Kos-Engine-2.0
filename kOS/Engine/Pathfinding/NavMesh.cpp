@@ -776,6 +776,7 @@ void NavMeshManager::Build(std::string sceneName, std::shared_ptr<Sample_TileMes
     auto iter = navMeshData.find(sceneName);
     if (iter == navMeshData.end()) {
         BuildRecastGeometry(sceneName, tm);
+        iter = navMeshData.find(sceneName);
     }
     if (!tm->m_geom) {
         LOGGING_WARN("Nav Mesh Build Failed: Unable to build Geometry");
@@ -870,8 +871,13 @@ void NavMeshManager::SaveMesh(std::string sceneName) {
 
 std::shared_ptr<Sample_TileMesh> NavMeshManager::LoadMesh(std::string sceneName) {
     if (sceneName.find(".json") == std::string::npos) return nullptr; // reject if loading prefabs
+
     std::shared_ptr<Sample_TileMesh> tm;
-    BuildRecastGeometry(sceneName, tm);
+    auto iter = navMeshData.find(sceneName);
+    if (iter == navMeshData.end()) {
+        BuildRecastGeometry(sceneName, tm);
+    }
+
     if (tm == nullptr || tm->m_geom == nullptr) {
         LOGGING_WARN("Nav Mesh Load Failed: Unable to build Geometry");
         return nullptr;
@@ -906,7 +912,7 @@ void NavMeshManager::AddAgent(int& agentID, EntityID entityID, const glm::vec3 p
                             DT_CROWD_SEPARATION |
                             DT_CROWD_OPTIMIZE_VIS |
                             DT_CROWD_OPTIMIZE_TOPO;
-    params.obstacleAvoidanceType = 
+    //params.obstacleAvoidanceType = 
     params.separationWeight = 2.0f;
 
     auto tm = navMeshData.find(currentScene);

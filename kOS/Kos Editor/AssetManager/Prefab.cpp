@@ -160,7 +160,7 @@ namespace prefab
             const auto& sceneData = m_ecs.sceneMap.at(prefabName);
             ecs::EntityID prefabID = sceneData.prefabID;
 
-            DeepUpdatePrefab(id, prefabID);
+            DeepUpdatePrefab(prefabID, id);
         }
     }
 
