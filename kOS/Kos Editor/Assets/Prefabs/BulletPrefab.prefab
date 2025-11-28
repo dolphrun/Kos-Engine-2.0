@@ -79,7 +79,29 @@
             "entityTag": "Default",
             "isPrefab": true,
             "prefabName": "BulletPrefab.prefab",
-            "hide": false
+            "hide": false,
+            "isStatic": false
+        },
+        "RigidbodyComponent": {
+            "mass": 1.0,
+            "drag": 0.0,
+            "angularDrag": 0.05000000074505806,
+            "useGravity": false,
+            "isKinematic": false,
+            "interpolation": 0,
+            "collisionDetection": 0,
+            "constraints": 0,
+            "speed": 0.0,
+            "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "angularVelocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
         },
         "SphereColliderComponent": {
             "isTrigger": true,

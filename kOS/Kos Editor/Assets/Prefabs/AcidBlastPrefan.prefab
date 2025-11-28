@@ -99,7 +99,8 @@
             "entityTag": "Default",
             "isPrefab": true,
             "prefabName": "AcidBlastPrefan.prefab",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "SphereColliderComponent": {
             "isTrigger": true,

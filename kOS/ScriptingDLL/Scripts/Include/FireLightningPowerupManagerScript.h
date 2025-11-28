@@ -43,6 +43,7 @@ public:
 						PlayRandomEnemyDeathSFX();
 
 						ecsPtr->DeleteEntity(col.otherEntityID);
+						navMeshPtr->RemoveAgent(enemyScript->agentid);
 					}
 				}
 			}

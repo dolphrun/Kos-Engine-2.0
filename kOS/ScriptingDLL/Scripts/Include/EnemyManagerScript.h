@@ -3,6 +3,7 @@
 
 class EnemyManagerScript : public TemplateSC {
 public:
+	int agentid;
 	int enemyHealth;
 	float enemyMovementSpeed;
 
@@ -24,6 +25,9 @@ public:
 	void Start() override {
 		playerToChaseID = ecsPtr->GetEntityIDFromGUID(playerToChase);
 		enemyHurtboxPositionID = ecsPtr->GetEntityIDFromGUID(enemyHurtboxPosition);
+		auto* trans = ecsPtr->GetComponent<TransformComponent>(entity);
+		auto* capsule = ecsPtr->GetComponent<CapsuleColliderComponent>(entity);
+		navMeshPtr->AddAgent(agentid, entity, trans->WorldTransformation.position, capsule->capsule.radius, capsule->capsule.height);
 	}
 
 	void Update() override {
@@ -32,6 +36,7 @@ public:
 		auto* enemyHurtboxPositionTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxPositionID);
 
 		if (!playerTransform || !enemyTransform || !enemyHurtboxPositionTransform) {
+			LOGGING_WARN("Components not found");
 			return;
 		}
 
@@ -83,13 +88,13 @@ public:
 			//		}
 			//	}
 			//}
-
+			std::cout << "Attack" << std::endl;
 			enemyIsAttacking = true;
 		}
 
 		if (enemyIsAttacking) {
 			// NAVMESH STOP FOLLOWING
-
+			// Not calling MoveAgent stops following - SF
 			// ADD ENEMY ATTACKING ANIMATION
 
 			// BEFORE CODE WORKS, I TESTED
@@ -112,7 +117,7 @@ public:
 		}
 		else if (glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= enemyChaseRange) {
 			// NAVMESH FOLLOW TOWARDS PLAYER
-
+			navMeshPtr->MoveAgent(agentid, playerTransform->LocalTransformation.position);
 			// ADD ENEMY RUNNING ANIMATION
 		}
 

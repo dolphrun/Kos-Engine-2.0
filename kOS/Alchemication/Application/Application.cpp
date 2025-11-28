@@ -77,6 +77,11 @@ namespace Application {
         audioManager.Init();
 
         /*--------------------------------------------------------------
+           INITIALIZE NAVMESH AND NAVMESHMANAGER
+        --------------------------------------------------------------*/
+        navMeshManager.Init();
+
+        /*--------------------------------------------------------------
            INITIALIZE Start Scene
         --------------------------------------------------------------*/
         //for game only
@@ -89,8 +94,6 @@ namespace Application {
         --------------------------------------------------------------*/
         graphicsManager.gm_Initialize(static_cast<float>(windowData.windowWidth), static_cast<float>(windowData.windowHeight));
         LOGGING_INFO("Load Graphic Pipeline Successful");
-
-
 
         LOGGING_INFO("Application Init Successful");
 
@@ -144,6 +147,11 @@ namespace Application {
                     UPDATE ECS
                 --------------------------------------------------------------*/
                 ecs.Update(deltaTime);
+
+                /*--------------------------------------------------------------
+                    UPDATE NAVIGATION
+                --------------------------------------------------------------*/
+                navMeshManager.Update(deltaTime);
 
                 /*--------------------------------------------------------------
                     UPDATE INPUT FRAME EXIT

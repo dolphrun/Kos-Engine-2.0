@@ -523,3 +523,70 @@ void DebugFrustum::DrawMesh()
     glDrawElements(GL_LINES, drawCount, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }
+
+void DebugNavMesh::CreateMesh() {
+    // Tris
+    GLuint vboTri;
+    glGenVertexArrays(1, &vaoTri);
+    glGenBuffers(1, &vboTri);
+    glBindVertexArray(vaoTri);
+    glBindBuffer(GL_ARRAY_BUFFER, vboTri);
+    glBufferData(GL_ARRAY_BUFFER, triVerts.size() * sizeof(DebugVertex), triVerts.data(), GL_STATIC_DRAW);
+    // position
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(DebugVertex), (void*)0);
+    //// color
+    //glEnableVertexAttribArray(1);
+    //glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(DebugVertex), (void*)(sizeof(glm::vec3)));
+    //glBindVertexArray(0);
+
+    // Lines
+    GLuint vboLines;
+    glGenVertexArrays(1, &vaoLines);
+    glGenBuffers(1, &vboLines);
+    glBindVertexArray(vaoLines);
+    glBindBuffer(GL_ARRAY_BUFFER, vboLines);
+    glBufferData(GL_ARRAY_BUFFER, lineVerts.size() * sizeof(DebugVertex), lineVerts.data(), GL_STATIC_DRAW);
+    // position
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(DebugVertex), (void*)0);
+    //// color
+    //glEnableVertexAttribArray(1);
+    //glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(DebugVertex), (void*)(sizeof(glm::vec3)));
+    //glBindVertexArray(0);
+
+    // Vertex
+    GLuint vboVertex;
+    glGenVertexArrays(1, &vaoPoints);
+    glGenBuffers(1, &vboVertex);
+    glBindVertexArray(vaoPoints);
+    glBindBuffer(GL_ARRAY_BUFFER, vboVertex);
+    glBufferData(GL_ARRAY_BUFFER, pointVerts.size() * sizeof(DebugVertex), pointVerts.data(), GL_STATIC_DRAW);
+    // position
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(DebugVertex), (void*)0);
+    //// color
+    //glEnableVertexAttribArray(1);
+    //glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(DebugVertex), (void*)(sizeof(glm::vec3)));
+    //glBindVertexArray(0);
+}
+
+void DebugNavMesh::DrawMesh() {}
+
+void DebugNavMesh::DrawTri() {
+    glBindVertexArray(vaoTri);
+    glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(triVerts.size()));
+    glBindVertexArray(0);
+}
+
+void DebugNavMesh::DrawLine() {
+    glBindVertexArray(vaoLines);
+    glDrawArrays(GL_LINES, 0, static_cast<GLsizei>(lineVerts.size()));
+    glBindVertexArray(0);
+}
+
+void DebugNavMesh::DrawVertex() {
+    glBindVertexArray(vaoPoints);
+    glDrawArrays(GL_POINTS, 0, static_cast<GLsizei>(pointVerts.size()));
+    glBindVertexArray(0);
+}

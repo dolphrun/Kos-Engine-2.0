@@ -100,6 +100,7 @@ public:
 	LightRenderer lightRenderer;
 
 	glm::vec2 mousePosition;
+	DebugNavMesh* renderNavMesh;
 private:
 
 	//Initialize functions

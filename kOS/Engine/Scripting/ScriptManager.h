@@ -22,10 +22,13 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Resources/ResourceManager.h"
 #include "Reflection/Field.h"
 #include "Scene/SceneManager.h"
+#include "Pathfinding/NavMesh.h"
 
 namespace scenes {
 	class SceneManager;
 }
+
+class NavMeshManager;
 
 struct StaticVariableManager {
 	void* ECSSystem;
@@ -34,6 +37,7 @@ struct StaticVariableManager {
 	void* scene;
 	void* physics;
 	void* resource;
+	void* navMesh;
 	std::vector<std::string>* scriptNames;
 };
 
@@ -44,6 +48,7 @@ class ScriptManager {
 	physics::PhysicsManager& m_physics;
 	ResourceManager& m_resourceManager;
 	Fields& m_field;
+	NavMeshManager& m_navmesh;
 
 public: 
 	ScriptManager(
@@ -52,7 +57,8 @@ public:
 		Input::InputSystem& slm,
 		physics::PhysicsManager& pm,
 		ResourceManager& rm,
-		Fields& field
+		Fields& field,
+		NavMeshManager& nm
 	)
 		: m_ecs(ecs)
 		, m_input(slm)
@@ -60,9 +66,9 @@ public:
 		, m_physics(pm)
 		, m_resourceManager(rm)
 		, m_field(field)
+		, m_navmesh(nm)
 	{
 		hInstDLL = nullptr;
-	
 	}
 
 

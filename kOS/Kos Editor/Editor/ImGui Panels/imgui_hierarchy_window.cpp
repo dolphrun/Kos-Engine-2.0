@@ -21,7 +21,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Editor.h"
 
 #include "ECS/ECS.h"
-#include "ECS/ecs.h"
 #include "DeSerialization/json_handler.h"
 #include "Resources/ResourceManager.h"
 #include "Debugging/Logging.h"

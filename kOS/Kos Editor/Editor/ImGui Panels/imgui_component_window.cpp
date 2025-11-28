@@ -53,9 +53,6 @@ void gui::ImGuiHandler::DrawComponentWindow()
             initComponentName = true;
         }
 
-
-       
-
         int ComponentTypeIndex = 0;
         if (ImGui::Combo("##ADDCOMPONENT", &ComponentTypeIndex, componentNames.data(), static_cast<int>(componentNames.size()))) {
             std::string componentName = componentNames[ComponentTypeIndex];
@@ -82,6 +79,9 @@ void gui::ImGuiHandler::DrawComponentWindow()
             if (ImGui::Checkbox("Hide", &hidden)) {
 				m_ecs.SetActive(entityID, !hidden);
             }
+
+            ImGui::SameLine();
+            ImGui::Checkbox("Static", &nc->isStatic);
 
             ImGui::TextDisabled(std::string("Entity ID: " + std::to_string(entityID)).c_str());
             if (!nc->entityGUID.Empty()) {

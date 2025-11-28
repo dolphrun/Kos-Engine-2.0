@@ -73,6 +73,7 @@ public:
 					}
 
 					ecsPtr->DeleteEntity(col.otherEntityID);
+					navMeshPtr->RemoveAgent(ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->agentid);
 				}
 			}
 

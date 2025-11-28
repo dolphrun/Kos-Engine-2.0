@@ -23,6 +23,7 @@ public:
 					}
 
 					ecsPtr->DeleteEntity(entity);
+					navMeshPtr->RemoveAgent(enemyScript->agentid);
 				}
 			}
 

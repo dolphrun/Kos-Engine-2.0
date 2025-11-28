@@ -182,6 +182,7 @@ void SerializeProfile(ImGuiStyle* style) {
     else {
         file << writeBuffer.GetString();
         file.close();
+        LOGGING_DEBUG("Profile Saved");
     }
 }
 

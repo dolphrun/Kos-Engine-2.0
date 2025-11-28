@@ -1,12 +1,18 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "24c1f849-060e-20c0-28fa-472f7e043d44",
         "CapsuleColliderComponent": {
             "isTrigger": false,
             "capsule": {
                 "center": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": 2.0,
                     "z": 0.0
                 },
                 "radius": 1.0,
@@ -27,7 +33,8 @@
             "entityTag": "Enemy",
             "isPrefab": true,
             "prefabName": "EnemyPrefab.prefab",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "RigidbodyComponent": {
             "mass": 1.0,
@@ -95,13 +102,14 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
                             "x": 23.768556594848633,
-                            "y": 3.9802656173706055,
+                            "y": 5.4802656173706055,
                             "z": -15.537531852722168
                         },
                         "rotation": {
@@ -118,12 +126,12 @@
                     "LocalTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 0.0,
+                            "y": 1.5,
                             "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
-                            "y": 0.0,
+                            "y": -0.0,
                             "z": 0.0
                         },
                         "scale": {
@@ -152,13 +160,14 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
                             "x": 23.768556594848633,
-                            "y": 2.4302656650543213,
+                            "y": 3.9802656173706055,
                             "z": -15.537531852722168
                         },
                         "rotation": {
@@ -175,12 +184,12 @@
                     "LocalTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": -1.5499999523162842,
+                            "y": 0.0,
                             "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
-                            "y": -0.0,
+                            "y": 0.0,
                             "z": 0.0
                         },
                         "scale": {

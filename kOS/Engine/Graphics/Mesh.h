@@ -91,3 +91,29 @@ struct DebugFrustum : BasicMesh {
 	void DrawMesh();
 };
 
+struct DebugVertex {
+	glm::vec3 pos;
+	//glm::vec4 color;
+};
+
+struct DebugNavMesh : BasicMesh {
+	std::vector<DebugVertex> triVerts;
+	std::vector<DebugVertex> lineVerts;
+	std::vector<DebugVertex> pointVerts;
+
+	GLuint vaoTri, vaoLines, vaoPoints;
+	glm::vec3 triColor{ .26f, .55f, 1.f };
+	glm::vec3 lineColor{ 0.f, .14f, .36f };
+	glm::vec3 vertColor{ .06f, .13f, .25f };
+
+	//std::vector<glm::vec3> vertices;
+	//std::vector<unsigned short> indices;
+
+	void CreateMesh();
+	void DrawMesh();
+
+	void DrawTri();
+	void DrawLine();
+	void DrawVertex();
+	void SetRenderNavMesh(const float* verts, const int* tris, const int nverts, const int ntris);
+};
