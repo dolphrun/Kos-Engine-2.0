@@ -44,23 +44,39 @@
                 {
                     "audioGUID": "00000000-0000-0000-0000-000000000000",
                     "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": false,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 1,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": "event:/New Event"
+                },
+                {
+                    "audioGUID": "24a5edf7-efac-9bb6-0644-ef7909f212bc",
+                    "volume": 1.0,
                     "loop": true,
                     "playOnStart": true,
-                    "hasPlayed": false,
+                    "hasPlayed": true,
                     "pan": 0.0,
                     "isBGM": false,
                     "isSFX": false,
                     "use3D": true,
                     "minDistance": 1.0,
                     "maxDistance": 20.0,
-                    "sourceType": 1,
+                    "sourceType": 0,
                     "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                    "studioEventPath": "event:/New Event"
+                    "studioEventPath": ""
                 }
             ]
         },
         "AudioScript": {
-            "GUID": "00000000-0000-0000-0000-000000000000",
+            "GUID": "24a5edf7-efac-9bb6-0644-ef7909f212bc",
             "elapsedTime": 0.0,
             "speed": 1.0,
             "radius": 5.0
@@ -71,7 +87,8 @@
             "entityTag": "Default",
             "isPrefab": false,
             "prefabName": "",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -131,7 +148,8 @@
             },
             "active": false,
             "culling": false,
-            "layer": 0
+            "layer": 0,
+            "renderOrder": 0
         },
         "NameComponent": {
             "entityName": "camera",
@@ -139,7 +157,8 @@
             "entityTag": "Default",
             "isPrefab": false,
             "prefabName": "",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "TransformComponent": {
             "WorldTransformation": {

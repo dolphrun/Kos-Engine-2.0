@@ -8,8 +8,19 @@ public:
 	int fireballDamage = 5;
 	glm::vec3 direction;
 
+	utility::GUID fireballSfxGUID;
+
 	void Start() override {
-		// ADD SFX OF FIREBALL HERE
+		// ADD SFX OF FIREBALL HERE - Done?
+		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+			for (auto& af : ac->audioFiles) {
+				if (af.audioGUID == fireballSfxGUID && af.isSFX) {
+					af.requestPlay = true;
+					break;
+				}
+			}
+		}
 
 		physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
@@ -41,5 +52,5 @@ public:
 	}
 
 
-	REFLECTABLE(FirePowerupManagerScript, fireballSpeed, fireballDamage)
+	REFLECTABLE(FirePowerupManagerScript, fireballSpeed, fireballDamage, fireballSfxGUID)
 };
