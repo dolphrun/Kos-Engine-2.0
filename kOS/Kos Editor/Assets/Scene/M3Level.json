@@ -9520,10 +9520,10 @@
                     "acidLightningPrefab": "4c9702d6-127d-fc41-6704-bc63dc2b0998",
                     "gunSfxGUID_1": "d98d60d5-127f-8dc2-b051-dc6d6b883682",
                     "gunSfxGUID_2": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
-                    "pauseMenuManagerObject": "00000000-0000-0000-0000-000000000000",
-                    "healthUIObject": "00000000-0000-0000-0000-000000000000",
-                    "loseScreenCanvasObject": "00000000-0000-0000-0000-000000000000",
-                    "winScreenCanvasObject": "00000000-0000-0000-0000-000000000000"
+                    "pauseMenuManagerObject": "155ba76a-ab15-3655-61d0-3eb0d2bccb85",
+                    "healthUIObject": "cbe9e70e-4c76-3f9b-ffd8-30620d0fc09d",
+                    "loseScreenCanvasObject": "23dd4708-96d5-34e7-3d95-b85965156d5d",
+                    "winScreenCanvasObject": "dd420147-13cd-2a52-32b4-107bc917a44d"
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,
@@ -10188,6 +10188,21 @@
                 }
             }
         },
+        "WinScreenScript": {
+            "winScreenCanvasGUID": "dd420147-13cd-2a52-32b4-107bc917a44d",
+            "hiddenPosition": {
+                "x": -10000.0,
+                "y": -10000.0,
+                "z": 0.0
+            },
+            "originalCanvasPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "currentScoreTextGUID": "cc40bce3-955e-d2a5-cd08-1da20f1b71ee",
+            "bestScoreTextGUID": "f8709dc9-3bc8-3f89-03b6-dd6999fd1183"
+        },
         "children": [
             {
                 "entityGUID": "a400ed79-79d1-2c75-1816-ddf95de2413d",
@@ -10600,6 +10615,21 @@
         "entityGUID": "23dd4708-96d5-34e7-3d95-b85965156d5d",
         "CanvasRendererComponent": {
             "isScreenSpace": true
+        },
+        "LoseScreenScript": {
+            "loseScreenCanvasGUID": "23dd4708-96d5-34e7-3d95-b85965156d5d",
+            "hiddenPosition": {
+                "x": -10000.0,
+                "y": -10000.0,
+                "z": 0.0
+            },
+            "originalCanvasPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "currentScoreTextGUID": "5200bfa5-e689-4777-b4a3-1dbda4c52f1d",
+            "bestScoreTextGUID": "b7395b27-92fb-74df-2e89-8a1d5f4537bf"
         },
         "NameComponent": {
             "entityName": "Lose Screen Canvas",
@@ -11068,6 +11098,20 @@
             "hide": true,
             "isStatic": false
         },
+        "PauseMenuScript": {
+            "pauseMenuCanvasGUID": "155ba76a-ab15-3655-61d0-3eb0d2bccb85",
+            "isPaused": false,
+            "originalCanvasPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "hiddenPosition": {
+                "x": -10000.0,
+                "y": -10000.0,
+                "z": 0.0
+            }
+        },
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
@@ -11509,7 +11553,7 @@
                 "HealthBarScript": {
                     "healthValue": 6,
                     "lastHealthValue": -1,
-                    "playerObject": "21b4826f-14fd-7eaa-622d-cda14cbf106b",
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "playerObjectID": 0,
                     "healthbar0Sprite": "f0ccb903-1550-1320-9cb0-529171c49797",
                     "healthbar1Sprite": "3eaca0e0-793c-e1a7-7878-9cba28134ad2",
@@ -11579,7 +11623,7 @@
                 "AbilityUIImageScript": {
                     "currAbility": "NONE",
                     "lastAbility": "",
-                    "playerObject": "21b4826f-14fd-7eaa-622d-cda14cbf106b",
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "playerObjectID": 0,
                     "noneSprite": "ad7ff204-05e9-2a9a-4a4b-50a7838ac9bd",
                     "fireSprite": "5a36c562-9294-5b59-4e91-68c53f2aaae6",
@@ -11639,6 +11683,232 @@
                         "scale": {
                             "x": 0.800000011920929,
                             "y": 0.20000000298023224,
+                            "z": 1.0
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "1e7d8ab1-ece7-e6c2-28b6-9dca1a11f07f",
+        "CanvasRendererComponent": {
+            "isScreenSpace": true
+        },
+        "NameComponent": {
+            "entityName": "Score Manager Canvas",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false,
+            "isStatic": false
+        },
+        "ScoreManagerScript": {
+            "currentScore": 0,
+            "mult": 1,
+            "scoreTextGUID": "520e74a2-d265-b5f8-0014-32289c8c8873",
+            "multTextGUID": "51bb3231-cd70-6eb3-5028-a5cc0aecdd14"
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "a9a6df15-2dc2-98cf-e3c6-c5468a7704e9",
+                "NameComponent": {
+                    "entityName": "Scoreboard Background",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false,
+                    "isStatic": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "520e74a2-d265-b5f8-0014-32289c8c8873",
+                "NameComponent": {
+                    "entityName": "Score",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false,
+                    "isStatic": false
+                },
+                "TextComponent": {
+                    "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                    "text": "10000",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 0.0
+                    },
+                    "fontSize": 128.0
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 1.1799999475479126,
+                            "y": 0.5600000023841858,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 1.1799999475479126,
+                            "y": 0.5600000023841858,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "51bb3231-cd70-6eb3-5028-a5cc0aecdd14",
+                "CanvasRendererComponent": {
+                    "isScreenSpace": true
+                },
+                "NameComponent": {
+                    "entityName": "Multiplier",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false,
+                    "isStatic": false
+                },
+                "TextComponent": {
+                    "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                    "text": "10x",
+                    "color": {
+                        "x": 1.0,
+                        "y": 0.0,
+                        "z": 1.0
+                    },
+                    "fontSize": 200.0
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 1.190000057220459,
+                            "y": 0.6899999976158142,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 1.190000057220459,
+                            "y": 0.6899999976158142,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
                             "z": 1.0
                         }
                     }

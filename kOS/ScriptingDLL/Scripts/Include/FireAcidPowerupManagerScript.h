@@ -17,6 +17,10 @@ public:
 
 	utility::GUID flameThrowerSfxGUID;
 
+
+	ScoreManagerScript* scoreManager = nullptr;
+	int scoreValue = 200;
+
 	void Start() override {
 		enemyDeathSfxGUIDs.clear();
 		if (!enemyDeathSfxGUID_1.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_1);
@@ -34,6 +38,13 @@ public:
 			}
 		}
 
+		for (const auto& [entityID, signature] : ecsPtr->GetEntitySignatureData()) {
+			if (ecsPtr->HasComponent<ScoreManagerScript>(entityID)) {
+				scoreManager = ecsPtr->GetComponent<ScoreManagerScript>(entityID);
+				break;
+			}
+		}
+
 		physicsPtr->GetEventCallback()->OnTriggerStay(entity, [this](const physics::Collision& col) {
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
 				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
@@ -46,6 +57,10 @@ public:
 					if (enemyScript->enemyHealth <= 0) {
 						// ADD SFX OF ENEMY DEATH HERE - Done
 						PlayRandomEnemyDeathSFX();
+
+						if (scoreManager) {
+							scoreManager->AddScore(scoreValue); // or whatever value you want per kill
+						}
 
 						ecsPtr->DeleteEntity(col.otherEntityID);
 						navMeshPtr->RemoveAgent(enemyScript->agentid);

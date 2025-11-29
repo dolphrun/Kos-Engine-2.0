@@ -133,6 +133,7 @@ public:
 
 		if (Input->IsKeyReleased(keys::L)) {
 			std::cout << "L RELEASED\n";
+			Scenes->ReloadScene();
 		}
 
 		if (Input->IsKeyTriggered(keys::ESC)) {
