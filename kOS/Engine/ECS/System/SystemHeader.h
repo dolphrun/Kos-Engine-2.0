@@ -9,6 +9,7 @@
 #include "SkinnedMeshRenderSystem.h"
 #include "CanvasTextRenderSystem.h"
 #include "CanvasSpriteRenderSystem.h"
+#include "CanvasButtonRenderSystem.h"
 #include "RigidbodySystem.h"
 #include "StaticRigidbodySystem.h"
 #include "BoxColliderSystem.h"

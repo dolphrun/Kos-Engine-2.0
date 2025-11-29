@@ -3,6 +3,7 @@
 #include "TransformComponent.h"
 #include "NameComponent.h"
 #include "SpriteComponent.h"
+#include "ButtonComponent.h"
 #include "CameraComponent.h"
 #include "AudioComponent.h"
 #include "AudioListenerComponent.h"
