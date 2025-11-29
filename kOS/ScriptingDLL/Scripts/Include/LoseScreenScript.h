@@ -35,6 +35,7 @@ public:
             originalCanvasPosition = t->LocalTransformation.position;
         }
 
+        ecsPtr->SetTimeScale(1.0f);
         // Always hide on start
         SetLoseScreenActive(false);
     }
@@ -51,7 +52,7 @@ public:
 
         hasShownLoseScreen = true;
         isLoseScreenActive = true; // BLOCK pause menu
-
+        ecsPtr->SetTimeScale(0.0f);
         SetLoseScreenActive(true);
         Input->HideCursor(false);
 
@@ -73,7 +74,7 @@ public:
 
         hasShownLoseScreen = false;
         isLoseScreenActive = false; // unblock pause menu
-
+        ecsPtr->SetTimeScale(1.0f);
         SetLoseScreenActive(false);
         Input->HideCursor(true);
 

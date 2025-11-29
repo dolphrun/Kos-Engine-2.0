@@ -105,7 +105,7 @@ namespace gui {
 		RegisterComponent<ecs::CubeRendererComponent>();
 		RegisterComponent<ecs::ParticleComponent>();
 		RegisterComponent<ecs::AnimatorComponent>();
-
+		RegisterComponent<ecs::ButtonComponent>();
 		RegisterComponent<ecs::SphereRendererComponent>();
 		RegisterComponent<ecs::MaterialComponent>();
 

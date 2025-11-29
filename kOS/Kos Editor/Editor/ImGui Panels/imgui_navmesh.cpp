@@ -110,11 +110,11 @@ void gui::ImGuiHandler::DrawNavMeshWindow() {
 	}
 
 	if (ImGui::Button("Save Mesh", buttonSize)) {
-		m_navMeshManager.SaveMesh(m_activeScene);
+		m_navMeshManager.SaveMesh( m_assetManager.GetAssetManagerDirectory() + "//NavMesh", m_activeScene);
 	}
 
 	if (ImGui::Button("Load Mesh", buttonSize)) {
-		tm = m_navMeshManager.LoadMesh(m_activeScene);
+		tm = m_navMeshManager.LoadMesh(m_activeScene, m_ecs.sceneMap.at(m_activeScene).NavMeshGuid);
 	}
 
 	ImGui::End();

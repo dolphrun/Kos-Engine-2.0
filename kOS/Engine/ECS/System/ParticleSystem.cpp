@@ -249,13 +249,14 @@ namespace ecs {
 
                     // Calculate spiral angle based on progress and frequency
                     float spiralAngle = easedProgress * particle->trailingModule.spiralFrequency * glm::two_pi<float>()
-                        + particle->trailingModule.timeAccum; // Add time offset for rotation
+                        + dt; // Add time offset for rotation
 
                     // Calculate spiral intensity (can peak in the middle or stay constant)
                     float spiralIntensity;
                     if (particle->trailingModule.spiralIntensityCurve > 0.01f) {
                         // Peak in the middle, fade at start and end
-                        spiralIntensity = glm::sin(easedProgress * glm::pi<float>());
+                        spiralIntensity = glm::sin(easedProgress * glm::pi<float>())
+                            * particle->trailingModule.spiralIntensityCurve;
                     }
                     else {
                         // Constant intensity, but fade near the end
@@ -291,7 +292,6 @@ namespace ecs {
                     float distToEnd = glm::length(end - pd.position);
                     if (distToEnd < particle->trailingModule.arrivalThreshold || pathProgress >= 0.99f) {
                         pd.lifespan = 0.0f; // Kill particle
-                        continue;
                     }
                 }
                 else {
@@ -304,7 +304,7 @@ namespace ecs {
             //=== LIFETIME UPDATE ===
             pd.lifespan -= dt;
 
-            if (particle->particleFade == ParticleFade::Lifetime) {
+            if (particle->particleFade == ParticleFade::LIFETIME) {
                 pd.color.a = pd.lifespan / pd.lifetime;
             }  
             if(!updateTrailing) pd.position += pd.velocity * dt;
@@ -759,41 +759,66 @@ namespace ecs {
         EntityID id,
         TransformComponent*& transform)
     {
-        auto& trail = particle->trailingModule;
+        //auto& trail = particle->trailingModule;
 
-        // Update time accumulator
-        trail.timeAccum += dt;
+        //// Update time accumulator
+        //trail.timeAccum += dt;
 
-        // Check if emission duration has ended
-        if (trail.timeAccum > trail.spawnDuration) {
-            return;
+        //// Check if emission duration has ended
+        //if (trail.timeAccum > trail.spawnDuration) {
+        //    return;
+        //}
+
+        //// Calculate number of particles to spawn this frame
+        //trail.spawnAccum += trail.spawnRate * dt;
+        //int count = static_cast<int>(trail.spawnAccum);
+        //trail.spawnAccum -= count;
+
+        //// Emit particles from the start point
+        //for (int i = 0; i < count; i++) {
+        //    // Always spawn at start point
+        //    glm::vec3 pos = start;
+
+        //    // Initial velocity can be zero or small random - the update loop will handle motion
+        //    glm::vec3 vel = glm::vec3(
+        //        RandomRange(-0.1f, 0.1f),
+        //        RandomRange(-0.1f, 0.1f),
+        //        RandomRange(-0.1f, 0.1f)
+        //    );
+
+        //    // Random lifetime
+        //    float life = particle->start_Lifetime;
+        //    if (particle->lifetime_Random_Enable) {
+        //        life = RandomRange(particle->start_Lifetime, particle->end_Lifetime);
+        //    }
+
+        //    EmitParticle(id, pos, vel, life, particle, transform);
+        //}
+        // Just emit one particle - timing is handled by UpdateEmitters()
+        glm::vec3 pos = start;
+
+        // Initial velocity (minimal - trail logic will control movement)
+        glm::vec3 vel = glm::vec3(
+            RandomRange(-0.1f, 0.1f),
+            RandomRange(-0.1f, 0.1f),
+            RandomRange(-0.1f, 0.1f)
+        );
+
+        // Calculate required lifetime for trail completion
+        float pathLength = glm::length(end - start);
+        float life = particle->start_Lifetime;
+
+        if (particle->lifetime_Random_Enable) {
+            life = RandomRange(particle->start_Lifetime, particle->end_Lifetime);
         }
 
-        // Calculate number of particles to spawn this frame
-        trail.spawnAccum += trail.spawnRate * dt;
-        int count = static_cast<int>(trail.spawnAccum);
-        trail.spawnAccum -= count;
-
-        // Emit particles from the start point
-        for (int i = 0; i < count; i++) {
-            // Always spawn at start point
-            glm::vec3 pos = start;
-
-            // Initial velocity can be zero or small random - the update loop will handle motion
-            glm::vec3 vel = glm::vec3(
-                RandomRange(-0.1f, 0.1f),
-                RandomRange(-0.1f, 0.1f),
-                RandomRange(-0.1f, 0.1f)
-            );
-
-            // Random lifetime
-            float life = particle->start_Lifetime;
-            if (particle->lifetime_Random_Enable) {
-                life = RandomRange(particle->start_Lifetime, particle->end_Lifetime);
-            }
-
-            EmitParticle(id, pos, vel, life, particle, transform);
+        // Ensure lifetime is long enough to complete the trail
+        if (particle->trailingModule.pathSpeed > 0.0f) {
+            float minLifetime = pathLength / particle->trailingModule.pathSpeed;
+            life = glm::max(life, minLifetime * 1.2f); // 20% buffer
         }
+
+        EmitParticle(id, pos, vel, life, particle, transform);
     }
 
 

@@ -99,7 +99,9 @@ public:
 	//I want my DCMs
 	LightRenderer lightRenderer;
 
-	glm::vec2 mousePosition;
+	int buttonID{ -1 };
+	bool isButtonPressed{ false };
+
 	DebugNavMesh* renderNavMesh;
 private:
 

@@ -34,6 +34,7 @@ public:
             originalCanvasPosition = t->LocalTransformation.position;
         }
 
+        ecsPtr->SetTimeScale(1.0f);
         // Always hide on start
         SetWinScreenActive(false);
     }
@@ -49,7 +50,7 @@ public:
 
         hasShownWinScreen = true;
         isWinScreenActive = true; // block other inputs if needed
-
+        ecsPtr->SetTimeScale(0.0f);
         SetWinScreenActive(true);
         Input->HideCursor(false);
 
@@ -70,7 +71,7 @@ public:
 
         hasShownWinScreen = false;
         isWinScreenActive = false;
-
+        ecsPtr->SetTimeScale(1.0f);
         SetWinScreenActive(false);
         Input->HideCursor(true);
 

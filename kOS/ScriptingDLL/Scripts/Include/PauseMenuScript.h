@@ -16,7 +16,7 @@ public:
     glm::vec3 originalCanvasPosition;
     glm::vec3 hiddenPosition = glm::vec3(-10000.0f, -10000.0f, 0.0f);
 
-    bool isPaused = false;
+    static bool isPaused;
 
     void Start() override {
         pauseMenuCanvasID = ecsPtr->GetEntityIDFromGUID(pauseMenuCanvasGUID);
@@ -42,6 +42,7 @@ public:
 
     void PauseGame() {
         isPaused = true;
+        ecsPtr->SetTimeScale(0.0f);
         SetPauseMenuActive(true);
         Input->HideCursor(false);
         std::cout << "Game Paused\n";
@@ -49,6 +50,7 @@ public:
 
     void ResumeGame() {
         isPaused = false;
+        ecsPtr->SetTimeScale(1.0f);
         SetPauseMenuActive(false);
         Input->HideCursor(true);
         std::cout << "Game Resumed\n";
@@ -75,3 +77,5 @@ public:
 };
 
 inline bool PauseMenuScript::requestRestart = false;
+bool PauseMenuScript::isPaused = false;
+

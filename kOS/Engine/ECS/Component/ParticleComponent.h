@@ -38,8 +38,8 @@ namespace ecs {
 	};
 
 	enum ParticleFade {
-		Color,
-		Lifetime
+		COLOR,
+		LIFETIME
 	};
 
 	struct ShapeModule {
@@ -128,8 +128,8 @@ namespace ecs {
 		glm::vec3 rotationCenter = glm::vec3(20.f, 0.f, 0.f); // Center of rotation
 		glm::vec3 rotationAxis = glm::vec3(0.f, 1.f, 0.f);    // Axis to rotate around (Y-axis by default)
 
-		float spawnDuration = 5.f;               // How long to emit particles
-		float spawnRate = 40.0f;                // Particles per second
+		//float spawnDuration = 5.f;               // How long to emit particles
+		//float spawnRate = 40.0f;                // Particles per second
 
 		// Spiral/twister settings
 		float spiralRadius = 5.f;                // Radius of the spiral/helix around the path
@@ -140,16 +140,14 @@ namespace ecs {
 		float pathSpeed = 2.0f;                  // How fast particles move along the path (0-1 per second)
 		float arrivalThreshold = 0.5f;           // Distance at which particle "arrives" at end
 
-		float timeAccum = 0.0f;                  // Time accumulated since start
-		float spawnAccum = 0.0f;                 // Fractional particle spawn accumulator
+		//float timeAccum = 0.0f;                  // Time accumulated since start
+		//float spawnAccum = 0.0f;                 // Fractional particle spawn accumulator
 
 
 		REFLECTABLE(TrailingModule, enabled, startPoint, endPoint,
 			rotateEndPoint, rotationSpeed, rotationRadius, rotationCenter, rotationAxis,
-			spawnDuration, spawnRate,
 			spiralRadius, spiralFrequency, spiralIntensityCurve,
-			pathSpeed, arrivalThreshold,
-			timeAccum, spawnAccum);
+			pathSpeed, arrivalThreshold);
 	};
 
 
@@ -225,7 +223,7 @@ namespace ecs {
 
 		PlayState playback_State = PlayState::PLAY;
 
-		ParticleFade particleFade = ParticleFade::Lifetime;
+		ParticleFade particleFade = ParticleFade::LIFETIME;
 
 		//Color over lifetime
 		ColorOverLifetimeModule colorModule;

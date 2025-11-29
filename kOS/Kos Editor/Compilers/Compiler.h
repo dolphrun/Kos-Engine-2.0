@@ -76,6 +76,15 @@ struct AnimControllerCompiler {
 	std::vector<std::string> inputExtensions;
 	REFLECTABLE(R_AnimController, path, outputExtension, inputExtensions);
 };
+
+struct NavMeshCompiler {
+	std::string type = "R_NavMesh"; // temp cause nav mesh no need r_
+	std::string path;
+	std::string outputExtension;
+	std::vector<std::string> inputExtensions;
+	REFLECTABLE(NavMeshCompiler, path, outputExtension, inputExtensions);
+
+};
 struct CompilerData {
 	MeshCompiler meshCompiler;
 	TextureCompiler textureCompiler;
@@ -86,6 +95,8 @@ struct CompilerData {
 	MaterialCompiler materialCompiler;
 	DepthMapCubeCompiler dmcCompiler;
 	AnimControllerCompiler animControllerCompiler;
+	NavMeshCompiler navCompiler;
 
-	REFLECTABLE(CompilerData, meshCompiler, textureCompiler, fontCompiler, sceneCompiler, audioCompiler, audioStudioCompiler, materialCompiler, dmcCompiler, animControllerCompiler);
+
+	REFLECTABLE(CompilerData, meshCompiler, textureCompiler, fontCompiler, sceneCompiler, audioCompiler, audioStudioCompiler, materialCompiler, dmcCompiler, animControllerCompiler, navCompiler);
 };

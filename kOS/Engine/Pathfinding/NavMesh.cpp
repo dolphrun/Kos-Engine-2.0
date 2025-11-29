@@ -20,7 +20,7 @@
 // added to the dtNavMesh as a tile.
 //
 // It does not attempt advanced spatial acceleration for triangle queries
-// (like BVH) ó for large world meshes you should swap-in a faster structure.
+// (like BVH) ÅEfor large world meshes you should swap-in a faster structure.
 
 // Helper macro for logging (you can replace with your engine logger)
 #define TM_LOG(msg) std::cout << "[TileMesh] " << msg << std::endl
@@ -262,7 +262,7 @@ void TileMeshConfig::Reset() {
 //    int tyCount = m_cfg.tileCountY;
 //    if (tx < 0 || tx >= txCount || ty < 0 || ty >= tyCount) return false;
 //
-//    // Compute tile's tileRef by position ó detour can find tile by location
+//    // Compute tile's tileRef by position ÅEdetour can find tile by location
 //    float bmin[3], bmax[3];
 //    GetTileBounds(tx, ty, bmin, bmax);
 //
@@ -710,7 +710,7 @@ void TileMeshConfig::Reset() {
 //    outData = navData;
 //    outDataSize = navDataSize;
 //
-//    // Keep Recast intermediate data around only if you want to debug ó cleanup now
+//    // Keep Recast intermediate data around only if you want to debug ÅEcleanup now
 //    CleanupRecast();
 //
 //    return true;
@@ -746,7 +746,7 @@ void TileMeshConfig::Reset() {
 //}
 
 void NavMeshManager::Init() {
-    sceneManager.onSceneLoaded.Add([this](std::string sceneName) {LoadMesh(sceneName); });
+    sceneManager.onSceneLoaded.Add([this](SceneData Data) {if(!Data.NavMeshGuid.Empty())LoadMesh(Data.sceneName, Data.NavMeshGuid); });
 }
 
 void NavMeshManager::Update(float dt) {
@@ -861,16 +861,20 @@ void NavMeshManager::BuildRecastGeometry(std::string sceneName, std::shared_ptr<
     }
 }
 
-void NavMeshManager::SaveMesh(std::string sceneName) {
-    std::string fileName(resourceManager.GetResourceDirectory() + '\\' + sceneName + ".navmesh");
+void NavMeshManager::SaveMesh(const std::filesystem::path& filePath, const std::string& sceneName) {
+    std::string fileName(filePath.string() + '\\' + sceneName + ".navmesh");
     auto data = navMeshData.find(sceneName);
     if (data != navMeshData.end()) {
         data->second->saveTiles(fileName);
     }
 }
 
-std::shared_ptr<Sample_TileMesh> NavMeshManager::LoadMesh(std::string sceneName) {
+
+//TODO remove this to R_Resource
+std::shared_ptr<Sample_TileMesh> NavMeshManager::LoadMesh(const std::string& sceneName, const utility::GUID& navGUID) {
     if (sceneName.find(".json") == std::string::npos) return nullptr; // reject if loading prefabs
+    if (navGUID.Empty()) return nullptr;
+
 
     std::shared_ptr<Sample_TileMesh> tm;
     auto iter = navMeshData.find(sceneName);
@@ -882,7 +886,9 @@ std::shared_ptr<Sample_TileMesh> NavMeshManager::LoadMesh(std::string sceneName)
         LOGGING_WARN("Nav Mesh Load Failed: Unable to build Geometry");
         return nullptr;
     }
-    std::string fileName(resourceManager.GetResourceDirectory() + '\\' + sceneName + ".navmesh");
+
+    std::string fileName = resourceManager.GetResourceDirectory() + '\\' + navGUID.GetToString() + ".navmesh";
+
     tm->loadTiles(fileName);
     SetGraphicsRenderMesh(tm);
 

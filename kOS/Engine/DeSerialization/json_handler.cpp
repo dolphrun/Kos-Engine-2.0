@@ -84,8 +84,8 @@ namespace serialization{
 				SceneData sceneData;
 
 				LoadComponentreflect(&sceneData, entityData);
+				sceneData.sceneName = scenename;
 
-				
 				m_ecs.AddScene(scenename, sceneData);
 
 			}

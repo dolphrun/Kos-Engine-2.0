@@ -130,9 +130,10 @@ public:
 	}
 
 	void Update() override {	
-		PlayerMovementControls();
-		PlayerCameraControls();
-		PlayerCombatControls();
+
+		if (Input->IsKeyReleased(keys::L)) {
+			std::cout << "L RELEASED\n";
+		}
 
 		if (Input->IsKeyTriggered(keys::ESC)) {
 			if (auto* pauseManager = ecsPtr->GetComponent<PauseMenuScript>(pauseMenuManagerID)) {
@@ -140,6 +141,17 @@ public:
 				pauseManager->TogglePause();
 			}
 		}
+
+		if (PauseMenuScript::isPaused ||
+			WinScreenScript::isWinScreenActive ||
+			LoseScreenScript::isLoseScreenActive)
+		{
+			return; // Skip ALL player input
+		}
+
+		PlayerMovementControls();
+		PlayerCameraControls();
+		PlayerCombatControls();
 
 		if (Input->IsKeyTriggered(keys::UP)) {
 			std::cout << "Player takes 1 damage for testing purposes.\n"; 
@@ -209,7 +221,9 @@ public:
 		// MOTOR
 		if (!playerIsSliding) {
 			glm::vec3 playerMovementDirection(GetPlayerFrontDirection() * Input->GetVertical() + GetPlayerRightDirection() * Input->GetHorizontal());
-			moveForce += glm::normalize(playerMovementDirection) * currPlayerMovSpeed;
+			if (glm::length2(playerMovementDirection) > glm::epsilon<float>()) {
+				moveForce += glm::normalize(playerMovementDirection) * currPlayerMovSpeed;
+			}
 
 			if ((Input->GetVertical() >= 0.1f || Input->GetVertical() <= -0.1f || Input->GetHorizontal() >= 0.1f || Input->GetHorizontal() <= -0.1f) && !playerIsSprinting) {
 				playerIsWalking = true;
