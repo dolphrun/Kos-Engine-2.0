@@ -18,7 +18,7 @@
                     "pan": 0.0,
                     "isBGM": false,
                     "isSFX": true,
-                    "use3D": true,
+                    "use3D": false,
                     "minDistance": 1.0,
                     "maxDistance": 20.0,
                     "sourceType": 0,
@@ -58,7 +58,7 @@
                     "studioEventPath": ""
                 },
                 {
-                    "audioGUID": "21a322e9-e611-7eda-0642-0ce7a74dc340",
+                    "audioGUID": "ebf0e1d7-2e96-a8c1-e7fe-73e3a58e8a8e",
                     "volume": 1.0,
                     "loop": false,
                     "playOnStart": false,
@@ -81,7 +81,7 @@
             "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
             "enemyDeathSfxGUID_2": "ef772eb3-1923-0835-dd9b-683167c10659",
             "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659",
-            "groundSpikeSfxGUID": "21a322e9-e611-7eda-0642-0ce7a74dc340"
+            "groundSpikeSfxGUID": "ebf0e1d7-2e96-a8c1-e7fe-73e3a58e8a8e"
         },
         "NameComponent": {
             "entityName": "GroundSpikesPrefab",
@@ -107,7 +107,7 @@
             "WorldTransformation": {
                 "position": {
                     "x": -78.52689361572266,
-                    "y": 0.0,
+                    "y": 0.22981488704681396,
                     "z": -46.24297332763672
                 },
                 "rotation": {
@@ -124,7 +124,7 @@
             "LocalTransformation": {
                 "position": {
                     "x": -78.52689361572266,
-                    "y": 0.0,
+                    "y": 0.22981488704681396,
                     "z": -46.24297332763672
                 },
                 "rotation": {
@@ -146,7 +146,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "2e16031c-9593-31cb-ec41-58220ebbb736"
+                            "materialGUID": "f631c0a1-bfb7-07c9-773f-958222697654"
                         }
                     ]
                 },
@@ -163,7 +163,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -78.52689361572266,
-                            "y": -4.0,
+                            "y": -3.7701849937438965,
                             "z": -50.24297332763672
                         },
                         "rotation": {
@@ -202,7 +202,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "2e16031c-9593-31cb-ec41-58220ebbb736"
+                            "materialGUID": "f631c0a1-bfb7-07c9-773f-958222697654"
                         }
                     ]
                 },
@@ -219,7 +219,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -78.52689361572266,
-                            "y": -3.5,
+                            "y": -3.2701849937438965,
                             "z": -42.24297332763672
                         },
                         "rotation": {
@@ -258,7 +258,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "2e16031c-9593-31cb-ec41-58220ebbb736"
+                            "materialGUID": "f631c0a1-bfb7-07c9-773f-958222697654"
                         }
                     ]
                 },
@@ -275,7 +275,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -74.52689361572266,
-                            "y": -3.234642267227173,
+                            "y": -3.0048274993896484,
                             "z": -46.24297332763672
                         },
                         "rotation": {
@@ -314,7 +314,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "2e16031c-9593-31cb-ec41-58220ebbb736"
+                            "materialGUID": "f631c0a1-bfb7-07c9-773f-958222697654"
                         }
                     ]
                 },
@@ -331,7 +331,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -82.52689361572266,
-                            "y": -3.234642267227173,
+                            "y": -3.0048274993896484,
                             "z": -46.24297332763672
                         },
                         "rotation": {
@@ -370,7 +370,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "2e16031c-9593-31cb-ec41-58220ebbb736"
+                            "materialGUID": "f631c0a1-bfb7-07c9-773f-958222697654"
                         }
                     ]
                 },
@@ -387,7 +387,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -75.52689361572266,
-                            "y": -3.5,
+                            "y": -3.2701849937438965,
                             "z": -43.24297332763672
                         },
                         "rotation": {
@@ -426,7 +426,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "2e16031c-9593-31cb-ec41-58220ebbb736"
+                            "materialGUID": "f631c0a1-bfb7-07c9-773f-958222697654"
                         }
                     ]
                 },
@@ -443,7 +443,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -75.52689361572266,
-                            "y": -3.234642267227173,
+                            "y": -3.0048274993896484,
                             "z": -49.24297332763672
                         },
                         "rotation": {
@@ -482,7 +482,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "2e16031c-9593-31cb-ec41-58220ebbb736"
+                            "materialGUID": "f631c0a1-bfb7-07c9-773f-958222697654"
                         }
                     ]
                 },
@@ -499,7 +499,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -81.52689361572266,
-                            "y": -3.4000000953674316,
+                            "y": -3.170185089111328,
                             "z": -43.24297332763672
                         },
                         "rotation": {
@@ -538,7 +538,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "2e16031c-9593-31cb-ec41-58220ebbb736"
+                            "materialGUID": "f631c0a1-bfb7-07c9-773f-958222697654"
                         }
                     ]
                 },
@@ -555,7 +555,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -81.52689361572266,
-                            "y": -3.700000047683716,
+                            "y": -3.4701852798461914,
                             "z": -49.24297332763672
                         },
                         "rotation": {
@@ -584,6 +584,221 @@
                             "x": 2.0,
                             "y": 4.0,
                             "z": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "3371f581-d6f0-3eaa-3e4a-30841624a6bd",
+                "NameComponent": {
+                    "entityName": "VFX",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false,
+                    "isStatic": false
+                },
+                "ParticleComponent": {
+                    "particleType": 0,
+                    "duration": 0.10000000149011612,
+                    "looping": true,
+                    "play_On_Awake": true,
+                    "start_Lifetime": 0.10000000149011612,
+                    "end_Lifetime": 0.10000000149011612,
+                    "lifetime_Random_Enable": true,
+                    "textureGUID": "00000000-0000-0000-0000-000000000000",
+                    "start_Velocity": 0.0,
+                    "playback_State": 0,
+                    "particleFade": 1,
+                    "velocityModule": {
+                        "enabled": false,
+                        "mode": 0,
+                        "velocity_Modifier": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        }
+                    },
+                    "forceModule": {
+                        "enabled": false,
+                        "force": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        }
+                    },
+                    "shapeModule": {
+                        "type": 0,
+                        "emission_Direction": {
+                            "x": 0.0,
+                            "y": 1.0,
+                            "z": 0.0
+                        },
+                        "box_Size": {
+                            "x": 10.0,
+                            "y": 4.699999809265137,
+                            "z": 10.0
+                        },
+                        "sphere_Radius": 0.0,
+                        "emit_From_Shell": false,
+                        "cone_Angle": 0.0,
+                        "cone_Direction": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "cone_Radius": 0.0,
+                        "circle_Radius": 0.0,
+                        "circle_Arc": 0.0,
+                        "emit_From_Edge": false,
+                        "edge_Length": 0.0,
+                        "random_Direction_Amount": 0.0
+                    },
+                    "colorModule": {
+                        "enabled": true,
+                        "start_Color": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0,
+                            "w": 1.0
+                        },
+                        "end_Color": {
+                            "x": 0.20000000298023224,
+                            "y": 0.6000000238418579,
+                            "z": 1.0,
+                            "w": 0.0
+                        }
+                    },
+                    "sizeModule": {
+                        "enabled": true,
+                        "start_Size": 0.18000000715255737,
+                        "end_Size": 0.11999999731779099
+                    },
+                    "rotationModule": {
+                        "enabled": false,
+                        "start_Rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "end_Rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation_Modifier": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        }
+                    },
+                    "gravityModule": {
+                        "enabled": false,
+                        "gravity": {
+                            "x": 0.0,
+                            "y": -9.800000190734863,
+                            "z": 0.0
+                        }
+                    },
+                    "trailingModule": {
+                        "enabled": false,
+                        "startPoint": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "endPoint": {
+                            "x": 20.0,
+                            "y": 20.0,
+                            "z": 20.0
+                        },
+                        "rotateEndPoint": true,
+                        "rotationSpeed": 2.0,
+                        "rotationRadius": 5.0,
+                        "rotationCenter": {
+                            "x": 20.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotationAxis": {
+                            "x": 0.0,
+                            "y": 1.0,
+                            "z": 0.0
+                        },
+                        "spawnDuration": 5.0,
+                        "spawnRate": 40.0,
+                        "spiralRadius": 5.0,
+                        "spiralFrequency": 3.0,
+                        "spiralIntensityCurve": 0.5,
+                        "pathSpeed": 2.0,
+                        "arrivalThreshold": 0.5,
+                        "timeAccum": 0.0,
+                        "spawnAccum": 0.0
+                    },
+                    "noiseModule": {
+                        "enabled": false,
+                        "strength": 1.0,
+                        "strengthMultiplier": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "frequency": 0.5,
+                        "scrollSpeed": {
+                            "x": 0.0,
+                            "y": 42.099998474121094,
+                            "z": 0.0
+                        },
+                        "damping": true,
+                        "octaves": 3,
+                        "octaveMultiplier": 0.5,
+                        "octaveScale": 2.0,
+                        "quality": 1,
+                        "remapEnabled": false,
+                        "remapCurveStart": 1.0,
+                        "remapCurveEnd": 1.0,
+                        "positionOffset": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        }
+                    },
+                    "emissionInterval": 0.0010000000474974513
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -78.52689361572266,
+                            "y": -0.9209825992584229,
+                            "z": -46.24297332763672
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": -1.1507974863052368,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
                         }
                     }
                 }

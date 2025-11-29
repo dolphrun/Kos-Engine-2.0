@@ -249,7 +249,7 @@ namespace scenes {
 		LOGGING_INFO("Loading entities from: {}", scene.string().c_str());
 
         m_serialization.LoadScene(scene.string(), scenename);  // Load into ECS
-        onSceneLoaded.Invoke(scenename);
+        onSceneLoaded.Invoke(m_ecs.sceneMap.at(scenename));
 
 		LOGGING_INFO("Entities successfully loaded!");
         return true;

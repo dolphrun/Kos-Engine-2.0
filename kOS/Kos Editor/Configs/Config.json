@@ -78,6 +78,15 @@
             "inputExtensions": ".dcm"
           }
         ]
+      },
+      "navCompiler": {
+        "path": "null",
+        "outputExtension": ".navmesh",
+        "inputExtensions": [
+          {
+            "inputExtensions": ".navmesh"
+          }
+        ]
       }
     }
   },

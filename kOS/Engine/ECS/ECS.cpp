@@ -40,7 +40,7 @@ namespace ecs{
 		RegisterComponent<PathfinderTargetComponent>();
 		RegisterComponent<CubeRendererComponent>();
 		RegisterComponent<SphereRendererComponent>();
-
+		RegisterComponent<ButtonComponent>();
 		RegisterComponent<ParticleComponent>();
 
 		//Allocate memory to each system
@@ -61,6 +61,7 @@ namespace ecs{
 
 		RegisterSystem<CanvasTextRenderSystem, TransformComponent, CanvasRendererComponent>();
 		RegisterSystem<CanvasSpriteRenderSystem, TransformComponent, CanvasRendererComponent>();
+		RegisterSystem<CanvasButtonRenderSystem, TransformComponent, CanvasRendererComponent>();
 		RegisterSystem<AnimatorSystem, TransformComponent, AnimatorComponent>();
 		RegisterSystem<LightingSystem, TransformComponent, LightComponent>();
 		RegisterSystem<DebugBoxColliderRenderSystem, TransformComponent, BoxColliderComponent>();
