@@ -2,6 +2,7 @@
     {
         "SceneData": {
             "skyBoxGUID": [],
+            "NavMeshGuid": "fae9b942-a51c-90d8-668f-b8c5230daecc",
             "ambientIntensity": 1.0
         }
     },

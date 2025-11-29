@@ -75,8 +75,8 @@ public:
 	void Update(float dt);
 	void BuildRecastGeometry(std::string sceneName, std::shared_ptr<Sample_TileMesh>& tileMesh);
 	void Build(std::string sceneName, std::shared_ptr<Sample_TileMesh> tileMesh);
-	void SaveMesh(std::string sceneName);
-	std::shared_ptr<Sample_TileMesh> LoadMesh(std::string fileName);
+	void SaveMesh(const std::filesystem::path& filePath, const std::string& sceneName);
+	std::shared_ptr<Sample_TileMesh> LoadMesh(const std::string& sceneName, const utility::GUID& navPath);
 	void SetGraphicsRenderMesh(std::shared_ptr<Sample_TileMesh> tm);
 
 	void AddAgent(int& agentID, EntityID entityID, glm::vec3 pos = glm::vec3(0), float radius = 0.6f, float height = 1.8f, float maxSpeed = 3.5f);
