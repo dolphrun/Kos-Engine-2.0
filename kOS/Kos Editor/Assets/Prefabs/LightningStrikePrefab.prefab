@@ -273,7 +273,7 @@
                             "studioEventPath": ""
                         },
                         {
-                            "audioGUID": "ff0a3037-084b-40b6-a230-3f8f044d9c2f",
+                            "audioGUID": "26269fb3-67ac-8a8e-9d3c-78b8d56153f3",
                             "volume": 1.0,
                             "loop": false,
                             "playOnStart": false,
@@ -312,7 +312,7 @@
                     "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
                     "enemyDeathSfxGUID_2": "18bde09b-18c2-4f58-5770-048caf28d1c3",
                     "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659",
-                    "lightningStrikeSfxGUID": "ff0a3037-084b-40b6-a230-3f8f044d9c2f"
+                    "lightningStrikeSfxGUID": "26269fb3-67ac-8a8e-9d3c-78b8d56153f3"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -334,7 +334,7 @@
                     "particleType": 0,
                     "duration": 0.20000000298023224,
                     "looping": false,
-                    "play_On_Awake": true,
+                    "play_On_Awake": false,
                     "start_Lifetime": 0.18000000715255737,
                     "end_Lifetime": 0.23999999463558197,
                     "lifetime_Random_Enable": true,
@@ -496,6 +496,27 @@
                         }
                     },
                     "emissionInterval": 0.000009999999747378752
+                },
+                "RigidbodyComponent": {
+                    "mass": 1.0,
+                    "drag": 0.0,
+                    "angularDrag": 0.05000000074505806,
+                    "useGravity": false,
+                    "isKinematic": true,
+                    "interpolation": 0,
+                    "collisionDetection": 0,
+                    "constraints": 0,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

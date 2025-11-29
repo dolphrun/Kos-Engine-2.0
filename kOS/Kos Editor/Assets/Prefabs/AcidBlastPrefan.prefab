@@ -15,7 +15,7 @@
             "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
             "enemyDeathSfxGUID_2": "18bde09b-18c2-4f58-5770-048caf28d1c3",
             "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659",
-            "acidSpraySfxGUID": "159ce546-6103-bd50-26dd-52853d054802"
+            "acidSpraySfxGUID": "019e689a-d511-458b-a3a9-39094d5973bc"
         },
         "AudioComponent": {
             "audioFiles": [
@@ -68,7 +68,7 @@
                     "studioEventPath": ""
                 },
                 {
-                    "audioGUID": "159ce546-6103-bd50-26dd-52853d054802",
+                    "audioGUID": "019e689a-d511-458b-a3a9-39094d5973bc",
                     "volume": 1.0,
                     "loop": false,
                     "playOnStart": false,
@@ -101,6 +101,27 @@
             "prefabName": "AcidBlastPrefan.prefab",
             "hide": false,
             "isStatic": false
+        },
+        "RigidbodyComponent": {
+            "mass": 1.0,
+            "drag": 0.0,
+            "angularDrag": 0.05000000074505806,
+            "useGravity": false,
+            "isKinematic": true,
+            "interpolation": 0,
+            "collisionDetection": 0,
+            "constraints": 0,
+            "speed": 0.0,
+            "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "angularVelocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
         },
         "SphereColliderComponent": {
             "isTrigger": true,
@@ -158,7 +179,8 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "ParticleComponent": {
                     "particleType": 0,
@@ -372,7 +394,8 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "ParticleComponent": {
                     "particleType": 0,
@@ -586,7 +609,8 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "ParticleComponent": {
                     "particleType": 0,

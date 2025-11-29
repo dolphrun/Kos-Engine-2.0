@@ -39,7 +39,7 @@ public:
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
 				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
 					enemyScript->enemyHealth -= acidDamage;
-
+					std::cout << "AI SHIBAL ACID\n";
 					if (enemyScript->enemyHealth <= 0) {
 						// ADD SFX OF ENEMY DEATH HERE - Done
 						PlayRandomEnemyDeathSFX();

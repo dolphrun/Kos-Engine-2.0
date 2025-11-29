@@ -221,7 +221,9 @@ public:
 		// MOTOR
 		if (!playerIsSliding) {
 			glm::vec3 playerMovementDirection(GetPlayerFrontDirection() * Input->GetVertical() + GetPlayerRightDirection() * Input->GetHorizontal());
-			moveForce += glm::normalize(playerMovementDirection) * currPlayerMovSpeed;
+			if (glm::length2(playerMovementDirection) > glm::epsilon<float>()) {
+				moveForce += glm::normalize(playerMovementDirection) * currPlayerMovSpeed;
+			}
 
 			if ((Input->GetVertical() >= 0.1f || Input->GetVertical() <= -0.1f || Input->GetHorizontal() >= 0.1f || Input->GetHorizontal() <= -0.1f) && !playerIsSprinting) {
 				playerIsWalking = true;
