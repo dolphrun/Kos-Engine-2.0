@@ -149,125 +149,6 @@
         }
     },
     {
-        "entityGUID": "2b9f7b3d-743f-9bd1-3978-e04c0b6a0f18",
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "e9ece6d7-4ed7-73b3-9309-ec58d5d77a07"
-                }
-            ]
-        },
-        "MeshFilterComponent": {
-            "meshGUID": "874f2cee-12a8-60ee-5eb0-47b549f08822"
-        },
-        "NameComponent": {
-            "entityName": "Gun",
-            "Layer": 0,
-            "entityTag": "Default",
-            "isPrefab": false,
-            "prefabName": "",
-            "hide": false,
-            "isStatic": false
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": -10.188720703125,
-                    "y": 0.9327854514122009,
-                    "z": 0.7974694967269897
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.019999999552965164,
-                    "y": 0.019999999552965164,
-                    "z": 0.019999999552965164
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": -10.188720703125,
-                    "y": 0.9327854514122009,
-                    "z": 0.7974694967269897
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.019999999552965164,
-                    "y": 0.019999999552965164,
-                    "z": 0.019999999552965164
-                }
-            }
-        }
-    },
-    {
-        "entityGUID": "21b4826f-14fd-7eaa-622d-cda14cbf106b",
-        "CapsuleColliderComponent": {
-            "isTrigger": false,
-            "capsule": {
-                "center": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "radius": 1.0,
-                "height": 1.0,
-                "capsuleDirection": 1
-            }
-        },
-        "NameComponent": {
-            "entityName": "Player",
-            "Layer": 0,
-            "entityTag": "Default",
-            "isPrefab": false,
-            "prefabName": "",
-            "hide": false,
-            "isStatic": false
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": -10.198233604431152,
-                    "y": 1.2465174198150635,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": -10.198233604431152,
-                    "y": 1.2465174198150635,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        }
-    },
-    {
         "entityGUID": "61c647cf-8277-f25f-78c7-b25422bcd341",
         "NameComponent": {
             "entityName": "Collider Holder",
@@ -1967,9 +1848,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": -54.00838088989258,
-                                    "y": -20.80927276611328,
-                                    "z": -21.0
+                                    "x": 5.504380702972412,
+                                    "y": -1.8543750047683716,
+                                    "z": -25.741466522216797
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -1984,9 +1865,9 @@
                             },
                             "LocalTransformation": {
                                 "position": {
-                                    "x": -54.00838088989258,
-                                    "y": -20.80927276611328,
-                                    "z": -21.0
+                                    "x": 5.504380702972412,
+                                    "y": -1.8543750047683716,
+                                    "z": -25.741466522216797
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -2156,9 +2037,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": -110.00837707519531,
-                                    "y": -36.14299011230469,
-                                    "z": 0.04497528076171875
+                                    "x": 4.640743255615234,
+                                    "y": -2.178238868713379,
+                                    "z": -23.946212768554688
                                 },
                                 "rotation": {
                                     "x": -19.999988555908203,
@@ -2173,9 +2054,9 @@
                             },
                             "LocalTransformation": {
                                 "position": {
-                                    "x": -110.00837707519531,
-                                    "y": -36.14299011230469,
-                                    "z": 0.04497528076171875
+                                    "x": 4.640743255615234,
+                                    "y": -2.178238868713379,
+                                    "z": -23.946212768554688
                                 },
                                 "rotation": {
                                     "x": -19.999988555908203,
@@ -8210,86 +8091,88 @@
                     "z": 0.019999999552965164
                 }
             }
-        }
-    },
-    {
-        "entityGUID": "1d62081d-48d8-222b-d6fb-435d84a28a0f",
-        "LightComponent": {
-            "lightType": 1,
-            "color": {
-                "x": 0.0,
-                "y": 0.699999988079071,
-                "z": 1.5
-            },
-            "diffuseStrength": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            },
-            "specularStrength": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            },
-            "linear": 10.989999771118164,
-            "quadratic": -0.27000001072883606,
-            "direction": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            },
-            "cutOff": 5.599999904632568,
-            "outerCutOff": 25.799999237060547,
-            "intesnity": 15.0,
-            "shadowCast": false,
-            "bakedLighting": false,
-            "depthMapGUID": "00000000-0000-0000-0000-000000000000"
         },
-        "NameComponent": {
-            "entityName": "Electric Point Light",
-            "Layer": 0,
-            "entityTag": "Default",
-            "isPrefab": false,
-            "prefabName": "",
-            "hide": false,
-            "isStatic": false
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": -8.144500732421875,
-                    "y": 3.383563756942749,
-                    "z": 12.99998664855957
+        "children": [
+            {
+                "entityGUID": "1d62081d-48d8-222b-d6fb-435d84a28a0f",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 0.0,
+                        "y": 0.699999988079071,
+                        "z": 1.5
+                    },
+                    "diffuseStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 10.989999771118164,
+                    "quadratic": -0.27000001072883606,
+                    "direction": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 5.599999904632568,
+                    "outerCutOff": 25.799999237060547,
+                    "intesnity": 15.0,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
                 },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
+                "NameComponent": {
+                    "entityName": "Electric Point Light",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false,
+                    "isStatic": false
                 },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": -8.144500732421875,
-                    "y": 3.383563756942749,
-                    "z": 12.99998664855957
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -8.144500732421875,
+                            "y": 3.383563756942749,
+                            "z": 12.999987602233887
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -127.4747314453125,
+                            "y": 169.17819213867188,
+                            "z": -0.0006103515625
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 50.0,
+                            "y": 50.0,
+                            "z": 50.0
+                        }
+                    }
                 }
             }
-        }
+        ]
     },
     {
         "entityGUID": "d7b555eb-5dfc-8470-775a-8d53bfdff4f1",
@@ -8443,422 +8326,6 @@
                 }
             }
         }
-    },
-    {
-        "entityGUID": "c0980288-478f-bd72-a8e4-134cd18a6726",
-        "NameComponent": {
-            "entityName": "Acid Prop Holder",
-            "Layer": 0,
-            "entityTag": "Powerup",
-            "isPrefab": true,
-            "prefabName": "Acid Prop Holder.prefab",
-            "hide": false,
-            "isStatic": false
-        },
-        "PowerupManagerScript": {
-            "powerupType": "ACID"
-        },
-        "SphereColliderComponent": {
-            "isTrigger": false,
-            "sphere": {
-                "center": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "radius": 75.0
-            }
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": -72.58527374267578,
-                    "y": -38.57102966308594,
-                    "z": -31.67496681213379
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -1.4000002145767212,
-                    "z": 16.999996185302734
-                },
-                "scale": {
-                    "x": 0.019999999552965164,
-                    "y": 0.019999999552965164,
-                    "z": 0.019999999552965164
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": -72.58527374267578,
-                    "y": -38.57102966308594,
-                    "z": -31.67496681213379
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -1.399999976158142,
-                    "z": 16.999998092651367
-                },
-                "scale": {
-                    "x": 0.019999999552965164,
-                    "y": 0.019999999552965164,
-                    "z": 0.019999999552965164
-                }
-            }
-        },
-        "children": [
-            {
-                "entityGUID": "8e626458-e4c3-18b8-eae6-a107cdfc60c1",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "c47bcb8a-af57-706b-4154-69f26de1bc97"
-                        }
-                    ]
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "660b9bb0-6212-77a4-c1f4-dc40ea8cce28"
-                },
-                "NameComponent": {
-                    "entityName": "Acid Canister 1",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "prefabName": "Acid Prop Holder.prefab",
-                    "hide": false,
-                    "isStatic": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -72.58527374267578,
-                            "y": -38.57102966308594,
-                            "z": -31.67496681213379
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -1.4000002145767212,
-                            "z": 16.999996185302734
-                        },
-                        "scale": {
-                            "x": 0.019999999552965164,
-                            "y": 0.019999999552965164,
-                            "z": 0.019999999552965164
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "d10b1aff-5767-05b3-a798-29b1def5a236",
-                "LightComponent": {
-                    "lightType": 1,
-                    "color": {
-                        "x": 1.0,
-                        "y": 2.0999999046325684,
-                        "z": 0.10000000149011612
-                    },
-                    "diffuseStrength": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "specularStrength": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "linear": 10.989999771118164,
-                    "quadratic": -0.27000001072883606,
-                    "direction": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "cutOff": 5.599999904632568,
-                    "outerCutOff": 25.799999237060547,
-                    "intesnity": 15.0,
-                    "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
-                },
-                "NameComponent": {
-                    "entityName": "Acid Point Light",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": false,
-                    "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -72.66581726074219,
-                            "y": -36.385623931884766,
-                            "z": -31.680925369262695
-                        },
-                        "rotation": {
-                            "x": 4.002063747066131e-8,
-                            "y": 5.336085351359543e-8,
-                            "z": -0.000001708381091702904
-                        },
-                        "scale": {
-                            "x": 0.9999998807907104,
-                            "y": 1.0000001192092896,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 28.080810546875,
-                            "y": 105.67303466796875,
-                            "z": -0.9842529296875
-                        },
-                        "rotation": {
-                            "x": -0.40939486026763916,
-                            "y": 1.3388153314590454,
-                            "z": -17.004779815673828
-                        },
-                        "scale": {
-                            "x": 49.999996185302734,
-                            "y": 50.000003814697266,
-                            "z": 50.0
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "f86d0001-25a1-78bf-2706-765e9ea88221",
-                "NameComponent": {
-                    "entityName": "Particle Acid",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
-                },
-                "ParticleComponent": {
-                    "particleType": 0,
-                    "duration": 5.0,
-                    "looping": true,
-                    "play_On_Awake": true,
-                    "start_Lifetime": 0.5,
-                    "end_Lifetime": 1.2999999523162842,
-                    "lifetime_Random_Enable": false,
-                    "textureGUID": "3e1ba794-6531-9cee-0762-7a059f5e5855",
-                    "start_Velocity": 3.0,
-                    "playback_State": 0,
-                    "particleFade": 1,
-                    "velocityModule": {
-                        "enabled": true,
-                        "mode": 0,
-                        "velocity_Modifier": {
-                            "x": 0.0,
-                            "y": 3.799999952316284,
-                            "z": 0.0
-                        }
-                    },
-                    "forceModule": {
-                        "enabled": true,
-                        "force": {
-                            "x": 0.0,
-                            "y": 5.800000190734863,
-                            "z": 0.0
-                        }
-                    },
-                    "shapeModule": {
-                        "type": 2,
-                        "emission_Direction": {
-                            "x": 0.0,
-                            "y": 1.0,
-                            "z": 0.0
-                        },
-                        "box_Size": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "sphere_Radius": 1.2999999523162842,
-                        "emit_From_Shell": false,
-                        "cone_Angle": 30.600000381469727,
-                        "cone_Direction": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "cone_Radius": 0.0,
-                        "circle_Radius": 0.0,
-                        "circle_Arc": 0.0,
-                        "emit_From_Edge": false,
-                        "edge_Length": 0.0,
-                        "random_Direction_Amount": 0.0
-                    },
-                    "colorModule": {
-                        "enabled": true,
-                        "start_Color": {
-                            "x": 0.30000001192092896,
-                            "y": 2.200000047683716,
-                            "z": 0.699999988079071,
-                            "w": 0.8999999761581421
-                        },
-                        "end_Color": {
-                            "x": 0.0,
-                            "y": 1.0,
-                            "z": 0.0,
-                            "w": 0.0
-                        }
-                    },
-                    "sizeModule": {
-                        "enabled": true,
-                        "start_Size": -0.10000000149011612,
-                        "end_Size": 0.4000000059604645
-                    },
-                    "rotationModule": {
-                        "enabled": false,
-                        "start_Rotation": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "end_Rotation": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation_Modifier": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        }
-                    },
-                    "gravityModule": {
-                        "enabled": false,
-                        "gravity": {
-                            "x": 0.0,
-                            "y": -5.0,
-                            "z": 0.0
-                        }
-                    },
-                    "trailingModule": {
-                        "enabled": false,
-                        "startPoint": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "endPoint": {
-                            "x": 19.075016021728516,
-                            "y": 0.0,
-                            "z": -4.913695812225342
-                        },
-                        "rotateEndPoint": true,
-                        "rotationSpeed": 2.0,
-                        "rotationRadius": 5.0,
-                        "rotationCenter": {
-                            "x": 20.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotationAxis": {
-                            "x": 0.0,
-                            "y": 1.0,
-                            "z": 0.0
-                        },
-                        "spawnDuration": 5.0,
-                        "spawnRate": 40.0,
-                        "spiralRadius": 5.0,
-                        "spiralFrequency": 3.0,
-                        "spiralIntensityCurve": 0.5,
-                        "pathSpeed": 2.0,
-                        "arrivalThreshold": 0.5,
-                        "timeAccum": 0.09303420782089233,
-                        "spawnAccum": 0.7213680744171143
-                    },
-                    "noiseModule": {
-                        "enabled": false,
-                        "strength": 1.0,
-                        "strengthMultiplier": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "frequency": 0.5,
-                        "scrollSpeed": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "damping": true,
-                        "octaves": 1,
-                        "octaveMultiplier": 0.5,
-                        "octaveScale": 2.0,
-                        "quality": 1,
-                        "remapEnabled": false,
-                        "remapCurveStart": 1.0,
-                        "remapCurveEnd": 1.0,
-                        "positionOffset": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        }
-                    },
-                    "emissionInterval": 0.10000000149011612
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -72.38148498535156,
-                            "y": -38.86296081542969,
-                            "z": -31.996112823486328
-                        },
-                        "rotation": {
-                            "x": 5.869694064131181e-7,
-                            "y": 5.3360871277163824e-8,
-                            "z": -0.000004263865776010789
-                        },
-                        "scale": {
-                            "x": 0.9999999403953552,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 5.082763671875,
-                            "y": -16.9378662109375,
-                            "z": -16.186279296875
-                        },
-                        "rotation": {
-                            "x": -0.40939435362815857,
-                            "y": 1.3388153314590454,
-                            "z": -17.004783630371094
-                        },
-                        "scale": {
-                            "x": 49.999996185302734,
-                            "y": 50.000003814697266,
-                            "z": 50.0
-                        }
-                    }
-                }
-            }
-        ]
     },
     {
         "entityGUID": "f781dc9d-d1eb-2081-d0f0-85e816628d0c",
@@ -12248,6 +11715,161 @@
                             "x": 0.800000011920929,
                             "y": 0.20000000298023224,
                             "z": 1.0
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "4f7c8db3-ce95-a528-47a3-f719a5ad2f57",
+        "CapsuleColliderComponent": {
+            "isTrigger": false,
+            "capsule": {
+                "center": {
+                    "x": -82.80000305175781,
+                    "y": 84.0,
+                    "z": -4.599999904632568
+                },
+                "radius": 61.599998474121094,
+                "height": 161.1999969482422,
+                "capsuleDirection": 1
+            }
+        },
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "d1dc99cf-dde1-ca8b-eeda-2c33d81b557d"
+                }
+            ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "d99f9522-9e6b-105a-4ef2-7e2b63bcc074"
+        },
+        "NameComponent": {
+            "entityName": "Electric Prop 1",
+            "Layer": 0,
+            "entityTag": "Powerup",
+            "isPrefab": true,
+            "prefabName": "Electric Prop 1.prefab",
+            "hide": false,
+            "isStatic": false
+        },
+        "PowerupManagerScript": {
+            "powerupType": "LIGHTNING"
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -66.95050811767578,
+                    "y": -39.0,
+                    "z": -29.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.000005008955668017734,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.019999999552965164,
+                    "y": 0.019999999552965164,
+                    "z": 0.019999999552965164
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -66.95050811767578,
+                    "y": -39.0,
+                    "z": -29.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.000005008955668017734,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.019999999552965164,
+                    "y": 0.019999999552965164,
+                    "z": 0.019999999552965164
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "42aac2ce-8390-ea2e-4894-b23f312ecd09",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 0.0,
+                        "y": 0.699999988079071,
+                        "z": 1.5
+                    },
+                    "diffuseStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 10.989999771118164,
+                    "quadratic": -0.27000001072883606,
+                    "direction": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 5.599999904632568,
+                    "outerCutOff": 25.799999237060547,
+                    "intesnity": 15.0,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "NameComponent": {
+                    "entityName": "Electric Point Light",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false,
+                    "isStatic": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -70.17443084716797,
+                            "y": -35.616485595703125,
+                            "z": -28.999982833862305
+                        },
+                        "rotation": {
+                            "x": 1.2506448134053105e-11,
+                            "y": 0.000005008955213270383,
+                            "z": -1.2506448134053105e-11
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -161.196044921875,
+                            "y": 169.1756591796875,
+                            "z": 0.0008544921875
+                        },
+                        "rotation": {
+                            "x": 1.2506449001414843e-11,
+                            "y": -5.211020959357271e-13,
+                            "z": -1.2506449001414843e-11
+                        },
+                        "scale": {
+                            "x": 50.0,
+                            "y": 50.0,
+                            "z": 50.0
                         }
                     }
                 }
