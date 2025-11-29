@@ -6,6 +6,10 @@
 
 class PlayerManagerScript : public TemplateSC {
 public:
+
+	R_AnimController* playerController = nullptr;
+	AnimatorComponent* anim = nullptr;
+
 	enum Powerup {
 		NONE = 0,
 		FIRE = 1,
@@ -126,6 +130,16 @@ public:
 		healthUIObjectID = ecsPtr->GetEntityIDFromGUID(healthUIObject);
 		loseScreenCanvasID = ecsPtr->GetEntityIDFromGUID(loseScreenCanvasObject);
 		winScreenCanvasID = ecsPtr->GetEntityIDFromGUID(winScreenCanvasObject);
+
+		if (anim = ecsPtr->GetComponent<ecs::AnimatorComponent>(entity))
+		{
+			playerController = resource->GetResource<R_AnimController>(anim->controllerGUID).get();
+			if (playerController)
+			{
+				anim->m_currentState = playerController->m_EnterState;
+				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");
+			}
+		}
 
 	}
 
@@ -339,10 +353,31 @@ public:
 
 		projectilePointTransform->LocalTransformation.position = cameraTransform->LocalTransformation.position + GetPlayerCameraFrontDirection() * 1.5f;
 
+		//Animation Handling
+		if (anim)
+		{
+			if (anim->m_currentState)
+			{
+				R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
+				if (anim->m_CurrentTime >= currAnim->GetDuration())
+				{
+					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("animationFinished");
+				}
+				
+			}
+		}
+
 		// SHOOT
 		if (Input->IsKeyTriggered(keys::LMB)) {
 			playerIsAttacking = true;
 
+			if (anim)
+			{
+				if (anim->m_currentState)
+				{
+					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasShot");
+				}
+			}
 			// ADD ATTACK ANIMATION HERE USING PLAYERISATTACKING BOOLEAN
 
 			if (playerPowerupHeld == Powerup::NONE) {
@@ -510,6 +545,15 @@ public:
 
 		// INTERACT
 		if (Input->IsKeyTriggered(keys::RMB)) {
+
+			if (anim)
+			{
+				if (anim->m_currentState)
+				{
+					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasAbsorbed");
+				}
+			}
+
 			RaycastHit hit;
 			hit.entityID = 9999999;
 			physicsPtr->Raycast(cameraTransform->WorldTransformation.position, GetPlayerCameraFrontDirection(), interactPowerupRange, hit, ecsPtr->GetComponent<RigidbodyComponent>(entity)->actor);

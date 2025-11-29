@@ -16,6 +16,7 @@ public:
             if (controller)
             {
                 anim->m_currentState = controller->m_EnterState;
+                static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");
             }
         }
 
@@ -29,10 +30,13 @@ public:
             /// we change the current state using this script based on the conditions presented
             if (controller->m_EnterState == nullptr) return;
 
+
             if (TransformComponent* tc = ecsPtr->GetComponent<ecs::TransformComponent>(entity))
             {
                 ///if on the left, trigger condition
                 AnimatorComponent* anim = ecsPtr->GetComponent<ecs::AnimatorComponent>(entity);
+                //static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");
+
                 if (tc->LocalTransformation.position.x > 5.f)
                 {
                     //static_cast<AnimState*>(anim->m_currentState)->SetTrigger("isGay");

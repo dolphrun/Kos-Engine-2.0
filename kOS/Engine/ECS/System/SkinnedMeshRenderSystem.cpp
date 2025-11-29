@@ -33,7 +33,6 @@ namespace ecs
 
     void SkinnedMeshRenderSystem::Init()
     {
-        std::cout << "ENTER dadw" << std::endl;
         // Initialize skinned mesh rendering resources if needed
     }
 

@@ -2,6 +2,7 @@
     {
         "SceneData": {
             "skyBoxGUID": [],
+            "NavMeshGuid": "cccccccc-cccc-cccc-cccc-cccccccccccc",
             "ambientIntensity": 1.0
         }
     },
@@ -88,7 +89,7 @@
         "entityGUID": "b11b8045-ba5d-3c4e-cd7d-b73208475971",
         "AnimationTestScript": {},
         "AnimatorComponent": {
-            "controllerGUID": "6a444739-49b3-fc56-1871-fcd64d2a8e8e",
+            "controllerGUID": "9149963b-fa24-7dbc-6d95-cf2d7ffad332",
             "m_PlaybackSpeed": 1.0,
             "m_CurrentTime": 0.0,
             "m_IsPlaying": true
@@ -103,15 +104,15 @@
             "isStatic": false
         },
         "SkinnedMeshRendererComponent": {
-            "skinnedMeshGUID": "71cf2a25-5f6e-7b8a-c908-f0c9765e15ba",
+            "skinnedMeshGUID": "4d215f18-7b0d-7c34-1315-4803812d8960",
             "materialGUID": "61cfd855-ca21-6e2a-3bf8-8fc94756f547"
         },
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 20.143701553344727,
-                    "y": 4.537611961364746,
-                    "z": -22.990188598632813
+                    "x": 20.27103614807129,
+                    "y": 1.640493392944336,
+                    "z": -22.887794494628906
                 },
                 "rotation": {
                     "x": 179.9990997314453,
@@ -126,9 +127,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 20.143701553344727,
-                    "y": 4.537611961364746,
-                    "z": -22.990188598632813
+                    "x": 20.27103614807129,
+                    "y": 1.640493392944336,
+                    "z": -22.887794494628906
                 },
                 "rotation": {
                     "x": 179.9990997314453,
@@ -197,6 +198,65 @@
                     "x": 0.10000000149011612,
                     "y": 0.10000000149011612,
                     "z": 0.10000000149011612
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "ff5d64a5-5993-ffa2-785e-e220d73938a9",
+        "AnimationTestScript": {},
+        "AnimatorComponent": {
+            "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
+            "m_PlaybackSpeed": 1.0,
+            "m_CurrentTime": 0.0,
+            "m_IsPlaying": true
+        },
+        "NameComponent": {
+            "entityName": "animated mesh",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false,
+            "isStatic": false
+        },
+        "SkinnedMeshRendererComponent": {
+            "skinnedMeshGUID": "8a830bfc-7794-b76e-2f45-0e765f0a2495",
+            "materialGUID": "61cfd855-ca21-6e2a-3bf8-8fc94756f547"
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -12.59646987915039,
+                    "y": -1.7041196823120117,
+                    "z": -22.2252197265625
+                },
+                "rotation": {
+                    "x": 179.9990997314453,
+                    "y": 0.318505197763443,
+                    "z": 179.99989318847656
+                },
+                "scale": {
+                    "x": 0.10000007599592209,
+                    "y": 0.10000000149011612,
+                    "z": 0.10000007599592209
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -12.59646987915039,
+                    "y": -1.7041196823120117,
+                    "z": -22.2252197265625
+                },
+                "rotation": {
+                    "x": 179.9990997314453,
+                    "y": 0.3185051679611206,
+                    "z": 179.99989318847656
+                },
+                "scale": {
+                    "x": 0.10000007599592209,
+                    "y": 0.10000000149011612,
+                    "z": 0.10000007599592209
                 }
             }
         }
