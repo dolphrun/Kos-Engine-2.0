@@ -810,6 +810,9 @@ void NavMeshManager::Build(std::string sceneName, std::shared_ptr<Sample_TileMes
 
             iter->second->renderNavMesh.CreateMesh();
             SetGraphicsRenderMesh(tm);
+            currentScene = sceneName;
+            auto crowd = tm->getCrowd();
+            tm->getCrowd()->init(128, 0.6f, tm->m_navMesh);
             LOGGING_DEBUG("Nav Mesh Build Successful");
         }
     }
