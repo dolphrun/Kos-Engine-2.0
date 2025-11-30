@@ -55,7 +55,8 @@ namespace ecs {
                 int steps = m_physicsManager.FrameCount();
                 for (int i = 0; i < steps; i++)
                 {
-                    animator->m_CurrentTime += (animation->GetTicksPerSecond() * m_physicsManager.FixedDeltaTime() * static_cast<AnimState*>(animator->m_currentState)->playSpeed) * animator->m_PlaybackSpeed;
+                    float add = (animation->GetTicksPerSecond() * m_physicsManager.FixedDeltaTime() * static_cast<AnimState*>(animator->m_currentState)->playSpeed) * animator->m_PlaybackSpeed * m_ecs.GetTimeScale();                   
+                    animator->m_CurrentTime += add;
                     if (static_cast<AnimState*>(animator->m_currentState)->isLooping)
                         animator->m_CurrentTime = fmod(animator->m_CurrentTime, animation->GetDuration());
                 }

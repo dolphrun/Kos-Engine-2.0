@@ -89,6 +89,20 @@ public:
 
 		enemyTransform->LocalTransformation.rotation = rotationDegrees;
 
+		if (anim)
+		{
+			R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
+			float animDuration = currAnim->GetDuration();
+			//Checkcing if animation is done
+			if (anim->m_CurrentTime >= animDuration && !static_cast<AnimState*>(anim->m_currentState)->isLooping)
+			{
+				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("AnimationFinished");
+				anim->m_CurrentTime = 0.f;
+				enemyIsAttacking = false;
+				attackHurtboxIsSpawn = false;
+			}
+		}
+
 		if (glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= enemyAttackRange) {
 
 			// DONT UNCOMMENT THIS
@@ -116,7 +130,6 @@ public:
 			//		}
 			//	}
 			//}
-			std::cout << "Attack" << std::endl;
 			enemyIsAttacking = true;
 			if (anim)
 			{
@@ -160,9 +173,9 @@ public:
 					R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
 					float animDuration = currAnim->GetDuration();
 
-					//CHECK IF ANIMATION OF THE ENEMY IS AFTER THE ENEMY CLAWED OR SOME SHIT(e.g: ANIMATION TIMER IS AT 2s MARK)
+					//CHECK IF ANIMATION OF THE ENEMY IS AFTER THE ENEMY CLAWED OR SOME SHIT(e.g: ANIMATION TIMER IS AT 2s MARK
 					//Simulating 2 secconds, you might wanna change this
-					if (anim->m_CurrentTime >= animDuration / 2.f)
+					if (anim->m_CurrentTime >= animDuration * 0.5f && static_cast<AnimState*>(anim->m_currentState)->name == "Attacking")
 					{
 						std::shared_ptr<R_Scene> enemyHurtbox = resource->GetResource<R_Scene>(enemyHurtboxPrefab);
 
@@ -177,16 +190,7 @@ public:
 							attackHurtboxIsSpawn = true;
 						}
 					}
-
-					//Checkcing if animation is done
-					if (anim->m_CurrentTime >= animDuration)
-					{
-						static_cast<AnimState*>(anim->m_currentState)->SetTrigger("AnimationFinished");
-						anim->m_CurrentTime = 0.f;
-						enemyIsAttacking = false;
-						attackHurtboxIsSpawn = false;
-					}
-
+					
 				}
 			}
 
@@ -199,9 +203,10 @@ public:
 			{
 				if (anim->m_currentState)
 				{
-					//This will transition into attacking state
+					//This will transition into chasing state
 					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("PlayerDetected");
 				}
+
 			}
 		}
 
