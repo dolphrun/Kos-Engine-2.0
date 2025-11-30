@@ -28,6 +28,8 @@ public:
 	//utility::GUID enemyModel;
 	ecs::EntityID enemyModelID;
 
+	bool attackHurtboxIsSpawn = false;
+
 	void Start() override {
 		playerToChaseID = ecsPtr->GetEntityIDFromGUID(playerToChase);
 		//enemyHurtboxPositionID = ecsPtr->GetEntityIDFromGUID(enemyHurtboxPosition);
@@ -151,7 +153,7 @@ public:
 			// if (CHECK IF ANIMATION IS DONE) {
 			//		enemyIsAttacking = false;
 			// }
-			if (anim)
+			if (anim && !attackHurtboxIsSpawn)
 			{
 				if (anim->m_currentState)
 				{
@@ -171,6 +173,8 @@ public:
 							if (auto* enemyHurtboxTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxID)) {
 								enemyHurtboxTransform->LocalTransformation.position = enemyTransform->LocalTransformation.position + direction;
 							}
+
+							attackHurtboxIsSpawn = true;
 						}
 					}
 
@@ -180,6 +184,7 @@ public:
 						static_cast<AnimState*>(anim->m_currentState)->SetTrigger("AnimationFinished");
 						anim->m_CurrentTime = 0.f;
 						enemyIsAttacking = false;
+						attackHurtboxIsSpawn = false;
 					}
 
 				}
