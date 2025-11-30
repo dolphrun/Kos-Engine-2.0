@@ -175,7 +175,7 @@ public:
 
 					//CHECK IF ANIMATION OF THE ENEMY IS AFTER THE ENEMY CLAWED OR SOME SHIT(e.g: ANIMATION TIMER IS AT 2s MARK
 					//Simulating 2 secconds, you might wanna change this
-					if (anim->m_CurrentTime >= animDuration * 0.75f)
+					if (anim->m_CurrentTime >= animDuration * 0.5f && static_cast<AnimState*>(anim->m_currentState)->name == "Attacking")
 					{
 						std::shared_ptr<R_Scene> enemyHurtbox = resource->GetResource<R_Scene>(enemyHurtboxPrefab);
 
