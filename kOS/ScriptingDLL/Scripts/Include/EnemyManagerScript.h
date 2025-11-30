@@ -68,6 +68,13 @@ public:
 			return;
 		}
 
+		//Copy state from controller
+		if (enemyController && anim->m_currentState != &currAnimationState)
+		{
+			currAnimationState = *static_cast<AnimState*>(anim->m_currentState);
+			anim->m_currentState = &currAnimationState;
+		}
+
 		// FUCK
 		enemyHurtboxPositionTransform->LocalTransformation.position.z = 1.f;
 
