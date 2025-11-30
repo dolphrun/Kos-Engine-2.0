@@ -2,6 +2,7 @@
     {
         "SceneData": {
             "skyBoxGUID": [],
+            "NavMeshGuid": "cccccccc-cccc-cccc-cccc-cccccccccccc",
             "ambientIntensity": 1.0
         }
     },
@@ -143,15 +144,11 @@
                     "y": 1.0,
                     "z": 0.0
                 },
-                "spawnDuration": 5.0,
-                "spawnRate": 40.0,
                 "spiralRadius": 5.0,
                 "spiralFrequency": 3.0,
                 "spiralIntensityCurve": 0.5,
                 "pathSpeed": 2.0,
-                "arrivalThreshold": 0.5,
-                "timeAccum": 0.0,
-                "spawnAccum": 0.0
+                "arrivalThreshold": 0.5
             },
             "noiseModule": {
                 "enabled": true,
@@ -301,7 +298,7 @@
                         "size": {
                             "x": 10.0,
                             "y": 0.10000000149011612,
-                            "z": 1.0
+                            "z": 0.8999999761581421
                         }
                     }
                 },
@@ -457,15 +454,11 @@
                             "y": 1.0,
                             "z": 0.0
                         },
-                        "spawnDuration": 5.0,
-                        "spawnRate": 40.0,
                         "spiralRadius": 5.0,
                         "spiralFrequency": 3.0,
                         "spiralIntensityCurve": 0.5,
                         "pathSpeed": 2.0,
-                        "arrivalThreshold": 0.5,
-                        "timeAccum": 0.0,
-                        "spawnAccum": 0.0
+                        "arrivalThreshold": 0.5
                     },
                     "noiseModule": {
                         "enabled": true,

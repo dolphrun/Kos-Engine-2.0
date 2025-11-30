@@ -12916,7 +12916,7 @@
             "enemyMovementSpeed": 5.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyHurtboxPosition": "a8ed480f-dc06-d48d-cfe7-a5be96e2fcd8"
+            "enemyHurtboxPosition": "a9e244eb-6abb-a724-60ba-0cce239473af"
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
@@ -12964,54 +12964,6 @@
             }
         },
         "children": [
-            {
-                "entityGUID": "a9e244eb-6abb-a724-60ba-0cce239473af",
-                "NameComponent": {
-                    "entityName": "Enemy Hurtbox Position",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": false,
-                    "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -6.231443405151367,
-                            "y": 4.580399036407471,
-                            "z": 46.462467193603516
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 1.5,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            },
             {
                 "entityGUID": "19d0f36e-adf9-603d-7007-a921ab75696a",
                 "MaterialComponent": {
@@ -13069,6 +13021,54 @@
                         }
                     }
                 }
+            },
+            {
+                "entityGUID": "a9e244eb-6abb-a724-60ba-0cce239473af",
+                "NameComponent": {
+                    "entityName": "Enemy Hurtbox Position",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false,
+                    "isStatic": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -6.231443405151367,
+                            "y": 4.580399036407471,
+                            "z": 46.462467193603516
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 1.5,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
             }
         ]
     },
@@ -13092,7 +13092,7 @@
             "enemyMovementSpeed": 5.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyHurtboxPosition": "a8ed480f-dc06-d48d-cfe7-a5be96e2fcd8"
+            "enemyHurtboxPosition": "7f890803-12e4-bade-4476-b8e3446517a4"
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
@@ -13268,7 +13268,7 @@
             "enemyMovementSpeed": 5.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyHurtboxPosition": "a8ed480f-dc06-d48d-cfe7-a5be96e2fcd8"
+            "enemyHurtboxPosition": "0ffd3151-9fd5-d118-0b5a-ea6edfab31ad"
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
@@ -13444,7 +13444,7 @@
             "enemyMovementSpeed": 5.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyHurtboxPosition": "a8ed480f-dc06-d48d-cfe7-a5be96e2fcd8"
+            "enemyHurtboxPosition": "51513580-e943-b76c-dae9-598afb79a8f7"
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
@@ -13620,7 +13620,7 @@
             "enemyMovementSpeed": 5.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyHurtboxPosition": "a8ed480f-dc06-d48d-cfe7-a5be96e2fcd8"
+            "enemyHurtboxPosition": "bbd7818d-9de8-2e44-2f1c-d664b7189490"
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
@@ -13796,7 +13796,7 @@
             "enemyMovementSpeed": 5.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyHurtboxPosition": "a8ed480f-dc06-d48d-cfe7-a5be96e2fcd8"
+            "enemyHurtboxPosition": "30b2919c-aae4-9cba-5277-c6d66fde233a"
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
@@ -13972,7 +13972,7 @@
             "enemyMovementSpeed": 5.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyHurtboxPosition": "a8ed480f-dc06-d48d-cfe7-a5be96e2fcd8"
+            "enemyHurtboxPosition": "c906132b-05d0-0e68-9554-de666da41881"
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
@@ -14148,7 +14148,7 @@
             "enemyMovementSpeed": 5.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyHurtboxPosition": "a8ed480f-dc06-d48d-cfe7-a5be96e2fcd8"
+            "enemyHurtboxPosition": "9d45de88-1112-da84-8db8-bdc96075ccc4"
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
@@ -14324,7 +14324,7 @@
             "enemyMovementSpeed": 5.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyHurtboxPosition": "a8ed480f-dc06-d48d-cfe7-a5be96e2fcd8"
+            "enemyHurtboxPosition": "002b2c3a-1bd7-f9f0-2dc1-bb99caac1fd4"
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
@@ -14500,7 +14500,7 @@
             "enemyMovementSpeed": 5.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyHurtboxPosition": "a8ed480f-dc06-d48d-cfe7-a5be96e2fcd8"
+            "enemyHurtboxPosition": "3c44f7e2-0f26-470d-c5b2-1a32876dacb5"
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
