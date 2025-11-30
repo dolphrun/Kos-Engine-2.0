@@ -112,6 +112,7 @@ namespace Input {
 	}
 
 	void InputSystem::InputExitFrame(float deltaTime) {
+		if(!isRunning)glfwSetWindowShouldClose(inputWindow, GLFW_TRUE);
 		prevMousePos = currentMousePos;
 	}
 
@@ -183,6 +184,6 @@ namespace Input {
 	void InputSystem::InputExitWindow() {
 		glfwSetWindowShouldClose(inputWindow, GLFW_TRUE);
 		//exit(0);
-		isRunning = false;
+		isRunning=false;
 	}
 }

@@ -121,7 +121,7 @@ namespace Application
         /*--------------------------------------------------------------
             GAME LOOP
         --------------------------------------------------------------*/
-        while (!glfwWindowShouldClose(lvWindow.window)&& input.isRunning)
+        while (!glfwWindowShouldClose(lvWindow.window))
         {
             static int count = 0;
 
