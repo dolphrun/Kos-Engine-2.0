@@ -56,6 +56,7 @@ namespace Application
         --------------------------------------------------------------*/
         ecs.Load();
         ecs.Init();
+        ecs.SetState(START);
         LOGGING_INFO("Load ECS Successful");
 
         /*--------------------------------------------------------------
