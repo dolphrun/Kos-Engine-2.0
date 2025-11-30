@@ -30,7 +30,7 @@ uniform int entityID=-1;
 in vec4 vColor;
 void main()
 {    
-    gAlbedoSpec.rgb =vColor.rgb;
+    gAlbedoSpec =vec4(vColor.rgb,1.f);
     gMaterial.b=shaderType;
 }
 )"

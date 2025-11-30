@@ -13,7 +13,8 @@
             "entityTag": "Default",
             "isPrefab": true,
             "prefabName": "FlamethrowerPrefab.prefab",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -54,6 +55,74 @@
         "children": [
             {
                 "entityGUID": "9b226a67-f81b-6d72-fc77-db6a46518886",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "ef772eb3-1923-0835-dd9b-683167c10659",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "92d4319d-df00-24c3-147c-036099e4d206",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
                 "BoxColliderComponent": {
                     "isTrigger": true,
                     "box": {
@@ -73,7 +142,11 @@
                 "FireAcidPowerupManagerScript": {
                     "flamethrowerDamage": 1,
                     "lingerTime": 5.0,
-                    "timeBeforeDamageAgain": 0.3499999940395355
+                    "timeBeforeDamageAgain": 0.3499999940395355,
+                    "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                    "enemyDeathSfxGUID_2": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                    "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659",
+                    "flameThrowerSfxGUID": "92d4319d-df00-24c3-147c-036099e4d206"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -88,7 +161,29 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
+                },
+                "RigidbodyComponent": {
+                    "mass": 1.0,
+                    "drag": 0.0,
+                    "angularDrag": 0.05000000074505806,
+                    "useGravity": false,
+                    "isKinematic": true,
+                    "interpolation": 0,
+                    "collisionDetection": 0,
+                    "constraints": 0,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

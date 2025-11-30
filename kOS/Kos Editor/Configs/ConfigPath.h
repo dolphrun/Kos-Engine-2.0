@@ -3,6 +3,7 @@
 
 namespace configpath {
 	constexpr const char* configFilePath = "Kos Editor/Configs/Config.json";
+    constexpr const char* gameConfigFilePath = "Alchemication/Configs/Config.json";
     constexpr const char* assetFilePath = "Kos Editor/Assets";
     constexpr const char* resourceFilePath = "Resource";
     constexpr const char* logFilePath = "LogFile.txt";

@@ -75,7 +75,7 @@ namespace scenes {
         m_loadQueue.push_back(scene);
     }
 
-    void SceneManager::ReloadScene()
+    void SceneManager::ImmediateReloadScene()
     {
         // If Cached Scenes exist reload all Cached Scenes
         if (cacheScenePath.size() > 0) {
@@ -196,6 +196,11 @@ namespace scenes {
 
 	void SceneManager::EndFrame()
 	{
+        if (m_reloadScene) {
+            m_reloadScene = false;
+            ImmediateReloadScene();
+        }
+
         if (!m_clearQueue.empty()) {
 
 			for (auto const& scene : m_clearQueue) {
@@ -353,6 +358,9 @@ namespace scenes {
 			sceneData.sceneIDs.begin(), sceneData.sceneIDs.end());
     }
 
+    void SceneManager::ReloadScene() {
+        m_reloadScene = true;
+    }
   
     //void SceneManager::AssignEntityNewScene(const std::string& scene, m_ecs::EntityID id)
     //{

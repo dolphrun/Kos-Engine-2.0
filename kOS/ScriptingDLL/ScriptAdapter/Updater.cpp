@@ -6,6 +6,7 @@
 #include "Inputs/Input.h"
 #include "Physics/PhysicsManager.h"
 #include "Scripting/ScriptManager.h"
+#include "Pathfinding/NavMesh.h"
 
 static std::vector<std::string>* scriptNames;
 
@@ -29,6 +30,7 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 	TemplateSC::Scenes = static_cast<scenes::SceneManager*>(svm->scene);
 	TemplateSC::physicsPtr = static_cast<physics::PhysicsManager*>(svm->physics);
 	TemplateSC::resource = static_cast<ResourceManager*>(svm->resource);
+	TemplateSC::navMeshPtr = static_cast<NavMeshManager*>(svm->navMesh);
 
 	RegisterScript<BulletLogic>(TemplateSC::ecsPtr);
 	RegisterScript<EnemyManagerScript>(TemplateSC::ecsPtr);
@@ -58,8 +60,13 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 	RegisterScript<EventColliderScript>(TemplateSC::ecsPtr);
 
 	RegisterScript<HealthBarScript>(TemplateSC::ecsPtr);
-	RegisterScript<WinSceneScript>(TemplateSC::ecsPtr);
 	RegisterScript<AbilityUIImageScript>(TemplateSC::ecsPtr);
+	RegisterScript<ScoreManagerScript>(TemplateSC::ecsPtr);
+	RegisterScript<PauseMenuScript>(TemplateSC::ecsPtr);
+	RegisterScript<LoseScreenScript>(TemplateSC::ecsPtr);
+	RegisterScript<WinScreenScript>(TemplateSC::ecsPtr);
+
+	RegisterScript<AnimationTestScript>(TemplateSC::ecsPtr);
 
 	FieldComponentTypeRegistry::CreateAllDrawers(static_cast<Fields*>(svm->field)->GetAction());
 }

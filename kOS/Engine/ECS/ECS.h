@@ -159,7 +159,7 @@ namespace ecs {
 		bool IsValidEntity(EntityID ID) {
 			return m_entityMap.find(ID) != m_entityMap.end();
 		}
-
+		 
 		std::string GetSceneByEntityID(ecs::EntityID entityID);
 
 
@@ -172,8 +172,11 @@ namespace ecs {
 		GAMESTATE GetNextState() { return m_nextState; }
 		void SetState(GAMESTATE state) { m_nextState = state; }
 
-		float m_GetDeltaTime() { return m_deltaTime; }
-		
+		void SetTimeScale(float scale) { m_timeScale = scale; }
+		float GetTimeScale() const { return m_timeScale; }
+
+		float m_GetDeltaTime() { return m_deltaTime * m_timeScale; }
+
 
 		std::unordered_map<std::string, std::shared_ptr<IActionInvoker>> componentAction;
 
@@ -199,6 +202,7 @@ namespace ecs {
 		GAMESTATE m_state{ STOP };
 
 		float m_deltaTime{};
+		float m_timeScale = 1.0f;   // default normal speed
 
 		//COMPONENT DATA
 		std::unordered_map<std::string, std::shared_ptr<ISparseSet>> m_combinedComponentPool;

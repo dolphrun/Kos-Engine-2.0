@@ -52,6 +52,15 @@
           }
         ]
       },
+      "audioStudioCompiler": {
+        "path": "null",
+        "outputExtension": ".bank",
+        "inputExtensions": [
+          {
+            "inputExtensions": ".bank"
+          }
+        ]
+      },
       "materialCompiler": {
         "path": "null",
         "outputExtension": ".mat",
@@ -61,12 +70,30 @@
           }
         ]
       },
+      "animControllerCompiler": {
+        "path": "null",
+        "outputExtension": ".controller",
+        "inputExtensions": [
+          {
+            "inputExtensions": ".controller"
+          }
+        ]
+      },
       "dmcCompiler": {
         "path": "null",
         "outputExtension": ".dcm",
         "inputExtensions": [
           {
             "inputExtensions": ".dcm"
+          }
+        ]
+      },
+      "navCompiler": {
+        "path": "null",
+        "outputExtension": ".navmesh",
+        "inputExtensions": [
+          {
+            "inputExtensions": ".navmesh"
           }
         ]
       }

@@ -153,8 +153,8 @@ class R_Model : public Resource {
 	};
 
 public:
-
 	using Resource::Resource;
+	class Mesh;
 
 	void Load() override;
 
@@ -167,7 +167,7 @@ public:
 
 	void Draw(Shader& shader);
 	void PBRDraw(Shader& shader, std::shared_ptr < PBRMaterial> const& pbrMat);
-	void DrawAnimation(Shader& shader, PBRMaterial const& pbrMat, const std::vector<glm::mat4>& boneMatrices);
+	void DrawAnimation(Shader& shader, std::shared_ptr<PBRMaterial> const& pbrMat, const std::vector<glm::mat4>& boneMatrices);
 
 	const std::vector<Animation>& GetAnimations() const { return animations; }
 	const std::vector<BoneInfo>& GetBoneInfo() const { return bone_info; }
@@ -176,6 +176,7 @@ public:
 	glm::mat4 GetGlobalInverse() const { return globalInverseTransform; }
 	void LoadMesh(std::string meshFile);
 
+	const std::vector<Mesh>& GetMeshes() const { return meshes; }
 	/// <summary>
 	/// TEMPORARY HERE
 	/// </summary>

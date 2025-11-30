@@ -36,24 +36,10 @@ namespace ecs {
 		CIRCLE,    
 		EDGE        
 	};
-	
-	struct AttractorModule{
-		bool enabled = false;
 
-		glm::vec3 targetPosition = glm::vec3(0);   // for absorption
-		float attractionStrength = 0.0f;
-
-		float explosionStrength = 0.0f;
-
-		float whirlpoolStrength = 0.0f;
-		float whirlpoolRadius = 1.0f;
-
-		bool useInverseFalloff = true;  // stronger when particles are closer (black-hole style)
-		REFLECTABLE(AttractorModule, enabled,
-			targetPosition, attractionStrength,
-			explosionStrength,
-			whirlpoolStrength, whirlpoolRadius,
-			useInverseFalloff);
+	enum ParticleFade {
+		COLOR,
+		LIFETIME
 	};
 
 	struct ShapeModule {
@@ -142,8 +128,8 @@ namespace ecs {
 		glm::vec3 rotationCenter = glm::vec3(20.f, 0.f, 0.f); // Center of rotation
 		glm::vec3 rotationAxis = glm::vec3(0.f, 1.f, 0.f);    // Axis to rotate around (Y-axis by default)
 
-		float spawnDuration = 5.f;               // How long to emit particles
-		float spawnRate = 40.0f;                // Particles per second
+		//float spawnDuration = 5.f;               // How long to emit particles
+		//float spawnRate = 40.0f;                // Particles per second
 
 		// Spiral/twister settings
 		float spiralRadius = 5.f;                // Radius of the spiral/helix around the path
@@ -154,16 +140,59 @@ namespace ecs {
 		float pathSpeed = 2.0f;                  // How fast particles move along the path (0-1 per second)
 		float arrivalThreshold = 0.5f;           // Distance at which particle "arrives" at end
 
-		float timeAccum = 0.0f;                  // Time accumulated since start
-		float spawnAccum = 0.0f;                 // Fractional particle spawn accumulator
+		//float timeAccum = 0.0f;                  // Time accumulated since start
+		//float spawnAccum = 0.0f;                 // Fractional particle spawn accumulator
 
 
 		REFLECTABLE(TrailingModule, enabled, startPoint, endPoint,
 			rotateEndPoint, rotationSpeed, rotationRadius, rotationCenter, rotationAxis,
-			spawnDuration, spawnRate,
 			spiralRadius, spiralFrequency, spiralIntensityCurve,
-			pathSpeed, arrivalThreshold,
-			timeAccum, spawnAccum);
+			pathSpeed, arrivalThreshold);
+	};
+
+
+	struct NoiseModule {
+		bool enabled = false;
+
+		// Noise strength
+		float strength = 1.0f;
+		glm::vec3 strengthMultiplier = glm::vec3(1.0f);
+
+		// Frequency controls how "zoomed in" the noise is
+		float frequency = 0.5f;
+
+		// Scrolling speed - animates the noise over time
+		glm::vec3 scrollSpeed = glm::vec3(0.0f);
+
+		// Damping - reduces particle velocity influence
+		bool damping = true;
+
+		// Octaves for fractal noise
+		int octaves = 1;
+		float octaveMultiplier = 0.5f;
+		float octaveScale = 2.0f;
+
+		// Quality settings
+		enum NoiseQuality {
+			LOW,
+			MEDIUM,
+			HIGH
+		};
+		NoiseQuality quality = MEDIUM;
+
+		// Remap curve
+		bool remapEnabled = false;
+		float remapCurveStart = 1.0f;
+		float remapCurveEnd = 1.0f;
+
+		// Position offset
+		glm::vec3 positionOffset = glm::vec3(0.0f);
+
+		REFLECTABLE(NoiseModule, enabled, strength, strengthMultiplier,
+			frequency, scrollSpeed, damping,
+			octaves, octaveMultiplier, octaveScale,
+			quality, remapEnabled, remapCurveStart, remapCurveEnd,
+			positionOffset);
 	};
 
 
@@ -194,6 +223,8 @@ namespace ecs {
 
 		PlayState playback_State = PlayState::PLAY;
 
+		ParticleFade particleFade = ParticleFade::LIFETIME;
+
 		//Color over lifetime
 		ColorOverLifetimeModule colorModule;
 
@@ -216,10 +247,14 @@ namespace ecs {
 		RotationOverLifetimeModule rotationModule;
 
 		//Attraction MOdule
-		AttractorModule attractorModule; 
+		//AttractorModule attractorModule; 
 
 		//Trailing Module
 		TrailingModule trailingModule;
+
+		NoiseModule noiseModule;
+
+
 
 		//FOR THE ALIVE PARTICLES
 		std::vector<ParticleData> particle_List;
@@ -234,8 +269,8 @@ namespace ecs {
 		REFLECTABLE(ParticleComponent, particleType, duration, looping, play_On_Awake, 
 					start_Lifetime, end_Lifetime, lifetime_Random_Enable,
 					textureGUID,
-					start_Velocity, playback_State,
-					velocityModule,forceModule, shapeModule, colorModule, sizeModule, rotationModule, attractorModule, gravityModule, trailingModule,
+					start_Velocity, playback_State, particleFade,
+					velocityModule,forceModule, shapeModule, colorModule, sizeModule, rotationModule, gravityModule, trailingModule, noiseModule,
 					emissionInterval);
 	};
 }

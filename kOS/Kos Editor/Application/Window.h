@@ -54,28 +54,22 @@ namespace Application {
         }
         AppWindow() = delete;
 
-
         int init(int windowWidth, int windowHeight);
         int Update();
         int CleanUp();
 
+        float windowHeight = 0.f;
+        float windowWidth = 0.f;
 
-        float windowHeight;
-        float windowWidth;
-
-
-        GLFWwindow* window;
-
-        GLFWmonitor* monitor;
-        const GLFWvidmode* mode;
+        GLFWwindow* window = nullptr;
+        GLFWmonitor* monitor = nullptr;
+        const GLFWvidmode* mode = nullptr;
 
         bool fullScreen;
         bool enabledFullScreen{ false };//use this to set launch application fullscreen or not
 
-
         void setCursorImage(const std::string& image, bool centered);
-        GLFWcursor* currCursor;
-
+        GLFWcursor* currCursor = nullptr;
 
         void CheckFullscreen();
     };

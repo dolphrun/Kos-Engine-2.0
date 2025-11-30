@@ -1,8 +1,15 @@
 #pragma once
 #include "TemplateSC.h"
+#include "PauseMenuScript.h"
+#include "LoseScreenScript.h"
+#include "WinScreenScript.h"
 
 class PlayerManagerScript : public TemplateSC {
 public:
+
+	R_AnimController* playerController = nullptr;
+	AnimatorComponent* anim = nullptr;
+
 	enum Powerup {
 		NONE = 0,
 		FIRE = 1,
@@ -14,13 +21,14 @@ public:
 	};
 
 	// PLAYER DETAILS
-	int maxPlayerHitPoints = 10;
+	int maxPlayerHitPoints = 6;
 	int currPlayerHitPoints;
+	bool isDead = false;
 
 	float maxPlayerMovSpeed = 18.5f;
 	float currPlayerMovSpeed;
 
-	float maxPlayerJumpForce = 800.f;
+	float maxPlayerJumpForce = 400.f;
 	float currPlayerJumpForce;
 
 	float playerCameraSpeedX = 0.65f;
@@ -54,6 +62,10 @@ public:
 	utility::GUID playerGunModelPointObject;
 	utility::GUID playerArmModelObject;
 	utility::GUID playerGroundCheckObject;
+	utility::GUID pauseMenuManagerObject;
+	utility::GUID healthUIObject;
+	utility::GUID loseScreenCanvasObject;
+	utility::GUID winScreenCanvasObject;
 
 	ecs::EntityID playerCameraObjectID;
 	ecs::EntityID playerGunCameraObjectID;
@@ -61,6 +73,10 @@ public:
 	ecs::EntityID playerGunModelPointObjectID;
 	ecs::EntityID playerArmModelObjectID;
 	ecs::EntityID playerGroundCheckObjectID;
+	ecs::EntityID pauseMenuManagerID;
+	ecs::EntityID healthUIObjectID;
+	ecs::EntityID loseScreenCanvasID;
+	ecs::EntityID winScreenCanvasID;
 
 	utility::GUID bulletPrefab;
 
@@ -89,7 +105,8 @@ public:
 	float bobbingTimer = 0.f;
 
 	// SFX
-	utility::GUID gunSfxGUID;
+	utility::GUID gunSfxGUID_1;
+	utility::GUID gunSfxGUID_2;
 
 	void Start() override {
 		playerCameraObjectID = ecsPtr->GetEntityIDFromGUID(playerCameraObject);
@@ -105,12 +122,57 @@ public:
 
 		playerCrouchCameraPosY = originalPlayerCrouchCameraPosY = ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID)->LocalTransformation.position.y;
 		playerCrouchCameraPosY -= 0.85f;
+
+		if (pauseMenuManagerObject != utility::GUID{}) {
+			pauseMenuManagerID = ecsPtr->GetEntityIDFromGUID(pauseMenuManagerObject);
+			std::cout << "PlayerManager connected to PauseMenuManager!\n";
+		}
+		healthUIObjectID = ecsPtr->GetEntityIDFromGUID(healthUIObject);
+		loseScreenCanvasID = ecsPtr->GetEntityIDFromGUID(loseScreenCanvasObject);
+		winScreenCanvasID = ecsPtr->GetEntityIDFromGUID(winScreenCanvasObject);
+
+		std::vector<EntityID> armChild = ecsPtr->GetChild(playerArmModelObjectID).value();
+		if (anim = ecsPtr->GetComponent<ecs::AnimatorComponent>(armChild[0]))
+		{
+			playerController = resource->GetResource<R_AnimController>(anim->controllerGUID).get();
+			if (playerController)
+			{
+				anim->m_currentState = playerController->m_EnterState;
+				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");
+			}
+		}
+
 	}
 
 	void Update() override {	
+
+		if (Input->IsKeyReleased(keys::L)) {
+			std::cout << "L RELEASED\n";
+			Scenes->ReloadScene();
+		}
+
+		if (Input->IsKeyTriggered(keys::ESC)) {
+			if (auto* pauseManager = ecsPtr->GetComponent<PauseMenuScript>(pauseMenuManagerID)) {
+				std::cout << "PAUSE PAUSE PAUSE\n";
+				pauseManager->TogglePause();
+			}
+		}
+
+		if (PauseMenuScript::isPaused ||
+			WinScreenScript::isWinScreenActive ||
+			LoseScreenScript::isLoseScreenActive)
+		{
+			return; // Skip ALL player input
+		}
+
 		PlayerMovementControls();
 		PlayerCameraControls();
 		PlayerCombatControls();
+
+		if (Input->IsKeyTriggered(keys::UP)) {
+			std::cout << "Player takes 1 damage for testing purposes.\n"; 
+			TakeDamage(1);
+		}
 	}
 
 	void FixedUpdate() override {
@@ -175,7 +237,9 @@ public:
 		// MOTOR
 		if (!playerIsSliding) {
 			glm::vec3 playerMovementDirection(GetPlayerFrontDirection() * Input->GetVertical() + GetPlayerRightDirection() * Input->GetHorizontal());
-			moveForce += glm::normalize(playerMovementDirection) * currPlayerMovSpeed;
+			if (glm::length2(playerMovementDirection) > glm::epsilon<float>()) {
+				moveForce += glm::normalize(playerMovementDirection) * currPlayerMovSpeed;
+			}
 
 			if ((Input->GetVertical() >= 0.1f || Input->GetVertical() <= -0.1f || Input->GetHorizontal() >= 0.1f || Input->GetHorizontal() <= -0.1f) && !playerIsSprinting) {
 				playerIsWalking = true;
@@ -291,10 +355,33 @@ public:
 
 		projectilePointTransform->LocalTransformation.position = cameraTransform->LocalTransformation.position + GetPlayerCameraFrontDirection() * 1.5f;
 
+		//Animation Handling
+		if (anim)
+		{
+			if (anim->m_currentState)
+			{
+				
+				R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
+				if (anim->m_CurrentTime >= currAnim->GetDuration())
+				{
+					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("animationFinished");
+					anim->m_CurrentTime = 0.f;
+				}
+				
+			}
+		}
+
 		// SHOOT
 		if (Input->IsKeyTriggered(keys::LMB)) {
 			playerIsAttacking = true;
 
+			if (anim)
+			{
+				if (anim->m_currentState)
+				{
+					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasShot");
+				}
+			}
 			// ADD ATTACK ANIMATION HERE USING PLAYERISATTACKING BOOLEAN
 
 			if (playerPowerupHeld == Powerup::NONE) {
@@ -314,11 +401,19 @@ public:
 
 					// GUN SFX
 					if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+						std::vector<ecs::AudioFile*> playerHurtSfxPool;
+
 						for (auto& af : ac->audioFiles) {
-							if (af.audioGUID == gunSfxGUID && af.isSFX) {
-								af.requestPlay = true;
-								break;
+							if (af.isSFX) {
+								playerHurtSfxPool.push_back(&af);
 							}
+						}
+
+						if (!playerHurtSfxPool.empty()) {
+							int idx = rand() % static_cast<int>(playerHurtSfxPool.size());
+							std::cout << "[BulletLogic] Random SFX index chosen = " << idx << std::endl;
+
+							playerHurtSfxPool[idx]->requestPlay = true;
 						}
 					}
 				}
@@ -420,19 +515,33 @@ public:
 				std::shared_ptr<R_Scene> starfall = resource->GetResource<R_Scene>(acidLightningPrefab);
 				
 				if (starfall) {
+					// Update later
+					//std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+					//ecs::EntityID starfallID = DuplicatePrefabIntoScene<R_Scene>(currentScene, acidLightningPrefab);
+				
+					//if (auto* starfallTransform = ecsPtr->GetComponent<TransformComponent>(starfallID)) {
+					//	starfallTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
+					//}
+				
+					//glm::vec3 dir = GetPlayerCameraFrontDirection();
+					//for (int i = 0; i < ecsPtr->GetComponent<TransformComponent>(starfallID)->m_childID.size(); ++i) {
+					//	// TODO: RANDOMIZE THE DIRECTION OF THE STARFALL PROJECTILE HERE OR SOMETHING
+					//	ecsPtr->GetComponent<LightningAcidPowerupManagerScript>(ecsPtr->GetComponent<TransformComponent>(starfallID)->m_childID[i])->direction = dir;
+					//}
+				
+					//playerPowerupHeld = Powerup::NONE;
+
 					std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-					ecs::EntityID starfallID = DuplicatePrefabIntoScene<R_Scene>(currentScene, acidLightningPrefab);
-				
-					if (auto* starfallTransform = ecsPtr->GetComponent<TransformComponent>(starfallID)) {
-						starfallTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
+					ecs::EntityID fireballID = DuplicatePrefabIntoScene<R_Scene>(currentScene, firePrefab);
+
+					if (auto* fireballTransform = ecsPtr->GetComponent<TransformComponent>(fireballID)) {
+						fireballTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
 					}
-				
-					glm::vec3 dir = GetPlayerCameraFrontDirection();
-					for (int i = 0; i < ecsPtr->GetComponent<TransformComponent>(starfallID)->m_childID.size(); ++i) {
-						// TODO: RANDOMIZE THE DIRECTION OF THE STARFALL PROJECTILE HERE OR SOMETHING
-						ecsPtr->GetComponent<LightningAcidPowerupManagerScript>(ecsPtr->GetComponent<TransformComponent>(starfallID)->m_childID[i])->direction = dir;
+
+					if (auto* fireballScript = ecsPtr->GetComponent<FirePowerupManagerScript>(fireballID)) {
+						fireballScript->direction = GetPlayerCameraFrontDirection();
 					}
-				
+
 					playerPowerupHeld = Powerup::NONE;
 				}
 			}
@@ -440,12 +549,17 @@ public:
 
 		// INTERACT
 		if (Input->IsKeyTriggered(keys::RMB)) {
+
+			bool hasAbsorbed = false;
+			
+
 			RaycastHit hit;
 			hit.entityID = 9999999;
 			physicsPtr->Raycast(cameraTransform->WorldTransformation.position, GetPlayerCameraFrontDirection(), interactPowerupRange, hit, ecsPtr->GetComponent<RigidbodyComponent>(entity)->actor);
 
 			if (hit.entityID != 9999999 && ecsPtr->GetComponent<NameComponent>(hit.entityID)->entityTag == "Powerup") {
 				if (auto* powerupComp = ecsPtr->GetComponent<PowerupManagerScript>(hit.entityID)) {
+					hasAbsorbed = true;
 					if (playerPowerupHeld == Powerup::NONE) {
 						if (powerupComp->powerupType == "FIRE") {
 							playerPowerupHeld = Powerup::FIRE;
@@ -518,6 +632,13 @@ public:
 					// ADD SFX OF POWERUP PICKUP HERE
 				}
 			}
+			if (anim && hasAbsorbed)
+			{
+				if (anim->m_currentState)
+				{
+					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasAbsorbed");
+				}
+			}
 		}
 	}
 
@@ -528,6 +649,57 @@ public:
 
 		return false;
 	}
+
+	void TakeDamage(int amount) {
+		if (isDead) return;
+
+		currPlayerHitPoints -= amount;
+		if (currPlayerHitPoints < 0) currPlayerHitPoints = 0;
+
+		std::cout << "[PLAYER] Took damage: " << amount
+			<< " | Health = " << currPlayerHitPoints << std::endl;
+
+		UpdateHealthUI();
+
+		if (currPlayerHitPoints <= 0) {
+			Die();
+		}
+	}
+
+	void Die() {
+		isDead = true;
+
+		std::cout << "[PLAYER] Died!" << std::endl;
+
+		// Disable movement
+		currPlayerMovSpeed = 0.f;
+		currPlayerJumpForce = 0.f;
+
+		// Play death animation or show UI
+		//if (currPlayerHitPoints <= 0 && !WinScreenScript::isWinScreenActive) {
+		//	if (auto* loseScreen = ecsPtr->GetComponent<WinScreenScript>(winScreenCanvasID)) {
+		//		loseScreen->ShowWinScreen();
+		//		return;
+		//	}
+		//}
+
+		if (currPlayerHitPoints <= 0 && !LoseScreenScript::isLoseScreenActive) {
+			if (auto* loseScreen = ecsPtr->GetComponent<LoseScreenScript>(loseScreenCanvasID)) {
+				loseScreen->ShowLoseScreen();
+				return;
+			}
+		}
+
+
+	}
+
+
+	void UpdateHealthUI() {
+		if (auto* text = ecsPtr->GetComponent<TextComponent>(healthUIObjectID)) {
+			text->text = "HP: " + std::to_string(currPlayerHitPoints) + "/" + std::to_string(maxPlayerHitPoints);
+		}
+	}
+
 
 
 	// HELPER FUNCTIONS
@@ -588,7 +760,8 @@ public:
 
 	REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 				bulletPrefab, firePrefab, acidPrefab, lightningPrefab, fireAcidPrefab, fireLightningPrefab, acidLightningPrefab,
-				gunSfxGUID);
+				gunSfxGUID_1, gunSfxGUID_2, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject);
+
 };
 
 

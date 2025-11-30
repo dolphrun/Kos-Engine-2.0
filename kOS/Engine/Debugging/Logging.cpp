@@ -166,7 +166,7 @@ namespace logging {
         assert(!m_bInitialized && "The logger must be initialized before it is used!");
         if (m_bInitialized)
         {
-            std::cout << "The logger must be initialized before it is used!" << std::endl;
+           // std::cout << "The logger must be initialized before it is used!" << std::endl;
             return;
         }
         else {

@@ -21,14 +21,13 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "ECS/ECS.h"
 #include "System.h"
 
-
 namespace ecs {
 	class PathfindingSystem : public ISystem {
 
 	public:
 		using ISystem::ISystem;
 
-		
+
 		void Init() override;
 		void Update() override;
 		REFLECTABLE(PathfindingSystem)

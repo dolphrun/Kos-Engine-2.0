@@ -98,13 +98,14 @@ namespace gui {
 		RegisterComponent<ecs::CharacterControllerComponent>();
 		RegisterComponent<ecs::ScriptComponent>();
 		RegisterComponent<ecs::AudioComponent>();
+		RegisterComponent<ecs::AudioListenerComponent>();
 		RegisterComponent<ecs::OctreeGeneratorComponent>();
 		RegisterComponent<ecs::PathfinderComponent>();
 		RegisterComponent<ecs::PathfinderTargetComponent>();
 		RegisterComponent<ecs::CubeRendererComponent>();
 		RegisterComponent<ecs::ParticleComponent>();
 		RegisterComponent<ecs::AnimatorComponent>();
-
+		RegisterComponent<ecs::ButtonComponent>();
 		RegisterComponent<ecs::SphereRendererComponent>();
 		RegisterComponent<ecs::MaterialComponent>();
 
@@ -142,7 +143,7 @@ namespace gui {
 		openAndLoadSceneDialog();
 
 		//set style
-		SetStyle();
+		//SetStyle();
 
 		//set first active scene
 		for (auto& scene : m_ecs.sceneMap) {
@@ -153,6 +154,8 @@ namespace gui {
 		}
 
 		m_tags = filewindow::readEditorConfig(editorTagsFile);
+
+		//m_animControllerContext = ax::NodeEditor::CreateEditor();
 	}
 
 	void ImGuiHandler::NewFrame()
@@ -227,6 +230,8 @@ namespace gui {
 				DrawAssetInspector();
 				DrawMaterialWindow();
 				DrawBakedWindow();
+				DrawAnimatorControllerWindow();
+				DrawNavMeshWindow();
 			}
 
 		}
@@ -259,10 +264,18 @@ namespace gui {
 
 	void ImGuiHandler::Shutdown()
 	{
+		if (m_animControllerContext)
+		{
+			ShutdownAnimatorLayout();
+		}
+
 		// Shutdown ImGui
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
+
+		
+			
 	}
 
 
@@ -283,7 +296,7 @@ namespace gui {
 			onSaveAll.Invoke("");
 		}
 
-		if (m_input.currentMousePos != m_input.prevMousePos && m_input.cursorHidden) {
+		if (m_input.currentMousePos != m_input.prevMousePos && !m_input.cursorHidden) {
 			double mouseX, mouseY;
 			int winX, winY;
 			glfwGetWindowPos(m_window.window, &winX, &winY);

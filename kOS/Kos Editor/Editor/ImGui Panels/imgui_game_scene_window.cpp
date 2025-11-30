@@ -85,11 +85,54 @@ namespace gui
         gameWindowSize = imageSize;
         ImVec2 pMax(pos.x + imageSize.x, pos.y + imageSize.y);
 
+		const FrameBuffer* fbAdd = &m_graphicsManager.gm_GetGameBuffer();
+
         ImGui::GetWindowDrawList()->AddImage(
-            reinterpret_cast<void*>(static_cast<uintptr_t>(m_graphicsManager.gm_GetGameBuffer().texID)),
+            reinterpret_cast<void*>(static_cast<uintptr_t>(fbAdd->texID)),
             pos, pMax,
             ImVec2(0, 1), ImVec2(1, 0));
         
+        if (ImGui::IsWindowHovered()) {
+			ImVec2 mousePos = ImGui::GetIO().MousePos;
+			m_graphicsManager.isButtonPressed = ImGui::IsMouseDown(ImGuiMouseButton_Left);
+
+			float relX = (mousePos.x - pos.x) / (pMax.x - pos.x);
+			float relY = (mousePos.y - pos.y) / (pMax.y - pos.y);
+
+            if (relX >= 0.0f && relX <= 1.0f && relY >= 0.0f && relY <= 1.0f) {
+                int pixelX = static_cast<int>(relX * fbAdd->width);
+                int pixelY = -(static_cast<int>(relY * fbAdd->height) - fbAdd->height);
+                
+                GLuint fbo;
+				glGenFramebuffers(1, &fbo);
+				glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+				glFramebufferTexture2D(
+                    GL_FRAMEBUFFER, 
+                    GL_COLOR_ATTACHMENT0, 
+                    GL_TEXTURE_2D, 
+                    m_graphicsManager.gm_GetFBM()->gBuffer.gMaterial, 
+                    0
+                );
+
+                float pixelVal;
+                glReadPixels(
+                    pixelX, 
+                    pixelY, 
+                    1, 
+                    1, 
+                    GL_ALPHA, 
+                    GL_FLOAT, 
+                    &pixelVal
+				);
+
+				glBindFramebuffer(GL_FRAMEBUFFER, 0);
+				glDeleteFramebuffers(1, &fbo);
+
+				--pixelVal; 
+				m_graphicsManager.buttonID = (pixelVal < 0.0f) ? -1 : static_cast<int>(pixelVal);
+            }
+        }
+
         auto winLoc = ImVec2(pos.x - ImGui::GetWindowPos().x, pos.y - ImGui::GetWindowPos().y);
         ImGui::SetCursorPos(winLoc);
         if ((imageSize.x != 0 && imageSize.y != 0) && m_ecs.GetState() == GAMESTATE::RUNNING && ImGui::InvisibleButton("##GameWindowBut", imageSize, ImGuiButtonFlags_MouseButtonLeft) ) {

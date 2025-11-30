@@ -59,11 +59,12 @@ namespace scenes {
 		bool CreateNewScene(const std::filesystem::path& scenepath);
 
 		void LoadScene(const std::filesystem::path& scenepath);
-		void ReloadScene();
+		
 
 		void ClearAllScene(bool includePrefabs = false);
 		void ClearScene(const std::string& scene);
 		void SaveScene(const std::string& scene);
+		void ReloadScene();
 
 		// first is path, second is isActive
 		std::vector<PathActive> GetAllScenesPath();
@@ -74,6 +75,8 @@ namespace scenes {
 		bool ImmediateLoadScene(const std::filesystem::path& scenepath, const std::string forcedSceneName = "");
 		//Do not call this in the script
 		void ImmediateClearScene(const std::string& scene);
+		void ImmediateReloadScene();
+
 
 		void SaveAllActiveScenes(bool includeprefab = false);
 		void SwapScenes(const std::string& oldscene, const std::string& newscene , ecs::EntityID id);
@@ -96,7 +99,7 @@ namespace scenes {
 
 	private:
 
-
+		bool m_reloadScene = false;
 
 		std::vector<std::filesystem::path> m_loadQueue;
 		std::vector<std::string> m_clearQueue;

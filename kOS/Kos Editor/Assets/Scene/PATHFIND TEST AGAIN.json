@@ -45,7 +45,8 @@
             "lightningStrikePrefab": "00000000-0000-0000-0000-000000000000",
             "acidBlastPrefab": "00000000-0000-0000-0000-000000000000",
             "groundSpikesPrefab": "00000000-0000-0000-0000-000000000000",
-            "starfallPrefab": "00000000-0000-0000-0000-000000000000"
+            "starfallPrefab": "00000000-0000-0000-0000-000000000000",
+            "gunSfxGUID": "00000000-0000-0000-0000-000000000000"
         },
         "RigidbodyComponent": {
             "mass": 1.0,
@@ -55,41 +56,52 @@
             "isKinematic": false,
             "interpolation": 0,
             "collisionDetection": 0,
-            "constraints": 0
+            "constraints": 0,
+            "speed": 0.0,
+            "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "angularVelocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
         },
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 3.0,
+                    "y": 3.0883102416992188,
                     "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
-                    "y": -0.0,
+                    "y": -39.03580093383789,
                     "z": 0.0
                 },
                 "scale": {
-                    "x": 1.0,
+                    "x": 0.9999979138374329,
                     "y": 1.0,
-                    "z": 1.0
+                    "z": 0.9999979138374329
                 }
             },
             "LocalTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 3.0,
+                    "y": 3.0883102416992188,
                     "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": -39.03580093383789,
                     "z": 0.0
                 },
                 "scale": {
-                    "x": 1.0,
+                    "x": 0.9999979138374329,
                     "y": 1.0,
-                    "z": 1.0
+                    "z": 0.9999979138374329
                 }
             }
         },
@@ -126,18 +138,18 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 3.0,
+                            "y": 3.0883102416992188,
                             "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
-                            "y": -0.0,
+                            "y": -39.03580093383789,
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 1.0,
+                            "x": 0.9999979138374329,
                             "y": 1.0,
-                            "z": 1.0
+                            "z": 0.9999979138374329
                         }
                     },
                     "LocalTransformation": {
@@ -185,18 +197,18 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 2.0883102416992188,
                             "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
-                            "y": -0.0,
+                            "y": -39.03580093383789,
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 1.0,
+                            "x": 0.9999979138374329,
                             "y": 1.0,
-                            "z": 1.0
+                            "z": 0.9999979138374329
                         }
                     },
                     "LocalTransformation": {
@@ -219,76 +231,6 @@
                 }
             }
         ]
-    },
-    {
-        "entityGUID": "c33db4c3-8216-f95a-5af2-5da026b7ac3c",
-        "BoxColliderComponent": {
-            "isTrigger": false,
-            "box": {
-                "center": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "size": {
-                    "x": 10.0,
-                    "y": 1.0,
-                    "z": 10.0
-                }
-            }
-        },
-        "CubeRendererComponent": {},
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "44e530cf-6c90-af94-a08d-d73e6b7a190b"
-                }
-            ]
-        },
-        "NameComponent": {
-            "entityName": "Ground",
-            "Layer": 0,
-            "entityTag": "Ground",
-            "isPrefab": false,
-            "prefabName": "",
-            "hide": false
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        }
     },
     {
         "entityGUID": "dd0ac9d4-7e24-d375-59d0-db4297371b51",
@@ -411,7 +353,7 @@
             "WorldTransformation": {
                 "position": {
                     "x": 3.0,
-                    "y": 3.0,
+                    "y": 4.891985893249512,
                     "z": 0.0
                 },
                 "rotation": {
@@ -428,12 +370,12 @@
             "LocalTransformation": {
                 "position": {
                     "x": 3.0,
-                    "y": 3.0,
+                    "y": 4.891985893249512,
                     "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": -0.0,
                     "z": 0.0
                 },
                 "scale": {
@@ -455,9 +397,9 @@
             "hide": false
         },
         "OctreeGeneratorComponent": {
-            "drawWireframe": true,
+            "drawWireframe": false,
             "drawNodes": false,
-            "drawBound": true
+            "drawBound": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -492,6 +434,76 @@
                     "x": 1.0,
                     "y": 1.0,
                     "z": 1.0
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "c33db4c3-8216-f95a-5af2-5da026b7ac3c",
+        "BoxColliderComponent": {
+            "isTrigger": false,
+            "box": {
+                "center": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "size": {
+                    "x": 10.0,
+                    "y": 1.0,
+                    "z": 10.0
+                }
+            }
+        },
+        "CubeRendererComponent": {},
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "44e530cf-6c90-af94-a08d-d73e6b7a190b"
+                }
+            ]
+        },
+        "NameComponent": {
+            "entityName": "Ground",
+            "Layer": 0,
+            "entityTag": "Ground",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 2.866999864578247,
+                    "y": 2.866999864578247,
+                    "z": 2.866999864578247
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 2.866999864578247,
+                    "y": 2.866999864578247,
+                    "z": 2.866999864578247
                 }
             }
         }

@@ -21,6 +21,7 @@ namespace ecs{
 		RegisterComponent<SpriteComponent>();
 		RegisterComponent<CameraComponent>();
 		RegisterComponent<AudioComponent>();
+		RegisterComponent<AudioListenerComponent>();
 		RegisterComponent<TextComponent>();
 		RegisterComponent<MeshFilterComponent>();
 		RegisterComponent<CanvasRendererComponent>();
@@ -39,7 +40,7 @@ namespace ecs{
 		RegisterComponent<PathfinderTargetComponent>();
 		RegisterComponent<CubeRendererComponent>();
 		RegisterComponent<SphereRendererComponent>();
-
+		RegisterComponent<ButtonComponent>();
 		RegisterComponent<ParticleComponent>();
 
 		//Allocate memory to each system
@@ -60,11 +61,14 @@ namespace ecs{
 
 		RegisterSystem<CanvasTextRenderSystem, TransformComponent, CanvasRendererComponent>();
 		RegisterSystem<CanvasSpriteRenderSystem, TransformComponent, CanvasRendererComponent>();
+		RegisterSystem<AnimatorSystem, TransformComponent, AnimatorComponent>(RUNNING);
+		RegisterSystem<CanvasButtonRenderSystem, TransformComponent, CanvasRendererComponent>();
 		RegisterSystem<AnimatorSystem, TransformComponent, AnimatorComponent>();
 		RegisterSystem<LightingSystem, TransformComponent, LightComponent>();
 		RegisterSystem<DebugBoxColliderRenderSystem, TransformComponent, BoxColliderComponent>();
 		RegisterSystem<DebugCapsuleColliderRenderSystem, TransformComponent, CapsuleColliderComponent>();
 		RegisterSystem<DebugSphereColliderRenderSystem, TransformComponent, SphereColliderComponent>();
+		RegisterSystem<AudioListenerSystem, TransformComponent, AudioListenerComponent>();
 		RegisterSystem<AudioSystem, TransformComponent, AudioComponent>();
 		RegisterSystem<PathfindingSystem, TransformComponent>();
 		RegisterSystem<ParticleSystem, TransformComponent, ParticleComponent>();
@@ -85,7 +89,7 @@ namespace ecs{
 	void ECS::Update(float DT) {
 
 		//update deltatime
-		m_deltaTime = DT;
+		m_deltaTime = DT * m_timeScale;
 
 		
 		//check for gamestate
@@ -429,6 +433,37 @@ namespace ecs{
 		TransformComponent* childTransform = GetComponent<TransformComponent>(child);
 		childTransform->m_haveParent = false;
 		childTransform->m_parentID = -1;
+
+		
+
+		std::function<void(EntityID)> UpdatePrefabStatus = [&](EntityID id)
+		{
+			NameComponent* nc = GetComponent<NameComponent>(id);
+			if (nc->isPrefab) {
+				nc->isPrefab = false;
+				TransformComponent* tc = GetComponent<TransformComponent>(child);
+
+				auto childIds = GetChild(id);
+
+				if (childIds.has_value()) {
+					for (EntityID id : childIds.value()) {
+						UpdatePrefabStatus(id);
+					}
+				}
+
+			}
+			
+
+
+		};
+		
+		UpdatePrefabStatus(child);
+		
+
+		
+
+
+
 		//Updating Transformation Mtxs
 		if (updateTransform) {
 			childTransform->localTransform = childTransform->transformation;

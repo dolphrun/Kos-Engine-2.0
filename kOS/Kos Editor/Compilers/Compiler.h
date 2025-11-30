@@ -43,6 +43,15 @@ struct AudioCompiler {
 	REFLECTABLE(AudioCompiler, path, outputExtension, inputExtensions);
 
 };
+
+struct AudioStudioCompiler {
+	std::string type = R_AudioStudio::classname();
+	std::string path;
+	std::string outputExtension;
+	std::vector<std::string> inputExtensions;
+	REFLECTABLE(AudioStudioCompiler, path, outputExtension, inputExtensions);
+};
+
 struct MaterialCompiler {
 	std::string type = R_Material::classname();
 	std::string path;
@@ -59,15 +68,35 @@ struct DepthMapCubeCompiler {
 	REFLECTABLE(R_DepthMapCube, path, outputExtension, inputExtensions);
 
 };
+
+struct AnimControllerCompiler {
+	std::string type = R_AnimController::classname();
+	std::string path;
+	std::string outputExtension;
+	std::vector<std::string> inputExtensions;
+	REFLECTABLE(R_AnimController, path, outputExtension, inputExtensions);
+};
+
+struct NavMeshCompiler {
+	std::string type = "R_NavMesh"; // temp cause nav mesh no need r_
+	std::string path;
+	std::string outputExtension;
+	std::vector<std::string> inputExtensions;
+	REFLECTABLE(NavMeshCompiler, path, outputExtension, inputExtensions);
+
+};
 struct CompilerData {
 	MeshCompiler meshCompiler;
 	TextureCompiler textureCompiler;
 	FontCompiler fontCompiler;
 	SceneCompiler sceneCompiler;
 	AudioCompiler audioCompiler;
+	AudioStudioCompiler audioStudioCompiler;
 	MaterialCompiler materialCompiler;
 	DepthMapCubeCompiler dmcCompiler;
-	REFLECTABLE(CompilerData, meshCompiler,textureCompiler, fontCompiler, sceneCompiler, audioCompiler, materialCompiler, dmcCompiler);
+	AnimControllerCompiler animControllerCompiler;
+	NavMeshCompiler navCompiler;
+
+
+	REFLECTABLE(CompilerData, meshCompiler, textureCompiler, fontCompiler, sceneCompiler, audioCompiler, audioStudioCompiler, materialCompiler, dmcCompiler, animControllerCompiler, navCompiler);
 };
-
-

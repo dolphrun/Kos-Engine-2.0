@@ -18,6 +18,11 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 #include "Component.h"
 
+enum class AudioSourceType {
+    Core = 0,   
+    Studio = 1
+};
+
 namespace ecs {
 
     struct AudioFile {
@@ -37,13 +42,33 @@ namespace ecs {
         bool requestPlay{ false };
 
         utility::GUID audioGUID{};
+        utility::GUID audioBankGUID{};
 
         bool use3D = { false };
         float minDistance = { 1.0f };   
         float maxDistance = { 20.0f };   
         void* channel = nullptr;
 
-        REFLECTABLE(AudioFile, audioGUID, volume, loop, playOnStart, hasPlayed, pan, isBGM, isSFX, use3D,minDistance,maxDistance)
+        AudioSourceType sourceType = AudioSourceType::Core;
+        std::string studioEventPath;
+        void* studioInstance = nullptr;
+
+        REFLECTABLE(AudioFile,
+            audioGUID,
+            volume,
+            loop,
+            playOnStart,
+            hasPlayed,
+            pan,
+            isBGM,
+            isSFX,
+            use3D,
+            minDistance,
+            maxDistance,
+            sourceType,
+            audioBankGUID,
+            studioEventPath
+        )
     };
 
     class AudioComponent : public Component {

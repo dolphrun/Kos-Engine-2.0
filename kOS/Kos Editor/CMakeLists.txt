@@ -13,6 +13,7 @@ file(GLOB_RECURSE EDITOR_SOURCES
     Application/*.cpp
     AssetManager/*.cpp
     Dependencies/imgui/*.cpp
+    Dependencies/imguinodeeditor/*.cpp
     Configs/*.cpp
     Editor/*.cpp
 )
@@ -26,6 +27,7 @@ target_include_directories(Kos_Editor
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
         "${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/imgui"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/imguinodeeditor"
 )
 
 if(MSVC)

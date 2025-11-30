@@ -334,12 +334,12 @@ namespace gui {
 								LOGGING_POPUP("Meta file does not exist, Compile First");
 							}
 
-							WindowSettings data = serialization::ReadJsonFile<WindowSettings>(configpath::configFilePath);
+							WindowSettings data = serialization::ReadJsonFile<WindowSettings>(configpath::gameConfigFilePath);
 							AssetData assetData = serialization::ReadJsonFile<AssetData>(metaPath.string());
 
 							data.startScene = assetData.GUID;
 
-							serialization::WriteJsonFile<WindowSettings>(configpath::configFilePath, &data, true);
+							serialization::WriteJsonFile<WindowSettings>(configpath::gameConfigFilePath, &data, true);
 						}
 
 

@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 file(GLOB_RECURSE ENGINE_SOURCE
     Config/*.cpp
     Dependencies/glad/*.cpp
+    Dependencies/DetourRecast/*.cpp
     DeSerialization/*.cpp
     Debugging/*.cpp
     ECS/*.cpp

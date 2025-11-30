@@ -2,6 +2,7 @@
     {
         "SceneData": {
             "skyBoxGUID": [],
+            "NavMeshGuid": "cccccccc-cccc-cccc-cccc-cccccccccccc",
             "ambientIntensity": 1.0
         }
     },
@@ -13,7 +14,8 @@
             "entityTag": "Default",
             "isPrefab": true,
             "prefabName": "Game Package.prefab",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -70,7 +72,8 @@
                     },
                     "active": false,
                     "culling": true,
-                    "layer": 1
+                    "layer": 1,
+                    "renderOrder": 0
                 },
                 "NameComponent": {
                     "entityName": "Player Arm Model Camera",
@@ -78,7 +81,8 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -125,7 +129,8 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -166,6 +171,12 @@
                 "children": [
                     {
                         "entityGUID": "1361fd6e-b3e0-48f2-5ab3-1599fcc561a4",
+                        "AnimatorComponent": {
+                            "controllerGUID": "9149963b-fa24-7dbc-6d95-cf2d7ffad332",
+                            "m_PlaybackSpeed": 1.0,
+                            "m_CurrentTime": 0.0,
+                            "m_IsPlaying": true
+                        },
                         "MaterialComponent": {
                             "materialGUID": [
                                 {
@@ -182,7 +193,12 @@
                             "entityTag": "Default",
                             "isPrefab": true,
                             "prefabName": "",
-                            "hide": false
+                            "hide": false,
+                            "isStatic": false
+                        },
+                        "SkinnedMeshRendererComponent": {
+                            "skinnedMeshGUID": "4d215f18-7b0d-7c34-1315-4803812d8960",
+                            "materialGUID": "e9ece6d7-4ed7-73b3-9309-ec58d5d77a07"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -231,7 +247,8 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -272,9 +289,30 @@
             },
             {
                 "entityGUID": "6e5fba01-5840-6878-28b2-c1ca60a7a7a4",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "e1f55b81-5aa7-9b50-20ef-d6cd9b459e60",
+                            "volume": 0.20000000298023224,
+                            "loop": true,
+                            "playOnStart": true,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": true,
+                            "isSFX": false,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
                 "GameManager": {
                     "enemyObjectPrefab": "a3a69a24-9a78-f0fd-f0a9-744fc055ecb2",
-                    "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1"
+                    "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1",
+                    "gameBGM": "e1f55b81-5aa7-9b50-20ef-d6cd9b459e60"
                 },
                 "NameComponent": {
                     "entityName": "Game Manager",
@@ -282,7 +320,8 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -323,6 +362,42 @@
             },
             {
                 "entityGUID": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "d98d60d5-127f-8dc2-b051-dc6d6b883682",
+                            "volume": 0.30000001192092896,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
+                            "volume": 0.30000001192092896,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
                 "CapsuleColliderComponent": {
                     "isTrigger": false,
                     "capsule": {
@@ -342,7 +417,8 @@
                     "entityTag": "Player",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "PlayerManagerScript": {
                     "playerCameraObject": "401c12be-d52c-d521-768f-a871850b8151",
@@ -357,8 +433,13 @@
                     "lightningPrefab": "ea36b838-cef9-7c8c-584a-29654652024a",
                     "fireAcidPrefab": "465c7d56-0555-0051-8bbe-9d7b2b4e8ede",
                     "fireLightningPrefab": "0e0349c9-02d8-f6b8-df3c-f7f6943e81bf",
-                    "acidLightningPrefab": "4c9702d6-127d-fc41-6704-bc63dc2b0998",
-                    "gunSfxGUID": "5bdf561d-0450-1649-f051-3a99755974cc"
+                    "acidLightningPrefab": "a489a9c4-2ad1-24e0-9ad5-f1b1ef81e4b7",
+                    "gunSfxGUID_1": "d98d60d5-127f-8dc2-b051-dc6d6b883682",
+                    "gunSfxGUID_2": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
+                    "pauseMenuManagerObject": "00000000-0000-0000-0000-000000000000",
+                    "healthUIObject": "00000000-0000-0000-0000-000000000000",
+                    "loseScreenCanvasObject": "00000000-0000-0000-0000-000000000000",
+                    "winScreenCanvasObject": "00000000-0000-0000-0000-000000000000"
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,
@@ -420,6 +501,9 @@
                 "children": [
                     {
                         "entityGUID": "401c12be-d52c-d521-768f-a871850b8151",
+                        "AudioListenerComponent": {
+                            "active": true
+                        },
                         "CameraComponent": {
                             "cameraType": 0,
                             "fov": 85.0,
@@ -436,7 +520,8 @@
                             },
                             "active": false,
                             "culling": false,
-                            "layer": 0
+                            "layer": 0,
+                            "renderOrder": 0
                         },
                         "NameComponent": {
                             "entityName": "Player Camera",
@@ -444,7 +529,8 @@
                             "entityTag": "Default",
                             "isPrefab": true,
                             "prefabName": "",
-                            "hide": false
+                            "hide": false,
+                            "isStatic": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -492,7 +578,8 @@
                             "entityTag": "Default",
                             "isPrefab": true,
                             "prefabName": "",
-                            "hide": false
+                            "hide": false,
+                            "isStatic": false
                         },
                         "RigidbodyComponent": {
                             "mass": 1.0,
@@ -571,7 +658,8 @@
                             "entityTag": "Default",
                             "isPrefab": true,
                             "prefabName": "",
-                            "hide": false
+                            "hide": false,
+                            "isStatic": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {

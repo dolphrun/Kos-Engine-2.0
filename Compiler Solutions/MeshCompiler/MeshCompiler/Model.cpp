@@ -197,6 +197,9 @@ void Model::ExtractBoneWeights(aiMesh* mesh, std::vector<Vertex>& vertices)
         else
         {
             boneID = bones_loaded[boneName];
+            BoneInfo boneInfo;
+            boneInfo.offsetMatrix = ConvertToGLMMat4(mesh->mBones[i]->mOffsetMatrix);
+            bone_info.push_back(boneInfo);
         }
 
         aiBone* bone = mesh->mBones[i];

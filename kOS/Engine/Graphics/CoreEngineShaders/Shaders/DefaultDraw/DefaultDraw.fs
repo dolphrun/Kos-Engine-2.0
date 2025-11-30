@@ -29,6 +29,6 @@ void main()
     // Cast back to float for FragColor
     float outFloat = float(outputVal);
 
-    FragColor = vec4(color.r,color.g,color.b, newMat.b);
+    FragColor = vec4(color.r,color.g,color.b, color.a)*vec4(1.f,1.f,1.f,newMat.b);
 }
 )"

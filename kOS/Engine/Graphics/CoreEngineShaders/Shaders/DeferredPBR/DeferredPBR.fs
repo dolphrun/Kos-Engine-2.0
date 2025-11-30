@@ -348,7 +348,7 @@ void main()
     //Check whether to render shader as per normal
     if(newMat.b>0.f){
         //Just render color as is
-        FragColor = vec4(diffuseColor.r,diffuseColor.g,diffuseColor.b, 1.0);
+        FragColor = testColor;
         return;;
     }
 

@@ -23,13 +23,6 @@
             }
         },
         "CubeRendererComponent": {},
-        "MeshRendererComponent": {
-            "diffuseMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-            "specularMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-            "normalMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-            "ambientOcclusionMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-            "roughnessMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53"
-        },
         "NameComponent": {
             "entityName": "box",
             "Layer": 0,
@@ -46,7 +39,18 @@
             "isKinematic": false,
             "interpolation": 0,
             "collisionDetection": 0,
-            "constraints": 0
+            "constraints": 0,
+            "speed": 0.0,
+            "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "angularVelocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -103,13 +107,6 @@
                     }
                 },
                 "CubeRendererComponent": {},
-                "MeshRendererComponent": {
-                    "diffuseMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                    "specularMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                    "normalMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                    "ambientOcclusionMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                    "roughnessMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53"
-                },
                 "NameComponent": {
                     "entityName": "box",
                     "Layer": 0,
@@ -126,7 +123,18 @@
                     "isKinematic": false,
                     "interpolation": 0,
                     "collisionDetection": 0,
-                    "constraints": 0
+                    "constraints": 0,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -183,13 +191,6 @@
                             }
                         },
                         "CubeRendererComponent": {},
-                        "MeshRendererComponent": {
-                            "diffuseMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                            "specularMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                            "normalMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                            "ambientOcclusionMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                            "roughnessMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53"
-                        },
                         "NameComponent": {
                             "entityName": "box",
                             "Layer": 0,
@@ -206,7 +207,18 @@
                             "isKinematic": false,
                             "interpolation": 0,
                             "collisionDetection": 0,
-                            "constraints": 0
+                            "constraints": 0,
+                            "speed": 0.0,
+                            "velocity": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0
+                            },
+                            "angularVelocity": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0
+                            }
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -265,13 +277,6 @@
                     }
                 },
                 "CubeRendererComponent": {},
-                "MeshRendererComponent": {
-                    "diffuseMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                    "specularMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                    "normalMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                    "ambientOcclusionMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                    "roughnessMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53"
-                },
                 "NameComponent": {
                     "entityName": "box",
                     "Layer": 0,
@@ -288,7 +293,18 @@
                     "isKinematic": false,
                     "interpolation": 0,
                     "collisionDetection": 0,
-                    "constraints": 0
+                    "constraints": 0,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -345,13 +361,6 @@
                             }
                         },
                         "CubeRendererComponent": {},
-                        "MeshRendererComponent": {
-                            "diffuseMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                            "specularMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                            "normalMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                            "ambientOcclusionMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                            "roughnessMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53"
-                        },
                         "NameComponent": {
                             "entityName": "box",
                             "Layer": 0,
@@ -368,7 +377,18 @@
                             "isKinematic": false,
                             "interpolation": 0,
                             "collisionDetection": 0,
-                            "constraints": 0
+                            "constraints": 0,
+                            "speed": 0.0,
+                            "velocity": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0
+                            },
+                            "angularVelocity": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0
+                            }
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -427,13 +447,6 @@
                     }
                 },
                 "CubeRendererComponent": {},
-                "MeshRendererComponent": {
-                    "diffuseMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                    "specularMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                    "normalMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                    "ambientOcclusionMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                    "roughnessMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53"
-                },
                 "NameComponent": {
                     "entityName": "box",
                     "Layer": 0,
@@ -450,7 +463,18 @@
                     "isKinematic": false,
                     "interpolation": 0,
                     "collisionDetection": 0,
-                    "constraints": 0
+                    "constraints": 0,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -507,13 +531,6 @@
                             }
                         },
                         "CubeRendererComponent": {},
-                        "MeshRendererComponent": {
-                            "diffuseMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                            "specularMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                            "normalMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                            "ambientOcclusionMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53",
-                            "roughnessMaterialGUID": "4d8deac8-5e30-9e34-6f12-37721db6eb53"
-                        },
                         "NameComponent": {
                             "entityName": "box",
                             "Layer": 0,
@@ -530,7 +547,18 @@
                             "isKinematic": false,
                             "interpolation": 0,
                             "collisionDetection": 0,
-                            "constraints": 0
+                            "constraints": 0,
+                            "speed": 0.0,
+                            "velocity": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0
+                            },
+                            "angularVelocity": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0
+                            }
                         },
                         "TransformComponent": {
                             "WorldTransformation": {

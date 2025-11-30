@@ -401,7 +401,7 @@ namespace logging {
         if (!m_bInitialized)
         {
 
-            std::cout << "The logger must be initialized before it is used!" << std::endl;
+           // std::cout << "The logger must be initialized before it is used!" << std::endl;
 
             return;
         }
@@ -429,7 +429,7 @@ namespace logging {
         if (!m_bInitialized)
         {
 
-            std::cout << "The logger must be initialized before it is used!" << std::endl;
+           // std::cout << "The logger must be initialized before it is used!" << std::endl;
 
             return;
         }
@@ -461,7 +461,7 @@ namespace logging {
         if (!m_bInitialized)
         {
 
-            std::cout << "The logger must be initialized before it is used!" << std::endl;
+           // std::cout << "The logger must be initialized before it is used!" << std::endl;
 
             return;
         }
@@ -517,7 +517,7 @@ namespace logging {
         if (!m_bInitialized)
         {
 
-            std::cout << "The logger must be initialized before it is used!" << std::endl;
+           // std::cout << "The logger must be initialized before it is used!" << std::endl;
 
             return;
         }
@@ -567,7 +567,7 @@ namespace logging {
         if (!m_bInitialized)
         {
 
-            std::cout << "The logger must be initialized before it is used!" << std::endl;
+           // std::cout << "The logger must be initialized before it is used!" << std::endl;
 
             return;
         }
@@ -597,7 +597,7 @@ namespace logging {
         if (!m_bInitialized)
         {
 
-            std::cout << "The logger must be initialized before it is used!" << std::endl;
+           // std::cout << "The logger must be initialized before it is used!" << std::endl;
 
             return;
         }
@@ -649,7 +649,7 @@ namespace logging {
         if (!m_bInitialized)
         {
 
-            std::cout << "The logger must be initialized before it is used!" << std::endl;
+           // std::cout << "The logger must be initialized before it is used!" << std::endl;
 
             return;
         }
@@ -678,7 +678,7 @@ namespace logging {
         if (!m_bInitialized)
         {
 
-            std::cout << "The logger must be initialized before it is used!" << std::endl;
+           // std::cout << "The logger must be initialized before it is used!" << std::endl;
 
             return;
         }

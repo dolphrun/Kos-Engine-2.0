@@ -54,11 +54,67 @@
         "children": [
             {
                 "entityGUID": "f370e2ed-f285-4ec6-eeb8-d27fa7ff4777",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "ef772eb3-1923-0835-dd9b-683167c10659",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
                 "CubeRendererComponent": {},
                 "LightningAcidPowerupManagerScript": {
                     "starfallDamage": 2.0,
                     "starfallForce": 60.0,
-                    "lingerTime": 0.0
+                    "lingerTime": 0.0,
+                    "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                    "enemyDeathSfxGUID_2": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                    "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659",
+                    "starFallSfxGUID": "00000000-0000-0000-0000-000000000000"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -146,11 +202,67 @@
             },
             {
                 "entityGUID": "3115d2b5-ad98-9b5c-7289-890f5a30b21d",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "ef772eb3-1923-0835-dd9b-683167c10659",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
                 "CubeRendererComponent": {},
                 "LightningAcidPowerupManagerScript": {
                     "starfallDamage": 2.0,
                     "starfallForce": 60.0,
-                    "lingerTime": 0.0
+                    "lingerTime": 0.0,
+                    "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                    "enemyDeathSfxGUID_2": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                    "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659",
+                    "starFallSfxGUID": "00000000-0000-0000-0000-000000000000"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -238,11 +350,67 @@
             },
             {
                 "entityGUID": "bb37f7b2-46b7-308c-ffa3-7dc9fb3d2df0",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "ef772eb3-1923-0835-dd9b-683167c10659",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
                 "CubeRendererComponent": {},
                 "LightningAcidPowerupManagerScript": {
                     "starfallDamage": 2.0,
                     "starfallForce": 60.0,
-                    "lingerTime": 0.0
+                    "lingerTime": 0.0,
+                    "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                    "enemyDeathSfxGUID_2": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                    "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659",
+                    "starFallSfxGUID": "00000000-0000-0000-0000-000000000000"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -330,11 +498,67 @@
             },
             {
                 "entityGUID": "df7436c5-1724-ad7e-6ef9-4252f143a333",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "ef772eb3-1923-0835-dd9b-683167c10659",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
                 "CubeRendererComponent": {},
                 "LightningAcidPowerupManagerScript": {
                     "starfallDamage": 2.0,
                     "starfallForce": 60.0,
-                    "lingerTime": 0.0
+                    "lingerTime": 0.0,
+                    "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                    "enemyDeathSfxGUID_2": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                    "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659",
+                    "starFallSfxGUID": "00000000-0000-0000-0000-000000000000"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -422,11 +646,67 @@
             },
             {
                 "entityGUID": "f64a7e0e-7bf8-f8de-0153-7a64d714ecd4",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "ef772eb3-1923-0835-dd9b-683167c10659",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
                 "CubeRendererComponent": {},
                 "LightningAcidPowerupManagerScript": {
                     "starfallDamage": 2.0,
                     "starfallForce": 60.0,
-                    "lingerTime": 0.0
+                    "lingerTime": 0.0,
+                    "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                    "enemyDeathSfxGUID_2": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                    "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659",
+                    "starFallSfxGUID": "00000000-0000-0000-0000-000000000000"
                 },
                 "MaterialComponent": {
                     "materialGUID": [

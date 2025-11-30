@@ -8,8 +8,29 @@ public:
 	int fireballDamage = 5;
 	glm::vec3 direction;
 
+	utility::GUID fireballSfxGUID;
+
+	ScoreManagerScript* scoreManager = nullptr;
+	int scoreValue = 200;
+
 	void Start() override {
-		// ADD SFX OF FIREBALL HERE
+		// ADD SFX OF FIREBALL HERE - Done?
+		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+			for (auto& af : ac->audioFiles) {
+				if (af.audioGUID == fireballSfxGUID && af.isSFX) {
+					af.requestPlay = true;
+					break;
+				}
+			}
+		}
+
+		for (const auto& [entityID, signature] : ecsPtr->GetEntitySignatureData()) {
+			if (ecsPtr->HasComponent<ScoreManagerScript>(entityID)) {
+				scoreManager = ecsPtr->GetComponent<ScoreManagerScript>(entityID);
+				break;
+			}
+		}
 
 		physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
@@ -19,10 +40,16 @@ public:
 					enemyScript->enemyHealth -= fireballDamage;
 
 					if (enemyScript->enemyHealth <= 0) {
+
+						if (scoreManager) {
+							scoreManager->AddScore(scoreValue); // or whatever value you want per kill
+						}
+
 						ecsPtr->DeleteEntity(col.otherEntityID);
 					}
 
 					ecsPtr->DeleteEntity(entity);
+					navMeshPtr->RemoveAgent(enemyScript->agentid);
 				}
 			}
 
@@ -40,5 +67,5 @@ public:
 	}
 
 
-	REFLECTABLE(FirePowerupManagerScript, fireballSpeed, fireballDamage)
+	REFLECTABLE(FirePowerupManagerScript, fireballSpeed, fireballDamage, fireballSfxGUID)
 };

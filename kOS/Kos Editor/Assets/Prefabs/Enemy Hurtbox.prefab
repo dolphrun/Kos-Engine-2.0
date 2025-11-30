@@ -7,8 +7,46 @@
     },
     {
         "entityGUID": "fbd65967-08b3-5838-d4b0-1a1b7a563618",
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "70b03236-6b3c-6cf5-aab8-390de14ef6a2",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "566fd594-d00c-b31e-ed77-b57eef9af2dd",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
+        },
         "EnemyHurtboxScript": {
-            "enemyDamage": 1
+            "enemyDamage": 1,
+            "playerHurtSfxGUID_1": "70b03236-6b3c-6cf5-aab8-390de14ef6a2",
+            "playerHurtSfxGUID_2": "566fd594-d00c-b31e-ed77-b57eef9af2dd"
         },
         "NameComponent": {
             "entityName": "Enemy Hurtbox",

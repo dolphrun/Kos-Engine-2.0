@@ -30,7 +30,7 @@ public:
 	const inline std::filesystem::path GetFilePath() const { return m_filePath; }
 
 
-protected:
+//protected:
 
 	utility::GUID m_GUID;
 	std::filesystem::path m_filePath;

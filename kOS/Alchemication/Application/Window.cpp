@@ -198,7 +198,6 @@ namespace Application {
         mode = glfwGetVideoMode(monitor);
         window = glfwCreateWindow(_windowWidth, _windowHeight, "Alchemication", enabledFullScreen ? monitor : NULL, NULL);
         glfwSetWindowUserPointer(window, this);
-        m_inputSystem.InputInit(window);
 
         
         if (!window)
@@ -232,6 +231,9 @@ namespace Application {
         glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 
+        m_inputSystem.InputInit(window);
+        m_inputSystem.HideCursor(true);
+
         return 0;
 	}
 
@@ -246,7 +248,7 @@ namespace Application {
             CheckFullscreen();
         }
 
-        if (m_ecs.GetState()==ecs::RUNNING) {
+        if (m_inputSystem.cursorHidden) {
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
         }
         else {
