@@ -10192,7 +10192,7 @@
             "entityTag": "Default",
             "isPrefab": false,
             "prefabName": "",
-            "hide": true,
+            "hide": false,
             "isStatic": false
         },
         "TransformComponent": {
@@ -10255,7 +10255,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -10313,7 +10313,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -10371,7 +10371,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -10429,7 +10429,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -10487,7 +10487,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -10545,7 +10545,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -10597,13 +10597,35 @@
             },
             {
                 "entityGUID": "78ddc7b6-68ba-6224-43e3-316594a75e00",
+                "ButtonComponent": {
+                    "normalColor": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "hoveredColor": {
+                        "x": 0.800000011920929,
+                        "y": 0.800000011920929,
+                        "z": 0.800000011920929,
+                        "w": 1.0
+                    },
+                    "pressedColor": {
+                        "x": 0.6000000238418579,
+                        "y": 0.6000000238418579,
+                        "z": 0.6000000238418579,
+                        "w": 1.0
+                    },
+                    "isHovered": false,
+                    "isPressed": false
+                },
                 "NameComponent": {
                     "entityName": "Quit Button Image",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "SpriteComponent": {
@@ -10680,7 +10702,7 @@
             "entityTag": "Default",
             "isPrefab": false,
             "prefabName": "",
-            "hide": true,
+            "hide": false,
             "isStatic": false
         },
         "TransformComponent": {
@@ -10728,7 +10750,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -10786,7 +10808,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -10844,7 +10866,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -10902,7 +10924,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -10960,7 +10982,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -11018,7 +11040,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -11070,13 +11092,35 @@
             },
             {
                 "entityGUID": "3d1440b4-012e-8f0d-eddd-264e1b3effae",
+                "ButtonComponent": {
+                    "normalColor": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "hoveredColor": {
+                        "x": 0.800000011920929,
+                        "y": 0.800000011920929,
+                        "z": 0.800000011920929,
+                        "w": 1.0
+                    },
+                    "pressedColor": {
+                        "x": 0.6000000238418579,
+                        "y": 0.6000000238418579,
+                        "z": 0.6000000238418579,
+                        "w": 1.0
+                    },
+                    "isHovered": false,
+                    "isPressed": false
+                },
                 "NameComponent": {
                     "entityName": "Quit Button Image",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "SpriteComponent": {
@@ -11138,7 +11182,7 @@
             "entityTag": "Default",
             "isPrefab": false,
             "prefabName": "",
-            "hide": true,
+            "hide": false,
             "isStatic": false
         },
         "PauseMenuScript": {
@@ -11200,7 +11244,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -11258,7 +11302,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -11316,7 +11360,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -11374,7 +11418,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "TextComponent": {
@@ -11426,13 +11470,35 @@
             },
             {
                 "entityGUID": "9e8e7bdf-a9ca-087d-8914-abeea9ae0793",
+                "ButtonComponent": {
+                    "normalColor": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "hoveredColor": {
+                        "x": 0.800000011920929,
+                        "y": 0.800000011920929,
+                        "z": 0.800000011920929,
+                        "w": 1.0
+                    },
+                    "pressedColor": {
+                        "x": 0.6000000238418579,
+                        "y": 0.6000000238418579,
+                        "z": 0.6000000238418579,
+                        "w": 1.0
+                    },
+                    "isHovered": false,
+                    "isPressed": false
+                },
                 "NameComponent": {
                     "entityName": "Quit Button Image",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true,
+                    "hide": false,
                     "isStatic": false
                 },
                 "SpriteComponent": {
@@ -14582,5 +14648,74 @@
                 }
             }
         ]
+    },
+    {
+        "entityGUID": "dc86b705-19e8-4cfd-3b8f-7e29a330eac3",
+        "BoxColliderComponent": {
+            "isTrigger": true,
+            "box": {
+                "center": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "size": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "EventColliderScript": {
+            "winUIObject": "dc86b705-19e8-4cfd-3b8f-7e29a330eac3",
+            "winUIObjectID": 0,
+            "timer": 0.0,
+            "winScreenCanvasObject": "dd420147-13cd-2a52-32b4-107bc917a44d"
+        },
+        "NameComponent": {
+            "entityName": "Win Object",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false,
+            "isStatic": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -126.44210815429688,
+                    "y": -37.20917892456055,
+                    "z": -22.20804786682129
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0,
+                    "z": 2.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -126.44210815429688,
+                    "y": -37.20917892456055,
+                    "z": -22.20804786682129
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0,
+                    "z": 2.0
+                }
+            }
+        }
     }
 ]
