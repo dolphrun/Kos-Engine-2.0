@@ -67,6 +67,7 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 	RegisterScript<WinScreenScript>(TemplateSC::ecsPtr);
 
 	RegisterScript<AnimationTestScript>(TemplateSC::ecsPtr);
+	RegisterScript<UIButtonScript>(TemplateSC::ecsPtr);
 
 	FieldComponentTypeRegistry::CreateAllDrawers(static_cast<Fields*>(svm->field)->GetAction());
 }
