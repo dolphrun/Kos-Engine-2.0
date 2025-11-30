@@ -9,6 +9,7 @@ public:
 
 	R_AnimController* playerController = nullptr;
 	AnimatorComponent* anim = nullptr;
+	AnimState currAnimationState;
 
 	enum Powerup {
 		NONE = 0,
@@ -137,7 +138,8 @@ public:
 			playerController = resource->GetResource<R_AnimController>(anim->controllerGUID).get();
 			if (playerController)
 			{
-				anim->m_currentState = playerController->m_EnterState;
+				currAnimationState = *playerController->m_EnterState;
+				anim->m_currentState = &currAnimationState;
 				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");
 			}
 		}
