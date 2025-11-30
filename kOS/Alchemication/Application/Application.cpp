@@ -111,12 +111,6 @@ namespace Application
         --------------------------------------------------------------*/
         while (!glfwWindowShouldClose(lvWindow.window))
         {
-            static int count = 0;
-
-            if (count++ == 1) {
-                ecs.SetState(ecs::START);
-            }
-
 
             try {
                 /* Poll for and process events */

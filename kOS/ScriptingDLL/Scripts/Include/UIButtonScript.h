@@ -65,7 +65,7 @@ private:
         case ButtonAction::QuitGame:
             std::cout << "Quitting game..." << std::endl;
 			// IDK HOW TO QUIT THE GAME FROM HERE
-            Input->InputExitWindow();
+             Input->InputExitWindow();
             break;
 
         case ButtonAction::CustomCallback:
