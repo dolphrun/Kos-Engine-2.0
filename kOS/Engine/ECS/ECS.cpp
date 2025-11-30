@@ -34,7 +34,6 @@ namespace ecs{
 		RegisterComponent<CapsuleColliderComponent>();
 		RegisterComponent<SphereColliderComponent>();
 		RegisterComponent<CharacterControllerComponent>();
-		//RegisterComponent<ScriptComponent>();
 		RegisterComponent<OctreeGeneratorComponent>();
 		RegisterComponent<PathfinderComponent>();
 		RegisterComponent<PathfinderTargetComponent>();
@@ -46,13 +45,12 @@ namespace ecs{
 		//Allocate memory to each system
 		RegisterSystem<ScriptingSystem>(RUNNING, WAIT);
 		RegisterSystem<TransformSystem, TransformComponent>();
-		RegisterSystem<CharacterControllerSystem, TransformComponent, CharacterControllerComponent>(RUNNING);
 		RegisterSystem<BoxColliderSystem, TransformComponent, BoxColliderComponent>();
 		RegisterSystem<CapsuleColliderSystem, TransformComponent, CapsuleColliderComponent>();
 		RegisterSystem<SphereColliderSystem, TransformComponent, SphereColliderComponent>();
-		RegisterSystem<RigidbodySystem, TransformComponent, RigidbodyComponent>(RUNNING);
-		RegisterSystem<StaticRigidbodySystem, TransformComponent>();
-		RegisterSystem<PhysicsSystem, TransformComponent, RigidbodyComponent>(RUNNING);
+		RegisterSystem<RigidbodySystem, TransformComponent, RigidbodyComponent>();
+		//RegisterSystem<StaticRigidbodySystem, TransformComponent>();
+		RegisterSystem<PhysicsSystem, TransformComponent, RigidbodyComponent>();
 		RegisterSystem<CameraSystem, TransformComponent, CameraComponent>();
 		RegisterSystem<MeshRenderSystem, TransformComponent,MaterialComponent, MeshFilterComponent>();
 		RegisterSystem<SkinnedMeshRenderSystem, TransformComponent, SkinnedMeshRendererComponent, AnimatorComponent>();
@@ -89,8 +87,8 @@ namespace ecs{
 	void ECS::Update(float DT) {
 
 		//update deltatime
-		m_deltaTime = DT * m_timeScale;
-
+		
+		m_deltaTime = DT;
 		
 		//check for gamestate
 		if (m_state != m_nextState) {
@@ -104,20 +102,19 @@ namespace ecs{
 
 				
 		}
-
+		
 		//retrieve all active scenes
 		std::vector<decltype(sceneMap)::key_type> keys;
 		for (const auto& [sceneName, sceneID] : sceneMap) {
-			if (sceneID.isActive && !sceneID.isPrefab) {
+			if (sceneID.isActive) {
 				keys.push_back(sceneName);
 			}
 			
 		}
-
-
+		
 		//loops through all the system
 		for (const auto& [systemName, system] : m_systemMap) {
-	
+
 			std::chrono::duration<float> systemDuration{};
 			auto start = std::chrono::steady_clock::now();
 			if (system->TestState(m_state)) { //only run state system registered in
@@ -126,6 +123,8 @@ namespace ecs{
 					
 
 					system->Update();
+
+
 
 				}
 

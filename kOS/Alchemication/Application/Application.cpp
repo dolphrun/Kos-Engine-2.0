@@ -18,7 +18,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 */
 /********************************************************************/
 
-
 #include "Application.h"
 #include "ApplicationData.h"
 #include "Resources/ResourceManager.h"
@@ -30,11 +29,11 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Scripting/ScriptManager.h"
 #include "Physics/PhysicsManager.h"
 
+namespace Application
+{
 
-namespace Application {
-
-
-    int Application::Init() {
+    int Application::Init()
+    {
 
         WindowSettings windowData = serialization::ReadJsonFile<WindowSettings>(configpath::configFilePath);
 
@@ -48,7 +47,7 @@ namespace Application {
         /*--------------------------------------------------------------
            INITIALIZE OPENGL WINDOW
         --------------------------------------------------------------*/
-        lvWindow.enabledFullScreen = true; //set to true for fullscreen launch
+        lvWindow.enabledFullScreen = true; // set to true for fullscreen launch
         lvWindow.init(windowData.windowWidth, windowData.windowHeight);
         LOGGING_INFO("Load Window Successful");
 
@@ -57,9 +56,17 @@ namespace Application {
         --------------------------------------------------------------*/
         ecs.Load();
         ecs.Init();
-		ecs.SetState(ecs::START);
         LOGGING_INFO("Load ECS Successful");
 
+        /*--------------------------------------------------------------
+           INITIALIZE GRAPHICS PIPE
+        --------------------------------------------------------------*/
+        graphicsManager.gm_Initialize(static_cast<float>(windowData.windowWidth), static_cast<float>(windowData.windowHeight));
+        LOGGING_INFO("Load Graphic Pipeline Successful");
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
 
         /*--------------------------------------------------------------
            INITIALIZE Resource Manager
@@ -84,41 +91,50 @@ namespace Application {
         /*--------------------------------------------------------------
            INITIALIZE Start Scene
         --------------------------------------------------------------*/
-        //for game only
-		std::string path= resourceManager.GetResourcePath<R_Scene>(windowData.startScene);
-		if(!path.empty()) sceneManager.ImmediateLoadScene(path);
+        // for game only
+        std::string path = resourceManager.GetResourcePath<R_Scene>(windowData.startScene);
+        if (!path.empty())
+            sceneManager.ImmediateLoadScene(path);
         LOGGING_INFO("Load Asset Successful");
 
-        /*--------------------------------------------------------------
-           INITIALIZE GRAPHICS PIPE
-        --------------------------------------------------------------*/
-        graphicsManager.gm_Initialize(static_cast<float>(windowData.windowWidth), static_cast<float>(windowData.windowHeight));
-        LOGGING_INFO("Load Graphic Pipeline Successful");
+<<<<<<< HEAD
+        LOGGING_INFO("Application Init Successful");
+
+        // Sean use this to test animationn serialization
+        // ResourceManager::GetInstance()->GetResource<R_Animation>("bf8a061d-e1b2-8f34-ec30-a655db0af661");
+=======
+
 
         LOGGING_INFO("Application Init Successful");
 
-
+        
 
         //Sean use this to test animationn serialization
         //ResourceManager::GetInstance()->GetResource<R_Animation>("bf8a061d-e1b2-8f34-ec30-a655db0af661");
+>>>>>>> origin/main
         return 0;
     }
 
+    int Application::Run()
+    {
 
-
-    int Application::Run() {
-
-
-        //float FPSCapTime = 1.f / help->m_fpsCap;
+        // float FPSCapTime = 1.f / help->m_fpsCap;
         double lastFrameTime = glfwGetTime();
         const double fixedDeltaTime = 1.0 / 60.0;
-
+        
         // ScriptManager::m_GetInstance()->RunDLL();
-         /*--------------------------------------------------------------
-             GAME LOOP
-         --------------------------------------------------------------*/
+        /*--------------------------------------------------------------
+            GAME LOOP
+        --------------------------------------------------------------*/
         while (!glfwWindowShouldClose(lvWindow.window))
         {
+            static int count = 0;
+
+            if (count++ == 1) {
+                ecs.SetState(ecs::START);
+            }
+
+
             try {
                 /* Poll for and process events */
                 glfwPollEvents();
@@ -132,7 +148,6 @@ namespace Application {
 
                 peformance.SetDeltaTime(deltaTime);
 
-
                 /*--------------------------------------------------------------
                     UPDATE INPUT
                 --------------------------------------------------------------*/
@@ -142,17 +157,12 @@ namespace Application {
                  Update Window
                 --------------------------------------------------------------*/
                 lvWindow.Update();
-
+                
                 /*--------------------------------------------------------------
                     UPDATE ECS
                 --------------------------------------------------------------*/
                 ecs.Update(deltaTime);
                 graphicsManager.gm_updatemouse(lvWindow.window);
-
-                /*--------------------------------------------------------------
-                    UPDATE INPUT FRAME EXIT
-                --------------------------------------------------------------*/
-                input.InputExitFrame(deltaTime);
 
                 /*--------------------------------------------------------------
                     UPDATE NAVIGATION
@@ -164,20 +174,23 @@ namespace Application {
                 --------------------------------------------------------------*/
                 graphicsManager.gm_UpdateBuffers(static_cast<int>(lvWindow.windowWidth), static_cast<int>(lvWindow.windowHeight));
                 graphicsManager.gm_Update();
-                //if(graphicsManager.isButtonPressed)std::cout << graphicsManager.isButtonPressed << '\n';
+                // if(graphicsManager.isButtonPressed)std::cout << graphicsManager.isButtonPressed << '\n';
 
                 /*--------------------------------------------------------------
                     Execute Render Pipeline
                 --------------------------------------------------------------*/
                 graphicsManager.gm_Render();
                 graphicsManager.gm_RenderGameBuffer();
-                
 
                 /*--------------------------------------------------------------
                    Reset Framebuffer
                 --------------------------------------------------------------*/
                 graphicsManager.gm_ResetFrameBuffer();
 
+                /*--------------------------------------------------------------
+                    UPDATE INPUT FRAME EXIT
+                --------------------------------------------------------------*/
+                input.InputExitFrame(deltaTime);
                 /*--------------------------------------------------------------
                     SceneManager EndFrame
                 --------------------------------------------------------------*/
@@ -192,19 +205,21 @@ namespace Application {
 
                 glfwSwapBuffers(lvWindow.window);
             }
-            catch (const std::exception& e) {
+            catch (const std::exception &e)
+            {
                 LOGGING_ERROR("Exception in game loop: {}", e.what());
             }
         }
         return 0;
     }
 
-    int Application::m_Cleanup() {
+    int Application::m_Cleanup()
+    {
         ecs.Unload();
         physicsManager.Shutdown();
         lvWindow.CleanUp();
         glfwTerminate();
-        
+
         LOGGING_INFO("Application Closed");
 
         return 0;
