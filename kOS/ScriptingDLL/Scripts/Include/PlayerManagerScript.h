@@ -6,6 +6,10 @@
 
 class PlayerManagerScript : public TemplateSC {
 public:
+
+	R_AnimController* playerController = nullptr;
+	AnimatorComponent* anim = nullptr;
+
 	enum Powerup {
 		NONE = 0,
 		FIRE = 1,
@@ -127,12 +131,24 @@ public:
 		loseScreenCanvasID = ecsPtr->GetEntityIDFromGUID(loseScreenCanvasObject);
 		winScreenCanvasID = ecsPtr->GetEntityIDFromGUID(winScreenCanvasObject);
 
+		std::vector<EntityID> armChild = ecsPtr->GetChild(playerArmModelObjectID).value();
+		if (anim = ecsPtr->GetComponent<ecs::AnimatorComponent>(armChild[0]))
+		{
+			playerController = resource->GetResource<R_AnimController>(anim->controllerGUID).get();
+			if (playerController)
+			{
+				anim->m_currentState = playerController->m_EnterState;
+				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");
+			}
+		}
+
 	}
 
 	void Update() override {	
 
 		if (Input->IsKeyReleased(keys::L)) {
 			std::cout << "L RELEASED\n";
+			Scenes->ReloadScene();
 		}
 
 		if (Input->IsKeyTriggered(keys::ESC)) {
@@ -339,10 +355,33 @@ public:
 
 		projectilePointTransform->LocalTransformation.position = cameraTransform->LocalTransformation.position + GetPlayerCameraFrontDirection() * 1.5f;
 
+		//Animation Handling
+		if (anim)
+		{
+			if (anim->m_currentState)
+			{
+				
+				R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
+				if (anim->m_CurrentTime >= currAnim->GetDuration())
+				{
+					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("animationFinished");
+					anim->m_CurrentTime = 0.f;
+				}
+				
+			}
+		}
+
 		// SHOOT
 		if (Input->IsKeyTriggered(keys::LMB)) {
 			playerIsAttacking = true;
 
+			if (anim)
+			{
+				if (anim->m_currentState)
+				{
+					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasShot");
+				}
+			}
 			// ADD ATTACK ANIMATION HERE USING PLAYERISATTACKING BOOLEAN
 
 			if (playerPowerupHeld == Powerup::NONE) {
@@ -510,12 +549,17 @@ public:
 
 		// INTERACT
 		if (Input->IsKeyTriggered(keys::RMB)) {
+
+			bool hasAbsorbed = false;
+			
+
 			RaycastHit hit;
 			hit.entityID = 9999999;
 			physicsPtr->Raycast(cameraTransform->WorldTransformation.position, GetPlayerCameraFrontDirection(), interactPowerupRange, hit, ecsPtr->GetComponent<RigidbodyComponent>(entity)->actor);
 
 			if (hit.entityID != 9999999 && ecsPtr->GetComponent<NameComponent>(hit.entityID)->entityTag == "Powerup") {
 				if (auto* powerupComp = ecsPtr->GetComponent<PowerupManagerScript>(hit.entityID)) {
+					hasAbsorbed = true;
 					if (playerPowerupHeld == Powerup::NONE) {
 						if (powerupComp->powerupType == "FIRE") {
 							playerPowerupHeld = Powerup::FIRE;
@@ -586,6 +630,13 @@ public:
 					}
 
 					// ADD SFX OF POWERUP PICKUP HERE
+				}
+			}
+			if (anim && hasAbsorbed)
+			{
+				if (anim->m_currentState)
+				{
+					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasAbsorbed");
 				}
 			}
 		}

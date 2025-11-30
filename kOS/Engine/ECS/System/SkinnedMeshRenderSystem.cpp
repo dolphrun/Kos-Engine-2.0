@@ -52,39 +52,44 @@ namespace ecs
                 continue;
 
             R_Model *mesh{};
-            R_Animation *skeleton{};
+            R_Animation *animation{};
+            R_AnimController* controller{};
             // if (skinnedMesh->cachedSkinnedMeshGUID != skinnedMesh->skinnedMeshGUID)
             {
 
                 skinnedMesh->cachedSkinnedMeshGUID = skinnedMesh->skinnedMeshGUID;
-                skinnedMesh->cachedSkinnedMeshResource = static_cast<void *>(mesh);
+                skinnedMesh->cachedSkinnedMeshResource = static_cast<void*>(mesh);
 
                 std::shared_ptr<R_Material> mat = m_resourceManager.GetResource<R_Material>(skinnedMesh->materialGUID);
                 if (!mat)
                     return;
-                ;
-                skeleton = m_resourceManager.GetResource<R_Animation>(skinnedMesh->skeletonGUID).get();
+
+
+                //animation = m_resourceManager.GetResource<R_Animation>(skinnedMesh->animationGUID).get();
+
+                /// MAKE SURE THAT NO ANIMATION AND MESH SHARE THE SAME GUID, DUPLICATE THE ASSET IF YOU HAVE TO
                 mesh = m_resourceManager.GetResource<R_Model>(skinnedMesh->skinnedMeshGUID).get();
+                controller = m_resourceManager.GetResource<R_AnimController>(anim->controllerGUID).get();
 
-                if (skeleton && anim->m_IsPlaying)
+                if (controller)
                 {
-                    anim->m_CurrentTime += skeleton->GetTicksPerSecond() * m_ecs.m_GetDeltaTime() * anim->m_PlaybackSpeed;
-                    anim->m_CurrentTime = fmod(anim->m_CurrentTime, skeleton->GetDuration());
+                    //anim->m_currentState = controller->m_EnterState;
+                    if (anim->m_currentState)
+                        animation = m_resourceManager.GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
                 }
-                std::shared_ptr<R_Texture> diff = m_resourceManager.GetResource<R_Texture>(mat->md.diffuseMaterialGUID);
-                std::shared_ptr<R_Texture> spec = m_resourceManager.GetResource<R_Texture>(mat->md.specularMaterialGUID);
-                std::shared_ptr<R_Texture> norm = m_resourceManager.GetResource<R_Texture>(mat->md.normalMaterialGUID);
-                std::shared_ptr<R_Texture> ao = m_resourceManager.GetResource<R_Texture>(mat->md.ambientOcclusionMaterialGUID);
-                std::shared_ptr<R_Texture> rough = m_resourceManager.GetResource<R_Texture>(mat->md.roughnessMaterialGUID);
-
-                // std::shared_ptr<R_Texture> diff = m_resourceManager.GetResource<R_Texture>(skinnedMesh->diffuseMaterialGUID);
-                // std::shared_ptr<R_Texture> spec = m_resourceManager.GetResource<R_Texture>(skinnedMesh->specularMaterialGUID);
-                // std::shared_ptr<R_Texture> norm = m_resourceManager.GetResource<R_Texture>(skinnedMesh->normalMaterialGUID);
-                // std::shared_ptr<R_Texture> ao = m_resourceManager.GetResource<R_Texture>(skinnedMesh->ambientOcclusionMaterialGUID);
-                // std::shared_ptr<R_Texture> rough = m_resourceManager.GetResource<R_Texture>(skinnedMesh->roughnessMaterialGUID);
+                    
+                std::vector<PBRMaterial>pbrTmpList;
+                    //Initialize all materials in the list
+                    std::shared_ptr<R_Texture> diff = m_resourceManager.GetResource<R_Texture>(mat->md.diffuseMaterialGUID);
+                    std::shared_ptr<R_Texture> spec = m_resourceManager.GetResource<R_Texture>(mat->md.specularMaterialGUID);
+                    std::shared_ptr<R_Texture> norm = m_resourceManager.GetResource<R_Texture>(mat->md.normalMaterialGUID);
+                    std::shared_ptr<R_Texture> ao = m_resourceManager.GetResource<R_Texture>(mat->md.ambientOcclusionMaterialGUID);
+                    std::shared_ptr<R_Texture> rough = m_resourceManager.GetResource<R_Texture>(mat->md.roughnessMaterialGUID);
+                    pbrTmpList.push_back(PBRMaterial{ diff,spec,rough,ao,norm });
+                
 
                 if (mesh)
-                    m_graphicsManager.gm_PushSkinnedMeshData(SkinnedMeshData{mesh, skeleton, std::make_shared<PBRMaterial>(PBRMaterial{diff, spec, rough, ao, norm}), transform->transformation, anim->m_CurrentTime, id});
+                    m_graphicsManager.gm_PushSkinnedMeshData(SkinnedMeshData{mesh, animation, std::make_shared<PBRMaterialList>(pbrTmpList,true), transform->transformation, anim->m_CurrentTime, id});
             }
             // else
             //  mesh = static_cast<R_Model*>(skinnedMesh->cachedSkinnedMeshResource);

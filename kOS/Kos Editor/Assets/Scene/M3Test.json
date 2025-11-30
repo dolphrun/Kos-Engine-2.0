@@ -2,6 +2,7 @@
     {
         "SceneData": {
             "skyBoxGUID": [],
+            "NavMeshGuid": "cccccccc-cccc-cccc-cccc-cccccccccccc",
             "ambientIntensity": 1.0
         }
     },
@@ -36,7 +37,8 @@
             "entityTag": "Ground",
             "isPrefab": false,
             "prefabName": "",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -114,7 +116,8 @@
             "entityTag": "Default",
             "isPrefab": false,
             "prefabName": "",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -184,7 +187,8 @@
             "entityTag": "Powerup",
             "isPrefab": true,
             "prefabName": "Fire Prop.prefab",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "PowerupManagerScript": {
             "powerupType": "FIRE"
@@ -257,7 +261,8 @@
             "entityTag": "Powerup",
             "isPrefab": true,
             "prefabName": "Electric Prop 1.prefab",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "PowerupManagerScript": {
             "powerupType": "LIGHTNING"
@@ -307,7 +312,8 @@
             "entityTag": "Powerup",
             "isPrefab": true,
             "prefabName": "Acid Prop Holder.prefab",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "PowerupManagerScript": {
             "powerupType": "ACID"
@@ -378,7 +384,8 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "Acid Prop Holder.prefab",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -427,7 +434,8 @@
             "entityTag": "Default",
             "isPrefab": true,
             "prefabName": "Game Package.prefab",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -493,7 +501,8 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -540,7 +549,8 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -581,15 +591,11 @@
                 "children": [
                     {
                         "entityGUID": "1361fd6e-b3e0-48f2-5ab3-1599fcc561a4",
-                        "MaterialComponent": {
-                            "materialGUID": [
-                                {
-                                    "materialGUID": "e9ece6d7-4ed7-73b3-9309-ec58d5d77a07"
-                                }
-                            ]
-                        },
-                        "MeshFilterComponent": {
-                            "meshGUID": "874f2cee-12a8-60ee-5eb0-47b549f08822"
+                        "AnimatorComponent": {
+                            "controllerGUID": "9149963b-fa24-7dbc-6d95-cf2d7ffad332",
+                            "m_PlaybackSpeed": 1.0,
+                            "m_CurrentTime": 0.0,
+                            "m_IsPlaying": true
                         },
                         "NameComponent": {
                             "entityName": "Player Arm Model",
@@ -597,7 +603,12 @@
                             "entityTag": "Default",
                             "isPrefab": true,
                             "prefabName": "",
-                            "hide": false
+                            "hide": false,
+                            "isStatic": false
+                        },
+                        "SkinnedMeshRendererComponent": {
+                            "skinnedMeshGUID": "4d215f18-7b0d-7c34-1315-4803812d8960",
+                            "materialGUID": "e9ece6d7-4ed7-73b3-9309-ec58d5d77a07"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -646,7 +657,8 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -689,7 +701,8 @@
                 "entityGUID": "6e5fba01-5840-6878-28b2-c1ca60a7a7a4",
                 "GameManager": {
                     "enemyObjectPrefab": "a3a69a24-9a78-f0fd-f0a9-744fc055ecb2",
-                    "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1"
+                    "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1",
+                    "gameBGM": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "Game Manager",
@@ -697,7 +710,8 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -757,7 +771,8 @@
                     "entityTag": "Player",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "PlayerManagerScript": {
                     "playerCameraObject": "401c12be-d52c-d521-768f-a871850b8151",
@@ -773,7 +788,12 @@
                     "fireAcidPrefab": "465c7d56-0555-0051-8bbe-9d7b2b4e8ede",
                     "fireLightningPrefab": "0e0349c9-02d8-f6b8-df3c-f7f6943e81bf",
                     "acidLightningPrefab": "4c9702d6-127d-fc41-6704-bc63dc2b0998",
-                    "gunSfxGUID": "5bdf561d-0450-1649-f051-3a99755974cc"
+                    "gunSfxGUID_1": "00000000-0000-0000-0000-000000000000",
+                    "gunSfxGUID_2": "00000000-0000-0000-0000-000000000000",
+                    "pauseMenuManagerObject": "00000000-0000-0000-0000-000000000000",
+                    "healthUIObject": "00000000-0000-0000-0000-000000000000",
+                    "loseScreenCanvasObject": "00000000-0000-0000-0000-000000000000",
+                    "winScreenCanvasObject": "00000000-0000-0000-0000-000000000000"
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,
@@ -860,7 +880,8 @@
                             "entityTag": "Default",
                             "isPrefab": true,
                             "prefabName": "",
-                            "hide": false
+                            "hide": false,
+                            "isStatic": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -908,7 +929,8 @@
                             "entityTag": "Default",
                             "isPrefab": true,
                             "prefabName": "",
-                            "hide": false
+                            "hide": false,
+                            "isStatic": false
                         },
                         "RigidbodyComponent": {
                             "mass": 1.0,
@@ -987,7 +1009,8 @@
                             "entityTag": "Default",
                             "isPrefab": true,
                             "prefabName": "",
-                            "hide": false
+                            "hide": false,
+                            "isStatic": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -1038,7 +1061,8 @@
             "entityTag": "Default",
             "isPrefab": false,
             "prefabName": "",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -1113,7 +1137,8 @@
             "entityTag": "Enemy",
             "isPrefab": true,
             "prefabName": "EnemyPrefab_2.prefab",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "RigidbodyComponent": {
             "mass": 1.0,
@@ -1181,7 +1206,8 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -1258,7 +1284,8 @@
             "entityTag": "Enemy",
             "isPrefab": true,
             "prefabName": "EnemyPrefab_2.prefab",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "RigidbodyComponent": {
             "mass": 1.0,
@@ -1326,7 +1353,8 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "EnemyPrefab_2.prefab",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -1403,7 +1431,8 @@
             "entityTag": "Enemy",
             "isPrefab": true,
             "prefabName": "EnemyPrefab_2.prefab",
-            "hide": false
+            "hide": false,
+            "isStatic": false
         },
         "RigidbodyComponent": {
             "mass": 1.0,
@@ -1471,7 +1500,8 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "EnemyPrefab_2.prefab",
-                    "hide": false
+                    "hide": false,
+                    "isStatic": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

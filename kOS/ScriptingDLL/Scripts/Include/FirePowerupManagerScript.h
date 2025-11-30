@@ -10,6 +10,9 @@ public:
 
 	utility::GUID fireballSfxGUID;
 
+	ScoreManagerScript* scoreManager = nullptr;
+	int scoreValue = 200;
+
 	void Start() override {
 		// ADD SFX OF FIREBALL HERE - Done?
 		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
@@ -22,6 +25,13 @@ public:
 			}
 		}
 
+		for (const auto& [entityID, signature] : ecsPtr->GetEntitySignatureData()) {
+			if (ecsPtr->HasComponent<ScoreManagerScript>(entityID)) {
+				scoreManager = ecsPtr->GetComponent<ScoreManagerScript>(entityID);
+				break;
+			}
+		}
+
 		physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
 				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
@@ -30,6 +40,11 @@ public:
 					enemyScript->enemyHealth -= fireballDamage;
 
 					if (enemyScript->enemyHealth <= 0) {
+
+						if (scoreManager) {
+							scoreManager->AddScore(scoreValue); // or whatever value you want per kill
+						}
+
 						ecsPtr->DeleteEntity(col.otherEntityID);
 					}
 

@@ -28,7 +28,7 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 uniform vec3 cameraPosition;
-uniform int isNotRigged;
+uniform int isRigged;
 
 const int MAX_BONES = 200;
 uniform mat4 bones[MAX_BONES];
@@ -44,7 +44,7 @@ void main()
         bones[aBoneIDs[2]] * aWeights[2] +
         bones[aBoneIDs[3]] * aWeights[3];
 
-    if (isNotRigged == 0)
+    if (isRigged == 0)
     {
       boneTransform = mat4(1.f);
     }

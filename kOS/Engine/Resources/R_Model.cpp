@@ -439,7 +439,7 @@ void R_Model::PBRDraw(Shader& shader, std::shared_ptr<PBRMaterial> const& pbrMat
 
 }
 
-void R_Model::DrawAnimation(Shader& shader, PBRMaterial const& pbrMat, const std::vector<glm::mat4>& boneMatrices)
+void R_Model::DrawAnimation(Shader& shader, std::shared_ptr<PBRMaterial> const& pbrMat, const std::vector<glm::mat4>& boneMatrices)
 {
     shader.SetBool("isNotRigged", true);
     if (!boneMatrices.empty())
@@ -449,9 +449,12 @@ void R_Model::DrawAnimation(Shader& shader, PBRMaterial const& pbrMat, const std
             shader.SetMat4("bones[" + std::to_string(i) + "]", boneMatrices[i]);
         }
     }
-    // shader.SetMat4Array("bones", boneMatrices[0], boneMatrices.size());
-    for (unsigned int i = 0; i < meshes.size(); i++)
-        meshes[i].PBRDraw(shader, pbrMat);
+
+    std::vector<PBRMaterial>& pbr = reinterpret_cast<PBRMaterialList*>(pbrMat.get())->pbrMatList;
+    for (unsigned int i = 0, j = 0; i < meshes.size(); i++) {
+        j = j < pbr.size() - 1 ? j + 1 : j;
+        meshes[i].PBRDraw(shader, pbr[j]);
+    }
 }
 
 glm::mat4 R_Model::ConvertToGLMMat4(const aiMatrix4x4& original)

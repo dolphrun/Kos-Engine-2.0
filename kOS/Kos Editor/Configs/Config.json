@@ -70,6 +70,15 @@
           }
         ]
       },
+      "animControllerCompiler": {
+        "path": "null",
+        "outputExtension": ".controller",
+        "inputExtensions": [
+          {
+            "inputExtensions": ".controller"
+          }
+        ]
+      },
       "dmcCompiler": {
         "path": "null",
         "outputExtension": ".dcm",

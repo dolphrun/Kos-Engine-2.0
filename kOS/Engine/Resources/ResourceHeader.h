@@ -8,3 +8,4 @@
 #include "R_AudioStudio.h"
 #include "R_Material.h"
 #include "R_DepthMapCube.h"
+#include "R_AnimController.h"

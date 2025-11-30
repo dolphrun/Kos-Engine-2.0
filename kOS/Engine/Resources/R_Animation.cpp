@@ -219,7 +219,8 @@ void R_Animation::CalculateBoneTransform(const NodeData& node, const glm::mat4& 
     {
         int index = boneMap.at(nodeName);
         //Global Inverse does nothing for now
-        m_FinalBoneTransforms[index] = /*globalInverse **/ globalTransform * boneInfo.at(index).offsetMatrix;
+        if (index < boneInfo.size())
+            m_FinalBoneTransforms[index] = /*globalInverse **/ globalTransform * boneInfo.at(index).offsetMatrix;
     }
     else
     {

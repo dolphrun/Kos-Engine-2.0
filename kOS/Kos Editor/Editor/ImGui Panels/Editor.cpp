@@ -154,6 +154,8 @@ namespace gui {
 		}
 
 		m_tags = filewindow::readEditorConfig(editorTagsFile);
+
+		//m_animControllerContext = ax::NodeEditor::CreateEditor();
 	}
 
 	void ImGuiHandler::NewFrame()
@@ -228,6 +230,7 @@ namespace gui {
 				DrawAssetInspector();
 				DrawMaterialWindow();
 				DrawBakedWindow();
+				DrawAnimatorControllerWindow();
 				DrawNavMeshWindow();
 			}
 
@@ -261,10 +264,18 @@ namespace gui {
 
 	void ImGuiHandler::Shutdown()
 	{
+		if (m_animControllerContext)
+		{
+			ShutdownAnimatorLayout();
+		}
+
 		// Shutdown ImGui
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
+
+		
+			
 	}
 
 

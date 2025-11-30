@@ -2,6 +2,7 @@
     {
         "SceneData": {
             "skyBoxGUID": [],
+            "NavMeshGuid": "cccccccc-cccc-cccc-cccc-cccccccccccc",
             "ambientIntensity": 1.0
         }
     },
@@ -170,6 +171,12 @@
                 "children": [
                     {
                         "entityGUID": "1361fd6e-b3e0-48f2-5ab3-1599fcc561a4",
+                        "AnimatorComponent": {
+                            "controllerGUID": "9149963b-fa24-7dbc-6d95-cf2d7ffad332",
+                            "m_PlaybackSpeed": 1.0,
+                            "m_CurrentTime": 0.0,
+                            "m_IsPlaying": true
+                        },
                         "MaterialComponent": {
                             "materialGUID": [
                                 {
@@ -188,6 +195,10 @@
                             "prefabName": "",
                             "hide": false,
                             "isStatic": false
+                        },
+                        "SkinnedMeshRendererComponent": {
+                            "skinnedMeshGUID": "4d215f18-7b0d-7c34-1315-4803812d8960",
+                            "materialGUID": "e9ece6d7-4ed7-73b3-9309-ec58d5d77a07"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {

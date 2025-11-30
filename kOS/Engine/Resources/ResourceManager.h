@@ -21,14 +21,9 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 #include "Config/pch.h"
 #include "Resources/Resource.h"
-#include "Resources/R_Model.h"
-#include "Resources/R_Font.h"
-#include "Resources/R_Scene.h"
-#include "Resources/R_Animation.h"
-#include "Resources/R_Audio.h"
-#include "Resources/R_AudioStudio.h"
-#include "Resources/R_Material.h"
-#include "Resources/R_DepthMapCube.h"
+#include "Resources/ResourceHeader.h"
+
+
 class ResourceManager {
 
 public:
@@ -43,7 +38,7 @@ public:
 		RegisterResourceType<R_AudioStudio>(".bank");
 		RegisterResourceType<R_Material>(".mat");
 		RegisterResourceType<R_DepthMapCube>(".dcm");
-        //Wait for texture type
+		RegisterResourceType<R_AnimController>(".controller");
     }
 
 	~ResourceManager() = default;
@@ -61,7 +56,7 @@ public:
 		if (m_resourceMap.find(GUID) != m_resourceMap.end()) {
 
 			auto asset = m_resourceMap.at(GUID);
-			if (asset) {
+			if (asset && asset->m_filePath.extension().string() == m_resourceExtension.at(T::classname())) {
 				return std::static_pointer_cast<T>(asset);
 			}
 		}

@@ -167,7 +167,7 @@ void TextRenderer::Clear()
 
 void MeshRenderer::Render(const CameraData& camera, Shader& shader)
 {
-	shader.SetBool("isNotRigged", true);
+	shader.SetBool("isRigged", false);
 	shader.SetVec3("color", glm::vec3{1.f,1.f,1.f});
 	for (std::vector<MeshData>& meshData : meshesToDraw) {
 		for (MeshData& mesh : meshData)
@@ -182,7 +182,7 @@ void MeshRenderer::Render(const CameraData& camera, Shader& shader)
 }
 void MeshRenderer::Render(const CameraData& camera, Shader& shader, layer::LAYERS layer)
 {
-	shader.SetBool("isNotRigged", true);
+	shader.SetBool("isRigged", false);
 	shader.SetVec3("color", glm::vec3{ 1.f,1.f,1.f });
 		for (MeshData& mesh : meshesToDraw[layer])
 		{
@@ -196,7 +196,7 @@ void MeshRenderer::Render(const CameraData& camera, Shader& shader, layer::LAYER
 }
 void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader)
 {
-	shader.SetBool("isNotRigged", false);
+	shader.SetBool("isRigged", true);
 	shader.SetVec3("color", glm::vec3{ 1.f,1.f,1.f });
 	for (std::vector<SkinnedMeshData>& meshData : skinnedMeshesToDraw) {
 		for (SkinnedMeshData& mesh : meshData)
@@ -205,11 +205,13 @@ void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader)
 			shader.SetInt("entityID", mesh.entityID + 1);
 			if (mesh.animationToUse)
 			{
+				shader.SetBool("isRigged", true);
 				mesh.animationToUse->Update(mesh.currentDuration, glm::mat4(1.f), glm::mat4(1.f), mesh.meshToUse->GetBoneMap(), mesh.meshToUse->GetBoneInfo());
-				mesh.meshToUse->DrawAnimation(shader, *mesh.meshMaterial, mesh.animationToUse->GetBoneFinalMatrices());
+				mesh.meshToUse->DrawAnimation(shader, mesh.meshMaterial, mesh.animationToUse->GetBoneFinalMatrices());
 			}
 			else
 			{
+				shader.SetBool("isRigged", false);
 				mesh.meshToUse->PBRDraw(shader, mesh.meshMaterial);
 			}
 
@@ -219,7 +221,8 @@ void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader)
 
 void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader, layer::LAYERS layer)
 {
-	shader.SetBool("isNotRigged", true);
+	///Might wanna check on this if this gives bugs
+	shader.SetBool("isRigged", false);
 	shader.SetVec3("color", glm::vec3{ 1.f,1.f,1.f });
 	for (SkinnedMeshData& mesh : skinnedMeshesToDraw[layer])
 	{
@@ -296,6 +299,7 @@ void SkinnedMeshRenderer::Clear()
 	}
 }
 void CubeRenderer::Render(const CameraData& camera, Shader& shader, Cube* cubePtr) {
+	shader.SetBool("isRigged", false);
 	for (CubeData& cd : cubesToDraw) {
 		shader.SetTrans("model", cd.transformation);
 		shader.SetVec3("color", glm::vec3{ 1.f,1.f,1.f });
@@ -336,6 +340,7 @@ void CubeRenderer::Clear() {
 }
 
 void SphereRenderer::Render(const CameraData& camera, Shader& shader, Sphere* spherePtr) {
+	shader.SetBool("isRigged", false);
 	for (SphereData& cd : spheresToDraw) {
 		//std::cout << "RENDERING SPHERE\n";
 		shader.SetTrans("model", cd.transformation);
@@ -369,7 +374,6 @@ void SphereRenderer::Render(const CameraData& camera, Shader& shader, Sphere* sp
 		//std::cout << "RENDERING MESH\n";
 		glActiveTexture(GL_TEXTURE0);
 		spherePtr->DrawMesh();
-
 	}
 }
 void SphereRenderer::Clear() {
@@ -502,6 +506,7 @@ void DebugRenderer::RenderDebugCubes(const CameraData& camera, Shader& shader)
 	//glm::quat rot = glm::vec3(glm::radians(0.f), glm::radians(0.f), glm::radians(0.f));
 	//glm::vec3 sca = glm::vec3(20.f, 20.f, 20.f);
 	//model = glm::translate(model, pos) * glm::mat4_cast(rot) * glm::scale(model, sca);
+
 	for (size_t i = 0; i < basicDebugCubes.size(); i++)
 	{
 		shader.SetFloat("uShaderType", 2.1f);

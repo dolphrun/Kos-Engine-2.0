@@ -2,6 +2,7 @@
     {
         "SceneData": {
             "skyBoxGUID": [],
+            "NavMeshGuid": "cccccccc-cccc-cccc-cccc-cccccccccccc",
             "ambientIntensity": 1.0
         }
     },
@@ -144,15 +145,11 @@
             },
             {
                 "entityGUID": "1043651a-41c8-52db-d7dc-94d18d7d6d25",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
-                        }
-                    ]
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "7b0adace-76b2-df23-aedb-f6a5ed8d4a88"
+                "AnimatorComponent": {
+                    "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
+                    "m_PlaybackSpeed": 1.0,
+                    "m_CurrentTime": 0.0,
+                    "m_IsPlaying": true
                 },
                 "NameComponent": {
                     "entityName": "Enemy Model",
@@ -162,6 +159,10 @@
                     "prefabName": "",
                     "hide": false,
                     "isStatic": false
+                },
+                "SkinnedMeshRendererComponent": {
+                    "skinnedMeshGUID": "8a830bfc-7794-b76e-2f45-0e765f0a2495",
+                    "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

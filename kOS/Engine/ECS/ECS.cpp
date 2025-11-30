@@ -61,6 +61,7 @@ namespace ecs{
 
 		RegisterSystem<CanvasTextRenderSystem, TransformComponent, CanvasRendererComponent>();
 		RegisterSystem<CanvasSpriteRenderSystem, TransformComponent, CanvasRendererComponent>();
+		RegisterSystem<AnimatorSystem, TransformComponent, AnimatorComponent>(RUNNING);
 		RegisterSystem<CanvasButtonRenderSystem, TransformComponent, CanvasRendererComponent>();
 		RegisterSystem<AnimatorSystem, TransformComponent, AnimatorComponent>();
 		RegisterSystem<LightingSystem, TransformComponent, LightComponent>();
