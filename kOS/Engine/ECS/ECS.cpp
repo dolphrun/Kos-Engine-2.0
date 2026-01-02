@@ -353,7 +353,7 @@ namespace ecs{
 
 	}
 
-	const std::vector<EntityID>& ECS::GetComponentsEnties(const std::string& componentName) {
+	const std::pmr::vector<EntityID>& ECS::GetComponentsEnties(const std::string& componentName) {
 		if (m_combinedComponentPool.find(componentName) != m_combinedComponentPool.end()) {
 			return m_combinedComponentPool.at(componentName)->GetEntityList();
 		}

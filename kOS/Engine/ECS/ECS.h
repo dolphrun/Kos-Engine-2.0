@@ -186,7 +186,7 @@ namespace ecs {
 		void RegisterSystem(States... states);
 
 		void FreeComponentPool(const std::string& componentName);
-		const std::vector<EntityID>& GetComponentsEnties(const std::string& componentName);
+		const std::pmr::vector<EntityID>& GetComponentsEnties(const std::string& componentName);
 
 
 		void RegisterEntity(EntityID);
@@ -205,6 +205,7 @@ namespace ecs {
 		float m_timeScale = 1.0f;   // default normal speed
 
 		//COMPONENT DATA
+		std::pmr::unsynchronized_pool_resource componentPool;
 		std::unordered_map<std::string, std::shared_ptr<ISparseSet>> m_combinedComponentPool;
 		std::unordered_map<std::string, std::vector<std::string>> m_dependentComponent;
 		std::map<std::string, size_t> m_componentKey;
@@ -264,8 +265,15 @@ namespace ecs {
 		if constexpr (dependencyCount > 0) {
 			(..., m_dependentComponent[classname].push_back(DependentComponent::classname()));
 		}
-		
-		m_combinedComponentPool[classname] = std::make_shared<SparseSet<T>>();
+
+		std::pmr::polymorphic_allocator<SparseSet<T>> alloc(&componentPool);
+
+		auto sparseSet = std::allocate_shared<SparseSet<T>>(
+			alloc,
+			&componentPool  // user argument for SparseSet<T>::SparseSet(memory_resource*)
+		);
+
+		m_combinedComponentPool[classname] = sparseSet;
 		m_componentKey[classname] = ++totalComponents;
 		m_componentStrings.insert(classname);
 
