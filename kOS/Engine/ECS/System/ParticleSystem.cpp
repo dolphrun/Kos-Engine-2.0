@@ -10,22 +10,26 @@ namespace ecs {
 
         onRegister.Add([&](EntityID id) {
             ParticleComponent* particle = m_ecs.GetComponent<ParticleComponent>(id);
+            if (particle) {
+                //init the particle velocity
+                particle->particle_List.clear();
+                particle->particle_List.reserve(particle->max_Particles);
 
-            //init the particle velocity
-            particle->particle_List.clear();
-            particle->particle_List.reserve(particle->max_Particles);
-          
-            // Initialize emitter timers
-            particle->emitterTime = 0.f;
-            particle->durationCounter = 0.f;
+                // Initialize emitter timers
+                particle->emitterTime = 0.f;
+                particle->durationCounter = 0.f;
+            }
+
 
             });
 
         onDeregister.Add([&](EntityID id) {
             auto* particle = m_ecs.GetComponent<ParticleComponent>(id);
-
+            if (particle) {
+                particle->particle_List.clear();
+            }
             // Clear tracking data
-            particle->particle_List.clear();
+            
 
             });
     }

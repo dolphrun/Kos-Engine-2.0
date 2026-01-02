@@ -65,7 +65,12 @@ namespace ecs {
 			m_inputSystem(is),
 			m_physicsManager(pm),
 			m_scriptManager(sm),
-			m_audioManager(audiom)
+			m_audioManager(audiom),
+			m_systemList(&componentPool), // INITIALIZE PMR
+			m_entityMap(&componentPool),
+			m_availableEntityID(&componentPool),
+			m_GUIDtoEntityID(&componentPool),
+			m_deletedEntities(&componentPool)
 		{}
 
 		void Load();
@@ -84,6 +89,8 @@ namespace ecs {
 		void RemoveComponent(EntityID ID);
 		template<typename T>
 		T* GetComponent(EntityID ID);
+		template<typename T>
+		const T* GetComponent(EntityID ID) const;
 		template<typename T>
 		bool HasComponent(EntityID ID);
 		template<typename T>
@@ -144,7 +151,7 @@ namespace ecs {
 		ComponentSignature GetEntitySignature(EntityID ID) {
 			return m_entityMap.at(ID);
 		}
-		const std::unordered_map<EntityID, ComponentSignature>& GetEntitySignatureData() {
+		const std::pmr::unordered_map<EntityID, ComponentSignature>& GetEntitySignatureData() {
 			return m_entityMap;
 		}
 
@@ -186,7 +193,7 @@ namespace ecs {
 		void RegisterSystem(States... states);
 
 		void FreeComponentPool(const std::string& componentName);
-		const std::vector<EntityID>& GetComponentsEnties(const std::string& componentName);
+		const std::pmr::vector<EntityID>& GetComponentsEnties(const std::string& componentName);
 
 
 		void RegisterEntity(EntityID);
@@ -205,6 +212,7 @@ namespace ecs {
 		float m_timeScale = 1.0f;   // default normal speed
 
 		//COMPONENT DATA
+		std::pmr::unsynchronized_pool_resource componentPool;
 		std::unordered_map<std::string, std::shared_ptr<ISparseSet>> m_combinedComponentPool;
 		std::unordered_map<std::string, std::vector<std::string>> m_dependentComponent;
 		std::map<std::string, size_t> m_componentKey;
@@ -212,15 +220,18 @@ namespace ecs {
 		size_t totalComponents = 0;
 
 		//SYSTEMDATA
-		std::map<std::string, std::shared_ptr<ISystem>> m_systemMap;
-		std::vector<std::shared_ptr<ISystem>> m_systemList;
+		struct SystemData{	
+			std::shared_ptr<ISystem> ptr;
+			std::string systemName;
+		};
+		std::pmr::vector<SystemData> m_systemList;
 
 		//ENTITY DATA
-		std::unordered_map<EntityID, ComponentSignature> m_entityMap;
 		EntityID m_entityCount{};
-		std::deque<EntityID> m_availableEntityID;
-		std::unordered_map<utility::GUID, ecs::EntityID> m_GUIDtoEntityID;
-		std::vector<EntityID> m_deletedEntities;
+		std::pmr::unordered_map<EntityID, ComponentSignature> m_entityMap;
+		std::pmr::deque<EntityID> m_availableEntityID;
+		std::pmr::unordered_map<utility::GUID, ecs::EntityID> m_GUIDtoEntityID;
+		std::pmr::vector<EntityID> m_deletedEntities;
 
 	};
 
@@ -261,8 +272,15 @@ namespace ecs {
 		if constexpr (dependencyCount > 0) {
 			(..., m_dependentComponent[classname].push_back(DependentComponent::classname()));
 		}
-		
-		m_combinedComponentPool[classname] = std::make_shared<SparseSet<T>>();
+
+		std::pmr::polymorphic_allocator<SparseSet<T>> alloc(&componentPool);
+
+		auto sparseSet = std::allocate_shared<SparseSet<T>>(
+			alloc,
+			&componentPool  // user argument for SparseSet<T>::SparseSet(memory_resource*)
+		);
+
+		m_combinedComponentPool[classname] = sparseSet;
 		m_componentKey[classname] = ++totalComponents;
 		m_componentStrings.insert(classname);
 
@@ -281,9 +299,8 @@ namespace ecs {
 		(..., signature.set(GetComponentKey(Components::classname())));
 
 		std::shared_ptr<T> system = std::make_shared<T>(*this, m_graphicsManager, m_resourceManager, m_inputSystem, m_physicsManager, m_scriptManager, m_performance, m_audioManager);
-		m_systemMap[T::classname()] = system;
-		m_systemList.push_back(system);
-		m_systemMap[T::classname()]->AssignSignature(signature);
+		system->AssignSignature(signature);
+		m_systemList.emplace_back(system,T::classname());
 
 		std::bitset<GAMESTATE_COUNT> gameState;
 		if constexpr (sizeof...(states) == 0) {
@@ -293,7 +310,7 @@ namespace ecs {
 			(..., gameState.set(states));
 		}
 
-		m_systemMap[T::classname()]->SetState(gameState);
+		system->SetState(gameState);
 	}
 
 
@@ -353,6 +370,18 @@ namespace ecs {
 
 	template<typename T>
 	T* ECS::GetComponent(EntityID ID) {
+		T* component = std::static_pointer_cast<SparseSet<T>>(m_combinedComponentPool.at(T::classname()))->Get(ID);
+
+		if (component) {
+			//to set component dirty flag to true
+			component->dirty = true;
+		}
+
+		return component;
+	}
+
+	template<typename T>
+	const T* ECS::GetComponent(EntityID ID) const {
 		return std::static_pointer_cast<SparseSet<T>>(m_combinedComponentPool.at(T::classname()))->Get(ID);
 	}
 
