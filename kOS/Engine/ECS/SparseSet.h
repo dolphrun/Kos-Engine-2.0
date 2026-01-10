@@ -26,7 +26,7 @@ namespace ecs {
 		virtual bool ContainsEntity(EntityID) = 0;
 		virtual void Clear() = 0;
 		virtual size_t Size() = 0;
-		virtual std::vector<EntityID>& GetEntityList() = 0;
+		virtual std::pmr::vector<EntityID>& GetEntityList() = 0;
 		virtual void* GetBase(EntityID) = 0;
 	};
 
@@ -39,10 +39,9 @@ namespace ecs {
 
 		using Sparse = std::array<size_t, SPARSE_MAX_SIZE>;
 
-		std::vector<Sparse> m_sparsePages;
-
-		std::vector<T> m_dense;
-		std::vector<EntityID> m_denseToEntity; // 1:1 vector where dense index == Entity Index
+		std::pmr::vector<Sparse> m_sparsePages;
+		std::pmr::vector<T> m_dense;
+		std::pmr::vector<EntityID> m_denseToEntity; // 1:1 vector where dense index == Entity Index
 
 		inline void SetDenseIndex(EntityID id, size_t index) {
 			size_t page = id / SPARSE_MAX_SIZE;
@@ -72,10 +71,22 @@ namespace ecs {
 
 	public:
 
-		SparseSet() {
-			
+		SparseSet(std::pmr::memory_resource* mr = std::pmr::get_default_resource())
+			: m_sparsePages(mr), // Pass 'mr' to all vectors
+			m_dense(mr),
+			m_denseToEntity(mr)
+		{
 			m_dense.reserve(1000);
 			m_denseToEntity.reserve(1000);
+		}
+
+		SparseSet(
+			std::allocator_arg_t,
+			std::pmr::polymorphic_allocator<SparseSet<T>>,
+			std::pmr::memory_resource* mr
+		)
+			: SparseSet(mr)
+		{
 		}
 
 		T* Set(EntityID id, T obj) {
@@ -101,6 +112,11 @@ namespace ecs {
 
 
 		T* Get(EntityID id) {
+			size_t index = GetDenseIndex(id);
+			return (index != tombstone) ? &m_dense[index] : nullptr;
+		}
+
+		const T* Get(EntityID id) const{
 			size_t index = GetDenseIndex(id);
 			return (index != tombstone) ? &m_dense[index] : nullptr;
 		}
@@ -131,7 +147,7 @@ namespace ecs {
 			return m_dense.size();
 		}
 
-		std::vector<EntityID>& GetEntityList() override {
+		std::pmr::vector<EntityID>& GetEntityList() override {
 			return m_denseToEntity;
 		}
 
@@ -150,7 +166,7 @@ namespace ecs {
 		}
 
 
-		const std::vector<T>& Data() const {
+		const std::pmr::vector<T>& Data() const {
 			return m_dense;
 		}
 

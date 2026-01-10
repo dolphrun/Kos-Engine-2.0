@@ -43,20 +43,29 @@ namespace ecs{
 		RegisterComponent<ParticleComponent>();
 
 		//Allocate memory to each system
+		//Level 0, Script
 		RegisterSystem<ScriptingSystem>(RUNNING, WAIT);
+
+		//Level 1, No Dependent Components
 		RegisterSystem<TransformSystem, TransformComponent>();
+
+		
+		
 		RegisterSystem<BoxColliderSystem, TransformComponent, BoxColliderComponent>();
 		RegisterSystem<CapsuleColliderSystem, TransformComponent, CapsuleColliderComponent>();
 		RegisterSystem<SphereColliderSystem, TransformComponent, SphereColliderComponent>();
 		RegisterSystem<RigidbodySystem, TransformComponent, RigidbodyComponent>(RUNNING);
-		RegisterSystem<StaticRigidbodySystem, TransformComponent>();
+		RegisterSystem<StaticRigidbodySystem, TransformComponent>();// TODO yh to split them, i cannot thread like this
 		RegisterSystem<PhysicsSystem, TransformComponent, RigidbodyComponent>(RUNNING);
+
+
+
+		//Render Level 3
 		RegisterSystem<CameraSystem, TransformComponent, CameraComponent>();
-		RegisterSystem<MeshRenderSystem, TransformComponent,MaterialComponent, MeshFilterComponent>();
+		RegisterSystem<MeshRenderSystem, TransformComponent, MaterialComponent, MeshFilterComponent>();
 		RegisterSystem<SkinnedMeshRenderSystem, TransformComponent, SkinnedMeshRendererComponent, AnimatorComponent>();
 		RegisterSystem<CubeRenderSystem, TransformComponent, MaterialComponent, CubeRendererComponent>();
 		RegisterSystem<SphereRenderSystem, TransformComponent, MaterialComponent, SphereRendererComponent>();
-
 		RegisterSystem<CanvasTextRenderSystem, TransformComponent, CanvasRendererComponent>();
 		RegisterSystem<CanvasSpriteRenderSystem, TransformComponent, CanvasRendererComponent>();
 		RegisterSystem<AnimatorSystem, TransformComponent, AnimatorComponent>(RUNNING);
@@ -76,8 +85,8 @@ namespace ecs{
 
 	void ECS::Init() {
 		//loops through all the system
-		for (auto& System : m_systemMap) {
-			System.second->Init();
+		for (auto& System : m_systemList) {
+			System.ptr->Init();
 		}
 
 
@@ -119,17 +128,17 @@ namespace ecs{
 			std::chrono::duration<float> systemDuration{};
 			auto start = std::chrono::steady_clock::now();
 
-			if (system->TestState(m_state)) {	// Only run state system registered in
+			if (system.ptr->TestState(m_state)) {	// Only run state system registered in
 				
 				for (const auto& sceneName : keys) {
-					system->Update();
+					system.ptr->Update();
 				}
 
 			}
 
 			auto end = std::chrono::steady_clock::now();
 			systemDuration = (end - start);
-			m_performance.SetSystemValue(typeid(*system).name(), systemDuration.count());
+			m_performance.SetSystemValue(system.systemName, systemDuration.count());
 		}
 		
 	}
@@ -156,10 +165,10 @@ namespace ecs{
 
 	void ECS::RegisterEntity(EntityID ID) {
 
-		for (auto& system : m_systemMap) {
-			if ((m_entityMap.find(ID)->second & system.second->GetSignature()) == system.second->GetSignature()) {
+		for (auto& system : m_systemList) {
+			if ((m_entityMap.find(ID)->second & system.ptr->GetSignature()) == system.ptr->GetSignature()) {
 
-				system.second->RegisterSystem(ID);
+				system.ptr->RegisterSystem(ID);
 
 			}
 		}
@@ -167,10 +176,10 @@ namespace ecs{
 
 	void ECS::DeregisterEntity(EntityID ID) {
 
-		for (auto& system : m_systemMap) {
-			if ((m_entityMap.find(ID)->second & system.second->GetSignature()) == system.second->GetSignature()) {
+		for (auto& system : m_systemList) {
+			if ((m_entityMap.find(ID)->second & system.ptr->GetSignature()) == system.ptr->GetSignature()) {
 
-				system.second->DeregisterSystem(ID);
+				system.ptr->DeregisterSystem(ID);
 
 			}
 		}
@@ -353,7 +362,7 @@ namespace ecs{
 
 	}
 
-	const std::vector<EntityID>& ECS::GetComponentsEnties(const std::string& componentName) {
+	const std::pmr::vector<EntityID>& ECS::GetComponentsEnties(const std::string& componentName) {
 		if (m_combinedComponentPool.find(componentName) != m_combinedComponentPool.end()) {
 			return m_combinedComponentPool.at(componentName)->GetEntityList();
 		}
