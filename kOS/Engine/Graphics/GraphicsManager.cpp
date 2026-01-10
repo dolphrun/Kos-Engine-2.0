@@ -143,10 +143,27 @@ void GraphicsManager::gm_RenderToEditorFrameBuffer()
 	//lightRenderer.dcm[0]=lightRenderer.testDCM;
 
 	framebufferManager.sceneBuffer.BindForDrawing();
+	glBindFramebuffer(GL_READ_FRAMEBUFFER, framebufferManager.gBuffer.RetrieveBuffer());
+	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
+	glBlitFramebuffer(
+		0, 0, framebufferManager.sceneBuffer.width, framebufferManager.sceneBuffer.height,
+		0, 0, framebufferManager.sceneBuffer.width, framebufferManager.sceneBuffer.height,
+		GL_DEPTH_BUFFER_BIT,
+		GL_NEAREST
+	);
 
+
+	glBindFramebuffer(GL_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
+	glViewport(0, 0, static_cast<GLsizei>(framebufferManager.sceneBuffer.width), static_cast<GLsizei>(framebufferManager.sceneBuffer.height));
+	glClearColor(0.f, 0.f, 0.f, 0.f);
+	glClear(GL_COLOR_BUFFER_BIT);
 
 	gm_RenderCubeMap(editorCamera);
 	gm_RenderDeferredObjects(editorCamera);
+
+	//Draw particle data
+	glEnable(GL_DEPTH_TEST);
+	gm_RenderParticles(editorCamera);
 	//gm_RenderDebugObjects(editorCamera);
 	//Particle buffer
 
@@ -177,11 +194,20 @@ void GraphicsManager::gm_RenderToGameFrameBuffer()
 			gm_FillDataBuffersGame(cd, cd.layer);
 
 		}
+		glBindFramebuffer(GL_READ_FRAMEBUFFER, framebufferManager.gBuffer.RetrieveBuffer());
+		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
+		glBlitFramebuffer(
+			0, 0, framebufferManager.sceneBuffer.width, framebufferManager.sceneBuffer.height,
+			0, 0, framebufferManager.sceneBuffer.width, framebufferManager.sceneBuffer.height,
+			GL_DEPTH_BUFFER_BIT,
+			GL_NEAREST
+		);
 		glBindFramebuffer(GL_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
 		glViewport(0, 0, static_cast<GLsizei>(framebufferManager.sceneBuffer.width), static_cast<GLsizei>(framebufferManager.sceneBuffer.height));
-
 		gm_RenderDeferredObjects(cd);
-
+		glEnable(GL_DEPTH_TEST);
+		gm_RenderParticles(cd);
+		glDisable(GL_DEPTH_TEST);
 
 	}
 	glDisable(GL_DEPTH_TEST);
@@ -201,6 +227,7 @@ void GraphicsManager::gm_FillDataBuffers(const CameraData& camera)
 	gm_FillGBuffer(camera);
 	gm_FillDepthBuffer(camera);
 	gm_FillDepthCube(camera);
+
 }
 void GraphicsManager::gm_FillDataBuffersGame(const CameraData& camera)
 {
@@ -264,7 +291,7 @@ void GraphicsManager::gm_FillGBuffer(const CameraData& camera)
 
 	gBufferDebugShader->Disuse();
 	//Render particles
-	gm_RenderParticles(editorCamera);
+	//gm_RenderParticles(editorCamera);
 
 	//Fill world space UI
 	spriteRenderer.RenderWorldSprites(camera, *worldSpriteShader);
@@ -292,7 +319,7 @@ void GraphicsManager::gm_FillGBufferGame(const CameraData& camera) {
 	sphereRenderer.Render(camera, *gBufferPBRShader, &this->sphere);
 	gBufferPBRShader->Disuse();
 	//Render particles
-	gm_RenderParticles(camera);
+	//gm_RenderParticles(camera);
 
 	//Fill world space UI
 	spriteRenderer.RenderWorldSprites(camera, *worldSpriteShader);
@@ -667,9 +694,9 @@ void GraphicsManager::gm_RenderUIObjects(const CameraData& camera)
 
 void GraphicsManager::gm_RenderParticles(const CameraData& camera)
 {
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	Shader* gBufferParticleShader{ &shaderManager.engineShaders.find("GBufferParticleShader")->second };
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	Shader* gBufferParticleShader{ &shaderManager.engineShaders.find("FowardParticleShader")->second };
 	particleRenderer.Render(camera, *gBufferParticleShader);
 	glDisable(GL_BLEND);
 }
