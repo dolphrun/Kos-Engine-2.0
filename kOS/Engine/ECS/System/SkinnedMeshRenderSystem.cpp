@@ -69,7 +69,7 @@ namespace ecs
 
                 /// MAKE SURE THAT NO ANIMATION AND MESH SHARE THE SAME GUID, DUPLICATE THE ASSET IF YOU HAVE TO
                 mesh = m_resourceManager.GetResource<R_Model>(skinnedMesh->skinnedMeshGUID).get();
-                controller = m_resourceManager.GetResource<R_AnimController>(anim->controllerGUID).get();
+                controller = m_resourceManager.GetResource<R_AnimController>(anim->controllerGUID).get();   
 
                 if (controller)
                 {

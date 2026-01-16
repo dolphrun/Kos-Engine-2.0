@@ -8,7 +8,6 @@ class AnimationTestScript : public TemplateSC {
 public:
     R_AnimController* controller = nullptr;
     AnimatorComponent* animComp = nullptr;
-    AnimState* currAnimState = nullptr;
 
     void Start() 
     {
@@ -19,8 +18,7 @@ public:
             {
                 //Initialize animation state id with entry state id
                 animComp->m_currentStateID = controller->m_EnterState->id;
-                currAnimState = controller->RetrieveStateByID(animComp->m_currentStateID);
-                if (currAnimState)
+                if (auto* currAnimState = controller->RetrieveStateByID(animComp->m_currentStateID))
                     currAnimState->Trigger("ForcedEntry", animComp, controller);
                /* anim->m_currentState = controller->m_EnterState;
                 static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");*/
@@ -47,6 +45,8 @@ public:
                 if (tc->LocalTransformation.position.x > 5.f)
                 {
                     //static_cast<AnimState*>(anim->m_currentState)->SetTrigger("isGay");
+                    controller->RetrieveStateByID(animComp->m_currentStateID)->Trigger("PlayerDetected", animComp, controller);
+                    //currAnimState->Trigger("PlayerDetected", animComp, controller);
                 }
                 ///if on the right, trigger other condition
             }
