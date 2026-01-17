@@ -57,6 +57,7 @@ public:
 		engineShaders.insert({ "GBufferParticleShader", Shader(basicParticleVS,basicParticleFS) });
 		engineShaders.insert({ "FowardParticleShader",Shader(fwdParticleVS,fwdParticleFS) });
 		engineShaders.insert({ "GBufferWorldShader", Shader(worldSpriteVS,worldSpriteFS) });
+		engineShaders.insert({ "VignietteShader", Shader("CoreEngineShaders/Shaders/Vigniette/Vigniette.vs","CoreEngineShaders/Shaders/Vigniette/Vigniette.fs")});
 
 	}
 

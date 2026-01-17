@@ -25,7 +25,7 @@ file(GLOB_RECURSE ENGINE_SOURCE
 )
 
 
-add_library(Kos_Engine STATIC ${ENGINE_SOURCE})
+add_library(Kos_Engine STATIC ${ENGINE_SOURCE} "Graphics/PostProcessing.h")
 
 # Debug libs
 file(GLOB ENGINE_LIBS_DEBUG "${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/DebugLibs/*.lib")

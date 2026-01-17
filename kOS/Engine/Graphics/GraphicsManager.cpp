@@ -211,6 +211,17 @@ void GraphicsManager::gm_RenderToGameFrameBuffer()
 
 	}
 	glDisable(GL_DEPTH_TEST);
+
+	//TEMPORARY CODE WARNING WARNING WARNING DELETE BEFORE M4 IF NOT DIE hi Sean
+	Vigniette vig;
+	vig.extent = 0.19;
+	vig.intensity = 9.68;
+	//vig.currentShader = &shaderManager.engineShaders["VignietteShader"];
+	postProcessProfile.postProcessingEffects.clear();
+	postProcessProfile.postProcessingEffects.push_back(std::make_unique<Vigniette>(vig));
+	//Bind new texture after performing post processing
+	unsigned int* currTex = gm_PostProcess();
+	framebufferManager.sceneBuffer.texID = *currTex;
 	//Render UI
 	framebufferManager.UIBuffer.BindForDrawing();
 	gm_RenderUIObjects(gameCameras[currentGameCameraIndex]);
@@ -725,4 +736,41 @@ void GraphicsManager::gm_RenderGameBuffer(){
 	glClearColor(1.f, 0.0f, 0.f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	framebufferManager.gameBuffer.Render();
+}
+
+unsigned int* GraphicsManager::gm_PostProcess() {
+	//Clear and bind tmp buffer
+	glBindFramebuffer(GL_FRAMEBUFFER, framebufferManager.postProcessBuffer1.fbo);
+	glViewport(0, 0, static_cast<GLsizei>(framebufferManager.postProcessBuffer1.width), static_cast<GLsizei>(framebufferManager.postProcessBuffer1.height));
+	glClearColor(0.f, 0.f, 0.f, 0.f);
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	//Alternate and swap
+	FrameBuffer* pp1{ &framebufferManager.sceneBuffer},
+			   * pp2{ &framebufferManager.postProcessBuffer1 };
+
+	for (auto& ppe : postProcessProfile.postProcessingEffects) {
+		//Bind second shader
+		glBindFramebuffer(GL_FRAMEBUFFER, pp2->fbo);
+		glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // we're not using the stencil buffer now
+		glViewport(0, 0, pp2->width, pp2->height);
+	
+		//Use data from PP1 to draw to pp2	
+		ppe->currentShader->Use();
+		glBindVertexArray(pp1->vaoId);
+		ppe->UpdateShader();
+		ppe->currentShader->Disuse();
+		glBindTexture(GL_TEXTURE_2D, pp1->texID);
+		glDrawElements(GL_TRIANGLE_STRIP, pp1->drawCount, GL_UNSIGNED_SHORT, NULL);
+		glBindVertexArray(0);
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		
+		//Swap buffer
+		FrameBuffer* tmp = pp2;
+		pp2 = pp1;
+		pp1 = tmp;
+
+	}
+	return &pp1->texID;;
 }

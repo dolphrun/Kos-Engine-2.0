@@ -32,7 +32,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "ShaderManager.h"
 #include "FramebufferManager.h"
 #include "Resources/ResourceManager.h"
-
+#include "PostProcessing.h"
 class GraphicsManager
 {
 public:
@@ -153,6 +153,7 @@ public:
 	bool isButtonPressed{ false };
 
 	DebugNavMesh* renderNavMesh;
+	PostProcessingProfile postProcessProfile;
 private:
 
 	//Initialize functions
@@ -176,6 +177,8 @@ private:
 
 	void gm_FillGBufferGame(const CameraData& camera);
 	void gm_FillGBufferGame(const CameraData& camera, layer::LAYERS);
+
+	unsigned int* gm_PostProcess();
 	//Cameras
 	CameraData editorCamera{};
 	std::vector<CameraData> gameCameras{};
