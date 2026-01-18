@@ -834,7 +834,7 @@ void NavMeshManager::BuildRecastGeometry(std::string sceneName, std::shared_ptr<
         if (!meshComp) continue;
         
         const auto* name = m_ecs.GetComponent<NameComponent>(obj);
-        if (!name->isStatic) continue;
+        if (!name->dirty) continue;
 
         auto meshData = resourceManager.GetResource<R_Model>(meshComp->meshGUID);
         if (!meshData) {
