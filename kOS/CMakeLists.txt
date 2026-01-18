@@ -17,7 +17,7 @@ endif()
 
 # Global compiler warnings
 if(MSVC)
-	add_compile_options(/W3)
+	add_compile_options(/W3 /bigobj)
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 else()
     add_compile_options(-Wall -Wextra -pedantic -Wshadow -Wconversion)

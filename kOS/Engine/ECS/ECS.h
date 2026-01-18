@@ -26,6 +26,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "ECS/System/System.h"
 #include "ECS/System/SystemHeader.h"
 #include "ECS/SparseSet.h"
+#include "ECS/ThreadPool.h"
 
 
 #include "Reflection/IReflectionInvoker.h"
@@ -66,6 +67,7 @@ namespace ecs {
 			m_physicsManager(pm),
 			m_scriptManager(sm),
 			m_audioManager(audiom),
+			m_threadPool(std::thread::hardware_concurrency() - 1),
 			m_systemList(&componentPool), // INITIALIZE PMR
 			m_entityMap(&componentPool),
 			m_availableEntityID(&componentPool),
@@ -189,8 +191,7 @@ namespace ecs {
 
 		template <typename T, typename... DependentComponent >
 		void RegisterComponent();
-		template<typename T, typename... Components, typename... States>
-		void RegisterSystem(States... states);
+
 
 		void FreeComponentPool(const std::string& componentName);
 		const std::pmr::vector<EntityID>& GetComponentsEnties(const std::string& componentName);
@@ -203,7 +204,6 @@ namespace ecs {
 
 	private:
 
-		void DeleteEntityImmediate(EntityID);
 		//modify from set next state
 		GAMESTATE m_nextState{ STOP };
 		GAMESTATE m_state{ STOP };
@@ -225,6 +225,7 @@ namespace ecs {
 			std::string systemName;
 		};
 		std::pmr::vector<SystemData> m_systemList;
+		std::unordered_map<unsigned int, std::vector<SystemData>> m_systemMap;
 
 		//ENTITY DATA
 		EntityID m_entityCount{};
@@ -232,6 +233,18 @@ namespace ecs {
 		std::pmr::deque<EntityID> m_availableEntityID;
 		std::pmr::unordered_map<utility::GUID, ecs::EntityID> m_GUIDtoEntityID;
 		std::pmr::vector<EntityID> m_deletedEntities;
+
+		//Thread 
+		ThreadPool m_threadPool;
+
+
+		void DeleteEntityImmediate(EntityID);
+		
+		template<typename T, typename... Components, typename... States>
+		void RegisterSystem(unsigned int level = 0, States... states);
+			
+		void RunSystemsInParallel(const std::vector<SystemData>& systems);
+		void RunSystemsInSeries(const std::vector<SystemData>& systems);
 
 	};
 
@@ -291,7 +304,7 @@ namespace ecs {
 	}
 
 	template<typename T, typename... Components, typename... States>
-	void ECS::RegisterSystem(States... states)
+	void ECS::RegisterSystem(unsigned int level, States... states)
 	{
 		ComponentSignature signature;
 
@@ -301,6 +314,7 @@ namespace ecs {
 		std::shared_ptr<T> system = std::make_shared<T>(*this, m_graphicsManager, m_resourceManager, m_inputSystem, m_physicsManager, m_scriptManager, m_performance, m_audioManager);
 		system->AssignSignature(signature);
 		m_systemList.emplace_back(system,T::classname());
+		m_systemMap[level].emplace_back(system, T::classname());
 
 		std::bitset<GAMESTATE_COUNT> gameState;
 		if constexpr (sizeof...(states) == 0) {

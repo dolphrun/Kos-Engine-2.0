@@ -15,6 +15,16 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #pragma once
 #include "Config/pch.h"
 
+#define PROFILE_SYSTEM(performance, name, code)              \
+{                                                            \
+    auto __start = std::chrono::steady_clock::now();        \
+    code;                                                    \
+    auto __end = std::chrono::steady_clock::now();          \
+    std::chrono::duration<float> __dur = __end - __start;   \
+    peformance.SetSystemValue(name, __dur.count());         \
+}
+
+
 class Peformance
 {
 public:
@@ -62,6 +72,7 @@ public:
 private:
     std::unordered_map<std::string, float> m_SystemPerformance;
     std::unordered_map<std::string, float> m_ScriptPerformance;
+
     float m_fps{};
     float m_detaTime{};
     
