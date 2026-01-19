@@ -83,11 +83,28 @@ namespace ecs {
 
 
     void ParticleSystem::EmitParticle(EntityID entityId, const glm::vec3& particle_position, const glm::vec3& velocity, float lifetime, ParticleComponent*& particle, TransformComponent*& transform) {
-        // Check if we have any free slots
-        if (particle->particle_List.size() >= particle->max_Particles) {
-            LOGGING_WARN("No free particle slots for entity %d\n", entityId);
+        // ===== NEW: ENHANCED VALIDATION =====
+            // Check no_Of_Particles range
+        if (particle->no_Of_Particles < 1 || particle->no_Of_Particles > 255) {
+            LOGGING_WARN("Cannot emit particle for entity %d - no_Of_Particles (%d) is outside valid range (1-255)\n",
+                entityId, particle->no_Of_Particles);
             return;
         }
+
+        // Check if we've reached the target particle count
+        if (particle->particle_List.size() >= static_cast<size_t>(particle->no_Of_Particles)) {
+            LOGGING_WARN("Cannot emit particle for entity %d - already at target count (%d/%d)\n",
+                entityId, particle->particle_List.size(), particle->no_Of_Particles);
+            return;
+        }
+
+        // Check if we have space (based on max_Particles)
+        if (particle->particle_List.size() >= particle->max_Particles) {
+            LOGGING_WARN("No free particle slots for entity %d (max_Particles: %d)\n",
+                entityId, particle->max_Particles);
+            return;
+        }
+
 
         ParticleData pd;
         pd.lifespan = lifetime;
@@ -359,6 +376,18 @@ namespace ecs {
 
             while (particleComp->emitterTime >= emissionInterval) {
                
+                // Only emit if no_Of_Particles is within valid range (1-255)
+                if (particleComp->no_Of_Particles < 1 || particleComp->no_Of_Particles > 255) {
+                    particleComp->emitterTime -= emissionInterval;
+                    continue;  // Skip emission for this interval
+                }
+
+                // Don't emit if we've already reached the desired particle count
+                if (particleComp->particle_List.size() >= static_cast<size_t>(particleComp->no_Of_Particles)) {
+                    particleComp->emitterTime -= emissionInterval;
+                    continue;  // Skip emission - we're at capacity
+                }
+
 
                 // ==== = GENERATE DIRECTION BASED ON EMISSION SHAPE ==== =
                 EmissionData emission; 

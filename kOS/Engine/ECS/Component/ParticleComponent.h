@@ -208,6 +208,7 @@ namespace ecs {
 
 		//NO CHANGES
 		int max_Particles = 255; //max particle size
+		int no_Of_Particles = 0;
 		float duration = 5.0f;
 		bool looping = true;
 		bool play_On_Awake = true;
@@ -271,7 +272,7 @@ namespace ecs {
 					textureGUID,
 					start_Velocity, playback_State, particleFade,
 					velocityModule,forceModule, shapeModule, colorModule, sizeModule, rotationModule, gravityModule, trailingModule, noiseModule,
-					emissionInterval);
+					emissionInterval, no_Of_Particles);
 	};
 }
 #endif
