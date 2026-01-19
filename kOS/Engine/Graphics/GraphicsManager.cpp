@@ -168,7 +168,7 @@ void GraphicsManager::gm_RenderToEditorFrameBuffer()
 	//Particle buffer
 
 	framebufferManager.UIBuffer.BindForDrawing();
-	gm_RenderUIObjects(editorCamera);
+	//gm_RenderUIObjects(editorCamera);
 
 	Shader* fboCompositeShader{ &shaderManager.engineShaders.find("FBOCompositeShader")->second };
 	framebufferManager.ComposeBuffers(framebufferManager.sceneBuffer.texID, framebufferManager.UIBuffer.texID,

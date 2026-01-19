@@ -437,7 +437,7 @@ namespace gui
         if (transCom == NULL)
             return false;
 
-        ImGuiTreeNodeFlags flag = ((static_cast<unsigned int>(m_clickedEntityId) == id) ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_DefaultOpen;
+        ImGuiTreeNodeFlags flag = ((static_cast<unsigned int>(m_clickedEntityId) == id) ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow /*| ImGuiTreeNodeFlags_DefaultOpen*/;
         if (transCom->m_childID.size() <= 0)
         {
             flag |= ImGuiTreeNodeFlags_Leaf;
