@@ -42,41 +42,37 @@ namespace ecs{
 		RegisterComponent<ParticleComponent>();
 
 		//Allocate memory to each system
-		//Level 0, Script
-		RegisterSystem<ScriptingSystem>(RUNNING, WAIT);
 
-		//Level 1, No Dependent Components
-		RegisterSystem<TransformSystem, TransformComponent>();
-
-		
-		
-		RegisterSystem<BoxColliderSystem, TransformComponent, BoxColliderComponent>();
-		RegisterSystem<CapsuleColliderSystem, TransformComponent, CapsuleColliderComponent>();
-		RegisterSystem<SphereColliderSystem, TransformComponent, SphereColliderComponent>();
-		RegisterSystem<RigidbodySystem, TransformComponent, RigidbodyComponent>(RUNNING);
-		RegisterSystem<PhysicsSystem, TransformComponent, RigidbodyComponent>(RUNNING);
+		//run in series
+		RegisterSystem<ScriptingSystem>(0, RUNNING, WAIT);
+		RegisterSystem<TransformSystem, TransformComponent>(0);
+		RegisterSystem<BoxColliderSystem, TransformComponent, BoxColliderComponent>(0);
+		RegisterSystem<CapsuleColliderSystem, TransformComponent, CapsuleColliderComponent>(0);
+		RegisterSystem<SphereColliderSystem, TransformComponent, SphereColliderComponent>(0);
+		RegisterSystem<RigidbodySystem, TransformComponent, RigidbodyComponent>(0, RUNNING);
+		RegisterSystem<PhysicsSystem, TransformComponent, RigidbodyComponent>(0, RUNNING);
 
 
 
 		//Render Level 3
-		RegisterSystem<CameraSystem, TransformComponent, CameraComponent>();
-		RegisterSystem<MeshRenderSystem, TransformComponent, MaterialComponent, MeshFilterComponent>();
-		RegisterSystem<SkinnedMeshRenderSystem, TransformComponent, SkinnedMeshRendererComponent, AnimatorComponent>();
-		RegisterSystem<CubeRenderSystem, TransformComponent, MaterialComponent, CubeRendererComponent>();
-		RegisterSystem<SphereRenderSystem, TransformComponent, MaterialComponent, SphereRendererComponent>();
-		RegisterSystem<CanvasTextRenderSystem, TransformComponent, CanvasRendererComponent>();
-		RegisterSystem<CanvasSpriteRenderSystem, TransformComponent, CanvasRendererComponent>();
-		RegisterSystem<AnimatorSystem, TransformComponent, AnimatorComponent>(RUNNING);
-		RegisterSystem<CanvasButtonRenderSystem, TransformComponent, CanvasRendererComponent>();
-		RegisterSystem<AnimatorSystem, TransformComponent, AnimatorComponent>();
-		RegisterSystem<LightingSystem, TransformComponent, LightComponent>();
-		RegisterSystem<DebugBoxColliderRenderSystem, TransformComponent, BoxColliderComponent>();
-		RegisterSystem<DebugCapsuleColliderRenderSystem, TransformComponent, CapsuleColliderComponent>();
-		RegisterSystem<DebugSphereColliderRenderSystem, TransformComponent, SphereColliderComponent>();
-		RegisterSystem<AudioListenerSystem, TransformComponent, AudioListenerComponent>();
-		RegisterSystem<AudioSystem, TransformComponent, AudioComponent>();
-		RegisterSystem<PathfindingSystem, TransformComponent>();
-		RegisterSystem<ParticleSystem, TransformComponent, ParticleComponent>();
+		RegisterSystem<CameraSystem, TransformComponent, CameraComponent>(0);
+		RegisterSystem<MeshRenderSystem, TransformComponent, MaterialComponent, MeshFilterComponent>(0);
+		RegisterSystem<SkinnedMeshRenderSystem, TransformComponent, SkinnedMeshRendererComponent, AnimatorComponent>(0);
+		RegisterSystem<CubeRenderSystem, TransformComponent, MaterialComponent, CubeRendererComponent>(0);
+		RegisterSystem<SphereRenderSystem, TransformComponent, MaterialComponent, SphereRendererComponent>(0);
+		RegisterSystem<CanvasTextRenderSystem, TransformComponent, CanvasRendererComponent>(0);
+		RegisterSystem<CanvasSpriteRenderSystem, TransformComponent, CanvasRendererComponent>(0);
+		RegisterSystem<AnimatorSystem, TransformComponent, AnimatorComponent>(0, RUNNING);
+		RegisterSystem<CanvasButtonRenderSystem, TransformComponent, CanvasRendererComponent>(0);
+		RegisterSystem<AnimatorSystem, TransformComponent, AnimatorComponent>(0);
+		RegisterSystem<LightingSystem, TransformComponent, LightComponent>(0);
+		RegisterSystem<DebugBoxColliderRenderSystem, TransformComponent, BoxColliderComponent>(0);
+		RegisterSystem<DebugCapsuleColliderRenderSystem, TransformComponent, CapsuleColliderComponent>(0);
+		RegisterSystem<DebugSphereColliderRenderSystem, TransformComponent, SphereColliderComponent>(0);
+		RegisterSystem<AudioListenerSystem, TransformComponent, AudioListenerComponent>(0);
+		RegisterSystem<AudioSystem, TransformComponent, AudioComponent>(0);
+		RegisterSystem<PathfindingSystem, TransformComponent>(0);
+		RegisterSystem<ParticleSystem, TransformComponent, ParticleComponent>(0);
 
 
 	}
@@ -110,34 +106,7 @@ namespace ecs{
 				
 		}
 		
-		//retrieve all active scenes
-		std::vector<decltype(sceneMap)::key_type> keys;
-		for (const auto& [sceneName, sceneID] : sceneMap) {
-			if (sceneID.isActive) {
-				keys.push_back(sceneName);
-			}
-			
-		}
-
-		
-		//	Loops through all the system
-		for (const auto& system : m_systemList) {
-			
-			std::chrono::duration<float> systemDuration{};
-			auto start = std::chrono::steady_clock::now();
-
-			if (system.ptr->TestState(m_state)) {	// Only run state system registered in
-				
-				for (const auto& sceneName : keys) {
-					system.ptr->Update();
-				}
-
-			}
-
-			auto end = std::chrono::steady_clock::now();
-			systemDuration = (end - start);
-			m_performance.SetSystemValue(system.systemName, systemDuration.count());
-		}
+		RunSystemsInSeries(m_systemMap.at(0));		
 		
 	}
 
@@ -515,6 +484,43 @@ namespace ecs{
 				SetActive(child_id, active);
 			}
 
+		}
+	}
+
+	void ECS::RunSystemsInParallel(const std::vector<SystemData>& systems) {
+		for (auto& system : systems) {
+			if (system.ptr->TestState(m_state)) {
+				m_threadPool.Enqueue([this, &system]() {
+
+					std::chrono::duration<float> systemDuration{};
+					auto start = std::chrono::steady_clock::now();
+
+					system.ptr->Update();
+
+					auto end = std::chrono::steady_clock::now();
+					systemDuration = (end - start);
+					m_performance.SetSystemValue(system.systemName, systemDuration.count());
+					
+					});
+				}
+			}
+
+
+		m_threadPool.Wait(); // hard sync point for ECS frame
+	}
+
+	void ECS::RunSystemsInSeries(const std::vector<SystemData>& systems) {
+		for (auto& system : systems) {
+			if (system.ptr->TestState(m_state)) {
+				std::chrono::duration<float> systemDuration{};
+				auto start = std::chrono::steady_clock::now();
+
+				system.ptr->Update();
+
+				auto end = std::chrono::steady_clock::now();
+				systemDuration = (end - start);
+				m_performance.SetSystemValue(system.systemName, systemDuration.count());
+			}
 		}
 	}
 

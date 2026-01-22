@@ -32,7 +32,6 @@ namespace ecs {
 	public:
 
 		bool hide{ false };
-		bool isStatic { false }; // Tag to exclude from and uneceesary calculation
 		bool isPrefab{ false };
 
 		layer::LAYERS Layer{ layer::DEFAULT };
@@ -44,7 +43,7 @@ namespace ecs {
 		std::string prefabName{};
 
 
-		REFLECTABLE(NameComponent, entityName, Layer, entityTag, isPrefab, prefabName, hide, isStatic);
+		REFLECTABLE(NameComponent, entityName, Layer, entityTag, isPrefab, prefabName, hide);
 
 
 		//will only generaete once json is saved
