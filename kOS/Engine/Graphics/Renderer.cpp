@@ -680,7 +680,7 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
 						}
 					}
 					else {
-						return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], 200,  p.particleType };
+						return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], 200,  p.particleType }; //Magic Number 200 for default particles
 					}
 				});
 		}
