@@ -153,7 +153,8 @@ public:
 	bool isButtonPressed{ false };
 
 	DebugNavMesh* renderNavMesh;
-	PostProcessingProfile postProcessProfile;
+	//Reference post processing profile
+	PostProcessingProfile* postProcessProfile;
 private:
 
 	//Initialize functions

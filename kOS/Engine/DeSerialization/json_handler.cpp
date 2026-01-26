@@ -87,7 +87,7 @@ namespace serialization{
 				sceneData.sceneName = scenename;
 
 				m_ecs.AddScene(scenename, sceneData);
-
+				
 			}
 			else {
 				LoadEntity(entityData, std::nullopt, scenename);

@@ -25,6 +25,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Graphics/GraphicsManager.h"
 #include "Editor/EditorCamera.h"
 #include "AssetManager/AssetManager.h"
+#include "Resources/ResourceManager.h"
 #include "Configs/ConfigPath.h"
 #include "Debugging/Performance.h"
 #include "Scripting/ScriptManager.h"
@@ -106,13 +107,20 @@ namespace Application {
         Editor.Initialize(glsl_version, configpath::editorTagPath, configpath::imguiINIPath);
         LOGGING_INFO("Load ImGui Successful");
 
-
-        
+        /*--------------------------------------------------------------
+        Add Post processing function
+        --------------------------------------------------------------*/
+        sceneManager.onSceneLoaded.Add([this](SceneData Data) {
+            std::cout << "Post processing added " << Data.postProcessingProfile.GetToString() << '\n';
+            if (!Data.postProcessingProfile.Empty())graphicsManager.postProcessProfile= &resourceManager.GetResource<R_PostProcessingProfile>(Data.postProcessingProfile)->profile;
+            });
 
         LOGGING_INFO("Application Init Successful");
 
         EditorCamera::editorCamera.position.z = -50.f;
 
+   
+        
         //Sean use this to test animationn serialization
         //ResourceManager::GetInstance()->GetResource<R_Animation>("bf8a061d-e1b2-8f34-ec30-a655db0af661");
         return 0;

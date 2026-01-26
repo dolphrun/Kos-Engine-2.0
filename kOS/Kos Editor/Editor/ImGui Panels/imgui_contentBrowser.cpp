@@ -325,6 +325,18 @@ namespace gui {
 
 
 					}
+					if (directoryPath.path().filename().extension().string() == ".prof" && ImGui::MenuItem("Set as current scene profile")) {
+						//Load profile
+						std::filesystem::path metaPath = directoryPath.path().string() + ".meta";
+						AssetData assetData = serialization::ReadJsonFile<AssetData>(metaPath.string());
+							std::cout<< m_activeScene <<'\n';
+							const auto& scene = m_ecs.sceneMap.find(m_activeScene);
+							scene->second.postProcessingProfile= assetData.GUID;
+							//Set post processing in Graphics manager
+							m_resourceManager.GetResource<R_PostProcessingProfile>(assetData.GUID)->profile;
+							m_graphicsManager.postProcessProfile = &m_resourceManager.GetResource<R_PostProcessingProfile>(assetData.GUID)->profile;
+						//scenes .startScene = assetData.GUID;
+					}
 					if (directoryPath.path().filename().extension().string() == ".json" && ImGui::MenuItem("Set as Startup Scene")) {
 
 

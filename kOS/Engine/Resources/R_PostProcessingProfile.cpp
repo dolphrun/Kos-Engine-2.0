@@ -34,7 +34,7 @@ void R_PostProcessingProfile::Load()
 				vig.intensity = e["Intensity"].GetFloat();
 				vig.extent = e["Extent"].GetFloat();
 				//Push data in 
-				//vig.currentShader = &shaderManager.engineShaders.find("VignietteShader")->second;
+				//vig.currentShader = ;
 				this->profile.postProcessingEffects.push_back(std::make_unique<Vigniette>(vig));
 
 				break;;
