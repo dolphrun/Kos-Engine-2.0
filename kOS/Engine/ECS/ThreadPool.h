@@ -25,6 +25,35 @@ public:
                 t.join();
     }
 
+    template<typename Iterator, typename Func>
+    void ParallelFor(Iterator begin, Iterator end, Func&& func) {
+        auto length = std::distance(begin, end);
+        if (length == 0) return;
+
+        size_t threadCount = m_workers.size();
+        size_t blockSize = (length + threadCount - 1) / threadCount;
+
+        for (size_t i = 0; i < threadCount; ++i) {
+            auto blockStart = begin;
+            std::advance(blockStart, i * blockSize);
+
+            if (blockStart == end) break;
+
+            auto blockEnd = blockStart;
+            size_t dist = std::distance(blockStart, end);
+            if (dist > blockSize) dist = blockSize;
+            std::advance(blockEnd, dist);
+
+            Enqueue([blockStart, blockEnd, &func]() {
+                for (auto it = blockStart; it != blockEnd; ++it) {
+                    func(*it);
+                }
+                });
+        }
+
+        Wait();
+    }
+
     // Enqueue a job (system, task, lambda, etc.)
     template<typename F>
     void Enqueue(F&& job) {

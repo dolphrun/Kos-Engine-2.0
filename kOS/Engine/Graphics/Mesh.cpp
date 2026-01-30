@@ -590,3 +590,43 @@ void DebugNavMesh::DrawVertex() {
     glDrawArrays(GL_POINTS, 0, static_cast<GLsizei>(pointVerts.size()));
     glBindVertexArray(0);
 }
+void Line::CreateMesh() {
+    std::vector<glm::vec3> points{
+        {0.f,0.f,0.f},
+        {1.f,1.f,1.f}
+    };
+
+    //Set up the VBO
+    glCreateBuffers(1, &vbo);
+    //Create named buffer storage to make it dyanmic~
+    glNamedBufferStorage(vbo, sizeof(glm::vec3) * points.size(), points.data(), GL_DYNAMIC_STORAGE_BIT);
+
+
+    //Enable vertex array buffer
+    glCreateVertexArrays(1, &vaoId);
+    //Enable vertex array
+    glEnableVertexArrayAttrib(vaoId, 0);
+    glVertexArrayVertexBuffer(vaoId, 0, vbo, 0, sizeof(glm::vec3));
+    //SEt vertex attribute format
+    glVertexArrayAttribFormat(vaoId, 0, 3, GL_FLOAT, GL_FALSE, 0);
+    //BInd vertex
+    glVertexArrayAttribBinding(vaoId, 0, 0);
+    //Bind vertex array attrivutes
+    glBindVertexArray(0);
+
+    primitiveType = GL_LINES;
+    drawCount = 2;
+}
+void Line::SetPosition(glm::vec3 startPos, glm::vec3 endPos) {
+    glm::vec3 points[2] = { startPos, endPos };
+    glNamedBufferSubData(vbo, 0, sizeof(points), points);
+}
+
+void Line::DrawMesh() {
+    glLineWidth(lineWidth);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    glBindVertexArray(vaoId);
+    glDrawArrays(primitiveType, 0, drawCount);
+    glBindVertexArray(0);
+}

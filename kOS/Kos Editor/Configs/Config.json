@@ -96,6 +96,15 @@
             "inputExtensions": ".navmesh"
           }
         ]
+      },
+      "postProcessingCompiler": {
+        "path": "null",
+        "outputExtension": ".prof",
+        "inputExtensions": [
+          {
+            "inputExtensions": ".prof"
+          }
+        ]
       }
     }
   },
