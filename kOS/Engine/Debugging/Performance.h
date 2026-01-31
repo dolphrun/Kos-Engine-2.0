@@ -15,14 +15,14 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #pragma once
 #include "Config/pch.h"
 
-#define PROFILE_SYSTEM(performance, name, code)              \
-{                                                            \
-    auto __start = std::chrono::steady_clock::now();        \
-    code;                                                    \
-    auto __end = std::chrono::steady_clock::now();          \
-    std::chrono::duration<float> __dur = __end - __start;   \
-    peformance.SetSystemValue(name, __dur.count());         \
-}
+    #define PROFILE_SYSTEM(performance, name, code)              \
+    {                                                            \
+        auto __start = std::chrono::steady_clock::now();        \
+        code;                                                    \
+        auto __end = std::chrono::steady_clock::now();          \
+        std::chrono::duration<float> __dur = __end - __start;   \
+        performance.SetSystemValue(name, __dur.count());         \
+    }
 
 
 class Peformance

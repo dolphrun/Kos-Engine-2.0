@@ -52,6 +52,9 @@ namespace ecs {
                 MaterialComponent* matRenderer = m_ecs.GetComponent<MaterialComponent>(id);
                 //Initialize each material
                 std::shared_ptr<R_Model> mesh = m_resourceManager.GetResource<R_Model>(meshFilter->meshGUID);
+                //utility::GUID testGUID;
+                //testGUID.SetFromString("1f25989a-9624-d8c9-d030-28f2d06ef7dc");
+                //m_resourceManager.GetResource<R_PostProcessingProfile>(testGUID);
                 std::vector<PBRMaterial>pbrTmpList;
                 if (!matRenderer->materialGUID.size())continue;;
                 for (utility::GUID guid : matRenderer->materialGUID) {

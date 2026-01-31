@@ -70,43 +70,35 @@ namespace Input {
 	}
 
 	void InputSystem::InputUpdate(float deltaTime) {
-		
 		for (std::pair<const int, Key>& key : keysRegistered) {
 			int state;
-
 			if (key.first == keys::LMB || key.first == keys::RMB || key.first == keys::MMB) {
 				state = glfwGetMouseButton(inputWindow, key.first);
-			}
-			else {
+			} else {
 				state = glfwGetKey(inputWindow, key.first);
 			}
-
-			// Update all prev and curr key states first
 			key.second.prevKeyState = key.second.currKeyState;
-			key.second.currKeyState = KeyState::UNUSED;
-
-			// Current checks
 			if (state == GLFW_PRESS) {
- 				if (key.second.prevKeyState == KeyState::UNUSED) {
-					if (!key.second.currPressedTimer) {
-						key.second.currKeyState = KeyState::TRIGGERED;
-					}
-					else {
+				if (key.second.prevKeyState == KeyState::UNUSED ||
+					key.second.prevKeyState == KeyState::RELEASED) {
+					key.second.currKeyState = KeyState::TRIGGERED;
+					key.second.currPressedTimer = 0.0f;
+				} else {
+					key.second.currPressedTimer += deltaTime;
+					if (key.second.currPressedTimer >= secondsBeforePressed) {
+						key.second.currKeyState = KeyState::PRESSED;
+					} else {
 						key.second.currKeyState = KeyState::WAITING;
 					}
-
-					key.second.currPressedTimer += deltaTime;
-				}
-
-				if(key.second.currPressedTimer >= secondsBeforePressed) {
-					key.second.currKeyState = KeyState::PRESSED;
 				}
 			}
 			else if (state == GLFW_RELEASE) {
-				if (key.second.currPressedTimer) {
+				if (key.second.prevKeyState != KeyState::UNUSED) {
 					key.second.currKeyState = KeyState::RELEASED;
-					key.second.currPressedTimer = 0;
+				} else {
+					key.second.currKeyState = KeyState::UNUSED;
 				}
+				key.second.currPressedTimer = 0.0f;
 			}
 		}
 	}

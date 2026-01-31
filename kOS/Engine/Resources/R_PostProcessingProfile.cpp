@@ -1,0 +1,50 @@
+#include "Config/pch.h"
+#include "R_PostProcessProfile.h"
+#include "Graphics/ShaderManager.h"
+#include "..\DeSerialization\json_handler.h"
+void R_PostProcessingProfile::Load()
+{
+	
+	std::cout << "Loaded post processing profile"<< this->GetFilePath().string()<<'\n';
+	std::ifstream inputFile(this->GetFilePath().string());
+
+	if (!inputFile) {
+		throw std::runtime_error(this->GetFilePath().string());
+	}
+	std::string fileContent((std::istreambuf_iterator<char>(inputFile)), std::istreambuf_iterator<char>());
+	inputFile.close();
+
+	// Parse the JSON content
+	rapidjson::Document doc;
+	doc.Parse(fileContent.c_str());
+	if (doc.HasMember("ProfileName")) {
+		this->profile.profileName = doc["ProfileName"].GetString();
+	}
+	const rapidjson::Value& effects = doc["PostProfileEffects"];
+
+	for (rapidjson::SizeType i = 0; i < effects.Size(); ++i) {
+		const rapidjson::Value& e = effects[i];
+
+		int ppe = e["Type"].GetInt();
+		switch (ppe) {
+			//Vigniette
+			case 0:
+				//Get float and get 
+				Vigniette vig;
+				vig.intensity = e["Intensity"].GetFloat();
+				vig.extent = e["Extent"].GetFloat();
+				//Push data in 
+				//vig.currentShader = ;
+				this->profile.postProcessingEffects.push_back(std::make_unique<Vigniette>(vig));
+
+				break;;
+		}
+	}
+	//this->md = serialization::ReadJsonFile<MaterialData>(this->GetFilePath().string());
+	////std::cout << "MATERIAL PATH" << this->GetFilePath().string() << '\n';
+	////std::cout << "MATERIAL LOADED" << this->md.diffuseMaterialGUID.GetToString() << '\n';
+	////Get resources from texture guid and load them
+
+}
+void R_PostProcessingProfile::Unload() {}
+

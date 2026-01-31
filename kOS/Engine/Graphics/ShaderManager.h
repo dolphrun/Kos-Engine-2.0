@@ -57,6 +57,7 @@ public:
 		engineShaders.insert({ "GBufferParticleShader", Shader(basicParticleVS,basicParticleFS) });
 		engineShaders.insert({ "FowardParticleShader",Shader(fwdParticleVS,fwdParticleFS) });
 		engineShaders.insert({ "GBufferWorldShader", Shader(worldSpriteVS,worldSpriteFS) });
+		engineShaders.insert({ "VignietteShader", Shader(vignietteShaderVS,vignietteShaderFS)});
 
 	}
 
@@ -192,5 +193,14 @@ private:
 	const char* fwdParticleFS
 	{
 		#include "CoreEngineShaders/Shaders/FowardParticleShader/FowardParticleShader.fs"
+	};
+
+	const char* vignietteShaderVS
+	{
+		#include "CoreEngineShaders/Shaders/VignietteShader/VignietteShader.vs"
+	};
+	const char* vignietteShaderFS
+	{
+		#include "CoreEngineShaders/Shaders/VignietteShader/VignietteShader.fs"
 	};
 };

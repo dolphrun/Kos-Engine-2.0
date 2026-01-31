@@ -200,7 +200,9 @@ namespace ecs {
 		void RegisterEntity(EntityID);
 		void DeregisterEntity(EntityID);
 
-		
+		ThreadPool& GetWorkers() {
+			return m_threadPool;
+		}
 
 	private:
 

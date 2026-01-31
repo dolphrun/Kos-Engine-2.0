@@ -26,10 +26,10 @@ public:
 	int currPlayerHitPoints;
 	bool isDead = false;
 
-	float maxPlayerMovSpeed = 18.5f;
+	float maxPlayerMovSpeed = 10.0f;
 	float currPlayerMovSpeed;
 
-	float maxPlayerJumpForce = 600.f;
+	float maxPlayerJumpForce = 8.0f;
 	float currPlayerJumpForce;
 
 	float playerCameraSpeedX = 0.65f;
@@ -37,9 +37,9 @@ public:
 
 	float interactPowerupRange = 10.f;
 
-	float playerSprintMultiplier = 1.35f;
-	float playerCrouchMultiplier = 0.8f;
-	float playerSlideMultiplier = 70.f;
+	float playerSprintMultiplier = 1.5f;
+	float playerCrouchMultiplier = 0.5f;
+	float playerSlideMultiplier = 5.0f;
 
 	float playerCrouchTransitionSpeed = 2.f;
 
@@ -47,7 +47,7 @@ public:
 	float playerSprintFOV = 100.f;
 	float playerNormalFOV = 85.f;
 
-	float playerVelocityBeforeSlide = 6.5f;
+	float playerVelocityBeforeSlide = 8.0f;
 
 	float playerGunModelSwaySpeed = 15.f;
 	float playerGunModelWalkBobbingSpeed = 2.5f;
@@ -138,15 +138,15 @@ public:
 			playerController = resource->GetResource<R_AnimController>(anim->controllerGUID).get();
 			if (playerController)
 			{
-				currAnimationState = *playerController->m_EnterState;
+				/*currAnimationState = *playerController->m_EnterState;
 				anim->m_currentState = &currAnimationState;
-				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");
+				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");*/
 			}
 		}
 
 	}
 
-	void Update() override {	
+	void Update() override {
 
 		if (Input->IsKeyReleased(keys::L)) {
 			std::cout << "L RELEASED\n";
@@ -154,10 +154,10 @@ public:
 
 			if (auto* pauseManager = ecsPtr->GetComponent<PauseMenuScript>(pauseMenuManagerID)) {
 				if (pauseManager->isPaused) {
-					pauseManager->TogglePause();		
+					pauseManager->TogglePause();
 				}
 			}
-			
+
 		}
 
 		if (Input->IsKeyTriggered(keys::ESC)) {
@@ -185,6 +185,9 @@ public:
 		PlayerCameraControls();
 		PlayerCombatControls();
 
+		if (Input->IsKeyPressed(keys::SPACE)) {
+			std::cout << "[DEBUG] Space pressed - Grounded: " << GroundCheck() << std::endl;
+		}
 		//if (Input->IsKeyTriggered(keys::UP)) {
 		//	std::cout << "Player takes 1 damage for testing purposes.\n"; 
 		//	TakeDamage(1);
@@ -192,96 +195,115 @@ public:
 	}
 
 	void FixedUpdate() override {
-		
+
 	}
 
 	void PlayerMovementControls() {
 		auto* playerRigidbody = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity);
+		if (!playerRigidbody) return;
 
-		if (!playerRigidbody) {
-			return;
-		}
+		// Calculate current horizontal velocity
+		glm::vec3 currentVelocity = playerRigidbody->velocity;
+		glm::vec3 horizontalVelocity = glm::vec3(currentVelocity.x, 0.f, currentVelocity.z);
+		float currentSpeed = glm::length(horizontalVelocity);
 
-		if (GroundCheck() && Input->GetHorizontal() <= 0.1f && Input->GetHorizontal() >= -0.1f && Input->GetVertical() <= 0.1f && Input->GetVertical() >= -0.1f) {
-			playerRigidbody->velocity = glm::vec3(0.f, playerRigidbody->velocity.y, 0.f);
-		}
+		// Determine target speed based on movement state
+		float targetSpeed = 0.f;
+		bool isMoving = (std::abs(Input->GetHorizontal()) > 0.1f || std::abs(Input->GetVertical()) > 0.1f);
 
-		//
-		currPlayerMovSpeed = maxPlayerMovSpeed;
-
+		// Reset flags
 		playerIsWalking = false;
-
-		// Compilation of all forces to be added
-		glm::vec3 moveForce(0.f, 0.f, 0.f);
+		playerIsSprinting = false;
 
 		// SPRINTING
-		if (Input->IsKeyPressed(keys::LeftShift) && Input->GetVertical() > 0.f && GroundCheck()) {
+		if (Input->IsKeyPressed(keys::LeftShift) && Input->GetVertical() > 0.f && GroundCheck() && !playerIsCrouching) {
 			playerIsSprinting = true;
-			currPlayerMovSpeed *= playerSprintMultiplier;
-		}
-		else if (Input->IsKeyReleased(keys::LeftShift)) {
-			playerIsSprinting = false;
+			targetSpeed = maxPlayerMovSpeed * playerSprintMultiplier; // 15 m/s
 		}
 
-		// CROUCHING AND SLIDING
+		// CROUCHING (not sliding)
+		else if (playerIsCrouching && !playerIsSliding) {
+			targetSpeed = maxPlayerMovSpeed * playerCrouchMultiplier; // 5 m/s
+		}
+
+		// WALKING
+		else if (isMoving) {
+			playerIsWalking = true;
+			targetSpeed = maxPlayerMovSpeed; // 10 m/s
+		}
+
+		// CROUCH/SLIDE HANDLING
 		if (Input->IsKeyPressed(keys::LeftControl) && !playerIsSliding && GroundCheck()) {
-			playerIsCrouching = true;
+			if (!playerIsCrouching) {
+				playerIsCrouching = true;
 
-			float velocityMagnitude = (float)(glm::sqrt(glm::pow(playerRigidbody->velocity.x, 2) + glm::pow(playerRigidbody->velocity.y, 2) + glm::pow(playerRigidbody->velocity.z, 2)));
+				// Check if we should slide
+				if (currentSpeed >= playerVelocityBeforeSlide) {
+					playerIsSliding = true;
 
-			if (velocityMagnitude >= playerVelocityBeforeSlide && !playerIsSliding) {
-				playerIsSliding = true;
+					// Apply slide impulse in current movement direction
+					glm::vec3 slideDirection = glm::length(horizontalVelocity) > 0.1f ?
+						glm::normalize(horizontalVelocity) :
+						GetPlayerFrontDirection();
 
-				glm::vec3 slideForce(GetPlayerFrontDirection() * currPlayerMovSpeed * playerSlideMultiplier);
-				physicsPtr->AddForce(ecsPtr->GetComponent<RigidbodyComponent>(entity)->actor, slideForce * ecsPtr->m_GetDeltaTime(), ForceMode::Impulse);
-
-				// ADD SFX OF PLAYER SLIDING HERE
-			}
-			else {
-				currPlayerMovSpeed *= playerCrouchMultiplier;
-
-				// ADD SFX OF PLAYER CROUCHING HERE
+					glm::vec3 slideForce = slideDirection * playerSlideMultiplier;
+					physicsPtr->AddForce(playerRigidbody->actor, slideForce, ForceMode::Impulse);
+				}
 			}
 		}
+
 		else if (Input->IsKeyReleased(keys::LeftControl)) {
 			playerIsCrouching = false;
 			playerIsSliding = false;
-
-			// ADD SFX OF PLAYER GETTING UP FROM CROUCHING HERE
 		}
 
-		// MOTOR
-		if (!playerIsSliding) {
-			glm::vec3 playerMovementDirection(GetPlayerFrontDirection() * Input->GetVertical() + GetPlayerRightDirection() * Input->GetHorizontal());
-			if (glm::length2(playerMovementDirection) > glm::epsilon<float>()) {
-				moveForce += glm::normalize(playerMovementDirection) * currPlayerMovSpeed;
-			}
+		// MOVEMENT (don't apply if sliding - let physics handle it)
+		if (!playerIsSliding && isMoving) {
+			glm::vec3 inputDirection = GetPlayerFrontDirection() * Input->GetVertical() +
+				GetPlayerRightDirection() * Input->GetHorizontal();
 
-			if ((Input->GetVertical() >= 0.1f || Input->GetVertical() <= -0.1f || Input->GetHorizontal() >= 0.1f || Input->GetHorizontal() <= -0.1f) && !playerIsSprinting) {
-				playerIsWalking = true;
+			if (glm::length2(inputDirection) > glm::epsilon<float>()) {
+				inputDirection = glm::normalize(inputDirection);
 
-				// ADD SFX OF PLAYER WALKING HERE
+				// Calculate desired velocity
+				glm::vec3 desiredVelocity = inputDirection * targetSpeed;
+
+				// Calculate the force needed (proportional to velocity difference)
+				glm::vec3 velocityError = desiredVelocity - horizontalVelocity;
+
+				// Apply acceleration force (this value controls responsiveness)
+				float groundAcceleration = 25.f; // Units/s² - adjust for feel
+				glm::vec3 moveForce = velocityError * groundAcceleration;
+
+				physicsPtr->AddForce(playerRigidbody->actor, moveForce, ForceMode::Acceleration);
 			}
-			else if (playerIsSprinting) {
-				// ADD SFX OF PLAYER SPRINTING HERE
+		}
+
+		// STOPPING - apply friction when no input and on ground
+		else if (!playerIsSliding && GroundCheck() && !isMoving && currentSpeed > 0.1f) {
+			float stopDeceleration = 20.f; // How fast to stop
+			glm::vec3 stopForce = -glm::normalize(horizontalVelocity) * stopDeceleration;
+			physicsPtr->AddForce(playerRigidbody->actor, stopForce, ForceMode::Acceleration);
+		}
+
+		// SLIDING FRICTION - slow down while sliding
+		if (playerIsSliding) {
+			float slideFriction = 10.f; // How fast slide decays
+			if (currentSpeed > maxPlayerMovSpeed * playerCrouchMultiplier) {
+				glm::vec3 frictionForce = -glm::normalize(horizontalVelocity) * slideFriction;
+				physicsPtr->AddForce(playerRigidbody->actor, frictionForce, ForceMode::Acceleration);
 			}
-			else if ((Input->GetVertical() >= 0.1f || Input->GetVertical() <= -0.1f || Input->GetHorizontal() >= 0.1f || Input->GetHorizontal() <= -0.1f) && playerIsCrouching) {
-				// ADD SFX OF PLAYER CROUCH WALKING HERE
+			else {
+				// Stop sliding when we slow down enough
+				playerIsSliding = false;
 			}
 		}
 
 		// JUMPING
 		if (Input->IsKeyTriggered(keys::SPACE) && GroundCheck()) {
-			glm::vec3 jumpForce(0.f, currPlayerJumpForce, 0.f);
-			physicsPtr->AddForce(ecsPtr->GetComponent<RigidbodyComponent>(entity)->actor, jumpForce * ecsPtr->m_GetDeltaTime(), ForceMode::VelocityChange);
-
-			// ADD SFX OF PLAYER JUMPING HERE
+			glm::vec3 jumpVelocity(0.f, currPlayerJumpForce, 0.f);
+			physicsPtr->AddForce(playerRigidbody->actor, jumpVelocity, ForceMode::VelocityChange);
 		}
-
-		// Compiling all the forces added
-		glm::vec3 velocityChange = moveForce - playerRigidbody->velocity;
-		velocityChange.y = 0.f;
-		physicsPtr->AddForce(ecsPtr->GetComponent<RigidbodyComponent>(entity)->actor, velocityChange * ecsPtr->m_GetDeltaTime(), ForceMode::VelocityChange);
 	}
 
 	void PlayerCameraControls() {
@@ -299,7 +321,7 @@ public:
 		playerRotationX += mouseRotationX;
 		playerRotationY += mouseRotationY;
 		playerRotationX = glm::clamp(playerRotationX, -90.f, 90.f);
-		
+
 		playerCameraTransform->LocalTransformation.rotation = glm::vec3(playerRotationX, playerRotationY, 0.f);
 		playerGunCameraTransform->LocalTransformation.rotation = glm::vec3(playerRotationX, playerRotationY, 0.f);
 
@@ -374,16 +396,16 @@ public:
 		//Animation Handling
 		if (anim)
 		{
-			if (anim->m_currentState)
+			if (anim->m_currentStateID)
 			{
-				
-				R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
+
+				/*R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
 				if (anim->m_CurrentTime >= currAnim->GetDuration())
 				{
 					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("animationFinished");
 					anim->m_CurrentTime = 0.f;
-				}
-				
+				}*/
+
 			}
 		}
 
@@ -393,9 +415,9 @@ public:
 
 			if (anim)
 			{
-				if (anim->m_currentState)
+				if (anim->m_currentStateID)
 				{
-					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasShot");
+					//static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasShot");
 				}
 			}
 			// ADD ATTACK ANIMATION HERE USING PLAYERISATTACKING BOOLEAN
@@ -450,57 +472,57 @@ public:
 					}
 
 					playerPowerupHeld = Powerup::NONE;
-				}			
+				}
 			}
 			else if (playerPowerupHeld == Powerup::ACID) {
 				std::shared_ptr<R_Scene> acidBlast = resource->GetResource<R_Scene>(acidPrefab);
-				
+
 				if (acidBlast) {
 					std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 					ecs::EntityID acidBlastID = DuplicatePrefabIntoScene<R_Scene>(currentScene, acidPrefab);
-				
+
 					if (auto* acidBlastTransform = ecsPtr->GetComponent<TransformComponent>(acidBlastID)) {
 						acidBlastTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
 					}
-				
+
 					if (auto* acidBlastScript = ecsPtr->GetComponent<AcidPowerupManagerScript>(acidBlastID)) {
 						acidBlastScript->direction = GetPlayerCameraFrontDirection();
 					}
-				
+
 					playerPowerupHeld = Powerup::NONE;
 				}
 			}
 			else if (playerPowerupHeld == Powerup::LIGHTNING) {
 				std::shared_ptr<R_Scene> lightningStrike = resource->GetResource<R_Scene>(lightningPrefab);
-				
+
 				if (lightningStrike) {
 					std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 					ecs::EntityID lightningStrikeID = DuplicatePrefabIntoScene<R_Scene>(currentScene, lightningPrefab);
-				
+
 					if (auto* lightningStrikeTransform = ecsPtr->GetComponent<TransformComponent>(lightningStrikeID)) {
 						RaycastHit hit;
 						hit.entityID = 9999999;
 						glm::vec3 dir = GetPlayerCameraFrontDirection();
-				
+
 						float range = ecsPtr->GetComponent<LightningPowerupManagerScript>(ecsPtr->GetComponent<TransformComponent>(lightningStrikeID)->m_childID[0])->range;
 						physicsPtr->Raycast(cameraTransform->WorldTransformation.position, dir, range, hit, ecsPtr->GetComponent<RigidbodyComponent>(entity)->actor);
-				
+
 						if (hit.entityID != 9999999) {
 							lightningStrikeTransform->LocalTransformation.position = hit.point;
-				
+
 							playerPowerupHeld = Powerup::NONE;
 						}
-				
+
 					}
 				}
 			}
 			else if (playerPowerupHeld == Powerup::FIREACID) {
 				std::shared_ptr<R_Scene> flamethrower = resource->GetResource<R_Scene>(fireAcidPrefab);
-				
+
 				if (flamethrower) {
 					std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 					ecs::EntityID flamethrowerID = DuplicatePrefabIntoScene<R_Scene>(currentScene, fireAcidPrefab);
-				
+
 					if (auto* flamethrowerTransform = ecsPtr->GetComponent<TransformComponent>(flamethrowerID)) {
 						//flamethrowerTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
 						ecsPtr->SetParent(playerProjectilePointObjectID, flamethrowerID);
@@ -508,43 +530,43 @@ public:
 
 						// TODO: SOMEHOW MAKE THE FLAMETHROWER ABIDE TO THE PLAYER'S ROTATION
 						//flamethrowerTransform->LocalTransformation.rotation = glm::vec3(playerRotationX, playerRotationY, 0.f);
-					}								
+					}
 				}
-				
+
 				playerPowerupHeld = Powerup::NONE;
 			}
 			else if (playerPowerupHeld == Powerup::FIRELIGHTNING) {
 				std::shared_ptr<R_Scene> groundSpikes = resource->GetResource<R_Scene>(fireLightningPrefab);
-				
+
 				if (groundSpikes) {
 					std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 					ecs::EntityID groundSpikesID = DuplicatePrefabIntoScene<R_Scene>(currentScene, fireLightningPrefab);
-				
+
 					if (auto* groundSpikesTransform = ecsPtr->GetComponent<TransformComponent>(groundSpikesID)) {
 						groundSpikesTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(entity)->WorldTransformation.position;
 					}
-				
+
 					playerPowerupHeld = Powerup::NONE;
 				}
 			}
 			else if (playerPowerupHeld == Powerup::ACIDLIGHTNING) {
 				std::shared_ptr<R_Scene> starfall = resource->GetResource<R_Scene>(acidLightningPrefab);
-				
+
 				if (starfall) {
 					// Update later
 					//std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 					//ecs::EntityID starfallID = DuplicatePrefabIntoScene<R_Scene>(currentScene, acidLightningPrefab);
-				
+
 					//if (auto* starfallTransform = ecsPtr->GetComponent<TransformComponent>(starfallID)) {
 					//	starfallTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
 					//}
-				
+
 					//glm::vec3 dir = GetPlayerCameraFrontDirection();
 					//for (int i = 0; i < ecsPtr->GetComponent<TransformComponent>(starfallID)->m_childID.size(); ++i) {
 					//	// TODO: RANDOMIZE THE DIRECTION OF THE STARFALL PROJECTILE HERE OR SOMETHING
 					//	ecsPtr->GetComponent<LightningAcidPowerupManagerScript>(ecsPtr->GetComponent<TransformComponent>(starfallID)->m_childID[i])->direction = dir;
 					//}
-				
+
 					//playerPowerupHeld = Powerup::NONE;
 
 					std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
@@ -567,7 +589,7 @@ public:
 		if (Input->IsKeyTriggered(keys::RMB)) {
 
 			bool hasAbsorbed = false;
-			
+
 
 			RaycastHit hit;
 			hit.entityID = 9999999;
@@ -579,7 +601,7 @@ public:
 					if (playerPowerupHeld == Powerup::NONE) {
 						if (powerupComp->powerupType == "FIRE") {
 							playerPowerupHeld = Powerup::FIRE;
-							
+
 							// ADD PARTICLE EFFECT HERE
 						}
 						else if (powerupComp->powerupType == "ACID") {
@@ -650,9 +672,9 @@ public:
 			}
 			if (anim && hasAbsorbed)
 			{
-				if (anim->m_currentState)
+				if (anim->m_currentStateID)
 				{
-					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasAbsorbed");
+					//static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasAbsorbed");
 				}
 			}
 		}
@@ -722,14 +744,14 @@ public:
 	glm::vec3 GetPlayerCameraFrontDirection() {
 		float yaw = glm::radians(playerRotationY);
 		float pitch = glm::radians(playerRotationX);
-		
+
 		glm::vec3 dir;
 		dir.x = std::cos(pitch) * std::cos(yaw);
 		dir.y = std::sin(pitch);
 		dir.z = std::cos(pitch) * std::sin(yaw);
-		
+
 		dir = glm::normalize(dir);
-		
+
 		return dir;
 	}
 
@@ -775,8 +797,8 @@ public:
 	}
 
 	REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
-				bulletPrefab, firePrefab, acidPrefab, lightningPrefab, fireAcidPrefab, fireLightningPrefab, acidLightningPrefab,
-				gunSfxGUID_1, gunSfxGUID_2, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject);
+		bulletPrefab, firePrefab, acidPrefab, lightningPrefab, fireAcidPrefab, fireLightningPrefab, acidLightningPrefab,
+		gunSfxGUID_1, gunSfxGUID_2, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject);
 
 };
 

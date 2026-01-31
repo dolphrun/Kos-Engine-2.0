@@ -12,8 +12,10 @@ AssetManager::AssetManager()
     CompilerData Data = serialization::ReadJsonFile<CompilerData>(configpath::configFilePath);
 
     Data.ApplyFunction([&](auto& member) {
-        for (const auto& inputExtension : member.inputExtensions)
+        for (const auto& inputExtension : member.inputExtensions) {
             m_compilerMap[inputExtension].emplace_back(CompilerD{ member.type, member.path, member.outputExtension });
+           // std::cout << "MEMBER Input EXTENSION IS " << static_cast<std::string>(inputExtension) << '\n';
+        }
         });
 
 }

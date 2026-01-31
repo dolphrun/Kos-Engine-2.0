@@ -30,6 +30,16 @@ AnimState* R_AnimController::FindStateFromPin(int pinId)
     return nullptr;
 }
 
+AnimState* R_AnimController::RetrieveStateByID(int stateId)
+{
+    for (int i = 0; i < m_AnimControllerData.states.size(); i++)
+    {
+        AnimState* state = &m_AnimControllerData.states[i];
+        if (stateId == state->id) return state;
+    }
+    return nullptr;
+}
+
 AnimPin* R_AnimController::FindPin(int pinId)
 {
     for (auto& state : m_AnimControllerData.states)

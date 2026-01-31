@@ -39,6 +39,7 @@ public:
 		RegisterResourceType<R_Material>(".mat");
 		RegisterResourceType<R_DepthMapCube>(".dcm");
 		RegisterResourceType<R_AnimController>(".controller");
+		RegisterResourceType<R_PostProcessingProfile>(".prof");
     }
 
 	~ResourceManager() = default;

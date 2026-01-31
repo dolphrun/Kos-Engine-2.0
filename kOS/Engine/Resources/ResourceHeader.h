@@ -9,3 +9,4 @@
 #include "R_Material.h"
 #include "R_DepthMapCube.h"
 #include "R_AnimController.h"
+#include "R_PostProcessProfile.h"

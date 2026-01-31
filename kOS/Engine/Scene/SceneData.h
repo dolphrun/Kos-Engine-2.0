@@ -7,10 +7,11 @@ class SceneData
 public:
 	std::vector<std::string> skyBoxGUID;
 	utility::GUID NavMeshGuid;
+	utility::GUID postProcessingProfile{};
 	float ambientIntensity{ 1.0f };
 	
 	
-	REFLECTABLE(SceneData, skyBoxGUID, NavMeshGuid, ambientIntensity);
+	REFLECTABLE(SceneData, skyBoxGUID, NavMeshGuid, postProcessingProfile, ambientIntensity);
 
 
 public:

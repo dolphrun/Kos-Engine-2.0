@@ -1,0 +1,11 @@
+{
+  "ProfileName": "DefaultPostProcess",
+
+  "PostProfileEffects": [
+    {
+      "Type": 0,
+      "Intensity": 0.75,
+      "Extent": 0.4
+    }
+  ]
+}

@@ -20,7 +20,7 @@ void main()
         //Albedo value
     // Sample from gMaterial
     vec3 newMat = texture(gMaterial, TexCoords).rgb;
-    vec3 color = texture(gAlbedoSpec, TexCoords).rgb;
+   // vec3 color = texture(gAlbedoSpec, TexCoords).rgb;
     
     // Example: take the blue channel
     int val = int(newMat.b)%2;
@@ -29,6 +29,6 @@ void main()
     // Cast back to float for FragColor
     float outFloat = float(outputVal);
 
-    FragColor = vec4(color.r,color.g,color.b, color.a)*vec4(1.f,1.f,1.f,newMat.b);
+    FragColor = vec4(color.r,color.g,color.b, 1.f)*vec4(1.f,1.f,1.f,newMat.b);
 }
 )"

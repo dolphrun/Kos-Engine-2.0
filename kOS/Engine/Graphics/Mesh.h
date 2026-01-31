@@ -95,7 +95,13 @@ struct DebugVertex {
 	glm::vec3 pos;
 	//glm::vec4 color;
 };
-
+struct Line :BasicMesh {
+	float lineWidth{ 2.0 };
+	void CreateMesh();
+	void DrawMesh();
+	void SetPosition(glm::vec3 startPos, glm::vec3 endPos);
+	GLuint vbo;
+};
 struct DebugNavMesh : BasicMesh {
 	std::vector<DebugVertex> triVerts;
 	std::vector<DebugVertex> lineVerts;

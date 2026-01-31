@@ -67,6 +67,7 @@ void GraphicsManager::gm_Initialize(float width, float height) {
 		{ "Resource/9bf58179-dd3f-5e5e-6b9b-bdf9c91d302e.dds", "Resource/e5dc8795-343f-5d23-24ec-b3f49d015de8.dds",
 		  "Resource/5d8311c4-da53-b0cc-ebec-376730e44ab4.dds", "Resource/099a08b9-935e-d6b8-cbdd-1f2acf398fc8.dds",
 		  "Resource/8fee6749-a54c-3071-9cd2-018187d80c78.dds", "Resource/fbc7a73b-7fe4-f273-c5c2-73b9f0e08796.dds" });
+	Vigniette::currentShader = &shaderManager.engineShaders.find("VignietteShader")->second;
 
 }
 
@@ -209,6 +210,22 @@ void GraphicsManager::gm_RenderToGameFrameBuffer()
 		gm_RenderParticles(cd);
 		glDisable(GL_DEPTH_TEST);
 
+	}
+	glDisable(GL_DEPTH_TEST);
+
+	//TEMPORARY CODE WARNING WARNING WARNING DELETE BEFORE M4 IF NOT DIE hi Sean
+/*	Vigniette vig;
+	vig.extent = 0.19;
+	vig.intensity = 9.68;
+	vig.resolution = glm::vec2{ framebufferManager.sceneBuffer.width,framebufferManager.sceneBuffer.height };
+	vig.currentShader = &shaderManager.engineShaders.find("VignietteShader")->second;
+	postProcessProfile.postProcessingEffects.clear();
+	postProcessProfile.postProcessingEffects.push_back(std::make_unique<Vigniette>(vig))*/;
+	////Bind new texture after performing post processing
+	if (postProcessProfile) {
+
+		unsigned int* currTex = gm_PostProcess();
+		framebufferManager.sceneBuffer.texID = *currTex;
 	}
 	glDisable(GL_DEPTH_TEST);
 	//Render UI
@@ -725,4 +742,43 @@ void GraphicsManager::gm_RenderGameBuffer(){
 	glClearColor(1.f, 0.0f, 0.f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	framebufferManager.gameBuffer.Render();
+}
+
+unsigned int* GraphicsManager::gm_PostProcess() {
+	// 1. Setup Pointers
+	FrameBuffer* sceneFB = &framebufferManager.sceneBuffer;
+	FrameBuffer* scratchFB = &framebufferManager.postProcessBuffer1;
+
+	glDisable(GL_CULL_FACE);
+	glDisable(GL_DEPTH_TEST); // Crucial for post-processing
+
+	for (auto& ppe : postProcessProfile->postProcessingEffects) {
+		glBindFramebuffer(GL_FRAMEBUFFER, scratchFB->fbo);
+		glViewport(0, 0, scratchFB->width, scratchFB->height);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		ppe->GetShader()->Use();
+		ppe->UpdateShader();
+		ppe->GetShader()->SetInt("screenTexture", 0);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, sceneFB->texID); 
+		
+		glBindVertexArray(sceneFB->vaoId);
+		glDrawElements(GL_TRIANGLE_STRIP, sceneFB->drawCount, GL_UNSIGNED_SHORT, NULL);
+		glBindFramebuffer(GL_FRAMEBUFFER, sceneFB->fbo);
+		glViewport(0, 0, sceneFB->width, sceneFB->height);
+		
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, scratchFB->texID); 
+		glDrawElements(GL_TRIANGLE_STRIP, sceneFB->drawCount, GL_UNSIGNED_SHORT, NULL);
+		ppe->GetShader()->Disuse();
+	}
+
+	glBindVertexArray(0);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
+
+	return &sceneFB->texID;
 }

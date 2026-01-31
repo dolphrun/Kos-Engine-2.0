@@ -85,6 +85,13 @@ struct NavMeshCompiler {
 	REFLECTABLE(NavMeshCompiler, path, outputExtension, inputExtensions);
 
 };
+struct PostProcessingCompiler {
+	std::string type = R_PostProcessingProfile::classname();
+	std::string path;
+	std::string outputExtension;
+	std::vector<std::string> inputExtensions;
+	REFLECTABLE(PostProcessingCompiler, path, outputExtension, inputExtensions);
+};
 struct CompilerData {
 	MeshCompiler meshCompiler;
 	TextureCompiler textureCompiler;
@@ -96,7 +103,6 @@ struct CompilerData {
 	DepthMapCubeCompiler dmcCompiler;
 	AnimControllerCompiler animControllerCompiler;
 	NavMeshCompiler navCompiler;
-
-
-	REFLECTABLE(CompilerData, meshCompiler, textureCompiler, fontCompiler, sceneCompiler, audioCompiler, audioStudioCompiler, materialCompiler, dmcCompiler, animControllerCompiler, navCompiler);
+	PostProcessingCompiler postProcessingCompiler;
+	REFLECTABLE(CompilerData, meshCompiler, textureCompiler, fontCompiler, sceneCompiler, audioCompiler, audioStudioCompiler, materialCompiler, dmcCompiler, animControllerCompiler, navCompiler, postProcessingCompiler);
 };
