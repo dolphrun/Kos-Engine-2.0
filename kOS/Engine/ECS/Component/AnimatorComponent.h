@@ -12,8 +12,11 @@ namespace ecs {
         float m_PlaybackSpeed{ 1.0f };
         float m_CurrentTime{ 0.f };
         bool  m_IsPlaying{ true };
+        
+        // Non-reflectable, will initialize based on controller
+        int m_currentStateID{}; // This id will refer to the state ids belonging to the controller
+        int m_transitioningStateID{}; // This id will refer to the state this component wants to change to
 
-        void* m_currentState{};
 
         REFLECTABLE(AnimatorComponent, controllerGUID, m_PlaybackSpeed, m_CurrentTime, m_IsPlaying);
     };

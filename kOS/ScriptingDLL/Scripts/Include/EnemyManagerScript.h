@@ -5,7 +5,6 @@ class EnemyManagerScript : public TemplateSC {
 public:
 	R_AnimController* enemyController = nullptr;
 	AnimatorComponent* anim = nullptr;
-	AnimState currAnimationState{};
 
 	int agentid;
 	int enemyHealth;
@@ -51,9 +50,9 @@ public:
 			enemyController = resource->GetResource<R_AnimController>(anim->controllerGUID).get();
 			if (enemyController)
 			{
-				currAnimationState = *enemyController->m_EnterState;
-				anim->m_currentState = &currAnimationState;
-				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");
+				anim->m_currentStateID = enemyController->m_EnterState->id;
+				AnimState* currentState = enemyController->FindStateFromPin(anim->m_currentStateID);
+				//currentState->Trigger("ForcedEntry",anim);
 			}
 		}
 	}
@@ -100,16 +99,16 @@ public:
 
 		if (anim)
 		{
-			R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
-			float animDuration = currAnim->GetDuration();
-			//Checkcing if animation is done
-			if (anim->m_CurrentTime >= animDuration && !static_cast<AnimState*>(anim->m_currentState)->isLooping)
-			{
-				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("AnimationFinished");
-				anim->m_CurrentTime = 0.f;
-				enemyIsAttacking = false;
-				attackHurtboxIsSpawn = false;
-			}
+			//R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
+			//float animDuration = currAnim->GetDuration();
+			////Checkcing if animation is done
+			//if (anim->m_CurrentTime >= animDuration && !static_cast<AnimState*>(anim->m_currentState)->isLooping)
+			//{
+			//	static_cast<AnimState*>(anim->m_currentState)->SetTrigger("AnimationFinished");
+			//	anim->m_CurrentTime = 0.f;
+			//	enemyIsAttacking = false;
+			//	attackHurtboxIsSpawn = false;
+			//}
 		}
 
 		if (glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= enemyAttackRange) {
@@ -142,11 +141,11 @@ public:
 			enemyIsAttacking = true;
 			if (anim)
 			{
-				if (anim->m_currentState)
-				{
-					//This will transition into attacking state
-					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("AttackingPlayer");
-				}
+				//if (anim->m_currentState)
+				//{
+				//	//This will transition into attacking state
+				//	//static_cast<AnimState*>(anim->m_currentState)->SetTrigger("AttackingPlayer");
+				//}
 			}
 			
 		}
@@ -177,30 +176,30 @@ public:
 			// }
 			if (anim && !attackHurtboxIsSpawn)
 			{
-				if (anim->m_currentState)
-				{
-					R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
-					float animDuration = currAnim->GetDuration();
+				//if (anim->m_currentState)
+				//{
+				//	R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
+				//	float animDuration = currAnim->GetDuration();
 
-					//CHECK IF ANIMATION OF THE ENEMY IS AFTER THE ENEMY CLAWED OR SOME SHIT(e.g: ANIMATION TIMER IS AT 2s MARK
-					//Simulating 2 secconds, you might wanna change this
-					if (anim->m_CurrentTime >= animDuration * 0.5f && static_cast<AnimState*>(anim->m_currentState)->name == "Attacking")
-					{
-						std::shared_ptr<R_Scene> enemyHurtbox = resource->GetResource<R_Scene>(enemyHurtboxPrefab);
+				//	//CHECK IF ANIMATION OF THE ENEMY IS AFTER THE ENEMY CLAWED OR SOME SHIT(e.g: ANIMATION TIMER IS AT 2s MARK
+				//	//Simulating 2 secconds, you might wanna change this
+				//	if (anim->m_CurrentTime >= animDuration * 0.5f && static_cast<AnimState*>(anim->m_currentState)->name == "Attacking")
+				//	{
+				//		std::shared_ptr<R_Scene> enemyHurtbox = resource->GetResource<R_Scene>(enemyHurtboxPrefab);
 
-						if (enemyHurtbox) {
-							std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-							ecs::EntityID enemyHurtboxID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyHurtboxPrefab);
+				//		if (enemyHurtbox) {
+				//			std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+				//			ecs::EntityID enemyHurtboxID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyHurtboxPrefab);
 
-							if (auto* enemyHurtboxTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxID)) {
-								enemyHurtboxTransform->LocalTransformation.position = enemyTransform->LocalTransformation.position + direction;
-							}
+				//			if (auto* enemyHurtboxTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxID)) {
+				//				enemyHurtboxTransform->LocalTransformation.position = enemyTransform->LocalTransformation.position + direction;
+				//			}
 
-							attackHurtboxIsSpawn = true;
-						}
-					}
-					
-				}
+				//			attackHurtboxIsSpawn = true;
+				//		}
+				//	}
+				//	
+				//}
 			}
 
 		}
@@ -210,11 +209,11 @@ public:
 			// ADD ENEMY RUNNING ANIMATION
 			if (anim)
 			{
-				if (anim->m_currentState)
-				{
-					//This will transition into chasing state
-					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("PlayerDetected");
-				}
+				//if (anim->m_currentState)
+				//{
+				//	//This will transition into chasing state
+				//	static_cast<AnimState*>(anim->m_currentState)->SetTrigger("PlayerDetected");
+				//}
 
 			}
 		}

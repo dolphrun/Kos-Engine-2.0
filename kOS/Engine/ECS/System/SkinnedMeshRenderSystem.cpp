@@ -69,13 +69,13 @@ namespace ecs
 
                 /// MAKE SURE THAT NO ANIMATION AND MESH SHARE THE SAME GUID, DUPLICATE THE ASSET IF YOU HAVE TO
                 mesh = m_resourceManager.GetResource<R_Model>(skinnedMesh->skinnedMeshGUID).get();
-                controller = m_resourceManager.GetResource<R_AnimController>(anim->controllerGUID).get();
+                controller = m_resourceManager.GetResource<R_AnimController>(anim->controllerGUID).get();   
 
                 if (controller)
                 {
                     //anim->m_currentState = controller->m_EnterState;
-                    if (anim->m_currentState)
-                        animation = m_resourceManager.GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
+                   if (anim->m_currentStateID)
+                        animation = m_resourceManager.GetResource<R_Animation>(controller->RetrieveStateByID(anim->m_currentStateID)->animationGUID).get();
                 }
                     
                 std::vector<PBRMaterial>pbrTmpList;

@@ -23,7 +23,14 @@ out vec4 FragColor;
 
 void main()
 {          
-    //Use frag color, bring it over to another pass..?
-    FragColor =  vColor;
+   if (vTexture == 200) //Magic number for default particle
+   {
+     FragColor =  vColor;
+   }
+   else
+   {
+    FragColor = texture(textures[vTexture], TexCoords) * vColor;
+   }
+   
 }
 )"
