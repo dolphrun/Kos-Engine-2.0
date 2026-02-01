@@ -16,7 +16,7 @@ add_library(SCRIPTS SHARED ${EDITOR_SOURCES})
 target_link_libraries(SCRIPTS PRIVATE Kos_Engine)
 
 if(MSVC)
-    target_compile_options(SCRIPTS PRIVATE /Zc:preprocessor /FS)
+    target_compile_options(SCRIPTS PRIVATE /Zc:preprocessor /FS /bigobj)
     set_target_properties(SCRIPTS PROPERTIES COMPILE_PDB_NAME SCRIPTS)
 endif()
 

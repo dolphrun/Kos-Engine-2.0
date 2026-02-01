@@ -107,6 +107,7 @@ namespace gui {
 		RegisterComponent<ecs::ButtonComponent>();
 		RegisterComponent<ecs::SphereRendererComponent>();
 		RegisterComponent<ecs::MaterialComponent>();
+		RegisterComponent<ecs::NavMeshComponent>();
 
 		//Allocate to map
 		EditorComponentTypeRegistry::CreateAllDrawers(componentDrawers);
@@ -139,6 +140,7 @@ namespace gui {
 		m_prefabManager.LoadAllPrefabs();
 
 		//load scene
+		m_commandHistory.Init();
 		openAndLoadSceneDialog();
 
 		//set style
@@ -174,6 +176,8 @@ namespace gui {
 		{
 
 		}
+
+		m_commandHistory.Update();
 
 		if (EditorCamera::m_editorMode)
 		{

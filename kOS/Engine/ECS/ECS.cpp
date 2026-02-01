@@ -40,6 +40,7 @@ namespace ecs{
 		RegisterComponent<SphereRendererComponent>();
 		RegisterComponent<ButtonComponent>();
 		RegisterComponent<ParticleComponent>();
+		RegisterComponent<NavMeshComponent>();
 
 		//Allocate memory to each system
 

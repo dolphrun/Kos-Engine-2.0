@@ -111,6 +111,7 @@ void gui::ImGuiHandler::DrawComponentWindow()
 
             bool hidden = nc->hide;
             if (ImGui::Checkbox("Hide", &hidden)) {
+                m_commandHistory.AddCommand<CommandHistory::SetGameObjectActive>(entityID);
 				m_ecs.SetActive(entityID, !hidden);
             }
 

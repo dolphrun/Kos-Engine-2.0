@@ -30,7 +30,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "ECS/ecs.h"
 #include "Audio/AudioManager.h"
 
-
 #include "../Editor/ImGui Panels/Editor.h"
 #include "AssetManager/AssetManager.h"
 /******************************************************************/
@@ -91,9 +90,6 @@ namespace Application {
 		audio::AudioManager audioManager;
 		NavMeshManager navMeshManager;
 		gui::ImGuiHandler Editor;
-
-		
-		
 	};
 
 }

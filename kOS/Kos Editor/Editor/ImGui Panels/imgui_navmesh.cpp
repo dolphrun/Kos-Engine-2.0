@@ -111,6 +111,10 @@ void gui::ImGuiHandler::DrawNavMeshWindow() {
 
 	if (ImGui::Button("Save Mesh", buttonSize)) {
 		m_navMeshManager.SaveMesh( m_assetManager.GetAssetManagerDirectory() + "//NavMesh", m_activeScene);
+		std::filesystem::path metaPath = m_assetManager.GetAssetManagerDirectory() + "//NavMesh" + '\\' + m_activeScene + ".navmesh.meta";
+		AssetData assetData = serialization::ReadJsonFile<AssetData>(metaPath.string());
+		const auto& scene = m_ecs.sceneMap.find(m_activeScene);
+		scene->second.NavMeshGuid = assetData.GUID;
 	}
 
 	if (ImGui::Button("Load Mesh", buttonSize)) {

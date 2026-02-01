@@ -38,6 +38,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Debugging/Performance.h"
 #include "Audio/AudioManager.h"
 #include "Pathfinding/NavMesh.h"
+#include "Editor/CommandHistory.h"
 
 namespace gui {
     
@@ -62,6 +63,7 @@ namespace gui {
 		Peformance& m_performance;
         audio::AudioManager& m_audioManager;
         NavMeshManager& m_navMeshManager;
+        CommandHistory m_commandHistory;
 
     public:
         /******************************************************************/
@@ -91,7 +93,8 @@ namespace gui {
 			m_scriptManager(scriptm),
 			m_performance(peformance),
             m_audioManager(audioM),
-            m_navMeshManager(navmesh)
+            m_navMeshManager(navmesh),
+            m_commandHistory(ecs, sm)
         {
 
 
