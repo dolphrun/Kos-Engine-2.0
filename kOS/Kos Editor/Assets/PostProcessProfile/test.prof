@@ -1,1 +1,1 @@
-{"ProfileName":"test","PostProfileEffects":[{"Type":0,"Intensity":0.0,"Extent":0.0},{"Type":1,"NoiseStrength":3.700000047683716}]}
+{"ProfileName":"test","PostProfileEffects":[{"Type":0,"Intensity":0.0,"Extent":0.0},{"Type":1,"NoiseStrength":3.700000047683716},{"Type":2,"RedOffset":7.599999904632568,"GreenOffset":2.0999999046325684,"BlueOffset":2.5999999046325684}]}

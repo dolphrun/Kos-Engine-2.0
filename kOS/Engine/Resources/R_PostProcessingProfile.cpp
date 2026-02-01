@@ -44,6 +44,17 @@ void R_PostProcessingProfile::Load()
 				FilmGrain fg;
 				fg.noiseStrength = e["NoiseStrength"].GetFloat();
 				this->profile.postProcessingEffects.push_back(std::make_unique<FilmGrain>(fg));
+				break;;
+			}
+			case 2:
+			{
+				ChromaticAberration ca;
+				ca.redOffset = e["RedOffset"].GetFloat();
+				ca.greenOffset = e["GreenOffset"].GetFloat();
+				ca.blueOffset = e["BlueOffset"].GetFloat();
+				this->profile.postProcessingEffects.push_back(std::make_unique<ChromaticAberration>(ca));
+
+				break;;
 			}
 
 

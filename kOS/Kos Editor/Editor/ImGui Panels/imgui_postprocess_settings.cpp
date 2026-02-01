@@ -9,7 +9,7 @@ namespace postProcessSettings{
 	std::string lastPPGUID;
 	char buffer[256];
 	PostProcessingProfile* ppp{ nullptr};
-	std::vector<const char*>profileNames = { "Add profile effect","Vigniette","Noise strength"};
+	std::vector<const char*>profileNames = { "Add profile effect","Vigniette","Noise strength","Chromatic Abberation"};
 }
 
 
@@ -51,6 +51,9 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 			case 2:
 				postProcessSettings::ppp->postProcessingEffects.push_back(std::make_unique<FilmGrain>(FilmGrain{}));
 				break;;
+			case 3:
+				postProcessSettings::ppp->postProcessingEffects.push_back(std::make_unique<ChromaticAberration>(ChromaticAberration{}));
+				break;;
 		}
 	}
 	for (auto& eff : postProcessSettings::ppp->postProcessingEffects) {
@@ -70,6 +73,16 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 			FilmGrain* v = reinterpret_cast<FilmGrain*>(eff.get());
 			ImGui::Text("Film Grain");
 			ImGui::DragFloat("Noise Strength", &v->noiseStrength, 0.1f);
+			break;;
+		}
+		case PPT_ChromaticAbberation:
+		{
+			//Print out effect and intensity
+			ChromaticAberration* v = reinterpret_cast<ChromaticAberration*>(eff.get());
+			ImGui::Text("Chromatic abberation");
+			ImGui::DragFloat("Red Offset", &v->redOffset, 0.1f);
+			ImGui::DragFloat("Green Offset", &v->greenOffset, 0.1f);
+			ImGui::DragFloat("Blue Offset", &v->blueOffset, 0.1f);
 			break;;
 		}
 		}
@@ -107,6 +120,14 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 				{
 					FilmGrain* fg = reinterpret_cast<FilmGrain*>(ptr.get());
 					entityData.AddMember("NoiseStrength", fg->noiseStrength, allocator);
+					break;;
+				}
+				case 2:
+				{
+					ChromaticAberration* ca = reinterpret_cast<ChromaticAberration*>(ptr.get());
+					entityData.AddMember("RedOffset", ca->redOffset, allocator);
+					entityData.AddMember("GreenOffset", ca->greenOffset, allocator);
+					entityData.AddMember("BlueOffset", ca->blueOffset, allocator);
 					break;;
 				}
 
