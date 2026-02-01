@@ -122,7 +122,7 @@ namespace ecs {
 		glm::vec3 endPoint = glm::vec3(20.f);    // Dynamic end point (will rotate)
 
 		// End point rotation settings
-		bool rotateEndPoint = true;              // Enable/disable end point rotation
+		bool rotateEndPoint = false;              // Enable/disable end point rotation
 		float rotationSpeed = 2.0f;              // Radians per second for end point orbit
 		float rotationRadius = 5.0f;            // Radius of the circular orbit
 		glm::vec3 rotationCenter = glm::vec3(20.f, 0.f, 0.f); // Center of rotation
@@ -149,6 +149,9 @@ namespace ecs {
 			spiralRadius, spiralFrequency, spiralIntensityCurve,
 			pathSpeed, arrivalThreshold);
 	};
+
+
+
 
 
 	struct NoiseModule {
@@ -195,6 +198,18 @@ namespace ecs {
 			positionOffset);
 	};
 
+	struct LightningModule {
+		bool enabled = false;
+		float jitterAmount = 1.2f;       // Strength of the zig-zag
+		float jitterFrequency = 25.0f;   // Speed of the flickering
+
+		// Branching (Unity-style Sub-emitters)
+		bool branchingEnabled = false;
+		float branchProbability = 0.08f; // Chance to fork
+
+		REFLECTABLE(LightningModule, enabled, jitterAmount, jitterFrequency, branchingEnabled, branchProbability);
+	};
+
 
 
 	class ParticleComponent : public Component {
@@ -208,6 +223,7 @@ namespace ecs {
 
 		//NO CHANGES
 		int max_Particles = 255; //max particle size
+		int no_Of_Particles = 50;
 		float duration = 5.0f;
 		bool looping = true;
 		bool play_On_Awake = true;
@@ -218,6 +234,9 @@ namespace ecs {
 		float end_Lifetime	 = 7.0f;
 		bool  lifetime_Random_Enable = true;
 		float start_Velocity = 5.0f;
+
+		float localTimeAccumulator = 0.0f; // NEW: Local clock for this component
+		float timeScale = 1.0f;           // Allows for slow-motion lightning
 
 		utility::GUID textureGUID;
 
@@ -254,6 +273,8 @@ namespace ecs {
 
 		NoiseModule noiseModule;
 
+		// Add to class ParticleComponent
+		//LightningModule lightningModule;
 
 
 		//FOR THE ALIVE PARTICLES
@@ -271,7 +292,7 @@ namespace ecs {
 					textureGUID,
 					start_Velocity, playback_State, particleFade,
 					velocityModule,forceModule, shapeModule, colorModule, sizeModule, rotationModule, gravityModule, trailingModule, noiseModule,
-					emissionInterval);
+					emissionInterval, no_Of_Particles);
 	};
 }
 #endif

@@ -49,7 +49,10 @@ namespace ecs {
                 continue;
             }
 
-
+            // Increment local time only if not paused
+            if (particle->playback_State == PlayState::PLAY) {
+                particle->localTimeAccumulator += dt * particle->timeScale;
+            }
 
             //===========================================
             // Update emitter
@@ -83,11 +86,28 @@ namespace ecs {
 
 
     void ParticleSystem::EmitParticle(EntityID entityId, const glm::vec3& particle_position, const glm::vec3& velocity, float lifetime, ParticleComponent*& particle, TransformComponent*& transform) {
-        // Check if we have any free slots
-        if (particle->particle_List.size() >= particle->max_Particles) {
-            LOGGING_WARN("No free particle slots for entity %d\n", entityId);
+        // ===== NEW: ENHANCED VALIDATION =====
+            // Check no_Of_Particles range
+        if (particle->no_Of_Particles < 1 || particle->no_Of_Particles > 255) {
+            LOGGING_WARN("Cannot emit particle for entity %d - no_Of_Particles (%d) is outside valid range (1-255)\n",
+                entityId, particle->no_Of_Particles);
             return;
         }
+
+        // Check if we've reached the target particle count
+        if (particle->particle_List.size() >= static_cast<size_t>(particle->no_Of_Particles)) {
+            LOGGING_WARN("Cannot emit particle for entity %d - already at target count (%d/%d)\n",
+                entityId, particle->particle_List.size(), particle->no_Of_Particles);
+            return;
+        }
+
+        // Check if we have space (based on max_Particles)
+        if (particle->particle_List.size() >= particle->max_Particles) {
+            LOGGING_WARN("No free particle slots for entity %d (max_Particles: %d)\n",
+                entityId, particle->max_Particles);
+            return;
+        }
+
 
         ParticleData pd;
         pd.lifespan = lifetime;
@@ -120,7 +140,6 @@ namespace ecs {
         //const bool updateAttractor = particle->attractorModule.enabled;
         const bool updateGravity = particle->gravityModule.enabled;
         const bool updateTrailing = particle->trailingModule.enabled;
-
         const bool updateNoise = particle->noiseModule.enabled;
 
         if (updateNoise) {
@@ -220,90 +239,204 @@ namespace ecs {
                 }
             }
 
-
-            // ENHANCED TRAILING MODULE - Twister Effect
+            // ENHANCED TRAILING MODULE - Laser Beam / Twister Effect
             if (updateTrailing) {
                 glm::vec3 start = particle->trailingModule.startPoint;
                 glm::vec3 end = particle->trailingModule.endPoint;
 
-                // ===== STEP 1: Calculate position along the straight line path =====
-                // Increment the particle's progress along the path
-                float particleAge = (pd.lifetime - pd.lifespan);
-                float pathProgress = glm::clamp(particleAge * particle->trailingModule.pathSpeed / pd.lifetime, 0.0f, 1.0f);
+                // Check if this is static laser beam mode or animated trail
+                if (particle->trailingModule.pathSpeed <= 0.0f) {
+                    // ===== STATIC LASER BEAM MODE =====
+                    // Particles stay where they were spawned (no movement)
+                    // Position was set during emission, velocity is zero
+                    pd.velocity = glm::vec3(0);
 
-                // Smooth easing for more natural movement
-                float easedProgress = pathProgress < 0.5f
-                    ? 2.0f * pathProgress * pathProgress
-                    : 1.0f - glm::pow(-2.0f * pathProgress + 2.0f, 2.0f) / 2.0f;
-
-                // Calculate the base position along the straight line
-                glm::vec3 basePosition = start + (end - start) * easedProgress;
-
-                // ===== STEP 2: Create spiral/helix around the line =====
-                glm::vec3 pathDirection = end - start;
-                float pathLength = glm::length(pathDirection);
-
-                if (pathLength > 0.001f) {
-                    pathDirection = glm::normalize(pathDirection);
-
-                    // Create perpendicular basis vectors for the spiral
-                    glm::vec3 perpAxis = (fabs(pathDirection.y) > 0.9f) ? glm::vec3(1, 0, 0) : glm::vec3(0, 1, 0);
-                    glm::vec3 right = glm::normalize(glm::cross(pathDirection, perpAxis));
-                    glm::vec3 up = glm::normalize(glm::cross(right, pathDirection));
-
-                    // Calculate spiral angle based on progress and frequency
-                    float spiralAngle = easedProgress * particle->trailingModule.spiralFrequency * glm::two_pi<float>()
-                        + dt; // Add time offset for rotation
-
-                    // Calculate spiral intensity (can peak in the middle or stay constant)
-                    float spiralIntensity;
-                    if (particle->trailingModule.spiralIntensityCurve > 0.01f) {
-                        // Peak in the middle, fade at start and end
-                        spiralIntensity = glm::sin(easedProgress * glm::pi<float>())
-                            * particle->trailingModule.spiralIntensityCurve;
-                    }
-                    else {
-                        // Constant intensity, but fade near the end
-                        spiralIntensity = glm::clamp((1.0f - easedProgress) * 2.0f, 0.0f, 1.0f);
-                    }
-
-                    // Calculate offset from the center line
-                    glm::vec3 spiralOffset = (right * cos(spiralAngle) + up * sin(spiralAngle))
-                        * particle->trailingModule.spiralRadius
-                        * spiralIntensity;
-
-                    // ===== STEP 3: Set particle position on the helix =====
-                    pd.position = basePosition + spiralOffset;
-
-                    // ===== STEP 4: Calculate velocity for smooth spiral motion =====
-                    // Velocity along the path
-                    glm::vec3 forwardVel = pathDirection * particle->trailingModule.pathSpeed;
-
-                    // Tangential velocity for the spiral (perpendicular to radius)
-                    glm::vec3 tangentialDir = -right * sin(spiralAngle) + up * cos(spiralAngle);
-                    float tangentialSpeed = particle->trailingModule.spiralRadius
-                        * particle->trailingModule.spiralFrequency
-                        * glm::two_pi<float>()
-                        * particle->trailingModule.pathSpeed
-                        * spiralIntensity / pd.lifetime;
-
-                    glm::vec3 tangentialVel = tangentialDir * tangentialSpeed;
-
-                    // Combine forward and tangential velocity
-                    pd.velocity = forwardVel + tangentialVel;
-
-                    // ===== STEP 5: Check if particle reached the end =====
-                    float distToEnd = glm::length(end - pd.position);
-                    if (distToEnd < particle->trailingModule.arrivalThreshold || pathProgress >= 0.99f) {
-                        pd.lifespan = 0.0f; // Kill particle
-                    }
+                    // Optional: Update end point dynamically (for moving targets)
+                    // Particles maintain their percentage along the line
+                    // Uncomment if you want the beam to follow a moving target:
+                    // float t = ...; // Would need to store this per-particle
+                    // pd.position = start + (end - start) * t;
                 }
                 else {
-                    // No path, just stay at start
-                    pd.position = start;
-                    pd.velocity = glm::vec3(0);
+                    // Increment the particle's progress along the path
+                    float particleAge = (pd.lifetime - pd.lifespan);
+                    float pathProgress = glm::clamp(particleAge * particle->trailingModule.pathSpeed / pd.lifetime, 0.0f, 1.0f);
+
+                    // **USE LINEAR PROGRESS FOR CONSTANT SPEED**
+                    float t = pathProgress; // Linear interpolation
+
+                    // Calculate the base position along the straight line
+                    glm::vec3 basePosition = start + (end - start) * t;
+
+                    // ===== STEP 2: Create spiral/helix around the line =====
+                    glm::vec3 pathDirection = end - start;
+                    float pathLength = glm::length(pathDirection);
+
+                    if (pathLength > 0.001f && particle->trailingModule.spiralRadius > 0.0f) {
+                        pathDirection = glm::normalize(pathDirection);
+
+                        // Create perpendicular basis vectors for the spiral
+                        glm::vec3 perpAxis = (fabs(pathDirection.y) > 0.9f) ? glm::vec3(1, 0, 0) : glm::vec3(0, 1, 0);
+                        glm::vec3 right = glm::normalize(glm::cross(pathDirection, perpAxis));
+                        glm::vec3 up = glm::normalize(glm::cross(right, pathDirection));
+
+                        // Calculate spiral angle based on progress and frequency
+                        float spiralAngle = t * particle->trailingModule.spiralFrequency * glm::two_pi<float>()
+                            + dt;
+
+                        // Calculate spiral intensity
+                        float spiralIntensity;
+                        if (particle->trailingModule.spiralIntensityCurve > 0.01f) {
+                            spiralIntensity = glm::sin(t * glm::pi<float>())
+                                * particle->trailingModule.spiralIntensityCurve;
+                        }
+                        else {
+                            spiralIntensity = glm::clamp((1.0f - t) * 2.0f, 0.0f, 1.0f);
+                        }
+
+                        // Calculate offset from the center line
+                        glm::vec3 spiralOffset = (right * cos(spiralAngle) + up * sin(spiralAngle))
+                            * particle->trailingModule.spiralRadius
+                            * spiralIntensity;
+
+                        pd.position = basePosition + spiralOffset;
+
+                        // Velocity calculations...
+                        glm::vec3 forwardVel = pathDirection * particle->trailingModule.pathSpeed;
+                        glm::vec3 tangentialDir = -right * sin(spiralAngle) + up * cos(spiralAngle);
+                        float tangentialSpeed = particle->trailingModule.spiralRadius
+                            * particle->trailingModule.spiralFrequency
+                            * glm::two_pi<float>()
+                            * particle->trailingModule.pathSpeed
+                            * spiralIntensity / pd.lifetime;
+
+                        glm::vec3 tangentialVel = tangentialDir * tangentialSpeed;
+                        pd.velocity = forwardVel + tangentialVel;
+
+                        // Check if particle reached the end
+                        float distToEnd = glm::length(end - pd.position);
+                        if (distToEnd < particle->trailingModule.arrivalThreshold || pathProgress >= 0.99f) {
+                            pd.lifespan = 0.0f;
+                        }
+                    }
+                    else if (pathLength > 0.001f) {
+                        // Straight line trail (no spiral)
+                        pathDirection = glm::normalize(pathDirection);
+                        pd.position = basePosition;
+                        pd.velocity = pathDirection * particle->trailingModule.pathSpeed;
+
+                        float distToEnd = glm::length(end - pd.position);
+                        if (distToEnd < particle->trailingModule.arrivalThreshold || pathProgress >= 0.99f) {
+                            pd.lifespan = 0.0f;
+                        }
+                    }
+                    else {
+                        // No path, just stay at start
+                        pd.position = start;
+                        pd.velocity = glm::vec3(0);
+                    }
                 }
             }
+            //// ENHANCED TRAILING MODULE - Twister Effect
+            //if (updateTrailing) {
+            //    glm::vec3 start = particle->trailingModule.startPoint;
+            //    glm::vec3 end = particle->trailingModule.endPoint;
+
+            //    // ===== STEP 1: Calculate position along the straight line path =====
+            //    // Increment the particle's progress along the path
+            //    float particleAge = (pd.lifetime - pd.lifespan);
+            //    float pathProgress = glm::clamp(particleAge * particle->trailingModule.pathSpeed / pd.lifetime, 0.0f, 1.0f);
+
+            //    // Smooth easing for more natural movement
+            //    float easedProgress = pathProgress < 0.5f
+            //        ? 2.0f * pathProgress * pathProgress
+            //        : 1.0f - glm::pow(-2.0f * pathProgress + 2.0f, 2.0f) / 2.0f;
+
+            //    // Calculate the base position along the straight line
+            //    glm::vec3 basePosition = start + (end - start) * easedProgress;
+
+            //    // ===== STEP 2: Create spiral/helix around the line =====
+            //    glm::vec3 pathDirection = end - start;
+            //    float pathLength = glm::length(pathDirection);
+            //    if (pathLength > 0.001f && particle->trailingModule.spiralRadius > 0.0f) {
+            //        pathDirection = glm::normalize(pathDirection);
+
+            //        // Create perpendicular basis vectors for the spiral
+            //        glm::vec3 perpAxis = (fabs(pathDirection.y) > 0.9f) ? glm::vec3(1, 0, 0) : glm::vec3(0, 1, 0);
+            //        glm::vec3 right = glm::normalize(glm::cross(pathDirection, perpAxis));
+            //        glm::vec3 up = glm::normalize(glm::cross(right, pathDirection));
+
+            //        // Calculate spiral angle based on progress and frequency
+            //        float spiralAngle = easedProgress * particle->trailingModule.spiralFrequency * glm::two_pi<float>()
+            //            + dt; // Add time offset for rotation
+
+            //        // Calculate spiral intensity (can peak in the middle or stay constant)
+            //        float spiralIntensity;
+            //        if (particle->trailingModule.spiralIntensityCurve > 0.01f) {
+            //            // Peak in the middle, fade at start and end
+            //            spiralIntensity = glm::sin(easedProgress * glm::pi<float>())
+            //                * particle->trailingModule.spiralIntensityCurve;
+            //        }
+            //        else {
+            //            // Constant intensity, but fade near the end
+            //            spiralIntensity = glm::clamp((1.0f - easedProgress) * 2.0f, 0.0f, 1.0f);
+            //        }
+
+            //        // Calculate offset from the center line
+            //        glm::vec3 spiralOffset = (right * cos(spiralAngle) + up * sin(spiralAngle))
+            //            * particle->trailingModule.spiralRadius
+            //            * spiralIntensity;
+
+            //        // ===== STEP 3: Set particle position on the helix =====
+            //        pd.position = basePosition + spiralOffset;
+
+            //        // ===== STEP 4: Calculate velocity for smooth spiral motion =====
+            //        // Velocity along the path
+            //        glm::vec3 forwardVel = pathDirection * particle->trailingModule.pathSpeed;
+
+            //        // Tangential velocity for the spiral (perpendicular to radius)
+            //        glm::vec3 tangentialDir = -right * sin(spiralAngle) + up * cos(spiralAngle);
+            //        float tangentialSpeed = particle->trailingModule.spiralRadius
+            //            * particle->trailingModule.spiralFrequency
+            //            * glm::two_pi<float>()
+            //            * particle->trailingModule.pathSpeed
+            //            * spiralIntensity / pd.lifetime;
+
+            //        glm::vec3 tangentialVel = tangentialDir * tangentialSpeed;
+
+            //        // Combine forward and tangential velocity
+            //        pd.velocity = forwardVel + tangentialVel;
+
+            //        // ===== STEP 5: Check if particle reached the end =====
+            //        float distToEnd = glm::length(end - pd.position);
+            //        if (distToEnd < particle->trailingModule.arrivalThreshold || pathProgress >= 0.99f) {
+            //            pd.lifespan = 0.0f; // Kill particle
+            //        }
+            //    }
+            //    else if (pathLength > 0.001f) {
+            //        // Straight line trail (no spiral)
+            //        pathDirection = glm::normalize(pathDirection);
+
+            //        // Set particle position along straight line
+            //        pd.position = basePosition;
+
+            //        // Velocity along the path
+            //        pd.velocity = pathDirection * particle->trailingModule.pathSpeed;
+
+            //        // Check if particle reached the end
+            //        float distToEnd = glm::length(end - pd.position);
+            //        if (distToEnd < particle->trailingModule.arrivalThreshold || pathProgress >= 0.99f) {
+            //            pd.lifespan = 0.0f; // Kill particle
+            //        }
+            //    }
+            //    else {
+            //        // No path, just stay at start
+            //        pd.position = start;
+            //        pd.velocity = glm::vec3(0);
+            //    }
+            //}
+
+
 
             //=== LIFETIME UPDATE ===
             pd.lifespan -= dt;
@@ -359,6 +492,18 @@ namespace ecs {
 
             while (particleComp->emitterTime >= emissionInterval) {
                
+                // Only emit if no_Of_Particles is within valid range (1-255)
+                if (particleComp->no_Of_Particles < 1 || particleComp->no_Of_Particles > 255) {
+                    particleComp->emitterTime -= emissionInterval;
+                    continue;  // Skip emission for this interval
+                }
+
+                // Don't emit if we've already reached the desired particle count
+                if (particleComp->particle_List.size() >= static_cast<size_t>(particleComp->no_Of_Particles)) {
+                    particleComp->emitterTime -= emissionInterval;
+                    continue;  // Skip emission - we're at capacity
+                }
+
 
                 // ==== = GENERATE DIRECTION BASED ON EMISSION SHAPE ==== =
                 EmissionData emission; 
