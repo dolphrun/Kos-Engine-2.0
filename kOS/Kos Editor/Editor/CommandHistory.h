@@ -9,9 +9,12 @@
 
 // Component Editing
 //		- Might be able to involve templates
+#pragma once
 
 #include "ECS/ECS.h"
 #include <typeinfo>
+
+#define CACHEDSCENE "CommandHistory"
 
 class CommandHistory {
 	ecs::ECS& m_ecs;

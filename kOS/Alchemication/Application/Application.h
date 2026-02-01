@@ -54,7 +54,7 @@ namespace Application {
 			, physicsManager()
 			, graphicsManager()
 			, navMeshManager(ecs, resourceManager, graphicsManager, sceneManager)
-			, ecs(peformance, graphicsManager, resourceManager, input, physicsManager, scriptManager, audioManager)
+			, ecs(peformance, graphicsManager, resourceManager, input, physicsManager, audioManager)
 			, lvWindow(ecs, input)
 			, layersManager(ecs)
 			, serialization(ecs)

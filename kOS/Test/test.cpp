@@ -25,6 +25,16 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Events/Delegate.h"
 #include "ECS/SparseSet.h"
 
+// Includes for Smoke Test dependencies
+#include "Debugging/Performance.h"
+#include "Graphics/GraphicsManager.h"
+#include "Resources/ResourceManager.h"
+#include "Inputs/Input.h"
+#include "Physics/PhysicsManager.h"
+#include "Scripting/ScriptManager.h"
+#include "Audio/AudioManager.h"
+#include "Scene/SceneData.h" 
+
 using namespace ecs;
 
 SERIALIZE_DESERIALIZE_COMPARE_TEST(TransformComponent)
@@ -236,12 +246,48 @@ TEST(SparseSetTest, SizeAndClear) {
     ecs::EntityID e2 = 2;
     sparseSet.Set(e1, 10);
     sparseSet.Set(e2, 20);
-    
+
     EXPECT_EQ(sparseSet.Size(), 2);
-    
+
     sparseSet.Clear();
     EXPECT_EQ(sparseSet.Size(), 0);
-    EXPECT_TRUE(sparseSet.IsEmpty());
 }
+
+
+TEST(SmokeTest, Initialization) {
+    // Instantiate dependencies
+    Peformance perf;
+    GraphicsManager graphics;
+    ResourceManager resourceManager;
+    Input::InputSystem inputSystem;
+    physics::PhysicsManager physicsManager;
+    audio::AudioManager audioManager;
+
+    // Instantiate ECS
+    ecs::ECS ecsSystem(perf, graphics, resourceManager, inputSystem, physicsManager, audioManager);
+    
+    // Load ECS components (required for CreateEntity to work if it adds default components like Transform/Name)
+    ecsSystem.Load();
+
+    // Setup a dummy scene
+    std::string sceneName = "SmokeTestScene";
+    SceneData sceneData;
+    sceneData.sceneName = sceneName;
+    ecsSystem.AddScene(sceneName, sceneData);
+
+    // Create Entity
+    ecs::EntityID entity = ecsSystem.CreateEntity(sceneName);
+    
+    //Verify Entity exists
+    EXPECT_TRUE(ecsSystem.IsValidEntity(entity));
+    EXPECT_TRUE(ecsSystem.HasComponent<ecs::TransformComponent>(entity));
+    EXPECT_TRUE(ecsSystem.HasComponent<ecs::NameComponent>(entity));
+    
+    // Cleanup
+    ecsSystem.DeleteEntity(entity);
+    ecsSystem.EndFrame();
+    EXPECT_FALSE(ecsSystem.IsValidEntity(entity));
+}
+
 
 

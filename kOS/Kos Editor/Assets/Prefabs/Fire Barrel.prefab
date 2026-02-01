@@ -1,5 +1,13 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "d3093a19-ec4c-ff69-d4d2-6817988532ca",
         "NameComponent": {
             "entityName": "Fire Barrel",
@@ -140,6 +148,7 @@
                     "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 3.0,
                     "playback_State": 0,
+                    "particleFade": 1,
                     "velocityModule": {
                         "enabled": false,
                         "mode": 0,
@@ -222,19 +231,6 @@
                             "z": 0.0
                         }
                     },
-                    "attractorModule": {
-                        "enabled": false,
-                        "targetPosition": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "attractionStrength": 0.0,
-                        "explosionStrength": 0.0,
-                        "whirlpoolStrength": 0.0,
-                        "whirlpoolRadius": 1.0,
-                        "useInverseFalloff": true
-                    },
                     "gravityModule": {
                         "enabled": true,
                         "gravity": {
@@ -268,17 +264,42 @@
                             "y": 1.0,
                             "z": 0.0
                         },
-                        "spawnDuration": 5.0,
-                        "spawnRate": 40.0,
                         "spiralRadius": 5.0,
                         "spiralFrequency": 3.0,
                         "spiralIntensityCurve": 0.5,
                         "pathSpeed": 2.0,
-                        "arrivalThreshold": 0.5,
-                        "timeAccum": 0.0,
-                        "spawnAccum": 0.0
+                        "arrivalThreshold": 0.5
                     },
-                    "emissionInterval": 0.10000000149011612
+                    "noiseModule": {
+                        "enabled": false,
+                        "strength": 1.0,
+                        "strengthMultiplier": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "frequency": 0.5,
+                        "scrollSpeed": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "damping": true,
+                        "octaves": 1,
+                        "octaveMultiplier": 0.5,
+                        "octaveScale": 2.0,
+                        "quality": 1,
+                        "remapEnabled": false,
+                        "remapCurveStart": 1.0,
+                        "remapCurveEnd": 1.0,
+                        "positionOffset": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        }
+                    },
+                    "emissionInterval": 0.10000000149011612,
+                    "no_Of_Particles": 50
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

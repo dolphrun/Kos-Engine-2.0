@@ -20,6 +20,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "imgui_impl_opengl3.h"
 #include "Editor.h"
 #include "imgui_internal.h"
+#include "Editor/CommandHistory.h"
 
 #include "Scene/SceneManager.h"
 #include "AssetManager/AssetManager.h"
@@ -210,6 +211,7 @@ void gui::ImGuiHandler::DrawMainMenuBar() {
 
  void gui::ImGuiHandler::ScriptHotReload() {
 
+    m_sceneManager.ImmediateClearScene(CACHEDSCENE);
     m_sceneManager.SaveAllActiveScenes();
 
     auto scenelist = m_sceneManager.GetAllScenesPath();
@@ -243,10 +245,19 @@ void gui::ImGuiHandler::DrawMainMenuBar() {
     //load the DLL
     m_scriptManager.RunDLL();
 
+    //load back scene
     for (const auto& scenepath : scenelist) {
         m_sceneManager.ImmediateLoadScene(scenepath.path);
-		m_ecs.GetSceneData(scenepath.path.filename().string()).isActive = scenepath.isActive;
+        auto& sceneData = m_ecs.GetSceneData(scenepath.path.filename().string());
+        sceneData.isActive = scenepath.isActive;
+        if (scenepath.path.extension().string() == ".prefab") {
+            sceneData.isPrefab = true;
+        }
     }
+
+
+    //set back command history
+    m_commandHistory.Init();
 
 }
 

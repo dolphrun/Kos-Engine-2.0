@@ -2,6 +2,8 @@
     {
         "SceneData": {
             "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
             "ambientIntensity": 1.0
         }
     },
@@ -36,8 +38,7 @@
             "entityTag": "Powerup",
             "isPrefab": true,
             "prefabName": "Electric Prop 1.prefab",
-            "hide": false,
-            "isStatic": false
+            "hide": false
         },
         "PowerupManagerScript": {
             "powerupType": "LIGHTNING"
@@ -87,8 +88,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "ParticleComponent": {
                     "particleType": 0,
@@ -217,15 +217,11 @@
                             "y": 1.0,
                             "z": 0.0
                         },
-                        "spawnDuration": 5.0,
-                        "spawnRate": 40.0,
                         "spiralRadius": 5.0,
                         "spiralFrequency": 3.0,
                         "spiralIntensityCurve": 0.5,
                         "pathSpeed": 2.0,
-                        "arrivalThreshold": 0.5,
-                        "timeAccum": 0.0,
-                        "spawnAccum": 0.0
+                        "arrivalThreshold": 0.5
                     },
                     "noiseModule": {
                         "enabled": true,
@@ -255,7 +251,8 @@
                             "z": 0.0
                         }
                     },
-                    "emissionInterval": 0.05000000074505806
+                    "emissionInterval": 0.05000000074505806,
+                    "no_Of_Particles": 50
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

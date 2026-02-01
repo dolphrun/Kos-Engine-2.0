@@ -39,7 +39,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Inputs/Input.h"
 #include "Physics/PhysicsManager.h"
 #include "Scene/SceneManager.h"
-#include "Scripting/ScriptManager.h"
 #include "Audio/AudioManager.h"
 
 namespace ecs {
@@ -53,19 +52,17 @@ namespace ecs {
 		ResourceManager& m_resourceManager;
 		Input::InputSystem& m_inputSystem;
 		physics::PhysicsManager& m_physicsManager;
-		ScriptManager& m_scriptManager;
 		audio::AudioManager& m_audioManager;
 
 	public:
 
 
-		ECS(Peformance& peformance, GraphicsManager& graphics, ResourceManager& rm, Input::InputSystem& is, physics::PhysicsManager& pm, ScriptManager& sm, audio::AudioManager& audiom) :
+		ECS(Peformance& peformance, GraphicsManager& graphics, ResourceManager& rm, Input::InputSystem& is, physics::PhysicsManager& pm, audio::AudioManager& audiom) :
 			m_performance(peformance),
 			m_graphicsManager(graphics),
 			m_resourceManager(rm),
 			m_inputSystem(is),
 			m_physicsManager(pm),
-			m_scriptManager(sm),
 			m_audioManager(audiom),
 			m_threadPool(std::thread::hardware_concurrency() - 1),
 			m_systemList(&componentPool), // INITIALIZE PMR
@@ -131,6 +128,8 @@ namespace ecs {
 		std::unordered_set<std::string>& GetComponentsString() {
 			return m_componentStrings;
 		}
+		std::vector<std::string> scriptList;
+
 
 		//ENTITY DATA GETTERS
 		void InsertGUID(const utility::GUID& guid, ecs::EntityID id) {
@@ -220,6 +219,7 @@ namespace ecs {
 		std::map<std::string, size_t> m_componentKey;
 		std::unordered_set<std::string> m_componentStrings;
 		size_t totalComponents = 0;
+		
 
 		//SYSTEMDATA
 		struct SystemData{	
@@ -296,7 +296,9 @@ namespace ecs {
 		);
 
 		m_combinedComponentPool[classname] = sparseSet;
-		m_componentKey[classname] = ++totalComponents;
+		if (m_componentKey.find(classname) == m_componentKey.end()) {
+			m_componentKey[classname] = ++totalComponents;
+		}
 		m_componentStrings.insert(classname);
 
 		ComponentTypeRegistry::RegisterComponentType<T>(this);
@@ -313,7 +315,7 @@ namespace ecs {
 		// Reversed order expansion
 		(..., signature.set(GetComponentKey(Components::classname())));
 
-		std::shared_ptr<T> system = std::make_shared<T>(*this, m_graphicsManager, m_resourceManager, m_inputSystem, m_physicsManager, m_scriptManager, m_performance, m_audioManager);
+		std::shared_ptr<T> system = std::make_shared<T>(*this, m_graphicsManager, m_resourceManager, m_inputSystem, m_physicsManager, m_performance, m_audioManager);
 		system->AssignSignature(signature);
 		m_systemList.emplace_back(system,T::classname());
 		m_systemMap[level].emplace_back(system, T::classname());

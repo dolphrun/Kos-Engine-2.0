@@ -2,6 +2,8 @@
     {
         "SceneData": {
             "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
             "ambientIntensity": 1.0
         }
     },
@@ -79,8 +81,7 @@
             "entityTag": "Default",
             "isPrefab": true,
             "prefabName": "BulletPrefab.prefab",
-            "hide": false,
-            "isStatic": false
+            "hide": false
         },
         "RigidbodyComponent": {
             "mass": 1.0,

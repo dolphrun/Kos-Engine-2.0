@@ -59,7 +59,7 @@ void ScriptManager::RunDLL() {
 		svm.scene = &m_sceneManager;
 		svm.physics = &m_physics;
 		svm.resource = &m_resourceManager;
-		svm.scriptNames = &scriptList;
+		svm.scriptNames = &m_ecs.scriptList;
 		svm.navMesh = &m_navmesh;
 		DLLUpdateStatic updateFunc = (DLLUpdateStatic)GetProcAddress(hInstDLL, "UpdateStatic");
 		updateFunc(&svm);
@@ -94,12 +94,12 @@ void ScriptManager::UnloadDLL() {
 		ScriptClass::ScriptClassGenerator.clear();
 		m_field.GetAction().clear();
 		//clear ecs componentpool
-		for (const auto& scripts : scriptList) {
+		for (const auto& scripts : m_ecs.scriptList) {
 			m_ecs.FreeComponentPool(scripts);
 			m_ecs.componentAction.erase(scripts);
 			m_ecs.GetComponentsString().erase(scripts);
 		}
-		scriptList.clear();
+		m_ecs.scriptList.clear();
 
 		FreeLibrary(hInstDLL);
 		hInstDLL = nullptr;

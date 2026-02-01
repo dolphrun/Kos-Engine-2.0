@@ -14,7 +14,7 @@ template <typename T>
 void RegisterScript(ecs::ECS* ecs) {
 	FieldComponentTypeRegistry::RegisterComponentType<T>();
 	ecs->RegisterComponent<T>();
-	scriptNames->push_back(T::classname());
+	scriptNames->emplace_back(T::classname());
 }
 
 extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) {

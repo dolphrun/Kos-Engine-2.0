@@ -247,7 +247,7 @@ namespace scenes {
 		loadScenePath[scenename] = scene;
 
 		//create new scene
-		m_ecs.sceneMap[scenename];
+		m_ecs.sceneMap[scenename];        
 		//check if file is prefab or scene
 
 		// Load entities from the JSON file

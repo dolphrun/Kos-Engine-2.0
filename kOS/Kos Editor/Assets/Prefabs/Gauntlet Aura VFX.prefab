@@ -1,5 +1,13 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "90533d48-7852-990c-6c9c-72ee0d90fd69",
         "NameComponent": {
             "entityName": "Gauntlet Aura VFX",
@@ -7,8 +15,7 @@
             "entityTag": "Default",
             "isPrefab": true,
             "prefabName": "Gauntlet Aura VFX.prefab",
-            "hide": false,
-            "isStatic": false
+            "hide": false
         },
         "ParticleComponent": {
             "particleType": 0,
@@ -171,7 +178,8 @@
                     "z": 0.0
                 }
             },
-            "emissionInterval": 0.009999999776482582
+            "emissionInterval": 0.009999999776482582,
+            "no_Of_Particles": 50
         },
         "TransformComponent": {
             "WorldTransformation": {

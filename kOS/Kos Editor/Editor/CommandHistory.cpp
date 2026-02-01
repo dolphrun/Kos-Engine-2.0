@@ -4,13 +4,18 @@
 std::stack<CommandHistory::CommandWrapper> CommandHistory::commandQueue;
 std::stack<CommandHistory::CommandWrapper> CommandHistory::redoQueue;
 
-#define CACHEDSCENE "CommandHistory"
+static bool onSceneLoadedDel = false;
 
 void CommandHistory::Init() {
 	m_ecs.AddScene(CACHEDSCENE, SceneData());
 	m_ecs.sceneMap[CACHEDSCENE].isPrefab = true;
-	m_sceneManager.SetSceneActive("CommandHistory", false);
-	m_sceneManager.onSceneLoaded.Add([this](SceneData Data) {	Clear(); });
+	m_sceneManager.SetSceneActive(CACHEDSCENE, false);
+
+	if (!onSceneLoadedDel) {
+		m_sceneManager.onSceneLoaded.Add([this](SceneData Data) {	Clear(); });
+		onSceneLoadedDel = true;
+	}
+	
 }
 
 void CommandHistory::Update() {
