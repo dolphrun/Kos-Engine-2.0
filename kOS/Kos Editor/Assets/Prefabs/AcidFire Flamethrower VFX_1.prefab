@@ -1,5 +1,13 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "88c8d6c7-4bd3-9eda-c9be-71f9346f4033",
         "NameComponent": {
             "entityName": "AcidFire Flamethrower VFX",
@@ -67,6 +75,7 @@
                     "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 0.10000000149011612,
                     "playback_State": 0,
+                    "particleFade": 1,
                     "velocityModule": {
                         "enabled": false,
                         "mode": 0,
@@ -182,15 +191,11 @@
                             "y": 1.0,
                             "z": 0.0
                         },
-                        "spawnDuration": 5.0,
-                        "spawnRate": 40.0,
                         "spiralRadius": 5.0,
                         "spiralFrequency": 3.0,
                         "spiralIntensityCurve": 0.5,
                         "pathSpeed": 2.0,
-                        "arrivalThreshold": 0.5,
-                        "timeAccum": 5.449033737182617,
-                        "spawnAccum": 0.913275420665741
+                        "arrivalThreshold": 0.5
                     },
                     "noiseModule": {
                         "enabled": false,
@@ -220,7 +225,8 @@
                             "z": 0.0
                         }
                     },
-                    "emissionInterval": 0.10000000149011612
+                    "emissionInterval": 0.10000000149011612,
+                    "no_Of_Particles": 50
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -280,6 +286,7 @@
                     "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 3.0,
                     "playback_State": 0,
+                    "particleFade": 1,
                     "velocityModule": {
                         "enabled": false,
                         "mode": 0,
@@ -395,15 +402,11 @@
                             "y": 1.0,
                             "z": 0.0
                         },
-                        "spawnDuration": 5.0,
-                        "spawnRate": 40.0,
                         "spiralRadius": 5.0,
                         "spiralFrequency": 3.0,
                         "spiralIntensityCurve": 0.5,
                         "pathSpeed": 2.0,
-                        "arrivalThreshold": 0.5,
-                        "timeAccum": 5.595968246459961,
-                        "spawnAccum": 0.913275420665741
+                        "arrivalThreshold": 0.5
                     },
                     "noiseModule": {
                         "enabled": false,
@@ -433,7 +436,8 @@
                             "z": 0.0
                         }
                     },
-                    "emissionInterval": 0.10000000149011612
+                    "emissionInterval": 0.10000000149011612,
+                    "no_Of_Particles": 50
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -493,6 +497,7 @@
                     "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 3.0,
                     "playback_State": 0,
+                    "particleFade": 1,
                     "velocityModule": {
                         "enabled": false,
                         "mode": 0,
@@ -608,15 +613,11 @@
                             "y": 1.0,
                             "z": 0.0
                         },
-                        "spawnDuration": 5.0,
-                        "spawnRate": 40.0,
                         "spiralRadius": 5.0,
                         "spiralFrequency": 3.0,
                         "spiralIntensityCurve": 0.5,
                         "pathSpeed": 2.0,
-                        "arrivalThreshold": 0.5,
-                        "timeAccum": 5.595968246459961,
-                        "spawnAccum": 0.913275420665741
+                        "arrivalThreshold": 0.5
                     },
                     "noiseModule": {
                         "enabled": false,
@@ -646,7 +647,8 @@
                             "z": 0.0
                         }
                     },
-                    "emissionInterval": 0.10000000149011612
+                    "emissionInterval": 0.10000000149011612,
+                    "no_Of_Particles": 50
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

@@ -57,12 +57,12 @@ namespace ecs {
 			sparse[sparseIndex] = index;
 		}
 
-		inline size_t GetDenseIndex(EntityID id) {
+		inline size_t GetDenseIndex(EntityID id) const {
 			size_t page = id / SPARSE_MAX_SIZE;
 			size_t sparseIndex = id % SPARSE_MAX_SIZE;
 
 			if (page < m_sparsePages.size()) {
-				Sparse& sparse = m_sparsePages[page];
+				const Sparse& sparse = m_sparsePages[page];
 				return sparse[sparseIndex];
 			}
 

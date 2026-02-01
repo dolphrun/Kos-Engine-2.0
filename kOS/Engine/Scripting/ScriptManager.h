@@ -85,11 +85,8 @@ public:
 	void AddGenerator(std::string const& id);
 
 	
-	const std::vector<std::string>& GetScriptList() const { return scriptList; }
-	//List of script pointers
 private:
 	
-	std::vector<std::string> scriptList;
 	std::string m_dllPath;
 	HINSTANCE hInstDLL;
 	StaticVariableManager svm{};

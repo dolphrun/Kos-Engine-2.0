@@ -14,7 +14,7 @@ template <typename T>
 void RegisterScript(ecs::ECS* ecs) {
 	FieldComponentTypeRegistry::RegisterComponentType<T>();
 	ecs->RegisterComponent<T>();
-	scriptNames->push_back(T::classname());
+	scriptNames->emplace_back(T::classname());
 }
 
 extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) {
@@ -68,6 +68,7 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 
 	RegisterScript<AnimationTestScript>(TemplateSC::ecsPtr);
 	RegisterScript<UIButtonScript>(TemplateSC::ecsPtr);
+	RegisterScript<NEWHealthBarScript>(TemplateSC::ecsPtr);
 
 	FieldComponentTypeRegistry::CreateAllDrawers(static_cast<Fields*>(svm->field)->GetAction());
 }

@@ -111,6 +111,7 @@
             "prefabName": "",
             "hide": false
         },
+        "NavMeshComponent": {},
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
@@ -6807,7 +6808,8 @@
                             "z": 0.0
                         }
                     },
-                    "emissionInterval": 0.10000000149011612
+                    "emissionInterval": 0.10000000149011612,
+                    "no_Of_Particles": 50
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -7095,7 +7097,8 @@
                             "z": 0.0
                         }
                     },
-                    "emissionInterval": 0.10000000149011612
+                    "emissionInterval": 0.10000000149011612,
+                    "no_Of_Particles": 50
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -8473,7 +8476,8 @@
                             "z": 0.0
                         }
                     },
-                    "emissionInterval": 0.10000000149011612
+                    "emissionInterval": 0.10000000149011612,
+                    "no_Of_Particles": 50
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -8683,7 +8687,8 @@
                             "z": 0.0
                         }
                     },
-                    "emissionInterval": 0.10000000149011612
+                    "emissionInterval": 0.10000000149011612,
+                    "no_Of_Particles": 50
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -8973,7 +8978,8 @@
                     "z": 0.0
                 }
             },
-            "emissionInterval": 0.10000000149011612
+            "emissionInterval": 0.10000000149011612,
+            "no_Of_Particles": 50
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -10487,7 +10493,16 @@
                         "y": 1.0,
                         "z": 1.0,
                         "w": 1.0
-                    }
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -10979,7 +10994,16 @@
                         "y": 1.0,
                         "z": 1.0,
                         "w": 1.0
-                    }
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -11356,7 +11380,16 @@
                         "y": 1.0,
                         "z": 1.0,
                         "w": 1.0
-                    }
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -11469,7 +11502,16 @@
                         "y": 1.0,
                         "z": 1.0,
                         "w": 1.0
-                    }
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -11538,7 +11580,16 @@
                         "y": 1.0,
                         "z": 1.0,
                         "w": 1.0
-                    }
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -11607,7 +11658,16 @@
                         "y": 1.0,
                         "z": 1.0,
                         "w": 1.0
-                    }
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -12267,7 +12327,8 @@
                             "z": 0.0
                         }
                     },
-                    "emissionInterval": 0.05000000074505806
+                    "emissionInterval": 0.05000000074505806,
+                    "no_Of_Particles": 50
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -12479,7 +12540,8 @@
                     "z": 0.0
                 }
             },
-            "emissionInterval": 0.05000000074505806
+            "emissionInterval": 0.05000000074505806,
+            "no_Of_Particles": 50
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -12689,7 +12751,8 @@
                     "z": 0.0
                 }
             },
-            "emissionInterval": 0.05000000074505806
+            "emissionInterval": 0.05000000074505806,
+            "no_Of_Particles": 50
         },
         "TransformComponent": {
             "WorldTransformation": {

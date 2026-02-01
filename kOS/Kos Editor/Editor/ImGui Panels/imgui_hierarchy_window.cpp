@@ -93,6 +93,7 @@ namespace gui
                 if (!m_activeScene.empty())
                 {
                     ecs::EntityID newEntityID = m_ecs.CreateEntity(m_activeScene);
+                    m_commandHistory.AddCommand<CommandHistory::AddGameObject>(newEntityID, m_activeScene);
 
                     // if in prefab mode, assign entity to upmost parent
                     if (m_prefabSceneMode)
@@ -298,6 +299,8 @@ namespace gui
                     const auto &parent = m_ecs.GetParent(Id);
                     if (parent.has_value())
                     {
+
+                        m_commandHistory.AddCommand<CommandHistory::SetGameObjectParent>(Id, m_ecs.GetParent(Id));
                         m_ecs.RemoveParent(Id);
                     }
 
@@ -373,8 +376,8 @@ namespace gui
                         }
                         else
                         {
+                            m_commandHistory.AddCommand<CommandHistory::SetGameObjectParent>(Id, m_ecs.GetParent(Id));
                             m_ecs.RemoveParent(Id, true);
-
                         }
                     }
 
@@ -437,7 +440,7 @@ namespace gui
         if (transCom == NULL)
             return false;
 
-        ImGuiTreeNodeFlags flag = ((static_cast<unsigned int>(m_clickedEntityId) == id) ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_DefaultOpen;
+        ImGuiTreeNodeFlags flag = ((static_cast<unsigned int>(m_clickedEntityId) == id) ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow /*| ImGuiTreeNodeFlags_DefaultOpen*/;
         if (transCom->m_childID.size() <= 0)
         {
             flag |= ImGuiTreeNodeFlags_Leaf;
@@ -537,6 +540,8 @@ namespace gui
                 if (ImGui::MenuItem("Delete Entity"))
                 {
                     m_ecs.DeleteEntity(id);
+                    m_commandHistory.AddCommand<CommandHistory::DeleteGameObject>(id, m_ecs.GetSceneByEntityID(id), m_ecs, &m_commandHistory);
+
                     m_clickedEntityId = -1;
                     ImGui::EndPopup();
                     if (open)
@@ -547,7 +552,8 @@ namespace gui
 
             if (ImGui::MenuItem("Duplicate Entity"))
             {
-                ecs::EntityID newid = m_ecs.DuplicateEntity(id);
+                ecs::EntityID newID = m_ecs.DuplicateEntity(id);
+                m_commandHistory.AddCommand<CommandHistory::AddGameObject>(newID, m_activeScene);
 
                 if (m_prefabSceneMode)
                 {
@@ -555,11 +561,11 @@ namespace gui
                     // if id does not have parent, make it the parent
                     if (!parent.has_value())
                     {
-                        m_ecs.SetParent(id, newid);
+                        m_ecs.SetParent(id, newID);
                     }
                     else
                     {
-                        m_ecs.SetParent(parent.value(), newid);
+                        m_ecs.SetParent(parent.value(), newID);
                     }
                 }
 
@@ -598,6 +604,7 @@ namespace gui
                 }
                 else
                 {
+                    m_commandHistory.AddCommand<CommandHistory::SetGameObjectParent>(childId, m_ecs.GetParent(childId));
                     m_ecs.SetParent(id, childId, true);
                     LOGGING_INFO("Set Parent: %d, Child: %d", id, childId);
                     // update child's scene

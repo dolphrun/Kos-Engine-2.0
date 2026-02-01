@@ -3,6 +3,7 @@
         "SceneData": {
             "skyBoxGUID": [],
             "NavMeshGuid": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
             "ambientIntensity": 1.0
         }
     },
@@ -34,8 +35,7 @@
             "entityTag": "Enemy",
             "isPrefab": true,
             "prefabName": "EnemyPrefab.prefab",
-            "hide": false,
-            "isStatic": false
+            "hide": false
         },
         "RigidbodyComponent": {
             "mass": 1.0,
@@ -103,8 +103,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -157,8 +156,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "SkinnedMeshRendererComponent": {
                     "skinnedMeshGUID": "8a830bfc-7794-b76e-2f45-0e765f0a2495",

@@ -22,8 +22,7 @@ namespace ecs {
 
 		const auto& entities = m_entities.Data();
 		
-		auto scriptList = m_scriptManager.GetScriptList();
-		for (const std::string& scriptName : scriptList) {
+		for (const std::string& scriptName : m_ecs.scriptList) {
 
 			std::chrono::duration<float> scriptDuration{};
 			auto start = std::chrono::steady_clock::now();

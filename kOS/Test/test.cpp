@@ -21,6 +21,20 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include <glm/gtx/matrix_decompose.hpp>
 #include <glm/gtx/string_cast.hpp>
 
+// New includes
+#include "Events/Delegate.h"
+#include "ECS/SparseSet.h"
+
+// Includes for Smoke Test dependencies
+#include "Debugging/Performance.h"
+#include "Graphics/GraphicsManager.h"
+#include "Resources/ResourceManager.h"
+#include "Inputs/Input.h"
+#include "Physics/PhysicsManager.h"
+#include "Scripting/ScriptManager.h"
+#include "Audio/AudioManager.h"
+#include "Scene/SceneData.h" 
+
 using namespace ecs;
 
 SERIALIZE_DESERIALIZE_COMPARE_TEST(TransformComponent)
@@ -45,6 +59,9 @@ SERIALIZE_DESERIALIZE_COMPARE_TEST(CubeRendererComponent)
 SERIALIZE_DESERIALIZE_COMPARE_TEST(SphereRendererComponent)
 SERIALIZE_DESERIALIZE_COMPARE_TEST(ParticleComponent)
 SERIALIZE_DESERIALIZE_COMPARE_TEST(MaterialComponent)
+SERIALIZE_DESERIALIZE_COMPARE_TEST(ButtonComponent)
+SERIALIZE_DESERIALIZE_COMPARE_TEST(AudioListenerComponent)
+SERIALIZE_DESERIALIZE_COMPARE_TEST(CapsuleColliderComponent)
 // Add more component tests as needed
 
 
@@ -130,4 +147,147 @@ TEST(Math, RandomDecomposeTRS) {
             << "Rotation mismatch: " << glm::to_string(eulerRot) << " vs " << glm::to_string(decRot);
     }
 }
+
+
+// Delegate Tests
+TEST(DelegateTest, SubscriptionAndInvoke) {
+    Delegate<int> del;
+    int value = 0;
+    
+    // Subscribe
+    auto id = del.Add([&value](int v) { value = v; });
+    
+    // Invoke
+    del.Invoke(42);
+    EXPECT_EQ(value, 42);
+    
+    // Invoke again
+    del.Invoke(100);
+    EXPECT_EQ(value, 100);
+}
+
+TEST(DelegateTest, MultipleSubscribers) {
+    Delegate<int> del;
+    int count = 0;
+    
+    del.Add([&count](int) { count++; });
+    del.Add([&count](int) { count++; });
+    
+    del.Invoke(1);
+    EXPECT_EQ(count, 2);
+}
+
+TEST(DelegateTest, Unsubscribe) {
+    Delegate<int> del;
+    int value = 0;
+    
+    auto id = del.Add([&value](int v) { value = v; });
+    
+    del.Invoke(10);
+    EXPECT_EQ(value, 10);
+    
+    del.Remove(id);
+    del.Invoke(20);
+    EXPECT_EQ(value, 10); // Should remain unchanged
+}
+
+
+// SparseSet Tests
+TEST(SparseSetTest, SetAndGet) {
+    ecs::SparseSet<int> sparseSet;
+    ecs::EntityID entity = 100;
+    int value = 42;
+    
+    // Set
+    sparseSet.Set(entity, value);
+    
+    // Get
+    int* retrieved = sparseSet.Get(entity);
+    ASSERT_NE(retrieved, nullptr);
+    EXPECT_EQ(*retrieved, value);
+    
+    // Const Get
+    const auto& constSet = sparseSet;
+    const int* constRetrieved = constSet.Get(entity);
+    ASSERT_NE(constRetrieved, nullptr);
+    EXPECT_EQ(*constRetrieved, value);
+}
+
+TEST(SparseSetTest, NonExistentEntity) {
+    ecs::SparseSet<int> sparseSet;
+    EXPECT_EQ(sparseSet.Get(999), nullptr);
+    EXPECT_FALSE(sparseSet.ContainsEntity(999));
+}
+
+TEST(SparseSetTest, ContainsEntity) {
+    ecs::SparseSet<int> sparseSet;
+    ecs::EntityID entity = 1;
+    sparseSet.Set(entity, 10);
+    EXPECT_TRUE(sparseSet.ContainsEntity(entity));
+    EXPECT_FALSE(sparseSet.ContainsEntity(2));
+}
+
+TEST(SparseSetTest, Delete) {
+    ecs::SparseSet<int> sparseSet;
+    ecs::EntityID entity = 50;
+    sparseSet.Set(entity, 123);
+    
+    EXPECT_TRUE(sparseSet.ContainsEntity(entity));
+    
+    sparseSet.Delete(entity);
+    
+    EXPECT_FALSE(sparseSet.ContainsEntity(entity));
+    EXPECT_EQ(sparseSet.Get(entity), nullptr);
+}
+
+TEST(SparseSetTest, SizeAndClear) {
+    ecs::SparseSet<int> sparseSet;
+    ecs::EntityID e1 = 1;
+    ecs::EntityID e2 = 2;
+    sparseSet.Set(e1, 10);
+    sparseSet.Set(e2, 20);
+
+    EXPECT_EQ(sparseSet.Size(), 2);
+
+    sparseSet.Clear();
+    EXPECT_EQ(sparseSet.Size(), 0);
+}
+
+
+TEST(SmokeTest, Initialization) {
+    // Instantiate dependencies
+    Peformance perf;
+    GraphicsManager graphics;
+    ResourceManager resourceManager;
+    Input::InputSystem inputSystem;
+    physics::PhysicsManager physicsManager;
+    audio::AudioManager audioManager;
+
+    // Instantiate ECS
+    ecs::ECS ecsSystem(perf, graphics, resourceManager, inputSystem, physicsManager, audioManager);
+    
+    // Load ECS components (required for CreateEntity to work if it adds default components like Transform/Name)
+    ecsSystem.Load();
+
+    // Setup a dummy scene
+    std::string sceneName = "SmokeTestScene";
+    SceneData sceneData;
+    sceneData.sceneName = sceneName;
+    ecsSystem.AddScene(sceneName, sceneData);
+
+    // Create Entity
+    ecs::EntityID entity = ecsSystem.CreateEntity(sceneName);
+    
+    //Verify Entity exists
+    EXPECT_TRUE(ecsSystem.IsValidEntity(entity));
+    EXPECT_TRUE(ecsSystem.HasComponent<ecs::TransformComponent>(entity));
+    EXPECT_TRUE(ecsSystem.HasComponent<ecs::NameComponent>(entity));
+    
+    // Cleanup
+    ecsSystem.DeleteEntity(entity);
+    ecsSystem.EndFrame();
+    EXPECT_FALSE(ecsSystem.IsValidEntity(entity));
+}
+
+
 

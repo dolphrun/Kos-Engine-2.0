@@ -747,7 +747,13 @@ void TileMeshConfig::Reset() {
 
 void NavMeshManager::Init() {
     sceneManager.onSceneLoaded.Add([this](SceneData Data) {
-        if(!Data.NavMeshGuid.Empty())LoadMesh(Data.sceneName, Data.NavMeshGuid); 
+        if (!Data.NavMeshGuid.Empty()) {
+            std::cout << Data.sceneName << " | " << Data.NavMeshGuid.GetToString() << std::endl;
+            LoadMesh(Data.sceneName, Data.NavMeshGuid);
+        }
+        else {
+            SetGraphicsRenderMesh(nullptr);
+        }
         });
 }
 
@@ -776,10 +782,12 @@ void NavMeshManager::Update(float dt) {
 void NavMeshManager::Build(std::string sceneName, std::shared_ptr<Sample_TileMesh> tm) {
     // Build Geom
     auto iter = navMeshData.find(sceneName);
-    if (iter == navMeshData.end()) {
-        BuildRecastGeometry(sceneName, tm);
-        iter = navMeshData.find(sceneName);
-    }
+    //if (iter == navMeshData.end()) {
+    //    BuildRecastGeometry(sceneName, tm);
+    //    iter = navMeshData.find(sceneName);
+    //}
+    BuildRecastGeometry(sceneName, tm);
+    iter = navMeshData.find(sceneName);
     if (!tm->m_geom) {
         LOGGING_WARN("Nav Mesh Build Failed: Unable to build Geometry");
         return;
@@ -830,14 +838,15 @@ void NavMeshManager::BuildRecastGeometry(std::string sceneName, std::shared_ptr<
     glm::vec3 min(std::numeric_limits<float>::max()), max(std::numeric_limits<float>::lowest());
     for (auto obj : entities.sceneIDs) 
     {
+        const auto* navComp = m_ecs.GetComponent<NavMeshComponent>(obj);
+        if (!navComp) continue;
+
         const auto* meshComp = m_ecs.GetComponent<MeshFilterComponent>(obj);
         if (!meshComp) continue;
         
-        const auto* name = m_ecs.GetComponent<NameComponent>(obj);
-        if (!name->dirty) continue;
-
         auto meshData = resourceManager.GetResource<R_Model>(meshComp->meshGUID);
         if (!meshData) {
+            const auto* name = m_ecs.GetComponent<NameComponent>(obj);
             LOGGING_WARN("Unable to find meshData of " + name->entityName);
             continue;
         }
@@ -877,14 +886,22 @@ void NavMeshManager::SaveMesh(const std::filesystem::path& filePath, const std::
 
 //TODO remove this to R_Resource
 std::shared_ptr<Sample_TileMesh> NavMeshManager::LoadMesh(const std::string& sceneName, const utility::GUID& navGUID) {
-    if (sceneName.find(".prefab") != std::string::npos) return nullptr; // reject if loading prefabs
-    if (navGUID.Empty()) return nullptr;
-
+    if (sceneName.find(".prefab") != std::string::npos) {
+        SetGraphicsRenderMesh(nullptr);
+        return nullptr; // reject if loading prefabs
+    }
+    if (navGUID.Empty()) {
+        SetGraphicsRenderMesh(nullptr);
+        return nullptr;
+    }
 
     std::shared_ptr<Sample_TileMesh> tm;
     auto iter = navMeshData.find(sceneName);
     if (iter == navMeshData.end()) {
         BuildRecastGeometry(sceneName, tm);
+    }
+    else {
+        tm = iter->second;
     }
 
     if (tm == nullptr || tm->m_geom == nullptr) {

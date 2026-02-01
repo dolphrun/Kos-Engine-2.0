@@ -59,7 +59,7 @@ struct UIElementData
 
 struct ScreenTextData : UIElementData
 {
-	R_Font* fontToUse{nullptr};
+	R_Font* fontToUse{ nullptr };
 	std::string textToDraw{};
 	float fontSize{ 16.f };
 	bool isCentered{ false };
@@ -72,6 +72,11 @@ struct ScreenSpriteData : UIElementData
 	unsigned int columns{ 1 }; //Used for sprite sheet stripping
 	unsigned int frameNumber{ 0 }; //Used for animation current frame
 	int entityID = -1;
+
+	// NEW: UV cropping support for health bars and progress bars
+	glm::vec2 uvMin{ 0.0f, 0.0f }; // Bottom-left UV coordinate (default: 0,0)
+	glm::vec2 uvMax{ 1.0f, 1.0f }; // Top-right UV coordinate (default: 1,1)
+	bool useCustomUV{ false }; // Enable custom UV coordinates
 };
 
 struct ScreenGridData : UIElementData
@@ -110,4 +115,3 @@ struct GridMesh : UIMesh
 	void CreateMesh() override;
 	void DrawMesh(const ScreenGridData& gridData, Shader& shader, const CameraData& camera);
 };
-

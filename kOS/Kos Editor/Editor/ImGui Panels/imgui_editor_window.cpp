@@ -343,7 +343,17 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
     if (ImGui::IsKeyPressed(ImGuiKey_Delete)) {
         if (m_clickedEntityId >= 0) {
             m_ecs.DeleteEntity(m_clickedEntityId);
+            m_commandHistory.AddCommand<CommandHistory::DeleteGameObject>(m_clickedEntityId, m_ecs.GetSceneByEntityID(m_clickedEntityId), m_ecs, &m_commandHistory);
             m_clickedEntityId = -1;
+        }
+    }
+
+    //Duplicate Entity
+    if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_D)){
+        if (m_clickedEntityId >= 0 && !m_prefabSceneMode) {
+            ecs::EntityID newID = m_ecs.DuplicateEntity(m_clickedEntityId);
+            m_commandHistory.AddCommand<CommandHistory::AddGameObject>(newID, m_activeScene);
+            m_clickedEntityId = newID;
         }
     }
 

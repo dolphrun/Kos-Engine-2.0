@@ -36,8 +36,10 @@ struct DrawComponents {
         ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
 
         std::string id = "##" + m_Array[count];
+        
+        if (ImGui::DragFloat(id.c_str(), &_args, 0.1f, -0.0f, 0.0f, "%.2f")) {
 
-        ImGui::DragFloat(id.c_str(), &_args, 0.1f, -0.0f, 0.0f, "%.2f");
+        }
 
         count++;
 
