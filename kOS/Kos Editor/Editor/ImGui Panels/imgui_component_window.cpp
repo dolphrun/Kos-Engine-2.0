@@ -42,24 +42,57 @@ void gui::ImGuiHandler::DrawComponentWindow()
         ecs::EntityID entityID = m_clickedEntityId;
         ecs::ComponentSignature EntitySignature = m_ecs.GetEntitySignature(entityID);
 
-        const auto& componentsString = m_ecs.GetComponentsString();
-        static std::vector<const char*>componentNames = {"add Components"};
-        static bool initComponentName = false;
+        
+        static std::vector<const char*>componentNames;
 
-        if (!initComponentName) {
+        if (componentNames.empty()) {
+            const auto& componentsString = m_ecs.GetComponentsString();
             for (const auto& names : componentsString) {
                 componentNames.push_back(names.c_str());
             }
-            initComponentName = true;
         }
 
-        int ComponentTypeIndex = 0;
-        if (ImGui::Combo("##ADDCOMPONENT", &ComponentTypeIndex, componentNames.data(), static_cast<int>(componentNames.size()))) {
-            std::string componentName = componentNames[ComponentTypeIndex];
-            if (!m_ecs.GetEntitySignature(entityID).test(m_ecs.GetComponentKey(componentName))) {
-                auto& action = m_ecs.componentAction.at(componentName);
-                action->AddComponent(entityID);
+        static ImGuiTextFilter componentFilter;
+        static int selectedIndex = -1;
+
+        if (ImGui::Button("Add Component"))
+        {
+            ImGui::OpenPopup("AddComponentPopup");
+        }
+
+        if (ImGui::BeginPopup("AddComponentPopup"))
+        {
+            componentFilter.Draw("Search");
+
+            ImGui::Separator();
+
+            for (int i = 0; i < componentNames.size(); ++i)
+            {
+                const std::string& name = componentNames[i];
+
+                // Filter text
+                if (!componentFilter.PassFilter(name.c_str()))
+                    continue;
+
+                bool alreadyHas =
+                    m_ecs.GetEntitySignature(entityID)
+                    .test(m_ecs.GetComponentKey(name));
+
+                if (alreadyHas)
+                    ImGui::BeginDisabled();
+
+                if (ImGui::Selectable(name.c_str()))
+                {
+                    auto& action = m_ecs.componentAction.at(name);
+                    action->AddComponent(entityID);
+                    ImGui::CloseCurrentPopup();
+                }
+
+                if (alreadyHas)
+                    ImGui::EndDisabled();
             }
+
+            ImGui::EndPopup();
         }
 
         ImGui::SeparatorText("Components");
