@@ -196,6 +196,7 @@ namespace gui {
         void DrawContentBrowser();
         void DrawAssetInspector();
 		void DrawMaterialWindow();
+        void DrawPostProcessWindow();
         void DrawBakedWindow();
         void DrawFieldComponent(ecs::Component* component, const std::string& ComponentName, ecs::EntityID entityID);
         void m_UpdateOnPrefabMode();
