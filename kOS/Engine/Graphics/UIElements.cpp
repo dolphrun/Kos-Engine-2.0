@@ -41,25 +41,25 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 void TextMesh::CreateMesh()
 {
-	glGenVertexArrays(1, &this->vaoID);
-	glGenBuffers(1, &this->vboID);
+    glGenVertexArrays(1, &this->vaoID);
+    glGenBuffers(1, &this->vboID);
 
-	glBindVertexArray(this->vaoID);
-	glBindBuffer(GL_ARRAY_BUFFER, this->vboID);
+    glBindVertexArray(this->vaoID);
+    glBindBuffer(GL_ARRAY_BUFFER, this->vboID);
 
-	constexpr int numberOfVertexes = 6;
-	constexpr int numberOfWorldCoordinates = 2;
-	constexpr int numberOfUVCoordinates = 2;
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfVertexes * (numberOfWorldCoordinates + numberOfUVCoordinates), NULL, GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, (numberOfWorldCoordinates + numberOfUVCoordinates), GL_FLOAT, GL_FALSE, (numberOfWorldCoordinates + numberOfUVCoordinates) * sizeof(float), (void*)0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
+    constexpr int numberOfVertexes = 6;
+    constexpr int numberOfWorldCoordinates = 2;
+    constexpr int numberOfUVCoordinates = 2;
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfVertexes * (numberOfWorldCoordinates + numberOfUVCoordinates), NULL, GL_DYNAMIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, (numberOfWorldCoordinates + numberOfUVCoordinates), GL_FLOAT, GL_FALSE, (numberOfWorldCoordinates + numberOfUVCoordinates) * sizeof(float), (void*)0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
 }
 
 void TextMesh::DrawMesh(const ScreenTextData& textData, Shader& shader, const CameraData& camera)
 {
-	//Unimplemented for now
+    //Unimplemented for now
 }
 
 void ScreenSpriteMesh::CreateMesh()
@@ -67,41 +67,42 @@ void ScreenSpriteMesh::CreateMesh()
     float vertices[] = {
         // pos       // tex
         -0.5f, 0.5f, 0.f,  0.0f, 1.0f, // bottom left
-         -0.5f, -0.5f, 0.f,  0.0f, 0.0f, // bottom right
-         0.5f,  0.5f, 0.f,  1.0f, 1.0f, // top right
-
+         -0.5f, -0.5f, 0.f,  0.0f, 0.0f, // top left
+         0.5f,  0.5f, 0.f,  1.0f, 1.0f, // bottom right
          0.5f,  -0.5f, 0.f,  1.0f, 0.0f, // top right
     };
     short indices[]{
     0, 1, 2, 3
     };
-    GLuint vbo,ebo;
     glGenVertexArrays(1, &vaoID);
-    glGenBuffers(1, &vbo);
+    glGenBuffers(1, &vboID);
+    GLuint ebo;
     glGenBuffers(1, &ebo);
 
     glBindVertexArray(vaoID);
 
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, vboID);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW); // Changed to DYNAMIC_DRAW
 
-    //Bindn the element buffer
+    //Bind the element buffer
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-    // Attribute 0 = vec4 (x, y, u, v)
+    // Attribute 0 = vec3 (x, y, z)
     glVertexAttribPointer(
         0,                // location = 0 in shader
-        3,                // 4 components: x, y, u, v
+        3,                // 3 components: x, y, z
         GL_FLOAT,
         GL_FALSE,
         5 * sizeof(float),// stride
         (void*)0          // offset
     );
     glEnableVertexAttribArray(0);
+
+    // Attribute 1 = vec2 (u, v)
     glVertexAttribPointer(
-        1,                // location = 0 in shader
-        2,                // 4 components: x, y, u, v
+        1,                // location = 1 in shader
+        2,                // 2 components: u, v
         GL_FLOAT,
         GL_FALSE,
         5 * sizeof(float),// stride
@@ -129,8 +130,27 @@ void ScreenSpriteMesh::DrawMesh(const ScreenSpriteData& spriteData, Shader& shad
     glBindTexture(GL_TEXTURE_2D, spriteData.textureToUse->RetrieveTexture());
     shader.SetInt("sprite", 0);
     shader.SetVec4("color", spriteData.color);
-    shader.SetInt("entityID", spriteData.entityID+1);
+    shader.SetInt("entityID", spriteData.entityID + 1);
+
     glBindVertexArray(this->vaoID);
+
+    // NEW: Update UV coordinates if custom UV is enabled
+    if (spriteData.useCustomUV) {
+        // Update the vertex buffer with new UV coordinates
+        float vertices[] = {
+            // pos                    // tex (custom UV)
+            -0.5f,  0.5f, 0.f,  spriteData.uvMin.x, spriteData.uvMax.y, // bottom left
+            -0.5f, -0.5f, 0.f,  spriteData.uvMin.x, spriteData.uvMin.y, // top left
+             0.5f,  0.5f, 0.f,  spriteData.uvMax.x, spriteData.uvMax.y, // bottom right
+             0.5f, -0.5f, 0.f,  spriteData.uvMax.x, spriteData.uvMin.y, // top right
+        };
+
+        // Bind the VBO stored in this mesh and update it
+        glBindBuffer(GL_ARRAY_BUFFER, this->vboID);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+    }
+
     glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_SHORT, NULL);
     glBindVertexArray(0);
 
@@ -141,6 +161,7 @@ void ScreenSpriteMesh::DrawMesh(const ScreenSpriteData& spriteData, Shader& shad
     }
     shader.Disuse();
 }
+
 void ScreenSpriteMesh::DrawMeshWorld(const ScreenSpriteData& spriteData, Shader& shader, const CameraData& camera)
 {
     shader.Use();
@@ -159,7 +180,26 @@ void ScreenSpriteMesh::DrawMeshWorld(const ScreenSpriteData& spriteData, Shader&
     shader.SetInt("sprite", 0);
     shader.SetVec4("color", spriteData.color);
     shader.SetInt("entityID", spriteData.entityID + 1);
+
     glBindVertexArray(this->vaoID);
+
+    // NEW: Update UV coordinates if custom UV is enabled
+    if (spriteData.useCustomUV) {
+        // Update the vertex buffer with new UV coordinates
+        float vertices[] = {
+            // pos                    // tex (custom UV)
+            -0.5f,  0.5f, 0.f,  spriteData.uvMin.x, spriteData.uvMax.y, // bottom left
+            -0.5f, -0.5f, 0.f,  spriteData.uvMin.x, spriteData.uvMin.y, // top left
+             0.5f,  0.5f, 0.f,  spriteData.uvMax.x, spriteData.uvMax.y, // bottom right
+             0.5f, -0.5f, 0.f,  spriteData.uvMax.x, spriteData.uvMin.y, // top right
+        };
+
+        // Bind the VBO stored in this mesh and update it
+        glBindBuffer(GL_ARRAY_BUFFER, this->vboID);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+    }
+
     glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_SHORT, NULL);
     glBindVertexArray(0);
 

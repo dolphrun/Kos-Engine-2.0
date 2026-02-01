@@ -35,3 +35,4 @@
 #include "LoseScreenScript.h"
 #include "WinScreenScript.h"
 #include "UIButtonScript.h"
+#include "NEW_HealthBarUIScript.h"

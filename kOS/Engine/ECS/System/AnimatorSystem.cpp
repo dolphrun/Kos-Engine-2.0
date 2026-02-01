@@ -9,6 +9,23 @@ namespace ecs {
     void AnimatorSystem::Init()
     {
         // Initialize animation playback resources if needed
+       /* onRegister.Add([&](EntityID id) {
+            AnimatorComponent* anim = m_ecs.GetComponent<AnimatorComponent>(id);
+            if (!anim) return;
+            anim->m_currentState = new AnimState{};
+           
+
+            });
+
+        onDeregister.Add([&](EntityID id) {
+            AnimatorComponent* anim = m_ecs.GetComponent<AnimatorComponent>(id);
+            if (!anim) return;
+
+            if (anim->m_currentState)
+            delete anim->m_currentState;
+
+            });*/
+
     }
 
     void AnimatorSystem::Update()
@@ -23,41 +40,36 @@ namespace ecs {
             if (nameComp->hide)
                 continue;
 
-            R_AnimController* controller{};
-            R_Animation* animation{};
-
+            R_AnimController* controller{nullptr};
+            R_Animation* animation{nullptr};
+            AnimState* currentState{ nullptr };
             controller = m_resourceManager.GetResource<R_AnimController>(animator->controllerGUID).get();
 
             if (controller)
             {
-                if (animator->m_currentState)
+                if (animator->m_transitioningStateID)
                 {
-                    std::vector<AnimTransition>& transitions = static_cast<AnimState*>(animator->m_currentState)->outgoingTransitions;
-                    for (const AnimTransition& transition : transitions)
-                    {
-                        if (static_cast<AnimState*>(animator->m_currentState)->CanTransition(transition))
-                        {
-                            animator->m_currentState = controller->FindStateFromPin(transition.toPinId);
-                            animator->m_CurrentTime = 0.f;
-                            if (animator->m_currentState == nullptr) return;
-                            break;
-                        }
-                    }
-                    
-                    animation = m_resourceManager.GetResource<R_Animation>(static_cast<AnimState*>(animator->m_currentState)->animationGUID).get();
+                    animator->m_currentStateID = animator->m_transitioningStateID;
+                    animator->m_transitioningStateID = 0;
+                }
+
+                if (animator->m_currentStateID)
+                {
+                    currentState = controller->RetrieveStateByID(animator->m_currentStateID); 
+                    animation = m_resourceManager.GetResource<R_Animation>(currentState->animationGUID).get();
                 }
                    
 
             }
                 
-            if (animation && animator->m_IsPlaying)
+            if (animation && animator->m_IsPlaying && currentState)
             {
                 int steps = m_physicsManager.FrameCount();
                 for (int i = 0; i < steps; i++)
                 {
-                    float add = (animation->GetTicksPerSecond() * m_physicsManager.FixedDeltaTime() * static_cast<AnimState*>(animator->m_currentState)->playSpeed) * animator->m_PlaybackSpeed * m_ecs.GetTimeScale();                   
+                    float add = (animation->GetTicksPerSecond() * m_physicsManager.FixedDeltaTime() * currentState->playSpeed) * animator->m_PlaybackSpeed * m_ecs.GetTimeScale();                   
                     animator->m_CurrentTime += add;
-                    if (static_cast<AnimState*>(animator->m_currentState)->isLooping)
+                    if (currentState->isLooping)
                         animator->m_CurrentTime = fmod(animator->m_CurrentTime, animation->GetDuration());
                 }
             }

@@ -24,8 +24,12 @@ namespace ecs {
 	public:
 		utility::GUID spriteGUID{};
 		glm::vec4 color{ 1.f,1.f,1.f,1.f };
-		
-		REFLECTABLE(SpriteComponent, spriteGUID, color);
+
+		// NEW: UV cropping support for health bars and progress bars
+		glm::vec2 uvMin{ 0.0f, 0.0f }; // Bottom-left UV coordinate (default: 0,0)
+		glm::vec2 uvMax{ 1.0f, 1.0f }; // Top-right UV coordinate (default: 1,1)
+		bool useCustomUV{ false }; // Enable custom UV coordinates
+		REFLECTABLE(SpriteComponent, spriteGUID, color, uvMin, uvMax, useCustomUV);
 	};
 
 }
