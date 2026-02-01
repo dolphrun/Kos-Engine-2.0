@@ -68,7 +68,7 @@ void GraphicsManager::gm_Initialize(float width, float height) {
 		  "Resource/5d8311c4-da53-b0cc-ebec-376730e44ab4.dds", "Resource/099a08b9-935e-d6b8-cbdd-1f2acf398fc8.dds",
 		  "Resource/8fee6749-a54c-3071-9cd2-018187d80c78.dds", "Resource/fbc7a73b-7fe4-f273-c5c2-73b9f0e08796.dds" });
 	Vigniette::currentShader = &shaderManager.engineShaders.find("VignietteShader")->second;
-
+	FilmGrain::currentShader = &shaderManager.engineShaders.find("FilmGrainShader")->second;
 }
 
 void GraphicsManager::gm_Update()

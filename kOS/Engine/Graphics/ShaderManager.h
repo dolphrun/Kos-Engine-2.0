@@ -58,7 +58,7 @@ public:
 		engineShaders.insert({ "FowardParticleShader",Shader(fwdParticleVS,fwdParticleFS) });
 		engineShaders.insert({ "GBufferWorldShader", Shader(worldSpriteVS,worldSpriteFS) });
 		engineShaders.insert({ "VignietteShader", Shader(vignietteShaderVS,vignietteShaderFS)});
-
+		engineShaders.insert({ "FilmGrainShader",Shader(filmGrainVS,filmGrainFS) });
 	}
 
 	std::unordered_map<std::string, Shader> engineShaders;
@@ -202,5 +202,11 @@ private:
 	const char* vignietteShaderFS
 	{
 		#include "CoreEngineShaders/Shaders/VignietteShader/VignietteShader.fs"
+	};
+	const char* filmGrainVS{
+		#include "CoreEngineShaders/Shaders/FilmGrainShader/FilmGrain.vs"
+	};
+	const char* filmGrainFS{
+		#include "CoreEngineShaders/Shaders/FilmGrainShader/FilmGrain.fs"
 	};
 };

@@ -37,6 +37,6 @@ FilmGrain::FilmGrain(const FilmGrain& other)
 }
 void FilmGrain::UpdateShader() {
 	//Set intensity
-	currentShader->SetFloat("iNoiseStrength", noiseStrength);
+	currentShader->SetFloat("iNoise", noiseStrength);
 	//std::cout << intensity << ' ' << extent << '\n';
 }
