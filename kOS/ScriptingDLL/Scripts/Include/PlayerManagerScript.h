@@ -190,9 +190,10 @@ inline void PlayerManagerScript::Start() {
 		playerController = resource->GetResource<R_AnimController>(anim->controllerGUID).get();
 		if (playerController)
 		{
-			currAnimationState = *playerController->m_EnterState;
+			// COMMENTED OUT FOR ANIM
+			/*currAnimationState = *playerController->m_EnterState;
 			anim->m_currentState = &currAnimationState;
-			static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");
+			static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");*/
 		}
 	}
 }
@@ -443,6 +444,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 	//Animation Handling
 	if (anim)
 	{
+		// COMMENTED OUT FOR ANIM
+		/*
 		if (anim->m_currentState)
 		{
 
@@ -454,12 +457,15 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			}
 
 		}
+		*/
 	}
 
 	// SHOOT
 	if (Input->IsKeyTriggered(keys::LMB)) {
 		playerIsAttacking = true;
 
+		// COMMENTED OUT FOR ANIM
+		/*
 		if (anim)
 		{
 			if (anim->m_currentState)
@@ -467,6 +473,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasShot");
 			}
 		}
+		*/
 		// ADD ATTACK ANIMATION HERE USING PLAYERISATTACKING BOOLEAN
 
 		if (playerPowerupHeld == Powerup::NONE) {
@@ -717,6 +724,9 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				// ADD SFX OF POWERUP PICKUP HERE
 			}
 		}
+
+		// COMMENTED OUT FOR ANIM
+		/*
 		if (anim && hasAbsorbed)
 		{
 			if (anim->m_currentState)
@@ -724,6 +734,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasAbsorbed");
 			}
 		}
+		*/
 	}
 }
 

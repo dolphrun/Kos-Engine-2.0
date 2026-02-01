@@ -52,6 +52,7 @@ public:
 
 inline void EnemyManagerScript::Start() {
 	playerToChaseID = ecsPtr->GetEntityIDFromGUID(playerToChase);
+	//enemyHurtboxPositionID = ecsPtr->GetEntityIDFromGUID(enemyHurtboxPosition);
 
 	auto* trans = ecsPtr->GetComponent<TransformComponent>(entity);
 	auto* capsule = ecsPtr->GetComponent<CapsuleColliderComponent>(entity);
@@ -64,14 +65,16 @@ inline void EnemyManagerScript::Start() {
 		enemyHurtboxPositionID = children[0];
 	}
 
+	//enemyModelID = ecsPtr->GetEntityIDFromGUID(enemyModel);
 	if (anim = ecsPtr->GetComponent<ecs::AnimatorComponent>(enemyModelID))
 	{
 		enemyController = resource->GetResource<R_AnimController>(anim->controllerGUID).get();
 		if (enemyController)
 		{
-			currAnimationState = *enemyController->m_EnterState;
+			// COMMENTED OUT FOR ANIM
+			/*currAnimationState = *enemyController->m_EnterState;
 			anim->m_currentState = &currAnimationState;
-			static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");
+			static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");*/
 		}
 	}
 }
@@ -102,18 +105,27 @@ inline void EnemyManagerScript::Update() {
 	glm::vec3 direction = playerTransform->LocalTransformation.position - enemyTransform->LocalTransformation.position;
 	direction = glm::normalize(direction);
 
+	// Calculate yaw (rotation around Y axis)
 	float yaw = std::atan2(direction.x, direction.z);
+
+	// Calculate pitch (rotation around X axis)
 	float pitch = std::asin(-direction.y);
+
+	// Roll is typically 0 for forward-facing directions
+	float roll = 0.0f;
+
 	glm::vec3 rotation(0.f, yaw, 0.f);
 	glm::vec3 rotationDegrees = glm::degrees(rotation);
 
 	enemyTransform->LocalTransformation.rotation = rotationDegrees;
 
+	// COMMENTED OUT FOR ANIM
+	/*
 	if (anim)
 	{
 		R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
 		float animDuration = currAnim->GetDuration();
-
+		//Checkcing if animation is done
 		if (anim->m_CurrentTime >= animDuration && !static_cast<AnimState*>(anim->m_currentState)->isLooping)
 		{
 			static_cast<AnimState*>(anim->m_currentState)->SetTrigger("AnimationFinished");
@@ -122,36 +134,91 @@ inline void EnemyManagerScript::Update() {
 			attackHurtboxIsSpawn = false;
 		}
 	}
+	*/
 
 	// SWITCH DISTANCE BASED ON STRING
 	float currentActiveRange = (enemyType == "Ranged") ? enemyRangedAttackRange : enemyAttackRange;
 
 	if (glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= currentActiveRange) {
+
+		// DONT UNCOMMENT THIS
+		//if (!enemyIsAttacking) {
+		//	std::shared_ptr<R_Scene> enemyHurtbox = resource->GetResource<R_Scene>(enemyHurtboxPrefab);
+
+		//	if (enemyHurtbox) {
+		//		std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+		//		ecs::EntityID enemyHurtboxID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyHurtboxPrefab);
+
+		//		if (auto* enemyHurtboxTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxID)) {
+		//			enemyHurtboxTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxPositionID)->WorldTransformation.position;
+		//		}
+		//	}
+		//}
+		//if (!enemyIsAttacking) {
+		//	std::shared_ptr<R_Scene> enemyHurtbox = resource->GetResource<R_Scene>(enemyHurtboxPrefab);
+
+		//	if (enemyHurtbox) {
+		//		std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+		//		ecs::EntityID enemyHurtboxID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyHurtboxPrefab);
+
+		//		if (auto* enemyHurtboxTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxID)) {
+		//			enemyHurtboxTransform->LocalTransformation.position = enemyTransform->LocalTransformation.position + direction;
+		//		}
+		//	}
+		//}
 		enemyIsAttacking = true;
 		if (anim)
 		{
+			// COMMENTED OUT FOR ANIM
+			/*
 			if (anim->m_currentState)
 			{
+				//This will transition into attacking state
 				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("AttackingPlayer");
 			}
+			*/
 		}
 	}
 
 	if (enemyIsAttacking) {
-		// NAVMESH STOP FOLLOWING (Implicit because we don't call MoveAgent in this block)
-		// By setting the agent's destination to its own current position, I think it won't slide??
+		// NAVMESH STOP FOLLOWING
+		// Not calling MoveAgent stops following - SF
+		// ADD ENEMY ATTACKING ANIMATION
+
+		// FORCE STOP for Ranged enemies
 		if (enemyType == "Ranged") {
 			navMeshPtr->MoveAgent(agentid, enemyTransform->WorldTransformation.position);
 		}
 
+		// BEFORE CODE WORKS, I TESTED
+		// if (CHECK IF ANIMATION OF THE ENEMY IS AFTER THE ENEMY CLAWED OR SOME SHIT (e.g: ANIMATION TIMER IS AT 2s MARK)) {
+				//std::shared_ptr<R_Scene> enemyHurtbox = resource->GetResource<R_Scene>(enemyHurtboxPrefab);
+
+				//if (enemyHurtbox) {
+				//	std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+				//	ecs::EntityID enemyHurtboxID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyHurtboxPrefab);
+
+				//	if (auto* enemyHurtboxTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxID)) {
+				//		enemyHurtboxTransform->LocalTransformation.position = enemyTransform->LocalTransformation.position + direction;
+				//	}
+				//}
+		// }
+
+
+		// if (CHECK IF ANIMATION IS DONE) {
+		//		enemyIsAttacking = false;
+		// }
 		if (anim && !attackHurtboxIsSpawn)
 		{
+			// COMMENTED OUT FOR ANIM
+			/*
 			if (anim->m_currentState)
 			{
 				R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
 				float animDuration = currAnim->GetDuration();
 
-				// Trigger attack at 50% animation
+				//CHECK IF ANIMATION OF THE ENEMY IS AFTER THE ENEMY CLAWED OR SOME SHIT(e.g: ANIMATION TIMER IS AT 2s MARK
+				//Simulating 2 secconds, you might wanna change this
 				if (anim->m_CurrentTime >= animDuration * 0.5f && static_cast<AnimState*>(anim->m_currentState)->name == "Attacking")
 				{
 					// SWITCH SPAWN BEHAVIOR BASED ON STRING
@@ -193,19 +260,24 @@ inline void EnemyManagerScript::Update() {
 					attackHurtboxIsSpawn = true;
 				}
 			}
+			*/
 		}
+
 	}
 	else if (glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= enemyChaseRange) {
 		// NAVMESH FOLLOW TOWARDS PLAYER
 		navMeshPtr->MoveAgent(agentid, playerTransform->LocalTransformation.position);
-
+		// ADD ENEMY RUNNING ANIMATION
 		if (anim)
 		{
+			// COMMENTED OUT FOR ANIM
+			/*
 			if (anim->m_currentState)
 			{
+				//This will transition into chasing state
 				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("PlayerDetected");
 			}
-
+			*/
 		}
 	}
 
