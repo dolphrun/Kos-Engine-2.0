@@ -235,6 +235,7 @@ namespace gui {
 				DrawBakedWindow();
 				DrawAnimatorControllerWindow();
 				DrawNavMeshWindow();
+				DrawPostProcessWindow();
 			}
 
 		}

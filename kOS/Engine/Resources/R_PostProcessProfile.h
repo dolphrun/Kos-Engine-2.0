@@ -10,5 +10,5 @@ public:
 	void Load() override;
 	void Unload() override;
 	PostProcessingProfile profile;
-	REFLECTABLE(PostProcessingProfile);
+	REFLECTABLE(R_PostProcessingProfile);
 };
