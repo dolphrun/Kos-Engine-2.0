@@ -25,13 +25,13 @@
             "hide": false
         },
         "SkinnedMeshRendererComponent": {
-            "skinnedMeshGUID": "f5ba9875-6419-18e8-22e8-72e71008b8bb",
+            "skinnedMeshGUID": "0c44c479-520e-8c24-acf1-0ef17cfe8e58",
             "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
         },
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": -10.771267890930176,
+                    "x": 0.3621222972869873,
                     "y": -87.14293670654297,
                     "z": -0.9707813262939453
                 },
@@ -48,7 +48,7 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": -10.771267890930176,
+                    "x": 0.3621222972869873,
                     "y": -87.14293670654297,
                     "z": -0.9707813262939453
                 },
