@@ -157,6 +157,73 @@ public:
 
 	float bobbingTimer = 0.f;
 
+	//Shooting pref
+	
+	bool isReloading = false;
+	float reloadDuration = 1.25f;
+	float currentReloadTimer = 0.0f;
+
+	bool autoReload = true;
+
+	inline int GetMaxBulletsForCurrentWeapon() const {
+		switch (playerPowerupHeld) {
+		case Powerup::LIGHTNING: return lightningMaxBullets;
+		case Powerup::ACID:      return acidMaxBullets;
+		default:                return baseMaxBullets; 
+		}
+	}
+
+	inline int& GetCurrBulletsForCurrentWeapon() {
+		switch (playerPowerupHeld) {
+		case Powerup::LIGHTNING: return lightningCurrBullets;
+		case Powerup::ACID:      return acidCurrBullets;
+		default:                return baseCurrBullets;
+		}
+	}
+
+	inline float GetShootCooldownForCurrentWeapon() const {
+		switch (playerPowerupHeld) {
+		case Powerup::LIGHTNING: return lightningShootCooldown;
+		case Powerup::ACID:      return acidShootCooldown;
+		default:                return baseShootCooldown;
+		}
+	}
+
+	inline float& GetCurrShootCooldownForCurrentWeapon() {
+		switch (playerPowerupHeld) {
+		case Powerup::LIGHTNING: return lightningCurrShootCooldown;
+		case Powerup::ACID:      return acidCurrShootCooldown;
+		default:                return baseCurrShootCooldown;
+		}
+	}
+
+	inline void StartReload() {
+		if (isReloading) return;
+
+		int& curr = GetCurrBulletsForCurrentWeapon();
+		const int maxBullet = GetMaxBulletsForCurrentWeapon();
+		if (curr >= maxBullet) return;
+
+		isReloading = true;
+		currentReloadTimer = reloadDuration;
+
+		//Reload anim
+		// Reload sfx
+
+	}
+
+	inline void FinishReload() {
+		int& curr = GetCurrBulletsForCurrentWeapon();
+		curr = GetMaxBulletsForCurrentWeapon();
+
+		isReloading = false;
+		currentReloadTimer = 0.0f;
+	}
+
+	// Powerup interactino Cooldown
+	float interactCooldown = 30.0f;
+	float currInteractCooldown = 0.0f;
+
 	// SFX
 	utility::GUID gunSfxGUID_1;
 	utility::GUID gunSfxGUID_2;
@@ -221,7 +288,7 @@ inline void PlayerManagerScript::Start() {
 
 	if (pauseMenuManagerObject != utility::GUID{}) {
 		pauseMenuManagerID = ecsPtr->GetEntityIDFromGUID(pauseMenuManagerObject);
-		std::cout << "PlayerManager connected to PauseMenuManager!\n";
+		//std::cout << "PlayerManager connected to PauseMenuManager!\n";
 	}
 	healthUIObjectID = ecsPtr->GetEntityIDFromGUID(healthUIObject);
 	loseScreenCanvasID = ecsPtr->GetEntityIDFromGUID(loseScreenCanvasObject);
@@ -244,7 +311,7 @@ inline void PlayerManagerScript::Start() {
 inline void PlayerManagerScript::Update() {
 
 	if (Input->IsKeyReleased(keys::L)) {
-		std::cout << "L RELEASED\n";
+		//std::cout << "L RELEASED\n";
 		Scenes->ReloadScene();
 
 		if (auto* pauseManager = ecsPtr->GetComponent<PauseMenuScript>(pauseMenuManagerID)) {
@@ -257,7 +324,7 @@ inline void PlayerManagerScript::Update() {
 
 	if (Input->IsKeyTriggered(keys::ESC)) {
 		if (auto* pauseManager = ecsPtr->GetComponent<PauseMenuScript>(pauseMenuManagerID)) {
-			std::cout << "PAUSE PAUSE PAUSE\n";
+			//std::cout << "PAUSE PAUSE PAUSE\n";
 			pauseManager->TogglePause();
 		}
 	}
@@ -276,6 +343,37 @@ inline void PlayerManagerScript::Update() {
 		return; // Skip ALL player input
 	}
 
+	if (currInteractCooldown > 0.0f)
+	{
+		currInteractCooldown -= ecsPtr->m_GetDeltaTime();
+		//std::cout << "Kūrudaun TICKING TIMER "
+			//<< currInteractCooldown << "s\n";
+
+		if (currInteractCooldown < 0.0f) {
+			currInteractCooldown = 0.0f;
+			//std::cout << "Kūrudaunfinisshu!!!!\n";
+
+		}
+	}
+
+	{
+		float& cd = GetCurrShootCooldownForCurrentWeapon();
+		if (cd > 0.0f) cd -= ecsPtr->m_GetDeltaTime();
+		if (cd < 0.0f) cd = 0.0f;
+	}
+
+	// R to manual relod
+	if (Input->IsKeyTriggered(keys::R)) {
+		StartReload();
+	}
+
+	if (isReloading) {
+		currentReloadTimer -= ecsPtr->m_GetDeltaTime();
+		if (currentReloadTimer <= 0.0f) {
+			FinishReload();
+		}
+	}
+
 	if (fireCurrMovementCooldown >= 0.f) {
 		fireCurrMovementCooldown -= ecsPtr->m_GetDeltaTime();
 	}
@@ -287,13 +385,20 @@ inline void PlayerManagerScript::Update() {
 	if (lightningCurrMovementCooldown >= 0.f) {
 		lightningCurrMovementCooldown -= ecsPtr->m_GetDeltaTime();
 	}
-
+	
+	// LMB Ability Countdowns
+	if (fireCurrMeleeCooldown > 0.0f)
+	{
+		fireCurrMeleeCooldown -= ecsPtr->m_GetDeltaTime();
+		if (fireCurrMeleeCooldown < 0.0f)
+			fireCurrMeleeCooldown = 0.0f;
+	}
 	PlayerMovementControls();
 	PlayerCameraControls();
 	PlayerCombatControls();
 
 	if (Input->IsKeyPressed(keys::SPACE)) {
-		std::cout << "[DEBUG] Space pressed - Grounded: " << GroundCheck() << std::endl;
+		//std::cout << "[DEBUG] Space pressed - Grounded: " << GroundCheck() << std::endl;
 	}
 }
 
@@ -804,6 +909,9 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 	// INTERACT
 	if (Input->IsKeyTriggered(keys::E)) {
 
+		if (currInteractCooldown > 0.0f)
+			return;
+
 		bool hasAbsorbed = false;
 
 
@@ -826,6 +934,9 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				}
 				
 				currMana = maxMana;
+				currInteractCooldown = interactCooldown;
+				std::cout << "Powerup picked up. Cooldown STARTO!!!!::: "
+					<< currInteractCooldown << "s\n";
 
 				// ADD SFX
 			}
@@ -835,6 +946,25 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 	// SHOOT
 	// ADD RELOAD HERE
 	if (Input->IsKeyTriggered(keys::LMB)) {
+
+		// Don't shoot while reloading
+		if (isReloading) return;
+
+		// Cooldown check
+		float& cd = GetCurrShootCooldownForCurrentWeapon();
+		if (cd > 0.0f) return;
+
+		// Ammo check
+		int& currBullets = GetCurrBulletsForCurrentWeapon();
+		if (currBullets <= 0) {
+			if (autoReload) StartReload();
+			return;
+		}
+
+		// Consume ammo + apply cooldown
+		currBullets -= 1;
+		cd = GetShootCooldownForCurrentWeapon();
+
 		if (playerPowerupHeld == Powerup::NONE) {
 			std::shared_ptr<R_Scene> bullet = resource->GetResource<R_Scene>(bulletPrefab);
 
@@ -870,7 +1000,12 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			}
 		}
 		else if (playerPowerupHeld == Powerup::FIRE) {
+			if (fireCurrMeleeCooldown > 0.0f)
+				return;
+
 			std::shared_ptr<R_Scene> fireLMB = resource->GetResource<R_Scene>(fireLMBPrefab);
+
+			fireCurrMeleeCooldown = fireMeleeCooldown;
 
 			if (fireLMB) {
 				std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
