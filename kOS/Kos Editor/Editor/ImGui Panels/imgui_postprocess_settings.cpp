@@ -33,7 +33,6 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 
 ;	}
 	if (!postProcessSettings::ppp) {
-		ImGui::End();;
 		return;;
 	}
 
