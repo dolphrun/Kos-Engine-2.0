@@ -3,6 +3,7 @@
         "SceneData": {
             "skyBoxGUID": [],
             "NavMeshGuid": "00000000-0000-002c-0000-01a1d13476c0",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
             "ambientIntensity": 1.0
         }
     },
@@ -33,8 +34,7 @@
             "entityTag": "Default",
             "isPrefab": false,
             "prefabName": "",
-            "hide": false,
-            "isStatic": false
+            "hide": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -71,27 +71,91 @@
                     "z": 1.0
                 }
             }
+        }
+    },
+    {
+        "entityGUID": "77f28ecc-06d7-8c59-9a3e-5d5b60be81ec",
+        "CanvasRendererComponent": {
+            "isScreenSpace": true
+        },
+        "NameComponent": {
+            "entityName": "Canvas",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
         },
         "children": [
             {
-                "entityGUID": "77f28ecc-06d7-8c59-9a3e-5d5b60be81ec",
-                "CanvasRendererComponent": {
-                    "isScreenSpace": true
-                },
+                "entityGUID": "bc11d64f-ad72-8dc2-964f-a15e72cc2f96",
                 "NameComponent": {
-                    "entityName": "Canvas",
+                    "entityName": "Alcehmication Logo",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "3bbad58e-5746-e247-4660-9ba487cf9ddd",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 0.0,
+                            "y": 0.5,
                             "z": 0.0
                         },
                         "rotation": {
@@ -100,15 +164,15 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
+                            "x": 2.0,
+                            "y": 2.0,
                             "z": 1.0
                         }
                     },
                     "LocalTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 0.0,
+                            "y": 0.5,
                             "z": 0.0
                         },
                         "rotation": {
@@ -117,229 +181,192 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
+                            "x": 2.0,
+                            "y": 2.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "e9a24cbf-3f0e-0836-830e-011981f9f41e",
+                "ButtonComponent": {
+                    "normalColor": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "hoveredColor": {
+                        "x": 0.800000011920929,
+                        "y": 0.800000011920929,
+                        "z": 0.800000011920929,
+                        "w": 1.0
+                    },
+                    "pressedColor": {
+                        "x": 0.6000000238418579,
+                        "y": 0.6000000238418579,
+                        "z": 0.6000000238418579,
+                        "w": 1.0
+                    },
+                    "isHovered": false,
+                    "isPressed": false
+                },
+                "NameComponent": {
+                    "entityName": "Start Button",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "612c45df-5d4b-204c-4b6b-92465dd7f6f4",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": -0.10000000149011612,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.699999988079071,
+                            "y": 0.4000000059604645,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": -0.10000000149011612,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.699999988079071,
+                            "y": 0.4000000059604645,
                             "z": 1.0
                         }
                     }
                 },
-                "children": [
-                    {
-                        "entityGUID": "bc11d64f-ad72-8dc2-964f-a15e72cc2f96",
-                        "NameComponent": {
-                            "entityName": "Alcehmication Logo",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": false,
-                            "prefabName": "",
-                            "hide": false,
-                            "isStatic": false
+                "UIButtonScript": {
+                    "actionType": 1,
+                    "currentSceneGUID": "873145a3-c01e-82b3-a4f5-d837cb0a0c51",
+                    "targetSceneGUID": "2f4dc450-3563-7399-23f3-38b816ea2631",
+                    "wasPressed": false
+                }
+            },
+            {
+                "entityGUID": "d5ac8c98-a99b-101d-11d7-66367499dc46",
+                "ButtonComponent": {
+                    "normalColor": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "hoveredColor": {
+                        "x": 0.800000011920929,
+                        "y": 0.800000011920929,
+                        "z": 0.800000011920929,
+                        "w": 1.0
+                    },
+                    "pressedColor": {
+                        "x": 0.6000000238418579,
+                        "y": 0.6000000238418579,
+                        "z": 0.6000000238418579,
+                        "w": 1.0
+                    },
+                    "isHovered": false,
+                    "isPressed": false
+                },
+                "NameComponent": {
+                    "entityName": "Quit Button",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "a6918fdc-bfcb-feab-5f96-86e8d9485e45",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": -0.6000000238418579,
+                            "z": 0.0
                         },
-                        "SpriteComponent": {
-                            "spriteGUID": "3bbad58e-5746-e247-4660-9ba487cf9ddd",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            }
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
                         },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": 0.0,
-                                    "y": 0.5,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 2.0,
-                                    "y": 2.0,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": 0.0,
-                                    "y": 0.5,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 2.0,
-                                    "y": 2.0,
-                                    "z": 1.0
-                                }
-                            }
+                        "scale": {
+                            "x": 0.699999988079071,
+                            "y": 0.4000000059604645,
+                            "z": 1.0
                         }
                     },
-                    {
-                        "entityGUID": "e9a24cbf-3f0e-0836-830e-011981f9f41e",
-                        "ButtonComponent": {
-                            "normalColor": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            },
-                            "hoveredColor": {
-                                "x": 0.800000011920929,
-                                "y": 0.800000011920929,
-                                "z": 0.800000011920929,
-                                "w": 1.0
-                            },
-                            "pressedColor": {
-                                "x": 0.6000000238418579,
-                                "y": 0.6000000238418579,
-                                "z": 0.6000000238418579,
-                                "w": 1.0
-                            },
-                            "isHovered": false,
-                            "isPressed": false
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": -0.6000000238418579,
+                            "z": 0.0
                         },
-                        "NameComponent": {
-                            "entityName": "Start Button",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": false,
-                            "prefabName": "",
-                            "hide": false,
-                            "isStatic": false
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
                         },
-                        "SpriteComponent": {
-                            "spriteGUID": "612c45df-5d4b-204c-4b6b-92465dd7f6f4",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            }
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": 0.0,
-                                    "y": -0.10000000149011612,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.699999988079071,
-                                    "y": 0.4000000059604645,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": 0.0,
-                                    "y": -0.10000000149011612,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.699999988079071,
-                                    "y": 0.4000000059604645,
-                                    "z": 1.0
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "entityGUID": "d5ac8c98-a99b-101d-11d7-66367499dc46",
-                        "ButtonComponent": {
-                            "normalColor": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            },
-                            "hoveredColor": {
-                                "x": 0.800000011920929,
-                                "y": 0.800000011920929,
-                                "z": 0.800000011920929,
-                                "w": 1.0
-                            },
-                            "pressedColor": {
-                                "x": 0.6000000238418579,
-                                "y": 0.6000000238418579,
-                                "z": 0.6000000238418579,
-                                "w": 1.0
-                            },
-                            "isHovered": false,
-                            "isPressed": false
-                        },
-                        "NameComponent": {
-                            "entityName": "Quit Button",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": false,
-                            "prefabName": "",
-                            "hide": false,
-                            "isStatic": false
-                        },
-                        "SpriteComponent": {
-                            "spriteGUID": "a6918fdc-bfcb-feab-5f96-86e8d9485e45",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            }
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": 0.0,
-                                    "y": -0.6000000238418579,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.699999988079071,
-                                    "y": 0.4000000059604645,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": 0.0,
-                                    "y": -0.6000000238418579,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.699999988079071,
-                                    "y": 0.4000000059604645,
-                                    "z": 1.0
-                                }
-                            }
+                        "scale": {
+                            "x": 0.699999988079071,
+                            "y": 0.4000000059604645,
+                            "z": 1.0
                         }
                     }
-                ]
+                }
             }
         ]
     }

@@ -132,6 +132,10 @@ void ScreenSpriteMesh::DrawMesh(const ScreenSpriteData& spriteData, Shader& shad
     shader.SetVec4("color", spriteData.color);
     shader.SetInt("entityID", spriteData.entityID + 1);
 
+    // CRITICAL: Enable alpha blending for transparency
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     glBindVertexArray(this->vaoID);
 
     // NEW: Update UV coordinates if custom UV is enabled
@@ -153,6 +157,9 @@ void ScreenSpriteMesh::DrawMesh(const ScreenSpriteData& spriteData, Shader& shad
 
     glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_SHORT, NULL);
     glBindVertexArray(0);
+
+    // Disable blending after drawing (good practice)
+    glDisable(GL_BLEND);
 
     GLenum err = glGetError();
     if (err != GL_NO_ERROR) {
@@ -181,6 +188,10 @@ void ScreenSpriteMesh::DrawMeshWorld(const ScreenSpriteData& spriteData, Shader&
     shader.SetVec4("color", spriteData.color);
     shader.SetInt("entityID", spriteData.entityID + 1);
 
+    // CRITICAL: Enable alpha blending for transparency
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     glBindVertexArray(this->vaoID);
 
     // NEW: Update UV coordinates if custom UV is enabled
@@ -202,6 +213,9 @@ void ScreenSpriteMesh::DrawMeshWorld(const ScreenSpriteData& spriteData, Shader&
 
     glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_SHORT, NULL);
     glBindVertexArray(0);
+
+    // Disable blending after drawing
+    glDisable(GL_BLEND);
 
     GLenum err = glGetError();
     if (err != GL_NO_ERROR) {

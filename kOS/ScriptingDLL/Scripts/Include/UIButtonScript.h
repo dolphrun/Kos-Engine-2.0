@@ -3,82 +3,108 @@
 #include "Config/pch.h"
 #include "ScriptAdapter/TemplateSC.h"
 
+/*
+    UIButtonScript
+    ==============
+    A reusable button script that attaches to any entity with a
+    ButtonComponent and SpriteComponent.
+
+    How to use:
+    1. Attach this script to your button entity
+    2. In the inspector, set "actionType" to one of the following:
+        - 0: None (does nothing)
+        - 1: LoadScene (switches to a different scene)
+        - 2: QuitGame (exits the application)
+    3. If you set actionType to 1 (LoadScene), also fill in:
+        - "currentSceneGUID": drag the scene file you are currently IN
+        - "targetSceneGUID": drag the scene file you want to go TO
+*/
+
 class UIButtonScript : public TemplateSC {
 public:
 
-    // ===== Action Types =====
-    enum class ButtonAction {
-        None = 0,
-        LoadScene = 1,
-        QuitGame = 2,
-        CustomCallback = 3
-    };
+    // What this button does when clicked (0=None, 1=LoadScene, 2=QuitGame)
+    int actionType = 0;
 
-    // Button action configuration
-    int actionType = 0;  // 0=None, 1=LoadScene, 2=QuitGame, 3=Custom
-    std::string sceneToLoad = ""; 
-    bool wasPressed = false;  
+    // The scene this button is currently in (will be cleared on click)
+    utility::GUID currentSceneGUID;
 
+    // The scene to load when clicked
+    utility::GUID targetSceneGUID;
+
+    // Tracks whether the button was pressed last frame
+    bool wasPressed = false;
 
     void Start() override {
         wasPressed = false;
 
-        auto* buttonComp = ecsPtr->GetComponent<ecs::ButtonComponent>(entity);
-        auto* sprite = ecsPtr->GetComponent<ecs::SpriteComponent>(entity);
-
-        std::cout << "Action Type: " << actionType << std::endl;
-        //std::cout << "Scene to Load: " << (sceneToLoad.empty() ? "(none)" : sceneToLoad) << std::endl;
+        std::cout << "[UIButtonScript] Start() called on entity: " << entity << std::endl;
+        std::cout << "  actionType: " << actionType << std::endl;
+        std::cout << "  currentSceneGUID: " << currentSceneGUID.GetToString() << std::endl;
+        std::cout << "  targetSceneGUID: " << targetSceneGUID.GetToString() << std::endl;
+        std::cout << "  Has ButtonComponent: " << ecsPtr->HasComponent<ecs::ButtonComponent>(entity) << std::endl;
     }
 
     void Update() override {
-        // Get the ButtonComponent to check if it's being clicked
-        auto* buttonComp = ecsPtr->GetComponent<ecs::ButtonComponent>(entity);
-        // Check if button was just pressed (transition from not pressed to pressed)
-        if (buttonComp->isPressed && !wasPressed) {
-            ExecuteButtonAction();
+        if (!ecsPtr->HasComponent<ecs::ButtonComponent>(entity)) {
+            return;
         }
 
-        // Update state for next frame
+        auto* buttonComp = ecsPtr->GetComponent<ecs::ButtonComponent>(entity);
+
+        // Detect the exact frame the button is first clicked
+        if (buttonComp->isPressed && !wasPressed) {
+            std::cout << "[UIButtonScript] Button CLICKED on entity: " << entity << std::endl;
+            ExecuteAction();
+        }
+
         wasPressed = buttonComp->isPressed;
     }
 
 private:
 
-    void ExecuteButtonAction() {
-        ButtonAction action = static_cast<ButtonAction>(actionType);
-        
-        switch (action) {
-        case ButtonAction::None:
-            //std::cout << "Button has no action assigned" << std::endl;
+    void ExecuteAction() {
+        switch (actionType) {
+
+        case 0: // None
+            std::cout << "[UIButtonScript] actionType is None - nothing to do." << std::endl;
             break;
 
-        case ButtonAction::LoadScene:
-            if (!sceneToLoad.empty()) {
-                std::cout << "Loading scene: " << sceneToLoad << std::endl;
-                Scenes->LoadScene(sceneToLoad);
-            }
-            else {
-                std::cout << "WARNING: LoadScene selected but no scene specified!" << std::endl;
-            }
+        case 1: // LoadScene
+            SwitchScene();
             break;
 
-        case ButtonAction::QuitGame:
-            std::cout << "Quitting game..." << std::endl;
-			// IDK HOW TO QUIT THE GAME FROM HERE
-             Input->InputExitWindow();
+        case 2: // QuitGame
+            std::cout << "[UIButtonScript] Quitting game..." << std::endl;
+            Input->InputExitWindow();
             break;
 
-        case ButtonAction::CustomCallback:
-            std::cout << "Custom callback triggered!" << std::endl;
-            // Add your custom code here
-            // Example: Play sound, toggle pause menu, etc.
+        default:
+            std::cout << "[UIButtonScript] Unknown actionType: " << actionType << std::endl;
             break;
         }
+    }
+
+    void SwitchScene() {
+        if (currentSceneGUID.Empty() || targetSceneGUID.Empty()) {
+            std::cout << "[UIButtonScript] ERROR: currentSceneGUID or targetSceneGUID is empty!" << std::endl;
+            return;
+        }
+
+        std::cout << "[UIButtonScript] Clearing scene: " << currentSceneGUID.GetToString() << std::endl;
+        std::cout << "[UIButtonScript] Loading scene: " << targetSceneGUID.GetToString() << std::endl;
+
+        // Step 1: Clear the current scene
+        Scenes->ClearScene(currentSceneGUID);
+
+        // Step 2: Load the target scene
+        Scenes->LoadScene(targetSceneGUID);
     }
 
 public:
     REFLECTABLE(UIButtonScript,
         actionType,
-        sceneToLoad,
+        currentSceneGUID,
+        targetSceneGUID,
         wasPressed);
 };
