@@ -747,8 +747,9 @@ void TileMeshConfig::Reset() {
 
 void NavMeshManager::Init() {
     sceneManager.onSceneLoaded.Add([this](SceneData Data) {
+        RemoveAllAgent();
         if (!Data.NavMeshGuid.Empty()) {
-            std::cout << Data.sceneName << " | " << Data.NavMeshGuid.GetToString() << std::endl;
+            //std::cout << Data.sceneName << " | " << Data.NavMeshGuid.GetToString() << std::endl;
             LoadMesh(Data.sceneName, Data.NavMeshGuid);
         }
         else {
@@ -981,7 +982,7 @@ void NavMeshManager::MoveAgent(int& agentID, const glm::vec3 targetPos) {
     if (!result) std::cout << "Request to move failed" << std::endl;
 }
 
-void NavMeshManager::RemoveAgent(int& agentID) {
+void NavMeshManager::RemoveAgent(int agentID) {
     auto tm = navMeshData.find(currentScene);
     if (tm == navMeshData.end()) {
         LOGGING_WARN("Failed to Remove Agent: Unable to find scene - " + currentScene);
@@ -989,6 +990,12 @@ void NavMeshManager::RemoveAgent(int& agentID) {
     }
     agentData.erase(agentID);
     tm->second->m_crowd->removeAgent(agentID);
+}
+
+void NavMeshManager::RemoveAllAgent() {
+    for (auto id : agentData) {
+        RemoveAgent(id.first);
+    }
 }
 
 #undef TM_LOG
