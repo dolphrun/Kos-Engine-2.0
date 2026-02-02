@@ -7,6 +7,9 @@
 #include "GameManager.h"
 
 #include "BulletLogic.h"
+#include "FireLMB.h"
+#include "AcidLMB.h"
+#include "LightningLMB.h"
 #include "EnemyManagerScript.h"
 #include "PowerupManagerScript.h"
 
