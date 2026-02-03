@@ -75,6 +75,7 @@ public:
 	inline void gm_PushSphereDebugData(BasicDebugData&& data) { debugRenderer.basicDebugSpheres.emplace_back(std::move(data)); }
 	inline void gm_PushCubeData(CubeRenderer::CubeData&& data) { cubeRenderer.cubesToDraw.emplace_back(std::move(data)); };
 	inline void gm_PushSphereData(SphereRenderer::SphereData&& data) { sphereRenderer.spheresToDraw.emplace_back(std::move(data)); };
+	inline void gm_PushVideoData(VideoRenderer::VideoData&& videoData) { videoRenderer.vecVideoData.emplace_back(std::move(videoData)); };
 	void gm_DrawMaterial(const PBRMaterial& md, FrameBuffer& fb);
 	inline void gm_PushSkinnedMeshData(SkinnedMeshData&& skinnedMeshData) {
 		skinnedMeshRenderer.skinnedMeshesToDraw[0].emplace_back(std::move(skinnedMeshData));
@@ -87,6 +88,8 @@ public:
 			= &skinnedMeshRenderer.skinnedMeshesToDraw[0].back();
 	};
 	inline void gm_PushBasicParticleData(BasicParticleData&& basicParticleData) { particleRenderer.particlesToDraw.emplace_back(std::move(basicParticleData)); };
+	
+
 
 	//Accessors
 	inline const FrameBuffer& gm_GetEditorBuffer() const { return framebufferManager.editorBuffer; };
@@ -175,6 +178,7 @@ private:
 	void gm_RenderDebugObjects(const CameraData& camera);
 	void gm_RenderParticles(const CameraData& camera);
 	void gm_RenderUIObjects(const CameraData& camera);
+	void gm_RenderVideo(const CameraData& camera);
 
 	void gm_FillGBufferGame(const CameraData& camera);
 	void gm_FillGBufferGame(const CameraData& camera, layer::LAYERS);
@@ -195,6 +199,7 @@ private:
 	CubeRenderer cubeRenderer;
 	SphereRenderer sphereRenderer;
 	ParticleRenderer particleRenderer;
+	VideoRenderer videoRenderer;
 	//Managers
 	ShaderManager shaderManager;
 	FramebufferManager framebufferManager;

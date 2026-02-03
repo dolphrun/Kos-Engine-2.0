@@ -60,6 +60,7 @@ public:
 		engineShaders.insert({ "VignietteShader", Shader(vignietteShaderVS,vignietteShaderFS)});
 		engineShaders.insert({ "FilmGrainShader",Shader(filmGrainVS,filmGrainFS) });
 		engineShaders.insert({ "ChromaticAbberrationShader",Shader(chromAbbVS,chromAbbFS) });
+		engineShaders.insert({ "VideoShader",Shader(videoVS,videoFS) });
 	}
 
 	std::unordered_map<std::string, Shader> engineShaders;
@@ -216,5 +217,12 @@ private:
 	};
 	const char* chromAbbFS{
 		#include "CoreEngineShaders/Shaders/ChromaticAbberationShader/ChromaticAbberation.fs"
+	};
+
+	const char* videoVS{
+		#include "CoreEngineShaders/Shaders/VideoShader/videoVertexShader.vs"
+	};
+	const char* videoFS{
+		#include "CoreEngineShaders/Shaders/VideoShader/videoFragmentShader.fs"
 	};
 };
