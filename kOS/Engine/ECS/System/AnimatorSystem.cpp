@@ -51,6 +51,7 @@ namespace ecs {
                 {
                     animator->m_currentStateID = animator->m_transitioningStateID;
                     animator->m_transitioningStateID = 0;
+                    animator->m_CurrentTime = 0.f;
                 }
 
                 if (animator->m_currentStateID)
@@ -67,10 +68,20 @@ namespace ecs {
                 int steps = m_physicsManager.FrameCount();
                 for (int i = 0; i < steps; i++)
                 {
-                    float add = (animation->GetTicksPerSecond() * m_physicsManager.FixedDeltaTime() * currentState->playSpeed) * animator->m_PlaybackSpeed * m_ecs.GetTimeScale();                   
-                    animator->m_CurrentTime += add;
+                    float add = (animation->GetTicksPerSecond() * m_physicsManager.FixedDeltaTime() * currentState->playSpeed) * animator->m_PlaybackSpeed * m_ecs.GetTimeScale();
                     if (currentState->isLooping)
+                    {
+                        animator->m_CurrentTime += add;
                         animator->m_CurrentTime = fmod(animator->m_CurrentTime, animation->GetDuration());
+                    }    
+                    else
+                    {
+                        if (animation->GetDuration() > animator->m_CurrentTime)
+                            animator->m_CurrentTime += add;
+                        //else
+                           //animator->m_CurrentTime = fmod(animator->m_CurrentTime, animation->GetDuration());
+
+                    }
                 }
             }
         }

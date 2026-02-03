@@ -105,7 +105,7 @@ struct AnimState {
                 if (name == outgoingTransitions[i].conditions[j].name)
                 {
                     //Use to check type of condition but just ignore for now
-                    condition = &outgoingTransitions[i].conditions[j];
+                    //condition = &outgoingTransitions[i].conditions[j];
                     entity->m_transitioningStateID = controller->FindStateFromPin(outgoingTransitions[i].toPinId)->id;
                 }
             }

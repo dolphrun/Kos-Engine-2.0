@@ -7,7 +7,7 @@ class EnemyBulletLogic;
 class EnemyManagerScript : public TemplateSC {
 public:
 	R_AnimController* enemyController = nullptr;
-	AnimatorComponent* anim = nullptr;
+	AnimatorComponent* animComp = nullptr;
 	AnimState currAnimationState{};
 
 	// Set dis  to "Melee" or "Ranged" in the editor.
@@ -23,7 +23,7 @@ public:
 
 	// Separate variables for ranges cuz if not the ranged will kiss u
 	float enemyAttackRange = 2.5f;
-	float enemyRangedAttackRange = 15.0f;
+	float enemyRangedAttackRange = 2.5f;
 
 	float enemyChaseRange = 25.f;
 
@@ -66,15 +66,18 @@ inline void EnemyManagerScript::Start() {
 	}
 
 	//enemyModelID = ecsPtr->GetEntityIDFromGUID(enemyModel);
-	if (anim = ecsPtr->GetComponent<ecs::AnimatorComponent>(enemyModelID))
+	if (animComp = ecsPtr->GetComponent<ecs::AnimatorComponent>(enemyModelID))
 	{
-		enemyController = resource->GetResource<R_AnimController>(anim->controllerGUID).get();
+		enemyController = resource->GetResource<R_AnimController>(animComp->controllerGUID).get();
 		if (enemyController)
 		{
 			// COMMENTED OUT FOR ANIM
 			/*currAnimationState = *enemyController->m_EnterState;
 			anim->m_currentState = &currAnimationState;
 			static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");*/
+			animComp->m_currentStateID = enemyController->m_EnterState->id;
+			if (auto* currAnimState = enemyController->RetrieveStateByID(animComp->m_currentStateID))
+				currAnimState->Trigger("ForcedEntry", animComp, enemyController);
 		}
 	}
 }
@@ -120,21 +123,21 @@ inline void EnemyManagerScript::Update() {
 	enemyTransform->LocalTransformation.rotation = rotationDegrees;
 
 	// COMMENTED OUT FOR ANIM
-	/*
-	if (anim)
+	
+	if (animComp)
 	{
-		R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
+		R_Animation* currAnim = resource->GetResource<R_Animation>(enemyController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get();
 		float animDuration = currAnim->GetDuration();
 		//Checkcing if animation is done
-		if (anim->m_CurrentTime >= animDuration && !static_cast<AnimState*>(anim->m_currentState)->isLooping)
+		if (animComp->m_CurrentTime >= animDuration && !enemyController->RetrieveStateByID(animComp->m_currentStateID)->isLooping)
 		{
-			static_cast<AnimState*>(anim->m_currentState)->SetTrigger("AnimationFinished");
-			anim->m_CurrentTime = 0.f;
+			enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AnimationFinished", animComp, enemyController);
+			//animComp->m_CurrentTime = 0.f;
 			enemyIsAttacking = false;
 			attackHurtboxIsSpawn = false;
 		}
 	}
-	*/
+	
 
 	// SWITCH DISTANCE BASED ON STRING
 	float currentActiveRange = (enemyType == "Ranged") ? enemyRangedAttackRange : enemyAttackRange;
@@ -167,7 +170,7 @@ inline void EnemyManagerScript::Update() {
 		//	}
 		//}
 		enemyIsAttacking = true;
-		if (anim)
+		if (animComp)
 		{
 			// COMMENTED OUT FOR ANIM
 			/*
@@ -177,6 +180,12 @@ inline void EnemyManagerScript::Update() {
 				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("AttackingPlayer");
 			}
 			*/
+			if (animComp->m_currentStateID)
+			{
+				enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AttackingPlayer",animComp,enemyController);
+			}
+			//std::cout << "Ataccking" << std::endl;
+			//std::cout << enemyController->RetrieveStateByID(animComp->m_currentStateID)->name << std::endl;
 		}
 	}
 
@@ -208,18 +217,18 @@ inline void EnemyManagerScript::Update() {
 		// if (CHECK IF ANIMATION IS DONE) {
 		//		enemyIsAttacking = false;
 		// }
-		if (anim && !attackHurtboxIsSpawn)
+		if (animComp && !attackHurtboxIsSpawn)
 		{
 			// COMMENTED OUT FOR ANIM
-			/*
-			if (anim->m_currentState)
+			
+			if (animComp->m_currentStateID)
 			{
-				R_Animation* currAnim = resource->GetResource<R_Animation>(static_cast<AnimState*>(anim->m_currentState)->animationGUID).get();
+				R_Animation* currAnim = resource->GetResource<R_Animation>(enemyController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get();
 				float animDuration = currAnim->GetDuration();
 
 				//CHECK IF ANIMATION OF THE ENEMY IS AFTER THE ENEMY CLAWED OR SOME SHIT(e.g: ANIMATION TIMER IS AT 2s MARK
 				//Simulating 2 secconds, you might wanna change this
-				if (anim->m_CurrentTime >= animDuration * 0.5f && static_cast<AnimState*>(anim->m_currentState)->name == "Attacking")
+				if (animComp->m_CurrentTime >= animDuration * 0.5f && enemyController->RetrieveStateByID(animComp->m_currentStateID)->name == "Attacking")
 				{
 					// SWITCH SPAWN BEHAVIOR BASED ON STRING
 					if (enemyType == "Ranged")
@@ -260,7 +269,7 @@ inline void EnemyManagerScript::Update() {
 					attackHurtboxIsSpawn = true;
 				}
 			}
-			*/
+			
 		}
 
 	}
@@ -268,7 +277,7 @@ inline void EnemyManagerScript::Update() {
 		// NAVMESH FOLLOW TOWARDS PLAYER
 		navMeshPtr->MoveAgent(agentid, playerTransform->LocalTransformation.position);
 		// ADD ENEMY RUNNING ANIMATION
-		if (anim)
+		if (animComp)
 		{
 			// COMMENTED OUT FOR ANIM
 			/*
@@ -278,6 +287,9 @@ inline void EnemyManagerScript::Update() {
 				static_cast<AnimState*>(anim->m_currentState)->SetTrigger("PlayerDetected");
 			}
 			*/
+			if (animComp->m_currentStateID)
+				enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("PlayerDetected", animComp, enemyController);
+
 		}
 	}
 
