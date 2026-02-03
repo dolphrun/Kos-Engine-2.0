@@ -46,18 +46,16 @@ namespace ecs {
 		ResourceManager& m_resourceManager;
 		Input::InputSystem& m_inputSystem;
 		physics::PhysicsManager& m_physicsManager;
-		ScriptManager& m_scriptManager;
 		Peformance& m_performance;
 		audio::AudioManager& m_audioManager;
 
 	public:
-		ISystem(ECS& ecs, GraphicsManager& graphics, ResourceManager& rm, Input::InputSystem& is, physics::PhysicsManager& pm, ScriptManager& sm, Peformance& peformance, audio::AudioManager& audiom)
+		ISystem(ECS& ecs, GraphicsManager& graphics, ResourceManager& rm, Input::InputSystem& is, physics::PhysicsManager& pm, Peformance& peformance, audio::AudioManager& audiom)
 			: m_ecs(ecs)
 			, m_graphicsManager(graphics)
 			, m_resourceManager(rm)
 			, m_inputSystem(is)
-			, m_physicsManager(pm) 
-			, m_scriptManager(sm)
+			, m_physicsManager(pm)
 			, m_performance(peformance)
 			, m_audioManager(audiom)
 		{

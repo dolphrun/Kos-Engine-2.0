@@ -1,0 +1,233 @@
+[
+    {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
+        "entityGUID": "a422f5bf-3fef-8263-5547-43cdceb4109d",
+        "CanvasRendererComponent": {
+            "isScreenSpace": true
+        },
+        "NameComponent": {
+            "entityName": "Canvas",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "2bc3faf3-8360-0382-8d60-1328b124ff6f",
+                "ButtonComponent": {
+                    "normalColor": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "hoveredColor": {
+                        "x": 0.800000011920929,
+                        "y": 0.800000011920929,
+                        "z": 0.800000011920929,
+                        "w": 1.0
+                    },
+                    "pressedColor": {
+                        "x": 0.6000000238418579,
+                        "y": 0.6000000238418579,
+                        "z": 0.6000000238418579,
+                        "w": 1.0
+                    },
+                    "isHovered": false,
+                    "isPressed": false
+                },
+                "NameComponent": {
+                    "entityName": "Textbox",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "46112a0f-8c2b-045f-2039-22d56fbc8c9e",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 7.900000095367432,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
+                },
+                "TextComponent": {
+                    "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                    "text": "LEVEL 1",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "fontSize": 184.10000610351563
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                },
+                "UIButtonScript": {
+                    "actionType": 2,
+                    "sceneToLoad": "",
+                    "wasPressed": false
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "0e09f75c-463c-6c44-9881-265461ccf6af",
+        "AudioListenerComponent": {
+            "active": true
+        },
+        "CameraComponent": {
+            "cameraType": 0,
+            "fov": 85.0,
+            "nearPlane": 0.05000000074505806,
+            "farPlane": 200.0,
+            "size": {
+                "x": 1600.0,
+                "y": 900.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "active": false,
+            "culling": false,
+            "layer": 0,
+            "renderOrder": 0
+        },
+        "NameComponent": {
+            "entityName": "Player Camera",
+            "Layer": 1,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "Game Package.prefab",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 2.5,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 2.5,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        }
+    }
+]

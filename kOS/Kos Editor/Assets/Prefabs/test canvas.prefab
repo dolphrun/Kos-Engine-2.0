@@ -2,6 +2,8 @@
     {
         "SceneData": {
             "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
             "ambientIntensity": 1.0
         }
     },
@@ -129,7 +131,16 @@
                         "y": 1.0,
                         "z": 1.0,
                         "w": 1.0
-                    }
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

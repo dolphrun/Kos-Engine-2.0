@@ -81,7 +81,8 @@ public:
 
 	void AddAgent(int& agentID, EntityID entityID, glm::vec3 pos = glm::vec3(0), float radius = 0.6f, float height = 1.8f, float maxSpeed = 3.5f);
 	void MoveAgent(int& agentID, const glm::vec3 targetPos);
-	void RemoveAgent(int& agentID);
+	void RemoveAgent(int agentID);
+	void RemoveAllAgent();
 
 	TileMeshConfig cfg;
 	BuildContext ctx;

@@ -7,11 +7,11 @@
 #include "GameManager.h"
 
 #include "BulletLogic.h"
+#include "FireLMB.h"
+#include "AcidLMB.h"
+#include "LightningLMB.h"
 #include "EnemyManagerScript.h"
 #include "PowerupManagerScript.h"
-
-#include "FakeEnemyScript.h"
-#include "FakePlayerHealthScript.h"
 
 #include "FirePowerupManagerScript.h"
 #include "LightningPowerupManagerScript.h"
@@ -26,6 +26,7 @@
 #include "EventColliderScript.h"
 
 #include "EnemyHurtboxScript.h"
+#include "EnemyBulletLogic.h"
 
 #include "HealthbarUIScript.h"
 #include "AnimationTestScript.h"
@@ -35,3 +36,4 @@
 #include "LoseScreenScript.h"
 #include "WinScreenScript.h"
 #include "UIButtonScript.h"
+#include "NEW_HealthBarUIScript.h"

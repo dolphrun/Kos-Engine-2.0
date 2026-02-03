@@ -1,0 +1,91 @@
+[
+    {
+        "entityGUID": "fb80195b-df70-6c88-8b1f-8510cbefd84a",
+        "BoxColliderComponent": {
+            "isTrigger": true,
+            "box": {
+                "center": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "size": {
+                    "x": 5.0,
+                    "y": 1.0,
+                    "z": 3.0
+                }
+            }
+        },
+        "FireLMB": {
+            "fireLMBDamage": 4,
+            "enemyDeathSfxGUID_1": "00000000-0000-0000-0000-000000000000",
+            "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
+            "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000"
+        },
+        "NameComponent": {
+            "entityName": "FireLMBPrefab",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "prefabName": "FireLMBPrefab.prefab",
+            "hide": false
+        },
+        "RigidbodyComponent": {
+            "mass": 1.0,
+            "drag": 0.0,
+            "angularDrag": 0.05000000074505806,
+            "useGravity": false,
+            "isKinematic": false,
+            "interpolation": 0,
+            "collisionDetection": 0,
+            "constraints": 0,
+            "speed": 0.0,
+            "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "angularVelocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -12.076574325561523,
+                    "y": 4.345457553863525,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -12.076574325561523,
+                    "y": 4.345457553863525,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        }
+    }
+]

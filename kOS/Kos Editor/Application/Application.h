@@ -30,7 +30,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "ECS/ecs.h"
 #include "Audio/AudioManager.h"
 
-
 #include "../Editor/ImGui Panels/Editor.h"
 #include "AssetManager/AssetManager.h"
 /******************************************************************/
@@ -54,7 +53,7 @@ namespace Application {
 			, resourceManager()
 			, physicsManager()
 			, graphicsManager()
-			, ecs(peformance, graphicsManager, resourceManager, input, physicsManager, scriptManager, audioManager)
+			, ecs(peformance, graphicsManager, resourceManager, input, physicsManager, audioManager)
 			, lvWindow(ecs, input)
 			, layersManager(ecs)
 			, serialization(ecs)
@@ -91,9 +90,6 @@ namespace Application {
 		audio::AudioManager audioManager;
 		NavMeshManager navMeshManager;
 		gui::ImGuiHandler Editor;
-
-		
-		
 	};
 
 }

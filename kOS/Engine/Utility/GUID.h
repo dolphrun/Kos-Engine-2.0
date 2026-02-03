@@ -6,8 +6,8 @@
 namespace utility{
     struct GUID
     {
-        uint64_t high;
-        uint64_t low;
+        uint64_t high = 0;
+        uint64_t low = 0;
 
         void SetFromString(const std::string& str)
         {

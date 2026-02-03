@@ -1,7 +1,9 @@
 #pragma once
 #include "ScriptAdapter/TemplateSC.h"
-#include "EnemyManagerScript.h"
 #include "ScoreManagerScript.h"
+
+// FORWARD DECLARATION: Fixes circular dependency
+class EnemyManagerScript;
 
 class BulletLogic : public TemplateSC {
 public:
@@ -20,12 +22,23 @@ public:
 	utility::GUID enemyDeathSfxGUID_3;
 	std::vector<utility::GUID> enemyDeathSfxGUIDs;
 
+	// Declarations Only (Implementation at the bottom)
+	void Start() override;
+	void Update() override;
+	void PlayRandomEnemyDeathSFX();
 
-	void Start() override {
-		enemyDeathSfxGUIDs.clear();
-		if (!enemyDeathSfxGUID_1.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_1);
-		if (!enemyDeathSfxGUID_2.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_2);
-		if (!enemyDeathSfxGUID_3.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_3);\
+	REFLECTABLE(BulletLogic, bulletDamage, bulletSpeed, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3)
+};
+
+// --- IMPLEMENTATION SECTION ---
+// Include EnemyManagerScript here so we can access enemyHealth
+#include "EnemyManagerScript.h"
+
+inline void BulletLogic::Start() {
+	enemyDeathSfxGUIDs.clear();
+	if (!enemyDeathSfxGUID_1.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_1);
+	if (!enemyDeathSfxGUID_2.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_2);
+	if (!enemyDeathSfxGUID_3.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_3); \
 
 		for (const auto& [entityID, signature] : ecsPtr->GetEntitySignatureData()) {
 			if (ecsPtr->HasComponent<ScoreManagerScript>(entityID)) {
@@ -34,99 +47,95 @@ public:
 			}
 		}
 
-		physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
-			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
-				// ADD SFX OF ENEMY DEATH HERE - DONE
-				PlayRandomEnemyDeathSFX();
+	physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
+		if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
+			// ADD SFX OF ENEMY DEATH HERE - DONE
+			PlayRandomEnemyDeathSFX();
 
-	/*			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-					std::vector<ecs::AudioFile*> candidates;
+			/*			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+							std::vector<ecs::AudioFile*> candidates;
 
-					for (auto& af : ac->audioFiles) {
-						if (af.isSFX) {               
-							candidates.push_back(&af);
-						}
-					}
+							for (auto& af : ac->audioFiles) {
+								if (af.isSFX) {
+									candidates.push_back(&af);
+								}
+							}
 
-					if (!candidates.empty()) {
-						int idx = rand() % static_cast<int>(candidates.size());
-						std::cout << "[BulletLogic] Random SFX index chosen = " << idx << std::endl;
+							if (!candidates.empty()) {
+								int idx = rand() % static_cast<int>(candidates.size());
+								std::cout << "[BulletLogic] Random SFX index chosen = " << idx << std::endl;
 
-						candidates[idx]->requestPlay = true;
-					}
-				}*/
-				//if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+								candidates[idx]->requestPlay = true;
+							}
+						}*/
+						//if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 
-				//	for (auto& af : ac->audioFiles) {
-				//		if (af.audioGUID == enemyDeathSfxGUID_1 && af.isSFX) {
-				//			af.requestPlay = true;
-				//			break;
-				//		}
-				//	}
-				//}
+						//	for (auto& af : ac->audioFiles) {
+						//		if (af.audioGUID == enemyDeathSfxGUID_1 && af.isSFX) {
+						//			af.requestPlay = true;
+						//			break;
+						//		}
+						//	}
+						//}
 
-				ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth -= bulletDamage;
+			ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth -= bulletDamage;
 
-				if (ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth <= 0) {
-					if (scoreManager) {
-						scoreManager->AddScore(scoreValue); // or whatever value you want per kill
-					}
-
-					ecsPtr->DeleteEntity(col.otherEntityID);
-					navMeshPtr->RemoveAgent(ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->agentid);
+			if (ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth <= 0) {
+				if (scoreManager) {
+					scoreManager->AddScore(scoreValue); // or whatever value you want per kill
 				}
-			}
 
-			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Ground" || ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Default") {
-				ecsPtr->DeleteEntity(entity);
+				ecsPtr->DeleteEntity(col.otherEntityID);
+				navMeshPtr->RemoveAgent(ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->agentid);
 			}
+		}
+
+		if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Ground" || ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Default") {
+			ecsPtr->DeleteEntity(entity);
+		}
 		});
+}
+
+inline void BulletLogic::Update() {
+	if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
+		tc->LocalTransformation.position += direction * bulletSpeed * ecsPtr->m_GetDeltaTime();
 	}
 
-	void Update() override {
-		if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
-			tc->LocalTransformation.position += direction * bulletSpeed * ecsPtr->m_GetDeltaTime();
+	if (currentTimer < timeBeforeDeath) {
+		currentTimer += ecsPtr->m_GetDeltaTime();
+
+		if (currentTimer >= timeBeforeDeath) {
+			ecsPtr->DeleteEntity(entity);
+
 		}
+	}
+}
 
-		if (currentTimer < timeBeforeDeath) {
-			currentTimer += ecsPtr->m_GetDeltaTime();
+inline void BulletLogic::PlayRandomEnemyDeathSFX()
+{
+	auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity);
+	if (!ac) return;
 
-			if (currentTimer >= timeBeforeDeath) {
-				ecsPtr->DeleteEntity(entity);
+	std::vector<ecs::AudioFile*> enemyDeathSfxPool;
 
+	for (auto& af : ac->audioFiles) {
+		if (!af.isSFX) continue;
+
+		for (auto& g : enemyDeathSfxGUIDs) {
+			if (!g.Empty() && af.audioGUID == g) {
+				enemyDeathSfxPool.push_back(&af);
+				break;
 			}
 		}
 	}
 
-	void PlayRandomEnemyDeathSFX()
-	{
-		auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity);
-		if (!ac) return;
-
-		std::vector<ecs::AudioFile*> enemyDeathSfxPool;
-
-		for (auto& af : ac->audioFiles) {
-			if (!af.isSFX) continue;
-
-			for (auto& g : enemyDeathSfxGUIDs) {
-				if (!g.Empty() && af.audioGUID == g) {
-					enemyDeathSfxPool.push_back(&af);
-					break;
-				}
-			}
-		}
-
-		if (enemyDeathSfxPool.empty()) {
-			std::cout << "[BulletLogic] No enemy death SFX found.\n";
-			return;
-		}
-
-		int idx = rand() % static_cast<int>(enemyDeathSfxPool.size());
-		enemyDeathSfxPool[idx]->requestPlay = true;
-
-		std::cout << "[BulletLogic] Playing enemy death SFX index " << idx << "\n";
+	if (enemyDeathSfxPool.empty()) {
+		std::cout << "[BulletLogic] No enemy death SFX found.\n";
+		return;
 	}
 
+	int idx = rand() % static_cast<int>(enemyDeathSfxPool.size());
+	enemyDeathSfxPool[idx]->requestPlay = true;
 
-	REFLECTABLE(BulletLogic, bulletDamage, bulletSpeed, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3)
-};
+	std::cout << "[BulletLogic] Playing enemy death SFX index " << idx << "\n";
+}

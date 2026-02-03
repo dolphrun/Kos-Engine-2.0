@@ -20,6 +20,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "imgui_impl_opengl3.h"
 #include "Editor.h"
 #include "imgui_internal.h"
+#include "Editor/CommandHistory.h"
 
 #include "Scene/SceneManager.h"
 #include "AssetManager/AssetManager.h"
@@ -29,6 +30,7 @@ void gui::ImGuiHandler::DrawMainMenuBar() {
    
 
     bool openNewFilepopup = false;
+    bool createNewPostProcessProfile=false;
     if (ImGui::BeginMainMenuBar())
     {
         if (ImGui::BeginMenu("File"))
@@ -52,6 +54,10 @@ void gui::ImGuiHandler::DrawMainMenuBar() {
 
         if (ImGui::BeginMenu("Edit")) {
             ImGui::MenuItem("Preferences", NULL, &openPreferencesTab);
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Profile")) {
+            if (ImGui::MenuItem("New Scene"))createNewPostProcessProfile = true;
             ImGui::EndMenu();
         }
 
@@ -98,6 +104,68 @@ void gui::ImGuiHandler::DrawMainMenuBar() {
                 }
 
                 ImGui::CloseCurrentPopup(); 
+            }
+            ImGui::SetItemDefaultFocus();
+            ImGui::SameLine();
+            if (ImGui::Button("Cancel", ImVec2(120, 0))) { ImGui::CloseCurrentPopup(); }
+            ImGui::EndPopup();
+        }
+
+
+        if (createNewPostProcessProfile) {
+            ImGui::OpenPopup("New Profile");
+        }
+
+        if (ImGui::BeginPopupModal("New Profile", NULL, ImGuiWindowFlags_AlwaysAutoResize))
+        {
+            ImGui::Text("Enter Profile name here");
+            ImGui::Separator();
+
+            //static int unused_i = 0;
+            //ImGui::Combo("Combo", &unused_i, "Delete\0Delete harder\0");
+
+            static char str1[128] = "";
+            ImGui::InputTextWithHint(".prof", "Enter Profile name here", str1, IM_ARRAYSIZE(str1));
+
+            if (ImGui::Button("Save", ImVec2(120, 0))) {
+                if (strlen(str1) == 0) {
+                    LOGGING_WARN("Please insert a profile name");
+                }
+                else
+                {
+                    std::string basePath = m_assetManager.GetAssetManagerDirectory() + "/PostProcessProfile/";
+                    std::string profilePath = basePath + std::string(str1) + ".prof";
+
+                    // Create JSON document
+                    rapidjson::Document doc;
+                    doc.SetObject();
+                    auto& allocator = doc.GetAllocator();
+
+                    // ProfileName
+                    rapidjson::Value profileName;
+                    profileName.SetString(str1, allocator);
+                    doc.AddMember("ProfileName", profileName, allocator);
+
+                    // Empty effects array
+                    rapidjson::Value postProfileEffects(rapidjson::kArrayType);
+                    doc.AddMember("PostProfileEffects", postProfileEffects, allocator);
+
+                    // Write JSON to file
+                    rapidjson::StringBuffer buffer;
+                    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+                    doc.Accept(writer);
+
+                    std::ofstream ofs(profilePath, std::ios::out | std::ios::trunc);
+                    if (ofs.is_open()) {
+                        ofs << buffer.GetString();
+                        ofs.close();
+                    }
+                    else {
+                        LOGGING_ERROR("Failed to create profile file");
+                    }
+                }
+
+                ImGui::CloseCurrentPopup();
             }
             ImGui::SetItemDefaultFocus();
             ImGui::SameLine();
@@ -210,6 +278,7 @@ void gui::ImGuiHandler::DrawMainMenuBar() {
 
  void gui::ImGuiHandler::ScriptHotReload() {
 
+    m_sceneManager.ImmediateClearScene(CACHEDSCENE);
     m_sceneManager.SaveAllActiveScenes();
 
     auto scenelist = m_sceneManager.GetAllScenesPath();
@@ -243,10 +312,19 @@ void gui::ImGuiHandler::DrawMainMenuBar() {
     //load the DLL
     m_scriptManager.RunDLL();
 
+    //load back scene
+    m_prefabManager.LoadAllPrefabs();
     for (const auto& scenepath : scenelist) {
-        m_sceneManager.ImmediateLoadScene(scenepath.path);
-		m_ecs.GetSceneData(scenepath.path.filename().string()).isActive = scenepath.isActive;
+        if (scenepath.path.extension().string() != ".prefab") {
+            m_sceneManager.ImmediateLoadScene(scenepath.path);
+            auto& sceneData = m_ecs.GetSceneData(scenepath.path.filename().string());
+            sceneData.isActive = scenepath.isActive;
+        }
     }
+
+
+    //set back command history
+    m_commandHistory.Init();
 
 }
 

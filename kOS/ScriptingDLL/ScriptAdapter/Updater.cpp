@@ -14,7 +14,7 @@ template <typename T>
 void RegisterScript(ecs::ECS* ecs) {
 	FieldComponentTypeRegistry::RegisterComponentType<T>();
 	ecs->RegisterComponent<T>();
-	scriptNames->push_back(T::classname());
+	scriptNames->emplace_back(T::classname());
 }
 
 extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) {
@@ -33,6 +33,9 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 	TemplateSC::navMeshPtr = static_cast<NavMeshManager*>(svm->navMesh);
 
 	RegisterScript<BulletLogic>(TemplateSC::ecsPtr);
+	RegisterScript<FireLMB>(TemplateSC::ecsPtr);
+	RegisterScript<AcidLMB>(TemplateSC::ecsPtr);
+	RegisterScript<LightningLMB>(TemplateSC::ecsPtr);
 	RegisterScript<EnemyManagerScript>(TemplateSC::ecsPtr);
 	RegisterScript<PowerupManagerScript>(TemplateSC::ecsPtr);
 
@@ -50,13 +53,12 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 	RegisterScript<GameManager>(TemplateSC::ecsPtr);
 
 	RegisterScript<EnemyHurtboxScript>(TemplateSC::ecsPtr);
+	RegisterScript<EnemyBulletLogic>(TemplateSC::ecsPtr);
 
 	RegisterScript<PlayerScript>(TemplateSC::ecsPtr);
 	RegisterScript<EnemyScripts>(TemplateSC::ecsPtr);
 	RegisterScript<AudioScript>(TemplateSC::ecsPtr);
 
-	RegisterScript<FakeEnemyScript>(TemplateSC::ecsPtr);
-	RegisterScript<FakePlayerHealthScript>(TemplateSC::ecsPtr);
 	RegisterScript<EventColliderScript>(TemplateSC::ecsPtr);
 
 	RegisterScript<HealthBarScript>(TemplateSC::ecsPtr);
@@ -68,6 +70,7 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 
 	RegisterScript<AnimationTestScript>(TemplateSC::ecsPtr);
 	RegisterScript<UIButtonScript>(TemplateSC::ecsPtr);
+	RegisterScript<NEWHealthBarScript>(TemplateSC::ecsPtr);
 
 	FieldComponentTypeRegistry::CreateAllDrawers(static_cast<Fields*>(svm->field)->GetAction());
 }

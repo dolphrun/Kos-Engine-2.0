@@ -4,7 +4,8 @@
 
 class AcidPowerupManagerScript : public TemplateSC {
 public:
-	int acidDamage = 5;
+	//int acidDamage = 5;
+	float pushbackForce = 500.f;
 	float lingerTime;
 	float growthRate;
 	float acidBlastSpeed;
@@ -49,20 +50,33 @@ public:
 		physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
 				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
-					enemyScript->enemyHealth -= acidDamage;
-					std::cout << "AI SHIBAL ACID\n";
-					if (enemyScript->enemyHealth <= 0) {
-						// ADD SFX OF ENEMY DEATH HERE - Done
-						PlayRandomEnemyDeathSFX();
+					//enemyScript->enemyHealth -= acidDamage;
+					//std::cout << "AI SHIBAL ACID\n";
+					//if (enemyScript->enemyHealth <= 0) {
+					//	// ADD SFX OF ENEMY DEATH HERE - Done
+					//	PlayRandomEnemyDeathSFX();
 
-						if (scoreManager) {
-							scoreManager->AddScore(scoreValue); // or whatever value you want per kill
-						}
+					//	if (scoreManager) {
+					//		scoreManager->AddScore(scoreValue); // or whatever value you want per kill
+					//	}
 
-						ecsPtr->DeleteEntity(col.otherEntityID);
-						navMeshPtr->RemoveAgent(enemyScript->agentid);
-					}
+					//	ecsPtr->DeleteEntity(col.otherEntityID);
+					//	navMeshPtr->RemoveAgent(enemyScript->agentid);
+					//}
+
+					//auto* enemyRigidbody = ecsPtr->GetComponent<ecs::RigidbodyComponent>(col.otherEntityID);
+					//if (!enemyRigidbody) return;
+
+					//physicsPtr->AddForce(enemyRigidbody->actor, direction * pushbackForce, ForceMode::Impulse);
+					//std::cout << "ENEMY PUSH BACK\n";
 				}
+
+				auto* enemyRigidbody = ecsPtr->GetComponent<ecs::RigidbodyComponent>(col.otherEntityID);
+				if (!enemyRigidbody) return;
+
+				glm::vec3 force = direction * pushbackForce;
+				physicsPtr->AddForce(enemyRigidbody->actor, force, ForceMode::Impulse);
+				std::cout << "ENEMY PUSH BACK: " << force.x << ", " << force.y << ", " << force.z << std::endl;
 			}
 			});
 	}
@@ -111,5 +125,5 @@ public:
 		std::cout << "[BulletLogic] Playing enemy death SFX index " << idx << "\n";
 	}
 
-	REFLECTABLE(AcidPowerupManagerScript, acidDamage, lingerTime, growthRate, acidBlastSpeed, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3, acidSpraySfxGUID)
+	REFLECTABLE(AcidPowerupManagerScript, pushbackForce, lingerTime, growthRate, acidBlastSpeed, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3, acidSpraySfxGUID)
 };

@@ -54,7 +54,7 @@ namespace ecs {
             if (!childEntities.has_value()) continue;
 
             //IF NOT SCREEN SPACE, push though other shit
-            if (!canvas->isScreenSpace){
+            if (!canvas->isScreenSpace) {
                 for (EntityID childID : childEntities.value())
                 {
                     if (m_ecs.HasComponent<SpriteComponent>(childID))
@@ -64,17 +64,31 @@ namespace ecs {
                         if (!spriteComp->spriteGUID.Empty())
                         {
                             std::shared_ptr<R_Texture> fontResource = m_resourceManager.GetResource<R_Texture>(spriteComp->spriteGUID);
-                            m_graphicsManager.gm_PushWorldSpriteData(ScreenSpriteData{ childTransform->WorldTransformation.position,
-                                                               glm::vec2{ childTransform->WorldTransformation.scale.x,
-                                                                          childTransform->WorldTransformation.scale.y},
-                                                                          -childTransform->WorldTransformation.rotation.x, spriteComp->color,
-                                                                          fontResource.get(), 0, 0, 0,childID }); /// Temporarily all 0
+
+                            // Create sprite data
+                            ScreenSpriteData spriteData{
+                                childTransform->WorldTransformation.position,
+                                glm::vec2{ childTransform->WorldTransformation.scale.x,
+                                          childTransform->WorldTransformation.scale.y},
+                                -childTransform->WorldTransformation.rotation.x,
+                                spriteComp->color,
+                                fontResource.get(),
+                                0, 0, 0, // rows, columns, frameNumber
+                                childID,
+                                // NEW: UV data
+                                spriteComp->uvMin,
+                                spriteComp->uvMax,
+                                spriteComp->useCustomUV
+                            };
+
+                            m_graphicsManager.gm_PushWorldSpriteData(std::move(spriteData));
                         }
                     }
 
                 }
-                return;;
+                return;
             }
+
             for (EntityID childID : childEntities.value())
             {
                 if (m_ecs.HasComponent<SpriteComponent>(childID))
@@ -84,11 +98,24 @@ namespace ecs {
                     if (!spriteComp->spriteGUID.Empty())
                     {
                         std::shared_ptr<R_Texture> fontResource = m_resourceManager.GetResource<R_Texture>(spriteComp->spriteGUID);
-                        m_graphicsManager.gm_PushScreenSpriteData(ScreenSpriteData{ childTransform->WorldTransformation.position,
-                                                           glm::vec2{ childTransform->WorldTransformation.scale.x,
-                                                                      childTransform->WorldTransformation.scale.y},
-                                                                      -childTransform->WorldTransformation.rotation.x, spriteComp->color,
-                                                                      fontResource.get(), 0, 0, 0,childID }); /// Temporarily all 0
+
+                        // Create sprite data
+                        ScreenSpriteData spriteData{
+                            childTransform->WorldTransformation.position,
+                            glm::vec2{ childTransform->WorldTransformation.scale.x,
+                                      childTransform->WorldTransformation.scale.y},
+                            -childTransform->WorldTransformation.rotation.x,
+                            spriteComp->color,
+                            fontResource.get(),
+                            0, 0, 0, // rows, columns, frameNumber
+                            childID,
+                            // NEW: UV data
+                            spriteComp->uvMin,
+                            spriteComp->uvMax,
+                            spriteComp->useCustomUV
+                        };
+
+                        m_graphicsManager.gm_PushScreenSpriteData(std::move(spriteData));
                     }
                 }
 

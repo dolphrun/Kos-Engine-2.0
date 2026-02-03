@@ -3,6 +3,7 @@
         "SceneData": {
             "skyBoxGUID": [],
             "NavMeshGuid": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
             "ambientIntensity": 1.0
         }
     },
@@ -14,8 +15,7 @@
             "entityTag": "Default",
             "isPrefab": true,
             "prefabName": "Game Package.prefab",
-            "hide": false,
-            "isStatic": false
+            "hide": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -81,8 +81,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -129,8 +128,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -193,8 +191,7 @@
                             "entityTag": "Default",
                             "isPrefab": true,
                             "prefabName": "",
-                            "hide": false,
-                            "isStatic": false
+                            "hide": false
                         },
                         "SkinnedMeshRendererComponent": {
                             "skinnedMeshGUID": "4d215f18-7b0d-7c34-1315-4803812d8960",
@@ -247,8 +244,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -320,8 +316,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -417,8 +412,7 @@
                     "entityTag": "Player",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "PlayerManagerScript": {
                     "playerCameraObject": "401c12be-d52c-d521-768f-a871850b8151",
@@ -529,8 +523,7 @@
                             "entityTag": "Default",
                             "isPrefab": true,
                             "prefabName": "",
-                            "hide": false,
-                            "isStatic": false
+                            "hide": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -578,8 +571,7 @@
                             "entityTag": "Default",
                             "isPrefab": true,
                             "prefabName": "",
-                            "hide": false,
-                            "isStatic": false
+                            "hide": false
                         },
                         "RigidbodyComponent": {
                             "mass": 1.0,
@@ -658,8 +650,7 @@
                             "entityTag": "Default",
                             "isPrefab": true,
                             "prefabName": "",
-                            "hide": false,
-                            "isStatic": false
+                            "hide": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {

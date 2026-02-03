@@ -3,6 +3,7 @@
         "SceneData": {
             "skyBoxGUID": [],
             "NavMeshGuid": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
             "ambientIntensity": 1.0
         }
     },
@@ -90,8 +91,7 @@
             "entityTag": "Default",
             "isPrefab": true,
             "prefabName": "GroundSpikesPrefab.prefab",
-            "hide": false,
-            "isStatic": false
+            "hide": false
         },
         "RigidbodyComponent": {
             "mass": 1.0,
@@ -178,8 +178,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -234,8 +233,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -290,8 +288,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -346,8 +343,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -402,8 +398,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -458,8 +453,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -514,8 +508,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -570,8 +563,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -618,8 +610,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": false,
-                    "isStatic": false
+                    "hide": false
                 },
                 "ParticleComponent": {
                     "particleType": 0,
@@ -782,7 +773,8 @@
                             "z": 0.0
                         }
                     },
-                    "emissionInterval": 0.0010000000474974513
+                    "emissionInterval": 0.0010000000474974513,
+                    "no_Of_Particles": 50
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

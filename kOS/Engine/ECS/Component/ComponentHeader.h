@@ -27,3 +27,4 @@
 #include "PathfinderComponent.h"
 #include "PathfinderTargetComponent.h"
 #include "ParticleComponent.h"
+#include "NavMeshComponent.h"

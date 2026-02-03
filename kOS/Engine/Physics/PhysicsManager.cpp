@@ -40,7 +40,7 @@ namespace physics {
 		PX_ASSERT(m_physics);
 
 		PxSceneDesc sceneDesc{ m_physics->getTolerancesScale() };
-		sceneDesc.gravity = PxVec3{ 0.0f, -9.81f, 0.0f };
+		sceneDesc.gravity = PxVec3{ 0.0f, -19.81f, 0.0f };
 		m_cpuDispatcher = PxDefaultCpuDispatcherCreate(2);
 		sceneDesc.cpuDispatcher = m_cpuDispatcher;
 		sceneDesc.filterShader = ToPhysxCustomFilter;

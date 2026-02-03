@@ -120,6 +120,16 @@ namespace gui {
 						}
 
 					}
+					if (ImGui::MenuItem("Create post process profile")) {
+						////Create object at current directory
+						//std::string fileName = materialData.materialName + ".prof";
+						//std::string filepath = currentDirectory.string() + fileName;
+						//PostPro
+						//serialization::WriteJsonFile(filepath, &materialData.data);
+						// std::cout << "TEST CREATION\n";
+						LOGGING_POPUP("Material Successfully Added");
+
+					}
 					if (ImGui::MenuItem("Reload Browser")) {
 						//TODO: reload browser
 					}

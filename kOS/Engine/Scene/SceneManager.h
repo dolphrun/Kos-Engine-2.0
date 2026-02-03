@@ -59,10 +59,11 @@ namespace scenes {
 		bool CreateNewScene(const std::filesystem::path& scenepath);
 
 		void LoadScene(const std::filesystem::path& scenepath);
-		
+		void LoadScene(const utility::GUID& sceneGUID);
 
 		void ClearAllScene(bool includePrefabs = false);
 		void ClearScene(const std::string& scene);
+		void ClearScene(const utility::GUID& sceneGUID);
 		void SaveScene(const std::string& scene);
 		void ReloadScene();
 

@@ -68,6 +68,8 @@ void GraphicsManager::gm_Initialize(float width, float height) {
 		  "Resource/5d8311c4-da53-b0cc-ebec-376730e44ab4.dds", "Resource/099a08b9-935e-d6b8-cbdd-1f2acf398fc8.dds",
 		  "Resource/8fee6749-a54c-3071-9cd2-018187d80c78.dds", "Resource/fbc7a73b-7fe4-f273-c5c2-73b9f0e08796.dds" });
 	Vigniette::currentShader = &shaderManager.engineShaders.find("VignietteShader")->second;
+	FilmGrain::currentShader = &shaderManager.engineShaders.find("FilmGrainShader")->second;
+	ChromaticAberration::currentShader = &shaderManager.engineShaders.find("ChromaticAbberrationShader")->second;
 
 }
 
@@ -169,7 +171,7 @@ void GraphicsManager::gm_RenderToEditorFrameBuffer()
 	//Particle buffer
 
 	framebufferManager.UIBuffer.BindForDrawing();
-	gm_RenderUIObjects(editorCamera);
+	//gm_RenderUIObjects(editorCamera);
 
 	Shader* fboCompositeShader{ &shaderManager.engineShaders.find("FBOCompositeShader")->second };
 	framebufferManager.ComposeBuffers(framebufferManager.sceneBuffer.texID, framebufferManager.UIBuffer.texID,
@@ -757,7 +759,7 @@ unsigned int* GraphicsManager::gm_PostProcess() {
 		glViewport(0, 0, scratchFB->width, scratchFB->height);
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-
+		if (ppe->GetShader() == nullptr)continue;;
 		ppe->GetShader()->Use();
 		ppe->UpdateShader();
 		ppe->GetShader()->SetInt("screenTexture", 0);

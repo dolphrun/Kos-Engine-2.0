@@ -130,6 +130,44 @@ glm::mat4 EditorCamera::CalculateViewMtx() {
     }
     return viewMtx;
 }
+
+static float Deg(float r) { return glm::degrees(r); }
+
+void EditorCamera::SnapToAxis(AxisView view, float distanceOverride) {
+    float dist = (distanceOverride > 0.0f) ? distanceOverride : glm::length(position - target);
+    if (dist < 0.001f) dist = 5.0f;
+    glm::vec3 forward(0.0f);
+    switch (view) {
+    case AxisView::PosX:
+        forward = glm::vec3(1, 0, 0);
+        break;
+    case AxisView::NegX:
+        forward = glm::vec3(-1, 0, 0);
+        break;
+    case AxisView::PosY:
+        forward = glm::vec3(0, 1, 0);
+        break;
+    case AxisView::NegY:
+        forward = glm::vec3(0, -1, 0);
+        break;
+    case AxisView::PosZ:
+        forward = glm::vec3(0, 0, 1);
+        break;
+    case AxisView::NegZ:
+        forward = glm::vec3(0, 0, -1);
+        break;
+    }
+    if (orbitMode) SwitchMode(false);
+    position = target - forward * dist;
+    rotation.y = Deg(atan2(forward.z, forward.x));
+    rotation.x = Deg(asin(forward.y));
+    rotation.x = glm::clamp(rotation.x, -89.f, 89.f);
+    if (view == AxisView::PosY) up = glm::vec3(0, 0, -1);
+    else if (view == AxisView::NegY) up = glm::vec3(0, 0, 1);
+    else up = glm::vec3(0, 1, 0);
+    direction = glm::normalize(forward);
+}
+
 //float EditorCamera::m_aspectRatio{};
 //int EditorCamera::m_windowWidth{};
 //int EditorCamera::m_windowHeight{};
