@@ -162,7 +162,7 @@ struct VideoRenderer : BasicRenderer {
 		bool pause;
 	};
 	void InitializeVideoRendererMeshes();
-	void Update();
+	void Update(Shader& shader);
 	void Render(const CameraData& camera, Shader& shader);
 	void Clear() override;
 	std::vector<VideoData> vecVideoData;

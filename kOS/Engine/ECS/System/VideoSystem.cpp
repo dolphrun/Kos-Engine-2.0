@@ -40,7 +40,7 @@ namespace ecs {
 		onDeregister.Add([&](EntityID id) {
 
 			if (m_videoMap.find(id) != m_videoMap.end()) {
-				m_videoMap[id]->Unload();
+				m_videoMap[id].videoPtr->Unload();
 				m_videoMap.erase(id);
 			}
 
@@ -58,8 +58,12 @@ namespace ecs {
 			TransformComponent* transformCom = m_ecs.GetComponent<TransformComponent>(id);
 			VideoComponent* videoCom = m_ecs.GetComponent<VideoComponent>(id);
 
+			//if (videoCom->loop != m_videoMap[id].videoFlag.test(VIDEO_FLAGS::LOOP)) {
+
+			//}
+
 			if (videoCom->playing == false) {
-				m_videoMap[id]->Unload();
+				m_videoMap[id].videoPtr->Unload();
 				m_videoMap.erase(id);
 
 				continue;
@@ -69,24 +73,26 @@ namespace ecs {
 
 				if (videoCom->videoGUID.Empty())continue;
 
-				m_videoMap[id] = m_resourceManager.GetDetachedResource<R_Video>(videoCom->videoGUID);
-				std::bitset<VIDEO_FLAGS::TOTAL> videoFlags;
-				videoFlags.set(VIDEO_FLAGS::AUDIO);
+				m_videoMap[id].videoPtr = m_resourceManager.GetDetachedResource<R_Video>(videoCom->videoGUID);;
+				m_videoMap[id].videoFlag.set(VIDEO_FLAGS::AUDIO);
 				if (videoCom->loop) {
-					videoFlags.set(VIDEO_FLAGS::LOOP);
+					m_videoMap[id].videoFlag.set(VIDEO_FLAGS::LOOP);
 				}
 
-				m_videoMap[id]->Init(videoFlags);
+				m_videoMap[id].videoPtr->Init(m_videoMap[id].videoFlag);
 			}
 
 
 			//push to graphics manager
-			m_graphicsManager.gm_PushVideoData(VideoRenderer::VideoData(glm::mat4(transformCom->transformation), m_videoMap.at(id), videoCom->pause));
+			m_graphicsManager.gm_PushVideoData(VideoRenderer::VideoData(glm::mat4(transformCom->transformation), m_videoMap.at(id).videoPtr, videoCom->pause));
 
 
 
-			if (m_videoMap[id]->HasStopped()) {
-				videoCom->playing = false;
+			if (auto ptr = m_videoMap[id].videoPtr) {
+				if (ptr->HasStopped()) {
+					videoCom->playing = false;
+				}
+				
 			}
 		}
 	}

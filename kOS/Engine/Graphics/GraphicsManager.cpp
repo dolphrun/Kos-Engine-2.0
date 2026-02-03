@@ -75,7 +75,8 @@ void GraphicsManager::gm_Initialize(float width, float height) {
 
 void GraphicsManager::gm_Update()
 {
-	videoRenderer.Update();
+	Shader* videoShader{ &shaderManager.engineShaders.find("VideoShader")->second };
+	videoRenderer.Update(*videoShader);
 }
 
 void GraphicsManager::gm_Render()

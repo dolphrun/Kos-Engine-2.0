@@ -767,9 +767,9 @@ void VideoRenderer::InitializeVideoRendererMeshes() {
 	m_videoMesh.CreateMesh();
 }
 
-void VideoRenderer::Update() {
+void VideoRenderer::Update(Shader& shader) {
 	for (VideoData data : vecVideoData) {
-		data.video->DecodeAndUpdateVideo(data.pause);
+		data.video->DecodeAndUpdateVideo(shader.ID, data.pause);
 	}
 }
 

@@ -28,7 +28,12 @@ namespace ecs {
         REFLECTABLE(VideoSystem)
 
     private:
-        std::unordered_map<ecs::EntityID, std::shared_ptr<R_Video>> m_videoMap;
+        struct videoInfo{
+            std::bitset<VIDEO_FLAGS::TOTAL> videoFlag;
+            std::shared_ptr<R_Video> videoPtr;
+        };
+
+        std::unordered_map<ecs::EntityID, videoInfo> m_videoMap;
     };
 
 }

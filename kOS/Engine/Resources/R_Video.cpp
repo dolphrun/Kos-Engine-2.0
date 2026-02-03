@@ -27,17 +27,6 @@ void R_Video::Load()
 
     videoWidth = plm_get_width(mpeg);
     videoHieght = plm_get_height(mpeg);
-}
-
-void R_Video::Init(std::bitset<VIDEO_FLAGS::TOTAL> flag) {
-
-    //check flags 
-    if (flag.test(VIDEO_FLAGS::AUDIO)) {
-        plm_set_audio_enabled(mpeg, true);
-    }
-    if (flag.test(VIDEO_FLAGS::LOOP)) {
-        plm_set_loop(mpeg, true);
-    }
 
     elapsedTime = 0.f;
     lastTime = std::chrono::high_resolution_clock::now();
@@ -74,6 +63,19 @@ void R_Video::Init(std::bitset<VIDEO_FLAGS::TOTAL> flag) {
         }
         std::cerr << std::endl;
     }
+}
+
+void R_Video::Init(std::bitset<VIDEO_FLAGS::TOTAL> flag) {
+
+    //check flags 
+    if (flag.test(VIDEO_FLAGS::AUDIO)) {
+        plm_set_audio_enabled(mpeg, true);
+    }
+    if (flag.test(VIDEO_FLAGS::LOOP)) {
+        plm_set_loop(mpeg, true);
+    }
+
+
 
 
 }
@@ -116,7 +118,10 @@ void R_Video::DecodeAndUpdateVideo(GLuint shader, bool pause)
 bool R_Video::HasStopped()
 {
 
-    return mpeg && plm_has_ended(mpeg);
+    if (mpeg == nullptr)
+        return true; // or false, depending on your semantics
+
+    return plm_has_ended(mpeg) != 0;
 
 }
 
