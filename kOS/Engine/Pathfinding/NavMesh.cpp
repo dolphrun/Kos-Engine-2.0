@@ -994,8 +994,14 @@ void NavMeshManager::RemoveAgent(int agentID) {
 
 void NavMeshManager::RemoveAllAgent() {
     for (auto id : agentData) {
-        RemoveAgent(id.first);
+        auto tm = navMeshData.find(currentScene);
+        if (tm == navMeshData.end()) {
+            LOGGING_WARN("Failed to Remove Agent: Unable to find scene - " + currentScene);
+            return;
+        }
+        tm->second->m_crowd->removeAgent(id.first);
     }
+    agentData.clear();
 }
 
 #undef TM_LOG

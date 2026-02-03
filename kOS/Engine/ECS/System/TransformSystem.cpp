@@ -29,21 +29,21 @@ namespace ecs {
 
 	void TransformSystem::Update() {
 		const auto& entities = m_entities.Data();
-		//for (const EntityID id : entities) {
-		//	TransformComponent* transformComp = m_ecs.GetComponent<TransformComponent>(id);
-		//	if (transformComp->m_haveParent) continue;
-		//	
-		//	CalculateAllTransform(m_ecs, transformComp);
-		//}
+		for (const EntityID id : entities) {
+			TransformComponent* transformComp = m_ecs.GetComponent<TransformComponent>(id);
+			if (transformComp->m_haveParent) continue;
+			
+			CalculateAllTransform(m_ecs, transformComp);
+		}
 
-		m_ecs.GetWorkers().ParallelFor(entities.begin(), entities.end(),
-			[this](EntityID id) {
-				TransformComponent* transformComp = m_ecs.GetComponent<TransformComponent>(id);
-				if (!transformComp->m_haveParent) {
-					CalculateAllTransform(m_ecs, transformComp);
-				}
-			}
-		);
+		//m_ecs.GetWorkers().ParallelFor(entities.begin(), entities.end(),
+		//	[this](EntityID id) {
+		//		TransformComponent* transformComp = m_ecs.GetComponent<TransformComponent>(id);
+		//		if (!transformComp->m_haveParent) {
+		//			CalculateAllTransform(m_ecs, transformComp);
+		//		}
+		//	}
+		//);
 	}
 
 	void TransformSystem::CalculateAllTransform(ECS& ecs, TransformComponent* transformComp, const glm::mat4& parentWorldMtx) {
