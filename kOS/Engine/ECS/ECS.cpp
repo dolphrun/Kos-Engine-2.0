@@ -41,6 +41,7 @@ namespace ecs{
 		RegisterComponent<ButtonComponent>();
 		RegisterComponent<ParticleComponent>();
 		RegisterComponent<NavMeshComponent>();
+		RegisterComponent<VideoComponent>();
 
 		//Allocate memory to each system
 
@@ -72,8 +73,8 @@ namespace ecs{
 		RegisterSystem<DebugSphereColliderRenderSystem, TransformComponent, SphereColliderComponent>(0);
 		RegisterSystem<AudioListenerSystem, TransformComponent, AudioListenerComponent>(0);
 		RegisterSystem<AudioSystem, TransformComponent, AudioComponent>(0);
-		RegisterSystem<PathfindingSystem, TransformComponent>(0);
 		RegisterSystem<ParticleSystem, TransformComponent, ParticleComponent>(0);
+		RegisterSystem<VideoSystem, TransformComponent, VideoComponent>(0);
 
 
 	}
