@@ -105,7 +105,16 @@
             "inputExtensions": ".prof"
           }
         ]
-      }
+      },
+      "videoCompiler": {
+        "path": "null",
+        "outputExtension": ".mpeg",
+        "inputExtensions": [
+          {
+            "inputExtensions": ".mpeg"
+          }
+        ]
+      }      
     }
   },
   {

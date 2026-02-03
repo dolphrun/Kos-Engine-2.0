@@ -17,6 +17,7 @@
 #include "CubeRenderComponent.h"
 #include "SphereComponent.h"
 #include "MaterialComponent.h"
+#include "VideoComponent.h"
 
 #include "BoxColliderComponent.h"
 #include "CapsuleColliderComponent.h"

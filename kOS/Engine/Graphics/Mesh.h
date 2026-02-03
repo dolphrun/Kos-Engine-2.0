@@ -123,3 +123,9 @@ struct DebugNavMesh : BasicMesh {
 	void DrawVertex();
 	void SetRenderNavMesh(const float* verts, const int* tris, const int nverts, const int ntris);
 };
+
+struct VideoMesh : BasicMesh {
+	void CreateMesh();
+	void DrawMesh();
+	GLuint VBO;
+};

@@ -40,6 +40,7 @@ public:
 		RegisterResourceType<R_DepthMapCube>(".dcm");
 		RegisterResourceType<R_AnimController>(".controller");
 		RegisterResourceType<R_PostProcessingProfile>(".prof");
+		RegisterResourceType<R_Video>(".mpeg");
     }
 
 	~ResourceManager() = default;
@@ -49,11 +50,13 @@ public:
 	}
 
 
+	// Get Resource that resource manager will manage
 	template<typename T>
 	std::shared_ptr<T> GetResource(const utility::GUID& GUID) {
 		//check if resrouce is already loaded
 		if (GUID.Empty()) return nullptr;
 
+		//already exist
 		if (m_resourceMap.find(GUID) != m_resourceMap.end()) {
 
 			auto asset = m_resourceMap.at(GUID);
@@ -61,16 +64,27 @@ public:
 				return std::static_pointer_cast<T>(asset);
 			}
 		}
-
-		
+	
 		std::string path = GetResourcePath<T>(GUID);
-
-		//Check if file path exists
-
 		//load asset
 		auto asset = std::make_shared<T>(GUID, path);
 		asset->Load();
 		m_resourceMap[GUID] = asset;
+		return asset;
+
+
+	}
+
+	// Get Resource that resource manager will NOT manage, 
+	template<typename T>
+	std::shared_ptr<T> GetDetachedResource(const utility::GUID& GUID) {
+		//check if resrouce is already loaded
+		if (GUID.Empty()) return nullptr;
+
+		std::string path = GetResourcePath<T>(GUID);
+		//load asset
+		auto asset = std::make_shared<T>(GUID, path);
+		asset->Load();
 		return asset;
 
 
