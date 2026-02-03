@@ -129,7 +129,7 @@
             {
                 "entityGUID": "d1da72a6-0fc8-5697-f8fa-1f906b4de168",
                 "AnimatorComponent": {
-                    "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
+                    "controllerGUID": "baa80405-5c48-fba2-0cde-edc56c8d415d",
                     "m_PlaybackSpeed": 1.0,
                     "m_CurrentTime": 0.0,
                     "m_IsPlaying": true
@@ -143,7 +143,7 @@
                     "hide": false
                 },
                 "SkinnedMeshRendererComponent": {
-                    "skinnedMeshGUID": "8a830bfc-7794-b76e-2f45-0e765f0a2495",
+                    "skinnedMeshGUID": "0c44c479-520e-8c24-acf1-0ef17cfe8e58",
                     "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
                 },
                 "TransformComponent": {

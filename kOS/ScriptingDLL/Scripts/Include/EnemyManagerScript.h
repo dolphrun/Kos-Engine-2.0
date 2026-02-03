@@ -23,7 +23,7 @@ public:
 
 	// Separate variables for ranges cuz if not the ranged will kiss u
 	float enemyAttackRange = 2.5f;
-	float enemyRangedAttackRange = 15.0f;
+	float enemyRangedAttackRange = 2.5f;
 
 	float enemyChaseRange = 25.f;
 
@@ -184,8 +184,8 @@ inline void EnemyManagerScript::Update() {
 			{
 				enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AttackingPlayer",animComp,enemyController);
 			}
-			std::cout << "Ataccking" << std::endl;
-			std::cout << enemyController->RetrieveStateByID(animComp->m_currentStateID)->name << std::endl;
+			//std::cout << "Ataccking" << std::endl;
+			//std::cout << enemyController->RetrieveStateByID(animComp->m_currentStateID)->name << std::endl;
 		}
 	}
 
