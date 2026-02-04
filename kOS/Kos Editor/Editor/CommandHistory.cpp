@@ -9,7 +9,7 @@ static bool onSceneLoadedDel = false;
 void CommandHistory::Init() {
 	m_ecs.AddScene(CACHEDSCENE, SceneData());
 	m_ecs.sceneMap[CACHEDSCENE].isPrefab = true;
-	m_sceneManager.SetSceneActive(CACHEDSCENE, false);
+	m_sceneManager.SetSceneActive(CACHEDSCENE, true);
 
 	if (!onSceneLoadedDel) {
 		m_sceneManager.onSceneLoaded.Add([this](SceneData Data) {	Clear(); });
@@ -70,7 +70,7 @@ void CommandHistory::AddGameObject::Undo(ecs::ECS& ecs, CommandHistory* hist) {
 	EntityID newID = ecs.DuplicateEntity(currentID, CACHEDSCENE);
 	ecs.DeleteEntity(currentID);
 	hist->RegisterRemapID(id, newID);
-	ecs.DeregisterEntity(newID);
+	ecs.SetActive(newID, false);
 }
 
 void CommandHistory::AddGameObject::Redo(ecs::ECS& ecs, CommandHistory* hist) {
@@ -78,13 +78,14 @@ void CommandHistory::AddGameObject::Redo(ecs::ECS& ecs, CommandHistory* hist) {
 	EntityID newID = ecs.DuplicateEntity(currentID, sceneName);
 	ecs.DeleteEntity(currentID);
 	hist->RegisterRemapID(id, newID);
+	ecs.SetActive(newID, true);
 }
 
 CommandHistory::DeleteGameObject::DeleteGameObject(EntityID _id, std::string _scene, ecs::ECS& ecs, CommandHistory* hist) 
 	: Command(_id), sceneName(_scene) {
 	EntityID newID = ecs.DuplicateEntity(_id, CACHEDSCENE);
 	hist->RegisterRemapID(id, newID);
-	ecs.DeregisterEntity(newID);
+	ecs.SetActive(newID, false);
 }
 
 void CommandHistory::DeleteGameObject::Undo(ecs::ECS& ecs, CommandHistory* hist) {
@@ -92,6 +93,7 @@ void CommandHistory::DeleteGameObject::Undo(ecs::ECS& ecs, CommandHistory* hist)
 	EntityID newID = ecs.DuplicateEntity(currentID, sceneName);
 	ecs.DeleteEntity(currentID);
 	hist->RegisterRemapID(id, newID);
+	ecs.SetActive(newID, true);
 }
 
 void CommandHistory::DeleteGameObject::Redo(ecs::ECS& ecs, CommandHistory* hist) {
@@ -99,7 +101,7 @@ void CommandHistory::DeleteGameObject::Redo(ecs::ECS& ecs, CommandHistory* hist)
 	EntityID newID = ecs.DuplicateEntity(currentID, CACHEDSCENE);
 	ecs.DeleteEntity(currentID);
 	hist->RegisterRemapID(id, newID);
-	ecs.DeregisterEntity(newID);
+	ecs.SetActive(newID, false);
 }
 
 CommandHistory::SetGameObjectParent::SetGameObjectParent(EntityID _id, std::optional<EntityID> parentID) : Command(_id), prevParent(parentID) {}
