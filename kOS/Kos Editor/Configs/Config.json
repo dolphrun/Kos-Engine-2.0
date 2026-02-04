@@ -105,7 +105,34 @@
             "inputExtensions": ".prof"
           }
         ]
-      }
+      },
+      "videoCompiler": {
+        "path": "Kos Editor/Compilers/Executable/Video Compiler/VideoCompiler.exe",
+        "outputExtension": ".mpeg",
+        "inputExtensions": [
+          {
+            "inputExtensions": ".mpeg"
+          },
+                    {
+            "inputExtensions": ".mpg"
+          },
+          {
+            "inputExtensions": ".mp4"
+          },
+                    {
+            "inputExtensions": ".mkv"
+          },
+          {
+            "inputExtensions": ".mov"
+          },
+                    {
+            "inputExtensions": ".avi"
+          },
+          {
+            "inputExtensions": ".webm"
+          }
+        ]
+      }      
     }
   },
   {

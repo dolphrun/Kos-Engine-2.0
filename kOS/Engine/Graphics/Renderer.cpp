@@ -762,3 +762,48 @@ void ParticleRenderer::Clear()
 	instancedBasicParticles.clear();
 	particlesToDraw.clear();
 }
+
+void VideoRenderer::InitializeVideoRendererMeshes() {
+	m_videoMesh.CreateMesh();
+}
+
+void VideoRenderer::Update(Shader& shader) {
+	for (VideoData data : vecVideoData) {
+		data.video->DecodeAndUpdateVideo(shader.ID, data.pause);
+	}
+}
+
+void VideoRenderer::Render(const CameraData& camera, Shader& shader) {
+
+	glUseProgram(shader.ID);
+	glUniform1i(glGetUniformLocation(shader.ID, "yTexture"), 0); // Bind to texture unit 0
+	glUniform1i(glGetUniformLocation(shader.ID, "uTexture"), 1); // Bind to texture unit 1
+	glUniform1i(glGetUniformLocation(shader.ID, "vTexture"), 2); // Bind to texture unit 2
+	
+	for (VideoData data : vecVideoData) {
+		
+		auto videoPtr = data.video;
+		//set uniform
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "transformation"), 1, GL_FALSE, glm::value_ptr(data.transformation));
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "view"), 1, GL_FALSE, glm::value_ptr(camera.GetViewMtx()));
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(camera.GetPerspMtx()));
+
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, videoPtr->yTexture);
+
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, videoPtr->uTexture);
+
+		glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_2D, videoPtr->vTexture);
+
+
+		m_videoMesh.DrawMesh();
+
+	}
+	glUseProgram(0);
+}
+
+void VideoRenderer::Clear() {
+	vecVideoData.clear();
+}

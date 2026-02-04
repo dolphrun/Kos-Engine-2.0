@@ -1,0 +1,180 @@
+[
+    {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
+        "entityGUID": "3b12a70d-f129-e6b6-6fd0-585530da2578",
+        "NameComponent": {
+            "entityName": "video",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 1.9853172302246094,
+                    "y": 0.020734796300530434,
+                    "z": 0.036224365234375
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 1.9853172302246094,
+                    "y": 0.020734796300530434,
+                    "z": 0.036224365234375
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "VideoComponent": {
+            "videoGUID": "1573cb72-98d1-d8f1-2210-72296628a7fe",
+            "pause": false,
+            "loop": true
+        }
+    },
+    {
+        "entityGUID": "3404a65d-3e1f-7764-1c1a-bdcd8b0a5add",
+        "NameComponent": {
+            "entityName": "video",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.013290435075759888,
+                    "y": -0.023597747087478638,
+                    "z": -0.007698044180870056
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.013290435075759888,
+                    "y": -0.023597747087478638,
+                    "z": -0.007698044180870056
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "VideoComponent": {
+            "videoGUID": "1573cb72-98d1-d8f1-2210-72296628a7fe",
+            "pause": false,
+            "loop": true
+        }
+    },
+    {
+        "entityGUID": "849024c5-627a-7d59-c98a-b9f951c07290",
+        "CameraComponent": {
+            "cameraType": 0,
+            "fov": 45.0,
+            "nearPlane": 0.05000000074505806,
+            "farPlane": 200.0,
+            "size": {
+                "x": 1600.0,
+                "y": 900.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "active": false,
+            "culling": false,
+            "layer": 0,
+            "renderOrder": 0
+        },
+        "NameComponent": {
+            "entityName": "cam",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.897174596786499,
+                    "y": 0.17239364981651306,
+                    "z": -2.3711516857147217
+                },
+                "rotation": {
+                    "x": -0.0017653629183769226,
+                    "y": 86.98422241210938,
+                    "z": -0.0017685258062556386
+                },
+                "scale": {
+                    "x": 0.9999717473983765,
+                    "y": 1.0,
+                    "z": 0.9999717473983765
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.897174596786499,
+                    "y": 0.17239364981651306,
+                    "z": -2.3711516857147217
+                },
+                "rotation": {
+                    "x": -0.0017653628019616008,
+                    "y": 86.9842529296875,
+                    "z": -0.0017685256898403168
+                },
+                "scale": {
+                    "x": 0.9999717473983765,
+                    "y": 1.0,
+                    "z": 0.9999717473983765
+                }
+            }
+        }
+    }
+]

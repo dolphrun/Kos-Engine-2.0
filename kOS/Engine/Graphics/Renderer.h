@@ -154,3 +154,19 @@ private:
 	BasicParticleMesh basicParticleMesh;
 };
 
+struct VideoRenderer : BasicRenderer {
+	struct VideoData
+	{
+		glm::mat4 transformation;
+		std::shared_ptr<R_Video> video;
+		bool pause;
+	};
+	void InitializeVideoRendererMeshes();
+	void Update(Shader& shader);
+	void Render(const CameraData& camera, Shader& shader);
+	void Clear() override;
+	std::vector<VideoData> vecVideoData;
+private:
+	VideoMesh m_videoMesh;
+};
+

@@ -10,7 +10,7 @@ public:
 	int fireLMBDamage = 4;
 	glm::vec3 direction;
 
-	float timeBeforeDeath = 0.15f;
+	float timeBeforeDeath = 0.25f;
 	float currentTimer = 0.f;
 
 	ScoreManagerScript* scoreManager = nullptr;
@@ -96,6 +96,10 @@ inline void FireLMB::Start() {
 }
 
 inline void FireLMB::Update() {
+	if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
+		tc->LocalTransformation.position += direction * ecsPtr->m_GetDeltaTime();
+	}
+
 	if (currentTimer < timeBeforeDeath) {
 		currentTimer += ecsPtr->m_GetDeltaTime();
 

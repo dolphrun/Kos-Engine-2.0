@@ -1,0 +1,263 @@
+[
+    {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
+        "entityGUID": "c047a81d-64e1-4253-c050-2881c234a399",
+        "BoxColliderComponent": {
+            "isTrigger": true,
+            "box": {
+                "center": {
+                    "x": 1.0,
+                    "y": 0.0,
+                    "z": 1.0
+                },
+                "size": {
+                    "x": 3.299999952316284,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "FireLMB": {
+            "fireLMBDamage": 4,
+            "enemyDeathSfxGUID_1": "00000000-0000-0000-0000-000000000000",
+            "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
+            "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000"
+        },
+        "NameComponent": {
+            "entityName": "SwordSlashVFX",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "prefabName": "SwordSlashVFX.prefab",
+            "hide": false
+        },
+        "ParticleComponent": {
+            "particleType": 0,
+            "duration": 0.20000000298023224,
+            "looping": true,
+            "play_On_Awake": true,
+            "start_Lifetime": 0.18000000715255737,
+            "end_Lifetime": 0.30000001192092896,
+            "lifetime_Random_Enable": true,
+            "textureGUID": "00000000-0000-0000-0000-000000000000",
+            "start_Velocity": 8.0,
+            "playback_State": 0,
+            "particleFade": 1,
+            "velocityModule": {
+                "enabled": false,
+                "mode": 0,
+                "velocity_Modifier": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "forceModule": {
+                "enabled": false,
+                "force": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "shapeModule": {
+                "type": 3,
+                "emission_Direction": {
+                    "x": 0.0,
+                    "y": 1.0,
+                    "z": 0.0
+                },
+                "box_Size": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "sphere_Radius": 0.0,
+                "emit_From_Shell": false,
+                "cone_Angle": 0.0,
+                "cone_Direction": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "cone_Radius": 0.0,
+                "circle_Radius": 1.600000023841858,
+                "circle_Arc": 159.60000610351563,
+                "emit_From_Edge": true,
+                "edge_Length": 0.0,
+                "random_Direction_Amount": 0.0
+            },
+            "colorModule": {
+                "enabled": true,
+                "start_Color": {
+                    "x": 1.0,
+                    "y": 0.8500000238418579,
+                    "z": 0.4000000059604645,
+                    "w": 0.8500000238418579
+                },
+                "end_Color": {
+                    "x": 0.8199999928474426,
+                    "y": 0.10000000149011612,
+                    "z": 0.0,
+                    "w": 0.0
+                }
+            },
+            "sizeModule": {
+                "enabled": true,
+                "start_Size": 0.2199999988079071,
+                "end_Size": 0.0
+            },
+            "rotationModule": {
+                "enabled": false,
+                "start_Rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "end_Rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation_Modifier": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "gravityModule": {
+                "enabled": false,
+                "gravity": {
+                    "x": 0.0,
+                    "y": -9.800000190734863,
+                    "z": 0.0
+                }
+            },
+            "trailingModule": {
+                "enabled": false,
+                "startPoint": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "endPoint": {
+                    "x": 20.0,
+                    "y": 20.0,
+                    "z": 20.0
+                },
+                "rotateEndPoint": false,
+                "rotationSpeed": 2.0,
+                "rotationRadius": 5.0,
+                "rotationCenter": {
+                    "x": 20.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotationAxis": {
+                    "x": 0.0,
+                    "y": 1.0,
+                    "z": 0.0
+                },
+                "spiralRadius": 5.0,
+                "spiralFrequency": 3.0,
+                "spiralIntensityCurve": 0.5,
+                "pathSpeed": 2.0,
+                "arrivalThreshold": 0.5
+            },
+            "noiseModule": {
+                "enabled": true,
+                "strength": 8.0,
+                "strengthMultiplier": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "frequency": 3.0,
+                "scrollSpeed": {
+                    "x": 0.0,
+                    "y": 25.0,
+                    "z": 0.0
+                },
+                "damping": true,
+                "octaves": 2,
+                "octaveMultiplier": 0.5,
+                "octaveScale": 2.0,
+                "quality": 1,
+                "remapEnabled": false,
+                "remapCurveStart": 1.0,
+                "remapCurveEnd": 1.0,
+                "positionOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "emissionInterval": 0.00009999999747378752,
+            "no_Of_Particles": 80
+        },
+        "RigidbodyComponent": {
+            "mass": 1.0,
+            "drag": 0.0,
+            "angularDrag": 0.05000000074505806,
+            "useGravity": false,
+            "isKinematic": false,
+            "interpolation": 0,
+            "collisionDetection": 0,
+            "constraints": 0,
+            "speed": 0.0,
+            "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "angularVelocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -4.436902046203613,
+                    "y": 0.008964458480477333,
+                    "z": 0.09672543406486511
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 30.539995193481445,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.9999985694885254,
+                    "y": 0.9999985694885254,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -4.436902046203613,
+                    "y": 0.008964458480477333,
+                    "z": 0.09672543406486511
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 30.540000915527344,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.9999985694885254,
+                    "y": 0.9999985694885254,
+                    "z": 1.0
+                }
+            }
+        }
+    }
+]

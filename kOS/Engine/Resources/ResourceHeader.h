@@ -10,3 +10,4 @@
 #include "R_DepthMapCube.h"
 #include "R_AnimController.h"
 #include "R_PostProcessProfile.h"
+#include "R_Video.h"

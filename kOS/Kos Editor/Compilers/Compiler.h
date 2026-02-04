@@ -92,6 +92,13 @@ struct PostProcessingCompiler {
 	std::vector<std::string> inputExtensions;
 	REFLECTABLE(PostProcessingCompiler, path, outputExtension, inputExtensions);
 };
+struct VideoCompiler {
+	std::string type = R_Video::classname();
+	std::string path;
+	std::string outputExtension;
+	std::vector<std::string> inputExtensions;
+	REFLECTABLE(VideoCompiler, path, outputExtension, inputExtensions);
+};
 struct CompilerData {
 	MeshCompiler meshCompiler;
 	TextureCompiler textureCompiler;
@@ -104,5 +111,8 @@ struct CompilerData {
 	AnimControllerCompiler animControllerCompiler;
 	NavMeshCompiler navCompiler;
 	PostProcessingCompiler postProcessingCompiler;
-	REFLECTABLE(CompilerData, meshCompiler, textureCompiler, fontCompiler, sceneCompiler, audioCompiler, audioStudioCompiler, materialCompiler, dmcCompiler, animControllerCompiler, navCompiler, postProcessingCompiler);
+	VideoCompiler videoCompiler;
+	REFLECTABLE(CompilerData, meshCompiler, textureCompiler, fontCompiler, sceneCompiler, 
+		audioCompiler, audioStudioCompiler, materialCompiler, dmcCompiler, animControllerCompiler, 
+		navCompiler, postProcessingCompiler, videoCompiler);
 };
