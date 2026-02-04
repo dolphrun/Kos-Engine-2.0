@@ -9,6 +9,10 @@
     },
     {
         "entityGUID": "03980215-7ada-b867-5268-d7fe0ee4900b",
+        "FireDashVfxScript": {
+            "timeBeforeDeath": 0.75,
+            "currentTimer": 0.0
+        },
         "NameComponent": {
             "entityName": "ExplosiveDashVfxPrefab",
             "Layer": 0,
