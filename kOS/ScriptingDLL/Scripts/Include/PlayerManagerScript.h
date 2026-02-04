@@ -1114,7 +1114,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				}
 
 				if (auto* lightningLMBScript = ecsPtr->GetComponent<LightningLMB>(lightningLMBID)) {
-					//fireLMBScript->direction = GetPlayerCameraFrontDirection();
+					lightningLMBScript->direction = GetPlayerCameraFrontDirection();
 				}
 			}
 
