@@ -15,6 +15,7 @@ public:
 
 	int agentid;
 	int enemyHealth;
+	int lightningStack = 0;
 	float enemyMovementSpeed;
 
 	bool enemyIsAttacking = false;

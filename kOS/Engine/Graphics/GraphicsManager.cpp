@@ -71,6 +71,14 @@ void GraphicsManager::gm_Initialize(float width, float height) {
 	FilmGrain::currentShader = &shaderManager.engineShaders.find("FilmGrainShader")->second;
 	ChromaticAberration::currentShader = &shaderManager.engineShaders.find("ChromaticAbberrationShader")->second;
 
+
+	//Set shader
+	gBufferPBRShader=&shaderManager.engineShaders.find("GBufferPBRShader")->second ;
+	gBufferDebugShader= &shaderManager.engineShaders.find("GBufferDebugShader")->second ;
+	worldSpriteShader= &shaderManager.engineShaders.find("GBufferWorldShader")->second ;
+	depthMapShader=&shaderManager.engineShaders.find("DepthMapShader")->second;
+	deferredPBRShader = &shaderManager.engineShaders.find("DeferredPBRShader")->second;
+
 }
 
 void GraphicsManager::gm_Update()
@@ -194,8 +202,9 @@ void GraphicsManager::gm_RenderToGameFrameBuffer()
 	//Iterate through GOS and render to this gbuffer and defferred buffer
 	framebufferManager.sceneBuffer.BindForDrawing();
 	//gm_RenderCubeMap(cd);
-	for (CameraData& cd : gameCameras) {
+	for (int i{ 0 }; i < gameCameras.size();i++) {
 		//Clear G buffer at the start maybe
+		CameraData& cd{ gameCameras[i] };
 		//Bind and clear g buffer
 		if (!cd.culling) {
 			gm_FillDataBuffersGame(cd);
@@ -215,16 +224,18 @@ void GraphicsManager::gm_RenderToGameFrameBuffer()
 		);
 		glBindFramebuffer(GL_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
 		glViewport(0, 0, static_cast<GLsizei>(framebufferManager.sceneBuffer.width), static_cast<GLsizei>(framebufferManager.sceneBuffer.height));
+		
+		if(!i)gm_RenderCubeMap(cd);
 		gm_RenderDeferredObjects(cd);
-		glEnable(GL_DEPTH_TEST);
-		gm_RenderParticles(cd);
-		glDisable(GL_DEPTH_TEST);
-		glDisable(GL_CULL_FACE);
-		gm_RenderVideo(cd);
-		glEnable(GL_CULL_FACE);
-	}
-	glDisable(GL_DEPTH_TEST);
 
+
+	}
+	glEnable(GL_DEPTH_TEST);
+	gm_RenderParticles(gameCameras[0]);
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_CULL_FACE);
+	gm_RenderVideo(gameCameras[0]);
+	glEnable(GL_CULL_FACE);
 	//TEMPORARY CODE WARNING WARNING WARNING DELETE BEFORE M4 IF NOT DIE hi Sean
 /*	Vigniette vig;
 	vig.extent = 0.19;
@@ -276,9 +287,7 @@ void GraphicsManager::gm_FillGBuffer(const CameraData& camera)
 	glEnable(GL_DEPTH_TEST);
 	//Render to G buffer 
 	framebufferManager.gBuffer.BindGBuffer();
-	Shader* gBufferPBRShader{ &shaderManager.engineShaders.find("GBufferPBRShader")->second };
-	Shader* gBufferDebugShader{ &shaderManager.engineShaders.find("GBufferDebugShader")->second };
-	Shader* worldSpriteShader{ &shaderManager.engineShaders.find("GBufferWorldShader")->second };
+
 
 	gBufferPBRShader->Use();
 	gBufferPBRShader->SetTrans("projection", camera.GetPerspMtx()); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
@@ -305,6 +314,8 @@ void GraphicsManager::gm_FillGBuffer(const CameraData& camera)
 	debugRenderer.RenderDebugFrustums(camera, *gBufferDebugShader, gameCameras);
 
 	gBufferDebugShader->SetVec3("color", glm::vec3{ 0.f,0.f,1.f });
+	gBufferDebugShader->SetFloat("uShaderType", 2.1f);
+
 	//{ 0.4f, .63f, 1.f }
 	if (renderNavMesh) {
 		glm::mat4 transform(1.0f);
@@ -331,9 +342,6 @@ void GraphicsManager::gm_FillGBufferGame(const CameraData& camera) {
 	glEnable(GL_DEPTH_TEST);
 	//Render to G buffer 
 	framebufferManager.gBuffer.BindGBuffer();
-	Shader* gBufferPBRShader{ &shaderManager.engineShaders.find("GBufferPBRShader")->second };
-	Shader* gBufferDebugShader{ &shaderManager.engineShaders.find("GBufferDebugShader")->second };
-	Shader* worldSpriteShader{ &shaderManager.engineShaders.find("GBufferWorldShader")->second };
 
 	gBufferPBRShader->Use();
 	gBufferPBRShader->SetTrans("projection", camera.GetPerspMtx()); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
@@ -359,9 +367,6 @@ void GraphicsManager::gm_FillGBufferGame(const CameraData& camera, layer::LAYERS
 	glEnable(GL_DEPTH_TEST);
 	//Render to G buffer 
 	framebufferManager.gBuffer.BindGBuffer();
-	Shader* gBufferPBRShader{ &shaderManager.engineShaders.find("GBufferPBRShader")->second };
-	Shader* gBufferDebugShader{ &shaderManager.engineShaders.find("GBufferDebugShader")->second };
-
 	gBufferPBRShader->Use();
 	gBufferPBRShader->SetTrans("projection", camera.GetPerspMtx()); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
 	gBufferPBRShader->SetTrans("view", camera.GetViewMtx());
@@ -381,7 +386,6 @@ void GraphicsManager::gm_FillDepthBuffer(const CameraData& camera)
 {
 	//Render to Depth buffer
 	glCullFace(GL_FRONT);
-	Shader* depthMapShader{ &shaderManager.engineShaders.find("DepthMapShader")->second };
 	lightRenderer.RenderAllLights(camera, *depthMapShader);
 
 	depthMapShader->Use();
@@ -631,7 +635,6 @@ void GraphicsManager::gm_RenderCubeMap(const CameraData& camera)
 void GraphicsManager::gm_RenderDeferredObjects(const CameraData& camera)
 {
 
-	Shader* deferredPBRShader{ &shaderManager.engineShaders.find("DeferredPBRShader")->second };
 
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
@@ -676,11 +679,18 @@ void GraphicsManager::gm_RenderDeferredObjects(const CameraData& camera)
 	}
 	deferredPBRShader->SetIntArray("depthMap", samplerUnits, 16);
 
-	glUniform1i(glGetUniformLocation(deferredPBRShader->ID, "gPosition"), 0);  // Bind to GL_TEXTURE0
-	glUniform1i(glGetUniformLocation(deferredPBRShader->ID, "gNormal"), 1);    // Bind to GL_TEXTURE1
-	glUniform1i(glGetUniformLocation(deferredPBRShader->ID, "gAlbedoSpec"), 2); // Bind to GL_TEXTURE2
-	glUniform1i(glGetUniformLocation(deferredPBRShader->ID, "gReflect"), 3);
-	glUniform1i(glGetUniformLocation(deferredPBRShader->ID, "gMaterial"), 4);
+	//Use cahce system
+	/*deferredPBRShader->SetInt("gPosition", 0);
+	deferredPBRShader->SetInt("gNormal", 1);
+	deferredPBRShader->SetInt("gAlbedoSpec", 2);
+	deferredPBRShader->SetInt("gReflect", 3);
+	deferredPBRShader->SetInt("gMaterial", 4);*/
+
+	deferredPBRShader->SetInt("gPosition", 0);
+	deferredPBRShader->SetInt("gNormal", 1);
+	deferredPBRShader->SetInt("gAlbedoSpec", 2);
+	deferredPBRShader->SetInt("gReflect", 3);
+	deferredPBRShader->SetInt("gMaterial", 4);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glBindVertexArray(framebufferManager.frameBuffer.vaoId);
@@ -762,12 +772,11 @@ void GraphicsManager::gm_RenderGameBuffer(){
 }
 
 unsigned int* GraphicsManager::gm_PostProcess() {
-	// 1. Setup Pointers
 	FrameBuffer* sceneFB = &framebufferManager.sceneBuffer;
 	FrameBuffer* scratchFB = &framebufferManager.postProcessBuffer1;
 
 	glDisable(GL_CULL_FACE);
-	glDisable(GL_DEPTH_TEST); // Crucial for post-processing
+	glDisable(GL_DEPTH_TEST);
 
 	for (auto& ppe : postProcessProfile->postProcessingEffects) {
 		glBindFramebuffer(GL_FRAMEBUFFER, scratchFB->fbo);
