@@ -101,7 +101,7 @@
             ]
         },
         "MeshFilterComponent": {
-            "meshGUID": "45f0f8eb-576a-a1d4-32e1-1a3e9f641456"
+            "meshGUID": "fad9fc05-f973-4f5c-2154-10ee66bc50ce"
         },
         "NameComponent": {
             "entityName": "M4Ceiling",
@@ -165,7 +165,7 @@
             ]
         },
         "MeshFilterComponent": {
-            "meshGUID": "6ef9c91c-bfe9-9266-7ce6-2e0afaa6fec8"
+            "meshGUID": "efed756a-4a7c-e2b3-46b2-8beb1e7bd5cd"
         },
         "NameComponent": {
             "entityName": "M4Floor",
@@ -229,7 +229,7 @@
             ]
         },
         "MeshFilterComponent": {
-            "meshGUID": "087486ad-1f75-9cc4-9c9c-a1227d959140"
+            "meshGUID": "45e626a6-f156-abc6-2bfe-b8ba1921ab71"
         },
         "NameComponent": {
             "entityName": "M4Walls",
