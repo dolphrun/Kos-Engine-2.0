@@ -124,7 +124,7 @@
         },
         "children": [
             {
-                "entityGUID": "f7d6df4a-d254-653e-6451-8fc3b604d9ff",
+                "entityGUID": "2698ca68-8ce3-a4a8-1ed1-73f97f21f2b1",
                 "NameComponent": {
                     "entityName": "Text",
                     "Layer": 0,
@@ -135,7 +135,7 @@
                 },
                 "TextComponent": {
                     "fontGUID": "4d2a70ed-5a02-c285-432e-b2d342f44972",
-                    "text": "CUTSCENE",
+                    "text": "Press K to Skip",
                     "color": {
                         "x": 1.0,
                         "y": 1.0,
@@ -146,7 +146,7 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.0,
+                            "x": -0.30000001192092896,
                             "y": 0.0,
                             "z": 0.705436646938324
                         },
@@ -163,7 +163,7 @@
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": 0.0,
+                            "x": -0.30000001192092896,
                             "y": 0.0,
                             "z": 0.0
                         },
@@ -179,7 +179,253 @@
                         }
                     }
                 }
+            },
+            {
+                "entityGUID": "ed9b61c3-31aa-dee8-0dff-a71f4e79d631",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "11fa865a-77ba-d259-f536-3279382226fa",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": true,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
+                "AudioScript": {
+                    "GUID": "11fa865a-77ba-d259-f536-3279382226fa",
+                    "elapsedTime": 0.0,
+                    "speed": 1.0,
+                    "radius": 5.0
+                },
+                "NameComponent": {
+                    "entityName": "Audio",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": -0.705436646938324
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "301ab6cd-2a96-16db-cd56-8ef7d0ab859b",
+                "ButtonComponent": {
+                    "normalColor": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "hoveredColor": {
+                        "x": 0.800000011920929,
+                        "y": 0.800000011920929,
+                        "z": 0.800000011920929,
+                        "w": 1.0
+                    },
+                    "pressedColor": {
+                        "x": 0.6000000238418579,
+                        "y": 0.6000000238418579,
+                        "z": 0.6000000238418579,
+                        "w": 1.0
+                    },
+                    "isHovered": false,
+                    "isPressed": true
+                },
+                "NameComponent": {
+                    "entityName": "Button",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 1.0068352222442627,
+                            "y": -0.10656070709228516,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 1.0068352222442627,
+                            "y": -0.10656070709228516,
+                            "z": -0.705436646938324
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "5b528fb2-c429-b5c0-428d-096501efe657",
+                "CutSceneScript": {
+                    "video_GUID": "155a9ebf-7e02-c70e-8851-62da19e75e25",
+                    "current_Scene": "8c4f218c-65c6-b2b7-fd2c-a55d31909e2f",
+                    "next_Scene": "873145a3-c01e-82b3-a4f5-d837cb0a0c51"
+                },
+                "NameComponent": {
+                    "entityName": "Script",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": -0.705436646938324
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
             }
         ]
+    },
+    {
+        "entityGUID": "155a9ebf-7e02-c70e-8851-62da19e75e25",
+        "NameComponent": {
+            "entityName": "Video",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 2.9800000190734863,
+                    "y": 0.1599999964237213,
+                    "z": 0.00543665885925293
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -89.98021697998047,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.7999998331069946,
+                    "y": 1.399999976158142,
+                    "z": 0.9999997615814209
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 2.9800000190734863,
+                    "y": 0.1599999964237213,
+                    "z": 0.00543665885925293
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -89.98021697998047,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.7999998331069946,
+                    "y": 1.399999976158142,
+                    "z": 0.9999997615814209
+                }
+            }
+        },
+        "VideoComponent": {
+            "videoGUID": "17928dcd-309c-7349-38ec-eee2b78a8c8f",
+            "pause": false,
+            "loop": true
+        }
     }
 ]

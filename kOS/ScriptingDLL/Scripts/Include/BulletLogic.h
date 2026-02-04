@@ -40,12 +40,12 @@ inline void BulletLogic::Start() {
 	if (!enemyDeathSfxGUID_2.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_2);
 	if (!enemyDeathSfxGUID_3.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_3); \
 
-		for (const auto& [entityID, signature] : ecsPtr->GetEntitySignatureData()) {
-			if (ecsPtr->HasComponent<ScoreManagerScript>(entityID)) {
-				scoreManager = ecsPtr->GetComponent<ScoreManagerScript>(entityID);
-				break;
-			}
+	for (const auto& [entityID, signature] : ecsPtr->GetEntitySignatureData()) {
+		if (ecsPtr->HasComponent<ScoreManagerScript>(entityID)) {
+			scoreManager = ecsPtr->GetComponent<ScoreManagerScript>(entityID);
+			break;
 		}
+	}
 
 	physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
 		if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
