@@ -260,19 +260,36 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
             if (ImGui::IsMouseDown(ImGuiMouseButton_Right)) {
                 EditorCamera::editorCamera.onCursor(deltaX, deltaY);
             }
-            else if (ImGui::IsMouseDown(ImGuiMouseButton_Middle)) { // Needs to be fixed
-                if (std::abs(deltaX) > 0.1f && std::abs(deltaY) > 0.1f) {
+            else if (ImGui::IsMouseDown(ImGuiMouseButton_Middle)) {
+                if (std::abs(deltaX) > 0.1f || std::abs(deltaY) > 0.1f) {
                     if (EditorCamera::editorCamera.orbitMode) EditorCamera::editorCamera.SwitchMode(false);
-                    glm::vec3 right = glm::normalize(glm::cross(EditorCamera::editorCamera.direction, EditorCamera::editorCamera.up));
-                    glm::vec3 up = glm::normalize(glm::cross(right, EditorCamera::editorCamera.direction));
-                    EditorCamera::editorCamera.position += (deltaX * right - deltaY * up) * cameraSpeed;
+                    glm::vec3 forward;
+                    forward.x = cos(glm::radians(EditorCamera::editorCamera.rotation.y)) * cos(glm::radians(EditorCamera::editorCamera.rotation.x));
+                    forward.y = sin(glm::radians(EditorCamera::editorCamera.rotation.x));
+                    forward.z = sin(glm::radians(EditorCamera::editorCamera.rotation.y)) * cos(glm::radians(EditorCamera::editorCamera.rotation.x));
+                    forward = glm::normalize(forward);
+                    glm::vec3 right = glm::normalize(glm::cross(glm::vec3{ 0.0f, 1.0f, 0.0f }, forward));
+                    glm::vec3 up = glm::normalize(glm::cross(forward, right));
+                    EditorCamera::editorCamera.position += (deltaX * right + deltaY * up) * cameraSpeed;
                 }
             }
         }
-
         lastMousePos = currentMousePos;
         firstMouseInput = false;
     }
+
+    // Uncomment this block to enable Unity-style 2d view snapping thingy it's not the best but it does it's purpose for now
+    // I'm gonna finger your asshole Gabe.
+    //bool shift = ImGui::IsKeyDown(ImGuiKey_LeftShift) || ImGui::IsKeyDown(ImGuiKey_RightShift);
+    //if (ImGui::IsKeyPressed(ImGuiKey_LeftArrow))  EditorCamera::editorCamera.SnapToAxis(EditorCamera::AxisView::NegX);
+    //if (ImGui::IsKeyPressed(ImGuiKey_RightArrow)) EditorCamera::editorCamera.SnapToAxis(EditorCamera::AxisView::PosX);
+    //if (ImGui::IsKeyPressed(ImGuiKey_UpArrow))    EditorCamera::editorCamera.SnapToAxis(EditorCamera::AxisView::PosY);
+    //if (ImGui::IsKeyPressed(ImGuiKey_DownArrow))  EditorCamera::editorCamera.SnapToAxis(EditorCamera::AxisView::NegY);
+    //if (shift) {
+    //    if (ImGui::IsKeyPressed(ImGuiKey_UpArrow))   EditorCamera::editorCamera.SnapToAxis(EditorCamera::AxisView::NegZ);
+    //    if (ImGui::IsKeyPressed(ImGuiKey_DownArrow)) EditorCamera::editorCamera.SnapToAxis(EditorCamera::AxisView::PosZ);
+    //}
+    // 
     //Move Camera Around
     if (ImGui::IsMouseDragging(ImGuiMouseButton_Right) && ImGui::IsWindowHovered())
     {

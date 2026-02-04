@@ -62,8 +62,8 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 			//Print out effect and intensity
 			Vigniette* v = reinterpret_cast<Vigniette*>(eff.get());
 			ImGui::Text("Vigniette");
-			ImGui::DragFloat("Intensity", &v->intensity, 0.1f);
-			ImGui::DragFloat("Extent", &v->extent, 0.1f);
+			ImGui::DragFloat("Intensity", &v->intensity, 0.01f);
+			ImGui::DragFloat("Extent", &v->extent, 0.01f);
 			break;;
 		}
 		case PPT_FilmGrain:
@@ -71,7 +71,7 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 			//Print out effect and intensity
 			FilmGrain* v = reinterpret_cast<FilmGrain*>(eff.get());
 			ImGui::Text("Film Grain");
-			ImGui::DragFloat("Noise Strength", &v->noiseStrength, 0.1f);
+			ImGui::DragFloat("Noise Strength", &v->noiseStrength, 0.01f);
 			break;;
 		}
 		case PPT_ChromaticAbberation:
@@ -79,9 +79,9 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 			//Print out effect and intensity
 			ChromaticAberration* v = reinterpret_cast<ChromaticAberration*>(eff.get());
 			ImGui::Text("Chromatic abberation");
-			ImGui::DragFloat("Red Offset", &v->redOffset, 0.1f);
-			ImGui::DragFloat("Green Offset", &v->greenOffset, 0.1f);
-			ImGui::DragFloat("Blue Offset", &v->blueOffset, 0.1f);
+			ImGui::DragFloat("Red Offset", &v->redOffset, 0.01f);
+			ImGui::DragFloat("Green Offset", &v->greenOffset, 0.01f);
+			ImGui::DragFloat("Blue Offset", &v->blueOffset, 0.01f);
 			break;;
 		}
 		}

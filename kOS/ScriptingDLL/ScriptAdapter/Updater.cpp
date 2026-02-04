@@ -33,6 +33,9 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 	TemplateSC::navMeshPtr = static_cast<NavMeshManager*>(svm->navMesh);
 
 	RegisterScript<BulletLogic>(TemplateSC::ecsPtr);
+	RegisterScript<FireLMB>(TemplateSC::ecsPtr);
+	RegisterScript<AcidLMB>(TemplateSC::ecsPtr);
+	RegisterScript<LightningLMB>(TemplateSC::ecsPtr);
 	RegisterScript<EnemyManagerScript>(TemplateSC::ecsPtr);
 	RegisterScript<PowerupManagerScript>(TemplateSC::ecsPtr);
 

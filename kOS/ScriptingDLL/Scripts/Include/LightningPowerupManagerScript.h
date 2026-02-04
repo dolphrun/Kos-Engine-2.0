@@ -4,11 +4,15 @@
 
 class LightningPowerupManagerScript : public TemplateSC {
 public:
-	int lightningDamage = 5;
-	float lingerTime;
-	float range = 10.f;
+	float lightningSpeed = 100.f;
+	int lightningDamage = 15;
+	glm::vec3 direction;
 
+	float lingerTime = 1.f;
 	float currentTimer = 0.f;
+
+	ScoreManagerScript* scoreManager = nullptr;
+	int scoreValue = 200;
 
 	utility::GUID enemyDeathSfxGUID_1;
 	utility::GUID enemyDeathSfxGUID_2;
@@ -16,9 +20,6 @@ public:
 	std::vector<utility::GUID> enemyDeathSfxGUIDs;
 
 	utility::GUID lightningStrikeSfxGUID;
-
-	ScoreManagerScript* scoreManager = nullptr;
-	int scoreValue = 200;
 
 	void Start() override {
 		// ADD SFX OF LIGHTNING STRIKE HERE - Done
@@ -60,6 +61,10 @@ public:
 	}
 
 	void Update() override {
+		if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
+			tc->LocalTransformation.position += direction * lightningSpeed * ecsPtr->m_GetDeltaTime();
+		}
+
 		if (currentTimer <= lingerTime) {
 			currentTimer += ecsPtr->m_GetDeltaTime();
 
@@ -98,5 +103,5 @@ public:
 		std::cout << "[BulletLogic] Playing enemy death SFX index " << idx << "\n";
 	}
 
-	REFLECTABLE(LightningPowerupManagerScript, lightningDamage, lingerTime, range, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3, lightningStrikeSfxGUID)
+	REFLECTABLE(LightningPowerupManagerScript, lightningDamage, lingerTime, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3, lightningStrikeSfxGUID)
 };
