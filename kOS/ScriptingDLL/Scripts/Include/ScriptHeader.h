@@ -37,3 +37,4 @@
 #include "WinScreenScript.h"
 #include "UIButtonScript.h"
 #include "NEW_HealthBarUIScript.h"
+#include "CutSceneScript.h"
