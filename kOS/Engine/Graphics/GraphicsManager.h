@@ -209,4 +209,11 @@ private:
 	//Viewport sizes
 	float windowWidth, windowHeight;
 
+	//Save shader pointer
+	Shader* gBufferPBRShader{ nullptr };
+	Shader* gBufferDebugShader{ nullptr };
+	Shader* worldSpriteShader{ nullptr };
+	Shader* depthMapShader{ nullptr };
+	Shader* deferredPBRShader{ nullptr };
+
 };
