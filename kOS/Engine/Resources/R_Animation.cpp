@@ -188,22 +188,26 @@ void R_Animation::Load() {
     }
     this->m_RootNode = NodeDataParser(serialized, offset);
 
-    const int MAX_BONES{ 200 };
-    m_FinalBoneTransforms.resize(MAX_BONES, glm::mat4(1.0f));
+    //const int MAX_BONES{ 100 };
+    //m_FinalBoneTransforms.resize(MAX_BONES, glm::mat4(1.0f));
 }
 
 void R_Animation::Update(float currentTime, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
     const std::unordered_map<std::string, int>& boneMap,
-    const std::vector<BoneInfo>& boneInfo)
+    const std::vector<BoneInfo>& boneInfo, size_t boneCount)
 {
     m_CurrentTime = currentTime;
-    CalculateBoneTransform(GetRootNode(), parentTransform, globalInverse, boneMap, boneInfo);
+    CalculateBoneTransform(GetRootNode(), parentTransform, globalInverse, boneMap, boneInfo, boneCount);
 }
 
 void R_Animation::CalculateBoneTransform(const NodeData& node, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
     const std::unordered_map<std::string, int>& boneMap,
-    const std::vector<BoneInfo>& boneInfo)
+    const std::vector<BoneInfo>& boneInfo, size_t boneCount)
 {
+    if (boneCount > 0) {
+        m_FinalBoneTransforms.resize(boneCount, glm::mat4(1.f));
+    }
+    
     std::string nodeName(node.name);
     glm::mat4 nodeTransform = node.transformation;
 

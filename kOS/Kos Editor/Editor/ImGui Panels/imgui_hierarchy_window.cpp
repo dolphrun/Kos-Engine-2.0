@@ -500,17 +500,11 @@ namespace gui
         if (nc->isPrefab || nc->hide)
             ImGui::PopStyleColor();
 
-        if (ImGui::IsItemClicked())
+        if (ImGui::IsItemHovered() &&
+            ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
         {
             m_clickedEntityId = id;
             m_isUi = false;
-            // Check if it houses any ui elements
-            if (m_ecs.HasComponent<ecs::CanvasRendererComponent>(id) || (m_ecs.GetParent(m_clickedEntityId).has_value() &&
-                                                                         m_ecs.HasComponent<ecs::CanvasRendererComponent>(m_ecs.GetParent(m_clickedEntityId).value())))
-            {
-                // std::cout << "IS UI\n";
-                m_isUi = true;
-            }
         }
 
         if (ImGui::GetIO().KeysDown[ImGuiKey::ImGuiKey_F] && m_clickedEntityId == id)

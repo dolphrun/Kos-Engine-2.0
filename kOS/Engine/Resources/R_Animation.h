@@ -44,7 +44,7 @@ public:
 	void Unload() override;
 	void Update(float currentTime, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
 		const std::unordered_map<std::string, int>& boneMap,
-		const std::vector<BoneInfo>& boneInfo);
+		const std::vector<BoneInfo>& boneInfo, size_t boneCount);
 
 	float GetCurrentTime() const { return m_CurrentTime; };
 	float GetDuration() const { return m_Duration; };
@@ -63,7 +63,7 @@ private:
 	}
 	void CalculateBoneTransform(const NodeData& node, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
 		const std::unordered_map<std::string, int>& boneMap,
-		const std::vector<BoneInfo>& boneInfo);
+		const std::vector<BoneInfo>& boneInfo, size_t boneCount = 0);
 
 	template <typename T> T DecodeBinary(std::string& bin, int& offset);
 	NodeData NodeDataParser(std::string& buffer, int& offset);
