@@ -11652,6 +11652,14 @@
             },
             {
                 "entityGUID": "7c0bd0dc-3713-353f-81c9-fd2484078e68",
+                "AbilityUIImageScript": {
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "noneSprite": "00000000-0000-0000-0000-000000000000",
+                    "fireSprite": "17c10dc5-af0f-c7c6-7091-40ccefac22f3",
+                    "lightningSprite": "14c5711b-fe4a-5700-2e1d-de43bdf6ab37",
+                    "acidSprite": "00000000-0000-0000-0000-000000000000"
+                },
                 "NameComponent": {
                     "entityName": "Ability UI",
                     "Layer": 0,
@@ -11661,7 +11669,7 @@
                     "hide": false
                 },
                 "SpriteComponent": {
-                    "spriteGUID": "14c5711b-fe4a-5700-2e1d-de43bdf6ab37",
+                    "spriteGUID": "00000000-0000-0000-0000-000000000000",
                     "color": {
                         "x": 1.0,
                         "y": 1.0,
@@ -11783,8 +11791,9 @@
             {
                 "entityGUID": "414ecb47-209a-a544-9177-c8c600321e68",
                 "NEWHealthBarScript": {
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
                     "healthbarSprite": "1a14f824-3722-53b3-58dc-6baf513e5964",
-                    "testHealthPercentage": 100.0,
                     "originalScale": {
                         "x": 1.0,
                         "y": 1.0,
@@ -11927,6 +11936,22 @@
             },
             {
                 "entityGUID": "7d7afda0-2b34-01f8-11f2-48f9b39d6a4d",
+                "ManaUIScript": {
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "manabarSprite": "355f979b-0a4a-12d1-8f0e-4cb33e820630",
+                    "originalScale": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "originalPosition": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "initialized": false
+                },
                 "NameComponent": {
                     "entityName": "Mana Bar",
                     "Layer": 0,
@@ -12187,6 +12212,17 @@
             },
             {
                 "entityGUID": "a25eaf3d-f379-830f-bfd9-a4b26c3d2f12",
+                "AmmoUIScript": {
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "ammo0Sprite": "47c8a01a-8fe7-9a82-059f-9098a98f4961",
+                    "ammo1Sprite": "15982aa4-070d-c3da-6479-c35ff3fcbca4",
+                    "ammo2Sprite": "bf4358f3-adac-a488-5dea-2ad5bcc0b96d",
+                    "ammo3Sprite": "2865a210-991b-7fa6-ba38-d254d502425c",
+                    "ammo4Sprite": "b58bf2ab-102e-7ece-5fb0-35425c5f5d6b",
+                    "ammo5Sprite": "5e1cb9c6-9879-43fe-9d66-fb0359bc8234",
+                    "ammo6Sprite": "2d0349a7-3c22-e0ae-c79d-94fbea70823f"
+                },
                 "NameComponent": {
                     "entityName": "Ammo",
                     "Layer": 0,
