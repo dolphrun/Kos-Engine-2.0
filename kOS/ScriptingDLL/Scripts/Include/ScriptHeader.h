@@ -19,7 +19,7 @@
 #include "FireLightningPowerupManagerScript.h"
 #include "FireAcidPowerupManagerScript.h"
 #include "LightningAcidPowerupManagerScript.h"
-
+#include "FireDashVfxScript.h"
 #include "GroundCheckScript.h"
 #include "PlayerManagerScript.h"
 #include "AbilityUIScript.h"
