@@ -3,7 +3,7 @@
         "SceneData": {
             "skyBoxGUID": [],
             "NavMeshGuid": "47b43a1a-ebd8-b779-c987-3573c61978bc",
-            "postProcessingProfile": "c3a79a26-21f4-7f96-81b0-a3d406909579",
+            "postProcessingProfile": "e3cdc801-570a-a2d8-d673-1b18297bb0dc",
             "ambientIntensity": 1.0
         }
     },
@@ -101,10 +101,138 @@
             ]
         },
         "MeshFilterComponent": {
-            "meshGUID": "45e626a6-f156-abc6-2bfe-b8ba1921ab71"
+            "meshGUID": "381bd57b-9148-545c-e83b-fc0e3c2423f0"
         },
         "NameComponent": {
             "entityName": "M4LevelWall",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "NavMeshComponent": {},
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "56361d32-1d00-085b-272a-de43aa4d4302",
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "060a466b-d63a-daf0-1828-16fa44d0522d"
+                },
+                {
+                    "materialGUID": "1f738717-1d12-e06f-ae86-13f8c4765c1a"
+                },
+                {
+                    "materialGUID": "b0f05210-9ecf-9d1e-e515-66b7629b4b2b"
+                }
+            ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "efed756a-4a7c-e2b3-46b2-8beb1e7bd5cd"
+        },
+        "NameComponent": {
+            "entityName": "M4LevelFloor",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "NavMeshComponent": {},
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "6657653b-1b7a-5e5b-4110-4fe6da4ac8f4",
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "060a466b-d63a-daf0-1828-16fa44d0522d"
+                },
+                {
+                    "materialGUID": "1f738717-1d12-e06f-ae86-13f8c4765c1a"
+                },
+                {
+                    "materialGUID": "b0f05210-9ecf-9d1e-e515-66b7629b4b2b"
+                }
+            ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "fad9fc05-f973-4f5c-2154-10ee66bc50ce"
+        },
+        "NameComponent": {
+            "entityName": "M4LevelCeiling",
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
@@ -1936,9 +2064,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 0.48348283767700195,
-                    "y": 1.994795799255371,
-                    "z": -5.460257530212402
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -1953,9 +2081,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 0.48348283767700195,
-                    "y": 1.994795799255371,
-                    "z": -5.460257530212402
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -2002,9 +2130,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 101.99479675292969,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2049,9 +2177,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 101.99479675292969,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2113,9 +2241,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": 1.0634827613830566,
-                                    "y": 101.1847915649414,
-                                    "z": -5.480257511138916
+                                    "x": 0.5799999237060547,
+                                    "y": 99.18999481201172,
+                                    "z": -0.019999995827674866
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -2162,9 +2290,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 101.99479675292969,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2234,9 +2362,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 1.994795799255371,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2373,9 +2501,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 1.994795799255371,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 20.0,
+                            "z": -4.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2391,8 +2519,8 @@
                     "LocalTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
+                            "y": 20.0,
+                            "z": -4.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2442,9 +2570,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": 0.48348283767700195,
-                                    "y": 2.744795799255371,
-                                    "z": -5.460257530212402
+                                    "x": 0.0,
+                                    "y": 20.75,
+                                    "z": -4.0
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -2522,9 +2650,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": 0.48348283767700195,
-                                    "y": 0.4947957992553711,
-                                    "z": -5.460257530212402
+                                    "x": 0.0,
+                                    "y": 18.5,
+                                    "z": -4.0
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -2569,9 +2697,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": 1.483482837677002,
-                                    "y": 2.744795799255371,
-                                    "z": -5.460257530212402
+                                    "x": 1.0,
+                                    "y": 20.75,
+                                    "z": -4.0
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -21613,133 +21741,5 @@
                 ]
             }
         ]
-    },
-    {
-        "entityGUID": "56361d32-1d00-085b-272a-de43aa4d4302",
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "060a466b-d63a-daf0-1828-16fa44d0522d"
-                },
-                {
-                    "materialGUID": "1f738717-1d12-e06f-ae86-13f8c4765c1a"
-                },
-                {
-                    "materialGUID": "b0f05210-9ecf-9d1e-e515-66b7629b4b2b"
-                }
-            ]
-        },
-        "MeshFilterComponent": {
-            "meshGUID": "efed756a-4a7c-e2b3-46b2-8beb1e7bd5cd"
-        },
-        "NameComponent": {
-            "entityName": "M4LevelFloor",
-            "Layer": 0,
-            "entityTag": "Default",
-            "isPrefab": false,
-            "prefabName": "",
-            "hide": false
-        },
-        "NavMeshComponent": {},
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            }
-        }
-    },
-    {
-        "entityGUID": "6657653b-1b7a-5e5b-4110-4fe6da4ac8f4",
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "060a466b-d63a-daf0-1828-16fa44d0522d"
-                },
-                {
-                    "materialGUID": "1f738717-1d12-e06f-ae86-13f8c4765c1a"
-                },
-                {
-                    "materialGUID": "b0f05210-9ecf-9d1e-e515-66b7629b4b2b"
-                }
-            ]
-        },
-        "MeshFilterComponent": {
-            "meshGUID": "fad9fc05-f973-4f5c-2154-10ee66bc50ce"
-        },
-        "NameComponent": {
-            "entityName": "M4LevelCeiling",
-            "Layer": 0,
-            "entityTag": "Default",
-            "isPrefab": false,
-            "prefabName": "",
-            "hide": false
-        },
-        "NavMeshComponent": {},
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            }
-        }
     }
 ]
