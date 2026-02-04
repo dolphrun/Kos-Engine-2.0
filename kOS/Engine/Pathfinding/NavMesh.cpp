@@ -837,24 +837,29 @@ void NavMeshManager::BuildRecastGeometry(std::string sceneName, std::shared_ptr<
     std::vector<float> rcVerts;
     std::vector<int> rcTris;
     glm::vec3 min(std::numeric_limits<float>::max()), max(std::numeric_limits<float>::lowest());
-    for (auto obj : entities.sceneIDs) 
+    std::vector<std::shared_ptr<R_Model>> models;
+    for (auto obj : entities.sceneIDs)
     {
         const auto* navComp = m_ecs.GetComponent<NavMeshComponent>(obj);
         if (!navComp) continue;
 
         const auto* meshComp = m_ecs.GetComponent<MeshFilterComponent>(obj);
         if (!meshComp) continue;
-        
+
         auto meshData = resourceManager.GetResource<R_Model>(meshComp->meshGUID);
         if (!meshData) {
             const auto* name = m_ecs.GetComponent<NameComponent>(obj);
             LOGGING_WARN("Unable to find meshData of " + name->entityName);
             continue;
         }
-
+  /*      else {
+            models.push_back(meshData);
+        }
+    }
+    for (auto iter : models) {*/
         auto trans = m_ecs.GetComponent<TransformComponent>(obj);
         InputGeom* newGeom = new InputGeom;
-        if (!newGeom->loadMesh(&ctx, meshData, trans->WorldTransformation.scale.x)){
+        if (!newGeom->loadMesh(&ctx, meshData, trans->WorldTransformation.scale.x)) {
             const auto* name = m_ecs.GetComponent<NameComponent>(obj);
             delete newGeom;
             ctx.dumpLog("Geom load log %s:", name->entityName);
