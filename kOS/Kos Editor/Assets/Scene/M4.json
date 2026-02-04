@@ -69,6 +69,690 @@
             }
         }
     },
+     {
+        "entityGUID": "0319cfa9-1b9d-ecd5-4f9a-28f6bff3b1e3",
+        "NameComponent": {
+            "entityName": "Game Package",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "prefabName": "Game Package.prefab",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "adf1aeb8-eb08-f79b-c4f0-5ba363c89caa",
+                "CameraComponent": {
+                    "cameraType": 0,
+                    "fov": 55.0,
+                    "nearPlane": 0.05000000074505806,
+                    "farPlane": 200.0,
+                    "size": {
+                        "x": 1600.0,
+                        "y": 900.0
+                    },
+                    "target": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": -1.0
+                    },
+                    "active": false,
+                    "culling": true,
+                    "layer": 1,
+                    "renderOrder": 0
+                },
+                "NameComponent": {
+                    "entityName": "Player Arm Model Camera",
+                    "Layer": 1,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "0a59d88b-df5b-7a8a-b91f-d75191180ea9",
+                "NameComponent": {
+                    "entityName": "Player Arm Model Pivot",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 89.98021697998047,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.9999998211860657,
+                            "y": 1.0,
+                            "z": 0.9999998211860657
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 89.98021697998047,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.9999998211860657,
+                            "y": 1.0,
+                            "z": 0.9999998211860657
+                        }
+                    }
+                },
+                "children": [
+                    {
+                        "entityGUID": "1361fd6e-b3e0-48f2-5ab3-1599fcc561a4",
+                        "AnimatorComponent": {
+                            "controllerGUID": "9149963b-fa24-7dbc-6d95-cf2d7ffad332",
+                            "m_PlaybackSpeed": 1.0,
+                            "m_CurrentTime": 0.0,
+                            "m_IsPlaying": true
+                        },
+                        "MaterialComponent": {
+                            "materialGUID": [
+                                {
+                                    "materialGUID": "e9ece6d7-4ed7-73b3-9309-ec58d5d77a07"
+                                }
+                            ]
+                        },
+                        "NameComponent": {
+                            "entityName": "Player Arm Model",
+                            "Layer": 1,
+                            "entityTag": "Default",
+                            "isPrefab": true,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SkinnedMeshRendererComponent": {
+                            "skinnedMeshGUID": "4d215f18-7b0d-7c34-1315-4803812d8960",
+                            "materialGUID": "e9ece6d7-4ed7-73b3-9309-ec58d5d77a07"
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.5799999237060547,
+                                    "y": 99.18999481201172,
+                                    "z": -0.019999995827674866
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": 89.98021697998047,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.01999998837709427,
+                                    "y": 0.019999999552965164,
+                                    "z": 0.01999998837709427
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.020200267434120178,
+                                    "y": -0.8100051879882813,
+                                    "z": 0.5799930691719055
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": 1.302755681109602e-9,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.019999992102384567,
+                                    "y": 0.019999999552965164,
+                                    "z": 0.019999992102384567
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "entityGUID": "c2100307-6d43-ab31-4b42-fad1a896c68c",
+                "NameComponent": {
+                    "entityName": "Gun Model Point",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "6e5fba01-5840-6878-28b2-c1ca60a7a7a4",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "b9164720-bfce-a62e-72fe-d3fa0f2b4ebb",
+                            "volume": 0.10000000149011612,
+                            "loop": true,
+                            "playOnStart": true,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": true,
+                            "isSFX": false,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
+                "GameManager": {
+                    "enemyObjectPrefab": "a3a69a24-9a78-f0fd-f0a9-744fc055ecb2",
+                    "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1",
+                    "gameBGM": "b9164720-bfce-a62e-72fe-d3fa0f2b4ebb"
+                },
+                "NameComponent": {
+                    "entityName": "Game Manager",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "d98d60d5-127f-8dc2-b051-dc6d6b883682",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
+                "CapsuleColliderComponent": {
+                    "isTrigger": false,
+                    "capsule": {
+                        "center": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "radius": 0.6000000238418579,
+                        "height": 1.5,
+                        "capsuleDirection": 1
+                    }
+                },
+                "NameComponent": {
+                    "entityName": "Player",
+                    "Layer": 0,
+                    "entityTag": "Player",
+                    "isPrefab": true,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "PlayerManagerScript": {
+                    "playerCameraObject": "401c12be-d52c-d521-768f-a871850b8151",
+                    "playerGunCameraObject": "adf1aeb8-eb08-f79b-c4f0-5ba363c89caa",
+                    "playerProjectilePointObject": "ca1ecc5c-13ea-d3ef-284d-62a55e852885",
+                    "playerGunModelPointObject": "c2100307-6d43-ab31-4b42-fad1a896c68c",
+                    "playerArmModelObject": "0a59d88b-df5b-7a8a-b91f-d75191180ea9",
+                    "playerGroundCheckObject": "a9d14e21-9b8b-1578-244a-be23e797468f",
+                    "bulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
+                    "fireLMBPrefab": "17452ee3-e461-b31d-e44e-5e1c5c80f383",
+                    "acidLMBPrefab": "00000000-0000-0000-0000-000000000000",
+                    "lightningLMBPrefab": "22008401-4fad-4af8-e998-498349593039",
+                    "firePrefab": "a489a9c4-2ad1-24e0-9ad5-f1b1ef81e4b7",
+                    "acidPrefab": "df217809-aa63-539d-4bb6-d7ffde283b90",
+                    "lightningPrefab": "ea36b838-cef9-7c8c-584a-29654652024a",
+                    "fireDashPrefab": "2c08aaf0-6347-63db-2c50-728bcb1fff62",
+                    "gunSfxGUID_1": "d98d60d5-127f-8dc2-b051-dc6d6b883682",
+                    "gunSfxGUID_2": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
+                    "pauseMenuManagerObject": "155ba76a-ab15-3655-61d0-3eb0d2bccb85",
+                    "healthUIObject": "cbe9e70e-4c76-3f9b-ffd8-30620d0fc09d",
+                    "loseScreenCanvasObject": "23dd4708-96d5-34e7-3d95-b85965156d5d",
+                    "winScreenCanvasObject": "dd420147-13cd-2a52-32b4-107bc917a44d"
+                },
+                "RigidbodyComponent": {
+                    "mass": 1.0,
+                    "drag": 0.0,
+                    "angularDrag": 0.05000000074505806,
+                    "useGravity": true,
+                    "isKinematic": false,
+                    "interpolation": 0,
+                    "collisionDetection": 0,
+                    "constraints": 14,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 80.74188995361328,
+                            "y": 2.5687527656555176,
+                            "z": -52.473567962646484
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 80.74188995361328,
+                            "y": 2.5687527656555176,
+                            "z": -52.473567962646484
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                },
+                "children": [
+                    {
+                        "entityGUID": "401c12be-d52c-d521-768f-a871850b8151",
+                        "AudioListenerComponent": {
+                            "active": true
+                        },
+                        "CameraComponent": {
+                            "cameraType": 0,
+                            "fov": 85.0,
+                            "nearPlane": 0.05000000074505806,
+                            "farPlane": 200.0,
+                            "size": {
+                                "x": 1600.0,
+                                "y": 900.0
+                            },
+                            "target": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": -1.0
+                            },
+                            "active": false,
+                            "culling": false,
+                            "layer": 0,
+                            "renderOrder": 1
+                        },
+                        "NameComponent": {
+                            "entityName": "Player Camera",
+                            "Layer": 1,
+                            "entityTag": "Default",
+                            "isPrefab": true,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 80.74188995361328,
+                                    "y": 3.3187527656555176,
+                                    "z": -52.473567962646484
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.75,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "a9d14e21-9b8b-1578-244a-be23e797468f",
+                        "GroundCheckScript": {},
+                        "NameComponent": {
+                            "entityName": "Player Ground Check",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": true,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "RigidbodyComponent": {
+                            "mass": 1.0,
+                            "drag": 0.0,
+                            "angularDrag": 0.05000000074505806,
+                            "useGravity": false,
+                            "isKinematic": true,
+                            "interpolation": 0,
+                            "collisionDetection": 0,
+                            "constraints": 0,
+                            "speed": 0.0,
+                            "velocity": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0
+                            },
+                            "angularVelocity": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0
+                            }
+                        },
+                        "SphereColliderComponent": {
+                            "isTrigger": true,
+                            "sphere": {
+                                "center": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "radius": 0.15000000596046448
+                            }
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 80.74188995361328,
+                                    "y": 1.0687527656555176,
+                                    "z": -52.473567962646484
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": -1.5,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "ca1ecc5c-13ea-d3ef-284d-62a55e852885",
+                        "NameComponent": {
+                            "entityName": "Projectile Point",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": true,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 81.74188995361328,
+                                    "y": 3.3187527656555176,
+                                    "z": -52.473567962646484
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 1.0,
+                                    "y": 0.75,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    },
     {
         "entityGUID": "5243b0c1-1bb0-4bdc-40f3-b68cef9969e5",
         "CapsuleColliderComponent": {
