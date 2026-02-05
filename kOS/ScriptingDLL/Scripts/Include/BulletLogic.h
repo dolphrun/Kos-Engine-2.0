@@ -8,7 +8,7 @@ class EnemyManagerScript;
 class BulletLogic : public TemplateSC {
 public:
 	int bulletDamage = 2;
-	float bulletSpeed = 100.f;
+	float bulletSpeed = 80.f;
 	glm::vec3 direction;
 
 	float timeBeforeDeath = 2.5f;

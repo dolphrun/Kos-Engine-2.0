@@ -10,7 +10,7 @@ public:
 	int fireLMBDamage = 4;
 	glm::vec3 direction;
 
-	float timeBeforeDeath = 0.25f;
+	float timeBeforeDeath = 0.3f;
 	float currentTimer = 0.f;
 
 	ScoreManagerScript* scoreManager = nullptr;
@@ -78,7 +78,7 @@ inline void FireLMB::Start() {
 						//}
 
 			ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth -= fireLMBDamage;
-
+			std::cout << "Being hit, HP left:" << ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth << "\n";
 			if (ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth <= 0) {
 				if (scoreManager) {
 					scoreManager->AddScore(scoreValue); // or whatever value you want per kill
