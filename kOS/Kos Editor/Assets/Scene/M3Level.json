@@ -9296,7 +9296,7 @@
                 "AudioComponent": {
                     "audioFiles": [
                         {
-                            "audioGUID": "b9164720-bfce-a62e-72fe-d3fa0f2b4ebb",
+                            "audioGUID": "2a0dbdbb-d496-2457-2c1c-f2953b1eee58",
                             "volume": 0.10000000149011612,
                             "loop": true,
                             "playOnStart": true,
@@ -9316,7 +9316,7 @@
                 "GameManager": {
                     "enemyObjectPrefab": "a3a69a24-9a78-f0fd-f0a9-744fc055ecb2",
                     "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1",
-                    "gameBGM": "b9164720-bfce-a62e-72fe-d3fa0f2b4ebb"
+                    "gameBGM": "2a0dbdbb-d496-2457-2c1c-f2953b1eee58"
                 },
                 "NameComponent": {
                     "entityName": "Game Manager",
@@ -9368,7 +9368,7 @@
                 "AudioComponent": {
                     "audioFiles": [
                         {
-                            "audioGUID": "d98d60d5-127f-8dc2-b051-dc6d6b883682",
+                            "audioGUID": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
                             "volume": 1.0,
                             "loop": false,
                             "playOnStart": false,
@@ -9384,7 +9384,7 @@
                             "studioEventPath": ""
                         },
                         {
-                            "audioGUID": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
+                            "audioGUID": "c93d030f-e7bf-2ee7-0425-c1f5f04d6483",
                             "volume": 1.0,
                             "loop": false,
                             "playOnStart": false,
@@ -9437,8 +9437,8 @@
                     "acidPrefab": "df217809-aa63-539d-4bb6-d7ffde283b90",
                     "lightningPrefab": "ea36b838-cef9-7c8c-584a-29654652024a",
                     "fireDashPrefab": "2c08aaf0-6347-63db-2c50-728bcb1fff62",
-                    "gunSfxGUID_1": "d98d60d5-127f-8dc2-b051-dc6d6b883682",
-                    "gunSfxGUID_2": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
+                    "gunSfxGUID_1": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
+                    "gunReloadSfxGUID": "c93d030f-e7bf-2ee7-0425-c1f5f04d6483",
                     "pauseMenuManagerObject": "155ba76a-ab15-3655-61d0-3eb0d2bccb85",
                     "healthUIObject": "cbe9e70e-4c76-3f9b-ffd8-30620d0fc09d",
                     "loseScreenCanvasObject": "23dd4708-96d5-34e7-3d95-b85965156d5d",

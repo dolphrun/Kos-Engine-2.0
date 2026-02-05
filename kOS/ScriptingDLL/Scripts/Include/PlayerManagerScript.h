@@ -221,6 +221,15 @@ public:
 				playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("reloading", animComp, playerController);
 		}
 		// Reload sfx
+		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+			for (auto& af : ac->audioFiles) {
+				if (af.audioGUID == gunReloadSfxGUID && af.isSFX) {
+					af.requestPlay = true;
+					break;
+				}
+			}
+		}
 
 	}
 
@@ -234,8 +243,9 @@ public:
 
 	// SFX
 	utility::GUID gunSfxGUID_1;
-	utility::GUID gunSfxGUID_2;
-
+	//utility::GUID gunSfxGUID_2;
+	utility::GUID gunReloadSfxGUID;
+	
 	//Dash VFX Timer
 	float fireDashVfxTimer = 0.0f;
 	float fireDashVfxDuration = 30.0f;
@@ -264,7 +274,7 @@ public:
 
 	REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, acidPrefab, lightningPrefab, fireDashPrefab,
-		gunSfxGUID_1, gunSfxGUID_2, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject);
+		gunSfxGUID_1,gunReloadSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject);
 };
 
 // --- LATE INCLUDES & IMPLEMENTATION ---
@@ -1030,22 +1040,34 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				}
 
 				// GUN SFX
+				//if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+				//	std::vector<ecs::AudioFile*> playerHurtSfxPool;
+
+				//	for (auto& af : ac->audioFiles) {
+				//		if (af.isSFX) {
+				//			playerHurtSfxPool.push_back(&af);
+				//		}
+				//	}
+
+				//	if (!playerHurtSfxPool.empty()) {
+				//		int idx = rand() % static_cast<int>(playerHurtSfxPool.size());
+				//		//std::cout << "[BulletLogic] Random SFX index chosen = " << idx << std::endl;
+
+				//		playerHurtSfxPool[idx]->requestPlay = true;
+				//	}
+				//}
 				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-					std::vector<ecs::AudioFile*> playerHurtSfxPool;
 
 					for (auto& af : ac->audioFiles) {
-						if (af.isSFX) {
-							playerHurtSfxPool.push_back(&af);
+						if (af.audioGUID == gunSfxGUID_1 && af.isSFX) {
+							af.requestPlay = true;
+							break;
 						}
 					}
-
-					if (!playerHurtSfxPool.empty()) {
-						int idx = rand() % static_cast<int>(playerHurtSfxPool.size());
-						//std::cout << "[BulletLogic] Random SFX index chosen = " << idx << std::endl;
-
-						playerHurtSfxPool[idx]->requestPlay = true;
-					}
 				}
+
+
+
 			}
 		}
 		else if (playerPowerupHeld == Powerup::FIRE) {

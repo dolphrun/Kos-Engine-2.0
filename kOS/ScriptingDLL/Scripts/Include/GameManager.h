@@ -16,6 +16,7 @@ public:
 
 			for (auto& af : ac->audioFiles) {
 				if (af.audioGUID == gameBGM && af.isBGM) {
+					std::cout << "audio playing";
 					af.requestPlay = true;
 					break;
 				}
