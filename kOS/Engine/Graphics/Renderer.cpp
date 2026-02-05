@@ -39,6 +39,7 @@ void TextRenderer::InitializeTextRendererMeshes()
 
 void TextRenderer::RenderScreenFonts(const CameraData& camera, Shader& shader)
 {
+
 	if (!screenTextToDraw.empty() && camera.size.y != 0 && camera.size.x != 0) // Need to check for camera size
 	{
 		for (ScreenTextData& textData : screenTextToDraw)
@@ -397,7 +398,9 @@ void SpriteRenderer::InitializeSpriteRendererMeshes()
 }
 
 void SpriteRenderer::RenderScreenSprites(const CameraData& camera, Shader& shader)
-{
+{	//Set buffer to write to first
+	//Important to not remove, if not chibaboom 
+	shader.SetInt("gMaterial", 1);
 	for (const ScreenSpriteData& screenSprite : screenSpritesToDraw)
 	{
 		screenSpriteMesh.DrawMesh(screenSprite, shader, camera);
@@ -405,6 +408,7 @@ void SpriteRenderer::RenderScreenSprites(const CameraData& camera, Shader& shade
 }
 
 void SpriteRenderer::RenderWorldSprites(const CameraData& camera, Shader& shader) {
+	shader.SetInt("gMaterial", 1);
 	for (const ScreenSpriteData& screenSprite : worldSpriteToDraw)
 	{
 		screenSpriteMesh.DrawMeshWorld(screenSprite, shader, camera);

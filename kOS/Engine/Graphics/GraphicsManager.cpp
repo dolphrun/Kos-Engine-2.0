@@ -179,7 +179,7 @@ void GraphicsManager::gm_RenderToEditorFrameBuffer()
 	glEnable(GL_CULL_FACE);
 
 	framebufferManager.UIBuffer.BindForDrawing();
-	//gm_RenderUIObjects(editorCamera);
+	gm_RenderUIObjects(editorCamera);
 
 	Shader* fboCompositeShader{ &shaderManager.engineShaders.find("FBOCompositeShader")->second };
 	framebufferManager.ComposeBuffers(framebufferManager.sceneBuffer.texID, framebufferManager.UIBuffer.texID,
@@ -216,15 +216,15 @@ void GraphicsManager::gm_RenderToGameFrameBuffer()
 		glBindFramebuffer(GL_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
 		glViewport(0, 0, static_cast<GLsizei>(framebufferManager.sceneBuffer.width), static_cast<GLsizei>(framebufferManager.sceneBuffer.height));
 		gm_RenderDeferredObjects(cd);
-		glEnable(GL_DEPTH_TEST);
-		gm_RenderParticles(cd);
-		glDisable(GL_DEPTH_TEST);
+
 		glDisable(GL_CULL_FACE);
 		gm_RenderVideo(cd);
 		glEnable(GL_CULL_FACE);
 	}
 	glDisable(GL_DEPTH_TEST);
-
+	glEnable(GL_DEPTH_TEST);
+	gm_RenderParticles(gameCameras[currentGameCameraIndex]);
+	glDisable(GL_DEPTH_TEST);
 	//TEMPORARY CODE WARNING WARNING WARNING DELETE BEFORE M4 IF NOT DIE hi Sean
 /*	Vigniette vig;
 	vig.extent = 0.19;
@@ -720,6 +720,7 @@ void GraphicsManager::gm_RenderVideo(const CameraData& camera) {
 
 void GraphicsManager::gm_RenderUIObjects(const CameraData& camera)
 {
+
 	Shader* screenSpriteShader{ &shaderManager.engineShaders.find("ScreenSpriteShader")->second };
 	spriteRenderer.RenderScreenSprites(camera, *screenSpriteShader);
 	Shader* fontShader{ &shaderManager.engineShaders.find("ScreenFontShader")->second };
