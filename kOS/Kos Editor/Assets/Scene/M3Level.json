@@ -9703,205 +9703,6 @@
         ]
     },
     {
-        "entityGUID": "98867022-c7d8-5196-c6c7-7d5d3d7eeb6f",
-        "CapsuleColliderComponent": {
-            "isTrigger": false,
-            "capsule": {
-                "center": {
-                    "x": 0.0,
-                    "y": 2.0,
-                    "z": 0.0
-                },
-                "radius": 1.0,
-                "height": 2.0,
-                "capsuleDirection": 1
-            }
-        },
-        "EnemyManagerScript": {
-            "enemyHealth": 5,
-            "enemyMovementSpeed": 5.0,
-            "enemyType": "Melee",
-            "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 15.0,
-            "enemyChaseRange": 25.0,
-            "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
-            "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyBulletPrefab": "00000000-0000-0000-0000-000000000000",
-            "enemyHurtboxPosition": "a8ed480f-dc06-d48d-cfe7-a5be96e2fcd8"
-        },
-        "NameComponent": {
-            "entityName": "EnemyPrefab",
-            "Layer": 0,
-            "entityTag": "Enemy",
-            "isPrefab": true,
-            "prefabName": "EnemyPrefab_1.prefab",
-            "hide": false
-        },
-        "RigidbodyComponent": {
-            "mass": 1.0,
-            "drag": 0.0,
-            "angularDrag": 0.05000000074505806,
-            "useGravity": true,
-            "isKinematic": false,
-            "interpolation": 0,
-            "collisionDetection": 0,
-            "constraints": 0,
-            "speed": 0.0,
-            "velocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "angularVelocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 23.768556594848633,
-                    "y": 3.9802656173706055,
-                    "z": -30.937253952026367
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 23.768556594848633,
-                    "y": 3.9802656173706055,
-                    "z": -30.937253952026367
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        },
-        "children": [
-            {
-                "entityGUID": "6ac4caf1-1df9-0909-bbf9-fe20ccb6c10f",
-                "NameComponent": {
-                    "entityName": "Enemy Hurtbox Position",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": false,
-                    "prefabName": "",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 23.768556594848633,
-                            "y": 5.4802656173706055,
-                            "z": -30.937253952026367
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 1.5,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "d1da72a6-0fc8-5697-f8fa-1f906b4de168",
-                "AnimatorComponent": {
-                    "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
-                    "m_PlaybackSpeed": 1.0,
-                    "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
-                },
-                "NameComponent": {
-                    "entityName": "Enemy Model",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": false,
-                    "prefabName": "",
-                    "hide": false
-                },
-                "SkinnedMeshRendererComponent": {
-                    "skinnedMeshGUID": "8a830bfc-7794-b76e-2f45-0e765f0a2495",
-                    "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 23.768556594848633,
-                            "y": 3.9802656173706055,
-                            "z": -30.937253952026367
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
-                        }
-                    }
-                }
-            }
-        ]
-    },
-    {
         "entityGUID": "24c1f849-060e-20c0-28fa-472f7e043d44",
         "CapsuleColliderComponent": {
             "isTrigger": false,
@@ -9911,8 +9712,8 @@
                     "y": 2.0,
                     "z": 0.0
                 },
-                "radius": 1.0,
-                "height": 2.0,
+                "radius": 0.5,
+                "height": 3.0,
                 "capsuleDirection": 1
             }
         },
@@ -9921,7 +9722,7 @@
             "enemyMovementSpeed": 5.0,
             "enemyType": "Melee",
             "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 15.0,
+            "enemyRangedAttackRange": 2.5,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
@@ -9941,7 +9742,7 @@
                 "position": {
                     "x": 23.768556594848633,
                     "y": 3.9802656173706055,
-                    "z": -15.537531852722168
+                    "z": -31.610374450683594
                 },
                 "rotation": {
                     "x": 0.0,
@@ -9958,7 +9759,7 @@
                 "position": {
                     "x": 23.768556594848633,
                     "y": 3.9802656173706055,
-                    "z": -15.537531852722168
+                    "z": -31.610374450683594
                 },
                 "rotation": {
                     "x": 0.0,
@@ -9988,7 +9789,7 @@
                         "position": {
                             "x": 23.768556594848633,
                             "y": 5.4802656173706055,
-                            "z": -15.537531852722168
+                            "z": -31.610374450683594
                         },
                         "rotation": {
                             "x": 0.0,
@@ -10045,7 +9846,7 @@
                         "position": {
                             "x": 23.768556594848633,
                             "y": 3.9802656173706055,
-                            "z": -15.537531852722168
+                            "z": -31.610374450683594
                         },
                         "rotation": {
                             "x": 0.0,
@@ -13345,8 +13146,8 @@
                     "y": 2.0,
                     "z": 0.0
                 },
-                "radius": 1.0,
-                "height": 2.0,
+                "radius": 0.5,
+                "height": 3.0,
                 "capsuleDirection": 1
             }
         },
@@ -13355,7 +13156,7 @@
             "enemyMovementSpeed": 5.0,
             "enemyType": "Melee",
             "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 15.0,
+            "enemyRangedAttackRange": 2.5,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
@@ -13523,8 +13324,8 @@
                     "y": 2.0,
                     "z": 0.0
                 },
-                "radius": 1.0,
-                "height": 2.0,
+                "radius": 0.5,
+                "height": 3.0,
                 "capsuleDirection": 1
             }
         },
@@ -13533,7 +13334,7 @@
             "enemyMovementSpeed": 5.0,
             "enemyType": "Melee",
             "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 15.0,
+            "enemyRangedAttackRange": 2.5,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
@@ -13701,8 +13502,8 @@
                     "y": 2.0,
                     "z": 0.0
                 },
-                "radius": 1.0,
-                "height": 2.0,
+                "radius": 0.5,
+                "height": 3.0,
                 "capsuleDirection": 1
             }
         },
@@ -13711,7 +13512,7 @@
             "enemyMovementSpeed": 5.0,
             "enemyType": "Melee",
             "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 15.0,
+            "enemyRangedAttackRange": 2.5,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
@@ -13879,8 +13680,8 @@
                     "y": 2.0,
                     "z": 0.0
                 },
-                "radius": 1.0,
-                "height": 2.0,
+                "radius": 0.5,
+                "height": 3.0,
                 "capsuleDirection": 1
             }
         },
@@ -13889,7 +13690,7 @@
             "enemyMovementSpeed": 5.0,
             "enemyType": "Melee",
             "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 15.0,
+            "enemyRangedAttackRange": 2.5,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
@@ -14057,8 +13858,8 @@
                     "y": 2.0,
                     "z": 0.0
                 },
-                "radius": 1.0,
-                "height": 2.0,
+                "radius": 0.5,
+                "height": 3.0,
                 "capsuleDirection": 1
             }
         },
@@ -14067,7 +13868,7 @@
             "enemyMovementSpeed": 5.0,
             "enemyType": "Melee",
             "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 15.0,
+            "enemyRangedAttackRange": 2.5,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
@@ -14235,8 +14036,8 @@
                     "y": 2.0,
                     "z": 0.0
                 },
-                "radius": 1.0,
-                "height": 2.0,
+                "radius": 0.5,
+                "height": 3.0,
                 "capsuleDirection": 1
             }
         },
@@ -14245,7 +14046,7 @@
             "enemyMovementSpeed": 5.0,
             "enemyType": "Melee",
             "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 15.0,
+            "enemyRangedAttackRange": 2.5,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
@@ -14472,205 +14273,6 @@
         }
     },
     {
-        "entityGUID": "bb3ce11a-3e4e-3f5c-5ba5-3646dea3a603",
-        "CapsuleColliderComponent": {
-            "isTrigger": false,
-            "capsule": {
-                "center": {
-                    "x": 0.0,
-                    "y": 2.0,
-                    "z": 0.0
-                },
-                "radius": 1.0,
-                "height": 2.0,
-                "capsuleDirection": 1
-            }
-        },
-        "EnemyManagerScript": {
-            "enemyHealth": 5,
-            "enemyMovementSpeed": 5.0,
-            "enemyType": "Ranged",
-            "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 10.0,
-            "enemyChaseRange": 25.0,
-            "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
-            "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyBulletPrefab": "8393af65-4300-ebba-36fa-0720e42087f2",
-            "enemyHurtboxPosition": "926843b9-e279-eda4-1bc9-fae51278e775"
-        },
-        "NameComponent": {
-            "entityName": "RangedEnemyPrefab",
-            "Layer": 0,
-            "entityTag": "Enemy",
-            "isPrefab": true,
-            "prefabName": "RangedEnemyPrefab.prefab",
-            "hide": false
-        },
-        "RigidbodyComponent": {
-            "mass": 1.0,
-            "drag": 0.0,
-            "angularDrag": 0.05000000074505806,
-            "useGravity": true,
-            "isKinematic": false,
-            "interpolation": 0,
-            "collisionDetection": 0,
-            "constraints": 0,
-            "speed": 0.0,
-            "velocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "angularVelocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 53.7685546875,
-                    "y": 1.9802656173706055,
-                    "z": -22.937253952026367
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 53.7685546875,
-                    "y": 1.9802656173706055,
-                    "z": -22.937253952026367
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        },
-        "children": [
-            {
-                "entityGUID": "9097d65f-dea5-c5ed-9b6a-8a37eae199f0",
-                "AnimatorComponent": {
-                    "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
-                    "m_PlaybackSpeed": 1.0,
-                    "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
-                },
-                "NameComponent": {
-                    "entityName": "Enemy Model",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "prefabName": "RangedEnemyPrefab.prefab",
-                    "hide": false
-                },
-                "SkinnedMeshRendererComponent": {
-                    "skinnedMeshGUID": "8a830bfc-7794-b76e-2f45-0e765f0a2495",
-                    "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 53.7685546875,
-                            "y": 1.9802656173706055,
-                            "z": -22.937253952026367
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "926843b9-e279-eda4-1bc9-fae51278e775",
-                "NameComponent": {
-                    "entityName": "Enemy Hurtbox Position",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": false,
-                    "prefabName": "RangedEnemyPrefab.prefab",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 53.7685546875,
-                            "y": 3.6792802810668945,
-                            "z": -22.937253952026367
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 1.699014663696289,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            }
-        ]
-    },
-    {
         "entityGUID": "98d4d86f-0816-c4a4-b145-50daff208ec4",
         "BoxColliderComponent": {
             "isTrigger": false,
@@ -14763,8 +14365,8 @@
                     "y": 2.0,
                     "z": 0.0
                 },
-                "radius": 1.0,
-                "height": 2.0,
+                "radius": 0.5,
+                "height": 3.0,
                 "capsuleDirection": 1
             }
         },
@@ -14898,6 +14500,184 @@
                             "x": 53.77000045776367,
                             "y": 2.71397066116333,
                             "z": -24.942258834838867
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.014999999664723873,
+                            "y": 0.014999999664723873,
+                            "z": 0.014999999664723873
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.014999999664723873,
+                            "y": 0.014999999664723873,
+                            "z": 0.014999999664723873
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "072b1c18-2b8e-1a3a-8467-57a9623ad16d",
+        "CapsuleColliderComponent": {
+            "isTrigger": false,
+            "capsule": {
+                "center": {
+                    "x": 0.0,
+                    "y": 2.0,
+                    "z": 0.0
+                },
+                "radius": 0.5,
+                "height": 3.0,
+                "capsuleDirection": 1
+            }
+        },
+        "EnemyManagerScript": {
+            "enemyHealth": 5,
+            "enemyMovementSpeed": 5.0,
+            "enemyType": "Melee",
+            "enemyAttackRange": 2.5,
+            "enemyRangedAttackRange": 2.5,
+            "enemyChaseRange": 25.0,
+            "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+            "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
+            "enemyBulletPrefab": "00000000-0000-0000-0000-000000000000",
+            "enemyHurtboxPosition": "a8ed480f-dc06-d48d-cfe7-a5be96e2fcd8"
+        },
+        "NameComponent": {
+            "entityName": "EnemyPrefab",
+            "Layer": 0,
+            "entityTag": "Enemy",
+            "isPrefab": true,
+            "prefabName": "EnemyPrefab_1.prefab",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 23.768556594848633,
+                    "y": 3.9802656173706055,
+                    "z": -15.537531852722168
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 23.768556594848633,
+                    "y": 3.9802656173706055,
+                    "z": -15.537531852722168
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "292984c1-4963-ab86-780a-57eb870a1f99",
+                "NameComponent": {
+                    "entityName": "Enemy Hurtbox Position",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 23.768556594848633,
+                            "y": 5.4802656173706055,
+                            "z": -15.537531852722168
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 1.5,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "f6e4511c-e35d-2928-b33b-786e87e0ee19",
+                "AnimatorComponent": {
+                    "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
+                    "m_PlaybackSpeed": 1.0,
+                    "m_CurrentTime": 0.0,
+                    "m_IsPlaying": true
+                },
+                "NameComponent": {
+                    "entityName": "Enemy Model",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SkinnedMeshRendererComponent": {
+                    "skinnedMeshGUID": "8a830bfc-7794-b76e-2f45-0e765f0a2495",
+                    "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 23.768556594848633,
+                            "y": 3.9802656173706055,
+                            "z": -15.537531852722168
                         },
                         "rotation": {
                             "x": 0.0,

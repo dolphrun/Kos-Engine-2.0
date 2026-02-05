@@ -1936,9 +1936,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 0.48348283767700195,
-                    "y": 1.994795799255371,
-                    "z": -5.460257530212402
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -1953,9 +1953,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 0.48348283767700195,
-                    "y": 1.994795799255371,
-                    "z": -5.460257530212402
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -2002,9 +2002,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 101.99479675292969,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2049,9 +2049,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 101.99479675292969,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2113,9 +2113,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": 1.0634827613830566,
-                                    "y": 101.1847915649414,
-                                    "z": -5.480257511138916
+                                    "x": 0.5799999237060547,
+                                    "y": 99.18999481201172,
+                                    "z": -0.019999995827674866
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -2162,9 +2162,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 101.99479675292969,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2234,9 +2234,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 1.994795799255371,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2314,8 +2314,8 @@
                             "y": 0.0,
                             "z": 0.0
                         },
-                        "radius": 0.6000000238418579,
-                        "height": 1.5,
+                        "radius": 0.30000001192092896,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -2373,9 +2373,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 1.994795799255371,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 2.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2391,7 +2391,7 @@
                     "LocalTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 0.0,
+                            "y": 2.0,
                             "z": 0.0
                         },
                         "rotation": {
@@ -2442,9 +2442,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": 0.48348283767700195,
-                                    "y": 2.744795799255371,
-                                    "z": -5.460257530212402
+                                    "x": 0.0,
+                                    "y": 2.75,
+                                    "z": 0.0
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -2522,9 +2522,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": 0.48348283767700195,
-                                    "y": 0.4947957992553711,
-                                    "z": -5.460257530212402
+                                    "x": 0.0,
+                                    "y": 0.5,
+                                    "z": 0.0
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -2569,9 +2569,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": 1.483482837677002,
-                                    "y": 2.744795799255371,
-                                    "z": -5.460257530212402
+                                    "x": 1.0,
+                                    "y": 2.75,
+                                    "z": 0.0
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -18341,11 +18341,11 @@
                     "capsule": {
                         "center": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 1.5,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -18429,6 +18429,19 @@
                 "children": [
                     {
                         "entityGUID": "36ddff5e-b905-261a-a30e-78564c9a14c6",
+                        "CapsuleColliderComponent": {
+                            "isTrigger": false,
+                            "capsule": {
+                                "center": {
+                                    "x": 0.0,
+                                    "y": 2.0,
+                                    "z": 0.0
+                                },
+                                "radius": 1.0,
+                                "height": 2.0,
+                                "capsuleDirection": 1
+                            }
+                        },
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
                             "Layer": 0,
@@ -18481,6 +18494,19 @@
                             "m_PlaybackSpeed": 1.0,
                             "m_CurrentTime": 0.0,
                             "m_IsPlaying": true
+                        },
+                        "CapsuleColliderComponent": {
+                            "isTrigger": false,
+                            "capsule": {
+                                "center": {
+                                    "x": 0.0,
+                                    "y": 2.0,
+                                    "z": 0.0
+                                },
+                                "radius": 1.0,
+                                "height": 2.0,
+                                "capsuleDirection": 1
+                            }
                         },
                         "NameComponent": {
                             "entityName": "Enemy Model",
@@ -18540,11 +18566,11 @@
                     "capsule": {
                         "center": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 1.5,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -18739,11 +18765,11 @@
                     "capsule": {
                         "center": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 1.5,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -18938,11 +18964,11 @@
                     "capsule": {
                         "center": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 1.5,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -19137,11 +19163,11 @@
                     "capsule": {
                         "center": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 1.5,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -19336,11 +19362,11 @@
                     "capsule": {
                         "center": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 1.5,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -19535,11 +19561,11 @@
                     "capsule": {
                         "center": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 1.5,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -19734,11 +19760,11 @@
                     "capsule": {
                         "center": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 1.5,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -19933,11 +19959,11 @@
                     "capsule": {
                         "center": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 1.5,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -20135,8 +20161,8 @@
                             "y": 2.0,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -20313,8 +20339,8 @@
                             "y": 2.0,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -20491,8 +20517,8 @@
                             "y": 2.0,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -20666,11 +20692,11 @@
                     "capsule": {
                         "center": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 1.5,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -20868,8 +20894,8 @@
                             "y": 2.0,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -21043,11 +21069,11 @@
                     "capsule": {
                         "center": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 1.5,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -21245,8 +21271,8 @@
                             "y": 2.0,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -21420,11 +21446,11 @@
                     "capsule": {
                         "center": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 1.5,
                             "z": 0.0
                         },
-                        "radius": 1.0,
-                        "height": 2.0,
+                        "radius": 0.5,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
