@@ -2662,7 +2662,7 @@
                             "studioEventPath": ""
                         },
                         {
-                            "audioGUID": "4ef03ed6-765a-ed95-b9bb-eafe53b75669",
+                            "audioGUID": "d461f812-5e6f-d941-fb84-4f07f11f56dc",
                             "volume": 1.0,
                             "loop": false,
                             "playOnStart": false,
@@ -2715,10 +2715,12 @@
                     "acidPrefab": "df217809-aa63-539d-4bb6-d7ffde283b90",
                     "lightningPrefab": "ea36b838-cef9-7c8c-584a-29654652024a",
                     "fireDashPrefab": "2c08aaf0-6347-63db-2c50-728bcb1fff62",
+                    "lightningDashPrefab": "00000000-0000-0000-0000-000000000000",
                     "gunSfxGUID_1": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
                     "gunReloadSfxGUID": "c93d030f-e7bf-2ee7-0425-c1f5f04d6483",
                     "fireSlashSfxGUID": "690a4f94-6928-a1a0-d76c-2e8f12929489",
                     "fireDashSfxGUID": "4ef03ed6-765a-ed95-b9bb-eafe53b75669",
+                    "lightningDashSfxGUID": "d461f812-5e6f-d941-fb84-4f07f11f56dc",
                     "pauseMenuManagerObject": "155ba76a-ab15-3655-61d0-3eb0d2bccb85",
                     "healthUIObject": "cbe9e70e-4c76-3f9b-ffd8-30620d0fc09d",
                     "loseScreenCanvasObject": "23dd4708-96d5-34e7-3d95-b85965156d5d",

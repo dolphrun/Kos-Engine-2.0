@@ -1178,7 +1178,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 	// ABILITY
 	if (Input->IsKeyTriggered(keys::RMB)) {
-		if (playerPowerupHeld == Powerup::FIRE && currMana >= fireAbilityCost) {
+		if (playerPowerupHeld == Powerup::FIRE ) {
 			std::shared_ptr<R_Scene> fireball = resource->GetResource<R_Scene>(firePrefab);
 
 			if (fireball) {
@@ -1198,7 +1198,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 			// ADD SFX
 		}
-		else if (playerPowerupHeld == Powerup::ACID && currMana >= acidAbilityCost) {
+		else if (playerPowerupHeld == Powerup::ACID) {
 			std::shared_ptr<R_Scene> acidCloud = resource->GetResource<R_Scene>(acidPrefab);
 
 			if (acidCloud) {
@@ -1218,7 +1218,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 			// ADD SFX
 		}
-		else if (playerPowerupHeld == Powerup::LIGHTNING && currMana >= lightningAbilityCost) {
+		else if (playerPowerupHeld == Powerup::LIGHTNING ) {
 			std::shared_ptr<R_Scene> railgun = resource->GetResource<R_Scene>(lightningPrefab);
 
 			if (railgun) {
@@ -1245,7 +1245,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 		auto* playerRigidbody = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity);
 		if (!playerRigidbody) return;
 
-		if (playerPowerupHeld == Powerup::FIRE && currMana >= fireMovementCost && fireCurrMovementCooldown <= 0.f) {
+		if (playerPowerupHeld == Powerup::FIRE && fireCurrMovementCooldown <= 0.f) {
 		
 			std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 			ecs::EntityID fireDashID = DuplicatePrefabIntoScene<R_Scene>(currentScene, fireDashPrefab);
@@ -1279,7 +1279,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			}
 			// ADD SFX
 		}
-		else if (playerPowerupHeld == Powerup::ACID && currMana >= acidMovementCost && acidCurrMovementCooldown <= 0.f) {
+		else if (playerPowerupHeld == Powerup::ACID && acidCurrMovementCooldown <= 0.f) {
 
 
 			physicsPtr->AddForce(playerRigidbody->actor, GetPlayerFrontDirection() * 25.f, ForceMode::Impulse);
@@ -1289,7 +1289,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 			// ADD SFX
 		}
-		else if (playerPowerupHeld == Powerup::LIGHTNING && currMana >= lightningMovementCost && lightningCurrMovementCooldown <= 0.f) {
+		else if (playerPowerupHeld == Powerup::LIGHTNING && lightningCurrMovementCooldown <= 0.f) {
 
 			glm::vec3 force = Input->GetVertical() * GetPlayerFrontDirection() + Input->GetHorizontal() * GetPlayerRightDirection();
 			force = glm::normalize(force);
