@@ -93,7 +93,13 @@ namespace Application
         if (!path.empty())
             sceneManager.ImmediateLoadScene(path);
         LOGGING_INFO("Load Asset Successful");
-
+        /*--------------------------------------------------------------
+        Add Post processing function
+        --------------------------------------------------------------*/
+        sceneManager.onSceneLoaded.Add([this](SceneData Data) {
+            std::cout << "Post processing added " << Data.postProcessingProfile.GetToString() << '\n';
+            if (!Data.postProcessingProfile.Empty())graphicsManager.postProcessProfile = &resourceManager.GetResource<R_PostProcessingProfile>(Data.postProcessingProfile)->profile;
+            });
         LOGGING_INFO("Application Init Successful");
 
         return 0;

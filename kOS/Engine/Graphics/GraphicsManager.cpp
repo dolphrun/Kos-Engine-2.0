@@ -370,7 +370,7 @@ void GraphicsManager::gm_FillGBufferGame(const CameraData& camera, layer::LAYERS
 
 	//Render all meshes
 	meshRenderer.Render(camera, *gBufferPBRShader,layer);
-	skinnedMeshRenderer.Render(camera, *gBufferPBRShader);
+	skinnedMeshRenderer.Render(camera, *gBufferPBRShader, layer);
 	cubeRenderer.Render(camera, *gBufferPBRShader, &this->cube);
 	sphereRenderer.Render(camera, *gBufferPBRShader, &this->sphere);
 	gBufferPBRShader->Disuse();
