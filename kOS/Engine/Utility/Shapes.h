@@ -55,8 +55,8 @@ namespace utility {
 
 	struct Capsule {
 		glm::vec3 center{ 0.0f };
-		float radius{ 1.0f };
-		float height{ 1.0f };
+		float radius{ 0.5f };
+		float height{ 2.0f };
 		CapsuleDirection capsuleDirection{ CapsuleDirection::Y };
 		REFLECTABLE(Capsule, center, radius, height, capsuleDirection)
 	};

@@ -554,10 +554,21 @@ void DebugRenderer::RenderDebugSpheres(const CameraData& camera, Shader& shader)
 }
 
 void DebugRenderer::RenderDebugCapsules(const CameraData& camera, Shader& shader) {
+	static float lastRadius = -1.0f;
+	static float lastHeight = -1.0f;
+	const float cEpsilon = 1e-5f;
 	for (size_t i = 0; i < basicDebugCapsules.size(); i++) {
-		shader.SetTrans("model", basicDebugCapsules[i].worldTransform);
+		const auto& c = basicDebugCapsules[i];
+		if (fabs(lastRadius - c.radius) > cEpsilon || fabs(lastHeight - c.height) > cEpsilon) {
+			lastRadius = c.radius;
+			lastHeight = c.height;
+			debugCapsule.radius = c.radius;
+			debugCapsule.height = c.height;
+			debugCapsule.CreateMesh();
+		}
+		shader.SetTrans("model", c.worldTransform);
 		shader.SetFloat("uShaderType", 2.1f);
-		shader.SetVec3("color", glm::vec3{ 0.f,1.f,0.f });
+		shader.SetVec3("color", c.color);
 		debugCapsule.DrawMesh();
 	}
 }

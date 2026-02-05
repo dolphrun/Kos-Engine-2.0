@@ -389,62 +389,72 @@ void DebugCircle::DrawMesh(){
 void DebugCapsule::CreateMesh() {
     std::vector<glm::vec3> vertices;
     std::vector<unsigned short> indices;
-
-    const int segments = 24;     
-    const int arcSegments = 12;  
+    const int segments = 24;
+    const int arcSegments = 12;
     const float angleStep = static_cast<float>(2.0f * PI / segments);
-    const float halfHeight = height * 0.5f;
-
-    auto AddCircle = [&](float y, float r) {
-        for (int i = 0; i <= segments; ++i) {
-            float theta = i * angleStep;
-            vertices.emplace_back(r * cosf(theta), y, r * sinf(theta));
-        }
-    };
-
-    AddCircle(halfHeight, radius);
-    AddCircle(-halfHeight, radius);
-
-    int topStart = 0;
-    int bottomStart = segments + 1;
-
-    for (int i = 0; i < segments; ++i) {
-        indices.push_back(topStart + i);
-        indices.push_back(topStart + i + 1);
-    }
-    for (int i = 0; i < segments; ++i) {
-        indices.push_back(bottomStart + i);
-        indices.push_back(bottomStart + i + 1);
-    }
-    for (int i = 0; i < 4; ++i) {
-        int seg = i * segments / 4;
-        indices.push_back(topStart + seg);
-        indices.push_back(bottomStart + seg);
-    }
-
-    auto AddHemisphere = [&](bool top) {
-        float yCenter = top ? halfHeight : -halfHeight;
-        float sign = top ? 1.0f : -1.0f;
+    float r = glm::max(radius, 0.0001f);
+    float totalH = glm::max(height, 0.0f);
+    if (totalH <= 2.0f * r) {
+        auto AddCircle = [&](glm::vec3 axisA, glm::vec3 axisB) {
+            unsigned short start = (unsigned short)vertices.size();
+            for (int i = 0; i <= segments; ++i) {
+                float t = i * angleStep;
+                glm::vec3 p = r * (cosf(t) * axisA + sinf(t) * axisB);
+                vertices.push_back(p);
+            }
+            for (int i = 0; i < segments; ++i) {
+                indices.push_back(start + i);
+                indices.push_back(start + i + 1);
+            }
+        };
+        AddCircle({ 1.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f }); 
+        AddCircle({ 1.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f }); 
+        AddCircle({ 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, 1.0f }); 
+    } else {
+        float cylH = totalH - 2.0f * r;
+        float halfH = cylH * 0.5f;
+        auto AddCircleXZ = [&](float y) {
+            unsigned short start = (unsigned short)vertices.size();
+            for (int i = 0; i <= segments; ++i) {
+                float theta = i * angleStep;
+                vertices.emplace_back(r * cosf(theta), y, r * sinf(theta));
+            }
+            for (int i = 0; i < segments; ++i) {
+                indices.push_back(start + i);
+                indices.push_back(start + i + 1);
+            }
+            return start;
+        };
+        unsigned short topStart = AddCircleXZ(+halfH);
+        unsigned short botStart = AddCircleXZ(-halfH);
         for (int i = 0; i < 4; ++i) {
-            float baseAngle = static_cast<float>(i * PI / 2.0f);
-            unsigned short arcStart = static_cast<unsigned short>(vertices.size());
-            for (int j = 0; j <= arcSegments; ++j) {
-                float phi = static_cast<float>(PI / 2.0f * static_cast<float>(j) / arcSegments);
-                float y = yCenter + sign * radius * sinf(phi);
-                float r = radius * cosf(phi);
-                float x = r * cosf(baseAngle);
-                float z = r * sinf(baseAngle);
-                vertices.emplace_back(x, y, z);
-            }
-            for (int k = 0; k < arcSegments; ++k) {
-                indices.push_back(arcStart + k);
-                indices.push_back(arcStart + k + 1);
-            }
+            int seg = i * segments / 4;
+            indices.push_back(topStart + seg);
+            indices.push_back(botStart + seg);
         }
-    };
-
-    AddHemisphere(true);
-    AddHemisphere(false);
+        auto AddHemisphere = [&](bool top) {
+            float yCenter = top ? halfH : -halfH;
+            float sign = top ? 1.0f : -1.0f;
+            for (int i = 0; i < 4; ++i) {
+                float baseAngle = static_cast<float>(i * PI / 2.0f);
+                unsigned short arcStart = (unsigned short)vertices.size();
+                for (int j = 0; j <= arcSegments; ++j) {
+                    float phi = static_cast<float>(PI / 2.0f * (float)j / (float)arcSegments);
+                    float y = yCenter + sign * r * sinf(phi);
+                    float rr = r * cosf(phi);
+                    float x = rr * cosf(baseAngle);
+                    float z = rr * sinf(baseAngle);
+                    vertices.emplace_back(x, y, z);
+                }
+                for (int k = 0; k < arcSegments; ++k) {
+                    indices.push_back(arcStart + k);
+                    indices.push_back(arcStart + k + 1);
+                }
+            }
+        };
+        AddHemisphere(true);
+        AddHemisphere(false);
+    }
 
     GLuint VBO, EBO;
     glGenVertexArrays(1, &vaoId);

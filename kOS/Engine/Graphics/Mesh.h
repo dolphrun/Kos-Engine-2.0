@@ -44,11 +44,12 @@ struct Sphere :BasicMesh {
 	void DrawMesh();
 };
 
-struct BasicDebugData
-{
+struct BasicDebugData {
 	void ConstructMat4(glm::vec3 center, glm::vec3 size);
 	glm::mat4 worldTransform;
 	glm::vec3 color{ 0.f,1.f,0.f };
+	float radius{ 0.0f };    
+	float height{ 0.0f };
 };
 
 struct DebugCube :BasicMesh {
@@ -77,8 +78,8 @@ struct DebugCircle :BasicMesh {
 };
 
 struct DebugCapsule : BasicMesh {
-	float radius{ 0.5f };
-	float height{ 1.0f };
+	float radius{ 1.0f };
+	float height{ 2.0f };
 	float lineWidth{ 2.0f };
 	void CreateMesh();
 	void DrawMesh();

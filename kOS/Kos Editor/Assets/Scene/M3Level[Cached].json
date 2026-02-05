@@ -14969,5 +14969,73 @@
                 }
             }
         ]
+    },
+    {
+        "entityGUID": "6370e936-226e-c90f-4519-065de273bd34",
+        "BoxColliderComponent": {
+            "isTrigger": true,
+            "box": {
+                "center": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "size": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "NameComponent": {
+            "entityName": "Win Object",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "NextSceneColliderScript": {
+            "nextSceneGUID": "9560c56e-90e7-6a41-2af7-5840600a6c9f",
+            "minActivationTime": 2.0,
+            "timer": 0.0,
+            "hasTriggered": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 72.04826354980469,
+                    "y": 1.6018038988113403,
+                    "z": -35.79609298706055
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0,
+                    "z": 2.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 72.04826354980469,
+                    "y": 1.6018038988113403,
+                    "z": -35.79609298706055
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0,
+                    "z": 2.0
+                }
+            }
+        }
     }
 ]

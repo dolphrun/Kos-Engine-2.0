@@ -202,7 +202,7 @@ namespace gui {
         void m_UpdateOnPrefabMode();
         void openAndLoadSceneDialog();
 
-        void DeserializeProfile();
+        bool DeserializeProfile();
         void DrawPreferencesWindow();
 
         void DrawAnimationWindow();

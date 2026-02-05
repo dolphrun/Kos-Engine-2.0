@@ -44,15 +44,33 @@ namespace ecs {
 			PxFilterData filter;
 			filter.word0 = name->Layer;
 
-			glm::vec3& scale = trans->LocalTransformation.scale;
+			glm::vec3& scale = trans->WorldTransformation.scale;
 			scale.x = glm::max(scale.x, MINSIZE);
 			scale.y = glm::max(scale.y, MINSIZE);
 			scale.z = glm::max(scale.z, MINSIZE);
+			float radiusScale = 1.0f;
+			float heightScale = 1.0f;
 
-			float radius = capsule->capsule.radius * glm::max(scale.x, scale.z);
-			float halfHeight = capsule->capsule.height * scale.y * 0.5f;
+			switch (capsule->capsule.capsuleDirection) {
+			case CapsuleDirection::X:
+				radiusScale = glm::max(scale.y, scale.z);
+				heightScale = scale.x;
+				break;
+			case CapsuleDirection::Y:
+				radiusScale = glm::max(scale.x, scale.z);
+				heightScale = scale.y;
+				break;
+			case CapsuleDirection::Z:
+				radiusScale = glm::max(scale.x, scale.y);
+				heightScale = scale.z;
+				break;
+			}
+			float r = capsule->capsule.radius * radiusScale;
+			float h = capsule->capsule.height * heightScale;
+			h = glm::max(h, 2.0f * r);
+			float halfHeight = h * 0.5f - r;
 			PxShape* shape = static_cast<PxShape*>(capsule->shape);
-			PxCapsuleGeometry geometry{ radius, halfHeight };
+			PxCapsuleGeometry geometry{ r, halfHeight };
 
 			if (!shape) {
 				shape = m_physicsManager.GetPhysics()->createShape(geometry, *m_physicsManager.GetDefaultMaterial(), true);
@@ -63,9 +81,16 @@ namespace ecs {
 
 			PxQuat rot{ PxIdentity };
 			switch (capsule->capsule.capsuleDirection) {
-				case CapsuleDirection::X: rot = PxQuat{ PxHalfPi, PxVec3{ 0.0f, 0.0f, 1.0f } }; break;
-				case CapsuleDirection::Z: rot = PxQuat{ PxHalfPi, PxVec3{ 1.0f, 0.0f, 0.0f } }; break;
-				default: break;
+			case CapsuleDirection::X:
+				rot = PxQuat(PxIdentity);
+				break;
+			case CapsuleDirection::Y:
+				rot = PxQuat(PxHalfPi, PxVec3{ 0.0f, 0.0f, 1.0f });
+				break;
+
+			case CapsuleDirection::Z:
+				rot = PxQuat(-PxHalfPi, PxVec3{ 0.0f, 1.0f, 0.0f });
+				break;
 			}
 
 			glm::vec3 scaledCenter = capsule->capsule.center * scale;

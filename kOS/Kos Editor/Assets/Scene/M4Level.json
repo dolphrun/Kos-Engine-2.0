@@ -3,7 +3,7 @@
         "SceneData": {
             "skyBoxGUID": [],
             "NavMeshGuid": "47b43a1a-ebd8-b779-c987-3573c61978bc",
-            "postProcessingProfile": "c3a79a26-21f4-7f96-81b0-a3d406909579",
+            "postProcessingProfile": "e3cdc801-570a-a2d8-d673-1b18297bb0dc",
             "ambientIntensity": 1.0
         }
     },
@@ -101,10 +101,138 @@
             ]
         },
         "MeshFilterComponent": {
-            "meshGUID": "45e626a6-f156-abc6-2bfe-b8ba1921ab71"
+            "meshGUID": "381bd57b-9148-545c-e83b-fc0e3c2423f0"
         },
         "NameComponent": {
             "entityName": "M4LevelWall",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "NavMeshComponent": {},
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "56361d32-1d00-085b-272a-de43aa4d4302",
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "060a466b-d63a-daf0-1828-16fa44d0522d"
+                },
+                {
+                    "materialGUID": "1f738717-1d12-e06f-ae86-13f8c4765c1a"
+                },
+                {
+                    "materialGUID": "b0f05210-9ecf-9d1e-e515-66b7629b4b2b"
+                }
+            ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "efed756a-4a7c-e2b3-46b2-8beb1e7bd5cd"
+        },
+        "NameComponent": {
+            "entityName": "M4LevelFloor",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "NavMeshComponent": {},
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "6657653b-1b7a-5e5b-4110-4fe6da4ac8f4",
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "060a466b-d63a-daf0-1828-16fa44d0522d"
+                },
+                {
+                    "materialGUID": "1f738717-1d12-e06f-ae86-13f8c4765c1a"
+                },
+                {
+                    "materialGUID": "b0f05210-9ecf-9d1e-e515-66b7629b4b2b"
+                }
+            ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "fad9fc05-f973-4f5c-2154-10ee66bc50ce"
+        },
+        "NameComponent": {
+            "entityName": "M4LevelCeiling",
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
@@ -1936,9 +2064,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 0.48348283767700195,
-                    "y": 1.994795799255371,
-                    "z": -5.460257530212402
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -1953,9 +2081,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 0.48348283767700195,
-                    "y": 1.994795799255371,
-                    "z": -5.460257530212402
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -2002,9 +2130,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 101.99479675292969,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2049,9 +2177,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 101.99479675292969,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2113,9 +2241,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": 1.0634827613830566,
-                                    "y": 101.1847915649414,
-                                    "z": -5.480257511138916
+                                    "x": 0.5799999237060547,
+                                    "y": 99.18999481201172,
+                                    "z": -0.019999995827674866
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -2162,9 +2290,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 101.99479675292969,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 100.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2234,9 +2362,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 1.994795799255371,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2373,9 +2501,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.48348283767700195,
-                            "y": 1.994795799255371,
-                            "z": -5.460257530212402
+                            "x": 0.0,
+                            "y": 20.0,
+                            "z": -4.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2391,8 +2519,8 @@
                     "LocalTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
+                            "y": 20.0,
+                            "z": -4.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -2442,9 +2570,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": 0.48348283767700195,
-                                    "y": 2.744795799255371,
-                                    "z": -5.460257530212402
+                                    "x": 0.0,
+                                    "y": 20.75,
+                                    "z": -4.0
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -2522,9 +2650,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": 0.48348283767700195,
-                                    "y": 0.4947957992553711,
-                                    "z": -5.460257530212402
+                                    "x": 0.0,
+                                    "y": 18.5,
+                                    "z": -4.0
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -2569,9 +2697,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": 1.483482837677002,
-                                    "y": 2.744795799255371,
-                                    "z": -5.460257530212402
+                                    "x": 1.0,
+                                    "y": 20.75,
+                                    "z": -4.0
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -3999,7 +4127,7 @@
         ]
     },
     {
-        "entityGUID": "633d8af2-15c0-434b-4a26-f9093932c2e4",
+        "entityGUID": "cf42e86a-6714-a67d-e515-f56a09726c2f",
         "CanvasRendererComponent": {
             "isScreenSpace": true
         },
@@ -4007,8 +4135,8 @@
             "entityName": "Game UI Canvas",
             "Layer": 0,
             "entityTag": "Default",
-            "isPrefab": false,
-            "prefabName": "",
+            "isPrefab": true,
+            "prefabName": "Game UI Canvas.prefab",
             "hide": false
         },
         "TransformComponent": {
@@ -4049,17 +4177,17 @@
         },
         "children": [
             {
-                "entityGUID": "ce2551dd-b574-5674-b704-34f8c1bcd023",
+                "entityGUID": "f14409a1-c7b8-7cde-1c7a-fc746351cecd",
                 "NameComponent": {
                     "entityName": "Crosshair UI",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
-                    "prefabName": "",
+                    "isPrefab": true,
+                    "prefabName": "Game UI Canvas.prefab",
                     "hide": false
                 },
                 "SpriteComponent": {
-                    "spriteGUID": "ba4ef2ab-a9c7-80ce-2258-80e748dcd762",
+                    "spriteGUID": "956ebc81-6f4d-b2c4-a208-9f949489add7",
                     "color": {
                         "x": 1.0,
                         "y": 1.0,
@@ -4074,7 +4202,7 @@
                         "x": 1.0,
                         "y": 1.0
                     },
-                    "useCustomUV": false
+                    "useCustomUV": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -4114,30 +4242,17 @@
                 }
             },
             {
-                "entityGUID": "cbe9e70e-4c76-3f9b-ffd8-30620d0fc09d",
-                "HealthBarScript": {
-                    "healthValue": 6,
-                    "lastHealthValue": -1,
-                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
-                    "playerObjectID": 0,
-                    "healthbar0Sprite": "f0ccb903-1550-1320-9cb0-529171c49797",
-                    "healthbar1Sprite": "3eaca0e0-793c-e1a7-7878-9cba28134ad2",
-                    "healthbar2Sprite": "1ca3ff89-b83d-ba57-f040-68a8437a9c8d",
-                    "healthbar3Sprite": "9559b249-7ff5-75c1-d129-a12d735cf382",
-                    "healthbar4Sprite": "d70130a8-8eaf-f578-ba04-7a34fc9bd9a8",
-                    "healthbar5Sprite": "8941969a-144f-0791-3bb2-4984cea27f7d",
-                    "healthbar6Sprite": "e18eb1e7-c4e7-872d-ace6-9f254fe984aa"
-                },
+                "entityGUID": "3d61abd7-7ded-047d-c7bb-5041ff5f8dfc",
                 "NameComponent": {
-                    "entityName": "Health UI",
+                    "entityName": "Ability UI Base",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
-                    "prefabName": "",
+                    "isPrefab": true,
+                    "prefabName": "Game UI Canvas.prefab",
                     "hide": false
                 },
                 "SpriteComponent": {
-                    "spriteGUID": "e18eb1e7-c4e7-872d-ace6-9f254fe984aa",
+                    "spriteGUID": "5fd344a6-64bf-fe23-cb10-d8369e9ec2c0",
                     "color": {
                         "x": 1.0,
                         "y": 1.0,
@@ -4152,70 +4267,65 @@
                         "x": 1.0,
                         "y": 1.0
                     },
-                    "useCustomUV": false
+                    "useCustomUV": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -1.1200000047683716,
-                            "y": -0.7099999785423279,
+                            "x": -1.583482265472412,
+                            "y": 0.8740409016609192,
                             "z": 0.0
                         },
                         "rotation": {
-                            "x": -12.000000953674316,
-                            "y": 0.0,
+                            "x": 0.0,
+                            "y": -0.0,
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 1.0,
-                            "y": 0.15000002086162567,
+                            "x": 0.23000000417232513,
+                            "y": 0.23000000417232513,
                             "z": 1.0
                         }
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": -1.1200000047683716,
-                            "y": -0.7099999785423279,
+                            "x": -1.583482265472412,
+                            "y": 0.8740409016609192,
                             "z": 0.0
                         },
                         "rotation": {
-                            "x": -12.0,
+                            "x": 0.0,
                             "y": -0.0,
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 1.0,
-                            "y": 0.15000000596046448,
+                            "x": 0.23000000417232513,
+                            "y": 0.23000000417232513,
                             "z": 1.0
                         }
                     }
                 }
             },
             {
-                "entityGUID": "6e2019b1-fc4d-3d7c-568b-454fbd5226d6",
+                "entityGUID": "e696caf4-45be-110b-65ba-7143e1428bb8",
                 "AbilityUIImageScript": {
-                    "currAbility": "NONE",
-                    "lastAbility": "",
                     "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "playerObjectID": 0,
-                    "noneSprite": "ad7ff204-05e9-2a9a-4a4b-50a7838ac9bd",
-                    "fireSprite": "5a36c562-9294-5b59-4e91-68c53f2aaae6",
-                    "lightningSprite": "9812e103-b773-ed0d-a128-5dfeca2617ae",
-                    "acidSprite": "080dfe2f-2661-2bc3-ef70-e777d7f22758",
-                    "fireLightningSprite": "ed2f21ea-7d2d-0de1-6b7e-f5cb6debaff0",
-                    "fireAcidSprite": "a43ea70a-bc5a-f63b-0a0b-3425b21f5bcc",
-                    "lightningAcidSprite": "405be608-0c5c-edff-7bee-6e359b0d79b7"
+                    "noneSprite": "00000000-0000-0000-0000-000000000000",
+                    "fireSprite": "17c10dc5-af0f-c7c6-7091-40ccefac22f3",
+                    "lightningSprite": "14c5711b-fe4a-5700-2e1d-de43bdf6ab37",
+                    "acidSprite": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "Ability UI",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
-                    "prefabName": "",
+                    "isPrefab": true,
+                    "prefabName": "Game UI Canvas.prefab",
                     "hide": false
                 },
                 "SpriteComponent": {
-                    "spriteGUID": "ad7ff204-05e9-2a9a-4a4b-50a7838ac9bd",
+                    "spriteGUID": "00000000-0000-0000-0000-000000000000",
                     "color": {
                         "x": 1.0,
                         "y": 1.0,
@@ -4230,40 +4340,603 @@
                         "x": 1.0,
                         "y": 1.0
                     },
-                    "useCustomUV": false
+                    "useCustomUV": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 1.1299999952316284,
-                            "y": -0.6800000071525574,
+                            "x": -1.5803189277648926,
+                            "y": 0.8780645132064819,
                             "z": 0.0
                         },
                         "rotation": {
-                            "x": 12.000000953674316,
+                            "x": 0.0,
                             "y": -0.0,
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.800000011920929,
+                            "x": 0.27300000190734863,
+                            "y": 0.2800000011920929,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -1.5803189277648926,
+                            "y": 0.8780645132064819,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.27300000190734863,
+                            "y": 0.2800000011920929,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "d884adb1-a3ee-4b6b-2ce5-c98d7ec125bd",
+                "NameComponent": {
+                    "entityName": "Health UI Base",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "prefabName": "Game UI Canvas.prefab",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "f4bff0ea-9430-e328-318b-64aab65826bf",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -0.980823814868927,
+                            "y": 0.8896177411079407,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.8700000047683716,
+                            "y": 0.12999999523162842,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -0.980823814868927,
+                            "y": 0.8896177411079407,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.8700000047683716,
+                            "y": 0.12999999523162842,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "45ce4455-6b78-da54-b038-12539283b344",
+                "NEWHealthBarScript": {
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "healthbarSprite": "1a14f824-3722-53b3-58dc-6baf513e5964",
+                    "originalScale": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "originalPosition": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "initialized": false
+                },
+                "NameComponent": {
+                    "entityName": "Health Bar",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "prefabName": "Game UI Canvas.prefab",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "1a14f824-3722-53b3-58dc-6baf513e5964",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -0.9788823127746582,
+                            "y": 0.889962911605835,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.8700000047683716,
+                            "y": 0.12999999523162842,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -0.9788823127746582,
+                            "y": 0.889962911605835,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.8700000047683716,
+                            "y": 0.12999999523162842,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "97bc504a-cddf-f626-dcfa-bfdf4244266e",
+                "NameComponent": {
+                    "entityName": "Mana Bar Base",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "prefabName": "Game UI Canvas.prefab",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "66c3cca0-664f-8e5f-a056-1aacecadbb9d",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -1.102590799331665,
+                            "y": 0.7580645084381104,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.6200000047683716,
+                            "y": 0.12999999523162842,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -1.102590799331665,
+                            "y": 0.7580645084381104,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.6200000047683716,
+                            "y": 0.12999999523162842,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "2548ff37-651a-bc0b-50c0-f9d74275d645",
+                "ManaUIScript": {
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "manabarSprite": "355f979b-0a4a-12d1-8f0e-4cb33e820630",
+                    "originalScale": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "originalPosition": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "initialized": false
+                },
+                "NameComponent": {
+                    "entityName": "Mana Bar",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "prefabName": "Game UI Canvas.prefab",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "355f979b-0a4a-12d1-8f0e-4cb33e820630",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -1.0994552373886108,
+                            "y": 0.7580645084381104,
+                            "z": 2.0
+                        },
+                        "rotation": {
+                            "x": -0.30000028014183044,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.6200000047683716,
+                            "y": 0.11999999731779099,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -1.0994552373886108,
+                            "y": 0.7580645084381104,
+                            "z": 2.0
+                        },
+                        "rotation": {
+                            "x": -0.30000028014183044,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.6200000047683716,
+                            "y": 0.11999999731779099,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "1682254a-3aa0-766a-0ce4-b72866731310",
+                "NameComponent": {
+                    "entityName": "Ability 1",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "prefabName": "Game UI Canvas.prefab",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "c1bdfcd6-a86b-3519-1787-66940036d308",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -1.6564573049545288,
+                            "y": 0.6445460319519043,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.12999999523162842,
+                            "y": 0.23999999463558197,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -1.6564573049545288,
+                            "y": 0.6445460319519043,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.12999999523162842,
+                            "y": 0.23999999463558197,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "40468269-b4bf-9cc4-5db2-0ee4fc524de6",
+                "NameComponent": {
+                    "entityName": "Ability 2",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "prefabName": "Game UI Canvas.prefab",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "18a0c90e-7611-b785-0ee5-14de8ab9b3eb",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -1.5081326961517334,
+                            "y": 0.6799824237823486,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.12999999523162842,
                             "y": 0.20000000298023224,
                             "z": 1.0
                         }
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": 1.1299999952316284,
-                            "y": -0.6800000071525574,
+                            "x": -1.5081326961517334,
+                            "y": 0.6799824237823486,
                             "z": 0.0
                         },
                         "rotation": {
-                            "x": 12.0,
+                            "x": 0.0,
                             "y": -0.0,
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.800000011920929,
+                            "x": 0.12999999523162842,
                             "y": 0.20000000298023224,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "b2b8f33c-5acc-6e44-0812-9da8ea0c6019",
+                "NameComponent": {
+                    "entityName": "Ability 3",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "prefabName": "Game UI Canvas.prefab",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "c45f8038-4ee7-8e40-208f-398dd36cc7a2",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -1.5802470445632935,
+                            "y": 0.46129441261291504,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.11999999731779099,
+                            "y": 0.2199999988079071,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -1.5802470445632935,
+                            "y": 0.46129441261291504,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.11999999731779099,
+                            "y": 0.2199999988079071,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "7537a7bf-7408-bfc8-a9a3-27eda86e8840",
+                "AmmoUIScript": {
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "ammo0Sprite": "47c8a01a-8fe7-9a82-059f-9098a98f4961",
+                    "ammo1Sprite": "15982aa4-070d-c3da-6479-c35ff3fcbca4",
+                    "ammo2Sprite": "bf4358f3-adac-a488-5dea-2ad5bcc0b96d",
+                    "ammo3Sprite": "2865a210-991b-7fa6-ba38-d254d502425c",
+                    "ammo4Sprite": "b58bf2ab-102e-7ece-5fb0-35425c5f5d6b",
+                    "ammo5Sprite": "5e1cb9c6-9879-43fe-9d66-fb0359bc8234",
+                    "ammo6Sprite": "2d0349a7-3c22-e0ae-c79d-94fbea70823f"
+                },
+                "NameComponent": {
+                    "entityName": "Ammo",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "prefabName": "Game UI Canvas.prefab",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "fb772491-b629-d168-eeb9-3b7335e5009f",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.07838524132966995,
+                            "y": -0.0068340301513671875,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.09000000357627869,
+                            "y": 0.30000001192092896,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.07838524132966995,
+                            "y": -0.0068340301513671875,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.09000000357627869,
+                            "y": 0.30000001192092896,
                             "z": 1.0
                         }
                     }
@@ -21613,133 +22286,5 @@
                 ]
             }
         ]
-    },
-    {
-        "entityGUID": "56361d32-1d00-085b-272a-de43aa4d4302",
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "060a466b-d63a-daf0-1828-16fa44d0522d"
-                },
-                {
-                    "materialGUID": "1f738717-1d12-e06f-ae86-13f8c4765c1a"
-                },
-                {
-                    "materialGUID": "b0f05210-9ecf-9d1e-e515-66b7629b4b2b"
-                }
-            ]
-        },
-        "MeshFilterComponent": {
-            "meshGUID": "efed756a-4a7c-e2b3-46b2-8beb1e7bd5cd"
-        },
-        "NameComponent": {
-            "entityName": "M4LevelFloor",
-            "Layer": 0,
-            "entityTag": "Default",
-            "isPrefab": false,
-            "prefabName": "",
-            "hide": false
-        },
-        "NavMeshComponent": {},
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            }
-        }
-    },
-    {
-        "entityGUID": "6657653b-1b7a-5e5b-4110-4fe6da4ac8f4",
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "060a466b-d63a-daf0-1828-16fa44d0522d"
-                },
-                {
-                    "materialGUID": "1f738717-1d12-e06f-ae86-13f8c4765c1a"
-                },
-                {
-                    "materialGUID": "b0f05210-9ecf-9d1e-e515-66b7629b4b2b"
-                }
-            ]
-        },
-        "MeshFilterComponent": {
-            "meshGUID": "fad9fc05-f973-4f5c-2154-10ee66bc50ce"
-        },
-        "NameComponent": {
-            "entityName": "M4LevelCeiling",
-            "Layer": 0,
-            "entityTag": "Default",
-            "isPrefab": false,
-            "prefabName": "",
-            "hide": false
-        },
-        "NavMeshComponent": {},
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            }
-        }
     }
 ]

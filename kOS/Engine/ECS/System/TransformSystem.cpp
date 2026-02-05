@@ -16,7 +16,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 #include "Config/pch.h"
 #include "ECS/ECS.h"
-#include "ECS/ecs.h"
 #include "TransformSystem.h"
 #include "Utility/MathUtility.h"
 
@@ -31,9 +30,11 @@ namespace ecs {
 		const auto& entities = m_entities.Data();
 		for (const EntityID id : entities) {
 			TransformComponent* transformComp = m_ecs.GetComponent<TransformComponent>(id);
-			if (transformComp->m_haveParent) continue;
+			if (transformComp->m_haveParent || !transformComp->dirty) continue;
 			
 			CalculateAllTransform(m_ecs, transformComp);
+
+			transformComp->dirty = false;
 		}
 
 		//m_ecs.GetWorkers().ParallelFor(entities.begin(), entities.end(),
