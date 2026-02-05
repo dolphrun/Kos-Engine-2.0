@@ -127,15 +127,17 @@ inline void EnemyManagerScript::Update() {
 	
 	if (animComp)
 	{
-		R_Animation* currAnim = resource->GetResource<R_Animation>(enemyController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get();
-		float animDuration = currAnim->GetDuration();
-		//Checkcing if animation is done
-		if (animComp->m_CurrentTime >= animDuration && !enemyController->RetrieveStateByID(animComp->m_currentStateID)->isLooping)
+		if (R_Animation* currAnim = resource->GetResource<R_Animation>(enemyController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get())
 		{
-			enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AnimationFinished", animComp, enemyController);
-			//animComp->m_CurrentTime = 0.f;
-			enemyIsAttacking = false;
-			attackHurtboxIsSpawn = false;
+			float animDuration = currAnim->GetDuration();
+			//Checkcing if animation is done
+			if (animComp->m_CurrentTime >= animDuration && !enemyController->RetrieveStateByID(animComp->m_currentStateID)->isLooping)
+			{
+				enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AnimationFinished", animComp, enemyController);
+				//animComp->m_CurrentTime = 0.f;
+				enemyIsAttacking = false;
+				attackHurtboxIsSpawn = false;
+			}
 		}
 	}
 	
