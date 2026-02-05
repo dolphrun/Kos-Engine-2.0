@@ -124,6 +124,71 @@
         },
         "children": [
             {
+                "entityGUID": "207e3b3a-bb55-fce5-dd9c-e8385844ebcb",
+                "NameComponent": {
+                    "entityName": "Background",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "2b9d76e0-86d3-ed10-3f7c-b266e8ce60de",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 3.700000047683716,
+                            "y": 2.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 3.700000047683716,
+                            "y": 2.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
                 "entityGUID": "bc11d64f-ad72-8dc2-964f-a15e72cc2f96",
                 "NameComponent": {
                     "entityName": "Alcehmication Logo",
@@ -278,6 +343,7 @@
                     "actionType": 1,
                     "currentSceneGUID": "873145a3-c01e-82b3-a4f5-d837cb0a0c51",
                     "targetSceneGUID": "2f4dc450-3563-7399-23f3-38b816ea2631",
+                    "useKeyboardShortcut": true,
                     "wasPressed": false
                 }
             },
@@ -366,6 +432,13 @@
                             "z": 1.0
                         }
                     }
+                },
+                "UIButtonScript": {
+                    "actionType": 2,
+                    "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
+                    "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
+                    "useKeyboardShortcut": true,
+                    "wasPressed": false
                 }
             }
         ]

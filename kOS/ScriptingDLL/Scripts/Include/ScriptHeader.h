@@ -38,3 +38,6 @@
 #include "UIButtonScript.h"
 #include "NEW_HealthBarUIScript.h"
 #include "CutSceneScript.h"
+#include "ManaUIScript.h"
+#include "AmmoUIScript.h"
+#include "NextSceneEventColliderScript.h"

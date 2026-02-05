@@ -40,7 +40,6 @@ namespace ecs {
 		onDeregister.Add([&](EntityID id) {
 
 			if (m_videoMap.find(id) != m_videoMap.end()) {
-				m_videoMap[id].videoPtr->Unload();
 				m_videoMap.erase(id);
 			}
 
@@ -58,14 +57,9 @@ namespace ecs {
 			TransformComponent* transformCom = m_ecs.GetComponent<TransformComponent>(id);
 			VideoComponent* videoCom = m_ecs.GetComponent<VideoComponent>(id);
 
-			//if (videoCom->loop != m_videoMap[id].videoFlag.test(VIDEO_FLAGS::LOOP)) {
-
-			//}
 
 			if (videoCom->playing == false) {
-				m_videoMap[id].videoPtr->Unload();
 				m_videoMap.erase(id);
-
 				continue;
 			}
 			

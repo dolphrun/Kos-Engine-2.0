@@ -4,37 +4,37 @@
 #include "ScriptAdapter/TemplateSC.h"
 #include "PlayerManagerScript.h"
 
-class NEWHealthBarScript : public TemplateSC {
+class ManaUIScript : public TemplateSC {
 public:
-    // Reference to the player object to read health from
+    // Reference to the player object to read mana from
     utility::GUID playerObject;
     ecs::EntityID playerObjectID;
 
-    // Health bar sprite
-    utility::GUID healthbarSprite;
+    // Mana bar sprite
+    utility::GUID manabarSprite;
 
     void Start() override {
         // Resolve the player entity ID
         playerObjectID = ecsPtr->GetEntityIDFromGUID(playerObject);
 
-        // Initialize with current health
+        // Initialize with current mana
         if (auto* playerMgr = ecsPtr->GetComponent<PlayerManagerScript>(playerObjectID)) {
-            float healthPercentage = ((float)playerMgr->currPlayerHitPoints / (float)playerMgr->maxPlayerHitPoints) * 100.0f;
-            UpdateHealthBarSprite(healthPercentage);
+            float manaPercentage = (playerMgr->currMana / playerMgr->maxMana) * 100.0f;
+            UpdateManaBarSprite(manaPercentage);
         }
     }
 
     void Update() override {
-        // Read health from PlayerManagerScript
+        // Read mana from PlayerManagerScript
         if (auto* playerMgr = ecsPtr->GetComponent<PlayerManagerScript>(playerObjectID)) {
-            // Calculate health percentage
-            float healthPercentage = ((float)playerMgr->currPlayerHitPoints / (float)playerMgr->maxPlayerHitPoints) * 100.0f;
+            // Calculate mana percentage
+            float manaPercentage = (playerMgr->currMana / playerMgr->maxMana) * 100.0f;
 
             // Clamp between 0 and 100
-            healthPercentage = std::clamp(healthPercentage, 0.0f, 100.0f);
+            manaPercentage = std::clamp(manaPercentage, 0.0f, 100.0f);
 
-            // Update the sprite based on health percentage
-            UpdateHealthBarSprite(healthPercentage);
+            // Update the sprite based on mana percentage
+            UpdateManaBarSprite(manaPercentage);
         }
     }
 
@@ -43,21 +43,21 @@ private:
     glm::vec3 originalPosition = glm::vec3(0.0f);   // Store original position
     bool initialized = false;
 
-    void UpdateHealthBarSprite(float healthPercentage) {
+    void UpdateManaBarSprite(float manaPercentage) {
         if (auto* sc = ecsPtr->GetComponent<ecs::SpriteComponent>(entity)) {
             // Set the sprite
-            sc->spriteGUID = healthbarSprite;
+            sc->spriteGUID = manabarSprite;
 
             // Enable custom UV cropping
             sc->useCustomUV = true;
 
             // Calculate UV coordinates to crop the sprite horizontally
-            // The sprite will be cropped from right to left based on health percentage
-            float uvWidth = healthPercentage / 100.0f;
+            // The sprite will be cropped from right to left based on mana percentage
+            float uvWidth = manaPercentage / 100.0f;
 
             // Set UV coordinates - crop from the right
             sc->uvMin = glm::vec2(0.0f, 0.0f);           // Bottom-left (fixed)
-            sc->uvMax = glm::vec2(uvWidth, 1.0f);        // Top-right (X adjusts with health)
+            sc->uvMax = glm::vec2(uvWidth, 1.0f);        // Top-right (X adjusts with mana)
         }
 
         // Get the transform component to adjust scale and position
@@ -69,8 +69,8 @@ private:
                 initialized = true;
             }
 
-            // Calculate the scale factor based on health percentage
-            float scaleFactor = healthPercentage / 100.0f;
+            // Calculate the scale factor based on mana percentage
+            float scaleFactor = manaPercentage / 100.0f;
 
             // Scale the sprite horizontally (X-axis) to match the UV crop
             tc->LocalTransformation.scale.x = originalScale.x * scaleFactor;
@@ -87,6 +87,6 @@ private:
     }
 
 public:
-    REFLECTABLE(NEWHealthBarScript, playerObject, playerObjectID, healthbarSprite,
+    REFLECTABLE(ManaUIScript, playerObject, playerObjectID, manabarSprite,
         originalScale, originalPosition, initialized);
 };

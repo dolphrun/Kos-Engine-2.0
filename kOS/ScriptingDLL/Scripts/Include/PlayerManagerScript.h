@@ -152,6 +152,10 @@ public:
 	bool playerIsCrouching = false;
 	bool playerIsSliding = false;
 
+	bool isDashing = false;
+	float dashDuration = 0.25f; // How long the player can't be controlled during dash?
+	float currentDashTimer = 0.0f;
+
 	float originalPlayerCrouchCameraPosY;
 	float playerCrouchCameraPosY;
 
@@ -391,7 +395,20 @@ inline void PlayerManagerScript::Update() {
 		if (fireCurrMeleeCooldown < 0.0f)
 			fireCurrMeleeCooldown = 0.0f;
 	}
-	PlayerMovementControls();
+
+	// Dashing cooldown
+	if (isDashing) {
+		currentDashTimer -= ecsPtr->m_GetDeltaTime();
+		if (currentDashTimer <= 0.0f) {
+			isDashing = false;
+		}
+	}
+
+	if (!isDashing) {
+		PlayerMovementControls(); // Look at me
+	}
+
+	// PlayerMovementControls(); I removed dis to disable movement while dashing, if anyone wants there to be more control during a dash need to look here
 	PlayerCameraControls();
 	PlayerCombatControls();
 
@@ -1208,6 +1225,9 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 			physicsPtr->AddForce(playerRigidbody->actor, GetPlayerFrontDirection() * 50.f, ForceMode::Impulse);
 
+			isDashing = true;
+			currentDashTimer = dashDuration;
+
 			currMana -= fireMovementCost;
 			fireCurrMovementCooldown = fireMovementCooldown;
 
@@ -1227,6 +1247,9 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			glm::vec3 force = Input->GetVertical() * GetPlayerFrontDirection() + Input->GetHorizontal() * GetPlayerRightDirection();
 			force = glm::normalize(force);
 			physicsPtr->AddForce(playerRigidbody->actor, force * 25.f, ForceMode::Impulse);
+
+			isDashing = true;
+			currentDashTimer = dashDuration;
 
 			currMana -= lightningMovementCost;
 			lightningCurrMovementCooldown = lightningMovementCooldown;

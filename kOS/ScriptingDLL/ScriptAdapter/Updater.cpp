@@ -73,7 +73,9 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 	RegisterScript<UIButtonScript>(TemplateSC::ecsPtr);
 	RegisterScript<NEWHealthBarScript>(TemplateSC::ecsPtr);
 	RegisterScript<CutSceneScript>(TemplateSC::ecsPtr);
-
+	RegisterScript<ManaUIScript>(TemplateSC::ecsPtr);
+	RegisterScript<AmmoUIScript>(TemplateSC::ecsPtr);
+	RegisterScript<NextSceneColliderScript>(TemplateSC::ecsPtr);
 
 	FieldComponentTypeRegistry::CreateAllDrawers(static_cast<Fields*>(svm->field)->GetAction());
 }
