@@ -148,7 +148,6 @@ public:
 	// BACKEND PLAYER DETAILS
 	float playerRotationX = 0.f, playerRotationY = 0.f;
 
-	bool isMoving = false;
 	bool playerIsWalking = false;
 	bool playerIsSprinting = false;
 	bool playerIsCrouching = false;
@@ -339,7 +338,7 @@ inline void PlayerManagerScript::Start() {
 
 inline void PlayerManagerScript::Update() {
 
-	if (Input->IsKeyTriggered(keys::L)) {
+	if (Input->IsKeyReleased(keys::L)) {
 		//std::cout << "L RELEASED\n";
 		Scenes->ReloadScene();
 
@@ -447,7 +446,7 @@ inline void PlayerManagerScript::PlayerMovementControls() {
 
 	// Determine target speed based on movement state
 	float targetSpeed = 0.f;
-	isMoving = (std::abs(Input->GetHorizontal()) > 0.1f || std::abs(Input->GetVertical()) > 0.1f);
+	bool isMoving = (std::abs(Input->GetHorizontal()) > 0.1f || std::abs(Input->GetVertical()) > 0.1f);
 
 	// SPRINTING
 	if (Input->IsKeyPressed(keys::LeftShift) && Input->GetVertical() > 0.f && GroundCheck() && !playerIsCrouching) {
@@ -601,7 +600,7 @@ inline void PlayerManagerScript::PlayerCameraControls() {
 	glm::vec3 bobPosition = playerGunModelPointTransform->LocalTransformation.position;
 	float playerGunModelBobbingSpeed = playerIsSprinting ? playerGunModelSprintBobbingSpeed : playerGunModelWalkBobbingSpeed;
 
-	if (isMoving) {
+	if (playerIsWalking || playerIsSprinting) {
 		bobbingTimer += ecsPtr->m_GetDeltaTime() * playerGunModelBobbingSpeed;
 
 		float offsetY = std::sin(bobbingTimer) * playerGunModelBobbingIntensity;
@@ -1178,7 +1177,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 	// ABILITY
 	if (Input->IsKeyTriggered(keys::RMB)) {
-		if (playerPowerupHeld == Powerup::FIRE ) {
+		if (playerPowerupHeld == Powerup::FIRE && currMana >= fireAbilityCost) {
 			std::shared_ptr<R_Scene> fireball = resource->GetResource<R_Scene>(firePrefab);
 
 			if (fireball) {
@@ -1198,7 +1197,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 			// ADD SFX
 		}
-		else if (playerPowerupHeld == Powerup::ACID) {
+		else if (playerPowerupHeld == Powerup::ACID && currMana >= acidAbilityCost) {
 			std::shared_ptr<R_Scene> acidCloud = resource->GetResource<R_Scene>(acidPrefab);
 
 			if (acidCloud) {
@@ -1218,7 +1217,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 			// ADD SFX
 		}
-		else if (playerPowerupHeld == Powerup::LIGHTNING ) {
+		else if (playerPowerupHeld == Powerup::LIGHTNING && currMana >= lightningAbilityCost) {
 			std::shared_ptr<R_Scene> railgun = resource->GetResource<R_Scene>(lightningPrefab);
 
 			if (railgun) {
@@ -1245,7 +1244,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 		auto* playerRigidbody = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity);
 		if (!playerRigidbody) return;
 
-		if (playerPowerupHeld == Powerup::FIRE && fireCurrMovementCooldown <= 0.f) {
+		if (playerPowerupHeld == Powerup::FIRE && currMana >= fireMovementCost && fireCurrMovementCooldown <= 0.f) {
 		
 			std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 			ecs::EntityID fireDashID = DuplicatePrefabIntoScene<R_Scene>(currentScene, fireDashPrefab);
@@ -1279,7 +1278,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			}
 			// ADD SFX
 		}
-		else if (playerPowerupHeld == Powerup::ACID && acidCurrMovementCooldown <= 0.f) {
+		else if (playerPowerupHeld == Powerup::ACID && currMana >= acidMovementCost && acidCurrMovementCooldown <= 0.f) {
 
 
 			physicsPtr->AddForce(playerRigidbody->actor, GetPlayerFrontDirection() * 25.f, ForceMode::Impulse);
@@ -1289,7 +1288,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 			// ADD SFX
 		}
-		else if (playerPowerupHeld == Powerup::LIGHTNING && lightningCurrMovementCooldown <= 0.f) {
+		else if (playerPowerupHeld == Powerup::LIGHTNING && currMana >= lightningMovementCost && lightningCurrMovementCooldown <= 0.f) {
 
 			glm::vec3 force = Input->GetVertical() * GetPlayerFrontDirection() + Input->GetHorizontal() * GetPlayerRightDirection();
 			force = glm::normalize(force);
