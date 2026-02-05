@@ -32,6 +32,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Physics/PhysicsManager.h"
 #include "Audio/AudioManager.h"
 
+#define APPLICATIONPROFILE "Application"
 
 namespace Application {
 
@@ -173,7 +174,7 @@ namespace Application {
                 /*--------------------------------------------------------------
                     Update IMGUI FRAME
                 --------------------------------------------------------------*/
-                PROFILE_SYSTEM(peformance, "Editor Update", Editor.Update())
+                PROFILE_SYSTEM(peformance, APPLICATIONPROFILE, "Editor Update", Editor.Update())
 
                 /*--------------------------------------------------------------
                     UPDATE INPUT FRAME EXIT
@@ -184,22 +185,22 @@ namespace Application {
                 /*--------------------------------------------------------------
                     UPDATE Render Pipeline
                 --------------------------------------------------------------*/
-                PROFILE_SYSTEM(peformance, "graphics Update", graphicsManager.gm_Update())
+                PROFILE_SYSTEM(peformance, APPLICATIONPROFILE, "graphics Update", graphicsManager.gm_Update())
 
                 /*--------------------------------------------------------------
                     UPDATE NavMesh
                 --------------------------------------------------------------*/
-                PROFILE_SYSTEM(peformance, "navMeshManager Update", navMeshManager.Update(deltaTime))
+                PROFILE_SYSTEM(peformance, APPLICATIONPROFILE, "navMeshManager Update", navMeshManager.Update(deltaTime))
 
                 /*--------------------------------------------------------------
                     Execute Render Pipeline
                 --------------------------------------------------------------*/
-                PROFILE_SYSTEM(peformance, "graphics Render", graphicsManager.gm_Render())
+                PROFILE_SYSTEM(peformance, APPLICATIONPROFILE, "graphics Render", graphicsManager.gm_Render())
                 
                 /*--------------------------------------------------------------
                     Draw IMGUI FRAME
                 --------------------------------------------------------------*/
-                PROFILE_SYSTEM(peformance, "Editor Render", Editor.Render())
+                PROFILE_SYSTEM(peformance, APPLICATIONPROFILE, "Editor Render", Editor.Render())
 
                 /*--------------------------------------------------------------
                    Reset Framebuffer

@@ -7,6 +7,7 @@
 #include "Reflection/Field.h"
 #include "Scene/SceneManager.h"
 
+#define SYSTEMPROFILE "System"
 
 //ECS Varaible
 
@@ -494,14 +495,7 @@ namespace ecs{
 			if (system.ptr->TestState(m_state)) {
 				m_threadPool.Enqueue([this, &system]() {
 
-					std::chrono::duration<float> systemDuration{};
-					auto start = std::chrono::steady_clock::now();
-
-					system.ptr->Update();
-
-					auto end = std::chrono::steady_clock::now();
-					systemDuration = (end - start);
-					m_performance.SetSystemValue(system.systemName, systemDuration.count());
+					PROFILE_SYSTEM(m_performance, SYSTEMPROFILE, system.systemName, system.ptr->Update());
 					
 					});
 				}
@@ -515,7 +509,7 @@ namespace ecs{
 		for (auto& system : systems) {
 			if (system.ptr->TestState(m_state)) {
 
-				PROFILE_SYSTEM(m_performance, system.systemName, system.ptr->Update());
+				PROFILE_SYSTEM(m_performance, SYSTEMPROFILE, system.systemName, system.ptr->Update());
 			}
 		}
 	}
