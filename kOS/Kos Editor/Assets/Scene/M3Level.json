@@ -11479,8 +11479,8 @@
             "entityName": "Game UI Canvas",
             "Layer": 0,
             "entityTag": "Default",
-            "isPrefab": false,
-            "prefabName": "",
+            "isPrefab": true,
+            "prefabName": "Game UI Canvas.prefab",
             "hide": false
         },
         "TransformComponent": {
@@ -11526,7 +11526,7 @@
                     "entityName": "Crosshair UI",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11591,7 +11591,7 @@
                     "entityName": "Ability UI Base",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11664,7 +11664,7 @@
                     "entityName": "Ability UI",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11729,7 +11729,7 @@
                     "entityName": "Health UI Base",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11810,7 +11810,7 @@
                     "entityName": "Health Bar",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11875,7 +11875,7 @@
                     "entityName": "Mana Bar Base",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11956,7 +11956,7 @@
                     "entityName": "Mana Bar",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12021,7 +12021,7 @@
                     "entityName": "Ability 1",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12086,7 +12086,7 @@
                     "entityName": "Ability 2",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12151,7 +12151,7 @@
                     "entityName": "Ability 3",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12227,7 +12227,7 @@
                     "entityName": "Ammo",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "prefabName": "",
                     "hide": false
                 },
