@@ -9409,8 +9409,8 @@
                             "y": 0.0,
                             "z": 0.0
                         },
-                        "radius": 0.6000000238418579,
-                        "height": 1.5,
+                        "radius": 0.30000001192092896,
+                        "height": 3.0,
                         "capsuleDirection": 1
                     }
                 },
@@ -10080,509 +10080,6 @@
         ]
     },
     {
-        "entityGUID": "dd420147-13cd-2a52-32b4-107bc917a44d",
-        "CanvasRendererComponent": {
-            "isScreenSpace": true
-        },
-        "NameComponent": {
-            "entityName": "Win Screen Canvas",
-            "Layer": 0,
-            "entityTag": "Default",
-            "isPrefab": true,
-            "prefabName": "Win Screen Canvas_1.prefab",
-            "hide": true
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        },
-        "WinScreenScript": {
-            "winScreenCanvasGUID": "dd420147-13cd-2a52-32b4-107bc917a44d",
-            "hiddenPosition": {
-                "x": -10000.0,
-                "y": -10000.0,
-                "z": 0.0
-            },
-            "originalCanvasPosition": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "currentScoreTextGUID": "cc40bce3-955e-d2a5-cd08-1da20f1b71ee",
-            "bestScoreTextGUID": "f8709dc9-3bc8-3f89-03b6-dd6999fd1183"
-        },
-        "children": [
-            {
-                "entityGUID": "a400ed79-79d1-2c75-1816-ddf95de2413d",
-                "NameComponent": {
-                    "entityName": "Win Text",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "prefabName": "",
-                    "hide": true
-                },
-                "TextComponent": {
-                    "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                    "text": "YOU WIN!",
-                    "color": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "fontSize": 180.0
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -0.4971816837787628,
-                            "y": 0.7400000095367432,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": -0.4971816837787628,
-                            "y": 0.7400000095367432,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "c740856f-6d32-ea47-d42a-2e3a682ae55d",
-                "NameComponent": {
-                    "entityName": "Current Score Text",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "prefabName": "",
-                    "hide": true
-                },
-                "TextComponent": {
-                    "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                    "text": "Current Score:",
-                    "color": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "fontSize": 128.0
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -1.3891839981079102,
-                            "y": 0.27888453006744385,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": -1.3891839981079102,
-                            "y": 0.27888453006744385,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "cc40bce3-955e-d2a5-cd08-1da20f1b71ee",
-                "NameComponent": {
-                    "entityName": "Current Score",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "prefabName": "",
-                    "hide": true
-                },
-                "TextComponent": {
-                    "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                    "text": "000",
-                    "color": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "fontSize": 128.0
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 0.03655751422047615,
-                            "y": 0.2828686237335205,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.03655751422047615,
-                            "y": 0.2828686237335205,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "6987d116-7eff-6be8-2876-6cf46093799c",
-                "NameComponent": {
-                    "entityName": "High Score Text",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "prefabName": "",
-                    "hide": true
-                },
-                "TextComponent": {
-                    "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                    "text": "High Score:",
-                    "color": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "fontSize": 128.0
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -1.034576654434204,
-                            "y": -0.019999999552965164,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": -1.034576654434204,
-                            "y": -0.019999999552965164,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "f8709dc9-3bc8-3f89-03b6-dd6999fd1183",
-                "NameComponent": {
-                    "entityName": "High Score",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "prefabName": "",
-                    "hide": true
-                },
-                "TextComponent": {
-                    "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                    "text": "000",
-                    "color": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "fontSize": 128.0
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 0.03999999910593033,
-                            "y": -0.019999999552965164,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.03999999910593033,
-                            "y": -0.019999999552965164,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "07808722-077a-5ec7-2d6f-ea5c193698b3",
-                "NameComponent": {
-                    "entityName": "Restart Text",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "prefabName": "",
-                    "hide": true
-                },
-                "TextComponent": {
-                    "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                    "text": "Press L To Restart",
-                    "color": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "fontSize": 128.0
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -0.7823299765586853,
-                            "y": -0.4000000059604645,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": -0.7823299765586853,
-                            "y": -0.4000000059604645,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "78ddc7b6-68ba-6224-43e3-316594a75e00",
-                "ButtonComponent": {
-                    "normalColor": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0,
-                        "w": 1.0
-                    },
-                    "hoveredColor": {
-                        "x": 0.800000011920929,
-                        "y": 0.800000011920929,
-                        "z": 0.800000011920929,
-                        "w": 1.0
-                    },
-                    "pressedColor": {
-                        "x": 0.6000000238418579,
-                        "y": 0.6000000238418579,
-                        "z": 0.6000000238418579,
-                        "w": 1.0
-                    },
-                    "isHovered": false,
-                    "isPressed": false
-                },
-                "NameComponent": {
-                    "entityName": "Quit Button Image",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "prefabName": "",
-                    "hide": true
-                },
-                "SpriteComponent": {
-                    "spriteGUID": "a6918fdc-bfcb-feab-5f96-86e8d9485e45",
-                    "color": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0,
-                        "w": 1.0
-                    },
-                    "uvMin": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "uvMax": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "useCustomUV": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": -0.699999988079071,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.699999988079071,
-                            "y": 0.30000001192092896,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": -0.699999988079071,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.699999988079071,
-                            "y": 0.30000001192092896,
-                            "z": 1.0
-                        }
-                    }
-                },
-                "UIButtonScript": {
-                    "actionType": 2,
-                    "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
-                    "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
-                    "useKeyboardShortcuts": true,
-                    "wasPressed": false
-                }
-            }
-        ]
-    },
-    {
         "entityGUID": "23dd4708-96d5-34e7-3d95-b85965156d5d",
         "CanvasRendererComponent": {
             "isScreenSpace": true
@@ -10608,7 +10105,7 @@
             "entityTag": "Default",
             "isPrefab": true,
             "prefabName": "Lose Screen Canvas_1.prefab",
-            "hide": true
+            "hide": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -10655,7 +10152,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TextComponent": {
                     "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -10712,7 +10209,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TextComponent": {
                     "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -10769,7 +10266,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TextComponent": {
                     "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -10826,7 +10323,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TextComponent": {
                     "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -10883,7 +10380,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TextComponent": {
                     "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -10940,7 +10437,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TextComponent": {
                     "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11019,7 +10516,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "SpriteComponent": {
                     "spriteGUID": "a6918fdc-bfcb-feab-5f96-86e8d9485e45",
@@ -11096,7 +10593,7 @@
             "entityTag": "Default",
             "isPrefab": true,
             "prefabName": "Pause Screen Canvas_1.prefab",
-            "hide": true
+            "hide": false
         },
         "PauseMenuScript": {
             "pauseMenuCanvasGUID": "155ba76a-ab15-3655-61d0-3eb0d2bccb85",
@@ -11157,7 +10654,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TextComponent": {
                     "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11214,7 +10711,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TextComponent": {
                     "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11271,7 +10768,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TextComponent": {
                     "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11328,7 +10825,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TextComponent": {
                     "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11407,7 +10904,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "SpriteComponent": {
                     "spriteGUID": "a6918fdc-bfcb-feab-5f96-86e8d9485e45",
@@ -12302,7 +11799,7 @@
             "entityTag": "Default",
             "isPrefab": false,
             "prefabName": "",
-            "hide": true
+            "hide": false
         },
         "ScoreManagerScript": {
             "currentScore": 0,
@@ -12355,7 +11852,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -12402,7 +11899,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TextComponent": {
                     "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -12462,7 +11959,7 @@
                     "entityTag": "Default",
                     "isPrefab": false,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TextComponent": {
                     "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -14509,205 +14006,6 @@
                 }
             }
         }
-    },
-    {
-        "entityGUID": "bb3ce11a-3e4e-3f5c-5ba5-3646dea3a603",
-        "CapsuleColliderComponent": {
-            "isTrigger": false,
-            "capsule": {
-                "center": {
-                    "x": 0.0,
-                    "y": 2.0,
-                    "z": 0.0
-                },
-                "radius": 1.0,
-                "height": 2.0,
-                "capsuleDirection": 1
-            }
-        },
-        "EnemyManagerScript": {
-            "enemyHealth": 5,
-            "enemyMovementSpeed": 5.0,
-            "enemyType": "Ranged",
-            "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 10.0,
-            "enemyChaseRange": 25.0,
-            "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
-            "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyBulletPrefab": "8393af65-4300-ebba-36fa-0720e42087f2",
-            "enemyHurtboxPosition": "926843b9-e279-eda4-1bc9-fae51278e775"
-        },
-        "NameComponent": {
-            "entityName": "RangedEnemyPrefab",
-            "Layer": 0,
-            "entityTag": "Enemy",
-            "isPrefab": true,
-            "prefabName": "RangedEnemyPrefab.prefab",
-            "hide": false
-        },
-        "RigidbodyComponent": {
-            "mass": 1.0,
-            "drag": 0.0,
-            "angularDrag": 0.05000000074505806,
-            "useGravity": true,
-            "isKinematic": false,
-            "interpolation": 0,
-            "collisionDetection": 0,
-            "constraints": 0,
-            "speed": 0.0,
-            "velocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "angularVelocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 53.7685546875,
-                    "y": 1.9802656173706055,
-                    "z": -22.937253952026367
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 53.7685546875,
-                    "y": 1.9802656173706055,
-                    "z": -22.937253952026367
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        },
-        "children": [
-            {
-                "entityGUID": "9097d65f-dea5-c5ed-9b6a-8a37eae199f0",
-                "AnimatorComponent": {
-                    "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
-                    "m_PlaybackSpeed": 1.0,
-                    "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
-                },
-                "NameComponent": {
-                    "entityName": "Enemy Model",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "prefabName": "RangedEnemyPrefab.prefab",
-                    "hide": false
-                },
-                "SkinnedMeshRendererComponent": {
-                    "skinnedMeshGUID": "8a830bfc-7794-b76e-2f45-0e765f0a2495",
-                    "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 53.7685546875,
-                            "y": 1.9802656173706055,
-                            "z": -22.937253952026367
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "926843b9-e279-eda4-1bc9-fae51278e775",
-                "NameComponent": {
-                    "entityName": "Enemy Hurtbox Position",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": false,
-                    "prefabName": "RangedEnemyPrefab.prefab",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 53.7685546875,
-                            "y": 3.6792802810668945,
-                            "z": -22.937253952026367
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 1.699014663696289,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            }
-        ]
     },
     {
         "entityGUID": "98d4d86f-0816-c4a4-b145-50daff208ec4",
