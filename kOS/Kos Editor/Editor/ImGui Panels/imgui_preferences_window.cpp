@@ -186,12 +186,12 @@ void SerializeProfile(ImGuiStyle* style) {
     }
 }
 
-void gui::ImGuiHandler::DeserializeProfile() {
+bool gui::ImGuiHandler::DeserializeProfile() {
     std::ifstream file(configpath::imguiStylePath);
     if (!file.is_open()) {
         LOGGING_WARN("Unable to Open File");
         file.close();
-        return;
+        return false;
     }
     std::string fileContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
     file.close();
@@ -260,6 +260,8 @@ void gui::ImGuiHandler::DeserializeProfile() {
     if (flag) style.HoverFlagsForTooltipNav |= ImGuiHoveredFlags_NoSharedDelay;
     DeserializeImVec2("DisplayWindowPadding", style.DisplayWindowPadding, doc[0]);
     DeserializeImVec2("DisplayWindowPadding", style.DisplayWindowPadding, doc[0]);
+
+    return true;
 }
 
 void Style_DefaultWhite(ImGuiStyle* dst = NULL)
