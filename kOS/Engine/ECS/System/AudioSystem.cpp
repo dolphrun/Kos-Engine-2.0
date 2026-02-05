@@ -27,7 +27,7 @@ namespace ecs {
 
 		auto* studio = m_audioManager.GetStudio();
 		if (!studio) {
-			std::cout << "[AudioSystem] Studio system is null in Init()\n";
+			//std::cout << "[AudioSystem] Studio system is null in Init()\n";
 
 			return;
 		}
@@ -49,7 +49,7 @@ namespace ecs {
 				// Load bank 
 				auto bankRes = m_resourceManager.GetResource<R_AudioStudio>(af.audioBankGUID);
 				if (!bankRes) {
-					std::cout << "[AudioSystem] No R_AudioStudio resource for bank GUID\n";
+					//std::cout << "[AudioSystem] No R_AudioStudio resource for bank GUID\n";
 					continue;
 				}
 				bankRes->SetStudio(studio);
@@ -116,9 +116,9 @@ namespace ecs {
 					FMOD::Channel* ch = static_cast<FMOD::Channel*>(af.channel);
 					glm::vec3 pos = transform->WorldTransformation.position;
 
-					std::cout << "[AudioSystem] 3D source '"
+					/*std::cout << "[AudioSystem] 3D source '"
 						<< (nameComp ? nameComp->entityName : "<no name>")
-						<< "' pos = (" << pos.x << ", " << pos.y << ", " << pos.z << ")\n";
+						<< "' pos = (" << pos.x << ", " << pos.y << ", " << pos.z << ")\n";*/
 
 					FMOD_VECTOR fpos{ pos.x, pos.y, pos.z };
 					FMOD_VECTOR fvel{ 0,0,0 };
@@ -176,8 +176,8 @@ namespace ecs {
 					FMOD::Studio::EventDescription* desc = nullptr;
 					FMOD_RESULT ev = studio->getEvent(af.studioEventPath.c_str(), &desc);
 					if (ev != FMOD_OK || !desc) {
-						std::cout << "[AudioSystem] getEvent FAILED for '"
-							<< af.studioEventPath << "' result = " << ev << "\n";
+						//std::cout << "[AudioSystem] getEvent FAILED for '"
+						//	<< af.studioEventPath << "' result = " << ev << "\n";
 						af.requestPlay = false;
 						continue;
 					}
