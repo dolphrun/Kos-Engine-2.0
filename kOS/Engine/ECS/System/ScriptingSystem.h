@@ -19,6 +19,8 @@ namespace ecs {
 
 		REFLECTABLE(ScriptingSystem)
 	private:
+
+		std::function<void(const std::string&)> m_runScript;
 	};
 }
 

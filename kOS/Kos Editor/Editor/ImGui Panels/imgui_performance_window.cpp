@@ -32,6 +32,7 @@ void gui::ImGuiHandler::DrawPerformanceWindow() {
     static float FpsValues[90] = {};
     static int FpsValues_offset = 0;
     static double refresh_time = 0.0;
+    static auto categoryPeformance = m_performance.GetSystemPerformance();
 
 
     if (refresh_time == 0.0)
@@ -71,51 +72,25 @@ void gui::ImGuiHandler::DrawPerformanceWindow() {
        // ImGui::PlotShaded();
     }
 
+    static float interval = 0.0f;
+    static std::unordered_map<std::string, float> systemPeformance;
 
-    if (ImGui::CollapsingHeader("System Time", ImGuiTreeNodeFlags_DefaultOpen)) {
-
-        static float interval = 0.0f;
-        static std::unordered_map<std::string, float> systemPeformance;
-
-        // Always get fresh data
-        interval += m_performance.GetDeltaTime();
-
-        if (interval > 1.0f) { // updates display every 1 second
-            systemPeformance = m_performance.GetSystemPerformance(); // update map to display
-            interval = 0.0f;
-        }
-
-        // Display last stored values
-        for (const auto& [systemName, duration] : systemPeformance) {
-            ImGui::Text("%s", systemName.c_str());
-            ImGui::SameLine(300);
-            ImGui::Text("%.4f ms", duration * 1000.0f);
-        }
+    // Always get fresh data
+    interval += m_performance.GetDeltaTime();
+    if (interval > 1.0f) { // updates display every 1 second
+        categoryPeformance = m_performance.GetSystemPerformance(); // update map to display
+        interval = 0.0f;
     }
 
-    if (ImGui::CollapsingHeader("Script Time", ImGuiTreeNodeFlags_DefaultOpen)) {
-
-        static float interval = 0.0f;
-        static std::unordered_map<std::string, float> scriptPeformance;
-
-        // Always get fresh data
-        interval += m_performance.GetDeltaTime();
-
-        if (interval > 1.0f) { // updates display every 1 second
-            scriptPeformance = m_performance.GetScriptPerformance(); // update map to display
-            interval = 0.0f;
-        }
-
-        // Display last stored values
-        for (const auto& [systemName, duration] : scriptPeformance) {
-            ImGui::Text("%s", systemName.c_str());
-            ImGui::SameLine(300);
-            if (m_ecs.GetState() != ecs::GAMESTATE::RUNNING) {
-                ImGui::Text("0.0000 ms");
-				continue;
+    for (const auto& [categoryName, category] : categoryPeformance) {
+        if (ImGui::CollapsingHeader(categoryName.c_str(), ImGuiTreeNodeFlags_DefaultOpen)) {
+            for (const auto& [systemName, duration] : category) {
+                ImGui::Text("%s", systemName.c_str());
+                ImGui::SameLine(300);
+                ImGui::Text("%.4f ms", duration * 1000.0f);
             }
-            ImGui::Text("%.4f ms", duration * 1000.0f);
         }
+
     }
 
 

@@ -15,28 +15,25 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #pragma once
 #include "Config/pch.h"
 
-    #define PROFILE_SYSTEM(performance, name, code)              \
+    #define PROFILE_SYSTEM(performance, category, name, code)              \
     {                                                            \
         auto __start = std::chrono::steady_clock::now();        \
         code;                                                    \
         auto __end = std::chrono::steady_clock::now();          \
         std::chrono::duration<float> __dur = __end - __start;   \
-        performance.SetSystemValue(name, __dur.count());         \
+        performance.SetSystemValue(category, name, __dur.count());         \
     }
 
 
 class Peformance
 {
 public:
+    using systemPeformance = std::unordered_map<std::string, float>;
 
-    const std::unordered_map<std::string, float>& GetSystemPerformance() const
+
+    const std::unordered_map<std::string, systemPeformance>& GetSystemPerformance() const
     {
         return m_SystemPerformance;
-    }
-
-    const std::unordered_map<std::string, float>& GetScriptPerformance() const
-    {
-        return m_ScriptPerformance;
     }
 
 
@@ -59,19 +56,14 @@ public:
 
 
     // Optional: for convenience, add/modify a single system performance entry
-    void SetSystemValue(const std::string& key, float value)
+    void SetSystemValue(const std::string& category, const std::string& key, float value)
     {
-        m_SystemPerformance[key] = value;
-    }
-
-    void SetScriptValue(const std::string& key, float value)
-    {
-        m_ScriptPerformance[key] = value;
+        m_SystemPerformance[category][key] = value;
     }
 
 private:
-    std::unordered_map<std::string, float> m_SystemPerformance;
-    std::unordered_map<std::string, float> m_ScriptPerformance;
+    
+    std::unordered_map<std::string, systemPeformance> m_SystemPerformance;
 
     float m_fps{};
     float m_detaTime{};
