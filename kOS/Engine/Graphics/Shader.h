@@ -73,7 +73,7 @@ public:
 		glShaderSource(vertex, 1, &vertexSourceCode, NULL);
 		glCompileShader(vertex);
 		glGetShaderiv(vertex, GL_COMPILE_STATUS, &success);
-		std::cout << "TEST\n";
+		//std::cout << "TEST\n";
 		if (!success) {
 			std::cout << "Vertex Shader did not compile" << '\n';
 			int log_len;
@@ -146,7 +146,7 @@ public:
 		glShaderSource(vertex, 1, &vertexSourceCode, NULL);
 		glCompileShader(vertex);
 		glGetShaderiv(vertex, GL_COMPILE_STATUS, &success);
-		std::cout << "TEST\n";
+		//std::cout << "TEST\n";
 		if (!success) {
 			std::cout << "Vertex Shader did not compile" << '\n';
 			int log_len;
@@ -253,7 +253,7 @@ public:
 		glDeleteShader(vertex);
 		glDeleteShader(fragment);
 		glDeleteShader(geometry);
-		std::cout << "Created shader with vfg\n";
+		//std::cout << "Created shader with vfg\n";
 	}
 
 	Shader(Shader const& shad) {

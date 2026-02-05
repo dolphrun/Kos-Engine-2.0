@@ -111,7 +111,7 @@ namespace Octrees {
 		int testtest = 0;
 		while (openSet.size()) {
 			// Max iterations reached, abort algorithm.
-			std::cout << "PATHFIND LOOP: " << testtest++ << std::endl;
+			//std::cout << "PATHFIND LOOP: " << testtest++ << std::endl;
 			if (++iterationCount > maxIterations) {
 				return false;
 			}
@@ -128,7 +128,7 @@ namespace Octrees {
 
 			// If current node is the end node, path is found.
 			if (current == end) {
-				std::cout << "PATH FOUND\n";
+				//std::cout << "PATH FOUND\n";
 				ReconstructPath(current);
 				return true;
 			}
@@ -169,7 +169,7 @@ namespace Octrees {
 			}
 		}
 
-		std::cout << "NO PATH FOUND\n";
+		//std::cout << "NO PATH FOUND\n";
 		return false;
 	}
 

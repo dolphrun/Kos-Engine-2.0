@@ -112,7 +112,7 @@ namespace Application {
         Add Post processing function
         --------------------------------------------------------------*/
         sceneManager.onSceneLoaded.Add([this](SceneData Data) {
-            std::cout << "Post processing added " << Data.postProcessingProfile.GetToString() << '\n';
+            //std::cout << "Post processing added " << Data.postProcessingProfile.GetToString() << '\n';
             if (!Data.postProcessingProfile.Empty())graphicsManager.postProcessProfile= &resourceManager.GetResource<R_PostProcessingProfile>(Data.postProcessingProfile)->profile;
             });
 

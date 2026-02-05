@@ -5,7 +5,7 @@
 void R_PostProcessingProfile::Load()
 {
 	
-	std::cout << "Loaded post processing profile"<< this->GetFilePath().string()<<'\n';
+	//std::cout << "Loaded post processing profile"<< this->GetFilePath().string()<<'\n';
 	std::ifstream inputFile(this->GetFilePath().string());
 
 	if (!inputFile) {

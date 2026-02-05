@@ -339,7 +339,7 @@ namespace gui {
 						//Load profile
 						std::filesystem::path metaPath = directoryPath.path().string() + ".meta";
 						AssetData assetData = serialization::ReadJsonFile<AssetData>(metaPath.string());
-							std::cout<< m_activeScene <<'\n';
+							//std::cout<< m_activeScene <<'\n';
 							const auto& scene = m_ecs.sceneMap.find(m_activeScene);
 							scene->second.postProcessingProfile= assetData.GUID;
 							//Set post processing in Graphics manager

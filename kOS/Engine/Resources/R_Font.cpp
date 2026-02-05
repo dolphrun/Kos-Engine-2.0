@@ -58,9 +58,9 @@ void R_Font::Load()
             return;
         }
 
-        std::cout << "Decoded PNG: " << w << "x" << h
-            << " original components=" << comp
-            << " forced=4\n";
+        //std::cout << "Decoded PNG: " << w << "x" << h
+        //    << " original components=" << comp
+        //    << " forced=4\n";
 
         m_atlasWidth = w;
         m_atlasHeight = h;

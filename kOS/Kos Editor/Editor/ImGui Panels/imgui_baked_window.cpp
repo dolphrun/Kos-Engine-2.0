@@ -104,7 +104,7 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 				pbrTmpList.push_back(PBRMaterial{});
 
 				std::shared_ptr<R_Model> mesh = m_resourceManager.GetResource<R_Model>(mfc->meshGUID);
-				std::cout << "Mesh stuff " << mfc->meshGUID.GetToString()<<' '<<go << '\n';
+				//std::cout << "Mesh stuff " << mfc->meshGUID.GetToString()<<' '<<go << '\n';
 				if(mesh)md.emplace_back(MeshData{ mesh,std::make_shared<PBRMaterialList>(pbrTmpList,true), transform->transformation,go });
 
 			}
@@ -112,16 +112,16 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 		for (auto& lcComp: sceneData.sceneIDs)
 		{
 			if (!m_ecs.HasComponent<LightComponent>(lcComp))continue;;
-			std::cout << lcComp << "<- LIGHT ENTITY\n";
-			std::cout << "INDEX: " << i << '\n';
+			//std::cout << lcComp << "<- LIGHT ENTITY\n";
+			//std::cout << "INDEX: " << i << '\n';
 			//Add shadow setting later as well
 			if (!m_ecs.GetComponent<ecs::LightComponent>(lcComp)->bakedLighting) {
 				i++;
 				continue;;
 			}
-			std::cout << m_clickedEntityId << "<- SELECTED LIGHT ENTITY\n\n";
+			//std::cout << m_clickedEntityId << "<- SELECTED LIGHT ENTITY\n\n";
 		
-			std::cout<<"Material list Size " << reinterpret_cast<PBRMaterialList*>(md[0].meshMaterial.get())->pbrMatList.size() << '\n';
+			//std::cout<<"Material list Size " << reinterpret_cast<PBRMaterialList*>(md[0].meshMaterial.get())->pbrMatList.size() << '\n';
 			//EVENTUALLY MAKE IT DO ITS OWN DEPTH BUFFER CREATION
 			//Get DCM, make a faux depth map renderer
 			//Get all objects
@@ -137,9 +137,9 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 			
 			//Add and load asset and assign it to light component
 			//Need to change entity itself
-			std::cout << lcComp << '\n';
+			//std::cout << lcComp << '\n';
 			m_ecs.GetComponent<ecs::LightComponent>(lcComp)->depthMapGUID.SetFromString( m_assetManager.RegisterAsset(filepath).GetToString());
-			std::cout << "Depth map GUID " << m_ecs.GetComponent<ecs::LightComponent>(lcComp)->depthMapGUID.GetToString();
+			//std::cout << "Depth map GUID " << m_ecs.GetComponent<ecs::LightComponent>(lcComp)->depthMapGUID.GetToString();
 			m_assetManager.Compilefile(filepath);
 			i++;
 
@@ -149,7 +149,7 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 	if (ImGui::Button("Test Lights")) {
 		for (int i = 0; i < addedTags.size(); i++)
 		{
-			std::cout << addedTags[i] << '\n';
+			//std::cout << addedTags[i] << '\n';
 		}
 	}
 	ImGui::End();
