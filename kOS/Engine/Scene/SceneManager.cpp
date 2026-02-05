@@ -118,7 +118,11 @@ namespace scenes {
             //store scene path
             std::vector<std::string> scenepath;
             for (auto& scene : m_ecs.sceneMap) {
-                scenepath.push_back(loadScenePath.find(scene.first)->second.string());
+                const auto& scenepathloc = loadScenePath.find(scene.first);
+                if (scenepathloc != loadScenePath.end()) {
+                    scenepath.push_back(scenepathloc->second.string());
+                }
+                
             }
 
             //clear all scenes
