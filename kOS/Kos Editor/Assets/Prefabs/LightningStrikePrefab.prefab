@@ -9,6 +9,29 @@
     },
     {
         "entityGUID": "f8bcb3d8-1f75-68d3-190e-8f5c0f9350c8",
+        "BoxColliderComponent": {
+            "isTrigger": true,
+            "box": {
+                "center": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "size": {
+                    "x": 1.0,
+                    "y": 9.100000381469727,
+                    "z": 1.0
+                }
+            }
+        },
+        "LightningPowerupManagerScript": {
+            "lightningDamage": 15,
+            "lingerTime": 1.0,
+            "enemyDeathSfxGUID_1": "00000000-0000-0000-0000-000000000000",
+            "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
+            "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000",
+            "lightningStrikeSfxGUID": "00000000-0000-0000-0000-000000000000"
+        },
         "NameComponent": {
             "entityName": "LightningStrikePrefab",
             "Layer": 0,
@@ -17,33 +40,54 @@
             "prefabName": "LightningStrikePrefab.prefab",
             "hide": false
         },
+        "RigidbodyComponent": {
+            "mass": 1.0,
+            "drag": 0.0,
+            "angularDrag": 0.05000000074505806,
+            "useGravity": false,
+            "isKinematic": false,
+            "interpolation": 0,
+            "collisionDetection": 0,
+            "constraints": 0,
+            "speed": 0.0,
+            "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "angularVelocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
                     "x": -80.0,
-                    "y": -5.627684593200684,
+                    "y": 5.0,
                     "z": -60.0
                 },
                 "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
+                    "x": 90.0,
+                    "y": 0.000006830189249740215,
                     "z": 90.0
                 },
                 "scale": {
-                    "x": 0.9999999403953552,
-                    "y": 0.9999999403953552,
-                    "z": 1.0
+                    "x": 0.9999998807907104,
+                    "y": 0.9999998807907104,
+                    "z": 0.9999998807907104
                 }
             },
             "LocalTransformation": {
                 "position": {
                     "x": -80.0,
-                    "y": -5.627684593200684,
+                    "y": 5.0,
                     "z": -60.0
                 },
                 "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
+                    "x": 90.0,
+                    "y": 0.0,
                     "z": 90.0
                 },
                 "scale": {
@@ -124,21 +168,6 @@
                         }
                     ]
                 },
-                "BoxColliderComponent": {
-                    "isTrigger": true,
-                    "box": {
-                        "center": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "size": {
-                            "x": 10.0,
-                            "y": 0.10000000149011612,
-                            "z": 0.8999999761581421
-                        }
-                    }
-                },
                 "LightningPowerupManagerScript": {
                     "lightningDamage": 5,
                     "lingerTime": 0.10000000149011612,
@@ -165,8 +194,8 @@
                 "ParticleComponent": {
                     "particleType": 0,
                     "duration": 0.20000000298023224,
-                    "looping": false,
-                    "play_On_Awake": false,
+                    "looping": true,
+                    "play_On_Awake": true,
                     "start_Lifetime": 0.18000000715255737,
                     "end_Lifetime": 0.23999999463558197,
                     "lifetime_Random_Enable": true,
@@ -286,7 +315,7 @@
                         },
                         "rotationAxis": {
                             "x": 0.0,
-                            "y": 1.0,
+                            "y": 0.0,
                             "z": 0.0
                         },
                         "spiralRadius": 5.0,
@@ -326,55 +355,34 @@
                     "emissionInterval": 0.000009999999747378752,
                     "no_Of_Particles": 50
                 },
-                "RigidbodyComponent": {
-                    "mass": 1.0,
-                    "drag": 0.0,
-                    "angularDrag": 0.05000000074505806,
-                    "useGravity": false,
-                    "isKinematic": true,
-                    "interpolation": 0,
-                    "collisionDetection": 0,
-                    "constraints": 0,
-                    "speed": 0.0,
-                    "velocity": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "angularVelocity": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    }
-                },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -79.98787689208984,
-                            "y": -5.627684116363525,
-                            "z": -60.0
+                            "x": -80.0,
+                            "y": 5.0,
+                            "z": -65.0
                         },
                         "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 89.99998474121094
+                            "x": 90.0,
+                            "y": 0.000006830190159234917,
+                            "z": 180.0
                         },
                         "scale": {
-                            "x": 0.9999777674674988,
+                            "x": 0.9999776482582092,
                             "y": 9.99964427947998,
-                            "z": 1.0
+                            "z": 0.9999998211860657
                         }
                     },
                     "LocalTransformation": {
                         "position": {
                             "x": 4.76837158203125e-7,
-                            "y": -0.01212310791015625,
+                            "y": -5.0,
                             "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
-                            "y": 0.0,
-                            "z": -0.000017075473806471564
+                            "y": 90.0,
+                            "z": 0.0
                         },
                         "scale": {
                             "x": 0.9999778270721436,
