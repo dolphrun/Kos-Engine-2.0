@@ -179,7 +179,7 @@ void GraphicsManager::gm_RenderToEditorFrameBuffer()
 	glEnable(GL_CULL_FACE);
 	//Render UI
 	framebufferManager.UIBuffer.BindForDrawing();
-	glBindTexture(GL_TEXTURE_2D, framebufferManager.gBuffer.gMaterial);
+	//glBindTexture(GL_TEXTURE_2D, framebufferManager.gBuffer.gMaterial);
 	gm_RenderUIObjects(editorCamera);
 
 	Shader* fboCompositeShader{ &shaderManager.engineShaders.find("FBOCompositeShader")->second };
@@ -242,8 +242,8 @@ void GraphicsManager::gm_RenderToGameFrameBuffer()
 	}
 	glDisable(GL_DEPTH_TEST);
 	framebufferManager.UIBuffer.BindForDrawing();
-	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, framebufferManager.gBuffer.gMaterial);
+	//glActiveTexture(GL_TEXTURE1);
+	//glBindTexture(GL_TEXTURE_2D, framebufferManager.gBuffer.gMaterial);
 	gm_RenderUIObjects(gameCameras[currentGameCameraIndex]);
 
 	Shader* fboCompositeShader{ &shaderManager.engineShaders.find("FBOCompositeShader")->second };
