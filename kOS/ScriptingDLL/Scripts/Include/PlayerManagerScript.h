@@ -248,7 +248,9 @@ public:
 	utility::GUID gunReloadSfxGUID;
 	utility::GUID fireSlashSfxGUID;
 	utility::GUID fireDashSfxGUID;
+
 	utility::GUID lightningDashSfxGUID;
+	utility::GUID lightningGunSfxGUID;
 
 	//Dash VFX Timer
 	float fireDashVfxTimer = 0.0f;
@@ -278,7 +280,7 @@ public:
 
 	REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, acidPrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab,
-		gunSfxGUID_1,gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningDashSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject);
+		gunSfxGUID_1,gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningDashSfxGUID, lightningGunSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject);
 };
 
 // --- LATE INCLUDES & IMPLEMENTATION ---
@@ -1171,6 +1173,17 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 					lightningLMBScript->direction = GetPlayerCameraFrontDirection();
 				}
 			}
+
+			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+				for (auto& af : ac->audioFiles) {
+					if (af.audioGUID == lightningGunSfxGUID && af.isSFX) {
+						af.requestPlay = true;
+						break;
+					}
+				}
+			}
+
 
 			// ADD SFX
 		}
