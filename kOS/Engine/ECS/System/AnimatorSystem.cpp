@@ -34,9 +34,6 @@ namespace ecs {
 
         for (const EntityID id : entities) {
 
-            if (id == 436) {
-                int hi = 1;
-            }
             AnimatorComponent* animator = m_ecs.GetComponent<AnimatorComponent>(id);
             NameComponent* nameComp = m_ecs.GetComponent<NameComponent>(id);
 
