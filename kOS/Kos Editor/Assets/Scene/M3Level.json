@@ -51,7 +51,7 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 0.0,
+                    "x": 2.176853656768799,
                     "y": 0.0,
                     "z": 0.0
                 },
@@ -68,13 +68,13 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 0.0,
+                    "x": 2.176853656768799,
                     "y": 0.0,
                     "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": -0.0,
                     "z": 0.0
                 },
                 "scale": {
@@ -14604,89 +14604,6 @@
         }
     },
     {
-        "entityGUID": "98d4d86f-0816-c4a4-b145-50daff208ec4",
-        "BoxColliderComponent": {
-            "isTrigger": false,
-            "box": {
-                "center": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "size": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        },
-        "NameComponent": {
-            "entityName": "Crate",
-            "Layer": 0,
-            "entityTag": "Enemy",
-            "isPrefab": false,
-            "prefabName": "",
-            "hide": false
-        },
-        "RigidbodyComponent": {
-            "mass": 1.0,
-            "drag": 0.0,
-            "angularDrag": 0.05000000074505806,
-            "useGravity": true,
-            "isKinematic": false,
-            "interpolation": 0,
-            "collisionDetection": 0,
-            "constraints": 0,
-            "speed": 0.0,
-            "velocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "angularVelocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 80.39474487304688,
-                    "y": 4.155155658721924,
-                    "z": -46.98785400390625
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 80.39474487304688,
-                    "y": 4.155155658721924,
-                    "z": -46.98785400390625
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        }
-    },
-    {
         "entityGUID": "4b21f4a3-0ff3-503e-2ae9-048804d7eccc",
         "CapsuleColliderComponent": {
             "isTrigger": false,
@@ -15648,6 +15565,574 @@
                             "x": 17.50428009033203,
                             "y": 4.027015686035156,
                             "z": -19.72710418701172
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "e1347b3e-e3ed-fd07-f9e3-3e3141cd74e3",
+        "NameComponent": {
+            "entityName": "Decals",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "c0969032-cbd1-5ffa-2d5e-13d330ee55f4",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "6ff85da2-a58f-22b4-4ff0-a66118a033a3"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "f7467516-41a4-75ee-2e5c-ed3caf8f7e1a"
+                },
+                "NameComponent": {
+                    "entityName": "Absorb 1",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 19.294837951660156,
+                            "y": 4.666001319885254,
+                            "z": -15.310059547424316
+                        },
+                        "rotation": {
+                            "x": -179.3000030517578,
+                            "y": 2.6680426756797715e-8,
+                            "z": 158.89999389648438
+                        },
+                        "scale": {
+                            "x": 0.010000627487897873,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999997913837433
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 19.294837951660156,
+                            "y": 4.666001319885254,
+                            "z": -15.310059547424316
+                        },
+                        "rotation": {
+                            "x": 180.6999969482422,
+                            "y": 0.0,
+                            "z": 158.89999389648438
+                        },
+                        "scale": {
+                            "x": 0.010000628419220448,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "af40115e-387c-a747-0e8a-8f60b19b1aad",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "diffuseStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 0.09000000357627869,
+                    "quadratic": 0.03200000151991844,
+                    "direction": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 5.5,
+                    "outerCutOff": 10.5,
+                    "intesnity": 3.5,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "NameComponent": {
+                    "entityName": "Decal Light",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 19.769760131835938,
+                            "y": 4.1566314697265625,
+                            "z": -15.617671966552734
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 19.769760131835938,
+                            "y": 4.1566314697265625,
+                            "z": -15.617671966552734
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "a5f0b5a9-3821-5d4a-bd57-e6c59e000984",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "cc4839c6-bfba-45d1-03b7-3ff2dba50b9f"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "f7467516-41a4-75ee-2e5c-ed3caf8f7e1a"
+                },
+                "NameComponent": {
+                    "entityName": "Dash Decal",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 8.392973899841309,
+                            "y": 3.9757819175720215,
+                            "z": -18.945634841918945
+                        },
+                        "rotation": {
+                            "x": -1.6230281008056124e-10,
+                            "y": -87.69990539550781,
+                            "z": -0.00010903007932938635
+                        },
+                        "scale": {
+                            "x": 0.010000310838222504,
+                            "y": 0.009999999776482582,
+                            "z": 0.010000319220125675
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 8.392973899841309,
+                            "y": 3.9757819175720215,
+                            "z": -18.945634841918945
+                        },
+                        "rotation": {
+                            "x": -1.6230196353550497e-10,
+                            "y": -87.69990539550781,
+                            "z": -0.00010903016664087772
+                        },
+                        "scale": {
+                            "x": 0.010000310838222504,
+                            "y": 0.009999999776482582,
+                            "z": 0.010000319220125675
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "36d40443-4d48-cde7-2b32-954bdc2eab09",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "74b1a57d-a4ef-6f1c-6906-64e48f1e1dd6"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "f7467516-41a4-75ee-2e5c-ed3caf8f7e1a"
+                },
+                "NameComponent": {
+                    "entityName": "Run Decal",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -22.642488479614258,
+                            "y": 6.127671241760254,
+                            "z": -23.141096115112305
+                        },
+                        "rotation": {
+                            "x": 179.99989318847656,
+                            "y": -0.000005008955668017734,
+                            "z": 179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.014999999664723873,
+                            "y": 0.014999999664723873,
+                            "z": 0.014999999664723873
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -22.642488479614258,
+                            "y": 6.127671241760254,
+                            "z": -23.141096115112305
+                        },
+                        "rotation": {
+                            "x": 179.99989318847656,
+                            "y": -0.000005008955668017734,
+                            "z": 179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.014999999664723873,
+                            "y": 0.014999999664723873,
+                            "z": 0.014999999664723873
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "8502b894-94ea-21c8-eb24-6b8cdd084df5",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "69ec2ef7-1059-3c62-d6f9-7e79ca63d76a"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "f7467516-41a4-75ee-2e5c-ed3caf8f7e1a"
+                },
+                "NameComponent": {
+                    "entityName": "Arrow Left Decal",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -22.709115982055664,
+                            "y": 2.786661386489868,
+                            "z": -23.1552734375
+                        },
+                        "rotation": {
+                            "x": 179.99989318847656,
+                            "y": -0.000005008955668017734,
+                            "z": 179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.014999999664723873,
+                            "y": 0.014999999664723873,
+                            "z": 0.014999999664723873
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -22.709115982055664,
+                            "y": 2.786661386489868,
+                            "z": -23.1552734375
+                        },
+                        "rotation": {
+                            "x": 179.99989318847656,
+                            "y": -0.000005008955668017734,
+                            "z": 179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.014999999664723873,
+                            "y": 0.014999999664723873,
+                            "z": 0.014999999664723873
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "fc0bfb8e-907c-f348-c72b-c37fd6e8b45e",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 1.0,
+                        "y": -2.799999952316284,
+                        "z": 0.5
+                    },
+                    "diffuseStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 0.0,
+                    "quadratic": 2.5299999713897705,
+                    "direction": {
+                        "x": 7.400000095367432,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 7.300000190734863,
+                    "outerCutOff": 0.0,
+                    "intesnity": 6.300000190734863,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "NameComponent": {
+                    "entityName": "Decal Light 2",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -21.583194732666016,
+                            "y": 5.176219940185547,
+                            "z": -23.271461486816406
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -21.583194732666016,
+                            "y": 5.176219940185547,
+                            "z": -23.271461486816406
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "bfbbecd0-0d64-3f51-2ebe-f8387f6f4c1f",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "c928d8eb-d2a4-6114-f70f-6f2abb17995a"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "f7467516-41a4-75ee-2e5c-ed3caf8f7e1a"
+                },
+                "NameComponent": {
+                    "entityName": "OverHere Decal",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -2.945284128189087,
+                            "y": 4.374310493469238,
+                            "z": 51.0926513671875
+                        },
+                        "rotation": {
+                            "x": 179.99989318847656,
+                            "y": -86.69992065429688,
+                            "z": 179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.015000002458691597,
+                            "y": 0.014999999664723873,
+                            "z": 0.015000002458691597
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -2.945284128189087,
+                            "y": 4.374310493469238,
+                            "z": 51.0926513671875
+                        },
+                        "rotation": {
+                            "x": 179.99989318847656,
+                            "y": -86.69992065429688,
+                            "z": 179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.015000002458691597,
+                            "y": 0.014999999664723873,
+                            "z": 0.015000002458691597
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "add2f3ee-e24c-d3bb-5257-0a9e3593997c",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 1.0,
+                        "y": -2.799999952316284,
+                        "z": 0.5
+                    },
+                    "diffuseStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 0.09000000357627869,
+                    "quadratic": 0.03200000151991844,
+                    "direction": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 5.5,
+                    "outerCutOff": 10.5,
+                    "intesnity": 5.300000190734863,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "NameComponent": {
+                    "entityName": "Decal Light",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -3.631256103515625,
+                            "y": 3.7176342010498047,
+                            "z": 49.74094772338867
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -3.631256103515625,
+                            "y": 3.7176342010498047,
+                            "z": 49.74094772338867
                         },
                         "rotation": {
                             "x": 0.0,
