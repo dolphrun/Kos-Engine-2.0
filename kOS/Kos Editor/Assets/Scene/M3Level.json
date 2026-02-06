@@ -3,7 +3,7 @@
         "SceneData": {
             "skyBoxGUID": [],
             "NavMeshGuid": "fae9b942-a51c-90d8-668f-b8c5230daecc",
-            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "c3a79a26-21f4-7f96-81b0-a3d406909579",
             "ambientIntensity": 1.0
         }
     },
@@ -11368,7 +11368,7 @@
                 },
                 "TextComponent": {
                     "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                    "text": "M1 - SHoot  |  M2 - Absorb",
+                    "text": "M1 - SHoot  |  E - Absorb",
                     "color": {
                         "x": 1.0,
                         "y": 1.0,
@@ -12113,6 +12113,20 @@
             },
             {
                 "entityGUID": "f5e4a899-ea2a-991f-1100-77e930dc0767",
+                "Ability1Script": {
+                    "abilitySlot": 1,
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "defaultSprite": "7a40baa0-01fb-7ba8-984c-2a3b29ecf6a8",
+                    "baseActiveSprite": "c1bdfcd6-a86b-3519-1787-66940036d308",
+                    "baseInactiveSprite": "7a40baa0-01fb-7ba8-984c-2a3b29ecf6a8",
+                    "fireActiveSprite": "88376e48-cd62-8f02-5c4e-38b475db9d8d",
+                    "fireInactiveSprite": "7891fbf3-4948-fb6d-33bf-42df7ca04212",
+                    "acidActiveSprite": "00000000-0000-0000-0000-000000000000",
+                    "acidInactiveSprite": "00000000-0000-0000-0000-000000000000",
+                    "lightningActiveSprite": "c261a046-f1d1-09a1-767e-2ab6d372e7e7",
+                    "lightningInactiveSprite": "726c1890-cae7-a9b6-0784-4ae4c28c2f72"
+                },
                 "NameComponent": {
                     "entityName": "Ability 1",
                     "Layer": 0,
@@ -12122,7 +12136,7 @@
                     "hide": false
                 },
                 "SpriteComponent": {
-                    "spriteGUID": "c1bdfcd6-a86b-3519-1787-66940036d308",
+                    "spriteGUID": "7a40baa0-01fb-7ba8-984c-2a3b29ecf6a8",
                     "color": {
                         "x": 1.0,
                         "y": 1.0,
@@ -12178,6 +12192,20 @@
             },
             {
                 "entityGUID": "64361e2b-e469-1420-e65d-1e81fb1e78f1",
+                "Ability1Script": {
+                    "abilitySlot": 2,
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "defaultSprite": "a181322b-5df0-ec5a-4fcd-e9462ec620f3",
+                    "baseActiveSprite": "18a0c90e-7611-b785-0ee5-14de8ab9b3eb",
+                    "baseInactiveSprite": "a181322b-5df0-ec5a-4fcd-e9462ec620f3",
+                    "fireActiveSprite": "57d0485f-59e5-1904-430b-9302306f4e78",
+                    "fireInactiveSprite": "57d0485f-59e5-1904-430b-9302306f4e78",
+                    "acidActiveSprite": "00000000-0000-0000-0000-000000000000",
+                    "acidInactiveSprite": "00000000-0000-0000-0000-000000000000",
+                    "lightningActiveSprite": "d66d0c39-22f5-6c66-23ac-0f6095c79a37",
+                    "lightningInactiveSprite": "d66d0c39-22f5-6c66-23ac-0f6095c79a37"
+                },
                 "NameComponent": {
                     "entityName": "Ability 2",
                     "Layer": 0,
@@ -12187,7 +12215,7 @@
                     "hide": false
                 },
                 "SpriteComponent": {
-                    "spriteGUID": "18a0c90e-7611-b785-0ee5-14de8ab9b3eb",
+                    "spriteGUID": "a181322b-5df0-ec5a-4fcd-e9462ec620f3",
                     "color": {
                         "x": 1.0,
                         "y": 1.0,
@@ -12243,6 +12271,20 @@
             },
             {
                 "entityGUID": "41cc8a19-550c-a922-e9cd-4382e6b939a8",
+                "Ability1Script": {
+                    "abilitySlot": 3,
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "defaultSprite": "2006c59f-d586-6a8b-3a11-afd284b39d3a",
+                    "baseActiveSprite": "c45f8038-4ee7-8e40-208f-398dd36cc7a2",
+                    "baseInactiveSprite": "2006c59f-d586-6a8b-3a11-afd284b39d3a",
+                    "fireActiveSprite": "ef909d7d-b0d5-cbc3-fa57-8f57d67417c1",
+                    "fireInactiveSprite": "02b34232-db6b-5468-6210-dabb0fe7a9c7",
+                    "acidActiveSprite": "00000000-0000-0000-0000-000000000000",
+                    "acidInactiveSprite": "00000000-0000-0000-0000-000000000000",
+                    "lightningActiveSprite": "0e2e09cb-4b23-550f-5570-8d9d57f5444f",
+                    "lightningInactiveSprite": "ec3b9d53-5817-e4a5-cae6-b1fc8353c2b4"
+                },
                 "NameComponent": {
                     "entityName": "Ability 3",
                     "Layer": 0,
@@ -12252,7 +12294,7 @@
                     "hide": false
                 },
                 "SpriteComponent": {
-                    "spriteGUID": "c45f8038-4ee7-8e40-208f-398dd36cc7a2",
+                    "spriteGUID": "00000000-0000-0000-0000-000000000000",
                     "color": {
                         "x": 1.0,
                         "y": 1.0,
@@ -14740,7 +14782,7 @@
                 },
                 "SkinnedMeshRendererComponent": {
                     "skinnedMeshGUID": "0c44c479-520e-8c24-acf1-0ef17cfe8e58",
-                    "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
+                    "materialGUID": "f1b9bde6-c466-e0fd-0906-2f78d0241c5b"
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

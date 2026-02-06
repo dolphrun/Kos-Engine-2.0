@@ -44,7 +44,7 @@ public:
 	float fireMeleeCooldown = 1.f; // In seconds
 	float fireCurrMeleeCooldown = 0.f;
 
-	float fireAbilityCost = 20.f;
+	float fireAbilityCost = 30.f;
 
 	float fireMovementCost = 5.f;
 	float fireMovementCooldown = 1.f;
@@ -56,7 +56,7 @@ public:
 	float lightningShootCooldown = 0.15f;
 	float lightningCurrShootCooldown = 0.f;
 
-	float lightningAbilityCost = 20.f;
+	float lightningAbilityCost = 30.f;
 
 	float lightningMovementCost = 5.f;
 	float lightningMovementCooldown = 1.f;
@@ -103,9 +103,9 @@ public:
 	float playerVelocityBeforeSlide = 8.0f;
 
 	float playerGunModelSwaySpeed = 15.f;
-	float playerGunModelWalkBobbingSpeed = 2.5f;
-	float playerGunModelSprintBobbingSpeed = 5.f;
-	float playerGunModelBobbingIntensity = 0.015f;
+	float playerGunModelWalkBobbingSpeed = 7.0f;
+	float playerGunModelSprintBobbingSpeed = 50.f;
+	float playerGunModelBobbingIntensity = 0.045f;
 
 	Powerup playerPowerupHeld = Powerup::NONE;
 
@@ -314,6 +314,7 @@ inline void PlayerManagerScript::Start() {
 	playerCrouchCameraPosY = originalPlayerCrouchCameraPosY = ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID)->LocalTransformation.position.y;
 	playerCrouchCameraPosY -= 0.85f;
 
+	Input->HideCursor(true);
 	if (pauseMenuManagerObject != utility::GUID{}) {
 		pauseMenuManagerID = ecsPtr->GetEntityIDFromGUID(pauseMenuManagerObject);
 		//std::cout << "PlayerManager connected to PauseMenuManager!\n";
@@ -994,6 +995,15 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 					<< currInteractCooldown << "s\n";*/
 
 				// ADD SFX
+
+				if (animComp && hasAbsorbed)
+				{
+					if (animComp->m_currentStateID)
+					{
+						playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("hasAbsorbed", animComp, playerController);
+						hasAbsorbed = false;
+					}
+				}
 			}
 		}
 	}

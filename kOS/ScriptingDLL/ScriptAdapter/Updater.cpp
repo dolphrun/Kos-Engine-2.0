@@ -76,6 +76,7 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 	RegisterScript<ManaUIScript>(TemplateSC::ecsPtr);
 	RegisterScript<AmmoUIScript>(TemplateSC::ecsPtr);
 	RegisterScript<NextSceneColliderScript>(TemplateSC::ecsPtr);
+	RegisterScript<Ability1Script>(TemplateSC::ecsPtr);
 
 	FieldComponentTypeRegistry::CreateAllDrawers(static_cast<Fields*>(svm->field)->GetAction());
 }
