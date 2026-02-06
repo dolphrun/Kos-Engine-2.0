@@ -102,6 +102,9 @@ inline void EnemyManagerScript::Update() {
 		//}
 	}
 
+	//Entity deletion fix for animation
+	animComp = ecsPtr->GetComponent<ecs::AnimatorComponent>(enemyModelID);
+
 	// FUCK
 	enemyHurtboxPositionTransform->LocalTransformation.position.z = 1.f;
 
@@ -125,17 +128,20 @@ inline void EnemyManagerScript::Update() {
 
 	// COMMENTED OUT FOR ANIM
 	
+	
 	if (animComp)
 	{
-		R_Animation* currAnim = resource->GetResource<R_Animation>(enemyController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get();
-		float animDuration = currAnim->GetDuration();
-		//Checkcing if animation is done
-		if (animComp->m_CurrentTime >= animDuration && !enemyController->RetrieveStateByID(animComp->m_currentStateID)->isLooping)
+		if (R_Animation* currAnim = resource->GetResource<R_Animation>(enemyController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get())
 		{
-			enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AnimationFinished", animComp, enemyController);
-			//animComp->m_CurrentTime = 0.f;
-			enemyIsAttacking = false;
-			attackHurtboxIsSpawn = false;
+			float animDuration = currAnim->GetDuration();
+			//Checkcing if animation is done
+			if (animComp->m_CurrentTime >= animDuration && !enemyController->RetrieveStateByID(animComp->m_currentStateID)->isLooping)
+			{
+				enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AnimationFinished", animComp, enemyController);
+				//animComp->m_CurrentTime = 0.f;
+				enemyIsAttacking = false;
+				attackHurtboxIsSpawn = false;
+			}
 		}
 	}
 	
@@ -185,8 +191,7 @@ inline void EnemyManagerScript::Update() {
 			{
 				enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AttackingPlayer",animComp,enemyController);
 			}
-			//std::cout << "Ataccking" << std::endl;
-			//std::cout << enemyController->RetrieveStateByID(animComp->m_currentStateID)->name << std::endl;
+
 		}
 	}
 
@@ -277,6 +282,7 @@ inline void EnemyManagerScript::Update() {
 	else if (glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= enemyChaseRange) {
 		// NAVMESH FOLLOW TOWARDS PLAYER
 		navMeshPtr->MoveAgent(agentid, playerTransform->LocalTransformation.position);
+		
 		// ADD ENEMY RUNNING ANIMATION
 		if (animComp)
 		{
@@ -289,8 +295,11 @@ inline void EnemyManagerScript::Update() {
 			}
 			*/
 			if (animComp->m_currentStateID)
+			{
 				enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("PlayerDetected", animComp, enemyController);
-
+			}
+				
+			
 		}
 	}
 

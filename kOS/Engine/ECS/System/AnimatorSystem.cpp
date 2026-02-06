@@ -33,6 +33,7 @@ namespace ecs {
         const auto& entities = m_entities.Data();
 
         for (const EntityID id : entities) {
+
             AnimatorComponent* animator = m_ecs.GetComponent<AnimatorComponent>(id);
             NameComponent* nameComp = m_ecs.GetComponent<NameComponent>(id);
 

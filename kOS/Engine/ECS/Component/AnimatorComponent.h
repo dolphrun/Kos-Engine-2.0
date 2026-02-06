@@ -18,7 +18,7 @@ namespace ecs {
         int m_transitioningStateID{}; // This id will refer to the state this component wants to change to
 
 
-        REFLECTABLE(AnimatorComponent, controllerGUID, m_PlaybackSpeed, m_CurrentTime, m_IsPlaying);
+        REFLECTABLE(AnimatorComponent, controllerGUID, m_PlaybackSpeed, m_CurrentTime, m_IsPlaying, m_currentStateID, m_transitioningStateID);
     };
 
 }
