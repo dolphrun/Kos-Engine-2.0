@@ -18,7 +18,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Light.h"
 
 
-glm::vec3 PointLightData::ambientStrength{ 0.005f };
+glm::vec3 PointLightData::ambientStrength{ 0.01f };
 
  
 float CaluclateRadius(glm::vec3 color, float linear, float quadratic) {
