@@ -1242,7 +1242,19 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 					railgunTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
 				}
 
-				if (auto* railgunScript = ecsPtr->GetComponent<AcidPowerupManagerScript>(railgunID)) {
+				//auto test = ecsPtr->GetChild(railgunID);
+				//ecs::EntityID first;
+				//if (test.has_value() && !test->empty())
+				//{
+				//	first = test.value().front();
+				//}
+
+				//if (auto* railgunScript = ecsPtr->GetComponent<LightningPowerupManagerScript>(first)) {
+				//	railgunScript->direction = GetPlayerCameraFrontDirection();
+				//	
+				//}
+
+				if (auto* railgunScript = ecsPtr->GetComponent<LightningPowerupManagerScript>(railgunID)) {
 					railgunScript->direction = GetPlayerCameraFrontDirection();
 				}
 

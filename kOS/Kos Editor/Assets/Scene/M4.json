@@ -93,7 +93,31 @@
             "hide": false
         },
         "PlayerManagerScript": {
-            "playerCameraObject": "7fe68fe4-1613-a688-4b02-ce6e13421ecb"
+            "playerCameraObject": "7fe68fe4-1613-a688-4b02-ce6e13421ecb",
+            "playerGunCameraObject": "00000000-0000-0000-0000-000000000000",
+            "playerProjectilePointObject": "00000000-0000-0000-0000-000000000000",
+            "playerGunModelPointObject": "00000000-0000-0000-0000-000000000000",
+            "playerArmModelObject": "00000000-0000-0000-0000-000000000000",
+            "playerGroundCheckObject": "00000000-0000-0000-0000-000000000000",
+            "bulletPrefab": "00000000-0000-0000-0000-000000000000",
+            "fireLMBPrefab": "00000000-0000-0000-0000-000000000000",
+            "acidLMBPrefab": "00000000-0000-0000-0000-000000000000",
+            "lightningLMBPrefab": "00000000-0000-0000-0000-000000000000",
+            "firePrefab": "00000000-0000-0000-0000-000000000000",
+            "acidPrefab": "00000000-0000-0000-0000-000000000000",
+            "lightningPrefab": "00000000-0000-0000-0000-000000000000",
+            "fireDashPrefab": "00000000-0000-0000-0000-000000000000",
+            "lightningDashPrefab": "00000000-0000-0000-0000-000000000000",
+            "gunSfxGUID_1": "00000000-0000-0000-0000-000000000000",
+            "gunReloadSfxGUID": "00000000-0000-0000-0000-000000000000",
+            "fireSlashSfxGUID": "00000000-0000-0000-0000-000000000000",
+            "fireDashSfxGUID": "00000000-0000-0000-0000-000000000000",
+            "lightningDashSfxGUID": "00000000-0000-0000-0000-000000000000",
+            "lightningGunSfxGUID": "00000000-0000-0000-0000-000000000000",
+            "pauseMenuManagerObject": "00000000-0000-0000-0000-000000000000",
+            "healthUIObject": "00000000-0000-0000-0000-000000000000",
+            "loseScreenCanvasObject": "00000000-0000-0000-0000-000000000000",
+            "winScreenCanvasObject": "00000000-0000-0000-0000-000000000000"
         },
         "RigidbodyComponent": {
             "mass": 1.0,

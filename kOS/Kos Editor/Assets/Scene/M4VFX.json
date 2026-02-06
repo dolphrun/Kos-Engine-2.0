@@ -4504,5 +4504,384 @@
                 }
             }
         }
+    },
+    {
+        "entityGUID": "b777b51a-d489-7f3d-c193-160469258b3a",
+        "NameComponent": {
+            "entityName": "LightningStrikePrefab",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "prefabName": "LightningStrikePrefab.prefab",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -80.0,
+                    "y": -5.627684593200684,
+                    "z": -60.0
+                },
+                "rotation": {
+                    "x": 90.0,
+                    "y": 0.000006830189249740215,
+                    "z": 90.0
+                },
+                "scale": {
+                    "x": 0.9999998807907104,
+                    "y": 0.9999998807907104,
+                    "z": 0.9999998807907104
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -80.0,
+                    "y": -5.627684593200684,
+                    "z": -60.0
+                },
+                "rotation": {
+                    "x": 90.0,
+                    "y": -0.0,
+                    "z": 90.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "6305f7b3-76f9-c571-40bb-4b6c3a0d92e5",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "ef772eb3-1923-0835-dd9b-683167c10659",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": true,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "26269fb3-67ac-8a8e-9d3c-78b8d56153f3",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
+                "BoxColliderComponent": {
+                    "isTrigger": true,
+                    "box": {
+                        "center": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 0.8999999761581421,
+                            "y": 0.10000000149011612,
+                            "z": 10.0
+                        }
+                    }
+                },
+                "LightningPowerupManagerScript": {
+                    "lightningDamage": 5,
+                    "lingerTime": 0.10000000149011612,
+                    "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                    "enemyDeathSfxGUID_2": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                    "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659",
+                    "lightningStrikeSfxGUID": "26269fb3-67ac-8a8e-9d3c-78b8d56153f3"
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "d1dc99cf-dde1-ca8b-eeda-2c33d81b557d"
+                        }
+                    ]
+                },
+                "NameComponent": {
+                    "entityName": "LightningStrikePrefab",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "prefabName": "LightningStrikePrefab.prefab",
+                    "hide": false
+                },
+                "ParticleComponent": {
+                    "particleType": 0,
+                    "duration": 0.20000000298023224,
+                    "looping": true,
+                    "play_On_Awake": true,
+                    "start_Lifetime": 0.18000000715255737,
+                    "end_Lifetime": 0.23999999463558197,
+                    "lifetime_Random_Enable": true,
+                    "textureGUID": "00000000-0000-0000-0000-000000000000",
+                    "start_Velocity": 0.0,
+                    "playback_State": 0,
+                    "particleFade": 1,
+                    "velocityModule": {
+                        "enabled": false,
+                        "mode": 0,
+                        "velocity_Modifier": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        }
+                    },
+                    "forceModule": {
+                        "enabled": false,
+                        "force": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        }
+                    },
+                    "shapeModule": {
+                        "type": 4,
+                        "emission_Direction": {
+                            "x": 0.0,
+                            "y": 1.0,
+                            "z": 0.0
+                        },
+                        "box_Size": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "sphere_Radius": 0.0,
+                        "emit_From_Shell": false,
+                        "cone_Angle": 0.0,
+                        "cone_Direction": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "cone_Radius": 0.0,
+                        "circle_Radius": 0.0,
+                        "circle_Arc": 0.0,
+                        "emit_From_Edge": true,
+                        "edge_Length": 10.0,
+                        "random_Direction_Amount": 0.0
+                    },
+                    "colorModule": {
+                        "enabled": true,
+                        "start_Color": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0,
+                            "w": 1.0
+                        },
+                        "end_Color": {
+                            "x": 0.20000000298023224,
+                            "y": 0.5,
+                            "z": 1.0,
+                            "w": 0.0
+                        }
+                    },
+                    "sizeModule": {
+                        "enabled": true,
+                        "start_Size": 0.15000000596046448,
+                        "end_Size": 0.05000000074505806
+                    },
+                    "rotationModule": {
+                        "enabled": false,
+                        "start_Rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "end_Rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation_Modifier": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        }
+                    },
+                    "gravityModule": {
+                        "enabled": false,
+                        "gravity": {
+                            "x": 0.0,
+                            "y": -9.800000190734863,
+                            "z": 0.0
+                        }
+                    },
+                    "trailingModule": {
+                        "enabled": false,
+                        "startPoint": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "endPoint": {
+                            "x": 20.0,
+                            "y": 20.0,
+                            "z": 20.0
+                        },
+                        "rotateEndPoint": true,
+                        "rotationSpeed": 2.0,
+                        "rotationRadius": 5.0,
+                        "rotationCenter": {
+                            "x": 20.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotationAxis": {
+                            "x": 0.0,
+                            "y": 1.0,
+                            "z": 0.0
+                        },
+                        "spiralRadius": 5.0,
+                        "spiralFrequency": 3.0,
+                        "spiralIntensityCurve": 0.5,
+                        "pathSpeed": 2.0,
+                        "arrivalThreshold": 0.5
+                    },
+                    "noiseModule": {
+                        "enabled": true,
+                        "strength": 60.0,
+                        "strengthMultiplier": {
+                            "x": 5.599999904632568,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "frequency": 6.0,
+                        "scrollSpeed": {
+                            "x": 0.0,
+                            "y": 120.0,
+                            "z": 0.0
+                        },
+                        "damping": false,
+                        "octaves": 3,
+                        "octaveMultiplier": 0.5,
+                        "octaveScale": 2.0,
+                        "quality": 1,
+                        "remapEnabled": false,
+                        "remapCurveStart": 1.0,
+                        "remapCurveEnd": 1.0,
+                        "positionOffset": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        }
+                    },
+                    "emissionInterval": 0.000009999999747378752,
+                    "no_Of_Particles": 50
+                },
+                "RigidbodyComponent": {
+                    "mass": 1.0,
+                    "drag": 0.0,
+                    "angularDrag": 0.05000000074505806,
+                    "useGravity": false,
+                    "isKinematic": true,
+                    "interpolation": 0,
+                    "collisionDetection": 0,
+                    "constraints": 0,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -80.0,
+                            "y": -5.627684116363525,
+                            "z": -60.012123107910156
+                        },
+                        "rotation": {
+                            "x": -179.99998474121094,
+                            "y": 0.00000512264250573935,
+                            "z": 180.0
+                        },
+                        "scale": {
+                            "x": 0.9999776482582092,
+                            "y": 9.999643325805664,
+                            "z": 0.9999998211860657
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 4.76837158203125e-7,
+                            "y": -0.01212310791015625,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 90.0,
+                            "y": 90.0,
+                            "z": -0.000017075473806471564
+                        },
+                        "scale": {
+                            "x": 0.9999778270721436,
+                            "y": 9.999645233154297,
+                            "z": 1.0
+                        }
+                    }
+                }
+            }
+        ]
     }
 ]

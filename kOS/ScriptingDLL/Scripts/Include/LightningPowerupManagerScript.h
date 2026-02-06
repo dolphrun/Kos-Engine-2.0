@@ -4,7 +4,7 @@
 
 class LightningPowerupManagerScript : public TemplateSC {
 public:
-	float lightningSpeed = 100.f;
+	float lightningSpeed = 5.f;
 	int lightningDamage = 15;
 	glm::vec3 direction;
 
@@ -58,12 +58,30 @@ public:
 				}
 			}
 		});
+
+
+		//glm::vec3 dir = glm::normalize(direction);
+		//glm::vec3 forward = glm::vec3(0.0f, 0.0f, 1.0f); // bullet default forward
+		//glm::quat rotation = glm::rotation(forward, dir);
+		////glm::vec3 eulerDeg = glm::degrees(glm::eulerAngles(rotation));
+		//glm::vec3 eulerDeg = glm::eulerAngles(rotation);
+		//ecsPtr->GetComponent<ecs::TransformComponent>(entity)->LocalTransformation.rotation = eulerDeg;
+
+		glm::vec3 dir = glm::normalize(direction);
+		float yaw = atan2(dir.x, dir.z);   // left/right
+		float pitch = asin(-dir.y);          // up/down
+		glm::vec3 rotationDegrees;
+		rotationDegrees.x = glm::degrees(pitch) + 90.f; // Pitch (X)
+		rotationDegrees.y = glm::degrees(yaw);     // Yaw (Y)
+		rotationDegrees.z = 0.0f;            // Roll
+		ecsPtr->GetComponent<ecs::TransformComponent>(entity)->LocalTransformation.rotation = rotationDegrees;
+
 	}
 
 	void Update() override {
-		if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
-			tc->LocalTransformation.position += direction * lightningSpeed * ecsPtr->m_GetDeltaTime();
-		}
+		//if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
+		//	tc->LocalTransformation.position += direction * lightningSpeed * ecsPtr->m_GetDeltaTime();
+		//}
 
 		if (currentTimer <= lingerTime) {
 			currentTimer += ecsPtr->m_GetDeltaTime();
