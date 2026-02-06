@@ -129,7 +129,7 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
         //std::cout << "Clicked pixerl val is " << --pixelVal << '\n';
         --pixelVal;
         m_clickedEntityId =pixelVal>=0.f? static_cast<int>(pixelVal): m_clickedEntityId;
-        std::cout << "PixelVal is " << pixelVal << '\n';
+        //std::cout << "PixelVal is " << pixelVal << '\n';
         if (m_ecs.HasComponent<ecs::CanvasRendererComponent>(static_cast<EntityID>(pixelVal))
             || (m_ecs.GetParent(m_clickedEntityId).has_value() &&
                 m_ecs.HasComponent<ecs::CanvasRendererComponent>(m_ecs.GetParent(m_clickedEntityId).value()))) {
