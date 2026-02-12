@@ -452,13 +452,21 @@ void R_Model::PBRDraw(Shader& shader, std::shared_ptr<PBRMaterial> const& pbrMat
 
 void R_Model::DrawAnimation(Shader& shader, std::shared_ptr<PBRMaterial> const& pbrMat, const std::vector<glm::mat4>& boneMatrices)
 {
-    shader.SetBool("isNotRigged", true);
+
     if (!boneMatrices.empty())
     {
-        for (int i = 0; i < boneMatrices.size(); i++)
+        //for (int i = 0; i < boneMatrices.size(); i++)
+        //{
+        //    shader.SetMat4("bones[" + std::to_string(i) + "]", boneMatrices[i]);
+        //}
+
+        GLint loc = glGetUniformLocation(shader.ID, "bones");
+
+        if (loc != -1)
         {
-            shader.SetMat4("bones[" + std::to_string(i) + "]", boneMatrices[i]);
+            glUniformMatrix4fv(loc, static_cast<GLsizei>(boneMatrices.size()), GL_FALSE, &boneMatrices[0][0][0]);
         }
+
     }
 
     std::vector<PBRMaterial>& pbr = reinterpret_cast<PBRMaterialList*>(pbrMat.get())->pbrMatList;
