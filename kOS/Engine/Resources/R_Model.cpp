@@ -198,9 +198,9 @@ void R_Model::LoadMesh(std::string meshFile) {
             minVertex.x = vert.Position.x < minVertex.x ? vert.Position.x : minVertex.x;
             minVertex.y = vert.Position.y < minVertex.y ? vert.Position.y : minVertex.y;
             minVertex.z = vert.Position.z < minVertex.z ? vert.Position.z : minVertex.z;
-            maxVertex.x = vert.Position.x > minVertex.x ? vert.Position.x : minVertex.x;
-            maxVertex.y = vert.Position.y > minVertex.y ? vert.Position.y : minVertex.y;
-            maxVertex.z = vert.Position.z > minVertex.z ? vert.Position.z : minVertex.z;
+            maxVertex.x = vert.Position.x > maxVertex.x ? vert.Position.x : maxVertex.x;
+            maxVertex.y = vert.Position.y > maxVertex.y ? vert.Position.y : maxVertex.y;
+            maxVertex.z = vert.Position.z > maxVertex.z ? vert.Position.z : maxVertex.z;
         }
         unsigned int indicesCount = static_cast<unsigned int>(DecodeBinary<size_t>(serialized, offset));
         // std::cout << "Indices size is " << indicesCount << '\n';

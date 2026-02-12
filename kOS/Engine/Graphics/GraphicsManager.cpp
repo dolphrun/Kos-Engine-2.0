@@ -148,9 +148,9 @@ void GraphicsManager::gm_InitializeMeshes()
 
 void GraphicsManager::gm_RenderToEditorFrameBuffer()
 {
+	editorCamera.ComputeFustrum();
 	gm_FillDataBuffers(editorCamera);
 	//lightRenderer.dcm[0]=lightRenderer.testDCM;
-	editorCamera.ComputeFustrum();
 	framebufferManager.sceneBuffer.BindForDrawing();
 	glBindFramebuffer(GL_READ_FRAMEBUFFER, framebufferManager.gBuffer.RetrieveBuffer());
 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);

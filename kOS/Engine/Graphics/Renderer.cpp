@@ -202,13 +202,14 @@ void MeshRenderer::Render(const CameraData& camera, Shader& shader)
 				abs(mesh.transformation[1].z) * extents.y +
 				abs(mesh.transformation[2].z) * extents.z
 			);
-			//std::cout << "TEST TEST\n";
-			//std::cout << worldCenter.x << ' ' << worldCenter.y << ' ' << worldCenter.z<<'\n';
-			//std::cout << extents.x << ' ' << extents.y << ' ' << extents.z << '\n';
+
 
 			//use new center and extents to compute fustrun
 			if (!InFrustum(worldCenter, worldExtents, camera.viewFrustum)) {
-				//std::cout << "WAKAWAKA";
+	/*			std::cout << "TEST TEST\n";
+				std::cout << worldCenter.x << ' ' << worldCenter.y << ' ' << worldCenter.z<<'\n';
+				std::cout << extents.x << ' ' << extents.y << ' ' << extents.z << '\n';*/
+			
 				continue;;
 			}
 
@@ -226,7 +227,6 @@ void MeshRenderer::Render(const CameraData& camera, Shader& shader, layer::LAYER
 	shader.SetVec3("color", glm::vec3{ 1.f,1.f,1.f });
 		for (MeshData& mesh : meshesToDraw[layer])
 		{
-			
 			//Use camera culling
 			shader.SetTrans("model", mesh.transformation);
 			shader.SetInt("entityID", mesh.entityID + 1);
