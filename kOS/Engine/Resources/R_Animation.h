@@ -45,13 +45,13 @@ public:
 	void Unload() override;
 	void Update(float currentTime, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
 		const std::unordered_map<std::string, int>& boneMap,
-		const std::vector<BoneInfo>& boneInfo, size_t boneCount);
+		const std::vector<BoneInfo>& boneInfo, std::vector<glm::mat4>& outputMatrices);
 
 	float GetCurrentTime() const { return m_CurrentTime; };
 	float GetDuration() const { return m_Duration; };
 	float GetTicksPerSecond() const { return m_TicksPerSecond; };
 	const NodeData& GetRootNode() const { return m_RootNode; };
-	const std::vector<glm::mat4> GetBoneFinalMatrices() const { return m_FinalBoneTransforms; };
+	//const std::vector<glm::mat4> GetBoneFinalMatrices() const { return m_FinalBoneTransforms; };
 
 	float m_CurrentTime{};
 	bool baked = false;
@@ -66,15 +66,15 @@ private:
 
 	
 	void BakeAnimationHierarchy(const NodeData& rawNode, OptimizedNode& optNode, const std::unordered_map<std::string, int>& boneMap);
-	void CalculateBoneTransformOptimized(const OptimizedNode& node, const glm::mat4& parentTransform, const std::vector<BoneInfo>& boneInfo);
+	void CalculateBoneTransformOptimized(const OptimizedNode& node, const glm::mat4& parentTransform, const std::vector<BoneInfo>& boneInfo, std::vector<glm::mat4>& outputMatrices);
 
 	const Bone* FindBone(const std::string& name) const {
 		std::unordered_map<std::string, Bone>::const_iterator it = m_Bones.find(name);
 		return it != m_Bones.end() ? &it->second : nullptr;
 	}
-	void CalculateBoneTransform(const NodeData& node, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
-		const std::unordered_map<std::string, int>& boneMap,
-		const std::vector<BoneInfo>& boneInfo, size_t boneCount = 0);
+	//void CalculateBoneTransform(const NodeData& node, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
+	//	const std::unordered_map<std::string, int>& boneMap,
+	//	const std::vector<BoneInfo>& boneInfo, size_t boneCount = 0);
 
 	template <typename T> T DecodeBinary(std::string& bin, int& offset);
 	NodeData NodeDataParser(std::string& buffer, int& offset);
@@ -83,7 +83,6 @@ private:
 
 	std::string m_Name{};
 	std::unordered_map<std::string, Bone> m_Bones{};
-	std::vector<glm::mat4> m_FinalBoneTransforms{};
 	NodeData m_RootNode;
 	OptimizedNode m_optNode;
 };

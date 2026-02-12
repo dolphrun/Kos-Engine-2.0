@@ -222,23 +222,20 @@ void R_Animation::BakeAnimationHierarchy(const NodeData& rawNode, OptimizedNode&
 }
 void R_Animation::Update(float currentTime, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
     const std::unordered_map<std::string, int>& boneMap,
-    const std::vector<BoneInfo>& boneInfo, size_t boneCount)
+    const std::vector<BoneInfo>& boneInfo, std::vector<glm::mat4>& outputMatrices)
 {
     m_CurrentTime = currentTime;
     if (!baked) {
         m_optNode = OptimizedNode();
         BakeAnimationHierarchy(m_RootNode, m_optNode, boneMap);
     }
-    if (m_FinalBoneTransforms.size() != boneCount) {
-        m_FinalBoneTransforms.resize(boneCount, glm::mat4(1.0f));
-    }
 
-    CalculateBoneTransformOptimized(m_optNode, parentTransform, boneInfo);
+    CalculateBoneTransformOptimized(m_optNode, parentTransform, boneInfo, outputMatrices);
     
     //CalculateBoneTransform(GetRootNode(), parentTransform, globalInverse, boneMap, boneInfo, boneCount);
 }
 
-void R_Animation::CalculateBoneTransformOptimized(const OptimizedNode& node, const glm::mat4& parentTransform, const std::vector<BoneInfo>& boneInfo)
+void R_Animation::CalculateBoneTransformOptimized(const OptimizedNode& node, const glm::mat4& parentTransform, const std::vector<BoneInfo>& boneInfo, std::vector<glm::mat4>& outputMatrices)
 {
     glm::mat4 nodeTransform = node.transformation;
 
@@ -253,56 +250,56 @@ void R_Animation::CalculateBoneTransformOptimized(const OptimizedNode& node, con
     // Direct index access - No Map Lookup
     if (node.boneIndex != -1) {
         // Access global arrays directly
-        if (node.boneIndex < m_FinalBoneTransforms.size()) {
+        if (node.boneIndex < outputMatrices.size()) {
             // Combine global transform with offset
             // Access boneInfo via direct index as well (pass reference or store in class)
-            m_FinalBoneTransforms[node.boneIndex] =
+            outputMatrices[node.boneIndex] =
                 globalTransform * boneInfo[node.boneIndex].offsetMatrix;
         }
     }
 
     // Recursion is now much lighter
     for (const auto& child : node.children) {
-        CalculateBoneTransformOptimized(child, globalTransform, boneInfo);
+        CalculateBoneTransformOptimized(child, globalTransform, boneInfo, outputMatrices);
     }
 }
 
-void R_Animation::CalculateBoneTransform(const NodeData& node, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
-    const std::unordered_map<std::string, int>& boneMap,
-    const std::vector<BoneInfo>& boneInfo, size_t boneCount)
-{
-    if (m_FinalBoneTransforms.empty()) {
-        m_FinalBoneTransforms.resize(boneCount, glm::mat4(1.f));
-    }
-    
-    std::string nodeName(node.name);
-    glm::mat4 nodeTransform = node.transformation;
-
-    const Bone* bone = FindBone(nodeName);
-    if (bone)
-    {
-        nodeTransform = bone->Interpolate(m_CurrentTime);
-    }
-
-    glm::mat4 globalTransform = parentTransform * nodeTransform;
-
-    if (boneMap.find(nodeName) != boneMap.end())
-    {
-        int index = boneMap.at(nodeName);
-        //Global Inverse does nothing for now
-        if (index < boneInfo.size())
-            m_FinalBoneTransforms[index] = /*globalInverse **/ globalTransform * boneInfo.at(index).offsetMatrix;
-    }
-    else
-    {
-        //There shouldnt be any unrecognized bones here
-    }
-
-    for (const NodeData& child : node.children)
-    {
-        CalculateBoneTransform(child, globalTransform, globalInverse, boneMap, boneInfo);
-    }
-}
+//void R_Animation::CalculateBoneTransform(const NodeData& node, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
+//    const std::unordered_map<std::string, int>& boneMap,
+//    const std::vector<BoneInfo>& boneInfo, size_t boneCount)
+//{
+//    if (m_FinalBoneTransforms.empty()) {
+//        m_FinalBoneTransforms.resize(boneCount, glm::mat4(1.f));
+//    }
+//    
+//    std::string nodeName(node.name);
+//    glm::mat4 nodeTransform = node.transformation;
+//
+//    const Bone* bone = FindBone(nodeName);
+//    if (bone)
+//    {
+//        nodeTransform = bone->Interpolate(m_CurrentTime);
+//    }
+//
+//    glm::mat4 globalTransform = parentTransform * nodeTransform;
+//
+//    if (boneMap.find(nodeName) != boneMap.end())
+//    {
+//        int index = boneMap.at(nodeName);
+//        //Global Inverse does nothing for now
+//        if (index < boneInfo.size())
+//            m_FinalBoneTransforms[index] = /*globalInverse **/ globalTransform * boneInfo.at(index).offsetMatrix;
+//    }
+//    else
+//    {
+//        //There shouldnt be any unrecognized bones here
+//    }
+//
+//    for (const NodeData& child : node.children)
+//    {
+//        CalculateBoneTransform(child, globalTransform, globalInverse, boneMap, boneInfo);
+//    }
+//}
 
 void R_Animation::Unload() {
 
