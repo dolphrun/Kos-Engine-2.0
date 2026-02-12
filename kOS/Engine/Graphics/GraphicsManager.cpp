@@ -77,6 +77,7 @@ void GraphicsManager::gm_Update()
 {
 	Shader* videoShader{ &shaderManager.engineShaders.find("VideoShader")->second };
 	videoRenderer.Update(*videoShader);
+	skinnedMeshRenderer.Update();
 }
 
 void GraphicsManager::gm_Render()

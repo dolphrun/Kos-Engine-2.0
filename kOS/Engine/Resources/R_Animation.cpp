@@ -191,20 +191,81 @@ void R_Animation::Load() {
     //const int MAX_BONES{ 100 };
     //m_FinalBoneTransforms.resize(MAX_BONES, glm::mat4(1.0f));
 }
+void R_Animation::BakeAnimationHierarchy(const NodeData& rawNode, OptimizedNode& optNode, const std::unordered_map<std::string, int>& boneMap) {
+    optNode.transformation = rawNode.transformation;
 
+    // Resolve the name to an index NOW, so we don't do it in Update()
+    auto it = boneMap.find(rawNode.name);
+    if (it != boneMap.end()) {
+        optNode.boneIndex = it->second;
+    }
+    else {
+        optNode.boneIndex = -1;
+    }
+
+    // Resolve the pointer to the animation channel NOW
+    optNode.bonePtr = FindBone(rawNode.name);
+
+    // Recurse
+    for (const auto& child : rawNode.children) {
+        OptimizedNode optChild;
+        BakeAnimationHierarchy(child, optChild, boneMap);
+        optNode.children.push_back(optChild);
+    }
+    baked = true;
+}
 void R_Animation::Update(float currentTime, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
     const std::unordered_map<std::string, int>& boneMap,
     const std::vector<BoneInfo>& boneInfo, size_t boneCount)
 {
     m_CurrentTime = currentTime;
-    CalculateBoneTransform(GetRootNode(), parentTransform, globalInverse, boneMap, boneInfo, boneCount);
+    if (!baked) {
+        m_optNode = OptimizedNode();
+        BakeAnimationHierarchy(m_RootNode, m_optNode, boneMap);
+    }
+    if (m_FinalBoneTransforms.size() != boneCount) {
+        m_FinalBoneTransforms.resize(boneCount, glm::mat4(1.0f));
+    }
+
+    CalculateBoneTransformOptimized(m_optNode, parentTransform, boneInfo);
+    
+    //CalculateBoneTransform(GetRootNode(), parentTransform, globalInverse, boneMap, boneInfo, boneCount);
+}
+
+void R_Animation::CalculateBoneTransformOptimized(const OptimizedNode& node, const glm::mat4& parentTransform, const std::vector<BoneInfo>& boneInfo)
+{
+    glm::mat4 nodeTransform = node.transformation;
+
+    // Direct pointer access - No FindBone()
+    if (node.bonePtr) {
+        // Optimization: Ensure Interpolate uses binary search or cached keyframe indices
+        nodeTransform = node.bonePtr->Interpolate(m_CurrentTime);
+    }
+
+    glm::mat4 globalTransform = parentTransform * nodeTransform;
+
+    // Direct index access - No Map Lookup
+    if (node.boneIndex != -1) {
+        // Access global arrays directly
+        if (node.boneIndex < m_FinalBoneTransforms.size()) {
+            // Combine global transform with offset
+            // Access boneInfo via direct index as well (pass reference or store in class)
+            m_FinalBoneTransforms[node.boneIndex] =
+                globalTransform * boneInfo[node.boneIndex].offsetMatrix;
+        }
+    }
+
+    // Recursion is now much lighter
+    for (const auto& child : node.children) {
+        CalculateBoneTransformOptimized(child, globalTransform, boneInfo);
+    }
 }
 
 void R_Animation::CalculateBoneTransform(const NodeData& node, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
     const std::unordered_map<std::string, int>& boneMap,
     const std::vector<BoneInfo>& boneInfo, size_t boneCount)
 {
-    if (boneCount > 0) {
+    if (m_FinalBoneTransforms.empty()) {
         m_FinalBoneTransforms.resize(boneCount, glm::mat4(1.f));
     }
     

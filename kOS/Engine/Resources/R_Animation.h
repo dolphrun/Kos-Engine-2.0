@@ -7,6 +7,7 @@ class R_Animation :public Resource
 	class Bone
 	{
 	public:
+		
 		glm::mat4 Interpolate(float time) const;
 
 		const std::string& GetName() const;
@@ -53,9 +54,19 @@ public:
 	const std::vector<glm::mat4> GetBoneFinalMatrices() const { return m_FinalBoneTransforms; };
 
 	float m_CurrentTime{};
-
+	bool baked = false;
 	REFLECTABLE(R_Animation);
 private:
+	struct OptimizedNode {
+		glm::mat4 transformation;
+		int boneIndex;          // -1 if this node is not a bone
+		const Bone* bonePtr;    // Direct pointer to the animation track (to avoid FindBone)
+		std::vector<OptimizedNode> children;
+	};
+
+	
+	void BakeAnimationHierarchy(const NodeData& rawNode, OptimizedNode& optNode, const std::unordered_map<std::string, int>& boneMap);
+	void CalculateBoneTransformOptimized(const OptimizedNode& node, const glm::mat4& parentTransform, const std::vector<BoneInfo>& boneInfo);
 
 	const Bone* FindBone(const std::string& name) const {
 		std::unordered_map<std::string, Bone>::const_iterator it = m_Bones.find(name);
@@ -74,5 +85,5 @@ private:
 	std::unordered_map<std::string, Bone> m_Bones{};
 	std::vector<glm::mat4> m_FinalBoneTransforms{};
 	NodeData m_RootNode;
-
+	OptimizedNode m_optNode;
 };

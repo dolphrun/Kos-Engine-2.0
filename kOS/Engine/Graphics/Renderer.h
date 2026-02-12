@@ -55,6 +55,7 @@ struct MeshRenderer : BasicRenderer
 
 struct SkinnedMeshRenderer : BasicRenderer
 {
+	void Update();
 	void Render(const CameraData& camera, Shader& shader);
 	void Render(const CameraData& camera, Shader& shader, layer::LAYERS);
 	void Clear() override;
