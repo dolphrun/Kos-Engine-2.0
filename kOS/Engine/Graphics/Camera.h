@@ -28,6 +28,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "GraphicsReferences.h"
 #include "ECS/LayerData.h"
 
+
 class CameraData {
 public:  
 
@@ -45,7 +46,7 @@ public:
 	virtual void onCursor(double xoffset, double yoffset);
 	virtual void onScroll(double xoffset, double yoffset);
 	float CalculateAspectRatio();
-
+	void ComputeFustrum();
 
 	float fov{ 45.0f };  // Field of view angle in degrees
 	float nearPlane{0.05f};         // Near clipping plane
@@ -61,6 +62,7 @@ public:
 	float r{ glm::length(position) };
 	float alpha{ glm::asin(position.y / r) };
 	float betta{ std::atan2(position.x, position.z) };
+	utility::Fustrum viewFrustum;
 protected:
 	glm::mat4 viewMtx{ 1.0f };
 	glm::mat4 perspMtx{ 1.0f };

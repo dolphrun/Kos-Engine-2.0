@@ -40,16 +40,16 @@ namespace Application
         /*--------------------------------------------------------------
         INITIALIZE LOGGING SYSTEM
         --------------------------------------------------------------*/
-        LOGGING_INIT_LOGS(configpath::logFilePath);
-        LOGGING_INFO("Application Start");
-        LOGGING_INFO("Load Log Successful");
+      //  LOGGING_INIT_LOGS(configpath::logFilePath);
+       // LOGGING_INFO("Application Start");
+        //LOGGING_INFO("Load Log Successful");
 
         /*--------------------------------------------------------------
            INITIALIZE OPENGL WINDOW
         --------------------------------------------------------------*/
         lvWindow.enabledFullScreen = true; // set to true for fullscreen launch
         lvWindow.init(windowData.windowWidth, windowData.windowHeight);
-        LOGGING_INFO("Load Window Successful");
+        //LOGGING_INFO("Load Window Successful");
 
         /*--------------------------------------------------------------
            INITIALIZE ECS
@@ -57,13 +57,13 @@ namespace Application
         ecs.Load();
         ecs.Init();
         ecs.SetState(START);
-        LOGGING_INFO("Load ECS Successful");
+        //LOGGING_INFO("Load ECS Successful");
 
         /*--------------------------------------------------------------
            INITIALIZE GRAPHICS PIPE
         --------------------------------------------------------------*/
         graphicsManager.gm_Initialize(static_cast<float>(windowData.windowWidth), static_cast<float>(windowData.windowHeight));
-        LOGGING_INFO("Load Graphic Pipeline Successful");
+       // LOGGING_INFO("Load Graphic Pipeline Successful");
 
         /*--------------------------------------------------------------
            INITIALIZE Resource Manager
@@ -92,7 +92,7 @@ namespace Application
         std::string path = resourceManager.GetResourcePath<R_Scene>(windowData.startScene);
         if (!path.empty())
             sceneManager.ImmediateLoadScene(path);
-        LOGGING_INFO("Load Asset Successful");
+        //LOGGING_INFO("Load Asset Successful");
         /*--------------------------------------------------------------
         Add Post processing function
         --------------------------------------------------------------*/
@@ -100,7 +100,7 @@ namespace Application
             //std::cout << "Post processing added " << Data.postProcessingProfile.GetToString() << '\n';
             if (!Data.postProcessingProfile.Empty())graphicsManager.postProcessProfile = &resourceManager.GetResource<R_PostProcessingProfile>(Data.postProcessingProfile)->profile;
             });
-        LOGGING_INFO("Application Init Successful");
+        //LOGGING_INFO("Application Init Successful");
 
         return 0;
     }

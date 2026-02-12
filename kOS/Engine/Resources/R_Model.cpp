@@ -13,6 +13,7 @@ void PrintMat4(const glm::mat4& mat) {
 void R_Model::Load()
 {
     LoadMesh(this->m_filePath.string());
+  
 }
 
 void R_Model::Unload()
@@ -150,6 +151,8 @@ void R_Model::LoadMesh(std::string meshFile) {
     unsigned int meshCount = static_cast<unsigned int>(DecodeBinary<size_t>(serialized, offset));
     // std::cout << "Mesh  size is " << meshCount << '\n';
 
+    //Get min and max vertex
+    glm::vec3 minVertex, maxVertex;
     for (unsigned int i{ 0 }; i < meshCount; i++) {
         //Load each vertex and indice in the thingy
         std::vector<Vertex> newVert;
@@ -191,7 +194,13 @@ void R_Model::LoadMesh(std::string meshFile) {
 
             newVert.push_back(vert);
             //std::cout << "Pushing new vert";
-
+            //Check if vertex meets the min conditions
+            minVertex.x = vert.Position.x < minVertex.x ? vert.Position.x : minVertex.x;
+            minVertex.y = vert.Position.y < minVertex.y ? vert.Position.y : minVertex.y;
+            minVertex.z = vert.Position.z < minVertex.z ? vert.Position.z : minVertex.z;
+            maxVertex.x = vert.Position.x > maxVertex.x ? vert.Position.x : maxVertex.x;
+            maxVertex.y = vert.Position.y > maxVertex.y ? vert.Position.y : maxVertex.y;
+            maxVertex.z = vert.Position.z > maxVertex.z ? vert.Position.z : maxVertex.z;
         }
         unsigned int indicesCount = static_cast<unsigned int>(DecodeBinary<size_t>(serialized, offset));
         // std::cout << "Indices size is " << indicesCount << '\n';
@@ -202,6 +211,13 @@ void R_Model::LoadMesh(std::string meshFile) {
         // //This sets up and pushes a new mesh into the family
         this->meshes.push_back(Mesh{ newVert,newIndices,std::vector<Textures>{} });
     }
+    //Input variables into AABB
+    boundingBox.min = minVertex;
+    boundingBox.max = maxVertex;
+    //Calculate center and extents
+    boundingBox.center = (minVertex + maxVertex) * 0.5f;
+    boundingBox.extents = glm::vec3{ maxVertex.x - boundingBox.center.x,maxVertex.y - boundingBox.center.y ,maxVertex.z - boundingBox.center.z };
+
     unsigned int indicesCount = static_cast<unsigned int>(DecodeBinary<size_t>(serialized, offset));
     for (unsigned int i{ 0 }; i < indicesCount; i++) {
         unsigned int stringSize = static_cast<unsigned int>(DecodeBinary<size_t>(serialized, offset));
@@ -223,6 +239,7 @@ void R_Model::LoadMesh(std::string meshFile) {
         glm::mat4 transformationMatrix = DecodeBinary<glm::mat4>(serialized, offset);
         bone_info.push_back(BoneInfo{ offsetMatrix,transformationMatrix });
     }
+
 }
 
 

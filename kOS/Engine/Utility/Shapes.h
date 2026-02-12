@@ -66,6 +66,30 @@ namespace utility {
 		float radius{ 0.5f };
 		REFLECTABLE(Sphere, center, radius)
 	};
+
+	struct Plane {
+		glm::vec3 normal{ 0.f,1.f,0.f };
+		float distance;
+		Plane() = default;
+		Plane(const glm::vec3& p, const glm::vec3& n)
+			: normal(glm::normalize(n)),
+			distance(glm::dot(normal, p)) {}
+		REFLECTABLE(Plane, normal, distance);
+	};
+	struct Fustrum {
+		union {
+			struct {
+				Plane nearFace;
+				Plane farFace;
+				Plane rightFace;
+				Plane leftFace;
+				Plane topFace;
+				Plane bottomFace;
+			};
+			Plane planes[6];
+		};
+		Fustrum() :planes{} {}
+	};
 }
 
 #endif

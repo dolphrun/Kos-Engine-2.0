@@ -10,6 +10,7 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
+#include "Utility/Shapes.h"
 #define MAX_BONE_INFLUENCE 4
 
 struct BoneInfo
@@ -183,6 +184,8 @@ public:
 	std::vector<Animation> animations;
 	// model data
 	std::vector<Mesh> meshes;
+	//AABB for mesh
+	utility::AABB boundingBox;
 
 	REFLECTABLE(R_Model);
 

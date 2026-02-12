@@ -119,3 +119,22 @@ float CameraData::CalculateAspectRatio()
     aspectRatio = size.y / size.x;
     return aspectRatio;
 }
+
+void CameraData::ComputeFustrum() {
+    float aspect = this->size.x / this->size.y;
+    const float fovY = glm::radians(this->fov);
+    const glm::vec3 front = -glm::vec3(viewMtx[0][2], viewMtx[1][2], viewMtx[2][2]);
+    const glm::vec3 right = glm::vec3(viewMtx[0][0], viewMtx[1][0], viewMtx[2][0]);
+    const glm::vec3 up = glm::vec3(viewMtx[0][1], viewMtx[1][1], viewMtx[2][1]);
+    const float halfVSide = this->farPlane * tanf(fovY * 0.5f);
+    const float halfHSide = halfVSide * aspect;
+    const glm::vec3 frontMultFar = this->farPlane * front;
+
+    //Compute the frustrum values
+    this->viewFrustum.nearFace = { this->position + this->nearPlane * front, front };
+    this->viewFrustum.farFace = { this->position + frontMultFar, -front };
+    this->viewFrustum.rightFace = { this->position,glm::cross(frontMultFar - right * halfHSide, up) };
+    this->viewFrustum.leftFace = { this->position,glm::cross(up, frontMultFar + right * halfHSide) };
+    this->viewFrustum.topFace = { this->position,glm::cross(right, frontMultFar - up * halfVSide) };
+    this->viewFrustum.bottomFace = { this->position,glm::cross(frontMultFar + up * halfVSide, right)};
+}   

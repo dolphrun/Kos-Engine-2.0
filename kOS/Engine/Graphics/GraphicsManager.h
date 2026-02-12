@@ -185,7 +185,7 @@ private:
 
 	unsigned int* gm_PostProcess();
 	//Cameras
-	CameraData editorCamera{};
+	CameraData editorCamera;
 	std::vector<CameraData> gameCameras{};
 	bool editorCameraActive{ false };
 	int currentGameCameraIndex{};

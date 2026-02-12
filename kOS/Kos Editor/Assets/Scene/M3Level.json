@@ -45,6 +45,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
+            "isStatic": false,
             "prefabName": "",
             "hide": true
         },
@@ -108,6 +109,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
+            "isStatic": false,
             "prefabName": "",
             "hide": false
         },
@@ -156,6 +158,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
+            "isStatic": false,
             "prefabName": "",
             "hide": false
         },
@@ -203,6 +206,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -265,6 +269,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -327,6 +332,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -389,6 +395,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -451,6 +458,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -513,6 +521,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -575,6 +584,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -637,6 +647,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -699,6 +710,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -761,6 +773,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -823,6 +836,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -885,6 +899,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -947,6 +962,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1009,6 +1025,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1071,6 +1088,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1133,6 +1151,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1195,6 +1214,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1257,6 +1277,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1319,6 +1340,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1381,6 +1403,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1443,6 +1466,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1505,6 +1529,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1567,6 +1592,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1629,6 +1655,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1691,6 +1718,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1753,6 +1781,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1815,6 +1844,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1877,6 +1907,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -1939,6 +1970,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2001,6 +2033,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2063,6 +2096,7 @@
                             "Layer": 0,
                             "entityTag": "Ground",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2112,6 +2146,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -2174,6 +2209,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2236,6 +2272,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2298,6 +2335,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2360,6 +2398,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2422,6 +2461,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2484,6 +2524,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2546,6 +2587,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2608,6 +2650,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2670,6 +2713,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2732,6 +2776,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2794,6 +2839,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2856,6 +2902,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2918,6 +2965,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -2980,6 +3028,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3042,6 +3091,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3104,6 +3154,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3166,6 +3217,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3228,6 +3280,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3290,6 +3343,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3352,6 +3406,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3414,6 +3469,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3476,6 +3532,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3538,6 +3595,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3600,6 +3658,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3662,6 +3721,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3724,6 +3784,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3786,6 +3847,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3848,6 +3910,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3910,6 +3973,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -3972,6 +4036,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4034,6 +4099,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4096,6 +4162,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4158,6 +4225,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4220,6 +4288,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4282,6 +4351,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4344,6 +4414,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4406,6 +4477,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4468,6 +4540,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4530,6 +4603,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4592,6 +4666,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4654,6 +4729,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4716,6 +4792,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4778,6 +4855,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4840,6 +4918,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4902,6 +4981,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -4964,6 +5044,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5026,6 +5107,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5088,6 +5170,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5150,6 +5233,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5212,6 +5296,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5274,6 +5359,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5336,6 +5422,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5398,6 +5485,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5460,6 +5548,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5522,6 +5611,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5584,6 +5674,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5646,6 +5737,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5708,6 +5800,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5770,6 +5863,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5832,6 +5926,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5894,6 +5989,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -5956,6 +6052,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": false,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -6007,6 +6104,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
+            "isStatic": false,
             "prefabName": "",
             "hide": false
         },
@@ -6085,6 +6183,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -6163,6 +6262,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -6241,6 +6341,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -6319,6 +6420,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -6397,6 +6499,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -6475,6 +6578,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -6553,6 +6657,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -6631,6 +6736,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -6709,6 +6815,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -6787,6 +6894,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -6865,6 +6973,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -6914,6 +7023,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "Fire Barrel.prefab",
             "hide": false
         },
@@ -6984,6 +7094,7 @@
                     "Layer": 0,
                     "entityTag": "Powerup",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "Fire Prop.prefab",
                     "hide": false
                 },
@@ -7034,6 +7145,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -7276,6 +7388,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -7323,6 +7436,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -7536,6 +7650,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
+            "isStatic": false,
             "prefabName": "",
             "hide": false
         },
@@ -7593,6 +7708,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -7650,6 +7766,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -7707,6 +7824,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -7764,6 +7882,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -7821,6 +7940,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -7878,6 +7998,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -7935,6 +8056,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -7992,6 +8114,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -8049,6 +8172,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -8106,6 +8230,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -8163,6 +8288,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -8223,6 +8349,7 @@
                     "Layer": 0,
                     "entityTag": "Wall",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "Fire Prop.prefab",
                     "hide": false
                 },
@@ -8283,6 +8410,7 @@
                     "Layer": 0,
                     "entityTag": "Wall",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "Fire Prop.prefab",
                     "hide": false
                 },
@@ -8343,6 +8471,7 @@
                     "Layer": 0,
                     "entityTag": "Wall",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "Fire Prop.prefab",
                     "hide": false
                 },
@@ -8403,6 +8532,7 @@
                     "Layer": 0,
                     "entityTag": "Wall",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "Fire Prop.prefab",
                     "hide": false
                 },
@@ -8463,6 +8593,7 @@
                     "Layer": 0,
                     "entityTag": "Wall",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "Fire Prop.prefab",
                     "hide": false
                 },
@@ -8520,6 +8651,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "Acid Prop Holder.prefab",
                     "hide": true
                 },
@@ -8569,6 +8701,7 @@
             "Layer": 0,
             "entityTag": "Powerup",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "Acid Prop Holder.prefab",
             "hide": true
         },
@@ -8640,6 +8773,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "Acid Prop Holder.prefab",
                     "hide": true
                 },
@@ -8720,6 +8854,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
+            "isStatic": false,
             "prefabName": "",
             "hide": true
         },
@@ -8798,6 +8933,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
+            "isStatic": false,
             "prefabName": "",
             "hide": false
         },
@@ -8868,6 +9004,7 @@
             "Layer": 0,
             "entityTag": "Powerup",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "Electric Prop 1.prefab",
             "hide": false
         },
@@ -8949,6 +9086,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
+            "isStatic": false,
             "prefabName": "",
             "hide": false
         },
@@ -8996,6 +9134,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "Fire Barrel.prefab",
             "hide": false
         },
@@ -9066,6 +9205,7 @@
                     "Layer": 0,
                     "entityTag": "Powerup",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "Fire Prop.prefab",
                     "hide": false
                 },
@@ -9116,6 +9256,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -9327,6 +9468,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -9569,6 +9711,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -9618,6 +9761,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "",
             "hide": true
         },
@@ -9829,6 +9973,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "Game Package.prefab",
             "hide": false
         },
@@ -9895,6 +10040,7 @@
                     "Layer": 1,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -9942,6 +10088,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -9988,7 +10135,9 @@
                             "controllerGUID": "9149963b-fa24-7dbc-6d95-cf2d7ffad332",
                             "m_PlaybackSpeed": 1.0,
                             "m_CurrentTime": 0.0,
-                            "m_IsPlaying": true
+                            "m_IsPlaying": true,
+                            "m_currentStateID": 0,
+                            "m_transitioningStateID": 0
                         },
                         "MaterialComponent": {
                             "materialGUID": [
@@ -10002,6 +10151,7 @@
                             "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -10084,6 +10234,7 @@
                             "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -10133,6 +10284,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -10205,6 +10357,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -10365,6 +10518,7 @@
                     "Layer": 0,
                     "entityTag": "Player",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -10482,6 +10636,7 @@
                             "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -10530,6 +10685,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": true,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -10609,6 +10765,7 @@
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": true,
+                            "isStatic": false,
                             "prefabName": "",
                             "hide": false
                         },
@@ -10685,6 +10842,7 @@
             "Layer": 0,
             "entityTag": "Enemy",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "EnemyPrefab_1.prefab",
             "hide": false
         },
@@ -10732,6 +10890,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -10778,13 +10937,16 @@
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
                     "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
                 },
                 "NameComponent": {
                     "entityName": "Enemy Model",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -10856,6 +11018,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "Lose Screen Canvas_1.prefab",
             "hide": false
         },
@@ -10903,6 +11066,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -10960,6 +11124,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11017,6 +11182,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11074,6 +11240,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11131,6 +11298,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11188,6 +11356,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11267,6 +11436,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11344,6 +11514,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "Pause Screen Canvas_1.prefab",
             "hide": false
         },
@@ -11405,6 +11576,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11462,6 +11634,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11519,6 +11692,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11576,6 +11750,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11655,6 +11830,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11732,6 +11908,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "Game UI Canvas.prefab",
             "hide": false
         },
@@ -11779,6 +11956,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11844,6 +12022,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11917,6 +12096,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -11982,6 +12162,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12063,6 +12244,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12128,6 +12310,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12209,6 +12392,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12288,6 +12472,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12367,6 +12552,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12446,6 +12632,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12522,6 +12709,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12592,6 +12780,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
+            "isStatic": false,
             "prefabName": "",
             "hide": false
         },
@@ -12645,6 +12834,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12692,6 +12882,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12752,6 +12943,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12834,6 +13026,7 @@
             "Layer": 0,
             "entityTag": "Powerup",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "Electric Prop.prefab",
             "hide": false
         },
@@ -12915,6 +13108,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -12962,6 +13156,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "Electric Prop 1.prefab",
                     "hide": false
                 },
@@ -13198,6 +13393,7 @@
             "Layer": 0,
             "entityTag": "Powerup",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "Electric Prop 1.prefab",
             "hide": false
         },
@@ -13248,6 +13444,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "Electric Prop 1.prefab",
                     "hide": false
                 },
@@ -13461,6 +13658,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
+            "isStatic": false,
             "prefabName": "Electric Prop 1.prefab",
             "hide": false
         },
@@ -13697,6 +13895,7 @@
             "Layer": 0,
             "entityTag": "Enemy",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "EnemyPrefab_1.prefab",
             "hide": false
         },
@@ -13744,6 +13943,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -13790,13 +13990,16 @@
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
                     "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
                 },
                 "NameComponent": {
                     "entityName": "Enemy Model",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -13875,6 +14078,7 @@
             "Layer": 0,
             "entityTag": "Enemy",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "EnemyPrefab_1.prefab",
             "hide": false
         },
@@ -13922,6 +14126,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -13968,13 +14173,16 @@
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
                     "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
                 },
                 "NameComponent": {
                     "entityName": "Enemy Model",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -14053,6 +14261,7 @@
             "Layer": 0,
             "entityTag": "Enemy",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "EnemyPrefab_1.prefab",
             "hide": false
         },
@@ -14100,6 +14309,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -14146,13 +14356,16 @@
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
                     "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
                 },
                 "NameComponent": {
                     "entityName": "Enemy Model",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -14231,6 +14444,7 @@
             "Layer": 0,
             "entityTag": "Enemy",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "EnemyPrefab_1.prefab",
             "hide": false
         },
@@ -14278,6 +14492,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -14324,13 +14539,16 @@
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
                     "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
                 },
                 "NameComponent": {
                     "entityName": "Enemy Model",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -14409,6 +14627,7 @@
             "Layer": 0,
             "entityTag": "Enemy",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "EnemyPrefab_1.prefab",
             "hide": false
         },
@@ -14456,6 +14675,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -14502,13 +14722,16 @@
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
                     "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
                 },
                 "NameComponent": {
                     "entityName": "Enemy Model",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -14587,6 +14810,7 @@
             "Layer": 0,
             "entityTag": "Enemy",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "EnemyPrefab_1.prefab",
             "hide": false
         },
@@ -14634,6 +14858,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -14680,13 +14905,16 @@
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
                     "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
                 },
                 "NameComponent": {
                     "entityName": "Enemy Model",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -14755,6 +14983,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
+            "isStatic": false,
             "prefabName": "",
             "hide": false
         },
@@ -14833,6 +15062,7 @@
             "Layer": 0,
             "entityTag": "Enemy",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "RangedEnemyPrefab.prefab",
             "hide": false
         },
@@ -14880,6 +15110,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "RangedEnemyPrefab.prefab",
                     "hide": false
                 },
@@ -14926,13 +15157,16 @@
                     "controllerGUID": "baa80405-5c48-fba2-0cde-edc56c8d415d",
                     "m_PlaybackSpeed": 1.0,
                     "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
                 },
                 "NameComponent": {
                     "entityName": "Enemy Model",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "RangedEnemyPrefab.prefab",
                     "hide": false
                 },
@@ -15011,6 +15245,7 @@
             "Layer": 0,
             "entityTag": "Enemy",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "EnemyPrefab_1.prefab",
             "hide": false
         },
@@ -15058,6 +15293,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -15104,13 +15340,16 @@
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
                     "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
                 },
                 "NameComponent": {
                     "entityName": "Enemy Model",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -15164,6 +15403,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "Fire Barrel.prefab",
             "hide": false
         },
@@ -15234,6 +15474,7 @@
                     "Layer": 0,
                     "entityTag": "Powerup",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "Fire Prop.prefab",
                     "hide": false
                 },
@@ -15284,6 +15525,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -15495,6 +15737,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -15737,6 +15980,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -15786,6 +16030,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
+            "isStatic": false,
             "prefabName": "",
             "hide": false
         },
@@ -15843,6 +16088,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -15921,6 +16167,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -15978,6 +16225,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -16035,6 +16283,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -16092,6 +16341,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -16170,6 +16420,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -16227,6 +16478,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -16305,6 +16557,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
