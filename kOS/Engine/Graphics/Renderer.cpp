@@ -242,7 +242,8 @@ void SkinnedMeshRenderer::Update() {
 		{
 			if (mesh.animationToUse) {
 				size_t boneCount = mesh.meshToUse->GetBoneInfo().size();
-				mesh.animationToUse->Update(mesh.currentDuration, glm::mat4(1.f), glm::mat4(1.f), mesh.meshToUse->GetBoneMap(), mesh.meshToUse->GetBoneInfo(), boneCount);
+				mesh.finalBoneMatrices.resize(boneCount, glm::mat4(1.0f));
+				mesh.animationToUse->Update(mesh.currentDuration, glm::mat4(1.f), glm::mat4(1.f), mesh.meshToUse->GetBoneMap(), mesh.meshToUse->GetBoneInfo(), mesh.finalBoneMatrices);
 			}
 		}
 	}
@@ -266,7 +267,7 @@ void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader)
 			if (mesh.animationToUse)
 			{
 				shader.SetBool("isRigged", true);
-				mesh.meshToUse->DrawAnimation(shader, mesh.meshMaterial, mesh.animationToUse->GetBoneFinalMatrices());
+				mesh.meshToUse->DrawAnimation(shader, mesh.meshMaterial, mesh.finalBoneMatrices);
 			}
 			else
 			{
@@ -290,9 +291,7 @@ void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader, layer
 		if (mesh.animationToUse)
 		{
 			shader.SetBool("isRigged", true);
-			size_t boneCount = mesh.meshToUse->GetBoneInfo().size();
-			mesh.animationToUse->Update(mesh.currentDuration, glm::mat4(1.f), glm::mat4(1.f), mesh.meshToUse->GetBoneMap(), mesh.meshToUse->GetBoneInfo(), boneCount);
-			mesh.meshToUse->DrawAnimation(shader, mesh.meshMaterial, mesh.animationToUse->GetBoneFinalMatrices());
+			mesh.meshToUse->DrawAnimation(shader, mesh.meshMaterial, mesh.finalBoneMatrices);
 		}
 		else
 		{

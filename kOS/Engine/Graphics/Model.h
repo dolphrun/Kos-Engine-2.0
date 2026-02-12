@@ -46,6 +46,7 @@ struct SkinnedMeshData
     glm::mat4 transformation{ 1.f };
     float currentDuration{};
     int entityID{ -1 };
+    std::vector<glm::mat4> finalBoneMatrices;
 };
 
 struct MeshData
