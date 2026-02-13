@@ -39,7 +39,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Audio/AudioManager.h"
 #include "Pathfinding/NavMesh.h"
 #include "Editor/CommandHistory.h"
-
+#include "Resources/R_Texture.h"
 namespace gui {
     
 
@@ -217,7 +217,7 @@ namespace gui {
 
         /***********PreferenceTab*************/
         bool openPreferencesTab = false;
-        /******************************/
+        /*************************************/
 
         /***********Assets*************/
         std::filesystem::path AssetPath{};

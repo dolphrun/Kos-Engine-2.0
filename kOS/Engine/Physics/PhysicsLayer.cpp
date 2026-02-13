@@ -2,7 +2,6 @@
 #include "DeSerialization/json_handler.h"
 #include "PhysicsLayer.h"
 
-
 namespace physicslayer {
 
 	constexpr const char* configpath = "Engine/Physics/Layer.json";

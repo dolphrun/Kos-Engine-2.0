@@ -27,9 +27,8 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Configs/ConfigPath.h"
 #include "AssetManager/Prefab.h"
 
-namespace gui {
 
-	static const char* fileIcon = "img_folderIcon.png";
+namespace gui {
 	static std::string searchString;
 	static float padding = 20.f;
 	static float thumbnail = 100.f;
@@ -55,27 +54,29 @@ namespace gui {
 		}
 	}
 
-	void textorimage(std::string directoryString, std::string fileName) {
-		//assetmanager::AssetManager* assetmanager = assetmanager::AssetManager::m_funcGetInstance();
-		//if (assetmanager->m_imageManager.m_imageMap.find(fileName) != assetmanager->m_imageManager.m_imageMap.end()) {
-		//	float imageRatio = static_cast<float>(assetmanager->m_imageManager.m_imageMap.find(fileName)->second.m_height) / static_cast<float>(assetmanager->m_imageManager.m_imageMap.find(fileName)->second.m_width);
-		//	if (imageRatio > 1)
-		//	{
-		//		ImGui::ImageButton(directoryString.c_str(), (ImTextureID)(uintptr_t)assetmanager->m_imageManager.m_imageMap.find(fileName)->second.textureID, { thumbnail / imageRatio ,thumbnail }, { 0 ,1 }, { 1 ,0 }, { 0,0,0,0 });
-		//	}
-		//	else
-		//	{
-		//		ImGui::ImageButton(directoryString.c_str(), (ImTextureID)(uintptr_t)assetmanager->m_imageManager.m_imageMap.find(fileName)->second.textureID, { thumbnail ,thumbnail * imageRatio }, { 0 ,1 }, { 1 ,0 }, { 0,0,0,0 });
-		//	}
+	bool textorimage(const std::string& directoryString, unsigned int textureID = 0) {
 
-		//}
-		//else {
-		//	ImGui::Button(directoryString.c_str(), { thumbnail ,thumbnail });
-		//}
+		// Assuming 'thumbnail' is a float defined somewhere in your scope
+		ImVec2 buttonSize = { thumbnail, thumbnail };
+		bool isClicked = false;
 
-		ImGui::Button(directoryString.c_str(), { thumbnail ,thumbnail });
+		if (textureID != 0) {
+			// Render the Image Button
+			// We cast the textureID just like we did for ImGui::Image()
+			// Modern ImGui requires a string ID as the first argument for ImageButton
+			isClicked = ImGui::ImageButton(
+				directoryString.c_str(),        // Unique ID so ImGui can track clicks
+				(void*)(intptr_t)textureID,     // The texture to render
+				buttonSize                      // Size of the button
+			);
+		}
+		else {
+			// Render the standard Text Button
+			isClicked = ImGui::Button(directoryString.c_str(), buttonSize);
+		}
 
-	};
+		return isClicked; // Returns true on the exact frame the user clicks the button
+	}
 
 	void ImGuiHandler::DrawContentBrowser() {
 
@@ -182,7 +183,7 @@ namespace gui {
 
 					if (directoryPath.is_directory()) {
 						// if a folder
-						textorimage(directoryString, fileIcon);
+						textorimage(directoryString);
 						MoveFolder(currentDirectory / directoryPath.path().filename());
 
 
@@ -195,8 +196,7 @@ namespace gui {
 					else {
 						//case for prefabs and scene
 						if (directoryPath.path().filename().extension().string() == ".prefab") {
-							std::string prefab = "";
-							textorimage(std::string(directoryPath.path().filename().extension().string() + "##" + directoryPath.path().filename().string()).c_str(), prefab);
+							textorimage(std::string(directoryPath.path().filename().extension().string() + "##" + directoryPath.path().filename().string()).c_str());
 
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left)) {
 								//skip if active scene is filename
@@ -245,8 +245,7 @@ namespace gui {
 							}
 						}
 						else if (directoryPath.path().filename().extension().string() == ".json") {
-							std::string script;
-							textorimage(directoryString, script);
+							textorimage(directoryString);
 
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left)) {
 
@@ -266,7 +265,7 @@ namespace gui {
 						}
 						else {
 
-							textorimage(directoryString, std::string());
+							textorimage(directoryString);
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left)) {
 								std::filesystem::path metaPath = directoryPath.path().string() + ".meta";
 								if (std::filesystem::exists(metaPath)) {
