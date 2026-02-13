@@ -499,8 +499,8 @@ namespace gui
         if (nc->isPrefab || nc->hide)
             ImGui::PopStyleColor();
 
-        if (ImGui::IsItemClicked(ImGuiMouseButton_Left) &&
-            !ImGui::IsMouseDragging(ImGuiMouseButton_Left))
+        if (ImGui::IsItemDeactivated() &&
+            ImGui::IsItemHovered())
         {
             m_clickedEntityId = id;
             m_isUi = false;
