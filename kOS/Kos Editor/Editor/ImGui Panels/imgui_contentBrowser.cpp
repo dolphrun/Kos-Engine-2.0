@@ -27,9 +27,8 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Configs/ConfigPath.h"
 #include "AssetManager/Prefab.h"
 
-namespace gui {
 
-	static const char* fileIcon = "img_folderIcon.png";
+namespace gui {
 	static std::string searchString;
 	static float padding = 20.f;
 	static float thumbnail = 100.f;
@@ -55,31 +54,44 @@ namespace gui {
 		}
 	}
 
-	void textorimage(std::string directoryString, std::string fileName) {
-		//assetmanager::AssetManager* assetmanager = assetmanager::AssetManager::m_funcGetInstance();
-		//if (assetmanager->m_imageManager.m_imageMap.find(fileName) != assetmanager->m_imageManager.m_imageMap.end()) {
-		//	float imageRatio = static_cast<float>(assetmanager->m_imageManager.m_imageMap.find(fileName)->second.m_height) / static_cast<float>(assetmanager->m_imageManager.m_imageMap.find(fileName)->second.m_width);
-		//	if (imageRatio > 1)
-		//	{
-		//		ImGui::ImageButton(directoryString.c_str(), (ImTextureID)(uintptr_t)assetmanager->m_imageManager.m_imageMap.find(fileName)->second.textureID, { thumbnail / imageRatio ,thumbnail }, { 0 ,1 }, { 1 ,0 }, { 0,0,0,0 });
-		//	}
-		//	else
-		//	{
-		//		ImGui::ImageButton(directoryString.c_str(), (ImTextureID)(uintptr_t)assetmanager->m_imageManager.m_imageMap.find(fileName)->second.textureID, { thumbnail ,thumbnail * imageRatio }, { 0 ,1 }, { 1 ,0 }, { 0,0,0,0 });
-		//	}
+	bool ImGuiHandler::ImageButton(const std::filesystem::path& directoryString) {
 
-		//}
-		//else {
-		//	ImGui::Button(directoryString.c_str(), { thumbnail ,thumbnail });
-		//}
+		std::string fileName = directoryString.filename().string();
+		ImVec2 buttonSize = { thumbnail, thumbnail };
+		bool isClicked = false;
+		unsigned int textureID = 0;
 
-		ImGui::Button(directoryString.c_str(), { thumbnail ,thumbnail });
+		if (std::filesystem::is_directory(directoryString)) {
+			textureID = m_assetManager.folderTexture->GetTextureID();
+		}
+		else {
+			textureID = m_assetManager.fileTexture->GetTextureID();
+		}
 
-	};
+
+
+
+		if (textureID != 0) {
+			// Render the Image Button
+			// We cast the textureID just like we did for ImGui::Image()
+			// Modern ImGui requires a string ID as the first argument for ImageButton
+			isClicked = ImGui::ImageButton(
+				fileName.c_str(),        // Unique ID so ImGui can track clicks
+				(void*)(intptr_t)textureID,     // The texture to render
+				buttonSize                      // Size of the button
+			);
+		}
+		else {
+			// Render the standard Text Button
+			isClicked = ImGui::Button(fileName.c_str(), buttonSize);
+		}
+
+		return isClicked; // Returns true on the exact frame the user clicks the button
+	}
 
 	void ImGuiHandler::DrawContentBrowser() {
 
-		static std::filesystem::path assetDirectory = m_assetManager.GetAssetManagerDirectory(); // TO change
+		static std::filesystem::path assetDirectory = m_assetManager.GetAssetManagerDirectory();
 		static std::filesystem::path currentDirectory = assetDirectory;
 
 		if (ImGui::Begin("Content Browser")) {
@@ -173,6 +185,7 @@ namespace gui {
 				// Render Icons (Folder or Files)
 				for (auto& directoryPath : std::filesystem::directory_iterator(currentDirectory)) {
 					std::string directoryString = directoryPath.path().filename().string();
+					
 
 					//skip if file is not same as search and skip .meta files
 					if (!searchString.empty() && !containsSubstring(directoryString, searchString) ||
@@ -180,9 +193,10 @@ namespace gui {
 						continue;
 					}
 
+					ImageButton(directoryPath.path());
+
 					if (directoryPath.is_directory()) {
 						// if a folder
-						textorimage(directoryString, fileIcon);
 						MoveFolder(currentDirectory / directoryPath.path().filename());
 
 
@@ -195,8 +209,6 @@ namespace gui {
 					else {
 						//case for prefabs and scene
 						if (directoryPath.path().filename().extension().string() == ".prefab") {
-							std::string prefab = "";
-							textorimage(std::string(directoryPath.path().filename().extension().string() + "##" + directoryPath.path().filename().string()).c_str(), prefab);
 
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left)) {
 								//skip if active scene is filename
@@ -245,8 +257,6 @@ namespace gui {
 							}
 						}
 						else if (directoryPath.path().filename().extension().string() == ".json") {
-							std::string script;
-							textorimage(directoryString, script);
 
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left)) {
 
@@ -266,7 +276,6 @@ namespace gui {
 						}
 						else {
 
-							textorimage(directoryString, std::string());
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left)) {
 								std::filesystem::path metaPath = directoryPath.path().string() + ".meta";
 								if (std::filesystem::exists(metaPath)) {
@@ -395,9 +404,16 @@ namespace gui {
 						}
 					}
 					else {
+						float cellWidth = thumbnail;
+
+						ImGui::PushTextWrapPos(ImGui::GetCursorPosX() + cellWidth);
+
 						ImGui::SetWindowFontScale(0.8f);
-						ImGui::Text(directoryPath.path().filename().stem().string().c_str());
+						ImGui::TextWrapped("%s",
+							directoryPath.path().filename().stem().string().c_str());
 						ImGui::SetWindowFontScale(1.f);
+
+						ImGui::PopTextWrapPos();
 					}
 					ImGui::NextColumn();
 				}

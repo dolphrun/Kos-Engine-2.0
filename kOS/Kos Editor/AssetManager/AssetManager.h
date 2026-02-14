@@ -3,6 +3,7 @@
 #include "Config/pch.h"
 #include "AssetDatabase.h"
 #include "Watcher.h"
+#include "Resources/R_Texture.h"
 
 class AssetManager {
 
@@ -89,6 +90,7 @@ private:
     std::unordered_map<std::string, std::vector<CompilerD>> m_compilerMap;
 public:
     const std::unordered_map<std::string, std::vector<CompilerD>>& GetCompilerMap() const { return m_compilerMap; }
-
+    std::unique_ptr<R_Texture> folderTexture;
+    std::unique_ptr<R_Texture> fileTexture;
 };
 

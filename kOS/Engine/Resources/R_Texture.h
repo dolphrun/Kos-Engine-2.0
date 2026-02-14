@@ -39,6 +39,9 @@ public:
 	std::string RetrieveName() const;
 	TextureType RetrieveType();
 	void SetType(TextureType typ);
+	unsigned int GetTextureID() {
+		return texture;
+	}
 
 	REFLECTABLE(R_Texture);
 

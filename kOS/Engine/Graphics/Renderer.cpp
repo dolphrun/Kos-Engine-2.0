@@ -236,6 +236,20 @@ void MeshRenderer::Render(const CameraData& camera, Shader& shader, layer::LAYER
 
 
 }
+void SkinnedMeshRenderer::Update() {
+	for (std::vector<SkinnedMeshData>& meshData : skinnedMeshesToDraw) {
+		for (SkinnedMeshData& mesh : meshData)
+		{
+			if (mesh.animationToUse) {
+				size_t boneCount = mesh.meshToUse->GetBoneInfo().size();
+				mesh.finalBoneMatrices.resize(boneCount, glm::mat4(1.0f));
+				mesh.animationToUse->Update(mesh.currentDuration, glm::mat4(1.f), glm::mat4(1.f), mesh.meshToUse->GetBoneMap(), mesh.meshToUse->GetBoneInfo(), mesh.finalBoneMatrices);
+			}
+		}
+	}
+}
+
+
 void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader)
 {
 	shader.SetInt("texture_diffuse1", 0);
@@ -253,9 +267,7 @@ void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader)
 			if (mesh.animationToUse)
 			{
 				shader.SetBool("isRigged", true);
-				size_t boneCount = mesh.meshToUse->GetBoneInfo().size();
-				mesh.animationToUse->Update(mesh.currentDuration, glm::mat4(1.f), glm::mat4(1.f), mesh.meshToUse->GetBoneMap(), mesh.meshToUse->GetBoneInfo(), boneCount);
-				mesh.meshToUse->DrawAnimation(shader, mesh.meshMaterial, mesh.animationToUse->GetBoneFinalMatrices());
+				mesh.meshToUse->DrawAnimation(shader, mesh.meshMaterial, mesh.finalBoneMatrices);
 			}
 			else
 			{
@@ -279,9 +291,7 @@ void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader, layer
 		if (mesh.animationToUse)
 		{
 			shader.SetBool("isRigged", true);
-			size_t boneCount = mesh.meshToUse->GetBoneInfo().size();
-			mesh.animationToUse->Update(mesh.currentDuration, glm::mat4(1.f), glm::mat4(1.f), mesh.meshToUse->GetBoneMap(), mesh.meshToUse->GetBoneInfo(), boneCount);
-			mesh.meshToUse->DrawAnimation(shader, mesh.meshMaterial, mesh.animationToUse->GetBoneFinalMatrices());
+			mesh.meshToUse->DrawAnimation(shader, mesh.meshMaterial, mesh.finalBoneMatrices);
 		}
 		else
 		{

@@ -2,10 +2,26 @@
 #include "Resources/R_Animation.h"
 
 glm::mat4 R_Animation::Bone::Interpolate(float time) const {
-    glm::mat4 T = InterpolatePosition(time);
-    glm::mat4 R = InterpolateRotation(time);
-    glm::mat4 S = InterpolateScale(time);
-    return T * R * S;
+    // 1. Get components
+    glm::vec3 translation = InterpolatePosition(time);
+    glm::quat rotation = InterpolateRotation(time);
+    glm::vec3 scale = InterpolateScale(time);
+
+    // 2. Start with Rotation Matrix (3x3 part expanded to 4x4)
+    glm::mat4 result = glm::mat4_cast(rotation);
+
+    // 3. Apply Scale (R * S)
+    // We multiply the columns (basis vectors) of the rotation matrix by the scale
+    // This is much cheaper than a full matrix multiply
+    result[0] *= scale.x; // Scale X axis
+    result[1] *= scale.y; // Scale Y axis
+    result[2] *= scale.z; // Scale Z axis
+
+    // 4. Apply Translation (T * (R * S))
+    // Just set the last column to the position
+    result[3] = glm::vec4(translation, 1.0f);
+
+    return result;
 }
 const std::string& R_Animation::Bone::GetName() const {
     return m_Name;
@@ -14,52 +30,42 @@ int R_Animation::Bone::GetID() const {
     return m_ID;
 }
 int R_Animation::Bone::FindIndex(const std::vector<float>& times, float animTime) const {
-    for (size_t i = 0; i < times.size() - 1; i++)
-    {
-        if (animTime < times[i + 1])
-        {
+    size_t n = times.size();
+    if (n <= 1) return 0;
+
+    // Explicitly unroll or keep simple for vectorization
+    for (size_t i = 0; i < n - 1; i++) {
+        if (animTime < times[i + 1]) {
             return static_cast<int>(i);
         }
     }
-    return static_cast<int>(times.size() - 2);
+    return static_cast<int>(n - 2);
 }
 float R_Animation::Bone::GetFactor(float start, float end, float time) const {
     float diff = end - start;
     ///Might division by zero
     return (time - start) / diff;
 }
-glm::mat4 R_Animation::Bone::InterpolatePosition(float time) const {
-    if (m_Positions.size() == 1)
-    {
-        return glm::translate(glm::mat4(1.0f), m_Positions[0]);
-    }
+glm::vec3 R_Animation::Bone::InterpolatePosition(float time) const {
+    if (m_Positions.size() == 1) return m_Positions[0];
 
     int index = FindIndex(m_PosTimes, time);
     float factor = GetFactor(m_PosTimes[index], m_PosTimes[index + 1], time);
-    glm::vec3 finalPos = glm::mix(m_Positions[index], m_Positions[index + 1], factor);
-    return glm::translate(glm::mat4(1.0f), finalPos);
+    return glm::mix(m_Positions[index], m_Positions[index + 1], factor);
 }
-glm::mat4 R_Animation::Bone::InterpolateRotation(float time) const {
-    if (m_Rotations.size() == 1)
-    {
-        return glm::mat4_cast(m_Rotations[0]);
-    }
+glm::quat R_Animation::Bone::InterpolateRotation(float time) const {
+    if (m_Rotations.size() == 1) return m_Rotations[0];
 
     int index = FindIndex(m_RotTimes, time);
     float factor = GetFactor(m_RotTimes[index], m_RotTimes[index + 1], time);
-    glm::quat finalRot = glm::slerp(m_Rotations[index], m_Rotations[index + 1], factor);
-    return glm::mat4_cast(finalRot);
+    return glm::normalize(glm::slerp(m_Rotations[index], m_Rotations[index + 1], factor));
 }
-glm::mat4 R_Animation::Bone::InterpolateScale(float time) const {
-    if (m_Scales.size() == 1)
-    {
-        return glm::scale(glm::mat4(1.0f), m_Scales[0]);
-    }
+glm::vec3 R_Animation::Bone::InterpolateScale(float time) const {
+    if (m_Scales.size() == 1) return m_Scales[0];
 
     int index = FindIndex(m_ScaleTimes, time);
     float factor = GetFactor(m_ScaleTimes[index], m_ScaleTimes[index + 1], time);
-    glm::vec3 finalScale = glm::mix(m_Scales[index], m_Scales[index + 1], factor);
-    return glm::scale(glm::mat4(1.0f), finalScale);
+    return glm::mix(m_Scales[index], m_Scales[index + 1], factor);
 }
 template<typename T>
 inline T R_Animation::DecodeBinary(std::string& bin, int& offset)
@@ -191,51 +197,109 @@ void R_Animation::Load() {
     //const int MAX_BONES{ 100 };
     //m_FinalBoneTransforms.resize(MAX_BONES, glm::mat4(1.0f));
 }
+void R_Animation::BakeAnimationHierarchy(const NodeData& rawNode, OptimizedNode& optNode, const std::unordered_map<std::string, int>& boneMap) {
+    optNode.transformation = rawNode.transformation;
 
+    // Resolve the name to an index NOW, so we don't do it in Update()
+    auto it = boneMap.find(rawNode.name);
+    if (it != boneMap.end()) {
+        optNode.boneIndex = it->second;
+    }
+    else {
+        optNode.boneIndex = -1;
+    }
+
+    // Resolve the pointer to the animation channel NOW
+    optNode.bonePtr = FindBone(rawNode.name);
+
+    // Recurse
+    for (const auto& child : rawNode.children) {
+        OptimizedNode optChild;
+        BakeAnimationHierarchy(child, optChild, boneMap);
+        optNode.children.push_back(optChild);
+    }
+    baked = true;
+}
 void R_Animation::Update(float currentTime, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
     const std::unordered_map<std::string, int>& boneMap,
-    const std::vector<BoneInfo>& boneInfo, size_t boneCount)
+    const std::vector<BoneInfo>& boneInfo, std::vector<glm::mat4>& outputMatrices)
 {
     m_CurrentTime = currentTime;
-    CalculateBoneTransform(GetRootNode(), parentTransform, globalInverse, boneMap, boneInfo, boneCount);
+    if (!baked) {
+        m_optNode = OptimizedNode();
+        BakeAnimationHierarchy(m_RootNode, m_optNode, boneMap);
+    }
+
+    CalculateBoneTransformOptimized(m_optNode, parentTransform, boneInfo, outputMatrices);
+    
+    //CalculateBoneTransform(GetRootNode(), parentTransform, globalInverse, boneMap, boneInfo, boneCount);
 }
 
-void R_Animation::CalculateBoneTransform(const NodeData& node, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
-    const std::unordered_map<std::string, int>& boneMap,
-    const std::vector<BoneInfo>& boneInfo, size_t boneCount)
+void R_Animation::CalculateBoneTransformOptimized(const OptimizedNode& node, const glm::mat4& parentTransform, const std::vector<BoneInfo>& boneInfo, std::vector<glm::mat4>& outputMatrices)
 {
-    if (boneCount > 0) {
-        m_FinalBoneTransforms.resize(boneCount, glm::mat4(1.f));
-    }
-    
-    std::string nodeName(node.name);
     glm::mat4 nodeTransform = node.transformation;
 
-    const Bone* bone = FindBone(nodeName);
-    if (bone)
-    {
-        nodeTransform = bone->Interpolate(m_CurrentTime);
+    // Direct pointer access - No FindBone()
+    if (node.bonePtr) {
+        // Optimization: Ensure Interpolate uses binary search or cached keyframe indices
+        nodeTransform = node.bonePtr->Interpolate(m_CurrentTime);
     }
 
     glm::mat4 globalTransform = parentTransform * nodeTransform;
 
-    if (boneMap.find(nodeName) != boneMap.end())
-    {
-        int index = boneMap.at(nodeName);
-        //Global Inverse does nothing for now
-        if (index < boneInfo.size())
-            m_FinalBoneTransforms[index] = /*globalInverse **/ globalTransform * boneInfo.at(index).offsetMatrix;
-    }
-    else
-    {
-        //There shouldnt be any unrecognized bones here
+    // Direct index access - No Map Lookup
+    if (node.boneIndex != -1) {
+        // Access global arrays directly
+        if (node.boneIndex < outputMatrices.size()) {
+            // Combine global transform with offset
+            // Access boneInfo via direct index as well (pass reference or store in class)
+            outputMatrices[node.boneIndex] =
+                globalTransform * boneInfo[node.boneIndex].offsetMatrix;
+        }
     }
 
-    for (const NodeData& child : node.children)
-    {
-        CalculateBoneTransform(child, globalTransform, globalInverse, boneMap, boneInfo);
+    // Recursion is now much lighter
+    for (const auto& child : node.children) {
+        CalculateBoneTransformOptimized(child, globalTransform, boneInfo, outputMatrices);
     }
 }
+
+//void R_Animation::CalculateBoneTransform(const NodeData& node, const glm::mat4& parentTransform, const glm::mat4& globalInverse,
+//    const std::unordered_map<std::string, int>& boneMap,
+//    const std::vector<BoneInfo>& boneInfo, size_t boneCount)
+//{
+//    if (m_FinalBoneTransforms.empty()) {
+//        m_FinalBoneTransforms.resize(boneCount, glm::mat4(1.f));
+//    }
+//    
+//    std::string nodeName(node.name);
+//    glm::mat4 nodeTransform = node.transformation;
+//
+//    const Bone* bone = FindBone(nodeName);
+//    if (bone)
+//    {
+//        nodeTransform = bone->Interpolate(m_CurrentTime);
+//    }
+//
+//    glm::mat4 globalTransform = parentTransform * nodeTransform;
+//
+//    if (boneMap.find(nodeName) != boneMap.end())
+//    {
+//        int index = boneMap.at(nodeName);
+//        //Global Inverse does nothing for now
+//        if (index < boneInfo.size())
+//            m_FinalBoneTransforms[index] = /*globalInverse **/ globalTransform * boneInfo.at(index).offsetMatrix;
+//    }
+//    else
+//    {
+//        //There shouldnt be any unrecognized bones here
+//    }
+//
+//    for (const NodeData& child : node.children)
+//    {
+//        CalculateBoneTransform(child, globalTransform, globalInverse, boneMap, boneInfo);
+//    }
+//}
 
 void R_Animation::Unload() {
 

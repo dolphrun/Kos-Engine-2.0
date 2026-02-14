@@ -2,13 +2,14 @@
 #include "DeSerialization/json_handler.h"
 #include "Compilers/Compiler.h"
 #include "Configs/ConfigPath.h"
-
 #include "ECS/ECS.h"
 
 
 
 AssetManager::AssetManager()
 {
+
+
     CompilerData Data = serialization::ReadJsonFile<CompilerData>(configpath::configFilePath);
 
     Data.ApplyFunction([&](auto& member) {
@@ -119,7 +120,10 @@ void AssetManager::Init(const std::string& assetDirectory, const std::string& re
     m_assetWatcher->Start();
 
 
-
+    folderTexture = std::make_unique<R_Texture>(configpath::folderIconPath);
+    fileTexture = std::make_unique<R_Texture>(configpath::fileIconPath);
+    folderTexture->Load();
+    fileTexture->Load();
 }
 
 

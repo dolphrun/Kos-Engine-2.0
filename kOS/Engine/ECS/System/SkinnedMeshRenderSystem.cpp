@@ -89,7 +89,7 @@ namespace ecs
                 
 
                 if (mesh)
-                    m_graphicsManager.gm_PushSkinnedMeshData(SkinnedMeshData{mesh, animation, std::make_shared<PBRMaterialList>(pbrTmpList,true), transform->transformation, anim->m_CurrentTime, id}, nameComp->Layer);
+                    m_graphicsManager.gm_PushSkinnedMeshData(SkinnedMeshData{mesh, animation, std::make_shared<PBRMaterialList>(pbrTmpList,true), transform->transformation, anim->m_CurrentTime, id, std::vector<glm::mat4>()}, nameComp->Layer);
             }
             // else
             //  mesh = static_cast<R_Model*>(skinnedMesh->cachedSkinnedMeshResource);

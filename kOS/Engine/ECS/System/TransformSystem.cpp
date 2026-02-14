@@ -38,6 +38,7 @@ namespace ecs {
 		for (const EntityID id : entities) {
 			//NameComponent* namecomp = m_ecs.GetComponent<NameComponent>(id);
 			TransformComponent* transformComp = m_ecs.GetComponent<TransformComponent>(id);
+			if (transformComp->m_haveParent) continue;
 			//if (namecomp->isStatic) {
 			//	return;
 			//}

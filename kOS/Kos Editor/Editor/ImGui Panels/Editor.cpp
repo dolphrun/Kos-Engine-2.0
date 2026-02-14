@@ -142,9 +142,6 @@ namespace gui {
 		m_commandHistory.Init();
 		openAndLoadSceneDialog();
 
-		//set style
-		//SetStyle();
-
 		//set first active scene
 		for (auto& scene : m_ecs.sceneMap) {
 			if (!scene.second.isPrefab) {
@@ -155,7 +152,8 @@ namespace gui {
 
 		m_tags = filewindow::readEditorConfig(editorTagsFile);
 
-		//m_animControllerContext = ax::NodeEditor::CreateEditor();
+
+
 	}
 
 	void ImGuiHandler::NewFrame()
