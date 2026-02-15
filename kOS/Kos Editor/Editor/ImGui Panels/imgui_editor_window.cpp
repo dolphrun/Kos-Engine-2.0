@@ -313,6 +313,25 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
             firstMouseInput = false;
         }
 
+
+        if (ImGui::GetIO().KeysDown[ImGuiKey::ImGuiKey_F])
+        {
+            ecs::TransformComponent* transCom = m_ecs.GetComponent<ecs::TransformComponent>(m_clickedEntityId);
+            if (transCom != NULL) {
+                // EditorCamera::editorCamera.position = transCom->LocalTransformation.position;
+                EditorCamera::editorCamera.target = transCom->WorldTransformation.position;
+                EditorCamera::editorCamera.r = glm::length(EditorCamera::editorCamera.position - EditorCamera::editorCamera.target);
+                EditorCamera::editorCamera.alpha = glm::asin((EditorCamera::editorCamera.position.y - EditorCamera::editorCamera.target.y) / EditorCamera::editorCamera.r);
+                EditorCamera::editorCamera.betta = std::atan2(EditorCamera::editorCamera.position.x - EditorCamera::editorCamera.target.x, EditorCamera::editorCamera.position.z - EditorCamera::editorCamera.target.z);
+                EditorCamera::editorCamera.SwitchMode(true);
+
+                // Recompute position from spherical coordinates
+                EditorCamera::editorCamera.position.x = EditorCamera::editorCamera.target.x + EditorCamera::editorCamera.r * glm::cos(EditorCamera::editorCamera.alpha) * glm::sin(EditorCamera::editorCamera.betta);
+                EditorCamera::editorCamera.position.y = EditorCamera::editorCamera.target.y + EditorCamera::editorCamera.r * glm::sin(EditorCamera::editorCamera.alpha);
+                EditorCamera::editorCamera.position.z = EditorCamera::editorCamera.target.z + EditorCamera::editorCamera.r * glm::cos(EditorCamera::editorCamera.alpha) * glm::cos(EditorCamera::editorCamera.betta);
+
+            }
+        }
         // Uncomment this block to enable Unity-style 2d view snapping thingy it's not the best but it does it's purpose for now
         // I'm gonna finger your asshole Gabe.
         //bool shift = ImGui::IsKeyDown(ImGuiKey_LeftShift) || ImGui::IsKeyDown(ImGuiKey_RightShift);
