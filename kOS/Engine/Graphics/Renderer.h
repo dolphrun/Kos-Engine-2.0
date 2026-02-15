@@ -58,7 +58,6 @@ struct SkinnedMeshRenderer : BasicRenderer
 	void Update();
 	void Render(const CameraData& camera, Shader& shader);
 	void Render(const CameraData& camera, Shader& shader, layer::LAYERS);
-	void Update();
 	void Clear() override;
 	std::array < std::vector<SkinnedMeshData>, layer::MAXLAYER> skinnedMeshesToDraw{};
 	std::unordered_map<unsigned int, SkinnedMeshData*> skinnedMeshLookup{}; //Entity ID, Skinned Mesh Pointer
