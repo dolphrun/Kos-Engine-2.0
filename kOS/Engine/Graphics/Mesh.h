@@ -19,9 +19,12 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 */
 /********************************************************************/
 #pragma once
-#include"GraphicsReferences.h"
+
+#include "GraphicsReferences.h"
 #include <vector>
+
 #define PI 3.1415
+
 struct BasicMesh {
 	GLenum primitiveType{ 0 };
 	GLuint vaoId{ 0 };
@@ -32,12 +35,12 @@ struct BasicMesh {
 	virtual void DrawMesh()=0;
 };
 
-struct Cube :BasicMesh {
+struct Cube : BasicMesh {
 	void CreateMesh();
 	void DrawMesh();
 };
 
-struct Sphere :BasicMesh {
+struct Sphere : BasicMesh {
 	int sectorCount{ 36 }, stackCount{ 18 };
 	float radius{1.f};
 	void CreateMesh();
@@ -52,12 +55,20 @@ struct BasicDebugData {
 	float height{ 0.0f };
 };
 
+struct DebugMeshData {
+	std::vector<glm::vec3> vertices;
+	std::vector<unsigned short> indices;
+	glm::mat4 transform{ 1.0f };
+	glm::vec3 color{ 0.0f, 1.0f, 0.0f };
+};
+
 struct DebugCube :BasicMesh {
 	float lineWidth{ 2.0 };
 	void CreateMesh();
 	void DrawMesh();
 };
-struct DebugCircle :BasicMesh {
+
+struct DebugCircle : BasicMesh {
 	float radius{ 1.f };
 	void CreateMesh();
 	void DrawMesh();
@@ -92,17 +103,27 @@ struct DebugFrustum : BasicMesh {
 	void DrawMesh();
 };
 
+struct DebugMesh : BasicMesh {
+	float lineWidth{ 2.0f };
+	std::vector<glm::vec3> vertices;
+	std::vector<unsigned short> indices;
+	void CreateMesh();
+	void DrawMesh();
+};
+
 struct DebugVertex {
 	glm::vec3 pos;
 	//glm::vec4 color;
 };
-struct Line :BasicMesh {
+
+struct Line : BasicMesh {
 	float lineWidth{ 2.0 };
 	void CreateMesh();
 	void DrawMesh();
 	void SetPosition(glm::vec3 startPos, glm::vec3 endPos);
 	GLuint vbo;
 };
+
 struct DebugNavMesh : BasicMesh {
 	std::vector<DebugVertex> triVerts;
 	std::vector<DebugVertex> lineVerts;

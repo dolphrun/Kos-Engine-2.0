@@ -22,6 +22,7 @@
 #include "BoxColliderComponent.h"
 #include "CapsuleColliderComponent.h"
 #include "SphereColliderComponent.h"
+#include "MeshColliderComponent.h"
 #include "RigidbodyComponent.h"
 #include "ParticleComponent.h"
 #include "NavMeshComponent.h"
