@@ -497,6 +497,7 @@ void DebugRenderer::InitializeDebugRendererMeshes() {
 	debugCircle.CreateMesh();
 	debugCube.CreateMesh();
 	debugCapsule.CreateMesh();
+	debugMesh.CreateMesh();
 }
 void DebugRenderer::Render(const CameraData& camera, Shader& shader) {
 
@@ -639,10 +640,24 @@ void DebugRenderer::RenderDebugCapsules(const CameraData& camera, Shader& shader
 	}
 }
 
+void DebugRenderer::RenderDebugMeshes(const CameraData& camera, Shader& shader) {
+	for (size_t i = 0; i < basicDebugMeshes.size(); i++) {
+		const auto& data = basicDebugMeshes[i];
+		debugMesh.vertices = data.vertices;
+		debugMesh.indices = data.indices;
+		debugMesh.CreateMesh();
+		shader.SetTrans("model", data.transform);
+		shader.SetFloat("uShaderType", 2.1f);
+		shader.SetVec3("color", data.color);
+		debugMesh.DrawMesh();
+	}
+}
+
 void DebugRenderer::Clear() {
 	basicDebugCubes.clear();
 	basicDebugSpheres.clear();
 	basicDebugCapsules.clear();
+	basicDebugMeshes.clear();
 }
 
 void ParticleRenderer::InitializeParticleRendererMeshes()

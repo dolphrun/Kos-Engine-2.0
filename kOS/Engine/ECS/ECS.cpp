@@ -34,6 +34,7 @@ namespace ecs{
 		RegisterComponent<BoxColliderComponent>();
 		RegisterComponent<CapsuleColliderComponent>();
 		RegisterComponent<SphereColliderComponent>();
+		RegisterComponent<MeshColliderComponent>();
 		RegisterComponent<CubeRendererComponent>();
 		RegisterComponent<SphereRendererComponent>();
 		RegisterComponent<ButtonComponent>();
@@ -49,6 +50,7 @@ namespace ecs{
 		RegisterSystem<BoxColliderSystem, TransformComponent, BoxColliderComponent>(0);
 		RegisterSystem<CapsuleColliderSystem, TransformComponent, CapsuleColliderComponent>(0);
 		RegisterSystem<SphereColliderSystem, TransformComponent, SphereColliderComponent>(0);
+		RegisterSystem<MeshColliderSystem, TransformComponent, MeshColliderComponent>(0);
 		RegisterSystem<RigidbodySystem, TransformComponent, RigidbodyComponent>(0, RUNNING);
 		RegisterSystem<PhysicsSystem, TransformComponent, RigidbodyComponent>(0, RUNNING);
 
@@ -69,6 +71,7 @@ namespace ecs{
 		RegisterSystem<DebugBoxColliderRenderSystem, TransformComponent, BoxColliderComponent>(0);
 		RegisterSystem<DebugCapsuleColliderRenderSystem, TransformComponent, CapsuleColliderComponent>(0);
 		RegisterSystem<DebugSphereColliderRenderSystem, TransformComponent, SphereColliderComponent>(0);
+		RegisterSystem<DebugMeshColliderRenderSystem, TransformComponent, MeshColliderComponent>(0);
 		RegisterSystem<AudioListenerSystem, TransformComponent, AudioListenerComponent>(0);
 		RegisterSystem<AudioSystem, TransformComponent, AudioComponent>(0);
 		RegisterSystem<ParticleSystem, TransformComponent, ParticleComponent>(0);
