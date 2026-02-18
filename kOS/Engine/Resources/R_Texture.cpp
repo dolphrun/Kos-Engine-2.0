@@ -1,4 +1,5 @@
 #include "Config/pch.h"
+#include "Graphics/GraphicsManager.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include <STB_IMAGE/stb_image.h>
 #include "R_Texture.h"
@@ -38,6 +39,7 @@ void R_Texture::stbiLoad(const char* texturePath) {
 	//Load texture
 	if (!data) {
 		std::cout << "FAILED TO LOAD TEXURE";
+		texture = Textures::missingTexture.RetrieveTexture();
 	}
 	///std::cout << "Channel of [" << texName << "] is " << nrChannels << std::endl;
 	if (nrChannels == 3) {
@@ -63,7 +65,11 @@ void R_Texture::stbiLoad(const char* texturePath) {
 void R_Texture::LoadDSSTexture(const char* texturePath) {
 	FreeTexture();
 	gli::texture Texture = gli::load(texturePath);
-	if (Texture.empty())std::cout << "ERORR LOADING DSS";
+	if (Texture.empty()) {
+		//Use a generic texture...
+		texture = Textures::missingTexture.RetrieveTexture();
+		return;;
+	}
 
 	gli::gl GL(gli::gl::PROFILE_GL33);
 	gli::gl::format const Format = GL.translate(Texture.format(), Texture.swizzles());

@@ -31,6 +31,8 @@ enum FileType {
 class Textures {
 
 public:
+	static Textures defaultTexture;
+	static Textures missingTexture;
 	//Set texture
 	/************************************************************************/
 	/*!
@@ -47,6 +49,7 @@ public:
 	NIL
 	*/
 	/************************************************************************/
+	Textures() {}
 	Textures(const char* texturePath, std::string texName, FileType ft = WIC) : name{ texName }, texture{ 0 }{
 		switch (ft) {
 			case DSS:
@@ -122,9 +125,10 @@ public:
 
 	void LoadDSSTexture(const char* texturePath, std::string texName) {
 		this->name = texName;
-		FreeTexture();
+		//FreeTexture();
 		gli::texture Texture = gli::load(texturePath);
 		if (Texture.empty())std::cout << "ERORR LOADING DSS";
+
 
 		gli::gl GL(gli::gl::PROFILE_GL33);
 		gli::gl::format const Format = GL.translate(Texture.format(), Texture.swizzles());
