@@ -270,18 +270,24 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
             if (ImGui::IsKeyDown(ImGuiKey_W)) {
                 if (EditorCamera::editorCamera.orbitMode) EditorCamera::editorCamera.SwitchMode(false);
                 EditorCamera::editorCamera.position += sprintMultiplier * cameraSpeed * EditorCamera::editorCamera.direction;
+                EditorCamera::editorCamera.target = sprintMultiplier * cameraSpeed * EditorCamera::editorCamera.direction;
             }
             if (ImGui::IsKeyDown(ImGuiKey_S)) {
                 if (EditorCamera::editorCamera.orbitMode) EditorCamera::editorCamera.SwitchMode(false);
                 EditorCamera::editorCamera.position -= sprintMultiplier * cameraSpeed * EditorCamera::editorCamera.direction;
+                EditorCamera::editorCamera.target -= sprintMultiplier * cameraSpeed * EditorCamera::editorCamera.direction;
+
             }
             if (ImGui::IsKeyDown(ImGuiKey_A)) {
                 if (EditorCamera::editorCamera.orbitMode) EditorCamera::editorCamera.SwitchMode(false);
                 EditorCamera::editorCamera.position -= sprintMultiplier * cameraSpeed * glm::normalize(glm::cross(EditorCamera::editorCamera.direction, glm::vec3{ 0.0f, 1.0f, 0.0f }));
+                EditorCamera::editorCamera.target -= sprintMultiplier * cameraSpeed * glm::normalize(glm::cross(EditorCamera::editorCamera.direction, glm::vec3{ 0.0f, 1.0f, 0.0f }));
+
             }
             if (ImGui::IsKeyDown(ImGuiKey_D)) {
                 if (EditorCamera::editorCamera.orbitMode)EditorCamera::editorCamera.SwitchMode(false);
                 EditorCamera::editorCamera.position += sprintMultiplier * cameraSpeed * glm::normalize(glm::cross(EditorCamera::editorCamera.direction, glm::vec3{ 0.0f, 1.0f, 0.0f }));
+                EditorCamera::editorCamera.target += sprintMultiplier * cameraSpeed * glm::normalize(glm::cross(EditorCamera::editorCamera.direction, glm::vec3{ 0.0f, 1.0f, 0.0f }));
             }
             if (!firstMouseInput)
             {
@@ -320,11 +326,17 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
             if (transCom != NULL) {
                 // EditorCamera::editorCamera.position = transCom->LocalTransformation.position;
                 EditorCamera::editorCamera.target = transCom->WorldTransformation.position;
-                EditorCamera::editorCamera.r = glm::length(EditorCamera::editorCamera.position - EditorCamera::editorCamera.target);
-                EditorCamera::editorCamera.alpha = glm::asin((EditorCamera::editorCamera.position.y - EditorCamera::editorCamera.target.y) / EditorCamera::editorCamera.r);
-                EditorCamera::editorCamera.betta = std::atan2(EditorCamera::editorCamera.position.x - EditorCamera::editorCamera.target.x, EditorCamera::editorCamera.position.z - EditorCamera::editorCamera.target.z);
-                EditorCamera::editorCamera.SwitchMode(true);
-
+                //EditorCamera::editorCamera.r = glm::length(EditorCamera::editorCamera.position - EditorCamera::editorCamera.target);
+                //EditorCamera::editorCamera.alpha = glm::asin((EditorCamera::editorCamera.position.y - EditorCamera::editorCamera.target.y) / EditorCamera::editorCamera.r);
+                //EditorCamera::editorCamera.betta = std::atan2(EditorCamera::editorCamera.position.x - EditorCamera::editorCamera.target.x, EditorCamera::editorCamera.position.z - EditorCamera::editorCamera.target.z);
+                //EditorCamera::editorCamera.SwitchMode(true);
+                EditorCamera::editorCamera.r = 5.0f;
+                EditorCamera::editorCamera.targetDist = EditorCamera::editorCamera.minmaxTargetDist.x;
+                EditorCamera::editorCamera.alpha = 0.0f;
+                EditorCamera::editorCamera.betta = 0.0f;
+                EditorCamera::editorCamera.orbitMode = true;
+                EditorCamera::editorCamera.CalculateViewMtx();
+                EditorCamera::editorCamera.orbitMode = false;
                 // Recompute position from spherical coordinates
                 EditorCamera::editorCamera.position.x = EditorCamera::editorCamera.target.x + EditorCamera::editorCamera.r * glm::cos(EditorCamera::editorCamera.alpha) * glm::sin(EditorCamera::editorCamera.betta);
                 EditorCamera::editorCamera.position.y = EditorCamera::editorCamera.target.y + EditorCamera::editorCamera.r * glm::sin(EditorCamera::editorCamera.alpha);

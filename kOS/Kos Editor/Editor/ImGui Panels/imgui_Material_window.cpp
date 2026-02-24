@@ -67,7 +67,7 @@ void gui::ImGuiHandler::DrawMaterialWindow() {
             ImVec2(1, 1));           // UV bottom-right
 
 
-
+        //Display name instead
         materialData.ApplyFunction(DrawComponents{ materialData.Names() });
 
 

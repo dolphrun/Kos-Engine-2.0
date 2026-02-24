@@ -62,6 +62,8 @@ public:
     glm::mat4 CalculateViewMtx() override;
     enum class AxisView { PosX, NegX, PosY, NegY, PosZ, NegZ };
     void SnapToAxis(AxisView view, float distanceOverride = -1.0f);
+    float targetDist{25.f};
+    glm::vec2 minmaxTargetDist{ 5.f,50.f };
 };
     //class EditorCamera
     //{

@@ -49,6 +49,7 @@ void EditorCamera::SwitchMode(bool orbMode) {
         return;;
     }
     r = 5.0f;
+    targetDist = minmaxTargetDist.x;
     alpha = 0.0f;
     betta = 0.0f;
 }
@@ -86,6 +87,7 @@ void EditorCamera::onCursor(double xoffset, double yoffset) {
 }
 
 void EditorCamera::onScroll(double xoffset, double yoffset) {
+    if (targetDist <= minmaxTargetDist.x&&yoffset>0.f)return;;
     if (orbitMode) {
         r += yoffset > 0.0f ? -1.0f : 1.0f; // Zoom in or out
         if (r < 1.0f) r = 1.0f; // Clamp minimum distance
@@ -112,6 +114,8 @@ void EditorCamera::onScroll(double xoffset, double yoffset) {
 
     // Move along the forward direction
     float scrollAmount = (yoffset > 0.0f ? 1.0f : -1.0f);
+    targetDist += -scrollAmount;
+   // std::cout << targetDist << '\n';
     position += direction * scrollAmount;
 }
 glm::mat4 EditorCamera::CalculateViewMtx() {
@@ -171,8 +175,7 @@ void EditorCamera::SetTargetFront() {
     rotation.y = glm::degrees(atan2(direction.z, direction.x));
     rotation.x = glm::degrees(asin(direction.y));
     up = glm::normalize(rotation * glm::vec3(0.f, 1.f, 0.f));
-    float targetDistance = 25.f;
-    target = position + direction * targetDistance;
+    target = position + direction * targetDist;
 }
 //float EditorCamera::m_aspectRatio{};
 //int EditorCamera::m_windowWidth{};
