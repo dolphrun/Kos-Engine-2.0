@@ -255,4 +255,34 @@ std::future<void> AssetManager::Compilefile(const std::filesystem::path& filePat
     return std::async(std::launch::deferred, []() {});
 }
 
+void AssetManager::RenameFile(const std::filesystem::path& oldFile, const std::filesystem::path& newFile) {
+
+    std::error_code ec;
+
+    std::filesystem::rename(oldFile, newFile, ec);
+    if (ec)
+    {
+        LOGGING_ERROR("Failed to rename asset");
+        return;
+    }
+
+
+    std::filesystem::path oldMeta = oldFile;
+    oldMeta += ".meta";
+
+    std::filesystem::path newMeta = newFile;
+    newMeta += ".meta";
+
+    if (std::filesystem::exists(oldMeta))
+    {
+        std::filesystem::rename(oldMeta, newMeta, ec);
+        if (ec)
+        {
+            LOGGING_ERROR("Failed to rename file's .meta file, a new guid will be created");
+        }
+    }
+
+    LOGGING_INFO("Rename Successful");
+}
+
 

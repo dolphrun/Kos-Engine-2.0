@@ -33,6 +33,17 @@ namespace gui {
 	static float padding = 20.f;
 	static float thumbnail = 100.f;
 
+	int InputTextCallback(ImGuiInputTextCallbackData* data)
+	{
+		if (data->EventFlag == ImGuiInputTextFlags_CallbackResize)
+		{
+			std::string* str = static_cast<std::string*>(data->UserData);
+			str->resize(data->BufTextLen);
+			data->Buf = str->data();
+		}
+		return 0;
+	}
+
 	void MoveFolder(const std::filesystem::path& newDirectory) {
 		if (ImGui::BeginDragDropTarget())
 		{
@@ -307,10 +318,12 @@ namespace gui {
 					//create context window
 					static bool rename = false;
 					static std::filesystem::path selectedfile{};
+					static std::string renameBuffer;
 					if (ImGui::BeginPopupContextItem()) {
 						if (ImGui::MenuItem("Rename")) {
 							rename = true;
 							selectedfile = directoryString;
+							renameBuffer = selectedfile.stem().string();
 						}
 						if (ImGui::MenuItem("Delete")) {
 							std::filesystem::remove_all(directoryPath.path());
@@ -379,7 +392,14 @@ namespace gui {
 
 
 					if (rename && (selectedfile.string() == directoryString)) {
-						if (ImGui::InputText("##rename", m_charBuffer, IM_ARRAYSIZE(m_charBuffer), ImGuiInputTextFlags_EnterReturnsTrue)) {
+						if (ImGui::InputText(
+							"##rename",
+							renameBuffer.data(),
+							renameBuffer.capacity() + 1,
+							ImGuiInputTextFlags_EnterReturnsTrue | ImGuiInputTextFlags_CallbackResize,
+							InputTextCallback,
+							&renameBuffer))
+						{
 							//TODO check if file has extension, keep the extension
 							std::string extension{};
 							if (!directoryPath.is_directory()) {
@@ -388,16 +408,17 @@ namespace gui {
 								ImGui::Text(extension.c_str());
 							}
 
-							std::filesystem::path path = std::filesystem::current_path();
-							std::string newpath = path.string() + "\\" + currentDirectory.string() + "\\" + m_charBuffer + extension;
-							std::string oldpath = path.string() + "\\" + currentDirectory.string() + "\\" + directoryString;
+							std::filesystem::path base = std::filesystem::current_path() / currentDirectory;
+
+							std::filesystem::path oldPath = base / directoryString;
+							std::filesystem::path newPath = base / (renameBuffer + oldPath.extension().string());
 
 
-							LOGGING_INFO("RENAME WIP");
-							//assetmanager->m_RenameAsset(oldpath, newpath);
+							m_assetManager.RenameFile(oldPath.string(), newPath.string());
 
 							rename = false;
 							selectedfile.clear();
+							renameBuffer.clear();
 
 							//TODO edge cases,
 							//Update assets if any of them are renamed
