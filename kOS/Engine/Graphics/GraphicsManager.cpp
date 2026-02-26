@@ -73,8 +73,8 @@ void GraphicsManager::gm_Initialize(float width, float height) {
 	FilmGrain::currentShader = &shaderManager.engineShaders.find("FilmGrainShader")->second;
 	ChromaticAberration::currentShader = &shaderManager.engineShaders.find("ChromaticAbberrationShader")->second;
 	//Load default texture resource
-	Textures::defaultTexture.LoadDSSTexture("Resource/Default.dds", "Default");
-	Textures::missingTexture.LoadDSSTexture("Resource/Missing.dds", "Missing");
+	//Textures::defaultTexture.LoadDSSTexture("Resource/Default.dds", "Default");
+	//Textures::missingTexture.LoadDSSTexture("Resource/Missing.dds", "Missing");
 }
 
 void GraphicsManager::gm_Update()
