@@ -19,6 +19,8 @@ public:
 
     std::future<void> Compilefile(const std::filesystem::path& filepath);
 
+    void RenameFile(const std::filesystem::path& oldFile, const std::filesystem::path& newFile);
+
     inline std::string GetTypefromExtension(std::string extension) {
         if (m_extensionRegistry.find(extension) == m_extensionRegistry.end()) {
             throw std::runtime_error("Unknown extension: " + extension);
@@ -28,7 +30,7 @@ public:
         return m_extensionRegistry.at(extension);
     }
 
-    inline utility::GUID GetGUIDfromFilePath(std::filesystem::path filepath) {
+    inline utility::GUID GetGUIDfromFilePath(const std::filesystem::path& filepath) {
 
         utility::GUID GUID;
         try {
