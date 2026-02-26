@@ -125,7 +125,7 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 				//EVENTUALLY MAKE IT DO ITS OWN DEPTH BUFFER CREATION
 				//Get DCM, make a faux depth map renderer
 				//Get all objects
-				m_graphicsManager.gm_FillDepthCube(CameraData{}, 0, m_ecs.GetComponent<ecs::TransformComponent>(lcComp)->LocalTransformation.position, md);
+				m_graphicsManager.gm_FillDepthCube(CameraData{}, 0, m_ecs.GetComponent<ecs::TransformComponent>(lcComp)->WorldTransformation.position, md);
 
 				//Asset creation
 				//Generate GUID
@@ -150,6 +150,34 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 			for (int i = 0; i < addedTags.size(); i++)
 			{
 				//std::cout << addedTags[i] << '\n';
+			}
+		}
+
+		if (ImGui::Button("Save DCM")) {
+			auto sceneData = m_ecs.GetSceneData(m_ecs.GetSceneByEntityID(m_clickedEntityId));
+			for (auto& lcComp : sceneData.sceneIDs)
+			{
+				if (!m_ecs.HasComponent<LightComponent>(lcComp))continue;;
+				//std::cout << lcComp << "<- LIGHT ENTITY\n";
+				//std::cout << "INDEX: " << i << '\n';
+				//Add shadow setting later as well
+				//Asset creation
+				//Generate GUID
+				// Attach name
+				//KEEP THIS
+				//Save ALL DCMS
+				std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/DepthMap/" + std::to_string(lcComp) + ".dcm";
+				m_graphicsManager.lightRenderer.dcm[0].SaveDepthCubeMap(filepath);
+
+
+				//Add and load asset and assign it to light component
+				//Need to change entity itself
+				//std::cout << lcComp << '\n';
+				m_ecs.GetComponent<ecs::LightComponent>(lcComp)->depthMapGUID.SetFromString(m_assetManager.RegisterAsset(filepath).GetToString());
+				//std::cout << "Depth map GUID " << m_ecs.GetComponent<ecs::LightComponent>(lcComp)->depthMapGUID.GetToString();
+				m_assetManager.Compilefile(filepath);
+
+				//Retrieve GUID from file path
 			}
 		}
 	}

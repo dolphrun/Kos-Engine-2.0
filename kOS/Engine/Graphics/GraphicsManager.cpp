@@ -130,6 +130,7 @@ void GraphicsManager::gm_Clear()
 	skinnedMeshRenderer.Clear();
 	particleRenderer.Clear();
 	videoRenderer.Clear();
+	//basicDebugMeshes.Clear();
 	//editorCameraActive = false;
 }
 
