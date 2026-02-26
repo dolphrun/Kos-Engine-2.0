@@ -154,7 +154,7 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 		}
 
 		if (ImGui::Button("Save DCM")) {
-			auto sceneData = m_ecs.GetSceneData(m_ecs.GetSceneByEntityID(m_clickedEntityId));
+			auto sceneData = m_ecs.GetSceneData(m_activeScene);
 			for (auto& lcComp : sceneData.sceneIDs)
 			{
 				if (!m_ecs.HasComponent<LightComponent>(lcComp))continue;;
