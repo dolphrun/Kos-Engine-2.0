@@ -264,7 +264,7 @@ namespace gui {
 
 								m_prefabSceneMode = true;
 
-								m_clickedEntityId = -1;
+								m_lastClickedEntityId = -1;
 							}
 						}
 						else if (directoryPath.path().filename().extension().string() == ".json") {
@@ -281,7 +281,7 @@ namespace gui {
 									m_savedSceneState[directoryPath.path().filename().string()] = true;
 								}
 
-								m_clickedEntityId = -1;
+								m_lastClickedEntityId = -1;
 
 							}
 						}

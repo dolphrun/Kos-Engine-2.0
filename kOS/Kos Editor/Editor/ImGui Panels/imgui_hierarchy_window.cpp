@@ -30,7 +30,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 namespace gui
 {
-
+    
     unsigned int ImGuiHandler::DrawHierachyWindow()
     {
         std::function<void(EntityID)> updateChildScene = [&](EntityID parent)
@@ -99,7 +99,7 @@ namespace gui
                             m_ecs.SetParent(std::move(id), newEntityID);
                         }
 
-                        m_clickedEntityId = newEntityID;
+                        m_lastClickedEntityId = newEntityID;
 
                         m_ecs.GetComponent<ecs::NameComponent>(newEntityID)->entityName = std::string(m_charBuffer);
 
@@ -153,45 +153,8 @@ namespace gui
                         }
 
                         m_prefabSceneMode = false;
-                        m_clickedEntityId = -1;
+                        m_lastClickedEntityId = -1;
 
-                        // Instead of Updating all the time, Differences needs to be checked.
-                        // Prompt when leaving prefab mode,
-                        /*std::map<EntityID, std::vector<std::string>> allDiffList;
-                        const auto &prefabscene = m_ecs.sceneMap.find(prefabName);
-                        for (const auto &id : m_ecs.GetEntitySignatureData())
-                        {
-                            ecs::NameComponent *nc = m_ecs.GetComponent<ecs::NameComponent>(id.first);
-                            if (nc->isPrefab && (nc->prefabName == prefabName))
-                            {
-                                std::vector<std::string> diffList;
-                                m_prefabManager.RefreshComponentDifferenceList(diffList, id.first);
-                                if (diffList.size())
-                                    allDiffList.emplace(id.first, diffList);
-                            }
-                        }
-
-                        for (auto &[id, diffList] : allDiffList)
-                        {
-                            for (const auto &compName : diffList)
-                            {
-                                if (compName == ecs::NameComponent::classname() || compName == ecs::TransformComponent::classname())
-                                    continue;
-                                m_prefabManager.RevertToPrefab_Component(id, compName, prefabName);
-                            }
-                        }*/
-                        // m_ecs.DeleteEntity(duppedID); // Dupping Somehow causes us to update all the prefab scenes?
-                        // duppedID = -1;
-
-                        // for (const auto& id : m_ecs.GetEntitySignatureData()) {
-                        //     ecs::NameComponent* nc = m_ecs.GetComponent<ecs::NameComponent>(id.first);
-                        //     if (nc->isPrefab && (nc->prefabName == prefabName)) {
-                        //         for (const auto& compName : diffList) {
-                        //             if (compName == ecs::NameComponent::classname()) continue;
-                        //             prefab::RevertToPrefab_Component(id.first, compName, prefabName);
-                        //         }
-                        //     }
-                        // }
                     }
                 }
 
@@ -231,7 +194,7 @@ namespace gui
                     if ((sceneName != m_activeScene) && (sceneentity.isActive == true) && ImGui::MenuItem("Unload Scene"))
                     {
                         m_sceneManager.SetSceneActive(sceneName, false);
-                        m_clickedEntityId = -1;
+                        m_lastClickedEntityId = -1;
 
                         if (!m_prefabSceneMode)
                         {
@@ -333,9 +296,9 @@ namespace gui
                     {
 
                         const auto& entityMap = m_ecs.GetEntitySignatureData();
-                        if (entityMap.find(m_clickedEntityId) == entityMap.end())
+                        if (entityMap.find(m_lastClickedEntityId) == entityMap.end())
                         {
-                            m_clickedEntityId = entity;
+                            m_lastClickedEntityId = entity;
                             m_isUi = false;
                         }
 
@@ -361,7 +324,7 @@ namespace gui
                             verticalLineEnd.y = childPos.y + halfLineHeight;
                             hasRootEntities = true;
 
-                            if (DrawEntityNode(entity) == false)
+                            if (DrawEntityNode(entity, sceneentity.sceneIDs) == false)
                             {
                                 // delete is called
                                 break;
@@ -436,10 +399,10 @@ namespace gui
         }
 
         ImGui::End();
-        return m_clickedEntityId;
+        return m_lastClickedEntityId;
     }
 
-    bool ImGuiHandler::DrawEntityNode(ecs::EntityID id)
+    bool ImGuiHandler::DrawEntityNode(ecs::EntityID id, const std::vector<EntityID>& entities)
     {
 
         std::function<void(EntityID)> updateChildScene = [&](EntityID parent)
@@ -472,7 +435,9 @@ namespace gui
         if (transCom == NULL)
             return false;
 
-        ImGuiTreeNodeFlags flag = ((static_cast<unsigned int>(m_clickedEntityId) == id) ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow /*| ImGuiTreeNodeFlags_DefaultOpen*/;
+        bool isSelected = m_selectedEntities.find(id) != m_selectedEntities.end();
+        ImGuiTreeNodeFlags flag = (isSelected ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow;
+
         if (transCom->m_childID.size() <= 0)
         {
             flag |= ImGuiTreeNodeFlags_Leaf;
@@ -529,17 +494,68 @@ namespace gui
             ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.3f, 0.3f, 0.3f, 1.0f));
         }
         bool open = ImGui::TreeNodeEx(std::to_string(id).c_str(), flag, nc->entityName.c_str());
+        if (ImGui::IsItemHovered() && ImGui::IsMouseReleased(ImGuiMouseButton_Left))
+        {
+            ImGuiIO& io = ImGui::GetIO();
+
+            bool rightClickOnSelected = ImGui::IsItemClicked(ImGuiMouseButton_Right) && isSelected;
+
+            if (!rightClickOnSelected)
+            {
+                if (io.KeyCtrl)
+                {
+                    // CTRL-Click: Toggle selection
+                    if (isSelected)
+                        m_selectedEntities.erase(id);
+                    else
+                        m_selectedEntities.insert(id);
+                }
+                else if (io.KeyShift)
+                {
+                    // SHIFT-Click: Range Selection
+                    int firstIndex = -1;
+                    int lastIndex = -1;
+                    for (int n{}; n < entities.size(); ++n) {
+                        auto e = entities[n];
+
+                        if ((firstIndex == -1) && (m_lastClickedEntityId == e || id == e)) {
+                            firstIndex = n;
+                            continue;
+                        }
+                        
+                        if ((firstIndex != -1) && (m_lastClickedEntityId == e || id == e)) {
+                            lastIndex = n;
+                            break;
+
+                        }
+
+                    }
+
+                    if (firstIndex != -1 && lastIndex != -1) {
+
+                        for (int n{firstIndex}; n <= lastIndex; ++n) {
+                        
+                            m_selectedEntities.insert(entities[n]);
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    // Normal Click: Clear everything else and select this
+                    m_selectedEntities.clear();
+                    m_selectedEntities.insert(id);
+                }
+            }
+
+            m_lastClickedEntityId = id; // Update the focus target
+            m_isUi = false;
+        }
         if (nc->isPrefab || nc->hide)
             ImGui::PopStyleColor();
 
-        if (ImGui::IsItemDeactivated() &&
-            ImGui::IsItemHovered())
-        {
-            m_clickedEntityId = id;
-            m_isUi = false;
-        }
-
-        if (ImGui::GetIO().KeysDown[ImGuiKey::ImGuiKey_F] && m_clickedEntityId == id)
+        if (ImGui::GetIO().KeysDown[ImGuiKey::ImGuiKey_F] && m_lastClickedEntityId == id)
         {
             // EditorCamera::editorCamera.position = transCom->LocalTransformation.position;
             EditorCamera::editorCamera.target = transCom->WorldTransformation.position;
@@ -565,10 +581,13 @@ namespace gui
             {
                 if (ImGui::MenuItem("Delete Entity"))
                 {
-                    m_ecs.DeleteEntity(id);
-                    m_commandHistory.AddCommand<CommandHistory::DeleteGameObject>(id, m_ecs.GetSceneByEntityID(id), m_ecs, &m_commandHistory);
+                    for (auto e : m_selectedEntities) {
+                        m_ecs.DeleteEntity(e);
+                        m_commandHistory.AddCommand<CommandHistory::DeleteGameObject>(e, m_ecs.GetSceneByEntityID(e), m_ecs, &m_commandHistory);
+                    }
 
-                    m_clickedEntityId = -1;
+                    m_selectedEntities.clear();
+                    m_lastClickedEntityId = -1;
                     ImGui::EndPopup();
                     if (open)
                         ImGui::TreePop();
@@ -578,23 +597,26 @@ namespace gui
 
             if (ImGui::MenuItem("Duplicate Entity"))
             {
-                ecs::EntityID newID = m_ecs.DuplicateEntity(id);
-                m_commandHistory.AddCommand<CommandHistory::AddGameObject>(newID, m_activeScene);
+                for (auto e : m_selectedEntities) {
+                    ecs::EntityID newID = m_ecs.DuplicateEntity(e);
+                    m_commandHistory.AddCommand<CommandHistory::AddGameObject>(newID, m_activeScene);
 
-                if (m_prefabSceneMode)
-                {
-                    const auto &parent = m_ecs.GetParent(id);
-                    // if id does not have parent, make it the parent
-                    if (!parent.has_value())
+                    if (m_prefabSceneMode)
                     {
-                        m_ecs.SetParent(id, newID);
-                    }
-                    else
-                    {
-                        m_ecs.SetParent(parent.value(), newID);
+                        const auto& parent = m_ecs.GetParent(e);
+                        // if id does not have parent, make it the parent
+                        if (!parent.has_value())
+                        {
+                            m_ecs.SetParent(e, newID);
+                        }
+                        else
+                        {
+                            m_ecs.SetParent(parent.value(), newID);
+                        }
                     }
                 }
 
+                m_selectedEntities.clear();
                 ImGui::EndPopup();
                 if (open)
                     ImGui::TreePop();
@@ -696,7 +718,7 @@ namespace gui
                     verticalLineEnd.y = childPos.y + halfLineHeight;
 
                     // Draw the actual child
-                    if (!DrawEntityNode(ids))
+                    if (!DrawEntityNode(ids, entities))
                     {
                         ImGui::TreePop();
                         return false;

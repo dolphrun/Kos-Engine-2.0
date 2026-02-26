@@ -80,7 +80,7 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 			//PointLightData* pld;
 			int i = 0;
 
-			auto sceneData = m_ecs.GetSceneData(m_ecs.GetSceneByEntityID(m_clickedEntityId));
+			auto sceneData = m_ecs.GetSceneData(m_ecs.GetSceneByEntityID(m_lastClickedEntityId));
 			//Get all mesh data with tags
 			std::vector<MeshData>md;
 			for (auto& go : sceneData.sceneIDs)

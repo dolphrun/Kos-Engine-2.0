@@ -135,11 +135,11 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
 
             //std::cout << "Clicked pixerl val is " << --pixelVal << '\n';
             --pixelVal;
-            m_clickedEntityId = pixelVal >= 0.f ? static_cast<int>(pixelVal) : m_clickedEntityId;
+            m_lastClickedEntityId = pixelVal >= 0.f ? static_cast<int>(pixelVal) : m_lastClickedEntityId;
             //std::cout << "PixelVal is " << pixelVal << '\n';
             if (m_ecs.HasComponent<ecs::CanvasRendererComponent>(static_cast<EntityID>(pixelVal))
-                || (m_ecs.GetParent(m_clickedEntityId).has_value() &&
-                    m_ecs.HasComponent<ecs::CanvasRendererComponent>(m_ecs.GetParent(m_clickedEntityId).value()))) {
+                || (m_ecs.GetParent(m_lastClickedEntityId).has_value() &&
+                    m_ecs.HasComponent<ecs::CanvasRendererComponent>(m_ecs.GetParent(m_lastClickedEntityId).value()))) {
                 std::cout << "IS UI\n";
                 m_isUi = true;
             }
@@ -316,7 +316,7 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
 
         if (ImGui::GetIO().KeysDown[ImGuiKey::ImGuiKey_F])
         {
-            ecs::TransformComponent* transCom = m_ecs.GetComponent<ecs::TransformComponent>(m_clickedEntityId);
+            ecs::TransformComponent* transCom = m_ecs.GetComponent<ecs::TransformComponent>(m_lastClickedEntityId);
             if (transCom != NULL) {
                 // EditorCamera::editorCamera.position = transCom->LocalTransformation.position;
                 EditorCamera::editorCamera.target = transCom->WorldTransformation.position;
@@ -370,8 +370,8 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
         static unsigned int lastEntity{};
 
         // Clean up behaviours when switching entities
-        if (static_cast<int>(lastEntity) != m_clickedEntityId) {
-            lastEntity = m_clickedEntityId;
+        if (static_cast<int>(lastEntity) != m_lastClickedEntityId) {
+            lastEntity = m_lastClickedEntityId;
             m_collisionSetterMode = false;
         }
 
@@ -412,19 +412,19 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
 
         //delete entity
         if (ImGui::IsKeyPressed(ImGuiKey_Delete)) {
-            if (m_clickedEntityId >= 0) {
-                m_ecs.DeleteEntity(m_clickedEntityId);
-                m_commandHistory.AddCommand<CommandHistory::DeleteGameObject>(m_clickedEntityId, m_ecs.GetSceneByEntityID(m_clickedEntityId), m_ecs, &m_commandHistory);
-                m_clickedEntityId = -1;
+            if (m_lastClickedEntityId >= 0) {
+                m_ecs.DeleteEntity(m_lastClickedEntityId);
+                m_commandHistory.AddCommand<CommandHistory::DeleteGameObject>(m_lastClickedEntityId, m_ecs.GetSceneByEntityID(m_lastClickedEntityId), m_ecs, &m_commandHistory);
+                m_lastClickedEntityId = -1;
             }
         }
 
         //Duplicate Entity
         if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_D)) {
-            if (m_clickedEntityId >= 0 && !m_prefabSceneMode) {
-                ecs::EntityID newID = m_ecs.DuplicateEntity(m_clickedEntityId);
+            if (m_lastClickedEntityId >= 0 && !m_prefabSceneMode) {
+                ecs::EntityID newID = m_ecs.DuplicateEntity(m_lastClickedEntityId);
                 m_commandHistory.AddCommand<CommandHistory::AddGameObject>(newID, m_activeScene);
-                m_clickedEntityId = newID;
+                m_lastClickedEntityId = newID;
             }
         }
 

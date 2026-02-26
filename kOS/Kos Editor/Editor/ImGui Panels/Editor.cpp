@@ -198,8 +198,8 @@ namespace gui {
 			}
 
 			//check if selected entityid is loaded
-			if (m_ecs.GetEntitySignatureData().find(m_clickedEntityId) == m_ecs.GetEntitySignatureData().end()) {
-				m_clickedEntityId = -1;
+			if (m_ecs.GetEntitySignatureData().find(m_lastClickedEntityId) == m_ecs.GetEntitySignatureData().end()) {
+				m_lastClickedEntityId = -1;
 			}
 
 			ImVec2 windowSize = ImGui::GetIO().DisplaySize;
@@ -329,7 +329,7 @@ namespace gui {
 				m_ecs.sceneMap.find(path.filename().string())->second.isActive = false;
 				m_savedSceneState[path.filename().string()] = true;
 			}
-			m_clickedEntityId = -1;
+			m_lastClickedEntityId = -1;
 		}
 		else {
 			LOGGING_POPUP("No Scene loaded");

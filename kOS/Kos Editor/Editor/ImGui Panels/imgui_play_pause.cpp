@@ -74,7 +74,7 @@ namespace gui {
                     //TODO load back scene
 
                     m_sceneManager.ImmediateReloadScene();
-                    m_clickedEntityId = -1;
+                    m_lastClickedEntityId = -1;
                     //set back all scene to its active/inactive state
                     for (auto& scene : m_ecs.sceneMap) {
                         const auto& saveState = saveStateScene.find(scene.first);

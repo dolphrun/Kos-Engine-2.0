@@ -12,8 +12,8 @@ namespace gui {
     const float* snapVal;
     void ImGuiHandler::DrawGizmo(float renderPosX, float renderPosY, float renderWidth, float renderHeight)
     {
-        ecs::TransformComponent* transComp = m_ecs.GetComponent<ecs::TransformComponent>(m_clickedEntityId);
-        if (m_clickedEntityId < 0 || !transComp) return;
+        ecs::TransformComponent* transComp = m_ecs.GetComponent<ecs::TransformComponent>(m_lastClickedEntityId);
+        if (m_lastClickedEntityId < 0 || !transComp) return;
 
         ImGuizmo::SetDrawlist();
         ImGuizmo::SetRect(renderPosX, renderPosY, renderWidth, renderHeight);

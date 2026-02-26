@@ -184,7 +184,7 @@ namespace gui {
         void DrawComponentWindow();
         void DrawInputWindow();
         unsigned int DrawHierachyWindow();
-        bool DrawEntityNode(ecs::EntityID entity);
+        bool DrawEntityNode(ecs::EntityID entity, const std::vector<EntityID>& entities);
         void DrawLogsWindow();
         void DrawPlayPauseBar();
         void DrawRenderScreenWindow(unsigned int windowWidth, unsigned int windowHeight);
@@ -227,7 +227,8 @@ namespace gui {
 
         std::unordered_map<std::string, std::shared_ptr<IEditorActionInvoker>> componentDrawers;
 
-        int m_clickedEntityId{ -1 };
+        int m_lastClickedEntityId{ -1 };
+        std::unordered_set<EntityID> m_selectedEntities;
         bool m_isUi{ false };
 
         std::string m_activeScene{};

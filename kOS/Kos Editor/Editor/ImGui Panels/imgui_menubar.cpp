@@ -93,7 +93,7 @@ void gui::ImGuiHandler::DrawMainMenuBar() {
                         m_sceneManager.ClearAllScene();
                         m_sceneManager.LoadScene(scene);
                         m_activeScene = std::string(str1) + ".json";
-                        m_clickedEntityId = -1;
+                        m_lastClickedEntityId = -1;
                     }
                     else {
                         LOGGING_ERROR("Fail to create scene");
