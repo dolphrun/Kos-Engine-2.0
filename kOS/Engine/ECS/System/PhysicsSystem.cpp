@@ -27,7 +27,9 @@ namespace ecs {
 
             if (rb->isKinematic) { actor->setKinematicTarget(pxTrans); }
             else { 
-                actor->setGlobalPose(pxTrans); 
+                actor->setGlobalPose(pxTrans);
+                actor->setLinearVelocity(PxVec3{ rb->velocity.x, rb->velocity.y, rb->velocity.z });
+                actor->setAngularVelocity(PxVec3{ rb->angularVelocity.x, rb->angularVelocity.y, rb->angularVelocity.z });
             }
         }
 
