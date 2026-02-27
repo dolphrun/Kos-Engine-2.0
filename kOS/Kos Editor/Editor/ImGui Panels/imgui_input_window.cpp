@@ -28,7 +28,7 @@ void gui::ImGuiHandler::DrawInputWindow() {
 	bool open = true;
 	
 	if (ImGui::Begin("Inputs", &open)) {
-		std::string clickedID = "Clicked ID: (" + std::to_string(m_clickedEntityId) + ")";
+		std::string clickedID = "Clicked ID: (" + std::to_string(m_lastClickedEntityId) + ")";
 		ImGui::Text(clickedID.c_str());
 
 		// In game mouse position

@@ -144,6 +144,7 @@ public:
 
 	utility::GUID fireDashPrefab;
 	utility::GUID lightningDashPrefab;
+	utility::GUID acidShieldPrefab;
 
 	// BACKEND PLAYER DETAILS
 	float playerRotationX = 0.f, playerRotationY = 0.f;
@@ -173,6 +174,11 @@ public:
 	float currentReloadTimer = 0.0f;
 
 	bool autoReload = true;
+
+	//Acid Shield Pref
+	float acidShieldCost = 10.f; 
+	float acidShieldCooldown = 6.f; 
+	float acidCurrShieldCooldown = 0.f;
 
 	inline int GetMaxBulletsForCurrentWeapon() const {
 		switch (playerPowerupHeld) {
@@ -279,7 +285,7 @@ public:
 	glm::vec3 GetPlayerRightDirection();
 
 	REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
-		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, acidPrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab,
+		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, acidPrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab,
 		gunSfxGUID_1,gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningDashSfxGUID, lightningGunSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject);
 };
 
@@ -399,6 +405,13 @@ inline void PlayerManagerScript::Update() {
 
 	if (acidCurrMovementCooldown >= 0.f) {
 		acidCurrMovementCooldown -= ecsPtr->m_GetDeltaTime();
+	}
+
+	if (acidCurrShieldCooldown > 0.f) { 
+		acidCurrShieldCooldown -= ecsPtr->m_GetDeltaTime();    
+		if (acidCurrShieldCooldown < 0.f){
+			acidCurrShieldCooldown = 0.f;
+		}	
 	}
 
 	if (lightningCurrMovementCooldown >= 0.f) {
@@ -1314,16 +1327,32 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			}
 			// ADD SFX
 		}
-		else if (playerPowerupHeld == Powerup::ACID && acidCurrMovementCooldown <= 0.f) {
+		
+		//Acid SHield
+		else if (playerPowerupHeld == Powerup::ACID && acidCurrShieldCooldown <= 0.f) {
+			if (currMana < acidShieldCost) return;
 
+			std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+			ecs::EntityID acidShieldID = DuplicatePrefabIntoScene<R_Scene>(currentScene, acidShieldPrefab);
 
-			physicsPtr->AddForce(playerRigidbody->actor, GetPlayerFrontDirection() * 25.f, ForceMode::Impulse);
+			ecsPtr->SetParent(entity, acidShieldID, false);
 
-			currMana -= acidMovementCost;
-			acidCurrMovementCooldown = acidMovementCooldown;
+			if (auto* shieldTf = ecsPtr->GetComponent<TransformComponent>(acidShieldID)) {
+				shieldTf->LocalTransformation.position = glm::vec3(0.f, 0.f, 0.f);
+			}
+
+			currMana -= acidShieldCost;
+			acidCurrShieldCooldown = acidShieldCooldown;
+
+			//physicsPtr->AddForce(playerRigidbody->actor, GetPlayerFrontDirection() * 25.f, ForceMode::Impulse);
+
+			//currMana -= acidMovementCost;
+			//acidCurrMovementCooldown = acidMovementCooldown;
 
 			// ADD SFX
 		}
+
+
 		else if (playerPowerupHeld == Powerup::LIGHTNING && lightningCurrMovementCooldown <= 0.f) {
 
 			glm::vec3 force = Input->GetVertical() * GetPlayerFrontDirection() + Input->GetHorizontal() * GetPlayerRightDirection();

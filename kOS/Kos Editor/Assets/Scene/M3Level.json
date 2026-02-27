@@ -10538,6 +10538,7 @@
                     "lightningPrefab": "ea36b838-cef9-7c8c-584a-29654652024a",
                     "fireDashPrefab": "2c08aaf0-6347-63db-2c50-728bcb1fff62",
                     "lightningDashPrefab": "7d805a6f-3abc-f50f-1cf6-dcbf5d720904",
+                    "acidShieldPrefab": "3f7ec429-acba-7feb-15be-e8c9f720820a",
                     "gunSfxGUID_1": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
                     "gunReloadSfxGUID": "c93d030f-e7bf-2ee7-0425-c1f5f04d6483",
                     "fireSlashSfxGUID": "690a4f94-6928-a1a0-d76c-2e8f12929489",
@@ -13398,7 +13399,7 @@
             "hide": false
         },
         "PowerupManagerScript": {
-            "powerupType": "LIGHTNING"
+            "powerupType": "ACID"
         },
         "TransformComponent": {
             "WorldTransformation": {

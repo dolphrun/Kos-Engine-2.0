@@ -12,6 +12,7 @@
 *.iobj
 *.ipdb
 *.ini
+*.set
 .vs
 .tmp
 .github

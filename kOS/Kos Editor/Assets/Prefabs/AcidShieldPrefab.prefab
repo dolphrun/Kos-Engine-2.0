@@ -1,0 +1,99 @@
+[
+    {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
+        "entityGUID": "b2254355-65bd-aec6-a4ce-fa149dd6e93e",
+        "AcidShield": {
+            "shieldDuration": 3.0,
+            "shieldDamage": 5,
+            "dotTickRate": 1.0,
+            "slowMultiplier": 0.6000000238418579,
+            "enemyDeathSfxGUID_1": "00000000-0000-0000-0000-000000000000",
+            "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
+            "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000"
+        },
+        "NameComponent": {
+            "entityName": "AcidShieldPrefab",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "AcidShieldPrefab.prefab",
+            "hide": false
+        },
+        "RigidbodyComponent": {
+            "mass": 1.0,
+            "drag": 0.0,
+            "angularDrag": 0.05000000074505806,
+            "useGravity": false,
+            "isKinematic": false,
+            "interpolation": 0,
+            "collisionDetection": 0,
+            "constraints": 0,
+            "speed": 0.0,
+            "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "angularVelocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        "SphereColliderComponent": {
+            "isTrigger": true,
+            "sphere": {
+                "center": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "radius": 4.800000190734863
+            }
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        }
+    }
+]

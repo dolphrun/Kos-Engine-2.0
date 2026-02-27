@@ -455,6 +455,7 @@ void CustomStyleProfile(ImGuiStyle* dst = NULL) {
             ImGui::EndChild();
             ImGui::EndTabItem();
         }
+        //Beign tab item for camera
         ImGui::EndTabBar();
     }
 }

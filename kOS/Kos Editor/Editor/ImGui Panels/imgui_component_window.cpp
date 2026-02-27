@@ -35,9 +35,9 @@ void gui::ImGuiHandler::DrawComponentWindow()
     if (ImGui::Begin("Component Window", &windowOpen)) {
         //Add Component Window
 
-        if (m_ecs.GetEntitySignatureData().size() > 0 && m_clickedEntityId >= 0) {
+        if (m_ecs.GetEntitySignatureData().size() > 0 && m_lastClickedEntityId >= 0) {
 
-            ecs::EntityID entityID = m_clickedEntityId;
+            ecs::EntityID entityID = m_lastClickedEntityId;
             ecs::ComponentSignature EntitySignature = m_ecs.GetEntitySignature(entityID);
 
 
@@ -204,7 +204,7 @@ void gui::ImGuiHandler::DrawComponentWindow()
                                 // Overwrite All
                                 if (ImGui::Button("Overwrite All Components", { ImGui::GetContentRegionAvail().x, 0 })) {
                                     try {
-                                        m_prefabManager.OverwriteScenePrefab(m_clickedEntityId);
+                                        m_prefabManager.OverwriteScenePrefab(m_lastClickedEntityId);
                                         m_prefabManager.UpdateAllPrefab(nc->prefabName);
                                     }
                                     catch (...) {

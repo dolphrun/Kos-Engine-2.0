@@ -20,6 +20,7 @@ class Resource{
 public:
 	Resource() = delete;
 	Resource(utility::GUID GUID, std::filesystem::path filepath):m_GUID(GUID), m_filePath(filepath) {}
+	Resource(std::filesystem::path filepath): m_filePath(filepath) {}
 
 	virtual ~Resource() noexcept = default;
 

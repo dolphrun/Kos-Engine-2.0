@@ -39,7 +39,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Audio/AudioManager.h"
 #include "Pathfinding/NavMesh.h"
 #include "Editor/CommandHistory.h"
-
 namespace gui {
     
 
@@ -185,7 +184,7 @@ namespace gui {
         void DrawComponentWindow();
         void DrawInputWindow();
         unsigned int DrawHierachyWindow();
-        bool DrawEntityNode(ecs::EntityID entity);
+        bool DrawEntityNode(ecs::EntityID entity, const std::vector<EntityID>& entities);
         void DrawLogsWindow();
         void DrawPlayPauseBar();
         void DrawRenderScreenWindow(unsigned int windowWidth, unsigned int windowHeight);
@@ -203,6 +202,7 @@ namespace gui {
         void openAndLoadSceneDialog();
 
         bool DeserializeProfile();
+        void DeserializeCameraSetting();
         void DrawPreferencesWindow();
 
         void DrawAnimationWindow();
@@ -214,19 +214,22 @@ namespace gui {
         void ScriptHotReload();
 
         void DrawNavMeshWindow();
+        bool ImageButton(const std::filesystem::path& directoryString);
 
         /***********PreferenceTab*************/
         bool openPreferencesTab = false;
-        /******************************/
+        /*************************************/
 
         /***********Assets*************/
         std::filesystem::path AssetPath{};
         AssetData selectedAsset{};
         /******************************/
 
+
         std::unordered_map<std::string, std::shared_ptr<IEditorActionInvoker>> componentDrawers;
 
-        int m_clickedEntityId{ -1 };
+        int m_lastClickedEntityId{ -1 };
+        std::unordered_set<EntityID> m_selectedEntities;
         bool m_isUi{ false };
 
         std::string m_activeScene{};
@@ -252,6 +255,8 @@ namespace gui {
 
         /***********Delegates****************/
         Delegate<const std::string&> onSaveAll;
+        Delegate<> onDelete;
+        Delegate<> onDuplicate;
         void RegisterCallBack();
         /************************************/
 
@@ -298,6 +303,8 @@ namespace gui {
             ImGui::LoadIniSettingsFromDisk(m_imgui_layout.c_str());
 
             //LoadAnimatorLayout("../kOS/Kos Editor/Configs/AnimatorLayout.json");
+            
+            //Load camera profile if it exists
         }
 
     };

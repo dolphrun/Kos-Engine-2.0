@@ -49,6 +49,7 @@ void EditorCamera::SwitchMode(bool orbMode) {
         return;;
     }
     r = 5.0f;
+    targetDist = minmaxTargetDist.x;
     alpha = 0.0f;
     betta = 0.0f;
 }
@@ -56,13 +57,13 @@ void EditorCamera::onCursor(double xoffset, double yoffset) {
    // std::cout << "Editor type shit sir\n";
     static const float PI05 = glm::pi<float>() / 2.0f; // Half of pi for clamping
     // Sensitivity
-    static const float sensitivityX = 0.15f;
-    static const float sensitivityY = 0.15f;
+  /*  static const float sensitivityX = 0.15f;
+    static const float sensitivityY = 0.15f;*/
     //std::cout << "ORBIT MODE IS " << orbitMode << '\n';
     if (orbitMode) {
         // Increment stored angles
-        alpha += static_cast<float>(yoffset) * sensitivityY; // invert if needed
-        betta -= static_cast<float>(xoffset) * sensitivityX;
+        alpha += static_cast<float>(yoffset) * orbitSens; // invert if needed
+        betta -= static_cast<float>(xoffset) * orbitSens;
 
         // Clamp vertical angle
         alpha = glm::clamp(alpha, -PI05 + 0.01f, PI05 - 0.01f);
@@ -76,16 +77,17 @@ void EditorCamera::onCursor(double xoffset, double yoffset) {
     
     //Do FPS rotation
     // Yaw (rotation around Y-axis)
-    rotation.y += static_cast<float>(xoffset) * sensitivityX;
+    rotation.y += static_cast<float>(xoffset) * sens;
 
     // Pitch (rotation around X-axis) - Invert to match mouse movement
-    rotation.x -= static_cast<float>(yoffset) * sensitivityY;
+    rotation.x -= static_cast<float>(yoffset) * sens;
     rotation.x = glm::clamp(rotation.x, -89.f, 89.f);
 
     up = glm::normalize(rotation * glm::vec3(0.f, 1.f, 0.f));
 }
 
 void EditorCamera::onScroll(double xoffset, double yoffset) {
+    if (targetDist <= minmaxTargetDist.x&&yoffset>0.f)return;;
     if (orbitMode) {
         r += yoffset > 0.0f ? -1.0f : 1.0f; // Zoom in or out
         if (r < 1.0f) r = 1.0f; // Clamp minimum distance
@@ -112,6 +114,8 @@ void EditorCamera::onScroll(double xoffset, double yoffset) {
 
     // Move along the forward direction
     float scrollAmount = (yoffset > 0.0f ? 1.0f : -1.0f);
+    targetDist += -scrollAmount;
+   // std::cout << targetDist << '\n';
     position += direction * scrollAmount;
 }
 glm::mat4 EditorCamera::CalculateViewMtx() {
@@ -167,7 +171,12 @@ void EditorCamera::SnapToAxis(AxisView view, float distanceOverride) {
     else up = glm::vec3(0, 1, 0);
     direction = glm::normalize(forward);
 }
-
+void EditorCamera::SetTargetFront() {
+    rotation.y = glm::degrees(atan2(direction.z, direction.x));
+    rotation.x = glm::degrees(asin(direction.y));
+    up = glm::normalize(rotation * glm::vec3(0.f, 1.f, 0.f));
+    target = position + direction * targetDist;
+}
 //float EditorCamera::m_aspectRatio{};
 //int EditorCamera::m_windowWidth{};
 //int EditorCamera::m_windowHeight{};

@@ -27,12 +27,22 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Configs/ConfigPath.h"
 #include "AssetManager/Prefab.h"
 
-namespace gui {
 
-	static const char* fileIcon = "img_folderIcon.png";
+namespace gui {
 	static std::string searchString;
 	static float padding = 20.f;
 	static float thumbnail = 100.f;
+
+	int InputTextCallback(ImGuiInputTextCallbackData* data)
+	{
+		if (data->EventFlag == ImGuiInputTextFlags_CallbackResize)
+		{
+			std::string* str = static_cast<std::string*>(data->UserData);
+			str->resize(data->BufTextLen);
+			data->Buf = str->data();
+		}
+		return 0;
+	}
 
 	void MoveFolder(const std::filesystem::path& newDirectory) {
 		if (ImGui::BeginDragDropTarget())
@@ -55,31 +65,44 @@ namespace gui {
 		}
 	}
 
-	void textorimage(std::string directoryString, std::string fileName) {
-		//assetmanager::AssetManager* assetmanager = assetmanager::AssetManager::m_funcGetInstance();
-		//if (assetmanager->m_imageManager.m_imageMap.find(fileName) != assetmanager->m_imageManager.m_imageMap.end()) {
-		//	float imageRatio = static_cast<float>(assetmanager->m_imageManager.m_imageMap.find(fileName)->second.m_height) / static_cast<float>(assetmanager->m_imageManager.m_imageMap.find(fileName)->second.m_width);
-		//	if (imageRatio > 1)
-		//	{
-		//		ImGui::ImageButton(directoryString.c_str(), (ImTextureID)(uintptr_t)assetmanager->m_imageManager.m_imageMap.find(fileName)->second.textureID, { thumbnail / imageRatio ,thumbnail }, { 0 ,1 }, { 1 ,0 }, { 0,0,0,0 });
-		//	}
-		//	else
-		//	{
-		//		ImGui::ImageButton(directoryString.c_str(), (ImTextureID)(uintptr_t)assetmanager->m_imageManager.m_imageMap.find(fileName)->second.textureID, { thumbnail ,thumbnail * imageRatio }, { 0 ,1 }, { 1 ,0 }, { 0,0,0,0 });
-		//	}
+	bool ImGuiHandler::ImageButton(const std::filesystem::path& directoryString) {
 
-		//}
-		//else {
-		//	ImGui::Button(directoryString.c_str(), { thumbnail ,thumbnail });
-		//}
+		std::string fileName = directoryString.filename().string();
+		ImVec2 buttonSize = { thumbnail, thumbnail };
+		bool isClicked = false;
+		unsigned int textureID = 0;
 
-		ImGui::Button(directoryString.c_str(), { thumbnail ,thumbnail });
+		if (std::filesystem::is_directory(directoryString)) {
+			textureID = m_assetManager.folderTexture->GetTextureID();
+		}
+		else {
+			textureID = m_assetManager.fileTexture->GetTextureID();
+		}
 
-	};
+
+
+
+		if (textureID != 0) {
+			// Render the Image Button
+			// We cast the textureID just like we did for ImGui::Image()
+			// Modern ImGui requires a string ID as the first argument for ImageButton
+			isClicked = ImGui::ImageButton(
+				fileName.c_str(),        // Unique ID so ImGui can track clicks
+				(void*)(intptr_t)textureID,     // The texture to render
+				buttonSize                      // Size of the button
+			);
+		}
+		else {
+			// Render the standard Text Button
+			isClicked = ImGui::Button(fileName.c_str(), buttonSize);
+		}
+
+		return isClicked; // Returns true on the exact frame the user clicks the button
+	}
 
 	void ImGuiHandler::DrawContentBrowser() {
 
-		static std::filesystem::path assetDirectory = m_assetManager.GetAssetManagerDirectory(); // TO change
+		static std::filesystem::path assetDirectory = m_assetManager.GetAssetManagerDirectory();
 		static std::filesystem::path currentDirectory = assetDirectory;
 
 		if (ImGui::Begin("Content Browser")) {
@@ -173,6 +196,7 @@ namespace gui {
 				// Render Icons (Folder or Files)
 				for (auto& directoryPath : std::filesystem::directory_iterator(currentDirectory)) {
 					std::string directoryString = directoryPath.path().filename().string();
+					
 
 					//skip if file is not same as search and skip .meta files
 					if (!searchString.empty() && !containsSubstring(directoryString, searchString) ||
@@ -180,9 +204,10 @@ namespace gui {
 						continue;
 					}
 
+					ImageButton(directoryPath.path());
+
 					if (directoryPath.is_directory()) {
 						// if a folder
-						textorimage(directoryString, fileIcon);
 						MoveFolder(currentDirectory / directoryPath.path().filename());
 
 
@@ -195,8 +220,6 @@ namespace gui {
 					else {
 						//case for prefabs and scene
 						if (directoryPath.path().filename().extension().string() == ".prefab") {
-							std::string prefab = "";
-							textorimage(std::string(directoryPath.path().filename().extension().string() + "##" + directoryPath.path().filename().string()).c_str(), prefab);
 
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left)) {
 								//skip if active scene is filename
@@ -241,12 +264,10 @@ namespace gui {
 
 								m_prefabSceneMode = true;
 
-								m_clickedEntityId = -1;
+								m_lastClickedEntityId = -1;
 							}
 						}
 						else if (directoryPath.path().filename().extension().string() == ".json") {
-							std::string script;
-							textorimage(directoryString, script);
 
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left)) {
 
@@ -260,13 +281,12 @@ namespace gui {
 									m_savedSceneState[directoryPath.path().filename().string()] = true;
 								}
 
-								m_clickedEntityId = -1;
+								m_lastClickedEntityId = -1;
 
 							}
 						}
 						else {
 
-							textorimage(directoryString, std::string());
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left)) {
 								std::filesystem::path metaPath = directoryPath.path().string() + ".meta";
 								if (std::filesystem::exists(metaPath)) {
@@ -298,10 +318,12 @@ namespace gui {
 					//create context window
 					static bool rename = false;
 					static std::filesystem::path selectedfile{};
+					static std::string renameBuffer;
 					if (ImGui::BeginPopupContextItem()) {
 						if (ImGui::MenuItem("Rename")) {
 							rename = true;
 							selectedfile = directoryString;
+							renameBuffer = selectedfile.stem().string();
 						}
 						if (ImGui::MenuItem("Delete")) {
 							std::filesystem::remove_all(directoryPath.path());
@@ -370,7 +392,14 @@ namespace gui {
 
 
 					if (rename && (selectedfile.string() == directoryString)) {
-						if (ImGui::InputText("##rename", m_charBuffer, IM_ARRAYSIZE(m_charBuffer), ImGuiInputTextFlags_EnterReturnsTrue)) {
+						if (ImGui::InputText(
+							"##rename",
+							renameBuffer.data(),
+							renameBuffer.capacity() + 1,
+							ImGuiInputTextFlags_EnterReturnsTrue | ImGuiInputTextFlags_CallbackResize,
+							InputTextCallback,
+							&renameBuffer))
+						{
 							//TODO check if file has extension, keep the extension
 							std::string extension{};
 							if (!directoryPath.is_directory()) {
@@ -379,25 +408,33 @@ namespace gui {
 								ImGui::Text(extension.c_str());
 							}
 
-							std::filesystem::path path = std::filesystem::current_path();
-							std::string newpath = path.string() + "\\" + currentDirectory.string() + "\\" + m_charBuffer + extension;
-							std::string oldpath = path.string() + "\\" + currentDirectory.string() + "\\" + directoryString;
+							std::filesystem::path base = std::filesystem::current_path() / currentDirectory;
+
+							std::filesystem::path oldPath = base / directoryString;
+							std::filesystem::path newPath = base / (renameBuffer + oldPath.extension().string());
 
 
-							LOGGING_INFO("RENAME WIP");
-							//assetmanager->m_RenameAsset(oldpath, newpath);
+							m_assetManager.RenameFile(oldPath.string(), newPath.string());
 
 							rename = false;
 							selectedfile.clear();
+							renameBuffer.clear();
 
 							//TODO edge cases,
 							//Update assets if any of them are renamed
 						}
 					}
 					else {
+						float cellWidth = thumbnail;
+
+						ImGui::PushTextWrapPos(ImGui::GetCursorPosX() + cellWidth);
+
 						ImGui::SetWindowFontScale(0.8f);
-						ImGui::Text(directoryPath.path().filename().stem().string().c_str());
+						ImGui::TextWrapped("%s",
+							directoryPath.path().filename().stem().string().c_str());
 						ImGui::SetWindowFontScale(1.f);
+
+						ImGui::PopTextWrapPos();
 					}
 					ImGui::NextColumn();
 				}

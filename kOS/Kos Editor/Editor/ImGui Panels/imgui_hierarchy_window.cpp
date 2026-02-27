@@ -30,7 +30,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 namespace gui
 {
-
+    
     unsigned int ImGuiHandler::DrawHierachyWindow()
     {
         std::function<void(EntityID)> updateChildScene = [&](EntityID parent)
@@ -99,7 +99,7 @@ namespace gui
                             m_ecs.SetParent(std::move(id), newEntityID);
                         }
 
-                        m_clickedEntityId = newEntityID;
+                        m_lastClickedEntityId = newEntityID;
 
                         m_ecs.GetComponent<ecs::NameComponent>(newEntityID)->entityName = std::string(m_charBuffer);
 
@@ -153,45 +153,8 @@ namespace gui
                         }
 
                         m_prefabSceneMode = false;
-                        m_clickedEntityId = -1;
+                        m_lastClickedEntityId = -1;
 
-                        // Instead of Updating all the time, Differences needs to be checked.
-                        // Prompt when leaving prefab mode,
-                        /*std::map<EntityID, std::vector<std::string>> allDiffList;
-                        const auto &prefabscene = m_ecs.sceneMap.find(prefabName);
-                        for (const auto &id : m_ecs.GetEntitySignatureData())
-                        {
-                            ecs::NameComponent *nc = m_ecs.GetComponent<ecs::NameComponent>(id.first);
-                            if (nc->isPrefab && (nc->prefabName == prefabName))
-                            {
-                                std::vector<std::string> diffList;
-                                m_prefabManager.RefreshComponentDifferenceList(diffList, id.first);
-                                if (diffList.size())
-                                    allDiffList.emplace(id.first, diffList);
-                            }
-                        }
-
-                        for (auto &[id, diffList] : allDiffList)
-                        {
-                            for (const auto &compName : diffList)
-                            {
-                                if (compName == ecs::NameComponent::classname() || compName == ecs::TransformComponent::classname())
-                                    continue;
-                                m_prefabManager.RevertToPrefab_Component(id, compName, prefabName);
-                            }
-                        }*/
-                        // m_ecs.DeleteEntity(duppedID); // Dupping Somehow causes us to update all the prefab scenes?
-                        // duppedID = -1;
-
-                        // for (const auto& id : m_ecs.GetEntitySignatureData()) {
-                        //     ecs::NameComponent* nc = m_ecs.GetComponent<ecs::NameComponent>(id.first);
-                        //     if (nc->isPrefab && (nc->prefabName == prefabName)) {
-                        //         for (const auto& compName : diffList) {
-                        //             if (compName == ecs::NameComponent::classname()) continue;
-                        //             prefab::RevertToPrefab_Component(id.first, compName, prefabName);
-                        //         }
-                        //     }
-                        // }
                     }
                 }
 
@@ -231,7 +194,7 @@ namespace gui
                     if ((sceneName != m_activeScene) && (sceneentity.isActive == true) && ImGui::MenuItem("Unload Scene"))
                     {
                         m_sceneManager.SetSceneActive(sceneName, false);
-                        m_clickedEntityId = -1;
+                        m_lastClickedEntityId = -1;
 
                         if (!m_prefabSceneMode)
                         {
@@ -281,10 +244,7 @@ namespace gui
                 // Covers the Collapsing Header Space
                 if (ImGui::BeginDragDropTarget())
                 {
-                    if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("EntityPayload"))
-                    {
-                        IM_ASSERT(payload->DataSize == sizeof(ecs::EntityID));
-                        ecs::EntityID Id = *static_cast<ecs::EntityID*>(payload->Data);
+                    auto swapScene = [&](EntityID Id) {
                         const auto& scene = m_ecs.GetSceneByEntityID(Id);
 
                         if (!scene.empty())
@@ -302,6 +262,36 @@ namespace gui
                         }
 
                         updateChildScene(Id);
+                    };
+
+                    if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("EntityPayload"))
+                    {
+                        IM_ASSERT(payload->DataSize == sizeof(EntityPayload));
+                        ecs::EntityID Id = static_cast<EntityPayload*>(payload->Data)->id;
+                        swapScene(Id);
+                    }
+
+                    if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("EntitiesPayload"))
+                    {
+
+                        size_t payloadCount = payload->DataSize / sizeof(ecs::EntityID);
+                        const ecs::EntityID* draggedIds = static_cast<const ecs::EntityID*>(payload->Data);
+                        std::unordered_set<EntityID> movingEntities;
+                        for (size_t i = 0; i < payloadCount; ++i)
+                        {
+                            ecs::EntityID childId = draggedIds[i];
+                            movingEntities.insert(childId);
+                        }
+
+                        for (auto e : movingEntities) {
+                            auto parent = m_ecs.GetParent(e);
+                            if (parent.has_value()) {
+                                if (movingEntities.find(parent.value()) != movingEntities.end()) {
+                                    continue;
+                                }
+                            }
+                            swapScene(e);
+                        }
                     }
 
                     if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("file"))
@@ -319,13 +309,23 @@ namespace gui
 
                 if (opens)
                 {
+                    // 1. Indent the root entities so there is visual space for the scene line
+                    ImGui::Indent();
+
+                    // 2. Setup line drawing properties
+                    ImDrawList* drawList = ImGui::GetWindowDrawList();
+                    ImVec2 verticalLineStart = ImGui::GetCursorScreenPos();
+                    verticalLineStart.x -= ImGui::GetStyle().IndentSpacing * 0.5f;
+                    ImVec2 verticalLineEnd = verticalLineStart;
+                    bool hasRootEntities = false;
+
                     for (auto entity : sceneentity.sceneIDs)
                     {
 
                         const auto& entityMap = m_ecs.GetEntitySignatureData();
-                        if (entityMap.find(m_clickedEntityId) == entityMap.end())
+                        if (entityMap.find(m_lastClickedEntityId) == entityMap.end())
                         {
-                            m_clickedEntityId = entity;
+                            m_lastClickedEntityId = entity;
                             m_isUi = false;
                         }
 
@@ -338,13 +338,36 @@ namespace gui
                         // draw entity with no parents hahaha
                         if (!m_ecs.GetParent(entity).has_value())
                         {
-                            if (DrawEntityNode(entity) == false)
+                            // 3. Draw horizontal ticks pointing to root entities
+                            ImVec2 childPos = ImGui::GetCursorScreenPos();
+                            float halfLineHeight = ImGui::GetTextLineHeight() * 0.5f;
+
+                            drawList->AddLine(
+                                ImVec2(verticalLineStart.x, childPos.y + halfLineHeight),
+                                ImVec2(verticalLineStart.x + ImGui::GetStyle().IndentSpacing * 0.5f, childPos.y + halfLineHeight),
+                                IM_COL32(150, 150, 150, 255)
+                            );
+
+                            verticalLineEnd.y = childPos.y + halfLineHeight;
+                            hasRootEntities = true;
+
+                            if (DrawEntityNode(entity, sceneentity.sceneIDs) == false)
                             {
                                 // delete is called
                                 break;
                             }
                         }
                     }
+
+                    // 4. Draw the main vertical line connecting the Scene to its roots
+                    if (hasRootEntities)
+                    {
+                        drawList->AddLine(verticalLineStart, verticalLineEnd, IM_COL32(150, 150, 150, 255));
+                    }
+
+                    // 5. Unindent so the rest of the UI doesn't drift to the right
+                    ImGui::Unindent();
+
                     headerEnd = ImGui::GetCursorPos();
 
                     // Covers the Scene TreeNodes + Collapsing Header
@@ -355,11 +378,7 @@ namespace gui
                     ImGui::SetCursorPos(headerEnd);
                     if (ImGui::BeginDragDropTarget())
                     {
-                        if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("EntityPayload"))
-                        {
-                            IM_ASSERT(payload->DataSize == sizeof(EntityPayload));
-                            ecs::EntityID Id = static_cast<EntityPayload*>(payload->Data)->id;
-
+                        auto removeParent = [&](EntityID Id) {
                             // if in prefab mode and parent does not have parent, reject
                             if (m_prefabSceneMode && m_ecs.GetParent(Id).has_value() && (!m_ecs.GetParent(m_ecs.GetParent(Id).value()).has_value()))
                             {
@@ -367,14 +386,40 @@ namespace gui
                             if (m_prefabSceneMode)
                             {
                                 m_ecs.SetParent(m_ecs.sceneMap.find(m_activeScene)->second.prefabID, Id);
-
-
-
                             }
                             else
                             {
                                 m_commandHistory.AddCommand<CommandHistory::SetGameObjectParent>(Id, m_ecs.GetParent(Id));
                                 m_ecs.RemoveParent(Id, true);
+                            }
+                        };
+                        if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("EntityPayload"))
+                        {
+                            IM_ASSERT(payload->DataSize == sizeof(EntityPayload));
+                            ecs::EntityID Id = static_cast<EntityPayload*>(payload->Data)->id;
+                            removeParent(Id);
+
+                        }
+                        if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("EntitiesPayload"))
+                        {
+
+                            size_t payloadCount = payload->DataSize / sizeof(ecs::EntityID);
+                            const ecs::EntityID* draggedIds = static_cast<const ecs::EntityID*>(payload->Data);
+                            std::unordered_set<EntityID> movingEntities;
+                            for (size_t i = 0; i < payloadCount; ++i)
+                            {
+                                ecs::EntityID childId = draggedIds[i];
+                                movingEntities.insert(childId);
+                            }
+
+                            for (auto e : movingEntities) {
+                                auto parent = m_ecs.GetParent(e);
+                                if (parent.has_value()) {
+                                    if (movingEntities.find(parent.value()) != movingEntities.end()) {
+                                        continue;
+                                    }
+                                }
+                                removeParent(e);
                             }
                         }
 
@@ -403,10 +448,10 @@ namespace gui
         }
 
         ImGui::End();
-        return m_clickedEntityId;
+        return m_lastClickedEntityId;
     }
 
-    bool ImGuiHandler::DrawEntityNode(ecs::EntityID id)
+    bool ImGuiHandler::DrawEntityNode(ecs::EntityID id, const std::vector<EntityID>& entities)
     {
 
         std::function<void(EntityID)> updateChildScene = [&](EntityID parent)
@@ -439,7 +484,9 @@ namespace gui
         if (transCom == NULL)
             return false;
 
-        ImGuiTreeNodeFlags flag = ((static_cast<unsigned int>(m_clickedEntityId) == id) ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow /*| ImGuiTreeNodeFlags_DefaultOpen*/;
+        bool isSelected = m_selectedEntities.find(id) != m_selectedEntities.end();
+        ImGuiTreeNodeFlags flag = (isSelected ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow;
+
         if (transCom->m_childID.size() <= 0)
         {
             flag |= ImGuiTreeNodeFlags_Leaf;
@@ -496,17 +543,68 @@ namespace gui
             ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.3f, 0.3f, 0.3f, 1.0f));
         }
         bool open = ImGui::TreeNodeEx(std::to_string(id).c_str(), flag, nc->entityName.c_str());
+        if (ImGui::IsItemHovered() && ImGui::IsMouseReleased(ImGuiMouseButton_Left))
+        {
+            ImGuiIO& io = ImGui::GetIO();
+
+            bool rightClickOnSelected = ImGui::IsItemClicked(ImGuiMouseButton_Right) && isSelected;
+
+            if (!rightClickOnSelected)
+            {
+                if (io.KeyCtrl)
+                {
+                    // CTRL-Click: Toggle selection
+                    if (isSelected)
+                        m_selectedEntities.erase(id);
+                    else
+                        m_selectedEntities.insert(id);
+                }
+                else if (io.KeyShift)
+                {
+                    // SHIFT-Click: Range Selection
+                    int firstIndex = -1;
+                    int lastIndex = -1;
+                    for (int n{}; n < entities.size(); ++n) {
+                        auto e = entities[n];
+
+                        if ((firstIndex == -1) && (m_lastClickedEntityId == e || id == e)) {
+                            firstIndex = n;
+                            continue;
+                        }
+                        
+                        if ((firstIndex != -1) && (m_lastClickedEntityId == e || id == e)) {
+                            lastIndex = n;
+                            break;
+
+                        }
+
+                    }
+
+                    if (firstIndex != -1 && lastIndex != -1) {
+
+                        for (int n{firstIndex}; n <= lastIndex; ++n) {
+                        
+                            m_selectedEntities.insert(entities[n]);
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    // Normal Click: Clear everything else and select this
+                    m_selectedEntities.clear();
+                    m_selectedEntities.insert(id);
+                }
+            }
+
+            m_lastClickedEntityId = id; // Update the focus target
+            m_isUi = false;
+        }
         if (nc->isPrefab || nc->hide)
             ImGui::PopStyleColor();
 
-        if (ImGui::IsItemClicked(ImGuiMouseButton_Left) &&
-            !ImGui::IsMouseDragging(ImGuiMouseButton_Left))
-        {
-            m_clickedEntityId = id;
-            m_isUi = false;
-        }
-
-        if (ImGui::GetIO().KeysDown[ImGuiKey::ImGuiKey_F] && m_clickedEntityId == id)
+        if (ImGui::GetIO().KeysDown[ImGuiKey::ImGuiKey_F] && m_lastClickedEntityId == id)
         {
             // EditorCamera::editorCamera.position = transCom->LocalTransformation.position;
             EditorCamera::editorCamera.target = transCom->WorldTransformation.position;
@@ -532,10 +630,10 @@ namespace gui
             {
                 if (ImGui::MenuItem("Delete Entity"))
                 {
-                    m_ecs.DeleteEntity(id);
-                    m_commandHistory.AddCommand<CommandHistory::DeleteGameObject>(id, m_ecs.GetSceneByEntityID(id), m_ecs, &m_commandHistory);
-
-                    m_clickedEntityId = -1;
+                    if (m_selectedEntities.find(id) == m_selectedEntities.end()) {
+                        m_selectedEntities.insert(id);
+                    }
+                    onDelete.Invoke();
                     ImGui::EndPopup();
                     if (open)
                         ImGui::TreePop();
@@ -545,23 +643,10 @@ namespace gui
 
             if (ImGui::MenuItem("Duplicate Entity"))
             {
-                ecs::EntityID newID = m_ecs.DuplicateEntity(id);
-                m_commandHistory.AddCommand<CommandHistory::AddGameObject>(newID, m_activeScene);
-
-                if (m_prefabSceneMode)
-                {
-                    const auto &parent = m_ecs.GetParent(id);
-                    // if id does not have parent, make it the parent
-                    if (!parent.has_value())
-                    {
-                        m_ecs.SetParent(id, newID);
-                    }
-                    else
-                    {
-                        m_ecs.SetParent(parent.value(), newID);
-                    }
+                if (m_selectedEntities.find(id) == m_selectedEntities.end()) {
+                    m_selectedEntities.insert(id);
                 }
-
+                onDuplicate.Invoke();
                 ImGui::EndPopup();
                 if (open)
                     ImGui::TreePop();
@@ -581,14 +666,12 @@ namespace gui
 
         if (ImGui::BeginDragDropTarget())
         {
-            if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload("EntityPayload"))
-            {
-                IM_ASSERT(payload->DataSize == sizeof(EntityPayload));
-                ecs::EntityID childId = static_cast<EntityPayload *>(payload->Data)->id;
+            auto moveEntity = [&](EntityID childId) {
 
+                if (childId == id) return;
                 // dont allow prefabs to be dragged inside prefab
-                const auto &childnc = m_ecs.GetComponent<ecs::NameComponent>(childId);
-                const auto &parent = m_ecs.GetComponent<ecs::NameComponent>(id);
+                const auto& childnc = m_ecs.GetComponent<ecs::NameComponent>(childId);
+                const auto& parent = m_ecs.GetComponent<ecs::NameComponent>(id);
 
                 if (!m_prefabSceneMode && childnc->isPrefab && (childnc->prefabName == parent->prefabName))
                 {
@@ -602,13 +685,52 @@ namespace gui
                     LOGGING_INFO("Set Parent: %d, Child: %d", id, childId);
                     // update child's scene
                     updateChildScene(id);
-
-                    // return
-                    ImGui::EndDragDropTarget();
-                    if (open)
-                        ImGui::TreePop();
-                    return false;
                 }
+
+
+            };
+
+            if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload("EntityPayload"))
+            {
+                IM_ASSERT(payload->DataSize == sizeof(EntityPayload));
+                ecs::EntityID childId = static_cast<EntityPayload *>(payload->Data)->id;
+
+                moveEntity(childId);
+
+                // return
+                ImGui::EndDragDropTarget();
+                if (open)
+                    ImGui::TreePop();
+                return false;
+            }
+            else if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("EntitiesPayload"))
+            {
+
+                size_t payloadCount = payload->DataSize / sizeof(ecs::EntityID);
+                const ecs::EntityID* draggedIds = static_cast<const ecs::EntityID*>(payload->Data);
+                std::unordered_set<EntityID> movingEntities;
+                for (size_t i = 0; i < payloadCount; ++i)
+                {
+                    ecs::EntityID childId = draggedIds[i];
+                    movingEntities.insert(childId);
+                }
+
+                for (auto e : movingEntities) {
+                    auto parent = m_ecs.GetParent(e);
+                    if (parent.has_value()) {
+                        if (movingEntities.find(parent.value()) != movingEntities.end()) {
+                            continue;
+                        }
+                    }
+                    moveEntity(e);
+                }
+
+
+                // return
+                ImGui::EndDragDropTarget();
+                if (open)
+                    ImGui::TreePop();
+                return false;
             }
 
             ImGui::EndDragDropTarget();
@@ -618,35 +740,79 @@ namespace gui
 
         if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None))
         {
-            auto* nc = m_ecs.GetComponent<ecs::NameComponent>(id);
-            if (nc)
-            {
-                EntityPayload payload{ id, nc->entityGUID };
+            if (m_selectedEntities.size() == 1) {
+                auto* nc = m_ecs.GetComponent<ecs::NameComponent>(id);
+                if (nc)
+                {
+                    EntityPayload payload{ id, nc->entityGUID };
 
-                ImGui::SetDragDropPayload("EntityPayload", &payload, sizeof(EntityPayload));
-                ImGui::Text("%s", nc->entityName.c_str());
-                if (!nc->entityGUID.Empty())
-                    ImGui::Text("%s", nc->entityGUID.GetToString().c_str());
+                    ImGui::SetDragDropPayload("EntityPayload", &payload, sizeof(EntityPayload));
+                    ImGui::Text("%s", nc->entityName.c_str());
+                    if (!nc->entityGUID.Empty())
+                        ImGui::Text("%s", nc->entityGUID.GetToString().c_str());
+                }
+                
             }
+            else if (m_selectedEntities.size() > 1) {
+                std::vector<ecs::EntityID> payloadData;
+                payloadData.reserve(m_selectedEntities.size());
+                for (auto selectedId : m_selectedEntities)
+                {
+                    payloadData.push_back(selectedId);
+                }
+
+                ImGui::SetDragDropPayload("EntitiesPayload",
+                    payloadData.data(),
+                    payloadData.size() * sizeof(ecs::EntityID));
+
+                ImGui::Text("Moving %zu Entities", payloadData.size());
+            }
+
             ImGui::EndDragDropSource();
         }
 
         if (open)
         {
+            // 1. Get the draw list and calculate the start of our vertical line
+            ImDrawList* drawList = ImGui::GetWindowDrawList();
+            ImVec2 verticalLineStart = ImGui::GetCursorScreenPos();
+
+            // Offset X to sit right in the middle of the indentation area
+            verticalLineStart.x -= ImGui::GetStyle().IndentSpacing * 0.5f;
+
+            // Track how far down the vertical line needs to go
+            ImVec2 verticalLineEnd = verticalLineStart;
+
             // recursion
             if (transCom->m_childID.size() > 0)
             {
-                for (auto &ids : transCom->m_childID)
+                for (auto& ids : transCom->m_childID)
                 {
-                    if (!DrawEntityNode(ids))
-                    {
+                    // 2. Calculate horizontal tick position for each child before it draws
+                    ImVec2 childPos = ImGui::GetCursorScreenPos();
+                    float halfLineHeight = ImGui::GetTextLineHeight() * 0.5f;
 
+                    // Draw horizontal line pointing right to the child node
+                    drawList->AddLine(
+                        ImVec2(verticalLineStart.x, childPos.y + halfLineHeight),
+                        ImVec2(verticalLineStart.x + ImGui::GetStyle().IndentSpacing * 0.5f, childPos.y + halfLineHeight),
+                        IM_COL32(150, 150, 150, 255)
+                    );
+
+                    // Update the bottom-most point for the vertical line
+                    verticalLineEnd.y = childPos.y + halfLineHeight;
+
+                    // Draw the actual child
+                    if (!DrawEntityNode(ids, entities))
+                    {
                         ImGui::TreePop();
                         return false;
                     }
                 }
+
+                // 3. Draw the main vertical line connecting all horizontal ticks
+                drawList->AddLine(verticalLineStart, verticalLineEnd, IM_COL32(150, 150, 150, 255));
             }
-            // m_DrawEntityNode(1);
             ImGui::TreePop();
         }
         return true;

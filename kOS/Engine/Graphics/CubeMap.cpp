@@ -275,55 +275,64 @@ void DepthCubeMap::FillMap(glm::vec3& lightPos) {
 }
 
 void DepthCubeMap::SaveDepthCubeMap(std::string outputPath) {
-    glBindTexture(GL_TEXTURE_CUBE_MAP, texID);
-    //Save depth cube map to the specified output path
     std::ofstream file(outputPath, std::ios::binary);
-    for (int i = 0; i < 6; ++i)
-    {
-        std::vector<unsigned char> data(1024 * 1024 * 4); // 4 for RGBA
-        glGetTexImage(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_DEPTH_COMPONENT, GL_FLOAT, data.data());
-        file.write(reinterpret_cast<char*>(data.data()), data.size());
+    if (!file.is_open()) {
+        std::cerr << "Could not open: " << outputPath << std::endl;
+        return;
     }
 
-    file.close();
-    glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
+    GLuint tempFBO;
+    glGenFramebuffers(1, &tempFBO);
 
+    for (int i = 0; i < 6; ++i) {
+        // Attach each face explicitly to a temp FBO
+        glBindFramebuffer(GL_FRAMEBUFFER, tempFBO);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
+            GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, texID, 0);
+        glDrawBuffer(GL_NONE);
+        glReadBuffer(GL_NONE);
+
+        std::vector<float> data(1024 * 1024);
+        glReadPixels(0, 0, 1024, 1024, GL_DEPTH_COMPONENT, GL_FLOAT, data.data());
+
+        float mn = *std::min_element(data.begin(), data.end());
+        float mx = *std::max_element(data.begin(), data.end());
+        std::cout << "Face " << i << ": min=" << mn << " max=" << mx << std::endl;
+
+        file.write(reinterpret_cast<char*>(data.data()), data.size() * sizeof(float));
+    }
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glDeleteFramebuffers(1, &tempFBO);
+    file.close();
 }
 
 void DepthCubeMap::LoadDepthCubeMap(std::string inputPath) {
     std::ifstream file(inputPath, std::ios::binary);
-    if (!file.is_open())
-    {
-        std::cerr << "Error: Could not open file for writing: " << inputPath << std::endl;
+    if (!file.is_open()) {
+        std::cerr << "Error: Could not open file: " << inputPath << std::endl;
         return;
     }
-    //Generate cube map fbo
-    glGenFramebuffers(1, &this->VBO);
-
-    //Initialize depth cube map
-    glGenTextures(1, &this->texID);
     const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
+    glGenFramebuffers(1, &this->VBO);
+    glGenTextures(1, &this->texID);
     glBindTexture(GL_TEXTURE_CUBE_MAP, this->texID);
     for (int i = 0; i < 6; ++i)
     {
-        std::vector<unsigned char> data(SHADOW_WIDTH * SHADOW_HEIGHT * 4);
-        file.read(reinterpret_cast<char*>(data.data()), data.size());
+        std::vector<float> data(SHADOW_WIDTH * SHADOW_HEIGHT); // 1 float per pixel
+        file.read(reinterpret_cast<char*>(data.data()), data.size() * sizeof(float));
         glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_DEPTH_COMPONENT,
             SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, data.data());
     }
-
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
-
-    // attach depth texture as FBO's depth buffer
     glBindFramebuffer(GL_FRAMEBUFFER, this->VBO);
     glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, this->texID, 0);
     glDrawBuffer(GL_NONE);
     glReadBuffer(GL_NONE);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    //std::cout << "LOADED DEPTH MAP DATA\n";
     file.close();
 }

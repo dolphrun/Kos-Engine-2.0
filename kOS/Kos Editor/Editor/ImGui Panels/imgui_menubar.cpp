@@ -21,16 +21,31 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "Editor.h"
 #include "imgui_internal.h"
 #include "Editor/CommandHistory.h"
-
+#include "Editor/EditorCamera.h"
 #include "Scene/SceneManager.h"
 #include "AssetManager/AssetManager.h"
 #include "Configs/ConfigPath.h"
+#include <RAPIDJSON/stringbuffer.h>
+#include <RAPIDJSON/prettywriter.h>
+namespace menubarHelper {
+    void SerializeFloat(std::string name, float data, rapidjson::Value& keys, rapidjson::Document::AllocatorType& allocator) {
+        rapidjson::Value field;
+        field.SetString(name.c_str(), allocator);
+        keys.AddMember(field, data, allocator);
+    }
+    void DeserializeFloat(std::string name, float& data, const rapidjson::Value& keys) {
+        if (keys.HasMember(name.c_str()) && keys[name.c_str()].IsFloat()) {
+            data = keys[name.c_str()].GetFloat();
+        }
+    }
+}
 
 void gui::ImGuiHandler::DrawMainMenuBar() {
    
 
     bool openNewFilepopup = false;
     bool createNewPostProcessProfile=false;
+    static bool createCameraProfile = false;
     if (ImGui::BeginMainMenuBar())
     {
         if (ImGui::BeginMenu("File"))
@@ -54,6 +69,9 @@ void gui::ImGuiHandler::DrawMainMenuBar() {
 
         if (ImGui::BeginMenu("Edit")) {
             ImGui::MenuItem("Preferences", NULL, &openPreferencesTab);
+            //Add menu item 4 camera settings
+            ImGui::MenuItem("Camera Settings", NULL, &createCameraProfile);
+
             ImGui::EndMenu();
         }
         if (ImGui::BeginMenu("Profile")) {
@@ -93,7 +111,7 @@ void gui::ImGuiHandler::DrawMainMenuBar() {
                         m_sceneManager.ClearAllScene();
                         m_sceneManager.LoadScene(scene);
                         m_activeScene = std::string(str1) + ".json";
-                        m_clickedEntityId = -1;
+                        m_lastClickedEntityId = -1;
                     }
                     else {
                         LOGGING_ERROR("Fail to create scene");
@@ -111,7 +129,47 @@ void gui::ImGuiHandler::DrawMainMenuBar() {
             ImGui::EndPopup();
         }
 
+        if (createCameraProfile) {
+            ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x * 0.3f, ImGui::GetIO().DisplaySize.y * 0.8f), ImGuiCond_FirstUseEver);
+            if (ImGui::Begin("Camera Settings", &createCameraProfile, ImGuiWindowFlags_NoDocking)) {
+                //Set camera sensitivity
+                float sensUpscale = EditorCamera::editorCamera.sens*100.f;
+                float orbitSensUpscale = EditorCamera::editorCamera.orbitSens * 100.f;
+                ImGui::SliderFloat("Sensitivity", &sensUpscale, 0.0f, 100.0f);
+                ImGui::SliderFloat("Orbit Sensitivity", &orbitSensUpscale, 0.0f, 100.0f);
+                EditorCamera::editorCamera.sens = sensUpscale / 100.f;
+                EditorCamera::editorCamera.orbitSens = orbitSensUpscale / 100.f;
 
+                //Create button to save
+                if(ImGui::Button("Save")) {
+                    //Save settings in a json file
+                    rapidjson::Document doc;
+                    if (!doc.IsArray()) {
+                        doc.SetArray();  // Initialize as an empty array
+                    }
+                    rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
+                    rapidjson::Value data(rapidjson::kObjectType);
+                    menubarHelper::SerializeFloat("Sensitivity",EditorCamera::editorCamera.sens, data, allocator);
+                    menubarHelper::SerializeFloat("Orbit sensitivity", EditorCamera::editorCamera.orbitSens, data, allocator);
+                    doc.PushBack(data, allocator);
+                    rapidjson::StringBuffer writeBuffer;
+                    rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(writeBuffer);
+                    doc.Accept(writer);
+                    std::ofstream file(configpath::cameraSettingPath);
+                    if (!file.is_open()) {
+                        LOGGING_WARN("Unable to Save Style setting");
+                        file.close();
+                        return;
+                    }
+                    else {
+                        file << writeBuffer.GetString();
+                        file.close();
+                        LOGGING_DEBUG("Setting Saved");
+                    }
+                }
+                ImGui::End();
+            }
+        }
         if (createNewPostProcessProfile) {
             ImGui::OpenPopup("New Profile");
         }
@@ -327,4 +385,20 @@ void gui::ImGuiHandler::DrawMainMenuBar() {
     m_commandHistory.Init();
 
 }
+ void  gui::ImGuiHandler::DeserializeCameraSetting() {
+     std::ifstream file(configpath::cameraSettingPath);
+     if (!file.is_open()) {
+         LOGGING_WARN("Unable to Open File");
+         file.close();
+     }
+     std::string fileContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+     file.close();
+
+     rapidjson::Document doc;
+     doc.Parse(fileContent.c_str());
+     ImGuiStyle& style = ImGui::GetStyle();
+     menubarHelper::DeserializeFloat("Sensitivity", EditorCamera::editorCamera.sens, doc[0]);
+     menubarHelper::DeserializeFloat("Orbit sensitivity", EditorCamera::editorCamera.orbitSens, doc[0]);
+
+ }
 

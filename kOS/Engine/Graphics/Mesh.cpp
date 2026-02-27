@@ -486,6 +486,36 @@ void DebugCapsule::DrawMesh() {
     glBindVertexArray(0);
 }
 
+void DebugMesh::CreateMesh() {
+    if (vertices.empty() || indices.empty()) { return; }
+    GLuint VBO, EBO;
+    glGenVertexArrays(1, &vaoId);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+    glBindVertexArray(vaoId);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), vertices.data(), GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned short), indices.data(), GL_STATIC_DRAW);
+    glBindVertexArray(0);
+    primitiveType = GL_TRIANGLES;
+    drawCount = static_cast<GLint>(indices.size());
+}
+
+void DebugMesh::DrawMesh() {
+    if (vaoId == 0 || drawCount == 0) { return; }
+    glLineWidth(lineWidth);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glBindVertexArray(vaoId);
+    glDrawElements(primitiveType, drawCount, GL_UNSIGNED_SHORT, 0);
+    glBindVertexArray(0);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+}
+
 void DebugFrustum::CreateMesh()
 {
     if (vaoId != 0) return; // only once

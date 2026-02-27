@@ -24,6 +24,8 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include "GraphicsManager.h"
 #include "Camera.h"
 
+Textures Textures::defaultTexture;
+Textures Textures::missingTexture;
 //Variables to debug graphics
 namespace DebugGraphics {
 	std::map<std::string, Shader>shaderList;
@@ -70,7 +72,9 @@ void GraphicsManager::gm_Initialize(float width, float height) {
 	Vigniette::currentShader = &shaderManager.engineShaders.find("VignietteShader")->second;
 	FilmGrain::currentShader = &shaderManager.engineShaders.find("FilmGrainShader")->second;
 	ChromaticAberration::currentShader = &shaderManager.engineShaders.find("ChromaticAbberrationShader")->second;
-
+	//Load default texture resource
+	//Textures::defaultTexture.LoadDSSTexture("Resource/Default.dds", "Default");
+	//Textures::missingTexture.LoadDSSTexture("Resource/Missing.dds", "Missing");
 }
 
 void GraphicsManager::gm_Update()
@@ -126,6 +130,7 @@ void GraphicsManager::gm_Clear()
 	skinnedMeshRenderer.Clear();
 	particleRenderer.Clear();
 	videoRenderer.Clear();
+	//basicDebugMeshes.Clear();
 	//editorCameraActive = false;
 }
 
@@ -308,6 +313,7 @@ void GraphicsManager::gm_FillGBuffer(const CameraData& camera)
 	debugRenderer.RenderDebugCubes(camera, *gBufferDebugShader);
 	debugRenderer.RenderDebugSpheres(camera, *gBufferDebugShader);
 	debugRenderer.RenderDebugCapsules(camera, *gBufferDebugShader);
+	debugRenderer.RenderDebugMeshes(camera, *gBufferDebugShader);
 	debugRenderer.RenderPointLightDebug(camera, *gBufferDebugShader, lightRenderer.pointLightsToDraw);
 	debugRenderer.RenderDebugFrustums(camera, *gBufferDebugShader, gameCameras);
 

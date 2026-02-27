@@ -58,9 +58,15 @@ public:
     void SwitchMode(bool orbMode);
     void onCursor(double xoffset, double yoffset) override;
     void onScroll(double xoffset, double yoffset) override;
+    void SetTargetFront();
     glm::mat4 CalculateViewMtx() override;
     enum class AxisView { PosX, NegX, PosY, NegY, PosZ, NegZ };
     void SnapToAxis(AxisView view, float distanceOverride = -1.0f);
+    float targetDist{25.f};
+    glm::vec2 minmaxTargetDist{ 5.f,50.f };
+
+    //Sensitivity
+    float orbitSens{ 0.15f }, sens{0.15f};
 };
     //class EditorCamera
     //{

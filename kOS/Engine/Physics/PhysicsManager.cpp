@@ -56,7 +56,7 @@ namespace physics {
 		m_scene = m_physics->createScene(sceneDesc);
 		PX_ASSERT(m_scene);
 
-		m_defaultMaterial = m_physics->createMaterial(0.5f, 0.5f, 0.0f);
+		m_defaultMaterial = m_physics->createMaterial(0.0f, 0.0f, 0.0f);
 		PX_ASSERT(m_defaultMaterial);
 
 		m_controllerManager = PxCreateControllerManager(*m_scene);

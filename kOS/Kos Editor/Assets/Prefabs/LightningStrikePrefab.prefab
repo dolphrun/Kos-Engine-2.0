@@ -9,6 +9,26 @@
     },
     {
         "entityGUID": "f8bcb3d8-1f75-68d3-190e-8f5c0f9350c8",
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "26269fb3-67ac-8a8e-9d3c-78b8d56153f3",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
+        },
         "BoxColliderComponent": {
             "isTrigger": true,
             "box": {
@@ -30,7 +50,7 @@
             "enemyDeathSfxGUID_1": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000",
-            "lightningStrikeSfxGUID": "00000000-0000-0000-0000-000000000000"
+            "lightningStrikeSfxGUID": "26269fb3-67ac-8a8e-9d3c-78b8d56153f3"
         },
         "NameComponent": {
             "entityName": "LightningStrikePrefab",

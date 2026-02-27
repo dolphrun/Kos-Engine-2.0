@@ -12,6 +12,7 @@
 #include "LightningLMB.h"
 #include "EnemyManagerScript.h"
 #include "PowerupManagerScript.h"
+#include "AcidShield.h"
 
 #include "FirePowerupManagerScript.h"
 #include "LightningPowerupManagerScript.h"
@@ -22,7 +23,7 @@
 #include "FireDashVfxScript.h"
 #include "GroundCheckScript.h"
 #include "PlayerManagerScript.h"
-#include "AbilityUIScript.h"
+//#include "AbilityUIScript.h"
 #include "EventColliderScript.h"
 
 #include "EnemyHurtboxScript.h"
