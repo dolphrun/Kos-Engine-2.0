@@ -388,8 +388,9 @@ void gui::ImGuiHandler::DrawMainMenuBar() {
  void  gui::ImGuiHandler::DeserializeCameraSetting() {
      std::ifstream file(configpath::cameraSettingPath);
      if (!file.is_open()) {
-         LOGGING_WARN("Unable to Open File");
          file.close();
+         //Use default settings 
+         return;;
      }
      std::string fileContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
      file.close();
