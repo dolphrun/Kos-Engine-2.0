@@ -11948,7 +11948,883 @@
                     "z": 1.0
                 }
             }
-        }
+        },
+        "children": [
+            {
+                "entityGUID": "269b9b78-e6b6-11b3-86bc-2b97503c92d0",
+                "NameComponent": {
+                    "entityName": "Full Health",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "7d45fb55-fcad-955a-9018-e809021b9d90",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -8.009374141693115e-8,
+                            "y": -0.8111553192138672,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": -179.99989318847656,
+                            "y": -3.5825769434394417e-11,
+                            "z": 40.216453552246094
+                        },
+                        "scale": {
+                            "x": 1.2000000476837158,
+                            "y": 0.0899999737739563,
+                            "z": 0.9998924732208252
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -8.009374141693115e-8,
+                            "y": -0.8111553192138672,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": -179.99989318847656,
+                            "y": -3.5825769434394417e-11,
+                            "z": 40.21644973754883
+                        },
+                        "scale": {
+                            "x": 1.2000000476837158,
+                            "y": 0.0899999812245369,
+                            "z": 0.9998925924301147
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "736111af-8cea-17c0-b269-d29c4387f5fb",
+                "NameComponent": {
+                    "entityName": "Healthbar Frame",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "fff89827-cdab-5e61-357b-f6bca73ab140",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 1.043081283569336e-7,
+                            "y": -0.8247010707855225,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.159999966621399,
+                            "y": 0.07000000029802322,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 1.043081283569336e-7,
+                            "y": -0.8247010707855225,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.159999966621399,
+                            "y": 0.07000000029802322,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "1af28f25-d161-5b4a-266f-1c031404736f",
+                "NEWHealthBarScript": {
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "healthbarSprite": "a80b627e-f635-29d5-a078-245c0a942cfc",
+                    "originalScale": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "originalPosition": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "initialized": false
+                },
+                "NameComponent": {
+                    "entityName": "Healthbar",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "a80b627e-f635-29d5-a078-245c0a942cfc",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -2.7939677238464355e-9,
+                            "y": -0.824701189994812,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.1399999856948853,
+                            "y": 0.05000000074505806,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -2.7939677238464355e-9,
+                            "y": -0.824701189994812,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.1399999856948853,
+                            "y": 0.05000000074505806,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "b9a5fee2-35de-85b1-e2b5-d59cff35703e",
+                "NameComponent": {
+                    "entityName": "Manabar Frame",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "7c7a2cc1-dc26-1b07-76ef-5694793874b7",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -1.043081283569336e-7,
+                            "y": -0.8734347820281982,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.159999966621399,
+                            "y": 0.019999999552965164,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -1.043081283569336e-7,
+                            "y": -0.8734347820281982,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.159999966621399,
+                            "y": 0.019999999552965164,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "8c8b1df3-0ece-7820-5f19-901970e36458",
+                "ManaUIScript": {
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "manabarSprite": "ff2b6e16-229a-77a5-3c18-652b7f03e7fd",
+                    "originalScale": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "originalPosition": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "initialized": false
+                },
+                "NameComponent": {
+                    "entityName": "Manabar",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "ff2b6e16-229a-77a5-3c18-652b7f03e7fd",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": -0.8734345436096191,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.149999976158142,
+                            "y": 0.009999999776482582,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": -0.8734345436096191,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.149999976158142,
+                            "y": 0.009999999776482582,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "8a39b899-aa05-8d16-1661-8ea5bb34c129",
+                "NameComponent": {
+                    "entityName": "Ability Base",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "318d7588-5596-eca6-ca7e-5d7af5d9a875",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 2.1094456315040588e-7,
+                            "y": -0.6320493221282959,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.8799999952316284,
+                            "y": 0.2199999988079071,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 2.1094456315040588e-7,
+                            "y": -0.6320493221282959,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.8799999952316284,
+                            "y": 0.2199999988079071,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "5c4feeeb-d1f7-a487-92cf-8fd3296d43d8",
+                "Ability1Script": {
+                    "abilitySlot": 1,
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "defaultSprite": "00000000-0000-0000-0000-000000000000",
+                    "baseActiveSprite": "00000000-0000-0000-0000-000000000000",
+                    "baseInactiveSprite": "00000000-0000-0000-0000-000000000000",
+                    "fireActiveSprite": "724ed525-343d-9367-4f09-40bd3c6a2f19",
+                    "fireInactiveSprite": "9d5d5fab-bda7-de47-cf51-3fa78171180c",
+                    "acidActiveSprite": "74fd412b-8eef-1613-4f0e-d48e4cda4bc2",
+                    "acidInactiveSprite": "495c0496-1423-a35e-00e3-7cf49947da72",
+                    "lightningActiveSprite": "0bee4b3c-e619-928f-9cea-5d715dbe0ce7",
+                    "lightningInactiveSprite": "23553dbe-a1ce-2e63-6a3a-39a8474d90c2"
+                },
+                "NameComponent": {
+                    "entityName": "Ability 1",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "00000000-0000-0000-0000-000000000000",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -0.23606544733047485,
+                            "y": -0.682867169380188,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.41999998688697815,
+                            "y": 0.10999999940395355,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -0.23606544733047485,
+                            "y": -0.682867169380188,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.41999998688697815,
+                            "y": 0.10999999940395355,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "9ebb6f1b-201f-a6c7-be25-7070d6deafa0",
+                "Ability1Script": {
+                    "abilitySlot": 2,
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "defaultSprite": "00000000-0000-0000-0000-000000000000",
+                    "baseActiveSprite": "00000000-0000-0000-0000-000000000000",
+                    "baseInactiveSprite": "00000000-0000-0000-0000-000000000000",
+                    "fireActiveSprite": "611e7ce1-3ab4-c26d-4686-b5073b77169f",
+                    "fireInactiveSprite": "611e7ce1-3ab4-c26d-4686-b5073b77169f",
+                    "acidActiveSprite": "0907b7de-2996-1352-e837-ad0782c9fbfa",
+                    "acidInactiveSprite": "0907b7de-2996-1352-e837-ad0782c9fbfa",
+                    "lightningActiveSprite": "43cde322-8624-4c2f-8661-46a38531c8cb",
+                    "lightningInactiveSprite": "43cde322-8624-4c2f-8661-46a38531c8cb"
+                },
+                "NameComponent": {
+                    "entityName": "Ability 2",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "00000000-0000-0000-0000-000000000000",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 1.0570511221885681e-7,
+                            "y": -0.6288729906082153,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.20999999344348907,
+                            "y": 0.20999999344348907,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 1.0570511221885681e-7,
+                            "y": -0.6288729906082153,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.20999999344348907,
+                            "y": 0.20999999344348907,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "574ee234-c19a-b1e5-faff-9e0d37c2677b",
+                "Ability1Script": {
+                    "abilitySlot": 3,
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "defaultSprite": "00000000-0000-0000-0000-000000000000",
+                    "baseActiveSprite": "00000000-0000-0000-0000-000000000000",
+                    "baseInactiveSprite": "00000000-0000-0000-0000-000000000000",
+                    "fireActiveSprite": "ad57eb8b-ade1-2000-ec96-6cc1b73b20ce",
+                    "fireInactiveSprite": "dcbe5946-6287-e988-f645-aeaa6088295f",
+                    "acidActiveSprite": "dda525e2-0a0b-7665-ca7e-c14f38b67001",
+                    "acidInactiveSprite": "14f566a3-2fde-7782-97fd-4ac04fab425a",
+                    "lightningActiveSprite": "909436cb-67c2-cc51-89d2-ce33ff137866",
+                    "lightningInactiveSprite": "f3b170ba-014d-a4d4-fded-b3fe7e650e93"
+                },
+                "NameComponent": {
+                    "entityName": "Ability 3",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "00000000-0000-0000-0000-000000000000",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.23080158233642578,
+                            "y": -0.682867169380188,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.41999998688697815,
+                            "y": 0.10999999940395355,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.23080158233642578,
+                            "y": -0.682867169380188,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.41999998688697815,
+                            "y": 0.10999999940395355,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "517a0ef4-d02e-80fb-a781-a89b9aa841e0",
+                "NameComponent": {
+                    "entityName": "Element Base",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "26b06809-cebf-df1a-80c1-6782c4366403",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -0.7256832122802734,
+                            "y": -0.7972077131271362,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.18000000715255737,
+                            "y": 0.18000000715255737,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -0.7256832122802734,
+                            "y": -0.7972077131271362,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.18000000715255737,
+                            "y": 0.18000000715255737,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "01bdf737-7921-b671-44c1-63a7ae165283",
+                "AbilityUIImageScript": {
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "playerObjectID": 0,
+                    "noneSprite": "00000000-0000-0000-0000-000000000000",
+                    "fireSprite": "9f0ad91c-72f9-804e-2642-475080d2e54d",
+                    "lightningSprite": "e76a7398-7c0f-cd5d-a276-15420d3991a0",
+                    "acidSprite": "f184fa8e-c58e-54a4-6d89-e2d8924fd4ec"
+                },
+                "NameComponent": {
+                    "entityName": "Element",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "00000000-0000-0000-0000-000000000000",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -0.7256829738616943,
+                            "y": -0.7972077131271362,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.12999999523162842,
+                            "y": 0.12999999523162842,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -0.7256829738616943,
+                            "y": -0.7972077131271362,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.12999999523162842,
+                            "y": 0.12999999523162842,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "10552d77-c73c-f1a1-582d-76934651b67f",
+                "NameComponent": {
+                    "entityName": "Crosshair",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "956ebc81-6f4d-b2c4-a208-9f949489add7",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.05000000074505806,
+                            "y": 0.05000000074505806,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.05000000074505806,
+                            "y": 0.05000000074505806,
+                            "z": 1.0
+                        }
+                    }
+                }
+            }
+        ]
     },
     {
         "entityGUID": "4f7c8db3-ce95-a528-47a3-f719a5ad2f57",
