@@ -2,7 +2,7 @@
     {
         "SceneData": {
             "skyBoxGUID": [],
-            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "NavMeshGuid": "2f62fd11-d144-ccb2-cef2-d6b5a163f026",
             "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
             "ambientIntensity": 1.0
         }
@@ -22,7 +22,7 @@
             "WorldTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 0.5,
+                    "y": 25.5,
                     "z": 0.0
                 },
                 "rotation": {
@@ -39,7 +39,7 @@
             "LocalTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 0.5,
+                    "y": 25.5,
                     "z": 0.0
                 },
                 "rotation": {
@@ -87,7 +87,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 0.5,
+                            "y": 25.5,
                             "z": 0.0
                         },
                         "rotation": {
@@ -299,7 +299,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 2.53702449798584,
+                            "y": 27.537025451660156,
                             "z": 0.0
                         },
                         "rotation": {
@@ -511,7 +511,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 2.5399999618530273,
+                            "y": 27.540000915527344,
                             "z": 0.0
                         },
                         "rotation": {
@@ -561,7 +561,7 @@
             "WorldTransformation": {
                 "position": {
                     "x": 3.0,
-                    "y": 0.5,
+                    "y": 25.5,
                     "z": 0.0
                 },
                 "rotation": {
@@ -578,7 +578,7 @@
             "LocalTransformation": {
                 "position": {
                     "x": 3.0,
-                    "y": 0.5,
+                    "y": 25.5,
                     "z": 0.0
                 },
                 "rotation": {
@@ -623,7 +623,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 3.0,
-                            "y": 0.5,
+                            "y": 25.5,
                             "z": 0.0
                         },
                         "rotation": {
@@ -835,7 +835,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 3.564058780670166,
-                            "y": 1.7514419555664063,
+                            "y": 26.751441955566406,
                             "z": -0.4277713894844055
                         },
                         "rotation": {
@@ -1047,7 +1047,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 4.072786808013916,
-                            "y": 0.8573821187019348,
+                            "y": 25.85738182067871,
                             "z": 1.1025270223617554
                         },
                         "rotation": {
@@ -1259,7 +1259,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 3.7928645610809326,
-                            "y": 0.911026120185852,
+                            "y": 25.911026000976563,
                             "z": -0.8796944618225098
                         },
                         "rotation": {
@@ -1471,7 +1471,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 2.0371360778808594,
-                            "y": 0.9029482007026672,
+                            "y": 25.9029483795166,
                             "z": -0.04893715679645538
                         },
                         "rotation": {
@@ -1521,7 +1521,7 @@
             "WorldTransformation": {
                 "position": {
                     "x": 6.0,
-                    "y": 0.5,
+                    "y": 25.5,
                     "z": 0.0
                 },
                 "rotation": {
@@ -1538,7 +1538,7 @@
             "LocalTransformation": {
                 "position": {
                     "x": 6.0,
-                    "y": 0.5,
+                    "y": 25.5,
                     "z": 0.0
                 },
                 "rotation": {
@@ -1597,7 +1597,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 6.0,
-                            "y": 0.5,
+                            "y": 25.5,
                             "z": -1.0
                         },
                         "rotation": {
@@ -1809,7 +1809,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 5.856993675231934,
-                            "y": 4.324954986572266,
+                            "y": 29.324954986572266,
                             "z": 0.7716483473777771
                         },
                         "rotation": {
@@ -1890,7 +1890,7 @@
             "WorldTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": 25.5,
                     "z": 0.0
                 },
                 "rotation": {
@@ -1907,7 +1907,7 @@
             "LocalTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": 25.5,
                     "z": 0.0
                 },
                 "rotation": {
@@ -1940,13 +1940,15 @@
                 }
             }
         },
-        "CubeRendererComponent": {},
         "MaterialComponent": {
             "materialGUID": [
                 {
                     "materialGUID": "61cfd855-ca21-6e2a-3bf8-8fc94756f547"
                 }
             ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "4a1d4e3a-edc7-fcaa-f0c1-24ef1b8e630c"
         },
         "NameComponent": {
             "entityName": "Ground",
@@ -1957,10 +1959,11 @@
             "prefabName": "",
             "hide": false
         },
+        "NavMeshComponent": {},
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 8.515717506408691,
+                    "x": 0.0,
                     "y": 0.0,
                     "z": 0.0
                 },
@@ -1971,13 +1974,13 @@
                 },
                 "scale": {
                     "x": 50.0,
-                    "y": 1.0,
+                    "y": 50.0,
                     "z": 50.0
                 }
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 8.515717506408691,
+                    "x": 0.0,
                     "y": 0.0,
                     "z": 0.0
                 },
@@ -1988,7 +1991,7 @@
                 },
                 "scale": {
                     "x": 50.0,
-                    "y": 1.0,
+                    "y": 50.0,
                     "z": 50.0
                 }
             }
