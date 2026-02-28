@@ -338,15 +338,17 @@ namespace prefab
 
     void PrefabManager::LoadAllPrefabs() {
         std::string prefabPath = m_assetManager.GetAssetManagerDirectory() + "/Prefabs/"; // Should have a better way to get file directories
-        if (!std::filesystem::exists(prefabPath))return;
-        for (const auto& entry : std::filesystem::directory_iterator(prefabPath)) {
-			auto scenename = entry.path().filename();
 
-            if (scenename.extension().string() == ".prefab") {
-                LoadPrefab(entry.path());
+        if (!std::filesystem::exists(prefabPath)) return;
 
+        for (const auto& entry : std::filesystem::recursive_directory_iterator(prefabPath)) {
 
+            if (entry.is_regular_file()) {
+                auto filename = entry.path().filename();
 
+                if (filename.extension().string() == ".prefab") {
+                    LoadPrefab(entry.path());
+                }
             }
         }
     }

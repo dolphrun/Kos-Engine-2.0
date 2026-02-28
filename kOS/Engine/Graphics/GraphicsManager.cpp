@@ -73,6 +73,22 @@ void GraphicsManager::gm_Initialize(float width, float height) {
 	FilmGrain::currentShader = &shaderManager.engineShaders.find("FilmGrainShader")->second;
 	ChromaticAberration::currentShader = &shaderManager.engineShaders.find("ChromaticAbberrationShader")->second;
 	//Load default texture resource
+	//Create default texture
+	std::array<unsigned char, 196608>defaultTexData{1.f};
+	Textures::defaultTexture = Textures{ "default",defaultTexData.data(),256,256,3 };
+	std::array<unsigned char, 196608>missingTexData{0.f};
+	//Fill data with vals
+	for (int i{ 0 }; i < missingTexData.size(); i += 3) {
+		int r{ i / 64 };
+		if (r % 2) {
+			//Make it pink~
+			missingTexData[i] = 247;
+			missingTexData[i + 1] = 2;
+			missingTexData[i + 2] = 211;
+		}
+	}
+	Textures::missingTexture = Textures{ "missing",missingTexData.data(),256,256,3 };
+
 	//Textures::defaultTexture.LoadDSSTexture("Resource/Default.dds", "Default");
 	//Textures::missingTexture.LoadDSSTexture("Resource/Missing.dds", "Missing");
 }
