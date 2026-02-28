@@ -384,4 +384,7 @@ private:
 };
 
 
+class CustomTexture :public Textures {
+	CustomTexture(std::string texName, unsigned char* data, int newWidth, int newHeight);
+};
 #endif

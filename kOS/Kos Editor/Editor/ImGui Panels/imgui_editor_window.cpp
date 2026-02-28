@@ -280,22 +280,10 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
             if (transCom != NULL) {
                 // EditorCamera::editorCamera.position = transCom->LocalTransformation.position;
                 EditorCamera::editorCamera.target = transCom->WorldTransformation.position;
-                //EditorCamera::editorCamera.r = glm::length(EditorCamera::editorCamera.position - EditorCamera::editorCamera.target);
-                //EditorCamera::editorCamera.alpha = glm::asin((EditorCamera::editorCamera.position.y - EditorCamera::editorCamera.target.y) / EditorCamera::editorCamera.r);
-                //EditorCamera::editorCamera.betta = std::atan2(EditorCamera::editorCamera.position.x - EditorCamera::editorCamera.target.x, EditorCamera::editorCamera.position.z - EditorCamera::editorCamera.target.z);
-                //EditorCamera::editorCamera.SwitchMode(true);
                 EditorCamera::editorCamera.r = 5.0f;
                 EditorCamera::editorCamera.targetDist = EditorCamera::editorCamera.minmaxTargetDist.x;
-                EditorCamera::editorCamera.alpha = 0.0f;
-                EditorCamera::editorCamera.betta = 0.0f;
-                EditorCamera::editorCamera.orbitMode = true;
-                EditorCamera::editorCamera.CalculateViewMtx();
-                EditorCamera::editorCamera.orbitMode = false;
-                // Recompute position from spherical coordinates
-                EditorCamera::editorCamera.position.x = EditorCamera::editorCamera.target.x + EditorCamera::editorCamera.r * glm::cos(EditorCamera::editorCamera.alpha) * glm::sin(EditorCamera::editorCamera.betta);
-                EditorCamera::editorCamera.position.y = EditorCamera::editorCamera.target.y + EditorCamera::editorCamera.r * glm::sin(EditorCamera::editorCamera.alpha);
-                EditorCamera::editorCamera.position.z = EditorCamera::editorCamera.target.z + EditorCamera::editorCamera.r * glm::cos(EditorCamera::editorCamera.alpha) * glm::cos(EditorCamera::editorCamera.betta);
-
+                EditorCamera::editorCamera.SwitchMode(true);
+                EditorCamera::editorCamera.SwitchMode(false);
             }
         }
         // Uncomment this block to enable Unity-style 2d view snapping thingy it's not the best but it does it's purpose for now
