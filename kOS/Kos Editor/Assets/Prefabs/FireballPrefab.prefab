@@ -32,7 +32,8 @@
         "FirePowerupManagerScript": {
             "fireballSpeed": 20.0,
             "fireballDamage": 5,
-            "fireballSfxGUID": "4ef03ed6-765a-ed95-b9bb-eafe53b75669"
+            "fireballSfxGUID": "4ef03ed6-765a-ed95-b9bb-eafe53b75669",
+            "fireSplashPrefab": "2942a050-ee48-e0b7-0d53-aa4ff3642ef6"
         },
         "MaterialComponent": {
             "materialGUID": [
@@ -46,6 +47,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "FireballPrefab.prefab",
             "hide": false
         },
@@ -95,9 +97,9 @@
                     "z": 0.0
                 },
                 "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
+                    "x": 0.800000011920929,
+                    "y": 0.800000011920929,
+                    "z": 0.800000011920929
                 }
             },
             "LocalTransformation": {
@@ -126,6 +128,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -306,9 +309,9 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
+                            "x": 0.800000011920929,
+                            "y": 0.800000011920929,
+                            "z": 0.800000011920929
                         }
                     },
                     "LocalTransformation": {
@@ -337,6 +340,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -517,9 +521,9 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
+                            "x": 0.800000011920929,
+                            "y": 0.800000011920929,
+                            "z": 0.800000011920929
                         }
                     },
                     "LocalTransformation": {

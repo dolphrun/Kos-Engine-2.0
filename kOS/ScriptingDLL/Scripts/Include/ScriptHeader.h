@@ -19,6 +19,8 @@
 #include "AcidPowerupManagerScript.h"
 #include "FireLightningPowerupManagerScript.h"
 #include "FireAcidPowerupManagerScript.h"
+#include "FireballSplash.h"
+
 #include "LightningAcidPowerupManagerScript.h"
 #include "FireDashVfxScript.h"
 #include "GroundCheckScript.h"

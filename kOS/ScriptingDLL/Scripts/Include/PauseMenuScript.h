@@ -41,7 +41,7 @@ public:
 
     void PauseGame() {
         isPaused = true;
-        ecsPtr->SetTimeScale(0.5f);
+        ecsPtr->SetTimeScale(0.0f);
         ecsPtr->SetState(WAIT);
         SetPauseMenuActive(true);
         Input->HideCursor(false);

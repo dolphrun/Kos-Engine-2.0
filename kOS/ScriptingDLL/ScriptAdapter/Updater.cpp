@@ -38,6 +38,7 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 	RegisterScript<LightningLMB>(TemplateSC::ecsPtr);
 	RegisterScript<EnemyManagerScript>(TemplateSC::ecsPtr);
 	RegisterScript<PowerupManagerScript>(TemplateSC::ecsPtr);
+	RegisterScript<FireballSplash>(TemplateSC::ecsPtr);
 
 	RegisterScript<FirePowerupManagerScript>(TemplateSC::ecsPtr);
 	RegisterScript<LightningPowerupManagerScript>(TemplateSC::ecsPtr);
