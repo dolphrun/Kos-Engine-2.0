@@ -40,12 +40,12 @@ inline void BulletLogic::Start() {
 	if (!enemyDeathSfxGUID_2.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_2);
 	if (!enemyDeathSfxGUID_3.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_3); \
 
-	for (const auto& [entityID, signature] : ecsPtr->GetEntitySignatureData()) {
-		if (ecsPtr->HasComponent<ScoreManagerScript>(entityID)) {
-			scoreManager = ecsPtr->GetComponent<ScoreManagerScript>(entityID);
-			break;
+		for (const auto& [entityID, signature] : ecsPtr->GetEntitySignatureData()) {
+			if (ecsPtr->HasComponent<ScoreManagerScript>(entityID)) {
+				scoreManager = ecsPtr->GetComponent<ScoreManagerScript>(entityID);
+				break;
+			}
 		}
-	}
 
 	physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
 		if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
@@ -78,16 +78,22 @@ inline void BulletLogic::Start() {
 						//	}
 						//}
 
-			ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth -= bulletDamage;
+			if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
+				enemyScript->TriggerStagger(1.f);
 
-			if (ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth <= 0) {
-				if (scoreManager) {
-					scoreManager->AddScore(scoreValue); // or whatever value you want per kill
+				enemyScript->enemyHealth -= bulletDamage;
+
+				if (enemyScript->enemyHealth <= 0) {
+					if (scoreManager) {
+						scoreManager->AddScore(scoreValue); // or whatever value you want per kill
+					}
+
+					enemyScript->Die();
 				}
-
-				ecsPtr->DeleteEntity(col.otherEntityID);
-				navMeshPtr->RemoveAgent(ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->agentid);
 			}
+
+			// Delete the bullet after hitting the enemy
+			ecsPtr->DeleteEntity(entity);
 		}
 
 		if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Ground" || ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Default") {
