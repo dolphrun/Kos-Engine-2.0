@@ -64,6 +64,7 @@ namespace ecs {
                 capsule->shape = nullptr; 
                 capsule->actor = nullptr; 
             }
+            m_physicsManager.GetEventCallback()->DeregisterEntity(static_cast<unsigned int>(id));
         });
     }
 

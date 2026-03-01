@@ -113,18 +113,22 @@ inline void ToPhysxCollisionDetectionMode(PxRigidDynamic* actor, CollisionDetect
 	switch (mode) {
 	case CollisionDetectionMode::Discrete:
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD, false);
+		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD_FRICTION, false);
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD, false);
 		break;
 	case CollisionDetectionMode::Continuous:
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD, true);
+		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD_FRICTION, true);
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD, false);
 		break;
 	case CollisionDetectionMode::ContinuousDynamic:
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD, true);
-		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD, true);
+		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD_FRICTION, true);
+		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD, false);
 		break;
 	case CollisionDetectionMode::ContinuousSpeculative:
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD, false);
+		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD_FRICTION, false);
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD, true);
 		break;
 	}

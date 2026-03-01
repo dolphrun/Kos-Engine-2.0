@@ -41,6 +41,8 @@ namespace physics {
 
 		PxSceneDesc sceneDesc{ m_physics->getTolerancesScale() };
 		sceneDesc.gravity = PxVec3{ 0.0f, -19.81f, 0.0f };
+		sceneDesc.flags |= PxSceneFlag::eENABLE_CCD;                    
+		sceneDesc.flags |= PxSceneFlag::eENABLE_PCM;
 		m_cpuDispatcher = PxDefaultCpuDispatcherCreate(2);
 		sceneDesc.cpuDispatcher = m_cpuDispatcher;
 		sceneDesc.filterShader = ToPhysxCustomFilter;
@@ -116,6 +118,7 @@ namespace physics {
 			m_scene->simulate(m_fixedDeltaTime);
 			m_scene->fetchResults(true);
 			if (m_eventCallback) { 
+				m_eventCallback->FlushEvents();
 				m_eventCallback->ProcessCollisionStay();
 				m_eventCallback->ProcessTriggerStay();
 			}

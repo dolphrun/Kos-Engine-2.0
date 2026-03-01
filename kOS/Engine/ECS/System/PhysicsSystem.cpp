@@ -26,8 +26,12 @@ namespace ecs {
             PxTransform pxTrans{ PxVec3{ pos.x, pos.y, pos.z }, PxQuat{ rot.x, rot.y, rot.z, rot.w } };
 
             if (rb->isKinematic) { actor->setKinematicTarget(pxTrans); }
-            else { 
-                actor->setGlobalPose(pxTrans);
+            else {
+                if (trans->isDirty) {
+					actor->setGlobalPose(pxTrans);
+					actor->setLinearVelocity(PxVec3{ 0.0f });
+					actor->setAngularVelocity(PxVec3{ 0.0f });
+                }
                 actor->setLinearVelocity(PxVec3{ rb->velocity.x, rb->velocity.y, rb->velocity.z });
                 actor->setAngularVelocity(PxVec3{ rb->angularVelocity.x, rb->angularVelocity.y, rb->angularVelocity.z });
             }
@@ -112,6 +116,8 @@ namespace ecs {
 
             TransformSystem::SetImmediateWorldPosition(m_ecs, trans, glm::vec3{ nextPos.x, nextPos.y, nextPos.z });
             TransformSystem::SetImmediateWorldRotation(m_ecs, trans, glm::degrees(glm::eulerAngles(nextRot)));
+
+            trans->isDirty = false;
 
             rb->prevPosition = currPos;
             rb->prevRotation = glm::degrees(glm::eulerAngles(currRot));
