@@ -26,7 +26,7 @@
 #include "GroundCheckScript.h"
 #include "PlayerManagerScript.h"
 #include "AcidAirBlast.h"
-//#include "AcidGas.h"
+#include "AcidGas.h"
 
 //#include "AbilityUIScript.h"
 #include "EventColliderScript.h"
