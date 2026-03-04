@@ -132,21 +132,18 @@ struct DebugRenderer : BasicRenderer {
 	void RenderDebugCapsules(const CameraData& camera, Shader& shader);
 	void RenderDebugSpheres(const CameraData& camera, Shader& shader);
 	void RenderDebugMeshes(const CameraData& camera, Shader& shader);
-	void RenderDebugLines(const CameraData& camera, Shader& shader);
 	void Clear() override;
 
 	std::vector<BasicDebugData> basicDebugCubes{};
 	std::vector<BasicDebugData> basicDebugCapsules{};
 	std::vector<BasicDebugData> basicDebugSpheres{};
 	std::vector<DebugMeshData> basicDebugMeshes{};
-	std::vector<DebugLineData> basicDebugLines{};
 private:
 	DebugCircle debugCircle;
 	DebugFrustum debugFrustum;
 	DebugCube debugCube;
 	DebugCapsule debugCapsule;
 	DebugMesh debugMesh;
-	Line debugLine;
 };
 
 struct ParticleRenderer : BasicRenderer {

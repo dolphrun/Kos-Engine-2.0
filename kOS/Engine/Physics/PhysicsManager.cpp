@@ -179,32 +179,8 @@ namespace physics {
 			outHit.normal = glm::vec3{ hit.block.normal.x, hit.block.normal.y, hit.block.normal.z };
 			outHit.distance = hit.block.distance;
 			if (hit.block.actor && hit.block.actor->userData) { outHit.entityID = reinterpret_cast<unsigned int>(hit.block.actor->userData); }
-			m_debugRays.push_back({ origin, outHit.point });
 			return true;
 		}
-		m_debugRays.push_back({ origin, origin + glm::normalize(direction) * maxDistance });
 		return false;
-	}
-
-	std::vector<int> PhysicsManager::OverlapSphere(const glm::vec3& center, float radius) {
-		std::vector<int> result;
-		if (!m_scene) { return result; }
-		PxSphereGeometry sphereGeom{ radius };
-		PxTransform pos{ PxVec3{ center.x, center.y, center.z } };
-		PxOverlapBuffer overlapBuffer;
-		PxOverlapHit overlapHit[32];
-		overlapBuffer = PxOverlapBuffer(overlapHit, 32);
-		PxQueryFilterData filterData{ PxQueryFlag::eSTATIC | PxQueryFlag::eDYNAMIC };
-		if (m_scene->overlap(sphereGeom, pos, overlapBuffer, filterData)) {
-			for (PxU32 i = 0; i < overlapBuffer.getNbAnyHits(); ++i) {
-				const PxOverlapHit& hit = overlapBuffer.getAnyHit(i);
-				if (hit.actor && hit.actor->userData) {
-					int id = static_cast<int>(reinterpret_cast<uintptr_t>(hit.actor->userData));
-					result.push_back(id);
-				}
-			}
-		}
-		m_debugSpheres.push_back({ center, radius });
-		return result;
 	}
 }

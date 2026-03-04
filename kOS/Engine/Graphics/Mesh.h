@@ -62,12 +62,6 @@ struct DebugMeshData {
 	glm::vec3 color{ 0.0f, 1.0f, 0.0f };
 };
 
-struct DebugLineData {
-	glm::vec3 start{ 0.0f };
-	glm::vec3 end{ 0.0f };
-	glm::vec3 color{ 0.0f, 1.0f, 0.0f };
-};
-
 struct DebugCube :BasicMesh {
 	float lineWidth{ 2.0 };
 	void CreateMesh();

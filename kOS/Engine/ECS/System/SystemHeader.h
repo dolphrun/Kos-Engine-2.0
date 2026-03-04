@@ -20,7 +20,6 @@
 #include "DebugCapsuleColliderRenderSystem.h"
 #include "DebugSphereColliderRenderSystem.h"
 #include "DebugMeshColliderRenderSystem.h"
-#include "DebugGizmosSystem.h"
 #include "ScriptingSystem.h"
 #include "CubeRenderSystem.h"
 #include "SphereRenderSystem.h"
