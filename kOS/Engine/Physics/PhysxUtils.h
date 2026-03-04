@@ -207,4 +207,16 @@ struct RaycastHit {
 	float distance = 0.0f;
 };
 
+struct DebugRay {
+	glm::vec3 start;
+	glm::vec3 end;
+	glm::vec3 color{ 1.0f, 0.0f, 0.0f };
+};
+
+struct DebugSphere {
+	glm::vec3 center;
+	float radius;
+	glm::vec3 color{ 1.0f, 0.0f, 0.0f };
+};
+
 #endif
