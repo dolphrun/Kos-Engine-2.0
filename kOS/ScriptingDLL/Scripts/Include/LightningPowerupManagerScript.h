@@ -43,6 +43,7 @@ public:
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
 				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
 					enemyScript->enemyHealth -= lightningDamage;
+					enemyScript->TriggerStagger(1.f);
 
 					if (enemyScript->enemyHealth <= 0) {
 						// ADD SFX OF ENEMY DEATH HERE - Done
@@ -52,8 +53,8 @@ public:
 							scoreManager->AddScore(scoreValue); // or whatever value you want per kill
 						}
 
-						ecsPtr->DeleteEntity(col.otherEntityID);
-						navMeshPtr->RemoveAgent(enemyScript->agentid);
+						enemyScript->Die();
+
 					}
 				}
 			}

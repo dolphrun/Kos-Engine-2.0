@@ -58,8 +58,8 @@ inline void FireLMB::Start() {
 					scoreManager->AddScore(scoreValue); // or whatever value you want per kill
 				}
 
-				ecsPtr->DeleteEntity(col.otherEntityID);
-				navMeshPtr->RemoveAgent(ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->agentid);
+				ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->TriggerStagger(1.f);
+
 			}
 		}
 

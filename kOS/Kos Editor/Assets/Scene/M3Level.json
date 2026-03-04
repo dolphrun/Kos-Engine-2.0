@@ -7099,7 +7099,7 @@
                     "hide": false
                 },
                 "PowerupManagerScript": {
-                    "powerupType": "FIRE"
+                    "powerupType": "ACID"
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

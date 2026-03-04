@@ -44,7 +44,7 @@ public:
 // --- IMPLEMENTATION SECTION ---
 // Include EnemyManagerScript here so we can access enemyHealth
 #include "EnemyManagerScript.h"
-#include "AcidGrenadeGasAoe.h"
+#include "AcidGas.h"
 
 inline void AcidLMB::Start() {
 	enemyDeathSfxGUIDs.clear();
