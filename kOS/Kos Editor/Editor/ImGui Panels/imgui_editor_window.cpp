@@ -47,6 +47,15 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigned int windowHeight)
 {
+    for (const auto& line : m_physicsManager.m_debugRays) {
+        m_graphicsManager.gm_PushLineDebugData(DebugLineData{ line.start, line.end, line.color });
+    }
+    m_physicsManager.m_debugRays.clear();
+    for (const auto& sphere : m_physicsManager.m_debugSpheres) {
+        glm::mat4 model = glm::translate(glm::mat4{ 1.0f }, sphere.center) * glm::scale(glm::mat4{ 1.0f }, glm::vec3{ sphere.radius });
+        m_graphicsManager.gm_PushSphereDebugData(BasicDebugData{ model, sphere.color });
+    }
+    m_physicsManager.m_debugSpheres.clear();
 
     ImGuiWindowFlags window_flags = 0;
     window_flags |= ImGuiWindowFlags_MenuBar;
