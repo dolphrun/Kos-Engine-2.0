@@ -189,7 +189,7 @@ public:
 	float lightningCurrTimeslowTimer = 0.0f;
 	bool  isTimeslowActive = false;
 
-	float groundAcceleration = 80.f;
+	float groundAcceleration = 15.f;
 	float airAcceleration = 25.f;
 	float groundFriction = 8.f;
 	float airControl = 0.3f;
@@ -198,7 +198,7 @@ public:
 	float jumpForce = 12.f;
 
 
-	float cameraTiltMaxAngle = 10.f;	// Max roll degrees left/right
+	float cameraTiltMaxAngle = 3.f;	// Max roll degrees left/right
 	float cameraTiltSpeed = 8.f;		// How fast it lerps to target
 	float cameraTiltReturnSpeed = 10.f; // How fast it returns to 0
 	float cameraCurrTiltZ = 0.f;		//current Z roll
@@ -208,9 +208,10 @@ public:
 	float cameraShakeTimer = 0.f;
 	float cameraShakeDelay = 0.f;
 	float cameraShakeElapsed = 0.f;
+	float cameraTiltSmoothedInput = 0.f;
 	bool  isCameraShaking = false;
 	glm::vec3 cameraShakeOriginalPos = glm::vec3(0.f);
-	glm::vec3 cameraShakeOffset = glm::vec3(0.f); // ✅ ADD THIS
+	glm::vec3 cameraShakeOffset = glm::vec3(0.f);
 
 
 	inline int GetMaxBulletsForCurrentWeapon() const {
@@ -628,6 +629,12 @@ inline void PlayerManagerScript::FixedUpdate() {
 
 inline void PlayerManagerScript::PlayerMovementControls()
 {
+	float forward = Input->GetVertical();
+	float right = Input->GetHorizontal();
+
+	isMoving = (std::abs(forward) > 0.1f || std::abs(right) > 0.1f);
+
+
 	auto* playerRigidbody = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity);
 	if (!playerRigidbody) return;
 
@@ -638,8 +645,6 @@ inline void PlayerManagerScript::PlayerMovementControls()
 	bool grounded = GroundCheck();
 
 	// ----- INPUT -----
-	float forward = Input->GetVertical();
-	float right = Input->GetHorizontal();
 
 	glm::vec3 wishDir =
 		GetPlayerFrontDirection() * forward +
@@ -655,22 +660,42 @@ inline void PlayerManagerScript::PlayerMovementControls()
 	// ==============================
 	if (grounded)
 	{
-		// --- Apply Friction ---
+		// old friction code
+		//float speed = glm::length(glm::vec2(tempVelocity.x, tempVelocity.z));
+		//if (speed > 0.0f)
+		//{
+		//	float drop = speed * groundFriction * dt;
+		//	float newSpeed = speed - drop;
+		//	if (newSpeed < 0.f)
+		//		newSpeed = 0.f;
+
+		//	if (speed > 0.f)
+		//	{
+		//		newSpeed /= speed;
+		//		tempVelocity.x *= newSpeed;
+		//		tempVelocity.z *= newSpeed;
+		//	}
+		//}
+		// 
+
+		// --- Apply Friction ---//
 		float speed = glm::length(glm::vec2(tempVelocity.x, tempVelocity.z));
+		bool hasInput = glm::length2(wishDir) > 0.0001f;
+
 		if (speed > 0.0f)
 		{
-			float drop = speed * groundFriction * dt;
-			float newSpeed = speed - drop;
-			if (newSpeed < 0.f)
-				newSpeed = 0.f;
+			float frictionScale = hasInput ? 0.3f : 1.0f;
+			float drop = speed * groundFriction * frictionScale * dt;
+			float newSpeed = glm::max(speed - drop, 0.f);
 
 			if (speed > 0.f)
 			{
-				newSpeed /= speed;
-				tempVelocity.x *= newSpeed;
-				tempVelocity.z *= newSpeed;
+				float ratio = newSpeed / speed;
+				tempVelocity.x *= ratio;
+				tempVelocity.z *= ratio;
 			}
 		}
+
 
 		// --- Accelerate ---
 		if (glm::length2(wishDir) > 0.0f)
@@ -780,14 +805,14 @@ inline void PlayerManagerScript::PlayerCameraControls() {
 	// CAMERA TILT
 	float horizontalInput = Input->GetHorizontal();
 
+	float smoothSpeed = (std::abs(horizontalInput) > 0.05f) ? 10.f : 14.f;
+	cameraTiltSmoothedInput = glm::mix(cameraTiltSmoothedInput, horizontalInput, glm::clamp(smoothSpeed * ecsPtr->m_GetDeltaTime(), 0.f, 1.f));
+
 	float targetTiltZ = -horizontalInput * cameraTiltMaxAngle;
 
-	float tiltBlend = (std::abs(horizontalInput) > 0.05f)
-		? cameraTiltSpeed
-		: cameraTiltReturnSpeed;
+	float tiltBlend = (std::abs(horizontalInput) > 0.05f) ? cameraTiltSpeed : cameraTiltReturnSpeed;
 
-	cameraCurrTiltZ = glm::mix(cameraCurrTiltZ, targetTiltZ, tiltBlend * ecsPtr->m_GetDeltaTime());
-
+	cameraCurrTiltZ = glm::mix(cameraCurrTiltZ, targetTiltZ, glm::clamp(tiltBlend * ecsPtr->m_GetDeltaTime(), 0.f, 1.f));
 	// CAMERA SHAKE
 	if (isCameraShaking) {
 		cameraShakeElapsed += ecsPtr->m_GetDeltaTime();
@@ -1741,7 +1766,7 @@ inline void PlayerManagerScript::CameraShake(float intensity, float duration) {
 	cameraShakeOriginalPos = cam->LocalTransformation.position;
 	cameraShakeIntensity = intensity;
 	cameraShakeDuration = duration;
-	cameraShakeDelay = 0.f;   // set to non-zero if you want delay support
+	cameraShakeDelay = 0.f;  
 	cameraShakeElapsed = 0.f;
 	cameraShakeOffset = glm::vec3(0.f);
 	isCameraShaking = true;

@@ -34,7 +34,7 @@ namespace ecs {
 		utility::Box box;
 		void* actor = nullptr;
 		void* shape = nullptr;
-
+		bool autoFit = false;
 		REFLECTABLE(BoxColliderComponent, isTrigger, box)
 	};
 }
