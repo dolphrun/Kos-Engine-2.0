@@ -49,6 +49,8 @@ glm::mat4 CameraData::CalculateViewMtx() {
     up = glm::normalize(glm::cross(right, direction));
 
     //Compute final look at direction 
+    glm::mat4 rollMtx = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), direction);
+    up = glm::mat3(rollMtx) * up;
     viewMtx = glm::lookAt(position, position +direction, up);
     return viewMtx;
 }
