@@ -487,24 +487,21 @@ void DebugCapsule::DrawMesh() {
 
 void DebugCapsule::DeleteMesh()
 {
-    if (eboId != 0)
-    {
-        glDeleteBuffers(1, &eboId);
-        eboId = 0;
-    }
-
-    if (vboId != 0)
-    {
-        glDeleteBuffers(1, &vboId);
-        vboId = 0;
-    }
-
     if (vaoId != 0)
     {
         glDeleteVertexArrays(1, &vaoId);
         vaoId = 0;
     }
-
+    if (vboId != 0)
+    {
+        glDeleteBuffers(1, &vboId);
+        vboId = 0;
+    }
+    if (eboId != 0)
+    {
+        glDeleteBuffers(1, &eboId);
+        eboId = 0;
+    }
     drawCount = 0;
 }
 

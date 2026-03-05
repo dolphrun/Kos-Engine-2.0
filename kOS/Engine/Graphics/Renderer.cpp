@@ -636,6 +636,7 @@ void DebugRenderer::RenderDebugCapsules(const CameraData& camera, Shader& shader
 	for (size_t i = 0; i < basicDebugCapsules.size(); i++) {
 		const auto& c = basicDebugCapsules[i];
 		if (fabs(lastRadius - c.radius) > cEpsilon || fabs(lastHeight - c.height) > cEpsilon) {
+			debugCapsule.DeleteMesh();
 			lastRadius = c.radius;
 			lastHeight = c.height;
 			debugCapsule.radius = c.radius;
@@ -646,7 +647,7 @@ void DebugRenderer::RenderDebugCapsules(const CameraData& camera, Shader& shader
 		shader.SetFloat("uShaderType", 2.1f);
 		shader.SetVec3("color", c.color);
 		debugCapsule.DrawMesh();
-		debugCapsule.DeleteMesh();
+		glBindVertexArray(0);
 	}
 }
 
