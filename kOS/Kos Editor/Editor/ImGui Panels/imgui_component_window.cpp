@@ -40,11 +40,9 @@ void gui::ImGuiHandler::DrawComponentWindow()
             ecs::EntityID entityID = m_lastClickedEntityId;
             ecs::ComponentSignature EntitySignature = m_ecs.GetEntitySignature(entityID);
 
-
             static std::vector<const char*>componentNames;
             static const auto& componentsString = m_ecs.GetComponentsString();
             if (componentNames.size() != componentsString.size()) {
-
                 componentNames.clear();
                 for (const auto& names : componentsString) {
                     componentNames.push_back(names.c_str());
@@ -104,7 +102,12 @@ void gui::ImGuiHandler::DrawComponentWindow()
                 ImGui::Text("Object Name: ");
                 ImGui::SameLine();
                 ImGui::SetNextItemWidth(100.0f);
-                ImGui::InputText("##NAMETEXT##", &nc->entityName);
+                if (nc->isPrefab) {
+                    ImGui::TextDisabled(nc->entityName.c_str());
+                }
+                else {
+                    ImGui::InputText("##NAMETEXT##", &nc->entityName);
+                }
                 ImGui::SameLine();
 
                 bool hidden = nc->hide;
@@ -174,13 +177,14 @@ void gui::ImGuiHandler::DrawComponentWindow()
                         if (!tc->m_haveParent || !m_ecs.GetComponent<ecs::NameComponent>(tc->m_parentID)->isPrefab) {
                             static bool isHeaderOpen = false;
                             static std::vector<std::string> diffComp;
-                            //static std::map<ecs::EntityID, std::vector<std::string>> diffComp;
+                            static std::map<EntityID, ComponentSignature> comparedResult;
+
                             bool open = false;
                             std::string headerName = nc->prefabName + " [Changed]";
                             int IMGUI_ID = 0;
                             float pos = ImGui::GetCursorPosX() + ImGui::GetWindowSize().x - 200;
 
-                            if (open = ImGui::BeginCombo("##PrefabChanges", headerName.c_str())) {
+                            if (open = ImGui::BeginCombo("##PrefabChanges", headerName.c_str(), ImGuiComboFlags_HeightLargest)) {
                                 for (auto& compName : diffComp) { // Will do it such that it will show children changes too
                                     if (compName == ecs::NameComponent::classname() || compName == ecs::TransformComponent::classname()) continue;
                                     ImGui::TextDisabled(compName.c_str());
@@ -201,6 +205,8 @@ void gui::ImGuiHandler::DrawComponentWindow()
                                     ImGui::PopID();
                                 }
 
+                                DrawEntityChanges(comparedResult, entityID);
+
                                 // Overwrite All
                                 if (ImGui::Button("Overwrite All Components", { ImGui::GetContentRegionAvail().x, 0 })) {
                                     try {
@@ -219,10 +225,19 @@ void gui::ImGuiHandler::DrawComponentWindow()
 
                             if (isHeaderOpen != open) { // Needed to show change in state
                                 if (open) {
+                                    //Forced
+                                    //ComponentSignature sig;
+                                    //sig.set(m_ecs.GetComponentKeyData().find("NameComponent")->second);
+                                    //sig.set(m_ecs.GetComponentKeyData().find("TransformComponent")->second);
+                                    //sig.set(m_ecs.GetComponentKeyData().find("MeshFilterComponent")->second);
+                                    //sig.set(m_ecs.GetComponentKeyData().find("MaterialComponent")->second);
+                                    //comparedResult.emplace(entityID, sig);
+                                    m_prefabManager.CompareAll(comparedResult, entityID);
                                     m_prefabManager.RefreshComponentDifferenceList(diffComp, entityID);
                                 }
                                 else {
                                     diffComp.clear();
+                                    comparedResult.clear();
                                 }
                                 isHeaderOpen = open;
                             }
@@ -344,6 +359,33 @@ void gui::ImGuiHandler::DrawFieldComponent(ecs::Component* component, const std:
             else {
                 draw.count++;
             }
+        }
+    }
+}
+
+void gui::ImGuiHandler::DrawEntityChanges(std::map<EntityID, ComponentSignature>& result, ecs::EntityID entityID) {
+    auto childList = m_ecs.GetChild(entityID);
+    if (childList.has_value()) {
+        std::string name = result.find(entityID) != result.end() ? m_ecs.GetComponent<ecs::NameComponent>(entityID)->entityName + "[Changed]" : m_ecs.GetComponent<ecs::NameComponent>(entityID)->entityName;
+        if (ImGui::TreeNodeEx(name.c_str())) {
+            if (result.find(entityID) != result.end()) {
+                const auto& componentKey = m_ecs.GetComponentKeyData();
+                for (const auto& [ComponentName, key] : componentKey) {
+                    if (result.find(entityID)->second.test(key)) {
+                        ImGui::Text(ComponentName.c_str());
+                    }
+                }
+            }
+            
+            for (auto& child : childList.value()) {
+                DrawEntityChanges(result, child);
+            }
+            ImGui::TreePop();
+        }
+    }
+    else {
+        if (ImGui::TreeNodeEx(m_ecs.GetComponent<ecs::NameComponent>(entityID)->entityName.c_str(), ImGuiTreeNodeFlags_Leaf)) {
+            ImGui::TreePop();
         }
     }
 }

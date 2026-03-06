@@ -216,6 +216,7 @@ namespace gui {
         void DrawNavMeshWindow();
         bool ImageButton(const std::filesystem::path& directoryString);
 
+        void DrawEntityChanges(std::map<EntityID, ComponentSignature>& result, ecs::EntityID entityID);
         /***********PreferenceTab*************/
         bool openPreferencesTab = false;
         /*************************************/
@@ -237,8 +238,10 @@ namespace gui {
         /***********PREFAB*************/
         bool m_prefabSceneMode{ false };
         //ecs::EntityID duppedID = -1;    //Used to check if prefab has been changed.
-        bool m_collisionSetterMode{ false };
+        // bool m_collisionSetterMode{ false };
         std::unordered_map<std::string, bool> m_savedSceneState;
+        std::map<EntityID, EntityID> addedIDToPrefab; // Used to store added entityID objects to prefab instances. [prefabID, newObjectID]
+        std::map<EntityID, EntityID> removedIDToPrefab; // Used to store removed entityID objects to prefab instances. [prefabID, removedID of prefabID]
         /******************************/
 
         bool m_objectNameBox = false;

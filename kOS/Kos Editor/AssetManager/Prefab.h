@@ -54,9 +54,10 @@ namespace prefab {
 		void RevertToPrefab_Component(ecs::EntityID id, const std::string& componentName, const std::string& prefabSceneName);
 		void LoadPrefab(const std::filesystem::path& filepath);
 		void LoadAllPrefabs();
-		ecs::ComponentSignature ComparePrefabWithInstance(ecs::EntityID id);
+		ecs::ComponentSignature ComparePrefabWithInstance(ecs::EntityID id, ecs::EntityID compare = -1);
 		void RefreshComponentDifferenceList(std::vector<std::string>& diffComp, ecs::EntityID entityID);
-
+		void CompareAll(std::map<EntityID, ecs::ComponentSignature>& result, ecs::EntityID entityID);
+		void CompareEntity(std::map<EntityID, ecs::ComponentSignature>& result, ecs::EntityID entityID, ecs::EntityID compare);
 	};
 
 

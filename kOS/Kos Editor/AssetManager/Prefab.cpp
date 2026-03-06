@@ -30,7 +30,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 #include <RAPIDJSON/writer.h>
 #include <RAPIDJSON/stringbuffer.h>
 
-namespace prefab 
+namespace prefab
 {
     void PrefabManager::AssignPrefabToNameComponent(ecs::EntityID parentid, std::string scenename) {
         const auto& vecChild = m_ecs.GetChild(parentid);
@@ -62,14 +62,14 @@ namespace prefab
                     insertscene = scene.first;
                     break;
                 }
-            }      
+            }
         }
 
         if (m_ecs.sceneMap.find(prefabscene) == m_ecs.sceneMap.end()) {
             LOGGING_ERROR("Prefab not loaded into scene");
             return -1;
         }
-       
+
         ecs::EntityID newId = m_ecs.CreateEntity(insertscene);
 
         DeepUpdatePrefab(m_ecs.sceneMap.at(prefabscene).prefabID, newId);
@@ -289,13 +289,13 @@ namespace prefab
             ecs::NameComponent* nc = m_ecs.GetComponent<ecs::NameComponent>(id);
             if (nc->isPrefab && (nc->prefabName == prefabSceneName)) {
                 // Remove Comp in Revert will already check if it contains comp 
-				//action->DuplicateComponent(prefabID, id);
+                //action->DuplicateComponent(prefabID, id);
                 RevertToPrefab_Component(id, componentName, nc->prefabName);
             }
         }
 
         //save prefab
-		m_sceneManager.SaveScene(prefabSceneName);
+        m_sceneManager.SaveScene(prefabSceneName);
     }
 
     void PrefabManager::RevertToPrefab_Component(ecs::EntityID entityID, const std::string& componentName, const std::string& prefabSceneName) {
@@ -318,7 +318,7 @@ namespace prefab
 
         auto scenename = filepath.filename();
 
-        
+
         m_sceneManager.ImmediateLoadScene(filepath);
         auto& prefabData = m_ecs.sceneMap.at(scenename.string());
         prefabData.isPrefab = true;
@@ -331,6 +331,8 @@ namespace prefab
                 m_ecs.sceneMap.find(scenename.string())->second.prefabID = id;
                 ecs::NameComponent* nc = m_ecs.GetComponent<ecs::NameComponent>(id);
                 nc->prefabName = scenename.string();
+
+                LOGGING_INFO(nc->entityName + " {}", id);
                 break;
             }
         }
@@ -353,14 +355,16 @@ namespace prefab
         }
     }
 
-    ecs::ComponentSignature PrefabManager::ComparePrefabWithInstance(ecs::EntityID entityID) {
-        std::string prefabName = m_ecs.GetComponent<ecs::NameComponent>(entityID)->prefabName;
-        if (m_ecs.sceneMap.find(prefabName) == m_ecs.sceneMap.end()) return ecs::ComponentSignature();
+    ecs::ComponentSignature PrefabManager::ComparePrefabWithInstance(ecs::EntityID entityID, ecs::EntityID compare) {
+        if (compare < 0) {
+            std::string prefabName = m_ecs.GetComponent<ecs::NameComponent>(entityID)->prefabName;
+            if (m_ecs.sceneMap.find(prefabName) == m_ecs.sceneMap.end()) return ecs::ComponentSignature();
 
-        ecs::EntityID prefabId = m_ecs.sceneMap.find(prefabName)->second.prefabID;
+            compare = m_ecs.sceneMap.find(prefabName)->second.prefabID;
+        }
 
         auto entitySignature = m_ecs.GetEntitySignature(entityID);
-        auto prefabSignature = m_ecs.GetEntitySignature(prefabId);
+        auto prefabSignature = m_ecs.GetEntitySignature(compare);
 
         // Stores the resulting components which are different
         ecs::ComponentSignature result;
@@ -372,7 +376,7 @@ namespace prefab
             if (entitySignature.test(componentKey) &&
                 prefabSignature.test(componentKey)) {
                 auto* idComp = m_ecs.GetIComponent<ecs::Component*>(ComponentName, entityID);
-                auto* prefabComp = m_ecs.GetIComponent<ecs::Component*>(ComponentName, prefabId);
+                auto* prefabComp = m_ecs.GetIComponent<ecs::Component*>(ComponentName, compare);
 
                 auto& actionInvoker = m_ecs.componentAction[ComponentName];
                 if (!actionInvoker->Compare(idComp, prefabComp)) { // 1 = same, 0 = diff
@@ -401,6 +405,48 @@ namespace prefab
         for (const auto& [ComponentName, key] : componentKey) {
             if (sig.test(m_ecs.GetComponentKey(ComponentName))) {
                 diffComp.push_back(ComponentName);
+            }
+        }
+    }
+
+    void PrefabManager::CompareAll(std::map<EntityID, ecs::ComponentSignature>& result, ecs::EntityID entityID) {
+        std::string prefabName = m_ecs.GetComponent<ecs::NameComponent>(entityID)->prefabName;
+        if (m_ecs.sceneMap.find(prefabName) == m_ecs.sceneMap.end()) {
+            return;
+        }
+
+        ecs::EntityID prefabId = m_ecs.sceneMap.find(prefabName)->second.prefabID;
+        CompareEntity(result, entityID, prefabId);
+    }
+
+    void PrefabManager::CompareEntity(std::map<EntityID, ecs::ComponentSignature>& result, ecs::EntityID entityID, ecs::EntityID compare) {
+        auto sig = ComparePrefabWithInstance(entityID, compare);
+        if (sig.any()) {
+            result.emplace(entityID, sig);
+        }
+
+        auto transID = m_ecs.GetComponent<ecs::TransformComponent>(entityID);
+        auto transCompare = m_ecs.GetComponent<ecs::TransformComponent>(compare);
+
+        // **** Need to find the associated obj in prefab
+        if (transID->m_childID.size() > 0 || transCompare->m_childID.size() > 0) {
+            int id_isPrefabCount = 0, compare_isPrefabCount = 0;
+
+            for (int i = 0; i < transID->m_childID.size(); i++)
+                if (m_ecs.GetComponent<ecs::NameComponent>(transID->m_childID[i])->isPrefab)
+                    id_isPrefabCount++;
+
+            for (int i = 0; i < transCompare->m_childID.size(); i++)
+                if (m_ecs.GetComponent<ecs::NameComponent>(transCompare->m_childID[i])->isPrefab)
+                    compare_isPrefabCount++;
+            
+            //instance deleted an object tat was in the prefab
+            if (compare_isPrefabCount > id_isPrefabCount) {
+
+            }
+            //prefab deleted an object that was there? Very unlikely sceanrio
+            else if (id_isPrefabCount > compare_isPrefabCount) {
+
             }
         }
     }

@@ -534,14 +534,16 @@ namespace gui
         }
 
         // create color if prefab
-        if (nc->isPrefab)
-        {
+        if (nc->hide && nc->isPrefab) {
+            ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.3f, 0.1f, 0.1f, 1.0f));
+        }
+        else if (nc->isPrefab) {
             ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.7f, 0.2f, 0.1f, 1.0f));
         }
-        else if (nc->hide)
-        {
+        else if (nc->hide){
             ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.3f, 0.3f, 0.3f, 1.0f));
         }
+
         bool open = ImGui::TreeNodeEx(std::to_string(id).c_str(), flag, nc->entityName.c_str());
         if (ImGui::IsItemHovered() && ImGui::IsMouseReleased(ImGuiMouseButton_Left))
         {
@@ -735,8 +737,6 @@ namespace gui
 
             ImGui::EndDragDropTarget();
         }
-
-
 
         if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None))
         {

@@ -10,7 +10,7 @@
     {
         "entityGUID": "885e4ec9-1423-f6d7-995c-0645eab33504",
         "AcidPowerupManagerScript": {
-            "acidDamage": 5,
+            "pushbackForce": 500.0,
             "lingerTime": 1.0,
             "growthRate": 1.0299999713897705,
             "acidBlastSpeed": 5.0,
@@ -99,6 +99,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "AcidBlastPrefan.prefab",
             "hide": false
         },
@@ -178,6 +179,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -389,6 +391,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -600,6 +603,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
