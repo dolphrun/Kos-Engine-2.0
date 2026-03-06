@@ -103,8 +103,8 @@ inline void BulletLogic::Start() {
 }
 
 inline void BulletLogic::Update() {
-	if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
-		tc->LocalTransformation.position += direction * bulletSpeed * ecsPtr->m_GetDeltaTime();
+	if (auto* rb = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity)) {
+		rb->velocity = direction * bulletSpeed;
 	}
 
 	if (currentTimer < timeBeforeDeath) {

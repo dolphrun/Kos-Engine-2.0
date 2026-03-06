@@ -54,12 +54,14 @@ public:
 			enemyScript->enemyHealth -= splashDamage;
 			std::cout << "[FireballSplash] Hit enemy, HP left: " << enemyScript->enemyHealth << "\n";
 
+			enemyScript->TriggerStagger(1.f);
+
 			if (enemyScript->enemyHealth <= 0) {
 				if (scoreManager) {
 					scoreManager->AddScore(scoreValue);
 				}
-				navMeshPtr->RemoveAgent(enemyScript->agentid); 
-				ecsPtr->DeleteEntity(col.otherEntityID);
+				enemyScript->Die();
+
 			}
 			});
 

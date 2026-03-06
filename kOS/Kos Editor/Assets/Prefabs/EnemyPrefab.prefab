@@ -39,6 +39,7 @@
             "Layer": 0,
             "entityTag": "Enemy",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "EnemyPrefab.prefab",
             "hide": false
         },
@@ -47,7 +48,7 @@
             "drag": 0.0,
             "angularDrag": 0.05000000074505806,
             "useGravity": true,
-            "isKinematic": false,
+            "isKinematic": true,
             "interpolation": 0,
             "collisionDetection": 0,
             "constraints": 11,
@@ -107,6 +108,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -153,13 +155,16 @@
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
                     "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
                 },
                 "NameComponent": {
                     "entityName": "Enemy Model",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },

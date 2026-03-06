@@ -36,10 +36,10 @@ inline void FireDashVfxScript::Start() {
 			if (!enemyScript) return;
 
 			enemyScript->enemyHealth -= dashDamage;
+			enemyScript->TriggerStagger(1.f);
 
 			if (enemyScript->enemyHealth <= 0) {
-				navMeshPtr->RemoveAgent(enemyScript->agentid);
-				ecsPtr->DeleteEntity(col.otherEntityID);
+				enemyScript->Die();
 
 				if (scoreManager) {
 					scoreManager->AddScore(scoreValue);

@@ -18,7 +18,7 @@
             "enemyDeathSfxGUID_1": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000",
-            "gasCloudPrefab": "3f7ec429-acba-7feb-15be-e8c9f720820a"
+            "gasCloudPrefab": "20a501c9-cbba-236d-aae8-0c351222333a"
         },
         "MaterialComponent": {
             "materialGUID": [
@@ -41,7 +41,7 @@
             "drag": 0.0,
             "angularDrag": 0.05000000074505806,
             "useGravity": false,
-            "isKinematic": false,
+            "isKinematic": true,
             "interpolation": 0,
             "collisionDetection": 0,
             "constraints": 0,

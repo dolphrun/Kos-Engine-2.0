@@ -39,8 +39,30 @@
             "Layer": 0,
             "entityTag": "Enemy",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "RangedEnemyPrefab.prefab",
             "hide": false
+        },
+        "RigidbodyComponent": {
+            "mass": 1.0,
+            "drag": 0.0,
+            "angularDrag": 0.05000000074505806,
+            "useGravity": true,
+            "isKinematic": true,
+            "interpolation": 0,
+            "collisionDetection": 0,
+            "constraints": 0,
+            "speed": 0.0,
+            "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "angularVelocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -86,6 +108,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },
@@ -132,13 +155,16 @@
                     "controllerGUID": "baa80405-5c48-fba2-0cde-edc56c8d415d",
                     "m_PlaybackSpeed": 1.0,
                     "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
                 },
                 "NameComponent": {
                     "entityName": "Enemy Model",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "",
                     "hide": false
                 },

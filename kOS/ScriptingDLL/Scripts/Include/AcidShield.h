@@ -121,6 +121,7 @@ public:
 				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
 					enemyScript->enemyHealth -= shieldDamage;
 					//std::cout << "[AcidShield] DOT tick! Enemy health now: " << enemyScript->enemyHealth << "\n";
+					enemyScript->TriggerStagger(1.f);
 				}
 			}
 			});

@@ -2770,6 +2770,7 @@
                     "fireDashPrefab": "2c08aaf0-6347-63db-2c50-728bcb1fff62",
                     "lightningDashPrefab": "00000000-0000-0000-0000-000000000000",
                     "acidShieldPrefab": "00000000-0000-0000-0000-000000000000",
+                    "airBlastPrefab": "00000000-0000-0000-0000-000000000000",
                     "gunSfxGUID_1": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
                     "gunReloadSfxGUID": "c93d030f-e7bf-2ee7-0425-c1f5f04d6483",
                     "fireSlashSfxGUID": "690a4f94-6928-a1a0-d76c-2e8f12929489",
@@ -18155,7 +18156,7 @@
                     "drag": 0.0,
                     "angularDrag": 0.05000000074505806,
                     "useGravity": true,
-                    "isKinematic": false,
+                    "isKinematic": true,
                     "interpolation": 0,
                     "collisionDetection": 0,
                     "constraints": 11,
@@ -18359,7 +18360,7 @@
                     "drag": 0.0,
                     "angularDrag": 0.05000000074505806,
                     "useGravity": true,
-                    "isKinematic": false,
+                    "isKinematic": true,
                     "interpolation": 0,
                     "collisionDetection": 0,
                     "constraints": 11,
@@ -18563,7 +18564,7 @@
                     "drag": 0.0,
                     "angularDrag": 0.05000000074505806,
                     "useGravity": true,
-                    "isKinematic": false,
+                    "isKinematic": true,
                     "interpolation": 0,
                     "collisionDetection": 0,
                     "constraints": 11,
@@ -18767,7 +18768,7 @@
                     "drag": 0.0,
                     "angularDrag": 0.05000000074505806,
                     "useGravity": true,
-                    "isKinematic": false,
+                    "isKinematic": true,
                     "interpolation": 0,
                     "collisionDetection": 0,
                     "constraints": 11,
@@ -18971,7 +18972,7 @@
                     "drag": 0.0,
                     "angularDrag": 0.05000000074505806,
                     "useGravity": true,
-                    "isKinematic": false,
+                    "isKinematic": true,
                     "interpolation": 0,
                     "collisionDetection": 0,
                     "constraints": 11,
@@ -19175,7 +19176,7 @@
                     "drag": 0.0,
                     "angularDrag": 0.05000000074505806,
                     "useGravity": true,
-                    "isKinematic": false,
+                    "isKinematic": true,
                     "interpolation": 0,
                     "collisionDetection": 0,
                     "constraints": 11,
@@ -19379,7 +19380,7 @@
                     "drag": 0.0,
                     "angularDrag": 0.05000000074505806,
                     "useGravity": true,
-                    "isKinematic": false,
+                    "isKinematic": true,
                     "interpolation": 0,
                     "collisionDetection": 0,
                     "constraints": 11,
@@ -19583,7 +19584,7 @@
                     "drag": 0.0,
                     "angularDrag": 0.05000000074505806,
                     "useGravity": true,
-                    "isKinematic": false,
+                    "isKinematic": true,
                     "interpolation": 0,
                     "collisionDetection": 0,
                     "constraints": 11,
@@ -19787,7 +19788,7 @@
                     "drag": 0.0,
                     "angularDrag": 0.05000000074505806,
                     "useGravity": true,
-                    "isKinematic": false,
+                    "isKinematic": true,
                     "interpolation": 0,
                     "collisionDetection": 0,
                     "constraints": 11,
@@ -19986,6 +19987,27 @@
                     "prefabName": "RangedEnemyPrefab.prefab",
                     "hide": false
                 },
+                "RigidbodyComponent": {
+                    "mass": 1.0,
+                    "drag": 0.0,
+                    "angularDrag": 0.05000000074505806,
+                    "useGravity": true,
+                    "isKinematic": true,
+                    "interpolation": 0,
+                    "collisionDetection": 0,
+                    "constraints": 11,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
+                },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
@@ -20169,6 +20191,27 @@
                     "prefabName": "RangedEnemyPrefab.prefab",
                     "hide": false
                 },
+                "RigidbodyComponent": {
+                    "mass": 1.0,
+                    "drag": 0.0,
+                    "angularDrag": 0.05000000074505806,
+                    "useGravity": true,
+                    "isKinematic": true,
+                    "interpolation": 0,
+                    "collisionDetection": 0,
+                    "constraints": 11,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
+                },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
@@ -20351,6 +20394,27 @@
                     "isStatic": false,
                     "prefabName": "RangedEnemyPrefab.prefab",
                     "hide": false
+                },
+                "RigidbodyComponent": {
+                    "mass": 1.0,
+                    "drag": 0.0,
+                    "angularDrag": 0.05000000074505806,
+                    "useGravity": true,
+                    "isKinematic": true,
+                    "interpolation": 0,
+                    "collisionDetection": 0,
+                    "constraints": 11,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -20540,7 +20604,7 @@
                     "drag": 0.0,
                     "angularDrag": 0.05000000074505806,
                     "useGravity": true,
-                    "isKinematic": false,
+                    "isKinematic": true,
                     "interpolation": 0,
                     "collisionDetection": 0,
                     "constraints": 11,
@@ -20739,6 +20803,27 @@
                     "prefabName": "RangedEnemyPrefab.prefab",
                     "hide": false
                 },
+                "RigidbodyComponent": {
+                    "mass": 1.0,
+                    "drag": 0.0,
+                    "angularDrag": 0.05000000074505806,
+                    "useGravity": true,
+                    "isKinematic": true,
+                    "interpolation": 0,
+                    "collisionDetection": 0,
+                    "constraints": 5,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
+                },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
@@ -20927,7 +21012,7 @@
                     "drag": 0.0,
                     "angularDrag": 0.05000000074505806,
                     "useGravity": true,
-                    "isKinematic": false,
+                    "isKinematic": true,
                     "interpolation": 0,
                     "collisionDetection": 0,
                     "constraints": 11,
@@ -21126,6 +21211,27 @@
                     "prefabName": "RangedEnemyPrefab.prefab",
                     "hide": false
                 },
+                "RigidbodyComponent": {
+                    "mass": 1.0,
+                    "drag": 0.0,
+                    "angularDrag": 0.05000000074505806,
+                    "useGravity": true,
+                    "isKinematic": true,
+                    "interpolation": 0,
+                    "collisionDetection": 0,
+                    "constraints": 5,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
+                },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
@@ -21314,7 +21420,7 @@
                     "drag": 0.0,
                     "angularDrag": 0.05000000074505806,
                     "useGravity": true,
-                    "isKinematic": false,
+                    "isKinematic": true,
                     "interpolation": 0,
                     "collisionDetection": 0,
                     "constraints": 11,

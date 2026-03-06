@@ -498,6 +498,7 @@ void DebugRenderer::InitializeDebugRendererMeshes() {
 	debugCube.CreateMesh();
 	debugCapsule.CreateMesh();
 	debugMesh.CreateMesh();
+	debugLine.CreateMesh();
 }
 void DebugRenderer::Render(const CameraData& camera, Shader& shader) {
 
@@ -525,15 +526,19 @@ void DebugRenderer::RenderPointLightDebug(const CameraData& camera, Shader& shad
 
 		shader.SetTrans("model", model);
 		shader.SetFloat("uShaderType", 2.1f);
+		shader.SetVec3("color", glm::vec3{ 0.0f, 1.0f, 0.0f });
 		debugCircle.DrawMesh();
 		shader.SetTrans("model", trY);
 		shader.SetFloat("uShaderType", 2.1f);
+		shader.SetVec3("color", glm::vec3{ 0.0f, 1.0f, 0.0f });
 		debugCircle.DrawMesh();
 		shader.SetTrans("model", trX);
 		shader.SetFloat("uShaderType", 2.1f);
+		shader.SetVec3("color", glm::vec3{ 0.0f, 1.0f, 0.0f });
 		debugCircle.DrawMesh();
 		shader.SetTrans("model", trS);
 		shader.SetFloat("uShaderType", 2.1f);
+		shader.SetVec3("color", glm::vec3{ 0.0f, 1.0f, 0.0f });
 		debugCircle.DrawMesh();
 	}
 
@@ -603,19 +608,23 @@ void DebugRenderer::RenderDebugSpheres(const CameraData& camera, Shader& shader)
 		model = glm::translate(model, pos) * glm::scale(model, glm::vec3{ radius });
 		shader.SetTrans("model", model);
 		shader.SetFloat("uShaderType", 2.1f);
+		shader.SetVec3("color", basicDebugSpheres[i].color);
 		debugCircle.DrawMesh();
 		glm::mat4 trY = model * glm::rotate(glm::mat4{ 1.0f }, glm::radians(90.0f), glm::vec3{ 0.0f, 1.0f, 0.0f });
 		shader.SetTrans("model", trY);
 		shader.SetFloat("uShaderType", 2.1f);
+		shader.SetVec3("color", basicDebugSpheres[i].color);
 		debugCircle.DrawMesh();
 		glm::mat4 trX = model * glm::rotate(glm::mat4{ 1.0f }, glm::radians(90.0f), glm::vec3{ 1.0f, 0.0f, 0.0f });
 		shader.SetTrans("model", trX);
 		shader.SetFloat("uShaderType", 2.1f);
+		shader.SetVec3("color", basicDebugSpheres[i].color);
 		debugCircle.DrawMesh();
 		glm::vec3 viewDirection = camera.position - pos;
 		glm::mat4 trS = glm::translate(glm::mat4{ 1.0f }, pos) * glm::scale(glm::mat4{ 1.0f }, glm::vec3{ radius }) * DebugCircle::RotateZtoV(viewDirection);
 		shader.SetTrans("model", trS);
 		shader.SetFloat("uShaderType", 2.1f);
+		shader.SetVec3("color", basicDebugSpheres[i].color);
 		debugCircle.DrawMesh();
 	}
 }
@@ -655,11 +664,22 @@ void DebugRenderer::RenderDebugMeshes(const CameraData& camera, Shader& shader) 
 	}
 }
 
+void DebugRenderer::RenderDebugLines(const CameraData& camera, Shader& shader) {
+	for (const auto& line : basicDebugLines) {
+		shader.SetTrans("model", glm::mat4{ 1.0f });
+		shader.SetFloat("uShaderType", 2.1f);
+		shader.SetVec3("color", line.color);
+		debugLine.SetPosition(line.start, line.end);
+		debugLine.DrawMesh();
+	}
+}
+
 void DebugRenderer::Clear() {
 	basicDebugCubes.clear();
 	basicDebugSpheres.clear();
 	basicDebugCapsules.clear();
 	basicDebugMeshes.clear();
+	basicDebugLines.clear();
 }
 
 void ParticleRenderer::InitializeParticleRendererMeshes()

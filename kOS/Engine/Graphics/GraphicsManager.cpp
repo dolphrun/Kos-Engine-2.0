@@ -205,7 +205,7 @@ void GraphicsManager::gm_RenderToEditorFrameBuffer()
 	//Render UI
 	framebufferManager.UIBuffer.BindForDrawing();
 	//glBindTexture(GL_TEXTURE_2D, framebufferManager.gBuffer.gMaterial);
-	//gm_RenderUIObjects(editorCamera);
+	gm_RenderUIObjects(editorCamera);
 
 	Shader* fboCompositeShader{ &shaderManager.engineShaders.find("FBOCompositeShader")->second };
 	framebufferManager.ComposeBuffers(framebufferManager.sceneBuffer.texID, framebufferManager.UIBuffer.texID,
@@ -330,6 +330,7 @@ void GraphicsManager::gm_FillGBuffer(const CameraData& camera)
 	debugRenderer.RenderDebugSpheres(camera, *gBufferDebugShader);
 	debugRenderer.RenderDebugCapsules(camera, *gBufferDebugShader);
 	debugRenderer.RenderDebugMeshes(camera, *gBufferDebugShader);
+	debugRenderer.RenderDebugLines(camera, *gBufferDebugShader);
 	debugRenderer.RenderPointLightDebug(camera, *gBufferDebugShader, lightRenderer.pointLightsToDraw);
 	debugRenderer.RenderDebugFrustums(camera, *gBufferDebugShader, gameCameras);
 

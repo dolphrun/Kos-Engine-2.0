@@ -21,14 +21,12 @@ void CommandHistory::Update() {
 	if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) {
 		if (ImGui::IsKeyPressed(ImGuiKey_Z)){
 			if (commandQueue.size() <= 0) return;
-			LOGGING_INFO("Ctrl_Z");
 			redoQueue.push(commandQueue.top());
 			commandQueue.top().Get()->Undo(m_ecs, this);
 			commandQueue.pop();
 		}
 		else if (ImGui::IsKeyPressed(ImGuiKey_Y)) {
 			if (redoQueue.size() <= 0) return;
-			LOGGING_INFO("Ctrl_Y");
 			commandQueue.push(redoQueue.top());
 			redoQueue.top().Get()->Redo(m_ecs, this);
 			redoQueue.pop();
