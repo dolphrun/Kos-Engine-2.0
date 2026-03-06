@@ -201,6 +201,8 @@ private:
 	SphereRenderer sphereRenderer;
 	ParticleRenderer particleRenderer;
 	VideoRenderer videoRenderer;
+	TrailRenderer trailRenderer;
+
 	//Managers
 	ShaderManager shaderManager;
 	FramebufferManager framebufferManager;

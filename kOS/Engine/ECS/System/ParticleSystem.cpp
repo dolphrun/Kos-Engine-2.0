@@ -77,10 +77,12 @@ namespace ecs {
             // ==========================================
 
             std::shared_ptr<R_Texture> textureResource = m_resourceManager.GetResource<R_Texture>(particle->textureGUID);
+            
             float type = 0.f;
             if (particle->particleType == ParticleComponent::ParticleType::THREE_DIMENSIONAL_ROTATION_BILLBOARD)
                 type = 1.f;
-            m_graphicsManager.gm_PushBasicParticleData(BasicParticleData{ sending.positions_Particle, sending.colors, sending.sizes, sending.rotates , textureResource.get(), type });
+            m_graphicsManager.gm_PushBasicParticleData(BasicParticleData{ sending.positions_Particle, sending.colors, sending.sizes, sending.rotates, textureResource.get(), type });
+            particle->trail_List;
         }
     }
 
@@ -117,6 +119,11 @@ namespace ecs {
         pd.velocity = velocity;
         pd.position = particle_position;
         pd.rotation = particle->rotationModule.enabled ? glm::radians(RandomRange(particle->rotationModule.start_Rotation, particle->rotationModule.end_Rotation)) : glm::radians(particle->rotationModule.start_Rotation);
+        if (particle->dynamicTrailingEnabled)
+        {
+
+        }
+        
 
 
         //init particle data

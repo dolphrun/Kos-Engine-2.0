@@ -12,6 +12,7 @@ namespace ecs {
         std::vector<glm::vec2> sizes;
         std::vector<glm::vec3> rotates;
     };
+
     struct EmissionData {
         glm::vec3 positionOffset;  // Offset from emitter position
         glm::vec3 direction;       // Normalized direction
@@ -168,8 +169,48 @@ namespace ecs {
         void setVelocityModifier(ParticleComponent* particle, const glm::vec3& velocity_Modifier, const Velocity_Mode mode, bool enable);
         void setForce(ParticleComponent* particle, const glm::vec3& force, bool enable);
 
+        //===========================================
+        // TRAILING FUNCTIONS 
+        //===========================================
+        int CreateTrail(const glm::vec3& startPos, ParticleComponent*& particle)
+        {
+            TrailData trail;
 
+            trail.points.push_back({ startPos, 0.0f });
+            trail.lastPosition = startPos;
+            trail.firstFrame = false;
 
+            particle->trail_List.push_back(trail);
+
+            return particle->trail_List.size() - 1;
+        }
+
+        void UpdateTrail(int trailIndex, float dt, const glm::vec3& currentPos, std::vector<TrailData>& trails)
+        {
+            if (trailIndex < 0 || trailIndex >= trails.size())
+                return;
+
+            TrailData& trail = trails[trailIndex];
+
+            float dist = glm::distance(trail.lastPosition, currentPos);
+
+            if (dist > trail.minDistance)
+            {
+                trail.points.push_back({ currentPos, 0.0f });
+                trail.lastPosition = currentPos;
+            }
+
+            for (auto& p : trail.points)
+                p.lifetime += dt;
+
+            trail.points.erase(
+                std::remove_if(trail.points.begin(), trail.points.end(),
+                    [&](const TrailPoint& p)
+                    {
+                        return p.lifetime > trail.maxLifetime;
+                    }),
+                trail.points.end());
+        }
 
         REFLECTABLE(ParticleSystem);
     };

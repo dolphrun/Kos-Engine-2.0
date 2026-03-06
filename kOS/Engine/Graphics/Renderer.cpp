@@ -752,7 +752,7 @@ void ParticleRenderer::InitializeParticleRendererMeshes()
 
 }
 
-void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
+void ParticleRenderer::Render(const CameraData& camera, Shader& shader, TrailRenderer& trailRenderer)
 {
 	static std::vector<int> textureIDs{};
 	static std::unordered_map<int, GLuint> storedIDs; //subscript, texture ID
@@ -761,6 +761,7 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
 	{
 		textureIDs.clear();
 		storedIDs.clear();
+
 
 		instancedBasicParticles.reserve(std::accumulate(particlesToDraw.begin(), particlesToDraw.end(), size_t(0),
 			[](size_t sum, const BasicParticleData& p) { return sum + p.particlePositions.size(); }));
@@ -782,11 +783,11 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader)
 							storedIDs[p.texture_IDs->RetrieveTexture()] = static_cast<unsigned int>(textureIDs.size());
 							textureIDs.push_back(p.texture_IDs->RetrieveTexture());
 							int currentID = storedIDs[p.texture_IDs->RetrieveTexture()];
-							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], storedIDs[p.texture_IDs->RetrieveTexture()] , p.particleType };
+							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], storedIDs[p.texture_IDs->RetrieveTexture()] , p.particleType};
 						}
 					}
 					else {
-						return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], 200,  p.particleType }; //Magic Number 200 for default particles
+						return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], 200,  p.particleType}; //Magic Number 200 for default particles
 					}
 				});
 		}
@@ -912,4 +913,133 @@ void VideoRenderer::Render(const CameraData& camera, Shader& shader) {
 
 void VideoRenderer::Clear() {
 	vecVideoData.clear();
+}
+
+void TrailRenderer::InitTrailRendererMeshes()
+{
+	glGenVertexArrays(1, &vao);
+	glGenBuffers(1, &vbo);
+	glGenBuffers(1, &ebo);
+
+	glBindVertexArray(vao);
+
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+
+	// Vertex layout: pos(3) color(4)
+	glVertexAttribPointer(
+		0, 3, GL_FLOAT, GL_FALSE,
+		7 * sizeof(float),
+		(void*)0
+	);
+	glEnableVertexAttribArray(0);
+
+	glVertexAttribPointer(
+		1, 4, GL_FLOAT, GL_FALSE,
+		7 * sizeof(float),
+		(void*)(3 * sizeof(float))
+	);
+	glEnableVertexAttribArray(1);
+
+	glBindVertexArray(0);
+}
+
+void TrailRenderer::BuildTrailMesh(
+	const std::vector<BasicTrailData>& trails,
+	const glm::vec3& cameraPos)
+{
+	vertexBuffer.clear();
+	indexBuffer.clear();
+
+	unsigned int indexOffset = 0;
+
+	for (const BasicTrailData& trail : trails)
+	{
+		if (trail.points.size() < 2)
+			continue;
+
+		for (size_t i = 0; i < trail.points.size() - 1; i++)
+		{
+			const auto& p0 = trail.points[i];
+			const auto& p1 = trail.points[i + 1];
+
+			glm::vec3 dir = glm::normalize(p1.position - p0.position);
+			glm::vec3 toCamera = glm::normalize(cameraPos - p0.position);
+			glm::vec3 side = glm::normalize(glm::cross(dir, toCamera));
+
+			float t0 = p0.lifetime / trail.maxLifetime;
+			float t1 = p1.lifetime / trail.maxLifetime;
+
+			float w0 = trail.width * (1.0f - t0);
+			float w1 = trail.width * (1.0f - t1);
+
+			glm::vec3 p0L = p0.position - side * w0 * 0.5f;
+			glm::vec3 p0R = p0.position + side * w0 * 0.5f;
+			glm::vec3 p1L = p1.position - side * w1 * 0.5f;
+			glm::vec3 p1R = p1.position + side * w1 * 0.5f;
+
+			auto pushVertex = [&](glm::vec3 pos, float alpha)
+				{
+					vertexBuffer.insert(vertexBuffer.end(),
+						{
+							pos.x, pos.y, pos.z,
+							trail.color.r,
+							trail.color.g,
+							trail.color.b,
+							alpha
+						});
+				};
+
+			float alpha0 = 1.0f - t0;
+			float alpha1 = 1.0f - t1;
+
+			pushVertex(p0L, alpha0);
+			pushVertex(p0R, alpha0);
+			pushVertex(p1L, alpha1);
+			pushVertex(p1R, alpha1);
+
+			indexBuffer.insert(indexBuffer.end(),
+				{
+					indexOffset + 0,
+					indexOffset + 2,
+					indexOffset + 3,
+
+					indexOffset + 0,
+					indexOffset + 3,
+					indexOffset + 1
+				});
+
+			indexOffset += 4;
+		}
+	}
+
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER,
+		vertexBuffer.size() * sizeof(float),
+		vertexBuffer.data(),
+		GL_DYNAMIC_DRAW);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
+		indexBuffer.size() * sizeof(unsigned int),
+		indexBuffer.data(),
+		GL_DYNAMIC_DRAW);
+}
+
+void TrailRenderer::Render(Shader& shader)
+{
+	shader.Use();
+
+	if (indexBuffer.empty())
+		return;
+
+	glBindVertexArray(vao);
+
+	glDrawElements(
+		GL_TRIANGLES,
+		indexBuffer.size(),
+		GL_UNSIGNED_INT,
+		0);
+
+	shader.Disuse();
 }

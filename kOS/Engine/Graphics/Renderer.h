@@ -146,9 +146,60 @@ private:
 	DebugMesh debugMesh;
 };
 
+struct TrailRenderer : BasicRenderer {
+public:
+	struct TrailInstance
+	{
+		std::vector<float> vertexBuffer;
+		std::vector<unsigned int> indexBuffer;
+	};
+
+	struct TrailPoint
+	{
+		glm::vec3 position;
+		float lifetime;
+	};
+
+	struct BasicTrailData
+	{
+		std::vector<TrailPoint> points;
+
+		float maxLifetime = 1.0f;
+		float minDistance = 0.05f;
+		float width = 0.2f;
+
+		glm::vec4 color{ 1.0f };
+
+		glm::vec3 lastPosition{};
+		bool firstFrame = true;
+	};
+
+	unsigned int vao{};
+	unsigned int vbo{};
+	unsigned int ebo{};
+
+	std::vector<BasicTrailData> trailData{};
+	std::vector<TrailInstance> trailsToDraw{};
+	std::vector<float> vertexBuffer{};
+	std::vector<unsigned int> indexBuffer{};
+
+
+	void InitTrailRendererMeshes();
+	void BuildTrailMesh(const std::vector<BasicTrailData>& trails, const glm::vec3& cameraPos);
+	void Render(Shader& shader);
+
+	void Clear() override
+	{
+		trailData.clear();
+		trailsToDraw.clear();
+		vertexBuffer.clear();
+		indexBuffer.clear();
+	};
+};
+
 struct ParticleRenderer : BasicRenderer {
 	void InitializeParticleRendererMeshes();
-	void Render(const CameraData& camera, Shader& shader);
+	void Render(const CameraData& camera, Shader& shader, TrailRenderer& trailRenderer);
 	void Clear() override;
 	std::vector<BasicParticleData> particlesToDraw{};
 	std::vector<BasicParticleInstance> instancedBasicParticles{};
@@ -156,6 +207,8 @@ struct ParticleRenderer : BasicRenderer {
 private:
 	BasicParticleMesh basicParticleMesh;
 };
+
+
 
 struct VideoRenderer : BasicRenderer {
 	struct VideoData
