@@ -195,42 +195,23 @@ std::future<void> AssetManager::Compilefile(const std::filesystem::path& filePat
             std::string compilerPath = std::filesystem::absolute(compilerData.compilerFilePath).string();
             std::string absmetaPath = std::filesystem::absolute(metaPath).string();
 
-            //std::string command = "\"" + compilerPath + "\" \"" + inputPath + "\" \"" + absmetaPath + "\" \"" + outputResourcePath + "\"";
+            // Wrap the ENTIRE command in an extra set of quotes to prevent cmd.exe from stripping them
+            std::string command = "\"\"" + compilerPath + "\" \"" + inputPath + "\" \"" + absmetaPath + "\" \"" + outputResourcePath + "\"\"";
 
-            //std::cout << "Running: " << command << std::endl;
-
-            std::string tempBatch = "temp_run_" + guid + ".bat";
-            // Write the batch file
-            std::ofstream batchFile(tempBatch);
-            if (!batchFile) {
-                std::cerr << "Failed to create batch file!" << std::endl;
-                return std::async(std::launch::deferred, []() {});
-            }
-
-            batchFile << "@echo off\n";
-            batchFile << "set EXE=\"" << compilerPath << "\"\n";
-            batchFile << "%EXE% \"" << inputPath << "\" \"" << absmetaPath << "\" \"" << outputResourcePath << "\" \"" << "\"\n";
-            batchFile.close();
-
-            // Run the batch file
-            auto runSystemAsync = [](const std::string& batfile)
+            // Run the command directly
+            auto runSystemAsync = [](const std::string& cmd)
                 {
-                    auto future = std::async(std::launch::async, [batfile]() {
-                        int result = std::system(batfile.c_str());
+                    auto future = std::async(std::launch::async, [cmd]() {
+                        int result = std::system(cmd.c_str());
                         if (result != 0) {
-                            std::cerr << "Command failed with code: " << result << std::endl;
+                            std::cerr << "Command failed with code: " << result << "\nCommand: " << cmd << std::endl;
                         }
+                        });
 
-                        // Delete the temporary batch file
-                        std::filesystem::remove(batfile);
-                     });
-
-                    return future; // you can store this if you want to wait later
+                    return future;
                 };
 
-            auto AsyncCompile = runSystemAsync(tempBatch);
-
-            return AsyncCompile;
+            return runSystemAsync(command);
         }
         else {
             //assets without

@@ -109,12 +109,23 @@ void gui::ImGuiHandler::DrawComponentWindow()
 
                 bool hidden = nc->hide;
                 if (ImGui::Checkbox("Hide", &hidden)) {
-                    m_commandHistory.AddCommand<CommandHistory::SetGameObjectActive>(entityID);
-                    m_ecs.SetActive(entityID, !hidden);
+
+                    for (auto id : m_selectedEntities) {
+                        m_commandHistory.AddCommand<CommandHistory::SetGameObjectActive>(id);
+                        m_ecs.SetActive(id, !hidden);
+                    }
+
+
                 }
 
                 ImGui::SameLine();
-                ImGui::Checkbox("Static", &nc->isStatic);
+                bool isStatic = nc->isStatic;
+                if (ImGui::Checkbox("Static", &isStatic)) {
+                    for (auto id : m_selectedEntities) {
+                        auto nameComponent = m_ecs.GetComponent<NameComponent>(id);
+                        nameComponent->isStatic = isStatic;
+                    }
+                }
 
                 ImGui::TextDisabled(std::string("Entity ID: " + std::to_string(entityID)).c_str());
                 if (!nc->entityGUID.Empty()) {
@@ -142,7 +153,12 @@ void gui::ImGuiHandler::DrawComponentWindow()
 
                     int layer_current = nc->Layer;
                     if (ImGui::Combo("Layers", &layer_current, items.data(), static_cast<int>(items.size()))) {
-                        m_layerManager.m_SwapEntityLayer((layer::LAYERS)layer_current, nc->Layer, entityID);
+
+                        for (auto id : m_selectedEntities) {
+                            auto nameComponent = m_ecs.GetComponent<NameComponent>(id);
+                            m_layerManager.m_SwapEntityLayer((layer::LAYERS)layer_current, nc->Layer, id);
+                        }
+                        
                     }
                 }
 
@@ -163,7 +179,10 @@ void gui::ImGuiHandler::DrawComponentWindow()
                     }
 
                     if (ImGui::Combo("Tag", &item, tag_Names.data(), static_cast<int>(tag_Names.size()))) {
-                        nc->entityTag = m_tags[item];
+                        for (auto id : m_selectedEntities) {
+                            auto nameComponent = m_ecs.GetComponent<NameComponent>(id);
+                            nameComponent->entityTag = m_tags[item];
+                        }
                     }
                 }
 
