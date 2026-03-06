@@ -71,6 +71,8 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
         float textureAspectRatio = (float)windowWidth / (float)windowHeight;
         float renderWindowAspectRatio = renderWindowSize.x / renderWindowSize.y;
 
+        ImGuiIO& io = ImGui::GetIO();
+
         ImVec2 imageSize;
         imageSize.x = windowWidth / 2.f;
         imageSize.y = windowHeight / 2.f;
@@ -145,17 +147,17 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
             //std::cout << "Clicked pixerl val is " << --pixelVal << '\n';
             --pixelVal;
             m_lastClickedEntityId = pixelVal >= 0.f ? static_cast<int>(pixelVal) : m_lastClickedEntityId;
+            if (!io.KeyCtrl) {
+                m_selectedEntities.clear();
+            }
             if (pixelVal >= 0.f) {
                 m_selectedEntities.insert(m_lastClickedEntityId);
-            }
-            else {
-                m_selectedEntities.clear();
             }
             //std::cout << "PixelVal is " << pixelVal << '\n';
             if (m_ecs.HasComponent<ecs::CanvasRendererComponent>(static_cast<EntityID>(pixelVal))
                 || (m_ecs.GetParent(m_lastClickedEntityId).has_value() &&
                     m_ecs.HasComponent<ecs::CanvasRendererComponent>(m_ecs.GetParent(m_lastClickedEntityId).value()))) {
-                std::cout << "IS UI\n";
+                /*std::cout << "IS UI\n";*/
                 m_isUi = true;
             }
             else {
@@ -168,8 +170,6 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
 
         DrawGizmo(pos.x, pos.y, imageSize.x, imageSize.y);
 
-
-        ImGuiIO& io = ImGui::GetIO();
         float scrollInput = io.MouseWheel; // Positive for zoom in, negative for zoom out
 
         //Zoom In/Out Camera
@@ -283,7 +283,7 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
         }
 
 
-        if (ImGui::GetIO().KeysDown[ImGuiKey::ImGuiKey_F])
+        if (io.KeysDown[ImGuiKey::ImGuiKey_F])
         {
             ecs::TransformComponent* transCom = m_ecs.GetComponent<ecs::TransformComponent>(m_lastClickedEntityId);
             if (transCom != NULL) {
