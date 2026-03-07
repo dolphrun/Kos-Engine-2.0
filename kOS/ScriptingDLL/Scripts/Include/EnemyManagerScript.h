@@ -401,10 +401,10 @@ inline void EnemyManagerScript::TriggerStagger(float duration) {
 	isStaggered = true;
 	currentStaggerTimer = duration;
 
+	// ADD STAGGER ANIM HERE
+
 	enemyIsAttacking = false;
 	attackHurtboxIsSpawn = false;
-
-	// ADD STAGGER ANIM HERE
 }
 
 inline void EnemyManagerScript::ApplyPushback(glm::vec3 dir, float force) {
@@ -419,10 +419,8 @@ inline void EnemyManagerScript::TakeDamage(int damage, const std::string& elemen
 
 		if (element == shieldElement) {
 			shieldHealth -= damage;
-			std::cout << "[Tank] Shield hit by " << element << "! Remaining: " << shieldHealth << "\n";
 
 			if (shieldHealth <= 0) {
-				std::cout << "[Tank] Shield Broken! Normal health can now be damaged.\n";
 
 				if (shieldVisualID != 0) {
 					ecsPtr->DeleteEntity(shieldVisualID);
@@ -431,7 +429,7 @@ inline void EnemyManagerScript::TakeDamage(int damage, const std::string& elemen
 			}
 		}
 		else {
-			std::cout << "[Tank] Immune to " << element << "! Needs " << shieldElement << " to break shield.\n";
+			// Its just immune to the power, this else is only here cuz it was for a cout, might remove in the future
 		}
 	}
 	else {
@@ -443,11 +441,11 @@ inline void EnemyManagerScript::TakeDamage(int damage, const std::string& elemen
 inline void EnemyManagerScript::Die() {
 	if (isDead) return;
 
+	// ADD DEATH ANIM HERE
+
 	isDead = true;
 
 	if (!isStaggered) {
 		navMeshPtr->RemoveAgent(agentid);
 	}
-
-	// ADD DEATH ANIM HERE
 }
