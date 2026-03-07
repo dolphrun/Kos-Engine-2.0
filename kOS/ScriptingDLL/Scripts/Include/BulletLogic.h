@@ -79,7 +79,7 @@ inline void BulletLogic::Start() {
 						//}
 
 			if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
-				enemyScript->TriggerStagger(1.f);
+				enemyScript->TriggerStagger(0.5f);
 
 				enemyScript->TakeDamage(bulletDamage, "DEFAULT");
 

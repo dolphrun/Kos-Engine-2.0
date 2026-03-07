@@ -88,7 +88,7 @@ inline void LightningLMB::Start() {
 			}
 			else if (enemyScript->shieldHealth <= 0 && enemyScript->lightningStack == 0) {
 				// I changed to only stagger when blow up can revert if yall want
-				enemyScript->TriggerStagger(1.f);
+				enemyScript->TriggerStagger(0.5f);
 			}
 		}
 

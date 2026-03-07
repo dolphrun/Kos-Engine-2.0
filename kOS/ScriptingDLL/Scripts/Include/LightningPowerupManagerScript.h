@@ -45,7 +45,7 @@ public:
 					enemyScript->TakeDamage(lightningDamage, "LIGHTNING");
 
 					if (enemyScript->shieldHealth <= 0) {
-						enemyScript->TriggerStagger(1.f);
+						enemyScript->TriggerStagger(0.5f);
 					}
 
 					if (enemyScript->enemyHealth <= 0) {
