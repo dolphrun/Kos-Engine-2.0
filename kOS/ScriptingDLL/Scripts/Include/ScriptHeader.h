@@ -28,15 +28,14 @@
 #include "AcidAirBlast.h"
 #include "AcidGas.h"
 #include "RoomLockScript.h"
-//#include "AbilityUIScript.h"
+#include "ElementBaseScript.h"
 #include "EventColliderScript.h"
 
 #include "EnemyHurtboxScript.h"
 #include "EnemyBulletLogic.h"
 
-#include "HealthbarUIScript.h"
+#include "EnemyHealthScript.h"
 #include "AnimationTestScript.h"
-#include "AbilityUIImageScript.h"
 #include "ScoreManagerScript.h"
 #include "PauseMenuScript.h"
 #include "LoseScreenScript.h"

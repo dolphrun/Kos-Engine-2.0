@@ -10837,7 +10837,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "Lose Screen Canvas_1.prefab",
-                    "hide": false
+                    "hide": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -10885,7 +10885,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -10943,7 +10943,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11001,7 +11001,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11059,7 +11059,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11117,7 +11117,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11175,7 +11175,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11255,7 +11255,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "a6918fdc-bfcb-feab-5f96-86e8d9485e45",
@@ -11333,7 +11333,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "Pause Screen Canvas_1.prefab",
-                    "hide": false
+                    "hide": true
                 },
                 "PauseMenuScript": {
                     "pauseMenuCanvasGUID": "155ba76a-ab15-3655-61d0-3eb0d2bccb85",
@@ -11395,7 +11395,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11453,7 +11453,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11511,7 +11511,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11569,7 +11569,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -11649,7 +11649,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "a6918fdc-bfcb-feab-5f96-86e8d9485e45",
@@ -12502,13 +12502,13 @@
                     },
                     {
                         "entityGUID": "01bdf737-7921-b671-44c1-63a7ae165283",
-                        "AbilityUIImageScript": {
-                            "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                        "ElementBaseScript": {
+                            "playerObject": "00000000-0000-0000-0000-000000000000",
                             "playerObjectID": 0,
                             "noneSprite": "00000000-0000-0000-0000-000000000000",
-                            "fireSprite": "9f0ad91c-72f9-804e-2642-475080d2e54d",
-                            "lightningSprite": "e76a7398-7c0f-cd5d-a276-15420d3991a0",
-                            "acidSprite": "f184fa8e-c58e-54a4-6d89-e2d8924fd4ec"
+                            "fireSprite": "9f23b696-7165-ca0d-8bf8-43f00a65be9b",
+                            "lightningSprite": "7554f156-c184-47f2-c8ce-b371e3e3f14c",
+                            "acidSprite": "e6f54be7-43da-fe8b-4a62-d01c9194d632"
                         },
                         "NameComponent": {
                             "entityName": "Element",
@@ -12635,6 +12635,534 @@
                                 "scale": {
                                     "x": 0.05000000074505806,
                                     "y": 0.05000000074505806,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "entityGUID": "b3cb0171-b16b-167b-6d72-dc6504e528cb",
+                "CanvasRendererComponent": {
+                    "isScreenSpace": true
+                },
+                "EnemyHealthScript": {
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "raycastRange": 30.0,
+                    "healthBarFillEntity": "7c2ff027-fb7a-f718-ecb0-d2aca551d604",
+                    "resistanceEntity": "94c0dc7e-b5e9-fede-947b-75a80dedea50",
+                    "afflictionEntity": "b88bc533-1a1f-8d4d-4c1c-e2b7a6384729",
+                    "fireResistSprite": "00000000-0000-0000-0000-000000000000",
+                    "acidResistSprite": "00000000-0000-0000-0000-000000000000",
+                    "lightningResistSprite": "00000000-0000-0000-0000-000000000000",
+                    "fireAfflictedSprite": "00000000-0000-0000-0000-000000000000",
+                    "acidAfflictedSprite": "00000000-0000-0000-0000-000000000000",
+                    "lightningAfflictedSprite": "00000000-0000-0000-0000-000000000000"
+                },
+                "NameComponent": {
+                    "entityName": "Enemy HUD",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                },
+                "children": [
+                    {
+                        "entityGUID": "78c6ed9c-7403-32d0-82a2-63718840e427",
+                        "NameComponent": {
+                            "entityName": "Enemy Healthbar Frame",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "3812529f-2cb8-5354-b32a-d67f921b088d",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.25999999046325684,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.5400000214576721,
+                                    "y": 0.10000000149011612,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.25999999046325684,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.5400000214576721,
+                                    "y": 0.10000000149011612,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "0124aae8-a817-9f75-4af2-fe92614d29b4",
+                        "NameComponent": {
+                            "entityName": "Enemy Healthbar Bg",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "1e605972-3e55-95f1-a285-c21b421fc451",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.25999999046325684,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.5099999904632568,
+                                    "y": 0.05000000074505806,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.25999999046325684,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.5099999904632568,
+                                    "y": 0.05000000074505806,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "7c2ff027-fb7a-f718-ecb0-d2aca551d604",
+                        "NameComponent": {
+                            "entityName": "Enemy Healthbar",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "411c34af-18c9-6d4c-2c5d-0422d4356cb9",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.25999999046325684,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.5,
+                                    "y": 0.03999999910593033,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.25999999046325684,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.5,
+                                    "y": 0.03999999910593033,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "94c0dc7e-b5e9-fede-947b-75a80dedea50",
+                        "NameComponent": {
+                            "entityName": "Enemy Resistance",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "f80f1ee8-3a7f-911f-14fb-7057c8b1bf3a",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.3436410427093506,
+                                    "y": 0.25999999046325684,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 45.000003814697266,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.08500000089406967,
+                                    "y": 0.08500000089406967,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.3436410427093506,
+                                    "y": 0.25999999046325684,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 45.000003814697266,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.08500000089406967,
+                                    "y": 0.08500000089406967,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "b88bc533-1a1f-8d4d-4c1c-e2b7a6384729",
+                        "NameComponent": {
+                            "entityName": "Enemy Afflicted 1",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "f80f1ee8-3a7f-911f-14fb-7057c8b1bf3a",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.20000000298023224,
+                                    "y": 0.3140000104904175,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.03999999910593033,
+                                    "y": 0.03999999910593033,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.20000000298023224,
+                                    "y": 0.3140000104904175,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.03999999910593033,
+                                    "y": 0.03999999910593033,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "2c7bed84-78e1-ebed-7e5d-728185aad286",
+                        "NameComponent": {
+                            "entityName": "Enemy Afflicted 2",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "f80f1ee8-3a7f-911f-14fb-7057c8b1bf3a",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.1469999998807907,
+                                    "y": 0.3140000104904175,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.03999999910593033,
+                                    "y": 0.03999999910593033,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.1469999998807907,
+                                    "y": 0.3140000104904175,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.03999999910593033,
+                                    "y": 0.03999999910593033,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "1c1991d1-e6f3-c2c9-7f55-64a3c8f56cb9",
+                        "NameComponent": {
+                            "entityName": "Enemy Afflicted 3",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "f80f1ee8-3a7f-911f-14fb-7057c8b1bf3a",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.09432043880224228,
+                                    "y": 0.31404533982276917,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.03999999910593033,
+                                    "y": 0.03999999910593033,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.09432043880224228,
+                                    "y": 0.31404533982276917,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.03999999910593033,
+                                    "y": 0.03999999910593033,
                                     "z": 1.0
                                 }
                             }

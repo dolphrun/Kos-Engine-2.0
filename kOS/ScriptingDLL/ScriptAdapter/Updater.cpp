@@ -54,7 +54,7 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 
 	RegisterScript<GroundCheckScript>(TemplateSC::ecsPtr);
 	RegisterScript<PlayerManagerScript>(TemplateSC::ecsPtr);
-	//RegisterScript<AbilityUIScript>(TemplateSC::ecsPtr);
+	RegisterScript<ElementBaseScript>(TemplateSC::ecsPtr);
 
 	RegisterScript<GameManager>(TemplateSC::ecsPtr);
 
@@ -67,8 +67,7 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 
 	RegisterScript<EventColliderScript>(TemplateSC::ecsPtr);
 
-	RegisterScript<HealthBarScript>(TemplateSC::ecsPtr);
-	RegisterScript<AbilityUIImageScript>(TemplateSC::ecsPtr);
+	RegisterScript<EnemyHealthScript>(TemplateSC::ecsPtr);
 	RegisterScript<ScoreManagerScript>(TemplateSC::ecsPtr);
 	RegisterScript<PauseMenuScript>(TemplateSC::ecsPtr);
 	RegisterScript<LoseScreenScript>(TemplateSC::ecsPtr);
