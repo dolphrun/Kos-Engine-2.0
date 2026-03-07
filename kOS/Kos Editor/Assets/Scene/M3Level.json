@@ -10698,7 +10698,7 @@
                             "useGravity": false,
                             "isKinematic": true,
                             "interpolation": 0,
-                            "collisionDetection": 0,
+                            "collisionDetection": 1,
                             "constraints": 0,
                             "speed": 0.0,
                             "velocity": {
@@ -17538,12 +17538,13 @@
             "doorPrefabA": "3a50f9cd-8131-dbc1-fed4-2dc13399e93a",
             "doorPrefabB": "3a50f9cd-8131-dbc1-fed4-2dc13399e93a",
             "doorSpawnPointA": "388568cc-b9d1-143f-2c77-c58166cdeed6",
-            "doorSpawnPointB": "b14e25aa-2dd7-bb14-0d51-e1f11e271202"
+            "doorSpawnPointB": "b14e25aa-2dd7-bb14-0d51-e1f11e271202",
+            "pointLightList": []
         },
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 42.69462585449219,
+                    "x": 44.99005889892578,
                     "y": 6.382465362548828,
                     "z": -23.37112045288086
                 },
@@ -17560,7 +17561,7 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 42.69462585449219,
+                    "x": 44.99005889892578,
                     "y": 6.382465362548828,
                     "z": -23.37112045288086
                 },
@@ -17591,7 +17592,7 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 66.93462371826172,
+                            "x": 69.23005676269531,
                             "y": 3.1326966285705566,
                             "z": -23.37112045288086
                         },
@@ -17639,7 +17640,7 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 14.067501068115234,
+                            "x": 16.362934112548828,
                             "y": 4.553180694580078,
                             "z": -22.673683166503906
                         },

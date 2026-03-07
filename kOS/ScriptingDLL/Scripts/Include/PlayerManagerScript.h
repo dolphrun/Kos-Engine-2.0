@@ -478,13 +478,13 @@ inline void PlayerManagerScript::Update() {
 	}
 
 	if (Input->IsKeyTriggered(keys::T)) {
-		CameraShake(0.3f, 0.5f);   // flat-ass light shake
+		CameraShake(0.3f, 1.0f);   // flat-ass light shake
 	}
 	if (Input->IsKeyTriggered(keys::Y)) {
-		CameraShake(0.6f, 0.4f);   // mid medium shake
+		CameraShake(4.0f, 1.0f);   // mid medium shake
 	}
 	if (Input->IsKeyTriggered(keys::U)) {
-		CameraShake(1.2f, 0.6f);   // nicki minaj ass heavy shake
+		CameraShake(10.0f, 6.0f);   // nicki minaj ass heavy shake
 	}
 
 
@@ -808,7 +808,7 @@ inline void PlayerManagerScript::PlayerCameraControls() {
 	float smoothSpeed = (std::abs(horizontalInput) > 0.05f) ? 10.f : 14.f;
 	cameraTiltSmoothedInput = glm::mix(cameraTiltSmoothedInput, horizontalInput, glm::clamp(smoothSpeed * ecsPtr->m_GetDeltaTime(), 0.f, 1.f));
 
-	float targetTiltZ = -horizontalInput * cameraTiltMaxAngle;
+	float targetTiltZ = horizontalInput * cameraTiltMaxAngle;
 
 	float tiltBlend = (std::abs(horizontalInput) > 0.05f) ? cameraTiltSpeed : cameraTiltReturnSpeed;
 

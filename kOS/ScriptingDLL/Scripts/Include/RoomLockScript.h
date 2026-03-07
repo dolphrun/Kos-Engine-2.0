@@ -15,13 +15,16 @@ public:
     utility::GUID   doorSpawnPointA;
     utility::GUID   doorSpawnPointB;
 
+    std::vector<utility::GUID> pointLightList;
+
     int remainingEnemies = 0;
     bool roomLocked = false;
     bool playerInside = false;
 
     // Track living enemy
     std::unordered_set<ecs::EntityID> enemiesInRoom;
-
+    std::unordered_set<ecs::EntityID> lightInRoom;
+    //std::vector<ecs::EntityID> lightInRoom;
     // Track door 
     std::vector<ecs::EntityID> spawnedDoors;
 
@@ -30,13 +33,18 @@ public:
     void LockRoom();
     void UnlockRoom();
 
-    REFLECTABLE(RoomLockScript, enemyCountToKill,doorPrefabA, doorPrefabB, doorSpawnPointA, doorSpawnPointB)
+    REFLECTABLE(RoomLockScript, enemyCountToKill,doorPrefabA, doorPrefabB, doorSpawnPointA, doorSpawnPointB, pointLightList)
 };
 
 // --- IMPLEMENTATION SECTION ---
 #include "EnemyManagerScript.h"
 
 inline void RoomLockScript::Start() {
+
+    for (const auto& lightGUID : pointLightList) {
+        ecs::EntityID lightID = ecsPtr->GetEntityIDFromGUID(lightGUID);
+        ecsPtr->SetActive(lightID, false);
+    }
 
     roomLocked = false;
     playerInside = false;
@@ -53,8 +61,19 @@ inline void RoomLockScript::Start() {
                 LockRoom();
                 std::cout << "[RoomLock] Player entered. Room locked. Enemies to kill: "
                     << remainingEnemies << "\n";
+                
+                for (const auto& lightGUID : pointLightList) {
+                    ecs::EntityID lightID = ecsPtr-> GetEntityIDFromGUID(lightGUID);
+                    ecsPtr->SetActive(lightID, true);
+                }
             }
         }
+
+        if (nameComp->entityTag == "Light") {
+            lightInRoom.insert(col.otherEntityID);
+            std::cout << "[RoomLock] Light in room. Tracking: " << enemiesInRoom.size() << "\n";
+        }
+      
 
         // Enemy in
         if (nameComp->entityTag == "Enemy") {
