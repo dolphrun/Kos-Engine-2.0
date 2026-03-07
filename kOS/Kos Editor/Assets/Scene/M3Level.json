@@ -7099,7 +7099,7 @@
                     "hide": false
                 },
                 "PowerupManagerScript": {
-                    "powerupType": "ACID"
+                    "powerupType": "FIRE"
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -14857,7 +14857,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "8393af65-4300-ebba-36fa-0720e42087f2",
-                    "enemyHurtboxPosition": "f79c85c3-bf51-a166-3d30-25f7e58d1f9e"
+                    "enemyHurtboxPosition": "f79c85c3-bf51-a166-3d30-25f7e58d1f9e",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "RangedEnemyPrefab",
@@ -15061,7 +15065,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "570fa653-ab37-c9f9-82c3-bdb66764b658"
+                    "enemyHurtboxPosition": "570fa653-ab37-c9f9-82c3-bdb66764b658",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -15265,7 +15273,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "d136fdd7-6dad-ce0f-92f2-7f0ab1d3f2e7"
+                    "enemyHurtboxPosition": "d136fdd7-6dad-ce0f-92f2-7f0ab1d3f2e7",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -15469,7 +15481,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "3fec00bd-4310-8b0e-ea81-78f574c43a09"
+                    "enemyHurtboxPosition": "3fec00bd-4310-8b0e-ea81-78f574c43a09",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -15673,7 +15689,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "54c87dd5-d6be-a1f2-ac0c-8911c009254b"
+                    "enemyHurtboxPosition": "54c87dd5-d6be-a1f2-ac0c-8911c009254b",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -15877,7 +15897,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "8393af65-4300-ebba-36fa-0720e42087f2",
-                    "enemyHurtboxPosition": "2c82fa53-9b0d-6c76-4274-10f306880e06"
+                    "enemyHurtboxPosition": "2c82fa53-9b0d-6c76-4274-10f306880e06",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "RangedEnemyPrefab",
@@ -16081,7 +16105,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "e7e7e969-7b9d-6f5a-766a-7b27d7df151a"
+                    "enemyHurtboxPosition": "e7e7e969-7b9d-6f5a-766a-7b27d7df151a",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -16285,7 +16313,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "8417023d-eeca-1c16-d2b6-8fd06a1f68da"
+                    "enemyHurtboxPosition": "8417023d-eeca-1c16-d2b6-8fd06a1f68da",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -16489,7 +16521,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "a62409d4-b5aa-8e62-e094-0fb13715273f"
+                    "enemyHurtboxPosition": "a62409d4-b5aa-8e62-e094-0fb13715273f",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -16693,7 +16729,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "d52d6b4d-3b5f-b71c-b5ef-3f5e88881b03"
+                    "enemyHurtboxPosition": "d52d6b4d-3b5f-b71c-b5ef-3f5e88881b03",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -16897,7 +16937,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "d367dd20-ca42-9145-6f9a-46fb79d4c879"
+                    "enemyHurtboxPosition": "d367dd20-ca42-9145-6f9a-46fb79d4c879",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -17101,7 +17145,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "5cd46ef0-147b-3c50-d4b9-ccc4390b689c"
+                    "enemyHurtboxPosition": "5cd46ef0-147b-3c50-d4b9-ccc4390b689c",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -17305,7 +17353,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "91cf8a21-8f26-c6db-3d3a-9f02deeeb51e"
+                    "enemyHurtboxPosition": "91cf8a21-8f26-c6db-3d3a-9f02deeeb51e",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -17478,6 +17530,272 @@
                                     "x": 0.014999999664723873,
                                     "y": 0.014999999664723873,
                                     "z": 0.014999999664723873
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "entityGUID": "838d91ef-66d6-a325-73a2-f5c0e76bee25",
+                "CapsuleColliderComponent": {
+                    "isTrigger": false,
+                    "capsule": {
+                        "center": {
+                            "x": 0.0,
+                            "y": 1.5,
+                            "z": 0.0
+                        },
+                        "radius": 0.5,
+                        "height": 3.0,
+                        "capsuleDirection": 1
+                    }
+                },
+                "EnemyManagerScript": {
+                    "enemyHealth": 5,
+                    "enemyMovementSpeed": 5.0,
+                    "enemyType": "Tank",
+                    "enemyAttackRange": 2.5,
+                    "enemyRangedAttackRange": 15.0,
+                    "enemyChaseRange": 25.0,
+                    "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
+                    "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
+                    "enemyHurtboxPosition": "239a2a55-7b16-a67e-b034-dabdac495a1d",
+                    "shieldHealth": 30,
+                    "shieldElement": "FIRE",
+                    "shieldVisualObject": "0f6defc1-8c38-49d9-65b0-091f11064913",
+                    "tankAoePrefab": "668543d2-276e-3941-8542-55d0401797a4"
+                },
+                "NameComponent": {
+                    "entityName": "TankEnemyPrefab",
+                    "Layer": 0,
+                    "entityTag": "Enemy",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "EnemyPrefab.prefab",
+                    "hide": false
+                },
+                "RigidbodyComponent": {
+                    "mass": 1.0,
+                    "drag": 0.0,
+                    "angularDrag": 0.05000000074505806,
+                    "useGravity": true,
+                    "isKinematic": true,
+                    "interpolation": 0,
+                    "collisionDetection": 0,
+                    "constraints": 11,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 59.7685546875,
+                            "y": 2.9802656173706055,
+                            "z": -22.537532806396484
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 59.7685546875,
+                            "y": 2.9802656173706055,
+                            "z": -22.537532806396484
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                },
+                "children": [
+                    {
+                        "entityGUID": "239a2a55-7b16-a67e-b034-dabdac495a1d",
+                        "NameComponent": {
+                            "entityName": "Enemy Hurtbox Position",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "EnemyPrefab.prefab",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 59.7685546875,
+                                    "y": 4.4802656173706055,
+                                    "z": -22.537532806396484
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 1.5,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "d91513a6-802a-bc7b-e1a0-fe55a1f4d42a",
+                        "AnimatorComponent": {
+                            "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
+                            "m_PlaybackSpeed": 1.0,
+                            "m_CurrentTime": 0.0,
+                            "m_IsPlaying": true,
+                            "m_currentStateID": 0,
+                            "m_transitioningStateID": 0
+                        },
+                        "NameComponent": {
+                            "entityName": "Enemy Model",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "EnemyPrefab.prefab",
+                            "hide": false
+                        },
+                        "SkinnedMeshRendererComponent": {
+                            "skinnedMeshGUID": "8a830bfc-7794-b76e-2f45-0e765f0a2495",
+                            "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 59.7685546875,
+                                    "y": 2.9802656173706055,
+                                    "z": -22.537532806396484
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.014999999664723873,
+                                    "y": 0.014999999664723873,
+                                    "z": 0.014999999664723873
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.014999999664723873,
+                                    "y": 0.014999999664723873,
+                                    "z": 0.014999999664723873
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "0f6defc1-8c38-49d9-65b0-091f11064913",
+                        "MaterialComponent": {
+                            "materialGUID": [
+                                {
+                                    "materialGUID": "2e16031c-9593-31cb-ec41-58220ebbb736"
+                                }
+                            ]
+                        },
+                        "MeshFilterComponent": {
+                            "meshGUID": "4a1d4e3a-edc7-fcaa-f0c1-24ef1b8e630c"
+                        },
+                        "NameComponent": {
+                            "entityName": "FireShieldPrefab",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": true,
+                            "isStatic": false,
+                            "prefabName": "TankFireShieldPrefab.prefab",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 59.7685546875,
+                                    "y": 6.9802656173706055,
+                                    "z": -22.537532806396484
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.5,
+                                    "y": 0.5,
+                                    "z": 0.5
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 4.0,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.5,
+                                    "y": 0.5,
+                                    "z": 0.5
                                 }
                             }
                         }

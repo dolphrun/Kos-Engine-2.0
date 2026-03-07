@@ -7,7 +7,7 @@ class EnemyManagerScript;
 
 class AcidLMB : public TemplateSC {
 public:
-	int acidLMBDamage = 4;
+	int acidLMBDamage = 10;
 
 	glm::vec3 velocity = glm::vec3(0.f);
 	float     launchSpeed = 15.f;
@@ -74,7 +74,7 @@ inline void AcidLMB::Start() {
 			// ADD SFX OF ENEMY DEATH HERE - DONE
 			PlayRandomEnemyDeathSFX();
 
-			enemyScript->enemyHealth -= acidLMBDamage;
+			enemyScript->TakeDamage(acidLMBDamage, "ACID");
 			
 
 			if (enemyScript->enemyHealth <= 0) {

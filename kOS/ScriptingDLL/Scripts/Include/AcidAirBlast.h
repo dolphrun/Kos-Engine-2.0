@@ -7,7 +7,7 @@ class EnemyManagerScript;
 class AcidAirBlast : public TemplateSC {
 public:
 
-    int     blastDamage = 2;
+    int     blastDamage = 30;
 	float   pushbackForce = 30.f;
 	float   staggerDuration = 1.f;
 	int     manaCost = 30;
@@ -66,10 +66,13 @@ public:
             glm::vec3 pushDir = enemyTransform->WorldTransformation.position
                 - selfTransform->WorldTransformation.position;
 
-            enemyScript->TriggerStagger(staggerDuration);
-            enemyScript->ApplyPushback(pushDir, pushbackForce);
+            enemyScript->TakeDamage(blastDamage, "ACID");
 
-            enemyScript->enemyHealth -= blastDamage;
+            // Only stagger and push back if the shield is broken (or if it never had one)
+            if (enemyScript->shieldHealth <= 0) {
+                enemyScript->TriggerStagger(staggerDuration);
+                enemyScript->ApplyPushback(pushDir, pushbackForce);
+            }
 
             std::cout << "[AirBlast] Hit enemy | HP left: " << enemyScript->enemyHealth << "\n";
 

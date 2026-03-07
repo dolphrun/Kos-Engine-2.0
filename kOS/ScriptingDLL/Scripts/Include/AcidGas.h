@@ -7,9 +7,9 @@ class EnemyManagerScript;
 
 class AcidGas : public TemplateSC {
 public:
-    int     gasDamage = 2;        // Damage per tick
+    int     gasDamage = 10;        // Damage per tick
     float   tickInterval = 1.f;  
-    float   lifetime = 4.f;
+    float   lifetime = 2.2f;
     int     scoreValue = 50;
 
     // INTERNAL
@@ -77,7 +77,7 @@ inline void AcidGas::Update() {
                 continue;
             }
 
-            enemyScript->enemyHealth -= gasDamage;
+            enemyScript->TakeDamage(gasDamage, "ACID");
             std::cout << "[AcidGasCloud] Tick damage to enemy | HP left: " << enemyScript->enemyHealth << "\n";
 
             if (enemyScript->enemyHealth <= 0) {

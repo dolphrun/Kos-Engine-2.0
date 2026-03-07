@@ -33,6 +33,7 @@
 
 #include "EnemyHurtboxScript.h"
 #include "EnemyBulletLogic.h"
+#include "TankAOEScript.h"
 
 #include "HealthbarUIScript.h"
 #include "AnimationTestScript.h"

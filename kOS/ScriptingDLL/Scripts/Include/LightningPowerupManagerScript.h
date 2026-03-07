@@ -42,11 +42,13 @@ public:
 		physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
 				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
-					enemyScript->enemyHealth -= lightningDamage;
-					enemyScript->TriggerStagger(1.f);
+					enemyScript->TakeDamage(lightningDamage, "LIGHTNING");
+
+					if (enemyScript->shieldHealth <= 0) {
+						enemyScript->TriggerStagger(1.f);
+					}
 
 					if (enemyScript->enemyHealth <= 0) {
-						// ADD SFX OF ENEMY DEATH HERE - Done
 						PlayRandomEnemyDeathSFX();
 
 						if (scoreManager) {
@@ -54,7 +56,6 @@ public:
 						}
 
 						enemyScript->Die();
-
 					}
 				}
 			}

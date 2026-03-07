@@ -7,7 +7,7 @@ class EnemyManagerScript;
 
 class FireLMB : public TemplateSC {
 public:
-	int fireLMBDamage = 4;
+	int fireLMBDamage = 30;
 	glm::vec3 direction;
 
 	float timeBeforeDeath = 0.3f;
@@ -51,7 +51,11 @@ inline void FireLMB::Start() {
 			// ADD SFX OF ENEMY DEATH HERE - DONE
 			PlayRandomEnemyDeathSFX();
 
-			ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth -= fireLMBDamage;
+			auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID);
+			if (enemyScript) {
+				enemyScript->TakeDamage(fireLMBDamage, "FIRE");
+			}
+
 			std::cout << "Being hit, HP left:" << ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth << "\n";
 			if (ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth <= 0) {
 				if (scoreManager) {
