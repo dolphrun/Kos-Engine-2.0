@@ -23,7 +23,7 @@
             }
         },
         "EnemyManagerScript": {
-            "enemyHealth": 5,
+            "enemyHealth": 40,
             "enemyMovementSpeed": 5.0,
             "enemyType": "Ranged",
             "enemyAttackRange": 2.5,

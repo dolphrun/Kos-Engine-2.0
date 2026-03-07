@@ -75,7 +75,7 @@ public:
 	float acidCurrMovementCooldown = 0.f;
 
 	// PLAYER PREFS
-	int maxPlayerHitPoints = 6;
+	int maxPlayerHitPoints = 50;
 	int currPlayerHitPoints;
 	bool isDead = false;
 

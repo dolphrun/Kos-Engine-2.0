@@ -62,7 +62,7 @@
             ]
         },
         "EnemyBulletLogic": {
-            "bulletDamage": 1,
+            "bulletDamage": 10,
             "bulletSpeed": 30.0,
             "playerHurtSfxGUID_1": "70b03236-6b3c-6cf5-aab8-390de14ef6a2",
             "playerHurtSfxGUID_2": "566fd594-d00c-b31e-ed77-b57eef9af2dd"
@@ -79,6 +79,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "EnemyBulletPrefab.prefab",
             "hide": false
         },

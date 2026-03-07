@@ -3,7 +3,7 @@
 
 class EnemyHurtboxScript : public TemplateSC {
 public:
-	int enemyDamage = 1;
+	int enemyDamage = 5;
 
 	float timeBeforeDeath = 0.5f;
 	float currentTimer = 0.f;
