@@ -90,6 +90,10 @@ public:
 		if (auto* rb = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity)) {
 			rb->velocity = direction * fireballSpeed;
 		}
+
+		if (auto* transform = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
+			transform->LocalTransformation.rotation += glm::vec3(1.f, 0.f, 0.f);
+		}
 	}
 
 	void SpawnFireSplash(glm::vec3 position) {
