@@ -1,39 +1,25 @@
 [
     {
-        "SceneData": {
-            "skyBoxGUID": [],
-            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
-            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
-            "ambientIntensity": 1.0
-        }
-    },
-    {
-        "entityGUID": "9a3a623e-0ac8-1207-62df-88107057f806",
-        "AcidGas": {
-            "gasDamage": 2,
-            "tickInterval": 1.0,
-            "lifetime": 4.0,
-            "scoreValue": 50
-        },
+        "entityGUID": "b1305067-ddd5-7589-29b3-f9689a54cce8",
         "NameComponent": {
-            "entityName": "AcidGasPrefab",
+            "entityName": "Lightning Suck",
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
             "isStatic": false,
-            "prefabName": "AcidGasPrefab.prefab",
+            "prefabName": "Lightning Suck.prefab",
             "hide": false
         },
         "ParticleComponent": {
             "particleType": 0,
-            "duration": 3.0,
+            "duration": 0.6499999761581421,
             "looping": true,
             "play_On_Awake": true,
-            "start_Lifetime": 3.0,
-            "end_Lifetime": 3.0,
+            "start_Lifetime": 0.6499999761581421,
+            "end_Lifetime": 0.6499999761581421,
             "lifetime_Random_Enable": true,
             "textureGUID": "00000000-0000-0000-0000-000000000000",
-            "start_Velocity": 2.0,
+            "start_Velocity": -5.0,
             "playback_State": 0,
             "particleFade": 1,
             "velocityModule": {
@@ -41,7 +27,7 @@
                 "mode": 0,
                 "velocity_Modifier": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": -0.5,
                     "z": 0.0
                 }
             },
@@ -65,8 +51,8 @@
                     "y": 0.0,
                     "z": 0.0
                 },
-                "sphere_Radius": 0.10000000149011612,
-                "emit_From_Shell": false,
+                "sphere_Radius": 3.0,
+                "emit_From_Shell": true,
                 "cone_Angle": 0.0,
                 "cone_Direction": {
                     "x": 0.0,
@@ -83,37 +69,37 @@
             "colorModule": {
                 "enabled": true,
                 "start_Color": {
-                    "x": 0.0,
-                    "y": 0.8500000238418579,
-                    "z": 0.5,
+                    "x": 0.25,
+                    "y": 0.5,
+                    "z": 0.8500000238418579,
                     "w": 1.0
                 },
                 "end_Color": {
-                    "x": 0.0,
-                    "y": 0.5,
-                    "z": 0.25,
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0,
                     "w": 0.0
                 }
             },
             "sizeModule": {
                 "enabled": true,
-                "start_Size": 1.0,
-                "end_Size": 0.5
+                "start_Size": 0.6000000238418579,
+                "end_Size": 0.0
             },
             "rotationModule": {
-                "enabled": false,
+                "enabled": true,
                 "start_Rotation": {
                     "x": 0.0,
                     "y": 0.0,
                     "z": 0.0
                 },
                 "end_Rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
+                    "x": 360.0,
+                    "y": 360.0,
+                    "z": 360.0
                 },
                 "rotation_Modifier": {
-                    "x": 0.0,
+                    "x": 20.0,
                     "y": 0.0,
                     "z": 0.0
                 }
@@ -186,46 +172,14 @@
                 }
             },
             "emissionInterval": 0.05000000074505806,
-            "no_Of_Particles": 100
-        },
-        "RigidbodyComponent": {
-            "mass": 1.0,
-            "drag": 0.0,
-            "angularDrag": 0.05000000074505806,
-            "useGravity": false,
-            "isKinematic": false,
-            "interpolation": 0,
-            "collisionDetection": 0,
-            "constraints": 0,
-            "speed": 0.0,
-            "velocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "angularVelocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        "SphereColliderComponent": {
-            "isTrigger": true,
-            "sphere": {
-                "center": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "radius": 3.0
-            }
+            "no_Of_Particles": 50
         },
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 0.0,
-                    "y": 1.5,
-                    "z": 0.0
+                    "x": 1.6571390628814697,
+                    "y": 29.185443878173828,
+                    "z": 3.392188787460327
                 },
                 "rotation": {
                     "x": 0.0,
@@ -240,9 +194,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 0.0,
-                    "y": 1.5,
-                    "z": 0.0
+                    "x": 1.6571390628814697,
+                    "y": 29.185443878173828,
+                    "z": 3.392188787460327
                 },
                 "rotation": {
                     "x": 0.0,

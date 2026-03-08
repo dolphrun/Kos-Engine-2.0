@@ -1,14 +1,6 @@
 [
     {
-        "SceneData": {
-            "skyBoxGUID": [],
-            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
-            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
-            "ambientIntensity": 1.0
-        }
-    },
-    {
-        "entityGUID": "8fe21912-f695-0e33-0792-c4b1b65cd3e8",
+        "entityGUID": "c969341b-a2df-583a-d82d-ab2de34d598e",
         "FireballSplash": {
             "splashDamage": 40,
             "splashSfxGUID": "00000000-0000-0000-0000-000000000000",
@@ -21,19 +13,19 @@
             "entityTag": "Default",
             "isPrefab": true,
             "isStatic": false,
-            "prefabName": "FireSplashPrefab.prefab",
+            "prefabName": "FireSplashPrefab_1.prefab",
             "hide": false
         },
         "ParticleComponent": {
             "particleType": 0,
-            "duration": 0.15000000596046448,
-            "looping": true,
+            "duration": 1.0,
+            "looping": false,
             "play_On_Awake": true,
-            "start_Lifetime": 0.05999999865889549,
-            "end_Lifetime": 0.30000001192092896,
-            "lifetime_Random_Enable": true,
+            "start_Lifetime": 1.5,
+            "end_Lifetime": 1.5,
+            "lifetime_Random_Enable": false,
             "textureGUID": "00000000-0000-0000-0000-000000000000",
-            "start_Velocity": 12.0,
+            "start_Velocity": 17.5,
             "playback_State": 0,
             "particleFade": 1,
             "velocityModule": {
@@ -85,20 +77,20 @@
                 "start_Color": {
                     "x": 1.0,
                     "y": 0.0,
-                    "z": 0.05000000074505806,
-                    "w": 0.800000011920929
+                    "z": 0.0,
+                    "w": 1.0
                 },
                 "end_Color": {
-                    "x": 4.0,
+                    "x": 1.0,
                     "y": 1.0,
                     "z": 0.0,
-                    "w": 0.0
+                    "w": 1.0
                 }
             },
             "sizeModule": {
                 "enabled": true,
-                "start_Size": 0.10000000149011612,
-                "end_Size": 0.14000000059604645
+                "start_Size": 1.5,
+                "end_Size": 0.10000000149011612
             },
             "rotationModule": {
                 "enabled": false,
@@ -119,10 +111,10 @@
                 }
             },
             "gravityModule": {
-                "enabled": false,
+                "enabled": true,
                 "gravity": {
                     "x": 0.0,
-                    "y": -9.800000190734863,
+                    "y": -30.0,
                     "z": 0.0
                 }
             },
@@ -186,7 +178,7 @@
                 }
             },
             "emissionInterval": 0.0010000000474974513,
-            "no_Of_Particles": 35
+            "no_Of_Particles": 200
         },
         "RigidbodyComponent": {
             "mass": 1.0,
@@ -224,8 +216,8 @@
             "WorldTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
+                    "y": 25.512420654296875,
+                    "z": 13.121537208557129
                 },
                 "rotation": {
                     "x": 0.0,
@@ -241,12 +233,12 @@
             "LocalTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
+                    "y": 25.512420654296875,
+                    "z": 13.121537208557129
                 },
                 "rotation": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": -0.0,
                     "z": 0.0
                 },
                 "scale": {

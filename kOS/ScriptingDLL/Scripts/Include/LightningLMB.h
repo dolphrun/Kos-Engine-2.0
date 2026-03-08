@@ -100,8 +100,12 @@ inline void LightningLMB::Start() {
 
 inline void LightningLMB::Update() {
 
-	if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
-		tc->LocalTransformation.position += direction * projectileSpeed * ecsPtr->m_GetDeltaTime();
+	//if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
+	//	tc->LocalTransformation.position += direction * projectileSpeed * ecsPtr->m_GetDeltaTime();
+	//}
+
+	if (auto* rb = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity)) {
+		rb->velocity = direction * projectileSpeed;
 	}
 
 	if (currentTimer < timeBeforeDeath) {

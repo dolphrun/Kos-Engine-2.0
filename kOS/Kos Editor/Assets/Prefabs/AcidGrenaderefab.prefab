@@ -18,7 +18,7 @@
             "enemyDeathSfxGUID_1": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000",
-            "gasCloudPrefab": "20a501c9-cbba-236d-aae8-0c351222333a"
+            "gasCloudPrefab": "f123bd14-0bf8-cdc4-0687-96c7a1652735"
         },
         "MaterialComponent": {
             "materialGUID": [

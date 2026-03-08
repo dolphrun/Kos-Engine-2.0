@@ -164,7 +164,7 @@ inline void AcidLMB::SpawnGasCloud() {
 	ecs::EntityID gasCloudID = DuplicatePrefabIntoScene<R_Scene>(currentScene, gasCloudPrefab);
 
 	if (auto* cloudTf = ecsPtr->GetComponent<TransformComponent>(gasCloudID)) {
-		cloudTf->LocalTransformation.position = selfTf->WorldTransformation.position;
+		cloudTf->LocalTransformation.position += selfTf->WorldTransformation.position;
 		std::cout << "[AcidLMB] Gas cloud spawned at: "
 			<< selfTf->WorldTransformation.position.x << ", "
 			<< selfTf->WorldTransformation.position.y << ", "

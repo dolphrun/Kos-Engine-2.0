@@ -8,11 +8,69 @@
         }
     },
     {
-        "entityGUID": "e54afd11-ba69-8bc4-3ded-7321d63683b7",
+        "entityGUID": "55320017-4c85-0e12-c6c5-101f7dcafc58",
+        "AcidPowerupManagerScript": {
+            "pushbackForce": 500.0,
+            "lingerTime": 1.0,
+            "growthRate": 1.0299999713897705,
+            "acidBlastSpeed": 5.0,
+            "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+            "enemyDeathSfxGUID_2": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+            "enemyDeathSfxGUID_3": "ef772eb3-1923-0835-dd9b-683167c10659",
+            "acidSpraySfxGUID": "019e689a-d511-458b-a3a9-39094d5973bc"
+        },
         "AudioComponent": {
             "audioFiles": [
                 {
-                    "audioGUID": "4ef03ed6-765a-ed95-b9bb-eafe53b75669",
+                    "audioGUID": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": true,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "00000000-0000-0000-0000-000000000000",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": true,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "18bde09b-18c2-4f58-5770-048caf28d1c3",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "ef772eb3-1923-0835-dd9b-683167c10659",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": true,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "019e689a-d511-458b-a3a9-39094d5973bc",
                     "volume": 1.0,
                     "loop": false,
                     "playOnStart": false,
@@ -29,34 +87,20 @@
                 }
             ]
         },
-        "BoxColliderComponent": {
-            "isTrigger": false,
-            "box": {
-                "center": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "size": {
-                    "x": 0.800000011920929,
-                    "y": 2.5,
-                    "z": 1.0
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "c47bcb8a-af57-706b-4154-69f26de1bc97"
                 }
-            }
-        },
-        "FirePowerupManagerScript": {
-            "fireballSpeed": 20.0,
-            "fireballDamage": 5,
-            "fireballSfxGUID": "4ef03ed6-765a-ed95-b9bb-eafe53b75669",
-            "fireSplashPrefab": "05a543f1-82b0-f476-13fe-c77995bdfa57"
+            ]
         },
         "NameComponent": {
-            "entityName": "FireballPrefab",
+            "entityName": "AcidBlastPrefan",
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
             "isStatic": false,
-            "prefabName": "FireballPrefab.prefab",
+            "prefabName": "AcidBlastPrefab.prefab",
             "hide": false
         },
         "RigidbodyComponent": {
@@ -64,7 +108,7 @@
             "drag": 0.0,
             "angularDrag": 0.05000000074505806,
             "useGravity": false,
-            "isKinematic": false,
+            "isKinematic": true,
             "interpolation": 0,
             "collisionDetection": 0,
             "constraints": 0,
@@ -80,72 +124,83 @@
                 "z": 0.0
             }
         },
+        "SphereColliderComponent": {
+            "isTrigger": true,
+            "sphere": {
+                "center": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "radius": 1.0
+            }
+        },
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": -0.37488073110580444,
-                    "y": 27.67424964904785,
-                    "z": 13.43725872039795
+                    "x": -7.876362323760986,
+                    "y": 30.069143295288086,
+                    "z": 21.65496063232422
                 },
                 "rotation": {
                     "x": 0.0,
-                    "y": 0.0,
-                    "z": -32.599998474121094
+                    "y": -0.0,
+                    "z": 0.0
                 },
                 "scale": {
-                    "x": 0.800000011920929,
-                    "y": 0.800000011920929,
-                    "z": 0.800000011920929
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.5
                 }
             },
             "LocalTransformation": {
                 "position": {
-                    "x": -0.37488073110580444,
-                    "y": 27.67424964904785,
-                    "z": 13.43725872039795
+                    "x": -7.876362323760986,
+                    "y": 30.069143295288086,
+                    "z": 21.65496063232422
                 },
                 "rotation": {
                     "x": 0.0,
-                    "y": 0.0,
-                    "z": -32.599998474121094
+                    "y": -0.0,
+                    "z": 0.0
                 },
                 "scale": {
-                    "x": 0.800000011920929,
-                    "y": 0.800000011920929,
-                    "z": 0.800000011920929
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.5
                 }
             }
         },
         "children": [
             {
-                "entityGUID": "45c098ca-c4a2-fccd-4db7-51334bb408df",
+                "entityGUID": "2203dd85-c3b1-63ee-3d83-447216105495",
                 "NameComponent": {
-                    "entityName": "Fire Particles",
+                    "entityName": "Acid VFX",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "",
+                    "prefabName": "AcidBlastPrefan.prefab",
                     "hide": false
                 },
                 "ParticleComponent": {
                     "particleType": 0,
-                    "duration": 2.5,
-                    "looping": true,
+                    "duration": 1.0,
+                    "looping": false,
                     "play_On_Awake": true,
-                    "start_Lifetime": 1.5,
-                    "end_Lifetime": 2.5,
+                    "start_Lifetime": 1.0,
+                    "end_Lifetime": 1.0,
                     "lifetime_Random_Enable": true,
                     "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 5.0,
                     "playback_State": 0,
                     "particleFade": 1,
                     "velocityModule": {
-                        "enabled": true,
+                        "enabled": false,
                         "mode": 0,
                         "velocity_Modifier": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 0.0,
                             "z": 0.0
                         }
                     },
@@ -158,10 +213,10 @@
                         }
                     },
                     "shapeModule": {
-                        "type": 1,
+                        "type": 0,
                         "emission_Direction": {
                             "x": 0.0,
-                            "y": 1.0,
+                            "y": 0.0,
                             "z": 0.0
                         },
                         "box_Size": {
@@ -171,7 +226,7 @@
                         },
                         "sphere_Radius": 0.0,
                         "emit_From_Shell": false,
-                        "cone_Angle": 25.0,
+                        "cone_Angle": 0.0,
                         "cone_Direction": {
                             "x": 0.0,
                             "y": 0.0,
@@ -185,23 +240,23 @@
                         "random_Direction_Amount": 0.0
                     },
                     "colorModule": {
-                        "enabled": true,
+                        "enabled": false,
                         "start_Color": {
-                            "x": 1.0,
-                            "y": 0.0,
+                            "x": 0.20000000298023224,
+                            "y": 1.0,
                             "z": 0.0,
                             "w": 1.0
                         },
                         "end_Color": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0,
+                            "x": 1.100000023841858,
+                            "y": 1.0,
+                            "z": 1.5,
                             "w": 0.0
                         }
                     },
                     "sizeModule": {
                         "enabled": true,
-                        "start_Size": 0.75,
+                        "start_Size": 0.25,
                         "end_Size": 0.0
                     },
                     "rotationModule": {
@@ -212,18 +267,18 @@
                             "z": 0.0
                         },
                         "end_Rotation": {
-                            "x": 360.0,
-                            "y": 360.0,
-                            "z": 360.0
+                            "x": 2.799999952316284,
+                            "y": 6.699999809265137,
+                            "z": -4.800000190734863
                         },
                         "rotation_Modifier": {
-                            "x": 45.0,
+                            "x": 0.0,
                             "y": 0.0,
                             "z": 0.0
                         }
                     },
                     "gravityModule": {
-                        "enabled": false,
+                        "enabled": true,
                         "gravity": {
                             "x": 0.0,
                             "y": -9.800000190734863,
@@ -242,7 +297,7 @@
                             "y": 20.0,
                             "z": 20.0
                         },
-                        "rotateEndPoint": false,
+                        "rotateEndPoint": true,
                         "rotationSpeed": 2.0,
                         "rotationRadius": 5.0,
                         "rotationCenter": {
@@ -289,25 +344,25 @@
                             "z": 0.0
                         }
                     },
-                    "emissionInterval": 0.05000000074505806,
-                    "no_Of_Particles": 50
+                    "emissionInterval": 0.000009999999747378752,
+                    "no_Of_Particles": 20
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -0.37488073110580444,
-                            "y": 27.67424964904785,
-                            "z": 13.43725872039795
+                            "x": -7.876362323760986,
+                            "y": 30.069143295288086,
+                            "z": 21.65496063232422
                         },
                         "rotation": {
                             "x": 0.0,
-                            "y": 0.0,
-                            "z": -32.60000228881836
+                            "y": -0.0,
+                            "z": 0.0
                         },
                         "scale": {
-                            "x": 0.9999999403953552,
-                            "y": 0.9999999403953552,
-                            "z": 1.0
+                            "x": 0.5,
+                            "y": 0.5,
+                            "z": 0.5
                         }
                     },
                     "LocalTransformation": {
@@ -318,46 +373,46 @@
                         },
                         "rotation": {
                             "x": 0.0,
-                            "y": -0.0,
+                            "y": 0.0,
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 1.25,
-                            "y": 1.25,
-                            "z": 1.25
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
                         }
                     }
                 }
             },
             {
-                "entityGUID": "1d3c1463-932a-14ef-9f94-4d7dc3ea6ae8",
+                "entityGUID": "0a13b0d8-b297-e600-05e6-e738182a50e0",
                 "NameComponent": {
-                    "entityName": "Fire Particles",
+                    "entityName": "Acid VFX",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "",
+                    "prefabName": "AcidBlastPrefan.prefab",
                     "hide": false
                 },
                 "ParticleComponent": {
-                    "particleType": 1,
-                    "duration": 2.5,
-                    "looping": true,
+                    "particleType": 0,
+                    "duration": 1.0,
+                    "looping": false,
                     "play_On_Awake": true,
                     "start_Lifetime": 1.0,
-                    "end_Lifetime": 2.0,
+                    "end_Lifetime": 1.0,
                     "lifetime_Random_Enable": true,
                     "textureGUID": "00000000-0000-0000-0000-000000000000",
-                    "start_Velocity": 5.0,
+                    "start_Velocity": 4.0,
                     "playback_State": 0,
                     "particleFade": 1,
                     "velocityModule": {
-                        "enabled": true,
+                        "enabled": false,
                         "mode": 0,
                         "velocity_Modifier": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 0.0,
                             "z": 0.0
                         }
                     },
@@ -370,10 +425,10 @@
                         }
                     },
                     "shapeModule": {
-                        "type": 1,
+                        "type": 0,
                         "emission_Direction": {
                             "x": 0.0,
-                            "y": 1.0,
+                            "y": 0.0,
                             "z": 0.0
                         },
                         "box_Size": {
@@ -383,7 +438,7 @@
                         },
                         "sphere_Radius": 0.0,
                         "emit_From_Shell": false,
-                        "cone_Angle": 10.0,
+                        "cone_Angle": 0.0,
                         "cone_Direction": {
                             "x": 0.0,
                             "y": 0.0,
@@ -397,23 +452,23 @@
                         "random_Direction_Amount": 0.0
                     },
                     "colorModule": {
-                        "enabled": true,
+                        "enabled": false,
                         "start_Color": {
-                            "x": 1.0,
-                            "y": 0.8500000238418579,
-                            "z": 0.0,
-                            "w": 0.20000000298023224
+                            "x": 0.20000000298023224,
+                            "y": 1.0,
+                            "z": 0.75,
+                            "w": 1.0
                         },
                         "end_Color": {
-                            "x": 1.0,
-                            "y": 0.0,
-                            "z": 0.0,
+                            "x": 1.100000023841858,
+                            "y": 1.0,
+                            "z": 1.5,
                             "w": 0.0
                         }
                     },
                     "sizeModule": {
                         "enabled": true,
-                        "start_Size": 0.5,
+                        "start_Size": 0.25,
                         "end_Size": 0.0
                     },
                     "rotationModule": {
@@ -424,18 +479,18 @@
                             "z": 0.0
                         },
                         "end_Rotation": {
-                            "x": 360.0,
-                            "y": 360.0,
-                            "z": 360.0
+                            "x": 2.799999952316284,
+                            "y": 6.699999809265137,
+                            "z": -4.800000190734863
                         },
                         "rotation_Modifier": {
-                            "x": 45.0,
+                            "x": 0.0,
                             "y": 0.0,
                             "z": 0.0
                         }
                     },
                     "gravityModule": {
-                        "enabled": false,
+                        "enabled": true,
                         "gravity": {
                             "x": 0.0,
                             "y": -9.800000190734863,
@@ -454,7 +509,7 @@
                             "y": 20.0,
                             "z": 20.0
                         },
-                        "rotateEndPoint": false,
+                        "rotateEndPoint": true,
                         "rotationSpeed": 2.0,
                         "rotationRadius": 5.0,
                         "rotationCenter": {
@@ -501,25 +556,25 @@
                             "z": 0.0
                         }
                     },
-                    "emissionInterval": 0.05000000074505806,
-                    "no_Of_Particles": 50
+                    "emissionInterval": 0.000009999999747378752,
+                    "no_Of_Particles": 20
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -0.37488073110580444,
-                            "y": 27.67424964904785,
-                            "z": 13.43725872039795
+                            "x": -7.876362323760986,
+                            "y": 30.069143295288086,
+                            "z": 21.65496063232422
                         },
                         "rotation": {
                             "x": 0.0,
-                            "y": 0.0,
-                            "z": -32.60000228881836
+                            "y": -0.0,
+                            "z": 0.0
                         },
                         "scale": {
-                            "x": 0.9999999403953552,
-                            "y": 0.9999999403953552,
-                            "z": 1.0
+                            "x": 0.5,
+                            "y": 0.5,
+                            "z": 0.5
                         }
                     },
                     "LocalTransformation": {
@@ -530,61 +585,198 @@
                         },
                         "rotation": {
                             "x": 0.0,
-                            "y": -0.0,
+                            "y": 0.0,
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 1.25,
-                            "y": 1.25,
-                            "z": 1.25
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
                         }
                     }
                 }
             },
             {
-                "entityGUID": "8efa21f5-d49d-8b49-784b-01d187023815",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "61cfd855-ca21-6e2a-3bf8-8fc94756f547"
-                        }
-                    ]
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "7bcd848c-d87c-ba6e-d48e-75a8fca14f29"
-                },
+                "entityGUID": "f97bf319-7d91-e230-686e-954f1af2cf2a",
                 "NameComponent": {
-                    "entityName": "Fire Sword",
+                    "entityName": "Acid VFX",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "",
+                    "prefabName": "AcidBlastPrefan.prefab",
                     "hide": false
+                },
+                "ParticleComponent": {
+                    "particleType": 0,
+                    "duration": 1.0,
+                    "looping": false,
+                    "play_On_Awake": true,
+                    "start_Lifetime": 1.0,
+                    "end_Lifetime": 1.0,
+                    "lifetime_Random_Enable": true,
+                    "textureGUID": "00000000-0000-0000-0000-000000000000",
+                    "start_Velocity": 4.0,
+                    "playback_State": 0,
+                    "particleFade": 1,
+                    "velocityModule": {
+                        "enabled": false,
+                        "mode": 0,
+                        "velocity_Modifier": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        }
+                    },
+                    "forceModule": {
+                        "enabled": false,
+                        "force": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        }
+                    },
+                    "shapeModule": {
+                        "type": 0,
+                        "emission_Direction": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "box_Size": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "sphere_Radius": 0.0,
+                        "emit_From_Shell": false,
+                        "cone_Angle": 0.0,
+                        "cone_Direction": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "cone_Radius": 0.0,
+                        "circle_Radius": 0.0,
+                        "circle_Arc": 0.0,
+                        "emit_From_Edge": false,
+                        "edge_Length": 0.0,
+                        "random_Direction_Amount": 0.0
+                    },
+                    "colorModule": {
+                        "enabled": false,
+                        "start_Color": {
+                            "x": 0.30000001192092896,
+                            "y": 0.8500000238418579,
+                            "z": 0.0,
+                            "w": 1.0
+                        },
+                        "end_Color": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0,
+                            "w": 0.0
+                        }
+                    },
+                    "sizeModule": {
+                        "enabled": true,
+                        "start_Size": 0.25,
+                        "end_Size": 0.0
+                    },
+                    "rotationModule": {
+                        "enabled": true,
+                        "start_Rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "end_Rotation": {
+                            "x": 2.799999952316284,
+                            "y": 6.699999809265137,
+                            "z": -4.800000190734863
+                        },
+                        "rotation_Modifier": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        }
+                    },
+                    "gravityModule": {
+                        "enabled": true,
+                        "gravity": {
+                            "x": 0.0,
+                            "y": -9.800000190734863,
+                            "z": 0.0
+                        }
+                    },
+                    "trailingModule": {
+                        "enabled": false,
+                        "startPoint": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "endPoint": {
+                            "x": 20.0,
+                            "y": 20.0,
+                            "z": 20.0
+                        },
+                        "rotateEndPoint": true,
+                        "rotationSpeed": 2.0,
+                        "rotationRadius": 5.0,
+                        "rotationCenter": {
+                            "x": 20.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotationAxis": {
+                            "x": 0.0,
+                            "y": 1.0,
+                            "z": 0.0
+                        },
+                        "spiralRadius": 5.0,
+                        "spiralFrequency": 3.0,
+                        "spiralIntensityCurve": 0.5,
+                        "pathSpeed": 2.0,
+                        "arrivalThreshold": 0.5
+                    },
+                    "noiseModule": {
+                        "enabled": false,
+                        "strength": 1.0,
+                        "strengthMultiplier": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "frequency": 0.5,
+                        "scrollSpeed": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "damping": true,
+                        "octaves": 1,
+                        "octaveMultiplier": 0.5,
+                        "octaveScale": 2.0,
+                        "quality": 1,
+                        "remapEnabled": false,
+                        "remapCurveStart": 1.0,
+                        "remapCurveEnd": 1.0,
+                        "positionOffset": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        }
+                    },
+                    "emissionInterval": 0.000009999999747378752,
+                    "no_Of_Particles": 20
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -0.952663242816925,
-                            "y": 26.869295120239258,
-                            "z": 13.43725872039795
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": -32.60000228881836
-                        },
-                        "scale": {
-                            "x": 0.01600000075995922,
-                            "y": 0.01600000075995922,
-                            "z": 0.01600000075995922
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": -0.0663350522518158,
-                            "y": -1.236785888671875,
-                            "z": 0.0
+                            "x": -7.876362323760986,
+                            "y": 30.069143295288086,
+                            "z": 21.65496063232422
                         },
                         "rotation": {
                             "x": 0.0,
@@ -592,9 +784,26 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.020000001415610313,
-                            "y": 0.020000001415610313,
-                            "z": 0.020000001415610313
+                            "x": 0.5,
+                            "y": 0.5,
+                            "z": 0.5
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
                         }
                     }
                 }
