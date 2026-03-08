@@ -133,6 +133,8 @@ namespace gui
                         // set current prefab back to inactive
                         m_sceneManager.SetSceneActive(m_activeScene, false);
 
+                        m_prefabManager.UpdateAllPrefab(m_activeScene);
+
                         // set back scene's active state
                         for (const auto& [scene, sceneData] : m_ecs.sceneMap)
                         {
@@ -155,6 +157,8 @@ namespace gui
                         m_prefabSceneMode = false;
                         m_lastClickedEntityId = -1;
 
+                        renderNavMeshStatus = lastRenderStatus;
+                        SetNavMeshRenderMesh();
                     }
                 }
 
@@ -677,7 +681,6 @@ namespace gui
 
                 if (!m_prefabSceneMode && childnc->isPrefab && (childnc->prefabName == parent->prefabName))
                 {
-
                     LOGGING_WARN("Unable to drag prefabs of same type into each other, pls go to prefab editor");
                 }
                 else

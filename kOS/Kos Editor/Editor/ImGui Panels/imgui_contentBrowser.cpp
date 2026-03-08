@@ -231,6 +231,7 @@ namespace gui {
 									continue;
 								}
 
+								
 								//skip if prefab mode alraedy true
 								if (!m_prefabSceneMode) {
 									m_savedSceneState.clear();
@@ -243,6 +244,9 @@ namespace gui {
 
 								}
 
+								lastRenderStatus = renderNavMeshStatus;
+								renderNavMeshStatus = false;
+								SetNavMeshRenderMesh();
 								// clear save scene state
 
 								// unload all regular scenes

@@ -217,7 +217,7 @@ namespace gui {
         bool ImageButton(const std::filesystem::path& directoryString);
 
         void DrawEntityChanges(std::map<EntityID, std::pair<EntityID, ecs::ComponentSignature>>& result, ecs::EntityID entityID, ecs::EntityID root);
-        void DrawChanges(std::map<EntityID, std::pair<EntityID, ecs::ComponentSignature>>& result, ecs::EntityID entityID, ecs::EntityID root);
+        void DrawComponentChanges(std::map<EntityID, std::pair<EntityID, ecs::ComponentSignature>>& result, ecs::EntityID entityID, ecs::EntityID root);
         /***********PreferenceTab*************/
         bool openPreferencesTab = false;
         /*************************************/
@@ -272,6 +272,11 @@ namespace gui {
         bool m_nodeEditorModified = false;
         /*******************************************/
 
+        /****************NavMesh****************/
+        bool renderNavMeshStatus = true;
+        bool lastRenderStatus = false;
+        void SetNavMeshRenderMesh();
+        /*******************************************/
 
         std::string m_imgui_layout;
 

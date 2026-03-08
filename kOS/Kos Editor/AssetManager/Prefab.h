@@ -49,7 +49,7 @@ namespace prefab {
 		void m_SaveEntitytoPrefab(ecs::EntityID);
 		void OverwriteScenePrefab(ecs::EntityID id);
 		void UpdateAllPrefab(const std::string& prefabSceneName);
-		void DeepUpdatePrefab(ecs::EntityID idA, ecs::EntityID idB);
+		void DeepUpdatePrefab(ecs::EntityID idA, ecs::EntityID idB, bool updateParentTransform = false);
 		void OverwritePrefab_Component(ecs::EntityID entityID, const std::string& componentName, const std::string& prefabSceneName, ecs::EntityID comparedID);
 		void RevertToPrefab_Component(ecs::EntityID entityID, const std::string& componentName, ecs::EntityID comparedID);
 		void LoadPrefab(const std::filesystem::path& filepath);
