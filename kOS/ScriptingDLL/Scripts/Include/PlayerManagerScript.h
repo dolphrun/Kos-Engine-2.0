@@ -1338,91 +1338,67 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 	}
 
 	// SHOOT
-	// ADD RELOAD HERE
-	if (Input->IsKeyTriggered(keys::LMB) && playerPowerupHeld == Powerup::NONE) {
 
-		// Don't shoot while reloading
+	if (Input->IsKeyTriggered(keys::LMB) && playerPowerupHeld == Powerup::NONE) {
 		if (isReloading) return;
 
-		// Cooldown check
 		float& cd = GetCurrShootCooldownForCurrentWeapon();
 		if (cd > 0.0f) return;
 
-		// Ammo check
 		int& currBullets = GetCurrBulletsForCurrentWeapon();
 		if (currBullets <= 0) {
 			if (autoReload) StartReload();
 			return;
 		}
 
-		// Consume ammo + apply cooldown
 		currBullets -= 1;
 		cd = GetShootCooldownForCurrentWeapon();
 
-		if (animComp)
-		{
-			if (animComp->m_currentStateID)
-			{
-				//static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasShot");
-				playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("hasShot", animComp, playerController);
+		if (animComp && animComp->m_currentStateID)
+			playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("hasShot", animComp, playerController);
 
-			}
-		}
+		std::shared_ptr<R_Scene> bullet = resource->GetResource<R_Scene>(bulletPrefab);
+		if (bullet) {
+			std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+			ecs::EntityID bulletID = DuplicatePrefabIntoScene<R_Scene>(currentScene, bulletPrefab);
 
-		if (playerPowerupHeld == Powerup::NONE) {
-			std::shared_ptr<R_Scene> bullet = resource->GetResource<R_Scene>(bulletPrefab);
+			if (auto* bulletTransform = ecsPtr->GetComponent<TransformComponent>(bulletID))
+				bulletTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
 
-			if (bullet) {
-				std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-				ecs::EntityID bulletID = DuplicatePrefabIntoScene<R_Scene>(currentScene, bulletPrefab);
+			if (auto* bulletScript = ecsPtr->GetComponent<BulletLogic>(bulletID))
+				bulletScript->direction = GetPlayerCameraFrontDirection();
 
-				if (auto* bulletTransform = ecsPtr->GetComponent<TransformComponent>(bulletID)) {
-					bulletTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
-				}
-
-				if (auto* bulletScript = ecsPtr->GetComponent<BulletLogic>(bulletID)) {
-					bulletScript->direction = GetPlayerCameraFrontDirection();
-				}
-
-				// GUN SFX
-				//if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-				//	std::vector<ecs::AudioFile*> playerHurtSfxPool;
-
-				//	for (auto& af : ac->audioFiles) {
-				//		if (af.isSFX) {
-				//			playerHurtSfxPool.push_back(&af);
-				//		}
-				//	}
-
-				//	if (!playerHurtSfxPool.empty()) {
-				//		int idx = rand() % static_cast<int>(playerHurtSfxPool.size());
-				//		//std::cout << "[BulletLogic] Random SFX index chosen = " << idx << std::endl;
-
-				//		playerHurtSfxPool[idx]->requestPlay = true;
-				//	}
-				//}
-				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-
-					for (auto& af : ac->audioFiles) {
-						if (af.audioGUID == gunSfxGUID_1 && af.isSFX) {
-							af.requestPlay = true;
-							break;
-						}
+			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+				for (auto& af : ac->audioFiles) {
+					if (af.audioGUID == gunSfxGUID_1 && af.isSFX) {
+						af.requestPlay = true;
+						break;
 					}
 				}
-
-
-
 			}
 		}
-		else if (playerPowerupHeld == Powerup::FIRE) {
+	}
 
-			if (fireCurrMeleeCooldown > 0.0f)
-				return;
+	// ADD RELOAD HERE
+	if (Input->IsKeyTriggered(keys::LMB) && playerPowerupHeld != Powerup::NONE) {
+
+		float& cd = GetCurrShootCooldownForCurrentWeapon();
+		if (cd > 0.0f) return;
+
+		int& currBullets = GetCurrBulletsForCurrentWeapon();
+		if (currBullets <= 0) return; // No auto reload for powerups
+
+		currBullets -= 1;
+		cd = GetShootCooldownForCurrentWeapon();
+
+		 if (playerPowerupHeld == Powerup::FIRE) {
+
+			/*if (fireCurrMeleeCooldown > 0.0f)
+				return;*/
 
 			std::shared_ptr<R_Scene> fireLMB = resource->GetResource<R_Scene>(fireLMBPrefab);
 
-			fireCurrMeleeCooldown = fireMeleeCooldown;
+			//fireCurrMeleeCooldown = fireMeleeCooldown;
 
 			fireSlashComboCount++;
 			if (fireSlashComboCount > 3)
@@ -1550,7 +1526,6 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				}
 			}
 
-			ecsPtr->SetTimeScale(0.5f);
 
 
 		}

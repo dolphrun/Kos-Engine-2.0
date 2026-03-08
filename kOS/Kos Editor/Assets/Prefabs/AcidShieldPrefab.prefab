@@ -32,7 +32,7 @@
             "drag": 0.0,
             "angularDrag": 0.05000000074505806,
             "useGravity": false,
-            "isKinematic": false,
+            "isKinematic": true,
             "interpolation": 0,
             "collisionDetection": 0,
             "constraints": 0,
