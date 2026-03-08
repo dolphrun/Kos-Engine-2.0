@@ -30,7 +30,7 @@
             ]
         },
         "BoxColliderComponent": {
-            "isTrigger": false,
+            "isTrigger": true,
             "box": {
                 "center": {
                     "x": 0.0,

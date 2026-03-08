@@ -1,5 +1,13 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "c969341b-a2df-583a-d82d-ab2de34d598e",
         "FireballSplash": {
             "splashDamage": 40,
@@ -13,7 +21,7 @@
             "entityTag": "Default",
             "isPrefab": true,
             "isStatic": false,
-            "prefabName": "FireSplashPrefab_1.prefab",
+            "prefabName": "FireSplashPrefab.prefab",
             "hide": false
         },
         "ParticleComponent": {
@@ -216,8 +224,8 @@
             "WorldTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 25.512420654296875,
-                    "z": 13.121537208557129
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -233,8 +241,8 @@
             "LocalTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 25.512420654296875,
-                    "z": 13.121537208557129
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
