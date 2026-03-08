@@ -1,5 +1,13 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "13d87327-9937-3f83-6d53-f4e65812dc8a",
         "MaterialComponent": {
             "materialGUID": [
@@ -24,6 +32,7 @@
             "prefabName": "M5_Modular_Floors_5M.prefab",
             "hide": false
         },
+        "NavMeshComponent": {},
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {

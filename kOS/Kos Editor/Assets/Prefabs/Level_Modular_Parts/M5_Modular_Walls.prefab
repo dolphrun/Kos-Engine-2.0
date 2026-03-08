@@ -8,11 +8,11 @@
         }
     },
     {
-        "entityGUID": "93499561-0895-9524-a902-2f46acdf0a25",
+        "entityGUID": "4252d7a7-4123-992f-6ae7-e91653c71000",
         "MaterialComponent": {
             "materialGUID": [
                 {
-                    "materialGUID": "08823cb0-5ee5-fcf0-ac32-333b370f6ba5"
+                    "materialGUID": "5abd7292-c087-d8e9-c12e-b9522f0876e0"
                 }
             ]
         },
@@ -21,15 +21,15 @@
             "convex": false
         },
         "MeshFilterComponent": {
-            "meshGUID": "cbb48cf6-fcce-bca9-f619-77c35083e06f"
+            "meshGUID": "928affd5-5a5e-0869-9434-f83add20059e"
         },
         "NameComponent": {
-            "entityName": "M5_modular_wall_50M",
+            "entityName": "M5_Modular_Walls",
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
             "isStatic": false,
-            "prefabName": "M5_modular_wall_50M.prefab",
+            "prefabName": "M5_Modular_Walls.prefab",
             "hide": false
         },
         "NavMeshComponent": {},
@@ -38,7 +38,7 @@
                 "position": {
                     "x": 0.0,
                     "y": 0.0,
-                    "z": 0.0
+                    "z": 1.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -55,11 +55,11 @@
                 "position": {
                     "x": 0.0,
                     "y": 0.0,
-                    "z": 0.0
+                    "z": 1.0
                 },
                 "rotation": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": -0.0,
                     "z": 0.0
                 },
                 "scale": {
