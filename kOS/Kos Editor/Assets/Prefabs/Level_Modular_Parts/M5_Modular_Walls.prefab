@@ -32,6 +32,7 @@
             "prefabName": "M5_Modular_Walls.prefab",
             "hide": false
         },
+        "NavMeshComponent": {},
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {

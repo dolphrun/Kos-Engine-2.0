@@ -79,9 +79,9 @@ inline void BulletLogic::Start() {
 						//}
 
 			if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
-				enemyScript->TriggerStagger(1.f);
+				enemyScript->TriggerStagger(0.5f);
 
-				enemyScript->enemyHealth -= bulletDamage;
+				enemyScript->TakeDamage(bulletDamage, "DEFAULT");
 
 				if (enemyScript->enemyHealth <= 0) {
 					if (scoreManager) {

@@ -42,11 +42,13 @@ public:
 		physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
 				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
-					enemyScript->enemyHealth -= lightningDamage;
-					enemyScript->TriggerStagger(1.f);
+					enemyScript->TakeDamage(lightningDamage, "LIGHTNING");
+
+					if (enemyScript->shieldHealth <= 0) {
+						enemyScript->TriggerStagger(0.5f);
+					}
 
 					if (enemyScript->enemyHealth <= 0) {
-						// ADD SFX OF ENEMY DEATH HERE - Done
 						PlayRandomEnemyDeathSFX();
 
 						if (scoreManager) {
@@ -54,29 +56,10 @@ public:
 						}
 
 						enemyScript->Die();
-
 					}
 				}
 			}
 		});
-
-
-		//glm::vec3 dir = glm::normalize(direction);
-		//glm::vec3 forward = glm::vec3(0.0f, 0.0f, 1.0f); // bullet default forward
-		//glm::quat rotation = glm::rotation(forward, dir);
-		////glm::vec3 eulerDeg = glm::degrees(glm::eulerAngles(rotation));
-		//glm::vec3 eulerDeg = glm::eulerAngles(rotation);
-		//ecsPtr->GetComponent<ecs::TransformComponent>(entity)->LocalTransformation.rotation = eulerDeg;
-
-		glm::vec3 dir = glm::normalize(direction);
-		float yaw = atan2(dir.x, dir.z);   // left/right
-		float pitch = asin(-dir.y);          // up/down
-		glm::vec3 rotationDegrees;
-		rotationDegrees.x = glm::degrees(pitch) + 90.f; // Pitch (X)
-		rotationDegrees.y = glm::degrees(yaw);     // Yaw (Y)
-		rotationDegrees.z = 0.0f;            // Roll
-		ecsPtr->GetComponent<ecs::TransformComponent>(entity)->LocalTransformation.rotation = rotationDegrees;
-
 	}
 
 	void Update() override {
@@ -88,7 +71,8 @@ public:
 			currentTimer += ecsPtr->m_GetDeltaTime();
 
 			if (currentTimer >= lingerTime) {
-				ecsPtr->DeleteEntity(entity);
+				ecs::EntityID parent = ecsPtr->GetParent(entity).value();
+				ecsPtr->DeleteEntity(parent);
 			}
 		}
 	}

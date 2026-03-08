@@ -308,16 +308,14 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
         //}
         // 
 
-        static unsigned int lastEntity{};
+        //static unsigned int lastEntity{};
 
-        // Clean up behaviours when switching entities
-        if (static_cast<int>(lastEntity) != m_lastClickedEntityId) {
-            lastEntity = m_lastClickedEntityId;
-            m_collisionSetterMode = false;
-        }
-
+        //// Clean up behaviours when switching entities
+        //if (static_cast<int>(lastEntity) != m_lastClickedEntityId) {
+        //    lastEntity = m_lastClickedEntityId;
+        //    m_collisionSetterMode = false;
+        //}
     }
-
 
     ImGui::End();
 }

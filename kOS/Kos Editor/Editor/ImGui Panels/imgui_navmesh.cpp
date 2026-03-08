@@ -5,7 +5,7 @@
 #include "DetourRecast/Recast.h"
 #include "../Include/DetourRecast/RecastDebugDraw.h"
 
-std::shared_ptr<Sample_TileMesh> tm = nullptr; // Mem leak potential
+std::shared_ptr<Sample_TileMesh> tm = nullptr;
 
 void gui::ImGuiHandler::DrawNavMeshWindow() {
 	if (ImGui::Begin("NavMesh")) {
@@ -98,7 +98,7 @@ void gui::ImGuiHandler::DrawNavMeshWindow() {
 
 		ImGui::SeparatorText("Navmesh Generation Controls");
 
-		static bool renderNavMeshStatus = (tm != nullptr);
+		//renderNavMeshStatus = (tm != nullptr);
 		if (ImGui::Checkbox("Render Navmesh", &renderNavMeshStatus)) {
 			m_navMeshManager.SetGraphicsRenderMesh(renderNavMeshStatus ? tm : nullptr);
 		}
@@ -124,4 +124,8 @@ void gui::ImGuiHandler::DrawNavMeshWindow() {
 
 
 	ImGui::End();
+}
+
+void gui::ImGuiHandler::SetNavMeshRenderMesh() {
+	m_navMeshManager.SetGraphicsRenderMesh(renderNavMeshStatus ? tm : nullptr);
 }

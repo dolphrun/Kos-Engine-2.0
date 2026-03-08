@@ -8,7 +8,7 @@
         }
     },
     {
-        "entityGUID": "af9ba766-5631-6506-540e-ea3c0c1dc24c",
+        "entityGUID": "9a3a623e-0ac8-1207-62df-88107057f806",
         "AcidGas": {
             "gasDamage": 2,
             "tickInterval": 1.0,
@@ -26,14 +26,14 @@
         },
         "ParticleComponent": {
             "particleType": 0,
-            "duration": 5.0,
+            "duration": 3.0,
             "looping": true,
             "play_On_Awake": true,
             "start_Lifetime": 3.0,
-            "end_Lifetime": 7.0,
+            "end_Lifetime": 3.0,
             "lifetime_Random_Enable": true,
             "textureGUID": "00000000-0000-0000-0000-000000000000",
-            "start_Velocity": 5.0,
+            "start_Velocity": 2.0,
             "playback_State": 0,
             "particleFade": 1,
             "velocityModule": {
@@ -84,20 +84,20 @@
                 "enabled": true,
                 "start_Color": {
                     "x": 0.0,
-                    "y": 1.0,
-                    "z": 0.0,
+                    "y": 0.8500000238418579,
+                    "z": 0.5,
                     "w": 1.0
                 },
                 "end_Color": {
                     "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0,
+                    "y": 0.5,
+                    "z": 0.25,
                     "w": 0.0
                 }
             },
             "sizeModule": {
-                "enabled": false,
-                "start_Size": 0.30000001192092896,
+                "enabled": true,
+                "start_Size": 1.0,
                 "end_Size": 0.5
             },
             "rotationModule": {
@@ -185,7 +185,7 @@
                     "z": 0.0
                 }
             },
-            "emissionInterval": 0.10000000149011612,
+            "emissionInterval": 0.05000000074505806,
             "no_Of_Particles": 100
         },
         "RigidbodyComponent": {
@@ -217,14 +217,14 @@
                     "y": 0.0,
                     "z": 0.0
                 },
-                "radius": 1.5
+                "radius": 3.0
             }
         },
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": 1.5,
                     "z": 0.0
                 },
                 "rotation": {
@@ -241,12 +241,12 @@
             "LocalTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": 1.5,
                     "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
-                    "y": 0.0,
+                    "y": -0.0,
                     "z": 0.0
                 },
                 "scale": {

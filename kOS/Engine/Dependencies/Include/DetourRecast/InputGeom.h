@@ -105,7 +105,7 @@ public:
 	~InputGeom();
 		
 	bool load(class rcContext* ctx, const std::string& filepath);
-	bool loadMesh(class rcContext* ctx, std::vector<std::shared_ptr<R_Model>> models, float scale = 1.0f);
+	bool loadMesh(rcContext* ctx, const std::vector<RecastInputModel>& inputs);
 	bool saveGeomSet(const BuildSettings* settings);
 	
 	/// Method to return static mesh data.

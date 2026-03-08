@@ -51,17 +51,18 @@ public:
 
 			damagedEnemies->insert(col.otherEntityID);
 
-			enemyScript->enemyHealth -= splashDamage;
+			enemyScript->TakeDamage(splashDamage, "FIRE");
 			std::cout << "[FireballSplash] Hit enemy, HP left: " << enemyScript->enemyHealth << "\n";
 
-			enemyScript->TriggerStagger(1.f);
+			if (enemyScript->shieldHealth <= 0) {
+				enemyScript->TriggerStagger(0.5f);
+			}
 
 			if (enemyScript->enemyHealth <= 0) {
 				if (scoreManager) {
 					scoreManager->AddScore(scoreValue);
 				}
 				enemyScript->Die();
-
 			}
 			});
 

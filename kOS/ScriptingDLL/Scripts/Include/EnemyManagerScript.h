@@ -3,6 +3,7 @@
 
 // Forward Declaration (Crucial for compiling)
 class EnemyBulletLogic;
+class TankAOEScript;
 
 class EnemyManagerScript : public TemplateSC {
 public:
@@ -10,7 +11,7 @@ public:
 	AnimatorComponent* animComp = nullptr;
 	AnimState currAnimationState{};
 
-	// Set dis  to "Melee" or "Ranged" in the editor.
+	// Set dis  to "Melee" or "Ranged" or "Tank" in the editor.
 	std::string enemyType = "Melee";
 
 	int agentid;
@@ -29,6 +30,12 @@ public:
 
 	float timeBeforeDamageByFlamethrowerAgain = 0.f;
 
+	// --- TANK SHIELD VARIABLES ---
+	int shieldHealth = 30;
+	std::string shieldElement = "NONE"; // Set to "FIRE", "ACID", or "LIGHTNING" in Editor
+	utility::GUID shieldVisualObject;   // GUID of the box indicating the shield
+	ecs::EntityID shieldVisualID;   // The spawned visual entity ID
+
 	// Separate variables for ranges cuz if not the ranged will kiss u
 	float enemyAttackRange = 2.5f;
 	float enemyRangedAttackRange = 2.5f;
@@ -40,6 +47,7 @@ public:
 
 	utility::GUID enemyHurtboxPrefab;
 	utility::GUID enemyBulletPrefab;
+	utility::GUID tankAoePrefab;
 
 	utility::GUID enemyHurtboxPosition;
 	ecs::EntityID enemyHurtboxPositionID;
@@ -53,13 +61,15 @@ public:
 	void Update() override;
 	void TriggerStagger(float duration);
 	void ApplyPushback(glm::vec3 dir, float force);
+	void TakeDamage(int damage, const std::string& element);
 	void Die();
 
-	REFLECTABLE(EnemyManagerScript, enemyHealth, enemyMovementSpeed, enemyType, enemyAttackRange, enemyRangedAttackRange, enemyChaseRange, playerToChase, enemyHurtboxPrefab, enemyBulletPrefab, enemyHurtboxPosition);
+	REFLECTABLE(EnemyManagerScript, enemyHealth, enemyMovementSpeed, enemyType, enemyAttackRange, enemyRangedAttackRange, enemyChaseRange, playerToChase, enemyHurtboxPrefab, enemyBulletPrefab, enemyHurtboxPosition, shieldHealth, shieldElement, shieldVisualObject, tankAoePrefab);
 };
 
 // --- IMPLEMENTATION ---
 #include "EnemyBulletLogic.h"
+#include "TankAOEScript.h"
 
 inline void EnemyManagerScript::Start() {
 	playerToChaseID = ecsPtr->GetEntityIDFromGUID(playerToChase);
@@ -74,6 +84,13 @@ inline void EnemyManagerScript::Start() {
 	{
 		enemyModelID = children[1];
 		enemyHurtboxPositionID = children[0];
+	}
+
+	// TANK: see if need change depending on how the designers want the shield
+	if (enemyType == "Tank" && shieldElement != "NONE") {
+		if (children.size() > 2) {
+			shieldVisualID = children[2];
+		}
 	}
 
 	//enemyModelID = ecsPtr->GetEntityIDFromGUID(enemyModel);
@@ -306,6 +323,26 @@ inline void EnemyManagerScript::Update() {
 								}
 							}
 						}
+						else if (enemyType == "Tank") {
+							std::shared_ptr<R_Scene> tankAOE = resource->GetResource<R_Scene>(tankAoePrefab);
+							if (tankAOE) {
+								std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+								ecs::EntityID aoeID = DuplicatePrefabIntoScene<R_Scene>(currentScene, tankAoePrefab);
+
+								// 1. PARENT THE AOE TO THE TANK! (false = don't keep world transform)
+								ecsPtr->SetParent(entity, aoeID, false);
+
+								if (auto* aoeTransform = ecsPtr->GetComponent<TransformComponent>(aoeID)) {
+									// 2. Since it's a child now, 0,0,0 means it's perfectly centered on the Tank!
+									aoeTransform->LocalTransformation.position = glm::vec3(0.f, 0.f, 0.f);
+								}
+
+								// Pass the Tank's ID so it doesn't hurt itself
+								if (auto* aoeScript = ecsPtr->GetComponent<TankAOEScript>(aoeID)) {
+									aoeScript->casterID = entity;
+								}
+							}
+						}
 						else
 						{
 							// Default/Melee: Spawn Hurtbox
@@ -366,10 +403,10 @@ inline void EnemyManagerScript::TriggerStagger(float duration) {
 	isStaggered = true;
 	currentStaggerTimer = duration;
 
+	// ADD STAGGER ANIM HERE
+
 	enemyIsAttacking = false;
 	attackHurtboxIsSpawn = false;
-
-	// ADD STAGGER ANIM HERE
 }
 
 inline void EnemyManagerScript::ApplyPushback(glm::vec3 dir, float force) {
@@ -379,14 +416,43 @@ inline void EnemyManagerScript::ApplyPushback(glm::vec3 dir, float force) {
 	pushbackVelocity = flatDir * force;
 }
 
+inline void EnemyManagerScript::TakeDamage(int damage, const std::string& element) {
+	if (shieldHealth > 0 && shieldElement != "NONE") {
+
+		if (element == shieldElement) {
+			shieldHealth -= damage;
+
+			if (shieldHealth <= 0) {
+				shieldHealth = 0;
+
+				if (shieldVisualID != 0) {
+					ecsPtr->DeleteEntity(shieldVisualID);
+					shieldVisualID = 0;
+				}
+			}
+		}
+		else {
+			// Its just immune to the power, this else is only here cuz it was for a cout, might remove in the future
+		}
+	}
+	else {
+		// Normal health damage (Shield is gone or never existed)
+		enemyHealth -= damage;
+
+		if (enemyHealth < 0) {
+			enemyHealth = 0;
+		}
+	}
+}
+
 inline void EnemyManagerScript::Die() {
 	if (isDead) return;
+
+	// ADD DEATH ANIM HERE
 
 	isDead = true;
 
 	if (!isStaggered) {
 		navMeshPtr->RemoveAgent(agentid);
 	}
-
-	// ADD DEATH ANIM HERE
 }

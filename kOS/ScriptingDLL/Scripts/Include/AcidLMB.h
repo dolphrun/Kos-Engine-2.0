@@ -7,7 +7,7 @@ class EnemyManagerScript;
 
 class AcidLMB : public TemplateSC {
 public:
-	int acidLMBDamage = 4;
+	int acidLMBDamage = 10;
 
 	glm::vec3 velocity = glm::vec3(0.f);
 	float     launchSpeed = 15.f;
@@ -74,7 +74,7 @@ inline void AcidLMB::Start() {
 			// ADD SFX OF ENEMY DEATH HERE - DONE
 			PlayRandomEnemyDeathSFX();
 
-			enemyScript->enemyHealth -= acidLMBDamage;
+			enemyScript->TakeDamage(acidLMBDamage, "ACID");
 			
 
 			if (enemyScript->enemyHealth <= 0) {
@@ -164,7 +164,7 @@ inline void AcidLMB::SpawnGasCloud() {
 	ecs::EntityID gasCloudID = DuplicatePrefabIntoScene<R_Scene>(currentScene, gasCloudPrefab);
 
 	if (auto* cloudTf = ecsPtr->GetComponent<TransformComponent>(gasCloudID)) {
-		cloudTf->LocalTransformation.position = selfTf->WorldTransformation.position;
+		cloudTf->LocalTransformation.position += selfTf->WorldTransformation.position;
 		std::cout << "[AcidLMB] Gas cloud spawned at: "
 			<< selfTf->WorldTransformation.position.x << ", "
 			<< selfTf->WorldTransformation.position.y << ", "

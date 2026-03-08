@@ -7099,7 +7099,7 @@
                     "hide": false
                 },
                 "PowerupManagerScript": {
-                    "powerupType": "ACID"
+                    "powerupType": "FIRE"
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -10549,7 +10549,9 @@
                     "pauseMenuManagerObject": "155ba76a-ab15-3655-61d0-3eb0d2bccb85",
                     "healthUIObject": "00000000-0000-0000-0000-000000000000",
                     "loseScreenCanvasObject": "23dd4708-96d5-34e7-3d95-b85965156d5d",
-                    "winScreenCanvasObject": "dd420147-13cd-2a52-32b4-107bc917a44d"
+                    "winScreenCanvasObject": "dd420147-13cd-2a52-32b4-107bc917a44d",
+                    "absorbingVFXPrefab": "00000000-0000-0000-0000-000000000000",
+                    "absorbingVFXSpawnPoint": "00000000-0000-0000-0000-000000000000"
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,
@@ -11778,7 +11780,7 @@
                             "hide": false
                         },
                         "SpriteComponent": {
-                            "spriteGUID": "7d45fb55-fcad-955a-9018-e809021b9d90",
+                            "spriteGUID": "e351c60b-1901-61b9-c552-3f646f787f21",
                             "color": {
                                 "x": 1.0,
                                 "y": 1.0,
@@ -11793,7 +11795,7 @@
                                 "x": 1.0,
                                 "y": 1.0
                             },
-                            "useCustomUV": true
+                            "useCustomUV": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -11844,7 +11846,7 @@
                             "hide": false
                         },
                         "SpriteComponent": {
-                            "spriteGUID": "fff89827-cdab-5e61-357b-f6bca73ab140",
+                            "spriteGUID": "76b092fd-5118-402b-1a16-8b7d628d7286",
                             "color": {
                                 "x": 1.0,
                                 "y": 1.0,
@@ -11859,7 +11861,7 @@
                                 "x": 1.0,
                                 "y": 1.0
                             },
-                            "useCustomUV": true
+                            "useCustomUV": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -11903,7 +11905,7 @@
                         "NEWHealthBarScript": {
                             "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                             "playerObjectID": 0,
-                            "healthbarSprite": "a80b627e-f635-29d5-a078-245c0a942cfc",
+                            "healthbarSprite": "ea6464b2-63b1-af75-df4f-ae9c6d29e3cd",
                             "originalScale": {
                                 "x": 1.0,
                                 "y": 1.0,
@@ -11926,7 +11928,7 @@
                             "hide": false
                         },
                         "SpriteComponent": {
-                            "spriteGUID": "a80b627e-f635-29d5-a078-245c0a942cfc",
+                            "spriteGUID": "ea6464b2-63b1-af75-df4f-ae9c6d29e3cd",
                             "color": {
                                 "x": 1.0,
                                 "y": 1.0,
@@ -11941,7 +11943,7 @@
                                 "x": 1.0,
                                 "y": 1.0
                             },
-                            "useCustomUV": true
+                            "useCustomUV": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -11992,7 +11994,7 @@
                             "hide": false
                         },
                         "SpriteComponent": {
-                            "spriteGUID": "7c7a2cc1-dc26-1b07-76ef-5694793874b7",
+                            "spriteGUID": "85954e03-c605-181a-72de-0e8df4a355ad",
                             "color": {
                                 "x": 1.0,
                                 "y": 1.0,
@@ -12007,7 +12009,7 @@
                                 "x": 1.0,
                                 "y": 1.0
                             },
-                            "useCustomUV": true
+                            "useCustomUV": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -12051,7 +12053,7 @@
                         "ManaUIScript": {
                             "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                             "playerObjectID": 0,
-                            "manabarSprite": "ff2b6e16-229a-77a5-3c18-652b7f03e7fd",
+                            "manabarSprite": "1776dd9e-9311-f406-80a6-a74993197923",
                             "originalScale": {
                                 "x": 1.0,
                                 "y": 1.0,
@@ -12074,7 +12076,7 @@
                             "hide": false
                         },
                         "SpriteComponent": {
-                            "spriteGUID": "ff2b6e16-229a-77a5-3c18-652b7f03e7fd",
+                            "spriteGUID": "1776dd9e-9311-f406-80a6-a74993197923",
                             "color": {
                                 "x": 1.0,
                                 "y": 1.0,
@@ -12089,7 +12091,7 @@
                                 "x": 1.0,
                                 "y": 1.0
                             },
-                            "useCustomUV": true
+                            "useCustomUV": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -12635,6 +12637,537 @@
                                 "scale": {
                                     "x": 0.05000000074505806,
                                     "y": 0.05000000074505806,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "entityGUID": "a8063485-5ed3-a42b-28fd-8a229ad9df38",
+                "CanvasRendererComponent": {
+                    "isScreenSpace": true
+                },
+                "EnemyHealthScript": {
+                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "raycastRange": 30.0,
+                    "showDebugRay": true,
+                    "healthBarFillEntity": "e7892251-aed4-59ce-fdd8-80fe25ad7897",
+                    "resistanceEntity": "e2b11307-6e01-cf96-a181-f90bd7601ac9",
+                    "affliction1Entity": "63e02ded-b3e5-7331-7ce7-8cecdb3ee506",
+                    "affliction2Entity": "1d0d8167-1d07-0f64-d15f-83ba11c4a350",
+                    "affliction3Entity": "65632736-43cd-2588-1e27-24577e31b7ad",
+                    "fireResistSprite": "de2f3a51-50ac-8a75-3a34-5a4eee8e4333",
+                    "acidResistSprite": "a451bb8f-50f6-6020-2ee7-933afe5c0a77",
+                    "lightningResistSprite": "bce2523c-e969-0f28-70bb-019fa9a04676",
+                    "fireAfflictedSprite": "00000000-0000-0000-0000-000000000000",
+                    "acidAfflictedSprite": "00000000-0000-0000-0000-000000000000",
+                    "lightningAfflictedSprite": "00000000-0000-0000-0000-000000000000"
+                },
+                "NameComponent": {
+                    "entityName": "Enemy HUD",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                },
+                "children": [
+                    {
+                        "entityGUID": "a86a3ae0-3e0b-8b2e-2444-8f77d1ef11ed",
+                        "NameComponent": {
+                            "entityName": "Enemy Healthbar Full",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "a8994653-aaa4-b27c-5a0b-70a872e07c56",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.2569913864135742,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.5199999809265137,
+                                    "y": 0.09000000357627869,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.2569913864135742,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.5199999809265137,
+                                    "y": 0.09000000357627869,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "af2a82a0-1a78-4892-48f0-58f059cbf3c5",
+                        "NameComponent": {
+                            "entityName": "Enemy Healthbar Frame",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "c05af7da-ba16-6799-ba38-e2a4dd1ef801",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.25699424743652344,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.49000000953674316,
+                                    "y": 0.05000000074505806,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.25699424743652344,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.49000000953674316,
+                                    "y": 0.05000000074505806,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "e7892251-aed4-59ce-fdd8-80fe25ad7897",
+                        "NameComponent": {
+                            "entityName": "Enemy Healthbar",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "be4c377f-b20f-8427-1b36-cc10f902e296",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.25699424743652344,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.47999998927116394,
+                                    "y": 0.03999999910593033,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.25699424743652344,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.47999998927116394,
+                                    "y": 0.03999999910593033,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "e2b11307-6e01-cf96-a181-f90bd7601ac9",
+                        "NameComponent": {
+                            "entityName": "Enemy Resistance",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "e7cea814-4cbb-3b00-1a41-5f2f601c0341",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.3370000123977661,
+                                    "y": 0.2569913864135742,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 45.000003814697266,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.07999999821186066,
+                                    "y": 0.07999999821186066,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.3370000123977661,
+                                    "y": 0.2569913864135742,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 45.000003814697266,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.07999999821186066,
+                                    "y": 0.07999999821186066,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "63e02ded-b3e5-7331-7ce7-8cecdb3ee506",
+                        "NameComponent": {
+                            "entityName": "Enemy Affliction 1",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.20000000298023224,
+                                    "y": 0.3140000104904175,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.0430000014603138,
+                                    "y": 0.0430000014603138,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.20000000298023224,
+                                    "y": 0.3140000104904175,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.0430000014603138,
+                                    "y": 0.0430000014603138,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "1d0d8167-1d07-0f64-d15f-83ba11c4a350",
+                        "NameComponent": {
+                            "entityName": "Enemy Affliction 2",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.14788997173309326,
+                                    "y": 0.3140000104904175,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.0430000014603138,
+                                    "y": 0.0430000014603138,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.14788997173309326,
+                                    "y": 0.3140000104904175,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.0430000014603138,
+                                    "y": 0.0430000014603138,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "65632736-43cd-2588-1e27-24577e31b7ad",
+                        "NameComponent": {
+                            "entityName": "Enemy Affliction 3",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.0949999988079071,
+                                    "y": 0.3140000104904175,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.0430000014603138,
+                                    "y": 0.0430000014603138,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.0949999988079071,
+                                    "y": 0.3140000104904175,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.0430000014603138,
+                                    "y": 0.0430000014603138,
                                     "z": 1.0
                                 }
                             }
@@ -14857,7 +15390,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "8393af65-4300-ebba-36fa-0720e42087f2",
-                    "enemyHurtboxPosition": "f79c85c3-bf51-a166-3d30-25f7e58d1f9e"
+                    "enemyHurtboxPosition": "f79c85c3-bf51-a166-3d30-25f7e58d1f9e",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "RangedEnemyPrefab",
@@ -15061,7 +15598,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "570fa653-ab37-c9f9-82c3-bdb66764b658"
+                    "enemyHurtboxPosition": "570fa653-ab37-c9f9-82c3-bdb66764b658",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -15265,7 +15806,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "d136fdd7-6dad-ce0f-92f2-7f0ab1d3f2e7"
+                    "enemyHurtboxPosition": "d136fdd7-6dad-ce0f-92f2-7f0ab1d3f2e7",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -15469,7 +16014,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "3fec00bd-4310-8b0e-ea81-78f574c43a09"
+                    "enemyHurtboxPosition": "3fec00bd-4310-8b0e-ea81-78f574c43a09",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -15673,7 +16222,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "54c87dd5-d6be-a1f2-ac0c-8911c009254b"
+                    "enemyHurtboxPosition": "54c87dd5-d6be-a1f2-ac0c-8911c009254b",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -15877,7 +16430,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "8393af65-4300-ebba-36fa-0720e42087f2",
-                    "enemyHurtboxPosition": "2c82fa53-9b0d-6c76-4274-10f306880e06"
+                    "enemyHurtboxPosition": "2c82fa53-9b0d-6c76-4274-10f306880e06",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "RangedEnemyPrefab",
@@ -16081,7 +16638,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "e7e7e969-7b9d-6f5a-766a-7b27d7df151a"
+                    "enemyHurtboxPosition": "e7e7e969-7b9d-6f5a-766a-7b27d7df151a",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -16285,7 +16846,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "8417023d-eeca-1c16-d2b6-8fd06a1f68da"
+                    "enemyHurtboxPosition": "8417023d-eeca-1c16-d2b6-8fd06a1f68da",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -16489,7 +17054,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "a62409d4-b5aa-8e62-e094-0fb13715273f"
+                    "enemyHurtboxPosition": "a62409d4-b5aa-8e62-e094-0fb13715273f",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -16693,7 +17262,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "d52d6b4d-3b5f-b71c-b5ef-3f5e88881b03"
+                    "enemyHurtboxPosition": "d52d6b4d-3b5f-b71c-b5ef-3f5e88881b03",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -16897,7 +17470,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "d367dd20-ca42-9145-6f9a-46fb79d4c879"
+                    "enemyHurtboxPosition": "d367dd20-ca42-9145-6f9a-46fb79d4c879",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -17101,7 +17678,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "5cd46ef0-147b-3c50-d4b9-ccc4390b689c"
+                    "enemyHurtboxPosition": "5cd46ef0-147b-3c50-d4b9-ccc4390b689c",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -17305,7 +17886,11 @@
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                     "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
                     "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "enemyHurtboxPosition": "91cf8a21-8f26-c6db-3d3a-9f02deeeb51e"
+                    "enemyHurtboxPosition": "91cf8a21-8f26-c6db-3d3a-9f02deeeb51e",
+                    "shieldHealth": 30,
+                    "shieldElement": "NONE",
+                    "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -17478,6 +18063,272 @@
                                     "x": 0.014999999664723873,
                                     "y": 0.014999999664723873,
                                     "z": 0.014999999664723873
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "entityGUID": "2ba3f9ba-dea9-ea56-edd0-5b8382fa153c",
+                "CapsuleColliderComponent": {
+                    "isTrigger": false,
+                    "capsule": {
+                        "center": {
+                            "x": 0.0,
+                            "y": 1.5,
+                            "z": 0.0
+                        },
+                        "radius": 0.800000011920929,
+                        "height": 3.0,
+                        "capsuleDirection": 1
+                    }
+                },
+                "EnemyManagerScript": {
+                    "enemyHealth": 60,
+                    "enemyMovementSpeed": 3.0,
+                    "enemyType": "Tank",
+                    "enemyAttackRange": 2.5,
+                    "enemyRangedAttackRange": 15.0,
+                    "enemyChaseRange": 25.0,
+                    "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                    "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
+                    "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
+                    "enemyHurtboxPosition": "239a2a55-7b16-a67e-b034-dabdac495a1d",
+                    "shieldHealth": 30,
+                    "shieldElement": "FIRE",
+                    "shieldVisualObject": "0f6defc1-8c38-49d9-65b0-091f11064913",
+                    "tankAoePrefab": "668543d2-276e-3941-8542-55d0401797a4"
+                },
+                "NameComponent": {
+                    "entityName": "TankEnemyPrefab",
+                    "Layer": 0,
+                    "entityTag": "Enemy",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "TankEnemyPrefab.prefab",
+                    "hide": false
+                },
+                "RigidbodyComponent": {
+                    "mass": 1.0,
+                    "drag": 0.0,
+                    "angularDrag": 0.05000000074505806,
+                    "useGravity": true,
+                    "isKinematic": true,
+                    "interpolation": 0,
+                    "collisionDetection": 0,
+                    "constraints": 11,
+                    "speed": 0.0,
+                    "velocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "angularVelocity": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 61.0,
+                            "y": 3.0,
+                            "z": -26.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 61.0,
+                            "y": 3.0,
+                            "z": -26.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                },
+                "children": [
+                    {
+                        "entityGUID": "78853489-a66b-7526-290d-e29c478422a7",
+                        "NameComponent": {
+                            "entityName": "Enemy Hurtbox Position",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": true,
+                            "isStatic": false,
+                            "prefabName": "TankEnemyPrefab.prefab",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 61.0,
+                                    "y": 4.5,
+                                    "z": -26.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 1.5,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "55a4edd1-e1a6-dae1-9de3-855e3b2467da",
+                        "AnimatorComponent": {
+                            "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
+                            "m_PlaybackSpeed": 1.0,
+                            "m_CurrentTime": 0.0,
+                            "m_IsPlaying": true,
+                            "m_currentStateID": 0,
+                            "m_transitioningStateID": 0
+                        },
+                        "NameComponent": {
+                            "entityName": "Enemy Model",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": true,
+                            "isStatic": false,
+                            "prefabName": "TankEnemyPrefab.prefab",
+                            "hide": false
+                        },
+                        "SkinnedMeshRendererComponent": {
+                            "skinnedMeshGUID": "a6aa8f2d-fa87-1e2c-abc3-482c45c287dd",
+                            "materialGUID": "eb634c86-0002-7c8b-9f8e-2b128f11f57c"
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 61.0,
+                                    "y": 3.0,
+                                    "z": -26.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.014999999664723873,
+                                    "y": 0.014999999664723873,
+                                    "z": 0.014999999664723873
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.014999999664723873,
+                                    "y": 0.014999999664723873,
+                                    "z": 0.014999999664723873
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "3ee0d4ac-b705-8717-c4ce-e8edbe7049b8",
+                        "MaterialComponent": {
+                            "materialGUID": [
+                                {
+                                    "materialGUID": "2e16031c-9593-31cb-ec41-58220ebbb736"
+                                }
+                            ]
+                        },
+                        "MeshFilterComponent": {
+                            "meshGUID": "4a1d4e3a-edc7-fcaa-f0c1-24ef1b8e630c"
+                        },
+                        "NameComponent": {
+                            "entityName": "FireShieldPrefab",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": true,
+                            "isStatic": false,
+                            "prefabName": "TankEnemyPrefab.prefab",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 61.0,
+                                    "y": 7.0,
+                                    "z": -26.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.5,
+                                    "y": 0.5,
+                                    "z": 0.5
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 4.0,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.5,
+                                    "y": 0.5,
+                                    "z": 0.5
                                 }
                             }
                         }

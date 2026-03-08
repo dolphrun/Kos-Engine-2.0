@@ -119,9 +119,11 @@ public:
 				enemyTickTimers[col.otherEntityID] = 0.f;
 
 				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
-					enemyScript->enemyHealth -= shieldDamage;
-					//std::cout << "[AcidShield] DOT tick! Enemy health now: " << enemyScript->enemyHealth << "\n";
-					enemyScript->TriggerStagger(1.f);
+					enemyScript->TakeDamage(shieldDamage, "ACID");
+
+					if (enemyScript->shieldHealth <= 0) {
+						enemyScript->TriggerStagger(0.5f);
+					}
 				}
 			}
 			});

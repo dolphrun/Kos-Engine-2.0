@@ -57,50 +57,55 @@ inline void LightningLMB::Start() {
 
 
 	physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
-		//std::cout << "Needler has TOUCHED\n";
-
 
 		if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
-			//std::cout << "enemy has exploded\n";
 
+			// FETCH ENEMY SCRIPT ONCE
+			auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID);
+			if (!enemyScript) return;
 
-			//Lightning stack less than stacks per explode
-			if (ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->lightningStack < stacksPerExplode) {
-				ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth -= lightningLMBDamage;
-				ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->lightningStack += lightningLMBDamage;
-
-				///std::cout << "Needler has stacked: " << ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->lightningStack;
-
+			// Lightning stack less than stacks per explode
+			if (enemyScript->lightningStack < stacksPerExplode) {
+				// APPLY DAMAGE VIA TAKEDAMAGE
+				enemyScript->TakeDamage(lightningLMBDamage, "LIGHTNING");
+				enemyScript->lightningStack += lightningLMBDamage;
 			}
 			else {
-				ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth -= explodeDamage;
-				ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->lightningStack = 0;
-				//std::cout << "Needler has exploded\n";
+				// EXPLOSION DAMAGE
+				enemyScript->TakeDamage(explodeDamage, "LIGHTNING");
+				enemyScript->lightningStack = 0;
 			}
 
-			if (ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth <= 0) {
+			if (enemyScript->enemyHealth <= 0) {
 				// ADD SFX OF ENEMY DEATH HERE - DONE
 				PlayRandomEnemyDeathSFX();
 
 				if (scoreManager) {
-					scoreManager->AddScore(scoreValue); // or whatever value you want per kill
+					scoreManager->AddScore(scoreValue);
 				}
 
-				ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->TriggerStagger(1.f);
-
+				enemyScript->Die();
+			}
+			else if (enemyScript->shieldHealth <= 0 && enemyScript->lightningStack == 0) {
+				// I changed to only stagger when blow up can revert if yall want
+				enemyScript->TriggerStagger(0.5f);
 			}
 		}
 
 		if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Ground" || ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Default") {
 			ecsPtr->DeleteEntity(entity);
 		}
-		});
+	});
 }
 
 inline void LightningLMB::Update() {
 
-	if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
-		tc->LocalTransformation.position += direction * projectileSpeed * ecsPtr->m_GetDeltaTime();
+	//if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
+	//	tc->LocalTransformation.position += direction * projectileSpeed * ecsPtr->m_GetDeltaTime();
+	//}
+
+	if (auto* rb = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity)) {
+		rb->velocity = direction * projectileSpeed;
 	}
 
 	if (currentTimer < timeBeforeDeath) {

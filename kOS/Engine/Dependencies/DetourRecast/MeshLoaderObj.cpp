@@ -21,6 +21,7 @@
 #include <cstring>
 #include <math.h>
 #include "../Include/DetourRecast/MeshLoaderObj.h"
+#include "../Include/DetourRecast/InputGeom.h"
 
 rcMeshLoaderObj::rcMeshLoaderObj(float scale) :
 	m_scale(scale),
@@ -244,59 +245,87 @@ bool rcMeshLoaderObj::load(const std::string& filename)
 	return true;
 }
 
-bool rcMeshLoaderObj::load(std::vector<std::shared_ptr<R_Model>> model)
+bool rcMeshLoaderObj::load(const std::vector<RecastInputModel>& inputs)
 {
-	//m_vertCount = 0;
-	//m_triCount = 0;
+	delete[] m_verts;   m_verts = nullptr;
+	delete[] m_tris;    m_tris = nullptr;
+	delete[] m_normals; m_normals = nullptr;
+
+	m_vertCount = 0;
+	m_triCount = 0;
+
 	int vcap = 0;
 	int tcap = 0;
 	int vertexBase = 0;
 
-	delete[] m_normals;
+	for (const auto& input : inputs)
+	{
+		if (!input.model)
+			continue;
 
-	for (int i = 0; i < model.size(); i++) {
-		auto mesh = model[i]->GetMeshes();
-		for (auto& m : mesh)
-			for (int i = 0; i < m.vertices.size(); i++) {
-				addVertex(m.vertices[i].Position.x, m.vertices[i].Position.y, m.vertices[i].Position.z, vcap);
+		const glm::mat4 world =
+			glm::translate(glm::mat4(1.0f), input.position) *
+			glm::mat4_cast(input.rotation) *
+			glm::scale(glm::mat4(1.0f), input.scale);
+
+		auto meshes = input.model->GetMeshes();
+
+		for (auto& m : meshes)
+		{
+			for (size_t i = 0; i < m.vertices.size(); ++i)
+			{
+				const auto& pos = m.vertices[i].Position;
+				const glm::vec4 p = world * glm::vec4(pos.x, pos.y, pos.z, 1.0f);
+				addVertex(p.x, p.y, p.z, vcap);
 			}
+		}
 
-		for (auto& m : mesh) {
-			for (int i = 0; i < m.indices.size() - 2; i += 3) {
-				int a = vertexBase + m.indices[i + 0];
-				int b = vertexBase + m.indices[i + 1];
-				int c = vertexBase + m.indices[i + 2];
-				if (a < 0 || a >= m_vertCount || b < 0 || b >= m_vertCount || c < 0 || c >= m_vertCount)
+		for (auto& m : meshes)
+		{
+			for (size_t i = 0; i + 2 < m.indices.size(); i += 3)
+			{
+				const int a = vertexBase + static_cast<int>(m.indices[i + 0]);
+				const int b = vertexBase + static_cast<int>(m.indices[i + 1]);
+				const int c = vertexBase + static_cast<int>(m.indices[i + 2]);
+
+				if (a < 0 || a >= m_vertCount ||
+					b < 0 || b >= m_vertCount ||
+					c < 0 || c >= m_vertCount)
+				{
 					continue;
+				}
+
 				addTriangle(a, b, c, tcap);
 			}
+
 			vertexBase += static_cast<int>(m.vertices.size());
 		}
+	}
 
-		m_normals = new float[m_triCount * 3]; // ## TODO REALLOC normals
+	m_normals = new float[m_triCount * 3];
+	for (int i = 0; i < m_triCount * 3; i += 3)
+	{
+		const float* v0 = &m_verts[m_tris[i + 0] * 3];
+		const float* v1 = &m_verts[m_tris[i + 1] * 3];
+		const float* v2 = &m_verts[m_tris[i + 2] * 3];
 
-		for (int i = 0; i < m_triCount * 3; i += 3)
+		float e0[3] = { v1[0] - v0[0], v1[1] - v0[1], v1[2] - v0[2] };
+		float e1[3] = { v2[0] - v0[0], v2[1] - v0[1], v2[2] - v0[2] };
+
+		float* n = &m_normals[i];
+		n[0] = e0[1] * e1[2] - e0[2] * e1[1];
+		n[1] = e0[2] * e1[0] - e0[0] * e1[2];
+		n[2] = e0[0] * e1[1] - e0[1] * e1[0];
+
+		const float len = sqrtf(n[0] * n[0] + n[1] * n[1] + n[2] * n[2]);
+		if (len > 0.00001f)
 		{
-			const float* v0 = &m_verts[m_tris[i] * 3];
-			const float* v1 = &m_verts[m_tris[i + 1] * 3];
-			const float* v2 = &m_verts[m_tris[i + 2] * 3];
-
-			float e0[3] = { v1[0] - v0[0], v1[1] - v0[1], v1[2] - v0[2] };
-			float e1[3] = { v2[0] - v0[0], v2[1] - v0[1], v2[2] - v0[2] };
-
-			float* n = &m_normals[i];
-			n[0] = e0[1] * e1[2] - e0[2] * e1[1];
-			n[1] = e0[2] * e1[0] - e0[0] * e1[2];
-			n[2] = e0[0] * e1[1] - e0[1] * e1[0];
-
-			float len = sqrtf(n[0] * n[0] + n[1] * n[1] + n[2] * n[2]);
-			if (len > 0.00001f) {
-				float inv = 1.0f / len;
-				n[0] *= inv;
-				n[1] *= inv;
-				n[2] *= inv;
-			}
+			const float inv = 1.0f / len;
+			n[0] *= inv;
+			n[1] *= inv;
+			n[2] *= inv;
 		}
 	}
+
 	return true;
 }

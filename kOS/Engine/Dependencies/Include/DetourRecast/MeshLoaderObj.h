@@ -22,6 +22,14 @@
 #include <string>
 #include "./Resources/ResourceManager.h"
 
+struct RecastInputModel
+{
+	std::shared_ptr<R_Model> model;
+	glm::vec3 position{ 0.0f };
+	glm::quat rotation{ 1.0f, 0.0f, 0.0f, 0.0f };
+	glm::vec3 scale{ 1.0f };
+};
+
 class rcMeshLoaderObj
 {
 public:
@@ -29,7 +37,7 @@ public:
 	~rcMeshLoaderObj();
 	
 	bool load(const std::string& fileName);
-	bool load(std::vector<std::shared_ptr<R_Model>> model);
+	bool load(const std::vector<RecastInputModel>& inputs);
 
 	const float* getVerts() const { return m_verts; }
 	const float* getNormals() const { return m_normals; }

@@ -62,7 +62,7 @@
             ]
         },
         "BulletLogic": {
-            "bulletDamage": 1,
+            "bulletDamage": 20,
             "bulletSpeed": 100.0,
             "enemyDeathSfxGUID_1": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
             "enemyDeathSfxGUID_2": "18bde09b-18c2-4f58-5770-048caf28d1c3",

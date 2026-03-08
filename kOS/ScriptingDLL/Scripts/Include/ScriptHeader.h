@@ -33,8 +33,9 @@
 
 #include "EnemyHurtboxScript.h"
 #include "EnemyBulletLogic.h"
+#include "TankAOEScript.h"
 
-#include "HealthbarUIScript.h"
+#include "EnemyHealthScript.h"
 #include "AnimationTestScript.h"
 #include "AbilityUIImageScript.h"
 #include "ScoreManagerScript.h"
