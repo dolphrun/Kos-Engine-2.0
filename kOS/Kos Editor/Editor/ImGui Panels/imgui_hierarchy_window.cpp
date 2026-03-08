@@ -133,6 +133,8 @@ namespace gui
                         // set current prefab back to inactive
                         m_sceneManager.SetSceneActive(m_activeScene, false);
 
+                        m_prefabManager.UpdateAllPrefab(m_activeScene);
+
                         // set back scene's active state
                         for (const auto& [scene, sceneData] : m_ecs.sceneMap)
                         {
@@ -155,6 +157,8 @@ namespace gui
                         m_prefabSceneMode = false;
                         m_lastClickedEntityId = -1;
 
+                        renderNavMeshStatus = lastRenderStatus;
+                        SetNavMeshRenderMesh();
                     }
                 }
 
@@ -534,14 +538,16 @@ namespace gui
         }
 
         // create color if prefab
-        if (nc->isPrefab)
-        {
+        if (nc->hide && nc->isPrefab) {
+            ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.3f, 0.1f, 0.1f, 1.0f));
+        }
+        else if (nc->isPrefab) {
             ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.7f, 0.2f, 0.1f, 1.0f));
         }
-        else if (nc->hide)
-        {
+        else if (nc->hide){
             ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.3f, 0.3f, 0.3f, 1.0f));
         }
+
         bool open = ImGui::TreeNodeEx(std::to_string(id).c_str(), flag, nc->entityName.c_str());
         if (ImGui::IsItemHovered() && ImGui::IsMouseReleased(ImGuiMouseButton_Left))
         {
@@ -675,7 +681,6 @@ namespace gui
 
                 if (!m_prefabSceneMode && childnc->isPrefab && (childnc->prefabName == parent->prefabName))
                 {
-
                     LOGGING_WARN("Unable to drag prefabs of same type into each other, pls go to prefab editor");
                 }
                 else
@@ -735,8 +740,6 @@ namespace gui
 
             ImGui::EndDragDropTarget();
         }
-
-
 
         if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None))
         {
