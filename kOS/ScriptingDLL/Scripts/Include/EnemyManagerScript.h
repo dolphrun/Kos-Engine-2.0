@@ -86,9 +86,11 @@ inline void EnemyManagerScript::Start() {
 		enemyHurtboxPositionID = children[0];
 	}
 
-	// TANK: Sanity check to spawn the visual shield, see if need change depending on how the designers want the shield
-	if (enemyType == "Tank" && shieldElement != "NONE" && !shieldVisualObject.Empty()) {
-		shieldVisualID = ecsPtr->GetEntityIDFromGUID(shieldVisualObject);
+	// TANK: see if need change depending on how the designers want the shield
+	if (enemyType == "Tank" && shieldElement != "NONE") {
+		if (children.size() > 2) {
+			shieldVisualID = children[2];
+		}
 	}
 
 	//enemyModelID = ecsPtr->GetEntityIDFromGUID(enemyModel);
@@ -421,6 +423,7 @@ inline void EnemyManagerScript::TakeDamage(int damage, const std::string& elemen
 			shieldHealth -= damage;
 
 			if (shieldHealth <= 0) {
+				shieldHealth = 0;
 
 				if (shieldVisualID != 0) {
 					ecsPtr->DeleteEntity(shieldVisualID);
@@ -435,6 +438,10 @@ inline void EnemyManagerScript::TakeDamage(int damage, const std::string& elemen
 	else {
 		// Normal health damage (Shield is gone or never existed)
 		enemyHealth -= damage;
+
+		if (enemyHealth < 0) {
+			enemyHealth = 0;
+		}
 	}
 }
 

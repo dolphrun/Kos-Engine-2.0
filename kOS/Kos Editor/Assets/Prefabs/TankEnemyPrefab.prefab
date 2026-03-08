@@ -23,7 +23,7 @@
             }
         },
         "EnemyManagerScript": {
-            "enemyHealth": 5,
+            "enemyHealth": 60,
             "enemyMovementSpeed": 3.0,
             "enemyType": "Tank",
             "enemyAttackRange": 2.5,

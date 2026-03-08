@@ -2,13 +2,13 @@
     {
         "SceneData": {
             "skyBoxGUID": [],
-            "NavMeshGuid": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
             "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
             "ambientIntensity": 1.0
         }
     },
     {
-        "entityGUID": "24c1f849-060e-20c0-28fa-472f7e043d44",
+        "entityGUID": "463b7459-4d6c-c883-a7bb-df083a8a9def",
         "CapsuleColliderComponent": {
             "isTrigger": false,
             "capsule": {
@@ -23,7 +23,7 @@
             }
         },
         "EnemyManagerScript": {
-            "enemyHealth": 15,
+            "enemyHealth": 5,
             "enemyMovementSpeed": 5.0,
             "enemyType": "Melee",
             "enemyAttackRange": 2.5,
@@ -32,7 +32,7 @@
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
             "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-            "enemyHurtboxPosition": "dd847e46-a321-38fb-d037-47a47b6b1a0f",
+            "enemyHurtboxPosition": "570fa653-ab37-c9f9-82c3-bdb66764b658",
             "shieldHealth": 30,
             "shieldElement": "NONE",
             "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
@@ -44,7 +44,7 @@
             "entityTag": "Enemy",
             "isPrefab": true,
             "isStatic": false,
-            "prefabName": "EnemyPrefab.prefab",
+            "prefabName": "MeleeEnemyPrefab.prefab",
             "hide": false
         },
         "RigidbodyComponent": {
@@ -73,7 +73,7 @@
                 "position": {
                     "x": 23.768556594848633,
                     "y": 3.9802656173706055,
-                    "z": -15.537531852722168
+                    "z": -14.537531852722168
                 },
                 "rotation": {
                     "x": 0.0,
@@ -90,7 +90,7 @@
                 "position": {
                     "x": 23.768556594848633,
                     "y": 3.9802656173706055,
-                    "z": -15.537531852722168
+                    "z": -14.537531852722168
                 },
                 "rotation": {
                     "x": 0.0,
@@ -106,14 +106,14 @@
         },
         "children": [
             {
-                "entityGUID": "a8ed480f-dc06-d48d-cfe7-a5be96e2fcd8",
+                "entityGUID": "570fa653-ab37-c9f9-82c3-bdb66764b658",
                 "NameComponent": {
                     "entityName": "Enemy Hurtbox Position",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "",
+                    "prefabName": "EnemyPrefab.prefab",
                     "hide": false
                 },
                 "TransformComponent": {
@@ -121,7 +121,7 @@
                         "position": {
                             "x": 23.768556594848633,
                             "y": 5.4802656173706055,
-                            "z": -15.537531852722168
+                            "z": -14.537531852722168
                         },
                         "rotation": {
                             "x": 0.0,
@@ -154,7 +154,7 @@
                 }
             },
             {
-                "entityGUID": "1043651a-41c8-52db-d7dc-94d18d7d6d25",
+                "entityGUID": "b39b22e8-0299-f10d-bf9a-65376710e342",
                 "AnimatorComponent": {
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
@@ -169,11 +169,11 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "",
+                    "prefabName": "EnemyPrefab.prefab",
                     "hide": false
                 },
                 "SkinnedMeshRendererComponent": {
-                    "skinnedMeshGUID": "aff9862f-c4b8-036e-21c8-0c9d156121bb",
+                    "skinnedMeshGUID": "8a830bfc-7794-b76e-2f45-0e765f0a2495",
                     "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
                 },
                 "TransformComponent": {
@@ -181,7 +181,7 @@
                         "position": {
                             "x": 23.768556594848633,
                             "y": 3.9802656173706055,
-                            "z": -15.537531852722168
+                            "z": -14.537531852722168
                         },
                         "rotation": {
                             "x": 0.0,
