@@ -47,7 +47,7 @@ vec3 microFacetDirection(vec3 position, vec3 n,vec3 color,float roughness)
 {  
 
 
-    vec3 lightI = vec3(1.f,1.f,1.f);
+    vec3 lightI = vec3(100.f,100.1f,100.1f);
 
     vec3 lightPosWorld = vec3(0.f, 0.f, 0.f);
     
@@ -55,14 +55,14 @@ vec3 microFacetDirection(vec3 position, vec3 n,vec3 color,float roughness)
     vec3 lightPosView = vec3(view * vec4(lightPosWorld, 1.0f));
     
     // Light direction: FROM surface TO light (in view space)
-    vec3 l = normalize(lightPosView - position);
+    vec3 l = normalize(mat3(view) * -normalize(vec3(5.6,2.8,0.8)));
 
     vec3 v = normalize(-position);
     vec3 h = normalize(v + l);
-    float nDotH = dot(n, h);
+    float nDotH = max(dot(n, h), 0.0);
     float lDotH = dot(l, h);
     float nDotL = max(dot(n, l), 0.0f);
-    float nDotV = dot(n, v);
+    float nDotV = max(dot(n, v), 0.0);
 
          vec3 F    = schlickFresnel(lDotH);
            

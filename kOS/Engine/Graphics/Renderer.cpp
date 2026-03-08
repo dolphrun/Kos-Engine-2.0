@@ -334,7 +334,7 @@ void LightRenderer::RenderAllLights(const CameraData& camera, Shader& shader)
 	for (size_t i = 0; i < directionLightsToDraw.size(); i++)
 	{
 		DirectionalLightData& directionLight = directionLightsToDraw[i];
-		directionLight.SetShaderMtrx(&shader, i);
+		directionLight.SetShaderMtrx(&shader, i,camera.GetViewMtx());
 		directionLight.SetUniform(&shader, i);
 
 	}
