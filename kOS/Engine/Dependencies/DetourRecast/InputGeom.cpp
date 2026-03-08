@@ -162,7 +162,7 @@ bool InputGeom::loadMesh(rcContext* ctx, const std::string& filepath)
 	return true;
 }
 
-bool InputGeom::loadMesh(rcContext* ctx, std::vector<std::shared_ptr<R_Model>> model, float scale)
+bool InputGeom::loadMesh(rcContext* ctx, const std::vector<RecastInputModel>& inputs)
 {
 	if (m_mesh)
 	{
@@ -174,13 +174,13 @@ bool InputGeom::loadMesh(rcContext* ctx, std::vector<std::shared_ptr<R_Model>> m
 	m_offMeshConCount = 0;
 	m_volumeCount = 0;
 
-	m_mesh = new rcMeshLoaderObj(scale);
+	m_mesh = new rcMeshLoaderObj(1.0f);
 	if (!m_mesh)
 	{
 		ctx->log(RC_LOG_ERROR, "loadMesh: Out of memory 'm_mesh'.");
 		return false;
 	}
-	if (!m_mesh->load(model))
+	if (!m_mesh->load(inputs))
 	{
 		ctx->log(RC_LOG_ERROR, "buildTiledNavigation: Could not load model");
 		return false;
