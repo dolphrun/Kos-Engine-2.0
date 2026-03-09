@@ -34,12 +34,15 @@ void R_PostProcessingProfile::Load()
 				Vigniette vig;
 				vig.intensity = e["Intensity"].GetFloat();
 				vig.extent = e["Extent"].GetFloat();
-				const auto& colorArr = e["Color"].GetArray();
-				vig.color = glm::vec3(
-					colorArr[0].GetFloat(),
-					colorArr[1].GetFloat(),
-					colorArr[2].GetFloat()
-				);
+				if (e.HasMember("Color")) {
+					const auto& colorArr = e["Color"].GetArray();
+					vig.color = glm::vec3(
+						colorArr[0].GetFloat(),
+						colorArr[1].GetFloat(),
+						colorArr[2].GetFloat()
+					);
+				}
+	
 				//Get color array
 				// 
 				//Push data in 
