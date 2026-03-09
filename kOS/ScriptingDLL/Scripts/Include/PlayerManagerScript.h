@@ -202,10 +202,13 @@ public:
 	float airAcceleration = 25.f;
 	float groundFriction = 8.f;
 	float airControl = 0.3f;
-	float maxGroundSpeed = 20.f;
-	float maxAirSpeed = 20.f;
-	float jumpForce = 12.f;
-
+	float maxGroundSpeed = 18.f;
+	float maxAirSpeed = 16.f;
+	float jumpForce = 10.f;
+	float timeSinceGrounded = 0.f;
+	float coyoteTime = 0.2f;
+	float jumpGraceTime = 0.f;
+	float jumpGraceDuration = 0.05f;
 
 	float cameraTiltMaxAngle = 3.f;	// Max roll degrees left/right
 	float cameraTiltSpeed = 8.f;		// How fast it lerps to target
@@ -646,17 +649,51 @@ inline void PlayerManagerScript::PlayerMovementControls()
 
 	isMoving = (std::abs(forward) > 0.1f || std::abs(right) > 0.1f);
 
-
 	auto* playerRigidbody = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity);
+
 	if (!playerRigidbody) return;
 
 	float dt = ecsPtr->m_GetDeltaTime();
 
 	glm::vec3 tempVelocity = playerRigidbody->velocity;
 
-	bool grounded = GroundCheck();
+	auto* playerTransform = ecsPtr->GetComponent<ecs::TransformComponent>(entity);
 
-	// ----- INPUT -----
+	jumpGraceTime -= dt;
+
+	// ==============================
+	// RAYCAST GROUND CHECK
+	// ==============================
+	bool grounded = false;
+
+	if (jumpGraceTime <= 0.f)  // Only check if grace period passed
+	{
+		// Get player position from Rigidbody
+		glm::vec3 playerPos = playerTransform->WorldTransformation.position;
+
+		RaycastHit hitInfo;
+		float rayDistance = 1.8f;
+		grounded = physicsPtr->Raycast(
+			playerPos,
+			glm::vec3(0.f, -1.f, 0.f),
+			rayDistance,
+			hitInfo,
+			playerRigidbody->actor
+		);
+	}
+
+	if (grounded)
+	{
+		timeSinceGrounded = 0.f; // reset timer
+	}
+	else
+	{
+		timeSinceGrounded += dt; // accumulate time in air
+	}
+
+	// ==============================
+	// INPUT HANDLER
+	// ==============================
 
 	glm::vec3 wishDir =
 		GetPlayerFrontDirection() * forward +
@@ -665,31 +702,22 @@ inline void PlayerManagerScript::PlayerMovementControls()
 	if (glm::length2(wishDir) > 0.0001f)
 		wishDir = glm::normalize(wishDir);
 
-	//grounded = true;
+	// ==============================
+	// JUMP
+	// ==============================
+	if (Input->IsKeyTriggered(keys::SPACE) && timeSinceGrounded <= coyoteTime)
+	{
+		tempVelocity.y = jumpForce;
+		timeSinceGrounded = coyoteTime + 1.f; // prevent double jump using coyote
+		jumpGraceTime = jumpGraceDuration;
+		grounded = false;
+	}
 
 	// ==============================
 	// GROUND MOVEMENT
 	// ==============================
 	if (grounded)
 	{
-		// old friction code
-		//float speed = glm::length(glm::vec2(tempVelocity.x, tempVelocity.z));
-		//if (speed > 0.0f)
-		//{
-		//	float drop = speed * groundFriction * dt;
-		//	float newSpeed = speed - drop;
-		//	if (newSpeed < 0.f)
-		//		newSpeed = 0.f;
-
-		//	if (speed > 0.f)
-		//	{
-		//		newSpeed /= speed;
-		//		tempVelocity.x *= newSpeed;
-		//		tempVelocity.z *= newSpeed;
-		//	}
-		//}
-		// 
-
 		// --- Apply Friction ---//
 		float speed = glm::length(glm::vec2(tempVelocity.x, tempVelocity.z));
 		bool hasInput = glm::length2(wishDir) > 0.0001f;
@@ -774,14 +802,6 @@ inline void PlayerManagerScript::PlayerMovementControls()
 		tempVelocity.z = horizontal.z;
 	}
 
-	// ==============================
-	// JUMP
-	// ==============================
-	if (Input->IsKeyTriggered(keys::SPACE) && grounded)
-	{
-		tempVelocity.y = jumpForce;
-	}
-
 	// Apply final velocity directly
 	glm::vec3 currentVel = playerRigidbody->velocity;
 	glm::vec3 delta = tempVelocity - currentVel;
@@ -792,7 +812,6 @@ inline void PlayerManagerScript::PlayerMovementControls()
 		ForceMode::VelocityChange
 	);
 }
-
 
 inline void PlayerManagerScript::PlayerCameraControls() {
 	auto* playerTransform = ecsPtr->GetComponent<ecs::TransformComponent>(entity);
