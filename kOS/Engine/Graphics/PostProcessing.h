@@ -5,7 +5,8 @@ enum PostProcessType {
 	PPT_Vigniette=0,
 	PPT_FilmGrain=1,
 	PPT_ChromaticAbberation=2,
-	PPT_Blur=3
+	PPT_Blur=3,
+	PPT_Bloom=4
 };
 struct PostProcessEffect {
 	static glm::vec2 screenResolution;
@@ -58,6 +59,17 @@ struct Blur : public PostProcessEffect {
 	Shader* GetShader() { return currentShader;; };
 	PostProcessType GetType() { return PostProcessType::PPT_Blur;; };
 };
+
+struct Bloom : public PostProcessEffect {
+	Bloom();
+	Bloom(const Bloom& other);
+	void UpdateShader();
+	float filterRadius;
+	//Shader* downSamplingShader,upSamplingShader;
+	Shader* GetShader() { return nullptr;; };
+	PostProcessType GetType() { return PostProcessType::PPT_Bloom;; };
+};
+
 
 class PostProcessingProfile {
 	public:

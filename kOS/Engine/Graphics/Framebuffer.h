@@ -178,13 +178,21 @@ private:
 };
 
 class BloomBuffer {
+	struct BloomMip
+	{
+		glm::vec2 size;
+		glm::ivec2 intSize;
+		unsigned int texture;
+	};
 public:
 	void InitializeBloomBuffer(int width, int height);
 	void Update(int width, int height);
 	void BindForDrawing();
 	unsigned int RetrieveBuffer() { return bloomBuffer; }
 private:
+	int mipChainLength{6};
 	int width{}, height{};
 	unsigned int bloomBuffer;
 	unsigned int rboDepth;
+	std::vector<BloomMip> mipChain;
 };
