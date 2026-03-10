@@ -1,16 +1,35 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "50d232af-a567-5d27-29c8-038710d6506b",
+        "BoxColliderComponent": {
+            "isTrigger": false,
+            "box": {
+                "center": {
+                    "x": 25.0,
+                    "y": 400.0,
+                    "z": 0.0
+                },
+                "size": {
+                    "x": 50.0,
+                    "y": 800.0,
+                    "z": 800.0
+                }
+            }
+        },
         "MaterialComponent": {
             "materialGUID": [
                 {
                     "materialGUID": "888f03d0-1986-3e76-f0b5-9a43b66376c6"
                 }
             ]
-        },
-        "MeshColliderComponent": {
-            "isTrigger": false,
-            "convex": false
         },
         "MeshFilterComponent": {
             "meshGUID": "928affd5-5a5e-0869-9434-f83add20059e"
