@@ -559,7 +559,6 @@
                     "acidLMBPrefab": "00000000-0000-0000-0000-000000000000",
                     "lightningLMBPrefab": "22008401-4fad-4af8-e998-498349593039",
                     "firePrefab": "a489a9c4-2ad1-24e0-9ad5-f1b1ef81e4b7",
-                    "acidPrefab": "df217809-aa63-539d-4bb6-d7ffde283b90",
                     "lightningPrefab": "ea36b838-cef9-7c8c-584a-29654652024a",
                     "fireDashPrefab": "2c08aaf0-6347-63db-2c50-728bcb1fff62",
                     "lightningDashPrefab": "00000000-0000-0000-0000-000000000000",
@@ -569,8 +568,9 @@
                     "gunReloadSfxGUID": "c93d030f-e7bf-2ee7-0425-c1f5f04d6483",
                     "fireSlashSfxGUID": "690a4f94-6928-a1a0-d76c-2e8f12929489",
                     "fireDashSfxGUID": "4ef03ed6-765a-ed95-b9bb-eafe53b75669",
-                    "lightningDashSfxGUID": "d461f812-5e6f-d941-fb84-4f07f11f56dc",
+                    "lightningSlowSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "lightningGunSfxGUID": "d461f812-5e6f-d941-fb84-4f07f11f56dc",
+                    "acidGrenadeGunSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "pauseMenuManagerObject": "155ba76a-ab15-3655-61d0-3eb0d2bccb85",
                     "healthUIObject": "00000000-0000-0000-0000-000000000000",
                     "loseScreenCanvasObject": "23dd4708-96d5-34e7-3d95-b85965156d5d",
@@ -47702,6 +47702,254 @@
                         }
                     }
                 }
+            },
+            {
+                "entityGUID": "b9390bbe-d931-f8ad-64f3-34f168c8a454",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "c0306709-d3cd-1429-1ece-2686b6afe461"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Ground_20M_Jacob",
+                    "Layer": 0,
+                    "entityTag": "Ground",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Ground_20M_Jacob.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -14.0,
+                            "y": 0.5,
+                            "z": 18.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -14.0,
+                            "y": 0.5,
+                            "z": 18.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "add09a66-3431-e61e-d7dd-e6cd0bba0107",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "c0306709-d3cd-1429-1ece-2686b6afe461"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Ground_20M_Jacob",
+                    "Layer": 0,
+                    "entityTag": "Ground",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Ground_20M_Jacob.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -14.0,
+                            "y": 0.5,
+                            "z": -2.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -14.0,
+                            "y": 0.5,
+                            "z": -2.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "f2856205-4f06-ab32-882e-a623df323c58",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "c0306709-d3cd-1429-1ece-2686b6afe461"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Ground_20M_Jacob",
+                    "Layer": 0,
+                    "entityTag": "Ground",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Ground_20M_Jacob.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 6.0,
+                            "y": 0.5,
+                            "z": -2.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 6.0,
+                            "y": 0.5,
+                            "z": -2.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "19f55bf3-085f-d277-dc69-01efd2b1bee5",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "c0306709-d3cd-1429-1ece-2686b6afe461"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Ground_20M_Jacob",
+                    "Layer": 0,
+                    "entityTag": "Ground",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Ground_20M_Jacob.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 6.0,
+                            "y": 0.5,
+                            "z": 18.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 6.0,
+                            "y": 0.5,
+                            "z": 18.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
             }
         ]
     },
@@ -48192,7 +48440,16 @@
                         }
                     },
                     "emissionInterval": 0.05000000074505806,
-                    "no_Of_Particles": 10
+                    "no_Of_Particles": 10,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -48519,7 +48776,16 @@
                         }
                     },
                     "emissionInterval": 0.004999999888241291,
-                    "no_Of_Particles": 40
+                    "no_Of_Particles": 40,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -48731,7 +48997,16 @@
                         }
                     },
                     "emissionInterval": 0.004999999888241291,
-                    "no_Of_Particles": 20
+                    "no_Of_Particles": 20,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -49055,7 +49330,16 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -49267,7 +49551,16 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -49479,7 +49772,16 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -49691,7 +49993,16 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -50582,254 +50893,6 @@
                 }
             }
         ]
-    },
-    {
-        "entityGUID": "19f55bf3-085f-d277-dc69-01efd2b1bee5",
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "c0306709-d3cd-1429-1ece-2686b6afe461"
-                }
-            ]
-        },
-        "MeshColliderComponent": {
-            "isTrigger": false,
-            "convex": false
-        },
-        "MeshFilterComponent": {
-            "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
-        },
-        "NameComponent": {
-            "entityName": "M5_Modular_Ground_20M_Jacob",
-            "Layer": 0,
-            "entityTag": "Ground",
-            "isPrefab": true,
-            "isStatic": false,
-            "prefabName": "M5_Modular_Ground_20M_Jacob.prefab",
-            "hide": false
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 6.0,
-                    "y": 0.5,
-                    "z": 18.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 6.0,
-                    "y": 0.5,
-                    "z": 18.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            }
-        }
-    },
-    {
-        "entityGUID": "f2856205-4f06-ab32-882e-a623df323c58",
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "c0306709-d3cd-1429-1ece-2686b6afe461"
-                }
-            ]
-        },
-        "MeshColliderComponent": {
-            "isTrigger": false,
-            "convex": false
-        },
-        "MeshFilterComponent": {
-            "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
-        },
-        "NameComponent": {
-            "entityName": "M5_Modular_Ground_20M_Jacob",
-            "Layer": 0,
-            "entityTag": "Ground",
-            "isPrefab": true,
-            "isStatic": false,
-            "prefabName": "M5_Modular_Ground_20M_Jacob.prefab",
-            "hide": false
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 6.0,
-                    "y": 0.5,
-                    "z": -2.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 6.0,
-                    "y": 0.5,
-                    "z": -2.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            }
-        }
-    },
-    {
-        "entityGUID": "add09a66-3431-e61e-d7dd-e6cd0bba0107",
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "c0306709-d3cd-1429-1ece-2686b6afe461"
-                }
-            ]
-        },
-        "MeshColliderComponent": {
-            "isTrigger": false,
-            "convex": false
-        },
-        "MeshFilterComponent": {
-            "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
-        },
-        "NameComponent": {
-            "entityName": "M5_Modular_Ground_20M_Jacob",
-            "Layer": 0,
-            "entityTag": "Ground",
-            "isPrefab": true,
-            "isStatic": false,
-            "prefabName": "M5_Modular_Ground_20M_Jacob.prefab",
-            "hide": false
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": -14.0,
-                    "y": 0.5,
-                    "z": -2.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": -14.0,
-                    "y": 0.5,
-                    "z": -2.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            }
-        }
-    },
-    {
-        "entityGUID": "b9390bbe-d931-f8ad-64f3-34f168c8a454",
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "c0306709-d3cd-1429-1ece-2686b6afe461"
-                }
-            ]
-        },
-        "MeshColliderComponent": {
-            "isTrigger": false,
-            "convex": false
-        },
-        "MeshFilterComponent": {
-            "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
-        },
-        "NameComponent": {
-            "entityName": "M5_Modular_Ground_20M_Jacob",
-            "Layer": 0,
-            "entityTag": "Ground",
-            "isPrefab": true,
-            "isStatic": false,
-            "prefabName": "M5_Modular_Ground_20M_Jacob.prefab",
-            "hide": false
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": -14.0,
-                    "y": 0.5,
-                    "z": 18.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": -14.0,
-                    "y": 0.5,
-                    "z": 18.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            }
-        }
     },
     {
         "entityGUID": "ce7e2a4d-c346-68ae-defd-77ea06abf0c6",
