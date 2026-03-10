@@ -1110,22 +1110,22 @@
                     "playerArmModelObject": "0a59d88b-df5b-7a8a-b91f-d75191180ea9",
                     "playerGroundCheckObject": "a9d14e21-9b8b-1578-244a-be23e797468f",
                     "bulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-                    "fireLMBPrefab": "17452ee3-e461-b31d-e44e-5e1c5c80f383",
+                    "fireLMBPrefab": "f9191889-b383-4649-c9b2-a713008788c6",
                     "acidLMBPrefab": "7c4d0c64-e87e-a0ff-cecd-f8644b5b7d18",
                     "lightningLMBPrefab": "22008401-4fad-4af8-e998-498349593039",
                     "firePrefab": "a489a9c4-2ad1-24e0-9ad5-f1b1ef81e4b7",
-                    "acidPrefab": "df217809-aa63-539d-4bb6-d7ffde283b90",
                     "lightningPrefab": "3ecf40f2-701d-8da5-2e46-7da4f08710e9",
                     "fireDashPrefab": "2c08aaf0-6347-63db-2c50-728bcb1fff62",
                     "lightningDashPrefab": "7d805a6f-3abc-f50f-1cf6-dcbf5d720904",
                     "acidShieldPrefab": "2d88569c-d9de-0cbe-c942-ac6797e9c6e0",
-                    "airBlastPrefab": "017ec9f0-b798-a6f2-f639-92dffaf9f27a",
+                    "airBlastPrefab": "b5cac5b3-11a2-d3ac-b9b8-28ec7838b3a2",
                     "gunSfxGUID_1": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
                     "gunReloadSfxGUID": "c93d030f-e7bf-2ee7-0425-c1f5f04d6483",
                     "fireSlashSfxGUID": "690a4f94-6928-a1a0-d76c-2e8f12929489",
                     "fireDashSfxGUID": "4ef03ed6-765a-ed95-b9bb-eafe53b75669",
-                    "lightningDashSfxGUID": "d461f812-5e6f-d941-fb84-4f07f11f56dc",
+                    "lightningSlowSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "lightningGunSfxGUID": "d461f812-5e6f-d941-fb84-4f07f11f56dc",
+                    "acidGrenadeGunSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "pauseMenuManagerObject": "53f83bac-2058-5939-b2a8-134497980574",
                     "healthUIObject": "00000000-0000-0000-0000-000000000000",
                     "loseScreenCanvasObject": "23dd4708-96d5-34e7-3d95-b85965156d5d",
@@ -1272,38 +1272,6 @@
                             "isStatic": false,
                             "prefabName": "",
                             "hide": false
-                        },
-                        "RigidbodyComponent": {
-                            "mass": 1.0,
-                            "drag": 0.0,
-                            "angularDrag": 0.05000000074505806,
-                            "useGravity": false,
-                            "isKinematic": true,
-                            "interpolation": 0,
-                            "collisionDetection": 0,
-                            "constraints": 0,
-                            "speed": 0.0,
-                            "velocity": {
-                                "x": 0.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "angularVelocity": {
-                                "x": 0.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        },
-                        "SphereColliderComponent": {
-                            "isTrigger": true,
-                            "sphere": {
-                                "center": {
-                                    "x": 0.0,
-                                    "y": 0.0,
-                                    "z": 0.0
-                                },
-                                "radius": 0.15000000596046448
-                            }
                         },
                         "TransformComponent": {
                             "WorldTransformation": {

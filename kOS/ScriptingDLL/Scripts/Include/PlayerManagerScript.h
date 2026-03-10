@@ -692,6 +692,7 @@ inline void PlayerManagerScript::PlayerMovementControls()
 	glm::vec3 tempVelocity = playerRigidbody->velocity;
 
 	auto* playerTransform = ecsPtr->GetComponent<ecs::TransformComponent>(entity);
+	auto* playerCollider = ecsPtr->GetComponent<ecs::CapsuleColliderComponent>(entity);
 
 	jumpGraceTime -= dt;
 
@@ -706,7 +707,7 @@ inline void PlayerManagerScript::PlayerMovementControls()
 		glm::vec3 playerPos = playerTransform->WorldTransformation.position;
 
 		RaycastHit hitInfo;
-		float rayDistance = 1.8f;
+		float rayDistance = (playerCollider->capsule.height / 2.f) + 0.1f;
 		grounded = physicsPtr->Raycast(
 			playerPos,
 			glm::vec3(0.f, -1.f, 0.f),
@@ -1349,6 +1350,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 				if (powerupComp->powerupType == "FIRE") {
 					playerPowerupHeld = Powerup::FIRE;
+
+					//ecsPtr->SetActive()
 				}
 				else if (powerupComp->powerupType == "ACID") {
 					playerPowerupHeld = Powerup::ACID;
@@ -1627,8 +1630,45 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				ecs::EntityID airBlastID = DuplicatePrefabIntoScene<R_Scene>(currentScene, airBlastPrefab);
 
 				if (auto* airBlastTransform = ecsPtr->GetComponent<TransformComponent>(airBlastID)) {
-					airBlastTransform->LocalTransformation.position =
-						ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
+					//airBlastTransform->LocalTransformation.position =
+					//	ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
+
+					//auto* spawnTf = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID);
+					//auto* acidTf = ecsPtr->GetComponent<TransformComponent>(airBlastID);
+					//if (!spawnTf || !acidTf) return;
+
+					//glm::vec3 dir = GetPlayerCameraFrontDirection();
+					//dir.y = 0.f;
+					//if (glm::length(dir) > 0.0001f) dir = glm::normalize(dir);
+
+					//acidTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
+					//float yaw = glm::degrees(std::atan2(dir.x, dir.z));
+					//acidTf->LocalTransformation.rotation = glm::vec3(0.f, yaw, 0.f);
+
+					airBlastTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
+
+					glm::vec3 dir = glm::normalize(GetPlayerCameraFrontDirection());
+					float yaw = glm::degrees(atan2(dir.x, dir.z)) + 180.f;
+					float pitch = glm::degrees(asin(-dir.y));
+					float roll = 0.f;
+
+					glm::vec3 rotationDegrees = glm::vec3(-pitch, yaw, roll);
+
+					if (auto* railgunTransform = ecsPtr->GetComponent<TransformComponent>(airBlastID)) {
+						railgunTransform->LocalTransformation.rotation = rotationDegrees;
+					}
+
+					std::vector<EntityID> children = ecsPtr->GetChild(airBlastID).value();
+
+					if (children[0]) {
+						ecsPtr->GetComponent<TransformComponent>(children[0])->LocalTransformation.rotation = glm::vec3(-pitch, yaw, 90.f);
+						ecsPtr->GetComponent<ParticleComponent>(children[0])->velocityModule.velocity_Modifier = dir * 10.f;
+					}
+
+					if (children[1]) {
+						ecsPtr->GetComponent<TransformComponent>(children[1])->LocalTransformation.rotation = glm::vec3(-pitch, yaw, 90.f);
+						ecsPtr->GetComponent<ParticleComponent>(children[0])->velocityModule.velocity_Modifier = dir * 10.f;
+					}
 				}
 
 				currMana -= acidAbilityCost;
