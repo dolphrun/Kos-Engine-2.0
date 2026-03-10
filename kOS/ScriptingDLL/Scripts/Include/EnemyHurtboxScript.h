@@ -5,7 +5,7 @@ class EnemyHurtboxScript : public TemplateSC {
 public:
 	int enemyDamage = 5;
 
-	float timeBeforeDeath = 0.5f;
+	float timeBeforeDeath = 1.f;
 	float currentTimer = 0.f;
 
 	utility::GUID playerHurtSfxGUID_1;

@@ -26,7 +26,7 @@
             "enemyHealth": 5,
             "enemyMovementSpeed": 5.0,
             "enemyType": "Melee",
-            "enemyAttackRange": 2.5,
+            "enemyAttackRange": 8.0,
             "enemyRangedAttackRange": 15.0,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
@@ -36,7 +36,13 @@
             "shieldHealth": 30,
             "shieldElement": "NONE",
             "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-            "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+            "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+            "isLunging": false,
+            "lungeDuration": 0.800000011920929,
+            "lungeForwardSpeed": 12.0,
+            "lungeUpwardSpeed": 8.0,
+            "lungeGravity": 15.0,
+            "attackCooldown": 2.0
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",

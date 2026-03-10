@@ -15394,7 +15394,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "NONE",
                     "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "RangedEnemyPrefab",
@@ -15592,7 +15598,7 @@
                     "enemyHealth": 5,
                     "enemyMovementSpeed": 5.0,
                     "enemyType": "Melee",
-                    "enemyAttackRange": 2.5,
+                    "enemyAttackRange": 10.0,
                     "enemyRangedAttackRange": 15.0,
                     "enemyChaseRange": 25.0,
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
@@ -15602,7 +15608,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "NONE",
                     "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -15800,7 +15812,7 @@
                     "enemyHealth": 5,
                     "enemyMovementSpeed": 5.0,
                     "enemyType": "Melee",
-                    "enemyAttackRange": 2.5,
+                    "enemyAttackRange": 10.0,
                     "enemyRangedAttackRange": 15.0,
                     "enemyChaseRange": 25.0,
                     "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
@@ -15810,7 +15822,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "NONE",
                     "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -16018,7 +16036,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "NONE",
                     "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -16226,7 +16250,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "NONE",
                     "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -16434,7 +16464,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "NONE",
                     "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "RangedEnemyPrefab",
@@ -16642,7 +16678,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "NONE",
                     "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -16850,7 +16892,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "NONE",
                     "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -17058,7 +17106,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "NONE",
                     "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -17266,7 +17320,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "NONE",
                     "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -17474,7 +17534,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "NONE",
                     "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -17682,7 +17748,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "NONE",
                     "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -17890,7 +17962,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "NONE",
                     "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+                    "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
@@ -18098,7 +18176,13 @@
                     "shieldHealth": 30,
                     "shieldElement": "FIRE",
                     "shieldVisualObject": "0f6defc1-8c38-49d9-65b0-091f11064913",
-                    "tankAoePrefab": "668543d2-276e-3941-8542-55d0401797a4"
+                    "tankAoePrefab": "668543d2-276e-3941-8542-55d0401797a4",
+                    "isLunging": false,
+                    "lungeDuration": 0.800000011920929,
+                    "lungeForwardSpeed": 12.0,
+                    "lungeUpwardSpeed": 5.0,
+                    "lungeGravity": 15.0,
+                    "attackCooldown": 2.0
                 },
                 "NameComponent": {
                     "entityName": "TankEnemyPrefab",
