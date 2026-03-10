@@ -77,10 +77,20 @@ namespace ecs {
             // ==========================================
 
             std::shared_ptr<R_Texture> textureResource = m_resourceManager.GetResource<R_Texture>(particle->textureGUID);
+            
             float type = 0.f;
             if (particle->particleType == ParticleComponent::ParticleType::THREE_DIMENSIONAL_ROTATION_BILLBOARD)
                 type = 1.f;
-            m_graphicsManager.gm_PushBasicParticleData(BasicParticleData{ sending.positions_Particle, sending.colors, sending.sizes, sending.rotates , textureResource.get(), type });
+            m_graphicsManager.gm_PushBasicParticleData(BasicParticleData{ sending.positions_Particle, sending.colors, sending.sizes, sending.rotates, textureResource.get(), type });
+
+            for (int i = 0; i < particle->particle_List.size(); i++)
+                m_graphicsManager.gm_PushBasicTrailData(TrailRenderer::BasicTrailData{ particle->particle_List[i].trail.points, particle->particle_List[i].trail.lifetimes,particle->particle_List[i].trail.maxLifetime,
+                    particle->particle_List[i].trail.width, particle->particle_List[i].trail.color, particle->particle_List[i].trail.lastPosition });
+
+            for (int i = 0; i < particle->dyingTrails.size(); i++)
+                m_graphicsManager.gm_PushBasicTrailData(TrailRenderer::BasicTrailData{ particle->dyingTrails[i].points, particle->dyingTrails[i].lifetimes,particle->dyingTrails[i].maxLifetime,
+                    particle->dyingTrails[i].width, particle->dyingTrails[i].color, particle->dyingTrails[i].lastPosition });
+
         }
     }
 
@@ -117,6 +127,15 @@ namespace ecs {
         pd.velocity = velocity;
         pd.position = particle_position;
         pd.rotation = particle->rotationModule.enabled ? glm::radians(RandomRange(particle->rotationModule.start_Rotation, particle->rotationModule.end_Rotation)) : glm::radians(particle->rotationModule.start_Rotation);
+        if (particle->dynamicTrailingEnabled)
+        {
+            /*if (pd.trailID < 0 || pd.trailID >= particle->trail_List.size())
+                pd.trailID = CreateTrail(pd.position, particle);*/
+            InitTrail(pd);
+            pd.trail.maxLifetime = particle->trailLifeTime;
+            pd.trail.color = particle->trail_Color;
+        }
+        
 
 
         //init particle data
@@ -446,13 +465,95 @@ namespace ecs {
             }  
             if(!updateTrailing) pd.position += pd.velocity * dt;
 
+
+            //if (particle->dynamicTrailingEnabled) {
+            //    TrailData& trail = pd.trail;
+
+            //    // Add new point if moved enough
+            //    float dist = glm::distance(trail.lastPosition, pd.position);
+            //    if (dist > trail.minDistance) {
+            //        trail.points.push_back(pd.position);
+            //        trail.lifetimes.push_back(0.0f);
+            //        trail.lastPosition = pd.position;
+            //    }
+
+            //    // Age existing trail points
+            //    for (size_t t = 0; t < trail.lifetimes.size(); ++t)
+            //        trail.lifetimes[t] += dt;
+
+            //    // Remove dead points
+            //    auto endIt = std::remove_if(trail.points.begin(), trail.points.end(),
+            //        [&](const glm::vec3&, size_t idx = 0) {
+            //            return trail.lifetimes[idx++] > trail.maxLifetime;
+            //        });
+            //    trail.points.erase(endIt, trail.points.end());
+            //    trail.lifetimes.resize(trail.points.size());
+            //    
+            //}
+            
             if (pd.lifespan <= 0.0f) {
+                if (particle->dynamicTrailingEnabled && !pd.trail.points.empty()) 
+                {
+                    particle->dyingTrails.push_back(std::move(pd.trail));
+                }
                 particle->particle_List[i] = particle->particle_List.back();
                 //particle->particle_List[i] = std::move(particle->particle_List.back());
                 particle->particle_List.pop_back();
+                continue;
 
             }
+
+            if (particle->dynamicTrailingEnabled)
+            {
+                TrailData& trail = pd.trail;
+
+                float dist = glm::distance(trail.lastPosition, pd.position);
+                if (dist > trail.minDistance)
+                {
+                    trail.points.push_back(pd.position);
+                    trail.lifetimes.push_back(0.0f);
+                    trail.lastPosition = pd.position;
+                }
+
+                for (size_t t = 0; t < trail.lifetimes.size(); ++t)
+                    trail.lifetimes[t] += dt;
+
+                for (size_t t = 0; t < trail.lifetimes.size();)
+                {
+                    if (trail.lifetimes[t] > trail.maxLifetime)
+                    {
+                        trail.lifetimes.erase(trail.lifetimes.begin() + t);
+                        trail.points.erase(trail.points.begin() + t);
+                    }
+                    else
+                        t++;
+                }
+            }
+
+            //Dying trails
+            for (int i = static_cast<int>(particle->dyingTrails.size()) - 1; i >= 0; --i)
+            {
+                TrailData& trail = particle->dyingTrails[i];
+
+                // Age existing trail points
+                for (size_t t = 0; t < trail.lifetimes.size(); ++t)
+                    trail.lifetimes[t] += dt;
+
+                // Remove dead points
+                for (size_t t = 0; t < trail.lifetimes.size(); ) {
+                    if (trail.lifetimes[t] > trail.maxLifetime) {
+                        trail.lifetimes.erase(trail.lifetimes.begin() + t);
+                        trail.points.erase(trail.points.begin() + t);
+                    }
+                    else t++;
+                }
+
+                // Remove the trail entirely if empty
+                if (trail.points.empty())
+                    particle->dyingTrails.erase(particle->dyingTrails.begin() + i);
+            }
         } 
+       
     }
 
     void ParticleSystem::UpdateEmitters(float dt,EntityID id, ParticleComponent*& particleComp,  TransformComponent*& transform) {
