@@ -134,6 +134,7 @@ namespace ecs {
             InitTrail(pd);
             pd.trail.maxLifetime = particle->trailLifeTime;
             pd.trail.color = particle->trail_Color;
+            pd.trail.width = particle->trailWidth;
         }
         
 
