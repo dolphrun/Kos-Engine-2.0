@@ -14,11 +14,11 @@
             "capsule": {
                 "center": {
                     "x": 0.0,
-                    "y": 1.5,
+                    "y": 2.0999999046325684,
                     "z": 0.0
                 },
-                "radius": 0.5,
-                "height": 3.0,
+                "radius": 0.6000000238418579,
+                "height": 4.800000190734863,
                 "capsuleDirection": 1
             }
         },
@@ -26,7 +26,7 @@
             "enemyHealth": 5,
             "enemyMovementSpeed": 5.0,
             "enemyType": "Melee",
-            "enemyAttackRange": 2.5,
+            "enemyAttackRange": 8.0,
             "enemyRangedAttackRange": 15.0,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
@@ -36,7 +36,13 @@
             "shieldHealth": 30,
             "shieldElement": "NONE",
             "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-            "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
+            "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+            "isLunging": false,
+            "lungeDuration": 0.800000011920929,
+            "lungeForwardSpeed": 12.0,
+            "lungeUpwardSpeed": 8.0,
+            "lungeGravity": 15.0,
+            "attackCooldown": 2.0
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
@@ -189,9 +195,9 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
+                            "x": 0.019999999552965164,
+                            "y": 0.019999999552965164,
+                            "z": 0.019999999552965164
                         }
                     },
                     "LocalTransformation": {
@@ -206,9 +212,9 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
+                            "x": 0.019999999552965164,
+                            "y": 0.019999999552965164,
+                            "z": 0.019999999552965164
                         }
                     }
                 }

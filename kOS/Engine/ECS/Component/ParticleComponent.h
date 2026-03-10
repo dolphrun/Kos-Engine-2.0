@@ -6,6 +6,21 @@
 
 namespace ecs {
 
+	struct TrailData
+	{
+		std::vector<glm::vec3> points;
+		std::vector<float> lifetimes;
+
+		float maxLifetime = 1.0f;
+		float minDistance = 0.05f;
+		float width = 0.2f;
+
+		glm::vec4 color{ 1.0f };
+
+		glm::vec3 lastPosition{};
+		bool firstFrame = true;
+	};
+
 	struct ParticleData {
 		glm::vec4 color;
 		glm::vec3 position;
@@ -15,7 +30,16 @@ namespace ecs {
 		float lifetime;
 		glm::vec3 rotation;
 		int textureID;
+		TrailData trail;
 	};
+
+	/*struct TrailPoint
+	{
+		glm::vec3 position;
+		float lifetime;
+	};*/
+
+	
 
 	enum class PlayState {
 		PLAY,
@@ -227,6 +251,14 @@ namespace ecs {
 		float duration = 5.0f;
 		bool looping = true;
 		bool play_On_Awake = true;
+
+		//Trail Params
+		bool dynamicTrailingEnabled = false;
+		glm::vec4 trail_Color { 1.f };
+		float trailLifeTime{ 2.f };
+		float trailWidth{ 0.2f };
+
+
 		glm::vec3 particle_Spawn_Location = glm::vec3(0.f);
 
 		//Lifetime
@@ -279,8 +311,10 @@ namespace ecs {
 
 		//FOR THE ALIVE PARTICLES
 		std::vector<ParticleData> particle_List;
+		//For trails that have no more particles
+		std::vector<TrailData> dyingTrails;
 
-
+		
 
 		//EMISSTION RATE
 		float emitterTime = 0.f;
@@ -292,7 +326,7 @@ namespace ecs {
 					textureGUID,
 					start_Velocity, playback_State, particleFade,
 					velocityModule,forceModule, shapeModule, colorModule, sizeModule, rotationModule, gravityModule, trailingModule, noiseModule,
-					emissionInterval, no_Of_Particles);
+					emissionInterval, no_Of_Particles, dynamicTrailingEnabled, trail_Color, trailLifeTime, trailWidth);
 	};
 }
 #endif

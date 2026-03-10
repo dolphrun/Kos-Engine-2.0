@@ -68,10 +68,6 @@ namespace ecs{
 		RegisterSystem<CanvasButtonRenderSystem, TransformComponent, CanvasRendererComponent>(0);
 		RegisterSystem<AnimatorSystem, TransformComponent, AnimatorComponent>(0);
 		RegisterSystem<LightingSystem, TransformComponent, LightComponent>(0);
-		RegisterSystem<DebugBoxColliderRenderSystem, TransformComponent, BoxColliderComponent>(0);
-		RegisterSystem<DebugCapsuleColliderRenderSystem, TransformComponent, CapsuleColliderComponent>(0);
-		RegisterSystem<DebugSphereColliderRenderSystem, TransformComponent, SphereColliderComponent>(0);
-		RegisterSystem<DebugMeshColliderRenderSystem, TransformComponent, MeshColliderComponent>(0);
 		RegisterSystem<AudioListenerSystem, TransformComponent, AudioListenerComponent>(0);
 		RegisterSystem<AudioSystem, TransformComponent, AudioComponent>(0);
 		RegisterSystem<ParticleSystem, TransformComponent, ParticleComponent>(0);

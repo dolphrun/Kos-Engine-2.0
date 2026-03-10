@@ -31,6 +31,8 @@ public:
 	std::vector<utility::GUID> enemyDeathSfxGUIDs;
 	utility::GUID gasCloudPrefab;
 
+	utility::GUID grenadeExplosionSfxGUID;
+
 	// Declarations Only (Implementation at the bottom)
 	void Start() override;
 	void Update() override;
@@ -38,7 +40,7 @@ public:
 	void SpawnGasCloud();
 
 	REFLECTABLE(AcidLMB, acidLMBDamage, launchSpeed, arcUpwardKick, gravity,
-		timeBeforeDeath, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3, gasCloudPrefab)
+		timeBeforeDeath, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3, grenadeExplosionSfxGUID,gasCloudPrefab)
 };
 
 // --- IMPLEMENTATION SECTION ---
@@ -152,6 +154,16 @@ inline void AcidLMB::PlayRandomEnemyDeathSFX()
 }
 
 inline void AcidLMB::SpawnGasCloud() {
+	if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+		for (auto& af : ac->audioFiles) {
+			if (af.audioGUID == grenadeExplosionSfxGUID && af.isSFX) {
+				af.requestPlay = true;
+				break;
+			}
+		}
+	}
+
 	if (gasCloudPrefab == utility::GUID{}) {
 		std::cout << "[AcidLMB] No gas cloud prefab assigned!\n";
 		return;

@@ -196,6 +196,9 @@ namespace ecs {
 		const std::pmr::vector<EntityID>& GetComponentsEnties(const std::string& componentName);
 
 
+		template<typename T, typename... Components, typename... States>
+		void RegisterSystem(unsigned int level = 0, States... states);
+
 		void RegisterEntity(EntityID);
 		void DeregisterEntity(EntityID);
 
@@ -241,9 +244,7 @@ namespace ecs {
 
 
 		void DeleteEntityImmediate(EntityID);
-		
-		template<typename T, typename... Components, typename... States>
-		void RegisterSystem(unsigned int level = 0, States... states);
+
 			
 		void RunSystemsInParallel(const std::vector<SystemData>& systems);
 		void RunSystemsInSeries(const std::vector<SystemData>& systems);

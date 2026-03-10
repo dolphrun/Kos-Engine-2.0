@@ -4,6 +4,7 @@
 #include "ScriptAdapter/TemplateSC.h"
 #include "LoseScreenScript.h"
 #include "WinScreenScript.h"
+#include "LevelCompleteScript.h"
 
 class PauseMenuScript : public TemplateSC {
 public:
@@ -19,6 +20,7 @@ public:
 
     void Start() override {
         instance = this;
+        isPaused = false;
         pauseMenuCanvasID = ecsPtr->GetEntityIDFromGUID(pauseMenuCanvasGUID);
 
         if (auto* t = ecsPtr->GetComponent<TransformComponent>(pauseMenuCanvasID)) {
@@ -32,7 +34,7 @@ public:
     }
 
     void TogglePause() {
-        if (LoseScreenScript::isLoseScreenActive || WinScreenScript::isWinScreenActive) return;
+        if (LoseScreenScript::isLoseScreenActive || WinScreenScript::isWinScreenActive || LevelCompleteScript::isLevelCompleteActive) return;
         isPaused ? ResumeGame() : PauseGame();
     }
 

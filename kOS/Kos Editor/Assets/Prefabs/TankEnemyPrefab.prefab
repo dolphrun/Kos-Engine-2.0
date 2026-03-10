@@ -14,11 +14,11 @@
             "capsule": {
                 "center": {
                     "x": 0.0,
-                    "y": 1.5,
+                    "y": 2.299999952316284,
                     "z": 0.0
                 },
-                "radius": 0.800000011920929,
-                "height": 3.0,
+                "radius": 1.0,
+                "height": 5.0,
                 "capsuleDirection": 1
             }
         },
@@ -36,7 +36,13 @@
             "shieldHealth": 30,
             "shieldElement": "FIRE",
             "shieldVisualObject": "0f6defc1-8c38-49d9-65b0-091f11064913",
-            "tankAoePrefab": "668543d2-276e-3941-8542-55d0401797a4"
+            "tankAoePrefab": "668543d2-276e-3941-8542-55d0401797a4",
+            "isLunging": false,
+            "lungeDuration": 0.800000011920929,
+            "lungeForwardSpeed": 12.0,
+            "lungeUpwardSpeed": 5.0,
+            "lungeGravity": 15.0,
+            "attackCooldown": 2.0
         },
         "NameComponent": {
             "entityName": "TankEnemyPrefab",
@@ -189,9 +195,9 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
+                            "x": 0.019999999552965164,
+                            "y": 0.019999999552965164,
+                            "z": 0.019999999552965164
                         }
                     },
                     "LocalTransformation": {
@@ -206,9 +212,9 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
+                            "x": 0.019999999552965164,
+                            "y": 0.019999999552965164,
+                            "z": 0.019999999552965164
                         }
                     }
                 }

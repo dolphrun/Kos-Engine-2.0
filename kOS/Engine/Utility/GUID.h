@@ -73,6 +73,7 @@ namespace utility{
             return (high == 0 && low == 0);
         }
 
+        GUID& operator=(const GUID& other) noexcept = default;
 
         bool operator<(const GUID& other) const noexcept
         {

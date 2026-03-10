@@ -37,8 +37,8 @@ public:
 	ecs::EntityID shieldVisualID;   // The spawned visual entity ID
 
 	// Separate variables for ranges cuz if not the ranged will kiss u
-	float enemyAttackRange = 2.5f;
-	float enemyRangedAttackRange = 2.5f;
+	float enemyAttackRange = 8.f;
+	float enemyRangedAttackRange = 15.f;
 
 	float enemyChaseRange = 25.f;
 
@@ -48,6 +48,19 @@ public:
 	utility::GUID enemyHurtboxPrefab;
 	utility::GUID enemyBulletPrefab;
 	utility::GUID tankAoePrefab;
+
+	// --- LUNGE VARIABLES (it's gotta be fake lunging, not physics due to isKinematic) ---
+	bool isLunging = false;
+	glm::vec3 lungeVelocity = glm::vec3(0.f);
+	float currentLungeTimer = 0.f;
+
+	float lungeDuration = 0.8f;
+	float lungeForwardSpeed = 12.f;
+	float lungeUpwardSpeed = 5.f;
+	float lungeGravity = 15.f;       // Fake gravity pulling them down
+
+	float attackCooldown = 2.0f;
+	float currentAttackCooldown = 0.f;
 
 	utility::GUID enemyHurtboxPosition;
 	ecs::EntityID enemyHurtboxPositionID;
@@ -64,7 +77,7 @@ public:
 	void TakeDamage(int damage, const std::string& element);
 	void Die();
 
-	REFLECTABLE(EnemyManagerScript, enemyHealth, enemyMovementSpeed, enemyType, enemyAttackRange, enemyRangedAttackRange, enemyChaseRange, playerToChase, enemyHurtboxPrefab, enemyBulletPrefab, enemyHurtboxPosition, shieldHealth, shieldElement, shieldVisualObject, tankAoePrefab);
+	REFLECTABLE(EnemyManagerScript, enemyHealth, enemyMovementSpeed, enemyType, enemyAttackRange, enemyRangedAttackRange, enemyChaseRange, playerToChase, enemyHurtboxPrefab, enemyBulletPrefab, enemyHurtboxPosition, shieldHealth, shieldElement, shieldVisualObject, tankAoePrefab, isLunging, lungeDuration, lungeForwardSpeed, lungeUpwardSpeed, lungeGravity, attackCooldown);
 };
 
 // --- IMPLEMENTATION ---
@@ -170,6 +183,41 @@ inline void EnemyManagerScript::Update() {
 		}
 	}
 
+	// Cooldown for lunging
+	if (currentAttackCooldown > 0.f) {
+		currentAttackCooldown -= ecsPtr->m_GetDeltaTime();
+	}
+
+	// Lunging logic
+	if (isLunging && !isDead) {
+		// Manual move (have to bypass Rigidbody for dis)
+		enemyTransform->LocalTransformation.position += lungeVelocity * ecsPtr->m_GetDeltaTime();
+
+		// Grav
+		lungeVelocity.y -= lungeGravity * ecsPtr->m_GetDeltaTime();
+
+		currentLungeTimer -= ecsPtr->m_GetDeltaTime();
+
+		// Landing cond (based on time, kinda eah but wtv)
+		if (currentLungeTimer <= 0.0f) {
+			isLunging = false;
+
+			// Re-add to NavMesh where they landed
+			auto* capsule = ecsPtr->GetComponent<CapsuleColliderComponent>(entity);
+			if (capsule) {
+				navMeshPtr->AddAgent(agentid, entity, enemyTransform->WorldTransformation.position, capsule->capsule.radius, capsule->capsule.height);
+			}
+
+			// --- LANDING ANIMATION TRIGGER ---
+			if (animComp && animComp->m_currentStateID) {
+				enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("Land", animComp, enemyController);
+			}
+
+			enemyIsAttacking = false;
+			attackHurtboxIsSpawn = false;
+		}
+	}
+
 	// FUCK
 	enemyHurtboxPositionTransform->LocalTransformation.position.z = 1.f;
 
@@ -201,13 +249,16 @@ inline void EnemyManagerScript::Update() {
 		if (R_Animation* currAnim = resource->GetResource<R_Animation>(enemyController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get())
 		{
 			float animDuration = currAnim->GetDuration();
-			//Checkcing if animation is done
+			//Checking if animation is done
 			if (animComp->m_CurrentTime >= animDuration && !enemyController->RetrieveStateByID(animComp->m_currentStateID)->isLooping)
 			{
-				enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AnimationFinished", animComp, enemyController);
-				//animComp->m_CurrentTime = 0.f;
-				enemyIsAttacking = false;
-				attackHurtboxIsSpawn = false;
+				// Only auto-finish for Ranged/Tank attacks now.
+				// Melee will finish when it explicitly lands
+				if (!isLunging) {
+					enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AnimationFinished", animComp, enemyController);
+					enemyIsAttacking = false;
+					attackHurtboxIsSpawn = false;
+				}
 			}
 		}
 	}
@@ -216,7 +267,7 @@ inline void EnemyManagerScript::Update() {
 		// SWITCH DISTANCE BASED ON STRING
 		float currentActiveRange = (enemyType == "Ranged") ? enemyRangedAttackRange : enemyAttackRange;
 
-		if (glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= currentActiveRange) {
+		if (glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= currentActiveRange && currentAttackCooldown <= 0.f) {
 
 			// DONT UNCOMMENT THIS
 			//if (!enemyIsAttacking) {
@@ -345,17 +396,44 @@ inline void EnemyManagerScript::Update() {
 						}
 						else
 						{
-							// Default/Melee: Spawn Hurtbox
-							// Used 'else' here so if you typo the string, it at least does something (Melee)
-							std::shared_ptr<R_Scene> enemyHurtbox = resource->GetResource<R_Scene>(enemyHurtboxPrefab);
+							// Melee lunge logic
+							isLunging = true;
+							currentLungeTimer = lungeDuration;
 
+							currentAttackCooldown = attackCooldown;
+
+							navMeshPtr->RemoveAgent(agentid);
+
+							glm::vec3 flatDir = glm::vec3(direction.x, 0.f, direction.z);
+							if (glm::length(flatDir) > 0.001f) flatDir = glm::normalize(flatDir);
+
+							lungeVelocity = flatDir * lungeForwardSpeed;
+
+							lungeVelocity.y = lungeUpwardSpeed;
+
+							// Height diff stuff inshallah
+							float heightDiff = playerTransform->LocalTransformation.position.y - enemyTransform->LocalTransformation.position.y;
+							if (heightDiff > 0.5f) {
+								lungeVelocity.y += (heightDiff * 2.0f); // Tweak the float to make them jump higher if needed
+							}
+
+							// Hurtbox spawn
+							std::shared_ptr<R_Scene> enemyHurtbox = resource->GetResource<R_Scene>(enemyHurtboxPrefab);
 							if (enemyHurtbox) {
 								std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 								ecs::EntityID enemyHurtboxID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyHurtboxPrefab);
 
+								ecsPtr->SetParent(entity, enemyHurtboxID, false);
+
 								if (auto* enemyHurtboxTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxID)) {
-									enemyHurtboxTransform->LocalTransformation.position = enemyTransform->LocalTransformation.position + direction;
+									// Push forward a bit
+									enemyHurtboxTransform->LocalTransformation.position = glm::vec3(0.f, 0.5f, 1.f);
 								}
+							}
+
+							// --- JUMP ANIM TRIGGER ---
+							if (animComp && animComp->m_currentStateID) {
+								enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("Jump", animComp, enemyController);
 							}
 						}
 
@@ -397,10 +475,13 @@ inline void EnemyManagerScript::Update() {
 }
 
 inline void EnemyManagerScript::TriggerStagger(float duration) {
-	if (!isStaggered) {
+	// Prevent engine crash: Don't remove NavMesh if already lunging!
+	if (!isStaggered && !isLunging) {
 		navMeshPtr->RemoveAgent(agentid);
 	}
+
 	isStaggered = true;
+	isLunging = false; // Safely cancel the lunge mid-air
 	currentStaggerTimer = duration;
 
 	// ADD STAGGER ANIM HERE

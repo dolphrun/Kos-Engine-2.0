@@ -28,7 +28,7 @@
 #include "AcidAirBlast.h"
 #include "AcidGas.h"
 #include "RoomLockScript.h"
-//#include "AbilityUIScript.h"
+#include "LevelCompleteScript.h"
 #include "EventColliderScript.h"
 
 #include "EnemyHurtboxScript.h"

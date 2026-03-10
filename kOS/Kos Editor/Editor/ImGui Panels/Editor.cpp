@@ -108,9 +108,11 @@ namespace gui {
 		m_imgui_layout = imguiINI;
 
 		
-		//set up reflection
-
-		//REFLECTION, ADD component
+		//Initialize Debug Systems
+		m_ecs.RegisterSystem<DebugBoxColliderRenderSystem, TransformComponent, BoxColliderComponent>(0);
+		m_ecs.RegisterSystem<DebugCapsuleColliderRenderSystem, TransformComponent, CapsuleColliderComponent>(0);
+		m_ecs.RegisterSystem<DebugSphereColliderRenderSystem, TransformComponent, SphereColliderComponent>(0);
+		m_ecs.RegisterSystem<DebugMeshColliderRenderSystem, TransformComponent, MeshColliderComponent>(0);
 
 		//initialize component type
 

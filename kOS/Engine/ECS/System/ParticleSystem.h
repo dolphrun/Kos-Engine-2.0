@@ -12,6 +12,7 @@ namespace ecs {
         std::vector<glm::vec2> sizes;
         std::vector<glm::vec3> rotates;
     };
+
     struct EmissionData {
         glm::vec3 positionOffset;  // Offset from emitter position
         glm::vec3 direction;       // Normalized direction
@@ -168,8 +169,146 @@ namespace ecs {
         void setVelocityModifier(ParticleComponent* particle, const glm::vec3& velocity_Modifier, const Velocity_Mode mode, bool enable);
         void setForce(ParticleComponent* particle, const glm::vec3& force, bool enable);
 
+        //===========================================
+        // TRAILING FUNCTIONS 
+        //===========================================
+        //int CreateTrail(const glm::vec3& startPos, ParticleComponent*& particle)
+        //{
+        //    TrailData trail;
+        //   
+        //    trail.points.push_back(startPos);
+        //    trail.lifetimes.push_back(0.f);
+        //    trail.maxLifetime = particle->end_Lifetime;
+        //    trail.lastPosition = startPos;
+        //    trail.firstFrame = false;
 
+        //    //particle->trail_List.clear();
+        //    particle->trail_List.push_back(trail);
 
+        //    return particle->trail_List.size() - 1;
+        //}
+
+        //void UpdateTrail(int trailIndex, float dt, const glm::vec3& currentPos, std::vector<TrailData>& trails)
+        //{
+        //    if (trailIndex < 0 || trailIndex >= trails.size())
+        //        return;
+
+        //    TrailData& trail = trails[trailIndex];
+
+        //    float dist = glm::distance(trail.lastPosition, currentPos);
+
+        //    if (dist > trail.minDistance)
+        //    {
+        //        trail.points.push_back(currentPos);
+        //        trail.lifetimes.push_back(0.f);
+        //        trail.lastPosition = currentPos;
+        //    }
+
+        // /*   for (int i = 0; i < trail.lifetimes.size(); i++)
+        //    {
+        //        trail.lifetimes[i] += dt;
+        //    }
+
+        //    for (int i = 0; i < trail.lifetimes.size();)
+        //    {
+        //        if (trail.lifetimes[i] > trail.maxLifetime)
+        //        {
+        //            trail.lifetimes.erase(trail.lifetimes.begin() + i);
+        //            trail.points.erase(trail.points.begin() + i);
+        //        }
+        //        else 
+        //        {
+        //            i++;
+        //        }
+        //    }*/
+        //    for (int i = 0; i < trail.lifetimes.size();)
+        //    {
+        //        if (trail.lifetimes[i] > trail.maxLifetime)
+        //        {
+        //            trail.lifetimes.erase(trail.lifetimes.begin() + i);
+        //            trail.points.erase(trail.points.begin() + i);
+        //        }
+        //        else
+        //        {
+        //            i++;
+        //        }
+        //    }
+        //}
+
+        //void AgeTrails(float dt, std::vector<TrailData>& trails)
+        //{
+        //    for (auto& trail : trails)
+        //    {
+        //        for (auto& life : trail.lifetimes)
+        //        {
+        //            life += dt;
+        //            
+        //        }
+        //       /* for (int i = 0; i < trail.lifetimes.size();)
+        //        {
+        //            if (trail.lifetimes[i] > trail.maxLifetime)
+        //            {
+        //                trail.lifetimes.erase(trail.lifetimes.begin() + i);
+        //                trail.points.erase(trail.points.begin() + i);
+        //            }
+        //            else
+        //            {
+        //                i++;
+        //            }
+        //        }*/
+        //    }
+
+        //    
+        //}
+
+        //void CleanupDeadTrails(std::vector<TrailData>& trails)
+        //{
+        //    trails.erase(
+        //        std::remove_if(trails.begin(), trails.end(),
+        //            [](const TrailData& trail)
+        //            {
+        //                return trail.points.empty();
+        //            }),
+        //        trails.end());
+        //}
+    
+        void InitTrail(ParticleData& p)
+        {
+            p.trail.points.clear();
+            p.trail.lifetimes.clear();
+
+            p.trail.points.push_back(p.position);
+            p.trail.lifetimes.push_back(0.0f);
+            p.trail.lastPosition = p.position;
+        }
+
+        void UpdateTrail(ParticleData& p, float dt)
+        {
+            TrailData& trail = p.trail;
+
+            float dist = glm::distance(trail.lastPosition, p.position);
+
+            if (dist > trail.minDistance)
+            {
+                trail.points.push_back(p.position);
+                trail.lifetimes.push_back(0.0f);
+                trail.lastPosition = p.position;
+            }
+
+            for (size_t i = 0; i < trail.lifetimes.size(); i++)
+                trail.lifetimes[i] += dt;
+
+            for (size_t i = 0; i < trail.lifetimes.size(); )
+            {
+                if (trail.lifetimes[i] > trail.maxLifetime)
+                {
+                    trail.lifetimes.erase(trail.lifetimes.begin() + i);
+                    trail.points.erase(trail.points.begin() + i);
+                }
+                else
+                    i++;
+            }
+        }
 
         REFLECTABLE(ParticleSystem);
     };

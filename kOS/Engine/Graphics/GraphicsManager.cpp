@@ -148,6 +148,7 @@ void GraphicsManager::gm_Clear()
 	skinnedMeshRenderer.Clear();
 	particleRenderer.Clear();
 	videoRenderer.Clear();
+	trailRenderer.Clear();
 	//basicDebugMeshes.Clear();
 	//editorCameraActive = false;
 }
@@ -166,6 +167,7 @@ void GraphicsManager::gm_InitializeMeshes()
 	debugRenderer.InitializeDebugRendererMeshes();
 	particleRenderer.InitializeParticleRendererMeshes();
 	videoRenderer.InitializeVideoRendererMeshes();
+	trailRenderer.InitTrailRendererMeshes();
 	//if (navmesh) navmesh->SetRenderNavMesh(nullptr, nullptr, 0, 0, 0.f);
 }
 
@@ -764,7 +766,15 @@ void GraphicsManager::gm_RenderParticles(const CameraData& camera)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	Shader* gBufferParticleShader{ &shaderManager.engineShaders.find("FowardParticleShader")->second };
-	particleRenderer.Render(camera, *gBufferParticleShader);
+	particleRenderer.Render(camera, *gBufferParticleShader, trailRenderer);
+	
+
+	
+	// 3. Render trails
+	Shader* trailShader{ &shaderManager.engineShaders.find("TrailShader")->second };
+
+	/// transfer basic trail data to other container
+	trailRenderer.Render(*trailShader, camera);
 	glDisable(GL_BLEND);
 }
 

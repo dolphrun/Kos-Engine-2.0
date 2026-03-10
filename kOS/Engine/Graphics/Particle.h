@@ -20,6 +20,7 @@ public:
     glm::vec3 rotation;
     unsigned int textureID;
     float particleType;
+    int trailIndex = -1;
 };
 
 class BasicParticleMesh
