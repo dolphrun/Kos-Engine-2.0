@@ -132,7 +132,7 @@ namespace ecs {
             /*if (pd.trailID < 0 || pd.trailID >= particle->trail_List.size())
                 pd.trailID = CreateTrail(pd.position, particle);*/
             InitTrail(pd);
-            pd.trail.maxLifetime = lifetime;
+            pd.trail.maxLifetime = particle->trailLifeTime;
             pd.trail.color = particle->trail_Color;
         }
         
