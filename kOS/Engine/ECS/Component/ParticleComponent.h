@@ -256,6 +256,7 @@ namespace ecs {
 		bool dynamicTrailingEnabled = false;
 		glm::vec4 trail_Color { 1.f };
 		float trailLifeTime{ 2.f };
+		float trailWidth{ 0.2f };
 
 
 		glm::vec3 particle_Spawn_Location = glm::vec3(0.f);
@@ -325,7 +326,7 @@ namespace ecs {
 					textureGUID,
 					start_Velocity, playback_State, particleFade,
 					velocityModule,forceModule, shapeModule, colorModule, sizeModule, rotationModule, gravityModule, trailingModule, noiseModule,
-					emissionInterval, no_Of_Particles, dynamicTrailingEnabled, trail_Color, trailLifeTime);
+					emissionInterval, no_Of_Particles, dynamicTrailingEnabled, trail_Color, trailLifeTime, trailWidth);
 	};
 }
 #endif
