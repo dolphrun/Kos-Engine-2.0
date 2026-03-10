@@ -113,18 +113,22 @@ inline void ToPhysxCollisionDetectionMode(PxRigidDynamic* actor, CollisionDetect
 	switch (mode) {
 	case CollisionDetectionMode::Discrete:
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD, false);
+		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD_FRICTION, false);
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD, false);
 		break;
 	case CollisionDetectionMode::Continuous:
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD, true);
+		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD_FRICTION, true);
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD, false);
 		break;
 	case CollisionDetectionMode::ContinuousDynamic:
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD, true);
-		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD, true);
+		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD_FRICTION, true);
+		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD, false);
 		break;
 	case CollisionDetectionMode::ContinuousSpeculative:
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD, false);
+		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_CCD_FRICTION, false);
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD, true);
 		break;
 	}
@@ -201,6 +205,18 @@ struct RaycastHit {
 	glm::vec3 point;
 	glm::vec3 normal;
 	float distance = 0.0f;
+};
+
+struct DebugRay {
+	glm::vec3 start;
+	glm::vec3 end;
+	glm::vec3 color{ 1.0f, 0.0f, 0.0f };
+};
+
+struct DebugSphere {
+	glm::vec3 center;
+	float radius;
+	glm::vec3 color{ 1.0f, 0.0f, 0.0f };
 };
 
 #endif

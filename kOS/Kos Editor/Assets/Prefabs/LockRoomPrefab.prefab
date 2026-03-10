@@ -1,0 +1,191 @@
+[
+    {
+        "entityGUID": "dcbcdb14-c728-a183-0056-4f869c48fcb2",
+        "BoxColliderComponent": {
+            "isTrigger": true,
+            "box": {
+                "center": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "size": {
+                    "x": 42.400001525878906,
+                    "y": 13.399999618530273,
+                    "z": 38.900001525878906
+                }
+            }
+        },
+        "NameComponent": {
+            "entityName": "LockRoomPrefab",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "LockRoomPrefab.prefab",
+            "hide": false
+        },
+        "RigidbodyComponent": {
+            "mass": 1.0,
+            "drag": 0.0,
+            "angularDrag": 0.05000000074505806,
+            "useGravity": false,
+            "isKinematic": false,
+            "interpolation": 0,
+            "collisionDetection": 0,
+            "constraints": 0,
+            "speed": 0.0,
+            "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "angularVelocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        "RoomLockScript": {
+            "enemyCountToKill": 3,
+            "doorPrefabA": "00000000-0000-0000-0000-000000000000",
+            "doorPrefabB": "00000000-0000-0000-0000-000000000000",
+            "doorSpawnPointA": "00000000-0000-0000-0000-000000000000",
+            "doorSpawnPointB": "00000000-0000-0000-0000-000000000000"
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 42.69462585449219,
+                    "y": 6.382465362548828,
+                    "z": -23.37112045288086
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 42.69462585449219,
+                    "y": 6.382465362548828,
+                    "z": -23.37112045288086
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "388568cc-b9d1-143f-2c77-c58166cdeed6",
+                "NameComponent": {
+                    "entityName": "SpawnPoint 1",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "SpawnPoint 1.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 53.90362548828125,
+                            "y": 3.1326966285705566,
+                            "z": -23.37112045288086
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 11.208999633789063,
+                            "y": -3.2497687339782715,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "b14e25aa-2dd7-bb14-0d51-e1f11e271202",
+                "NameComponent": {
+                    "entityName": "SpawnPoint 2",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "SpawnPoint 2.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 14.067501068115234,
+                            "y": 4.553180694580078,
+                            "z": -22.673683166503906
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -28.627124786376953,
+                            "y": -1.82928466796875,
+                            "z": 0.6974372863769531
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            }
+        ]
+    }
+]

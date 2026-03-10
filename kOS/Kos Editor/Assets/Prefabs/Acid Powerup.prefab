@@ -1,5 +1,13 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "f64ba5da-0962-6f21-ac8b-74da6130fad1",
         "NameComponent": {
             "entityName": "Acid Powerup",
@@ -11,23 +19,6 @@
             "hide": false
         },
         "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 3.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
             "LocalTransformation": {
                 "position": {
                     "x": 3.0,
@@ -73,23 +64,6 @@
                     "hide": false
                 },
                 "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 3.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.019999999552965164,
-                            "y": 0.019999999552965164,
-                            "z": 0.019999999552965164
-                        }
-                    },
                     "LocalTransformation": {
                         "position": {
                             "x": 0.0,
@@ -285,23 +259,6 @@
                     "no_Of_Particles": 50
                 },
                 "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 3.564058780670166,
-                            "y": 1.2514419555664063,
-                            "z": -0.4277713894844055
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
                     "LocalTransformation": {
                         "position": {
                             "x": 0.564058780670166,
@@ -497,23 +454,6 @@
                     "no_Of_Particles": 50
                 },
                 "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 4.072786808013916,
-                            "y": 0.3573821187019348,
-                            "z": 1.1025270223617554
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
                     "LocalTransformation": {
                         "position": {
                             "x": 1.072786808013916,
@@ -709,23 +649,6 @@
                     "no_Of_Particles": 50
                 },
                 "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 3.7928645610809326,
-                            "y": 0.41102612018585205,
-                            "z": -0.8796944618225098
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
                     "LocalTransformation": {
                         "position": {
                             "x": 0.7928645610809326,
@@ -921,23 +844,6 @@
                     "no_Of_Particles": 50
                 },
                 "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 2.0371360778808594,
-                            "y": 0.40294820070266724,
-                            "z": -0.04893715679645538
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
                     "LocalTransformation": {
                         "position": {
                             "x": -0.9628639221191406,

@@ -1,0 +1,64 @@
+[
+    {
+        "entityGUID": "e5826443-a9f4-a6e1-cb7f-e7f386730d1d",
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "96b89f2f-928a-b256-fea0-0182c7df10e4"
+                }
+            ]
+        },
+        "MeshColliderComponent": {
+            "isTrigger": false,
+            "convex": false
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+        },
+        "NameComponent": {
+            "entityName": "M5_Modular_Walls_8M_Plane",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "M5_Modular_Walls_8M_Plane.prefab",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.000004829665613215184,
+                    "y": -0.000025346413167426363,
+                    "z": -0.0000410521897720173
+                },
+                "scale": {
+                    "x": 0.009999996982514858,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999996982514858
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.000004829665613215184,
+                    "y": -0.00002534641134843696,
+                    "z": -0.0000410521897720173
+                },
+                "scale": {
+                    "x": 0.009999996982514858,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999996982514858
+                }
+            }
+        }
+    }
+]

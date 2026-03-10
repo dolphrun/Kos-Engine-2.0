@@ -1,0 +1,84 @@
+[
+    {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
+        "entityGUID": "d9134c98-0da6-33f8-b59e-011dc6c441f8",
+        "BoxColliderComponent": {
+            "isTrigger": false,
+            "box": {
+                "center": {
+                    "x": 50.0,
+                    "y": 250.0,
+                    "z": 0.0
+                },
+                "size": {
+                    "x": 100.00003051757813,
+                    "y": 500.0,
+                    "z": 800.0
+                }
+            }
+        },
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "74b080d4-74e7-2884-5752-f8a71fcb2630"
+                }
+            ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "909cc2a3-8261-8d7f-7375-8c4fd46db547"
+        },
+        "NameComponent": {
+            "entityName": "M5_Modular_Walls_5M",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "M5_Modular_Walls_5M.prefab",
+            "hide": false
+        },
+        "NavMeshComponent": {},
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            }
+        }
+    }
+]

@@ -34,6 +34,17 @@ void R_PostProcessingProfile::Load()
 				Vigniette vig;
 				vig.intensity = e["Intensity"].GetFloat();
 				vig.extent = e["Extent"].GetFloat();
+				if (e.HasMember("Color")) {
+					const auto& colorArr = e["Color"].GetArray();
+					vig.color = glm::vec3(
+						colorArr[0].GetFloat(),
+						colorArr[1].GetFloat(),
+						colorArr[2].GetFloat()
+					);
+				}
+	
+				//Get color array
+				// 
 				//Push data in 
 				//vig.currentShader = ;
 				this->profile.postProcessingEffects.push_back(std::make_unique<Vigniette>(vig));
@@ -54,6 +65,13 @@ void R_PostProcessingProfile::Load()
 				ca.blueOffset = e["BlueOffset"].GetFloat();
 				this->profile.postProcessingEffects.push_back(std::make_unique<ChromaticAberration>(ca));
 
+				break;;
+			}
+			case 3:
+			{
+				Blur blur;
+				blur.radius = e["Radius"].GetFloat();
+				this->profile.postProcessingEffects.push_back(std::make_unique<Blur>(blur));
 				break;;
 			}
 

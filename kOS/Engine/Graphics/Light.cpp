@@ -175,12 +175,29 @@ void DirectionalLightData::SetShaderMtrx(Shader* shader, size_t number) {
     std::stringstream s;
     s << "directionalLight[" << number << "].shadowMtx";
     //Calculate shadow mtx
-    float near_plane = -50.f, far_plane = 100.f;
-    //Update light direction
+    float near_plane = 0.1f, far_plane = 100.f;
     glm::vec3 lightPosition =  - glm::normalize(this->direction) * 100.f;
-    glm::mat4 lightSpaceMatrix = glm::ortho(-40.f, 40.f, -30.f, 30.f, near_plane, far_plane) *glm::lookAt(this->direction,
-                                                           glm::vec3(0.0f, 0.0f, 0.0f),
-                                                              glm::vec3(0.0f, 1.0f, 0.0f));
+    glm::mat4 lightSpaceMatrix = glm::ortho(-20.f, 20.f, -20.f, 20.f, near_plane, far_plane) * glm::lookAt(this->direction,
+        glm::vec3(0.0f, 0.0f, 0.0f),
+        glm::vec3(0.0f, 1.0f, 0.0f));
+
+    shader->SetTrans(s.str(), lightSpaceMatrix);
+
+    shader->Disuse();
+}
+
+
+void DirectionalLightData::SetShaderMtrx(Shader* shader, size_t number,const glm::mat4& viewMtx) {
+    shader->Use();
+    std::stringstream s;
+    s << "directionalLight[" << number << "].shadowMtx";
+    //Calculate shadow mtx
+    glm::vec3 cameraPos = glm::inverse(viewMtx)[3];
+    float near_plane = 0.1f, far_plane = 1000.f;
+    glm::vec3 lightPosition = -glm::normalize(this->direction) * 100.f;
+    glm::mat4 lightSpaceMatrix = glm::ortho(-100.f, 100.f, -100.f, 100.f, near_plane, far_plane) *
+        glm::lookAt(cameraPos - this->direction, cameraPos, glm::vec3(0, 1, 0));
+
     shader->SetTrans(s.str(), lightSpaceMatrix);
 
     shader->Disuse();

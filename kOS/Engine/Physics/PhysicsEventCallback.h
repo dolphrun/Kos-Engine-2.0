@@ -53,19 +53,29 @@ namespace physics {
         }
     };
 
+    struct PendingCollisionEvent {
+        Collision collisionA;
+        Collision collisionB;
+        enum class Type { Enter, Exit } type;
+    };
+
+    struct PendingTriggerEvent {
+        unsigned int entityA;
+        unsigned int entityB;
+        enum class Type { Enter, Exit } type;
+    };
+
+    struct CachedCollisionData {
+        Collision collisionA;
+        Collision collisionB;
+    };
+
     class PhysicsManager;
 
     class PhysicsEventCallback : public PxSimulationEventCallback {
     public:
         PhysicsEventCallback() : PxSimulationEventCallback() {}
         virtual ~PhysicsEventCallback() = default;
-
-        std::unordered_map<unsigned int, Delegate<const Collision&>> CollisionEnterList;
-        std::unordered_map<unsigned int, Delegate<const Collision&>> CollisionStayList;
-        std::unordered_map<unsigned int, Delegate<const Collision&>> CollisionExitList;
-        std::unordered_map<unsigned int, Delegate<const Collision&>> TriggerEnterList;
-        std::unordered_map<unsigned int, Delegate<const Collision&>> TriggerStayList;
-        std::unordered_map<unsigned int, Delegate<const Collision&>> TriggerExitList;
 
         void OnCollisionEnter(unsigned int id, Delegate<const Collision&>::Func f) { CollisionEnterList[id].Add(std::move(f)); }
         void OnCollisionStay(unsigned int id, Delegate<const Collision&>::Func f)  { CollisionStayList[id].Add(std::move(f)); }
@@ -74,12 +84,14 @@ namespace physics {
         void OnTriggerStay(unsigned int id, Delegate<const Collision&>::Func f)    { TriggerStayList[id].Add(std::move(f)); }
         void OnTriggerExit(unsigned int id, Delegate<const Collision&>::Func f)    { TriggerExitList[id].Add(std::move(f)); }
         
-        void onContact(const PxContactPairHeader& pairHeader, const PxContactPair* pairs, PxU32 nbPairs) override;
-        void onTrigger(PxTriggerPair* pairs, PxU32 count) override;
-
+        void DeregisterEntity(unsigned int id);
+        
+        void FlushEvents();
         void ProcessCollisionStay();
         void ProcessTriggerStay();
 
+        void onContact(const PxContactPairHeader& pairHeader, const PxContactPair* pairs, PxU32 nbPairs) override;
+        void onTrigger(PxTriggerPair* pairs, PxU32 count) override;
         void onConstraintBreak(PxConstraintInfo*, PxU32) override {}
         void onWake(PxActor**, PxU32) override {}
         void onSleep(PxActor**, PxU32) override {}
@@ -87,13 +99,71 @@ namespace physics {
 
         std::unordered_set<CollisionPair, CollisionPairHash> m_activeCollisions;
         std::unordered_set<TriggerPair, TriggerPairHash> m_activeTriggers;
+        std::unordered_map<CollisionPair, CachedCollisionData, CollisionPairHash> m_cachedCollisionData;
+
+        std::unordered_map<unsigned int, Delegate<const Collision&>> CollisionEnterList;
+        std::unordered_map<unsigned int, Delegate<const Collision&>> CollisionStayList;
+        std::unordered_map<unsigned int, Delegate<const Collision&>> CollisionExitList;
+        std::unordered_map<unsigned int, Delegate<const Collision&>> TriggerEnterList;
+        std::unordered_map<unsigned int, Delegate<const Collision&>> TriggerStayList;
+        std::unordered_map<unsigned int, Delegate<const Collision&>> TriggerExitList;
     private:
+        std::vector<PendingCollisionEvent> m_pendingCollisionEvents;
+        std::vector<PendingTriggerEvent>   m_pendingTriggerEvents;
+
         glm::vec3 GetLinearVelocity(PxActor* actor) {
             if (auto rb = actor->is<PxRigidDynamic>()) {
                 PxVec3 v = rb->getLinearVelocity();
                 return glm::vec3{ v.x, v.y, v.z };
             }
             return glm::vec3{ 0.0f };
+        }
+
+        void BuildCollisionData(const PxContactPairHeader& pairHeader, const PxContactPair& cp, Collision& outA, Collision& outB) {
+            unsigned int entityA = static_cast<unsigned int>(reinterpret_cast<uintptr_t>(pairHeader.actors[0]->userData));
+            unsigned int entityB = static_cast<unsigned int>(reinterpret_cast<uintptr_t>(pairHeader.actors[1]->userData));
+
+            outA.thisEntityID = entityA;
+            outA.otherEntityID = entityB;
+            outB.thisEntityID = entityB;
+            outB.otherEntityID = entityA;
+
+            PxContactPairPoint contacts[16];
+            PxU32 contactCount = cp.extractContacts(contacts, 16);
+
+            outA.contacts.reserve(contactCount);
+            outB.contacts.reserve(contactCount);
+
+            glm::vec3 totalImpulse{ 0.0f };
+
+            for (PxU32 j = 0; j < contactCount; ++j) {
+                const PxContactPairPoint& p = contacts[j];
+
+                ContactPoint ptA;
+                ptA.point = { p.position.x, p.position.y, p.position.z };
+                ptA.normal = { p.normal.x,   p.normal.y,   p.normal.z };
+                ptA.impulse = p.impulse.magnitude();
+                ptA.separation = p.separation;
+
+                ContactPoint ptB = ptA;
+                ptB.normal = -ptA.normal; 
+
+                outA.contacts.push_back(ptA);
+                outB.contacts.push_back(ptB);
+
+                totalImpulse += glm::vec3{ p.impulse.x, p.impulse.y, p.impulse.z };
+            }
+
+            float impulseMag = glm::length(totalImpulse);
+            outA.impulse = impulseMag;
+            outB.impulse = impulseMag;
+
+            glm::vec3 velA = GetLinearVelocity(pairHeader.actors[0]);
+            glm::vec3 velB = GetLinearVelocity(pairHeader.actors[1]);
+            glm::vec3 relVel = velB - velA;
+
+            outA.relativeVelocity = relVel;
+            outB.relativeVelocity = -relVel;
         }
     };
 }

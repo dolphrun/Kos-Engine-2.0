@@ -15,21 +15,18 @@ void CommandHistory::Init() {
 		m_sceneManager.onSceneLoaded.Add([this](SceneData Data) {	Clear(); });
 		onSceneLoadedDel = true;
 	}
-	
 }
 
 void CommandHistory::Update() {
 	if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) {
 		if (ImGui::IsKeyPressed(ImGuiKey_Z)){
 			if (commandQueue.size() <= 0) return;
-
 			redoQueue.push(commandQueue.top());
 			commandQueue.top().Get()->Undo(m_ecs, this);
 			commandQueue.pop();
 		}
 		else if (ImGui::IsKeyPressed(ImGuiKey_Y)) {
 			if (redoQueue.size() <= 0) return;
-			
 			commandQueue.push(redoQueue.top());
 			redoQueue.top().Get()->Redo(m_ecs, this);
 			redoQueue.pop();
@@ -51,7 +48,7 @@ void CommandHistory::RegisterRemapID(EntityID original, EntityID newID) {
 		}
 	}
 	idRemapping[original] = newID;
-	//std::cout << "Remapped [" << original << "] to [" << newID << "]" << std::endl;
+	LOGGING_INFO("Remapped [{}] to [{}]", original, newID);
 }
 
 void CommandHistory::DeleteRemapID(EntityID original) {
@@ -81,8 +78,8 @@ void CommandHistory::AddGameObject::Redo(ecs::ECS& ecs, CommandHistory* hist) {
 	ecs.SetActive(newID, true);
 }
 
-CommandHistory::DeleteGameObject::DeleteGameObject(EntityID _id, std::string _scene, ecs::ECS& ecs, CommandHistory* hist) 
-	: Command(_id), sceneName(_scene) {
+CommandHistory::DeleteGameObject::DeleteGameObject(EntityID _id, std::string _scene, ecs::ECS& ecs, CommandHistory* hist)
+	: Command(_id), sceneName(_scene), parent(-1) {
 	if (ecs.GetParent(_id).has_value()) {
 		parent = ecs.GetParent(_id).value();
 	}

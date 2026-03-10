@@ -41,6 +41,8 @@ namespace physics {
 
 		PxSceneDesc sceneDesc{ m_physics->getTolerancesScale() };
 		sceneDesc.gravity = PxVec3{ 0.0f, -19.81f, 0.0f };
+		sceneDesc.flags |= PxSceneFlag::eENABLE_CCD;                    
+		sceneDesc.flags |= PxSceneFlag::eENABLE_PCM;
 		m_cpuDispatcher = PxDefaultCpuDispatcherCreate(2);
 		sceneDesc.cpuDispatcher = m_cpuDispatcher;
 		sceneDesc.filterShader = ToPhysxCustomFilter;
@@ -116,6 +118,7 @@ namespace physics {
 			m_scene->simulate(m_fixedDeltaTime);
 			m_scene->fetchResults(true);
 			if (m_eventCallback) { 
+				m_eventCallback->FlushEvents();
 				m_eventCallback->ProcessCollisionStay();
 				m_eventCallback->ProcessTriggerStay();
 			}
@@ -176,8 +179,79 @@ namespace physics {
 			outHit.normal = glm::vec3{ hit.block.normal.x, hit.block.normal.y, hit.block.normal.z };
 			outHit.distance = hit.block.distance;
 			if (hit.block.actor && hit.block.actor->userData) { outHit.entityID = reinterpret_cast<unsigned int>(hit.block.actor->userData); }
+			m_debugRays.push_back({ origin, outHit.point });
 			return true;
 		}
+		m_debugRays.push_back({ origin, origin + glm::normalize(direction) * maxDistance });
 		return false;
+	}
+
+	bool PhysicsManager::Raycast(const glm::vec3& origin, const glm::vec3& direction, float maxDistance, RaycastHit& outHit, const std::vector<void*>& actorsToIgnore) {
+		if (!m_scene) { return false; }
+
+		PxVec3 pxOrigin{ origin.x, origin.y, origin.z };
+		PxVec3 pxDirection{ direction.x, direction.y, direction.z };
+		pxDirection.normalize();
+
+		struct MultiIgnoreFilter : public PxQueryFilterCallback {
+			const std::vector<void*>& ignoreList;
+			MultiIgnoreFilter(const std::vector<void*>& list) : ignoreList(list) {}
+
+			PxQueryHitType::Enum preFilter(const PxFilterData& filterData, const PxShape* shape,
+				const PxRigidActor* actor, PxHitFlags& queryFlags) override {
+				for (void* ignored : ignoreList) {
+					if (actor == static_cast<PxRigidActor*>(ignored)) { return PxQueryHitType::eNONE; }
+				}
+				return PxQueryHitType::eBLOCK;
+			}
+
+			PxQueryHitType::Enum postFilter(const PxFilterData& filterData, const PxQueryHit& hit,
+				const PxShape* shape, const PxRigidActor* actor) override {
+				return PxQueryHitType::eBLOCK;
+			}
+		};
+
+		PxRaycastBuffer hit;
+		PxQueryFilterData filterData{ PxQueryFlag::eSTATIC | PxQueryFlag::eDYNAMIC | PxQueryFlag::ePREFILTER };
+		MultiIgnoreFilter filterCallback{ actorsToIgnore };
+
+		bool isHit = m_scene->raycast(pxOrigin, pxDirection, maxDistance, hit, PxHitFlag::eDEFAULT, filterData, actorsToIgnore.empty() ? nullptr : &filterCallback);
+
+		if (isHit && hit.hasBlock) {
+			outHit.point = { hit.block.position.x, hit.block.position.y, hit.block.position.z };
+			outHit.normal = { hit.block.normal.x,   hit.block.normal.y,   hit.block.normal.z };
+			outHit.distance = hit.block.distance;
+			if (hit.block.actor && hit.block.actor->userData) {
+				outHit.entityID = reinterpret_cast<unsigned int>(hit.block.actor->userData);
+			}
+
+			m_debugRays.push_back({ origin, outHit.point });
+			return true;
+		}
+
+		m_debugRays.push_back({ origin, origin + glm::normalize(direction) * maxDistance });
+		return false;
+	}
+
+	std::vector<int> PhysicsManager::OverlapSphere(const glm::vec3& center, float radius) {
+		std::vector<int> result;
+		if (!m_scene) { return result; }
+		PxSphereGeometry sphereGeom{ radius };
+		PxTransform pos{ PxVec3{ center.x, center.y, center.z } };
+		PxOverlapBuffer overlapBuffer;
+		PxOverlapHit overlapHit[32];
+		overlapBuffer = PxOverlapBuffer(overlapHit, 32);
+		PxQueryFilterData filterData{ PxQueryFlag::eSTATIC | PxQueryFlag::eDYNAMIC };
+		if (m_scene->overlap(sphereGeom, pos, overlapBuffer, filterData)) {
+			for (PxU32 i = 0; i < overlapBuffer.getNbAnyHits(); ++i) {
+				const PxOverlapHit& hit = overlapBuffer.getAnyHit(i);
+				if (hit.actor && hit.actor->userData) {
+					int id = static_cast<int>(reinterpret_cast<uintptr_t>(hit.actor->userData));
+					result.push_back(id);
+				}
+			}
+		}
+		m_debugSpheres.push_back({ center, radius });
+		return result;
 	}
 }

@@ -1,0 +1,1027 @@
+[
+    {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
+        "entityGUID": "2a0d6624-7848-41ef-f22f-ddb781142939",
+        "NameComponent": {
+            "entityName": "Parent",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "10a014c1-bc40-3951-e275-0d5952e01c74",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "35ad7074-7a4f-3b56-9cbf-0477d4e55639"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "928affd5-5a5e-0869-9434-f83add20059e"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Floors",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Floors.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 4.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999552741646767,
+                            "y": 0.009999552741646767,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 4.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999553672969341,
+                            "y": 0.009999553672969341,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "51fd0ad4-9468-cd8d-c90c-a8536baf1df4",
+        "NameComponent": {
+            "entityName": "Parent",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -8.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -8.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "fb77718c-2909-49ec-9248-e96fd27edb13",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "35ad7074-7a4f-3b56-9cbf-0477d4e55639"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "928affd5-5a5e-0869-9434-f83add20059e"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Floors",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Floors.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 4.0,
+                            "y": 0.0,
+                            "z": -8.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999552741646767,
+                            "y": 0.009999552741646767,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 4.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999553672969341,
+                            "y": 0.009999553672969341,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "1ef59ce4-9b3a-531d-cd26-7a71579a9a45",
+        "NameComponent": {
+            "entityName": "Parent",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 8.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 8.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "da9e1889-3784-ffdb-728b-8586c606488c",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "35ad7074-7a4f-3b56-9cbf-0477d4e55639"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "928affd5-5a5e-0869-9434-f83add20059e"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Floors",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Floors.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 4.0,
+                            "y": 0.0,
+                            "z": 8.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999552741646767,
+                            "y": 0.009999552741646767,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 4.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999553672969341,
+                            "y": 0.009999553672969341,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "0e8b08eb-601a-cbf3-5dc7-16b20fd5e24f",
+        "NameComponent": {
+            "entityName": "Parent",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 8.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 8.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "eced751b-1dd5-5f69-df4f-01f506a20138",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "35ad7074-7a4f-3b56-9cbf-0477d4e55639"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "928affd5-5a5e-0869-9434-f83add20059e"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Floors",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Floors.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 12.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999552741646767,
+                            "y": 0.009999552741646767,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 4.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999553672969341,
+                            "y": 0.009999553672969341,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "896ae386-1105-2722-7792-4ac035c757b8",
+        "NameComponent": {
+            "entityName": "Parent",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 8.0,
+                    "y": 0.0,
+                    "z": -8.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 8.0,
+                    "y": 0.0,
+                    "z": -8.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "4cc1244e-bd33-9ef4-7e88-b05f08436ab4",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "35ad7074-7a4f-3b56-9cbf-0477d4e55639"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "928affd5-5a5e-0869-9434-f83add20059e"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Floors",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Floors.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 12.0,
+                            "y": 0.0,
+                            "z": -8.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999552741646767,
+                            "y": 0.009999552741646767,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 4.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999553672969341,
+                            "y": 0.009999553672969341,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "6f02d0da-933d-3191-ca08-1b79c43f6373",
+        "NameComponent": {
+            "entityName": "Parent",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 8.0,
+                    "y": 0.0,
+                    "z": 8.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 8.0,
+                    "y": 0.0,
+                    "z": 8.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "3dceac1c-ecfe-43f6-b254-ce4bedd7a2d4",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "35ad7074-7a4f-3b56-9cbf-0477d4e55639"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "928affd5-5a5e-0869-9434-f83add20059e"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Floors",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Floors.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 12.0,
+                            "y": 0.0,
+                            "z": 8.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999552741646767,
+                            "y": 0.009999552741646767,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 4.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999553672969341,
+                            "y": 0.009999553672969341,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "ab008f7f-b456-7092-ae36-e827fc525653",
+        "NameComponent": {
+            "entityName": "Parent",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -8.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -8.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "7ab02858-f4e3-3cc3-8c7a-e5c74e754128",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "35ad7074-7a4f-3b56-9cbf-0477d4e55639"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "928affd5-5a5e-0869-9434-f83add20059e"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Floors",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Floors.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -4.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999552741646767,
+                            "y": 0.009999552741646767,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 4.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999553672969341,
+                            "y": 0.009999553672969341,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "e914220a-2ab3-1dad-109a-c0e007da6cd5",
+        "NameComponent": {
+            "entityName": "Parent",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -8.0,
+                    "y": 0.0,
+                    "z": -8.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -8.0,
+                    "y": 0.0,
+                    "z": -8.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "925338d8-28c1-6bee-e4ef-65424401a5e5",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "35ad7074-7a4f-3b56-9cbf-0477d4e55639"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "928affd5-5a5e-0869-9434-f83add20059e"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Floors",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Floors.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -4.0,
+                            "y": 0.0,
+                            "z": -8.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999552741646767,
+                            "y": 0.009999552741646767,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 4.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999553672969341,
+                            "y": 0.009999553672969341,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "25830fbe-255e-e3a3-b380-8b37d9f7f5b7",
+        "NameComponent": {
+            "entityName": "Parent",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -8.0,
+                    "y": 0.0,
+                    "z": 8.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -8.0,
+                    "y": 0.0,
+                    "z": 8.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "963c530c-81f6-3137-7a52-880c68c6147a",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "35ad7074-7a4f-3b56-9cbf-0477d4e55639"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "928affd5-5a5e-0869-9434-f83add20059e"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Floors",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Floors.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -4.0,
+                            "y": 0.0,
+                            "z": 8.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999552741646767,
+                            "y": 0.009999552741646767,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 4.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999553672969341,
+                            "y": 0.009999553672969341,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            }
+        ]
+    }
+]

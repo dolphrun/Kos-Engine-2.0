@@ -2,160 +2,155 @@
 #include "ECS/Component/Component.h"
 #include "Config/pch.h"
 #include "ScriptAdapter/TemplateSC.h"
+#include "PauseMenuScript.h"
 
 /*
     UIButtonScript
     ==============
     A reusable button script for scene switching and quitting.
 
-    Features:
-    - Click button OR press number keys (0/1/2) to trigger actions
-    - Dropdown for action type
-
-    Keyboard shortcuts:
-    - Press 0: Does nothing (None action)
-    - Press 1: Load scene (if currentSceneGUID and targetSceneGUID are set)
-    - Press 2: Quit game
-
-    How to use:
-    1. Attach to button entity with ButtonComponent + SpriteComponent
-    2. Select actionType from dropdown (0=None, 1=LoadScene, 2=QuitGame)
-    3. For LoadScene: drag scene files to currentSceneGUID and targetSceneGUID
-    4. Can trigger by clicking button OR pressing 0/1/2 keys
+    Action types:
+    0 = None
+    1 = LoadScene
+    2 = QuitGame
+    3 = ResumeGame
+    4 = Options (stub)
 */
 
 class UIButtonScript : public TemplateSC {
 public:
 
-    // ===== Action Type Enum =====
-    // NOTE: To make this show as dropdown in inspector, you may need to tell
-    // your reflection system to treat this as an enum. If it's showing as a
-    // slider/scroller instead of dropdown, ask your engine programmer how to
-    // register enums for the reflection system.
     enum class ButtonAction {
         None = 0,
         LoadScene = 1,
-        QuitGame = 2
+        QuitGame = 2,
+        ResumeGame = 3,
+        Options = 4
     };
 
-    // Action selector (should show as dropdown if reflection supports it)
-    // 0 = None, 1 = LoadScene, 2 = QuitGame
     int actionType = 0;
 
-    // Scene switching (only used if actionType == 1)
-    utility::GUID currentSceneGUID;  // Scene to clear (can leave empty, ClearAllScene clears everything)
-    utility::GUID targetSceneGUID;   // Scene to load
+    utility::GUID currentSceneGUID;
+    utility::GUID targetSceneGUID;
 
-    // Keyboard shortcuts toggle
-    bool useKeyboardShortcuts = true;  // Enable number key shortcuts (0/1/2)
-
-    // Internal state
+    bool useKeyboardShortcuts = true;
     bool wasPressed = false;
 
     void Start() override {
         wasPressed = false;
 
         std::cout << "[UIButtonScript] Start() - Entity: " << entity << std::endl;
-        std::cout << "  Action: " << GetActionName() << std::endl;
+        std::cout << "  Action: " << GetActionName() << " (" << actionType << ")" << std::endl;
         std::cout << "  Current Scene: " << currentSceneGUID.GetToString() << std::endl;
         std::cout << "  Target Scene: " << targetSceneGUID.GetToString() << std::endl;
         std::cout << "  Keyboard shortcuts: " << (useKeyboardShortcuts ? "Enabled (0/1/2)" : "Disabled") << std::endl;
     }
 
     void Update() override {
-        bool shouldTrigger = false;
-        int triggeredAction = -1;  // -1 = no trigger, 0/1/2 = specific action
+        // Handle sprite swapping
+        if (ecsPtr->HasComponent<ecs::ButtonComponent>(entity) &&
+            ecsPtr->HasComponent<ecs::SpriteComponent>(entity)) {
 
-        // Check button press (uses the assigned actionType)
+            auto* btn = ecsPtr->GetComponent<ecs::ButtonComponent>(entity);
+            auto* spr = ecsPtr->GetComponent<ecs::SpriteComponent>(entity);
+
+            if (btn->useSpriteSwap) {
+                if (btn->isPressed && !btn->pressedSprite.Empty())
+                    spr->spriteGUID = btn->pressedSprite;
+                else if (btn->isHovered && !btn->hoveredSprite.Empty())
+                    spr->spriteGUID = btn->hoveredSprite;
+                else if (!btn->normalSprite.Empty())
+                    spr->spriteGUID = btn->normalSprite;
+            }
+        }
+
+        bool shouldTrigger = false;
+        int triggeredAction = -1;
+
+        // Check button click
         if (ecsPtr->HasComponent<ecs::ButtonComponent>(entity)) {
             auto* buttonComp = ecsPtr->GetComponent<ecs::ButtonComponent>(entity);
-
             if (buttonComp->isPressed && !wasPressed) {
                 shouldTrigger = true;
-                triggeredAction = actionType;  // Use the button's assigned action
+                triggeredAction = actionType;
             }
-
             wasPressed = buttonComp->isPressed;
         }
 
-        // Check keyboard shortcuts (each number key triggers its corresponding action)
+        // Check keyboard shortcuts
         if (useKeyboardShortcuts) {
             if (Input->IsKeyTriggered(keys::NUM0)) {
-                shouldTrigger = true;
-                triggeredAction = 0;  // None action
-                std::cout << "[UIButtonScript] Key '0' pressed!" << std::endl;
+                shouldTrigger = true; triggeredAction = 0;
+                std::cout << "[UIButtonScript] Key '0' pressed!\n";
             }
             else if (Input->IsKeyTriggered(keys::NUM1)) {
-                shouldTrigger = true;
-                triggeredAction = 1;  // LoadScene action
-                std::cout << "[UIButtonScript] Key '1' pressed!" << std::endl;
+                shouldTrigger = true; triggeredAction = 1;
+                std::cout << "[UIButtonScript] Key '1' pressed!\n";
             }
             else if (Input->IsKeyTriggered(keys::NUM2)) {
-                shouldTrigger = true;
-                triggeredAction = 2;  // QuitGame action
-                std::cout << "[UIButtonScript] Key '2' pressed!" << std::endl;
+                shouldTrigger = true; triggeredAction = 2;
+                std::cout << "[UIButtonScript] Key '2' pressed!\n";
             }
         }
 
-        // Execute the triggered action
         if (shouldTrigger && triggeredAction != -1) {
-            std::cout << "[UIButtonScript] ===== TRIGGERED! =====" << std::endl;
+            std::cout << "[UIButtonScript] ===== TRIGGERED! =====\n";
             ExecuteAction(static_cast<ButtonAction>(triggeredAction));
         }
     }
 
 private:
-
     void ExecuteAction(ButtonAction action) {
         switch (action) {
 
         case ButtonAction::None:
-            std::cout << "[UIButtonScript] Action 0: None - doing nothing." << std::endl;
+            std::cout << "[UIButtonScript] Action: None\n";
             break;
 
         case ButtonAction::LoadScene:
-            std::cout << "[UIButtonScript] Action 1: LoadScene" << std::endl;
+            std::cout << "[UIButtonScript] Action: LoadScene\n";
             SwitchScene();
             break;
 
         case ButtonAction::QuitGame:
-            std::cout << "[UIButtonScript] Action 2: QuitGame" << std::endl;
+            std::cout << "[UIButtonScript] Action: QuitGame\n";
             Input->InputExitWindow();
             break;
 
+        case ButtonAction::ResumeGame:
+            std::cout << "[UIButtonScript] Action: ResumeGame\n";
+            if (PauseMenuScript::instance)
+                PauseMenuScript::instance->ResumeGame();
+            break;
+
+        case ButtonAction::Options:
+            std::cout << "[UIButtonScript] Action: Options (stub)\n";
+            break;
+
         default:
-            std::cout << "[UIButtonScript] Unknown action: " << static_cast<int>(action) << std::endl;
+            std::cout << "[UIButtonScript] Unknown action: " << static_cast<int>(action) << "\n";
             break;
         }
     }
 
     void SwitchScene() {
         if (targetSceneGUID.Empty()) {
-            std::cout << "[UIButtonScript] ERROR: targetSceneGUID is empty! Can't load scene." << std::endl;
-            std::cout << "  Target: " << targetSceneGUID.GetToString() << std::endl;
+            std::cout << "[UIButtonScript] ERROR: targetSceneGUID is empty!\n";
             return;
         }
-
-        std::cout << "[UIButtonScript] === SWITCHING SCENES ===" << std::endl;
-        std::cout << "  Clearing all scenes..." << std::endl;
-        std::cout << "  Loading: " << targetSceneGUID.GetToString() << std::endl;
-
-        // Clear all scenes (like CutSceneScript does)
+        std::cout << "[UIButtonScript] Switching to: " << targetSceneGUID.GetToString() << "\n";
         Scenes->ClearAllScene();
-
-        // Load target scene
         Scenes->LoadScene(targetSceneGUID);
-
-        std::cout << "[UIButtonScript] Scene switch complete!" << std::endl;
     }
 
-    // Helper to get action name for debug output
     std::string GetActionName() {
         switch (static_cast<ButtonAction>(actionType)) {
-        case ButtonAction::None: return "None (0)";
-        case ButtonAction::LoadScene: return "LoadScene (1)";
-        case ButtonAction::QuitGame: return "QuitGame (2)";
-        default: return "Unknown";
+        case ButtonAction::None:       return "None";
+        case ButtonAction::LoadScene:  return "LoadScene";
+        case ButtonAction::QuitGame:   return "QuitGame";
+        case ButtonAction::ResumeGame: return "ResumeGame";
+        case ButtonAction::Options:    return "Options";
+        default:                       return "Unknown";
         }
     }
 

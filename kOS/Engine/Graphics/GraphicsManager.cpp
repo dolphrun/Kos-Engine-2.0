@@ -72,7 +72,25 @@ void GraphicsManager::gm_Initialize(float width, float height) {
 	Vigniette::currentShader = &shaderManager.engineShaders.find("VignietteShader")->second;
 	FilmGrain::currentShader = &shaderManager.engineShaders.find("FilmGrainShader")->second;
 	ChromaticAberration::currentShader = &shaderManager.engineShaders.find("ChromaticAbberrationShader")->second;
+	Blur::currentShader = &shaderManager.engineShaders.find("BlurShader")->second;
+
 	//Load default texture resource
+	//Create default texture
+	std::array<unsigned char, 196608>defaultTexData{1.f};
+	Textures::defaultTexture = Textures{ "default",defaultTexData.data(),256,256,3 };
+	std::array<unsigned char, 196608>missingTexData{0.f};
+	//Fill data with vals
+	for (int i{ 0 }; i < missingTexData.size(); i += 3) {
+		int r{ i / 64 };
+		if (r % 2) {
+			//Make it pink~
+			missingTexData[i] = 247;
+			missingTexData[i + 1] = 2;
+			missingTexData[i + 2] = 211;
+		}
+	}
+	Textures::missingTexture = Textures{ "missing",missingTexData.data(),256,256,3 };
+
 	//Textures::defaultTexture.LoadDSSTexture("Resource/Default.dds", "Default");
 	//Textures::missingTexture.LoadDSSTexture("Resource/Missing.dds", "Missing");
 }
@@ -316,6 +334,7 @@ void GraphicsManager::gm_FillGBuffer(const CameraData& camera)
 	debugRenderer.RenderDebugSpheres(camera, *gBufferDebugShader);
 	debugRenderer.RenderDebugCapsules(camera, *gBufferDebugShader);
 	debugRenderer.RenderDebugMeshes(camera, *gBufferDebugShader);
+	debugRenderer.RenderDebugLines(camera, *gBufferDebugShader);
 	debugRenderer.RenderPointLightDebug(camera, *gBufferDebugShader, lightRenderer.pointLightsToDraw);
 	debugRenderer.RenderDebugFrustums(camera, *gBufferDebugShader, gameCameras);
 
@@ -793,6 +812,7 @@ unsigned int* GraphicsManager::gm_PostProcess() {
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_DEPTH_TEST); // Crucial for post-processing
 
+	PostProcessEffect::screenResolution = glm::vec2(windowWidth, windowHeight);
 	for (auto& ppe : postProcessProfile->postProcessingEffects) {
 		glBindFramebuffer(GL_FRAMEBUFFER, scratchFB->fbo);
 		glViewport(0, 0, scratchFB->width, scratchFB->height);

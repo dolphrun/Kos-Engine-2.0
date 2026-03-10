@@ -47,8 +47,14 @@ namespace Application
         /*--------------------------------------------------------------
            INITIALIZE OPENGL WINDOW
         --------------------------------------------------------------*/
-        lvWindow.enabledFullScreen = true; // set to true for fullscreen launch
+
         lvWindow.init(windowData.windowWidth, windowData.windowHeight);
+        lvWindow.enabledFullScreen = true; // set to true for fullscreen launch
+       // lvWindow.CheckFullscreen();
+        //Set window size
+        int width, height;
+        glfwGetWindowSize(lvWindow.window, &width, &height);
+
         //LOGGING_INFO("Load Window Successful");
 
         /*--------------------------------------------------------------
@@ -62,7 +68,9 @@ namespace Application
         /*--------------------------------------------------------------
            INITIALIZE GRAPHICS PIPE
         --------------------------------------------------------------*/
-        graphicsManager.gm_Initialize(static_cast<float>(windowData.windowWidth), static_cast<float>(windowData.windowHeight));
+        //Initialize on the game window
+
+        graphicsManager.gm_Initialize(static_cast<float>(width), static_cast<float>(height));
        // LOGGING_INFO("Load Graphic Pipeline Successful");
 
         /*--------------------------------------------------------------
@@ -156,7 +164,7 @@ namespace Application
                 /*--------------------------------------------------------------
                     UPDATE Render Pipeline
                 --------------------------------------------------------------*/
-                graphicsManager.gm_UpdateBuffers(static_cast<int>(lvWindow.windowWidth), static_cast<int>(lvWindow.windowHeight));
+                graphicsManager.gm_UpdateBuffers(static_cast<int>(lvWindow.currentWidth), static_cast<int>(lvWindow.currentHeight));
                 graphicsManager.gm_Update();
                 // if(graphicsManager.isButtonPressed)std::cout << graphicsManager.isButtonPressed << '\n';
 

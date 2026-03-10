@@ -82,8 +82,8 @@ public:
 	}
 
 	void Update() override {
-		if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
-			tc->LocalTransformation.position += direction * acidBlastSpeed * ecsPtr->m_GetDeltaTime();
+		if (auto* rb = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity)) {
+			rb->velocity = direction * acidBlastSpeed;
 		}
 
 		if (currentTimer <= lingerTime) {

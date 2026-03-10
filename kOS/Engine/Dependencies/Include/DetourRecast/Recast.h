@@ -772,6 +772,7 @@ inline void rcVmax(float* mx, const float* v)
 /// @param[in]		v		The vector to copy. [(x, y, z)]
 inline void rcVcopy(float* dest, const float* v)
 {
+	if (!dest || !v) return;
 	dest[0] = v[0];
 	dest[1] = v[1];
 	dest[2] = v[2];

@@ -62,6 +62,7 @@ public:
 		engineShaders.insert({ "ChromaticAbberrationShader",Shader(chromAbbVS,chromAbbFS) });
 		engineShaders.insert({ "VideoShader",Shader(videoVS,videoFS) });
 		engineShaders.insert({ "TrailShader", Shader(trailVS, trailFS) });
+		engineShaders.insert({ "BlurShader",Shader(blurVS,blurFS) });
 	}
 
 	std::unordered_map<std::string, Shader> engineShaders;
@@ -232,5 +233,11 @@ private:
 	};
 	const char* trailFS{
 		#include "CoreEngineShaders/Shaders/TrailShader/TrailShader.fs"
+	};
+	const char* blurVS{
+	#include "CoreEngineShaders/Shaders/BlurShader/BlurShader.vs"
+	};
+	const char* blurFS{
+		#include "CoreEngineShaders/Shaders/BlurShader/BlurShader.fs"
 	};
 };

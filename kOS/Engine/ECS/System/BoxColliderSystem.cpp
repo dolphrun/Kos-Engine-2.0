@@ -54,6 +54,25 @@ namespace ecs {
 			PxBoxGeometry geometry{ halfExtents.x, halfExtents.y, halfExtents.z };
 			
 			if (!shape) {
+				MeshFilterComponent* meshFilter = m_ecs.GetComponent<MeshFilterComponent>(id);
+				if (meshFilter && !meshFilter->meshGUID.Empty() && !box->autoFit) {
+					std::shared_ptr<R_Model> model = m_resourceManager.GetResource<R_Model>(meshFilter->meshGUID);
+					if (model && !model->meshes.empty()) {
+						glm::vec3 minBound{ FLT_MAX };
+						glm::vec3 maxBound{ -FLT_MAX };
+						for (const auto& m : model->meshes) {
+							for (const auto& v : m.vertices) {
+								minBound = glm::min(minBound, v.Position);
+								maxBound = glm::max(maxBound, v.Position);
+							}
+						}
+						box->box.center = (minBound + maxBound) * 0.5f;
+						box->box.size = maxBound - minBound;
+						box->autoFit = true;
+						halfExtents = box->box.size * scale * 0.5f;
+						geometry = PxBoxGeometry{ halfExtents.x, halfExtents.y, halfExtents.z };
+					}
+				}
 				shape = m_physicsManager.GetPhysics()->createShape(geometry, *m_physicsManager.GetDefaultMaterial(), true);
 				box->shape = shape;
 			}

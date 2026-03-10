@@ -45,13 +45,16 @@ namespace ecs {
             if (!transform || !box) { continue; }
 
             glm::vec3 scale = transform->WorldTransformation.scale;
-            glm::vec3 size   = box->box.size * scale;
-            glm::vec3 center = box->box.center * scale + transform->WorldTransformation.position;
+            glm::vec3 size = box->box.size * scale;
+            glm::quat rot = glm::quat(glm::radians(transform->WorldTransformation.rotation));
 
-            glm::mat4 result{ 1.0f };
-            result = glm::translate(result, center) * glm::mat4_cast(glm::quat(glm::radians(transform->WorldTransformation.rotation))) * glm::scale(result, size);
+            glm::vec3 center = transform->WorldTransformation.position + rot * (box->box.center * scale);
 
-            m_graphicsManager.gm_PushCubeDebugData(BasicDebugData{ result });
+            glm::mat4 T = glm::translate(glm::mat4{ 1.0f }, center);
+            glm::mat4 R = glm::mat4_cast(rot);
+            glm::mat4 S = glm::scale(glm::mat4{ 1.0f }, size);
+
+            m_graphicsManager.gm_PushCubeDebugData(BasicDebugData{ T * R * S });
         }
     }
 

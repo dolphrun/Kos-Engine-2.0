@@ -55,6 +55,8 @@ namespace ecs {
 		
 		bool m_haveParent{false};
 
+		bool isDirty{ true };
+
 		REFLECTABLE(TransformComponent, WorldTransformation, LocalTransformation)
 	};
 

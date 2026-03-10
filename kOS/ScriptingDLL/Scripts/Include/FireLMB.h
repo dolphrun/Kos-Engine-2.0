@@ -7,7 +7,7 @@ class EnemyManagerScript;
 
 class FireLMB : public TemplateSC {
 public:
-	int fireLMBDamage = 4;
+	int fireLMBDamage = 30;
 	glm::vec3 direction;
 
 	float timeBeforeDeath = 0.3f;
@@ -51,41 +51,19 @@ inline void FireLMB::Start() {
 			// ADD SFX OF ENEMY DEATH HERE - DONE
 			PlayRandomEnemyDeathSFX();
 
-			/*			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-							std::vector<ecs::AudioFile*> candidates;
+			auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID);
+			if (enemyScript) {
+				enemyScript->TakeDamage(fireLMBDamage, "FIRE");
+			}
 
-							for (auto& af : ac->audioFiles) {
-								if (af.isSFX) {
-									candidates.push_back(&af);
-								}
-							}
-
-							if (!candidates.empty()) {
-								int idx = rand() % static_cast<int>(candidates.size());
-								std::cout << "[BulletLogic] Random SFX index chosen = " << idx << std::endl;
-
-								candidates[idx]->requestPlay = true;
-							}
-						}*/
-						//if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-
-						//	for (auto& af : ac->audioFiles) {
-						//		if (af.audioGUID == enemyDeathSfxGUID_1 && af.isSFX) {
-						//			af.requestPlay = true;
-						//			break;
-						//		}
-						//	}
-						//}
-
-			ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth -= fireLMBDamage;
 			std::cout << "Being hit, HP left:" << ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth << "\n";
 			if (ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth <= 0) {
 				if (scoreManager) {
 					scoreManager->AddScore(scoreValue); // or whatever value you want per kill
 				}
 
-				ecsPtr->DeleteEntity(col.otherEntityID);
-				navMeshPtr->RemoveAgent(ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->agentid);
+				ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->TriggerStagger(1.f);
+
 			}
 		}
 

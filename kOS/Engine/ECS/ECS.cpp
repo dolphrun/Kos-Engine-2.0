@@ -397,6 +397,7 @@ namespace ecs{
 
 		EntityID parent = GetParent(child).value();
 		TransformComponent* parentTransform = GetComponent<TransformComponent>(parent);
+		NameComponent* parentName = GetComponent<NameComponent>(parent);
 		size_t pos{};
 		for (EntityID& id : parentTransform->m_childID) {
 			if (child == id) {
@@ -426,20 +427,13 @@ namespace ecs{
 						UpdatePrefabStatus(id);
 					}
 				}
-
 			}
-			
-
-
 		};
 		
-		UpdatePrefabStatus(child);
+		if (parentName->isPrefab) {
+			UpdatePrefabStatus(child);
+		}
 		
-
-		
-
-
-
 		//Updating Transformation Mtxs
 		if (updateTransform) {
 			childTransform->localTransform = childTransform->transformation;

@@ -74,6 +74,7 @@ public:
 	inline void gm_PushCapsuleDebugData(BasicDebugData&& data) { debugRenderer.basicDebugCapsules.emplace_back(std::move(data)); }
 	inline void gm_PushSphereDebugData(BasicDebugData&& data) { debugRenderer.basicDebugSpheres.emplace_back(std::move(data)); }
 	inline void gm_PushDebugMeshData(DebugMeshData&& data) { debugRenderer.basicDebugMeshes.emplace_back(std::move(data)); }
+	inline void gm_PushLineDebugData(DebugLineData&& data) { debugRenderer.basicDebugLines.emplace_back(std::move(data)); }
 	inline void gm_PushCubeData(CubeRenderer::CubeData&& data) { cubeRenderer.cubesToDraw.emplace_back(std::move(data)); };
 	inline void gm_PushSphereData(SphereRenderer::SphereData&& data) { sphereRenderer.spheresToDraw.emplace_back(std::move(data)); };
 	inline void gm_PushVideoData(VideoRenderer::VideoData&& videoData) { videoRenderer.vecVideoData.emplace_back(std::move(videoData)); };

@@ -100,6 +100,7 @@ namespace ecs {
 			transformComp->LocalTransformation.position = transformComp->WorldTransformation.position;
 			transformComp->localTransform = transformComp->transformation;
 		}
+		transformComp->isDirty = true;
 	}
 
 	void TransformSystem::SetImmediateWorldRotation(ECS& ecs, TransformComponent* transformComp, glm::vec3&& rot){

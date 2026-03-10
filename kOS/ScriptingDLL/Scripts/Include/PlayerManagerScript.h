@@ -3,6 +3,7 @@
 #include "PauseMenuScript.h"
 #include "LoseScreenScript.h"
 #include "WinScreenScript.h"
+#include "LevelCompleteScript.h"
 
 // --- FORWARD DECLARATIONS ---
 // Tell the compiler these classes exist first, preventing circular dependency crashes
@@ -44,6 +45,11 @@ public:
 	float fireMeleeCooldown = 1.f; // In seconds
 	float fireCurrMeleeCooldown = 0.f;
 
+	// Fire Slash Combo
+	int   fireSlashComboCount = 0;
+	float fireSlashComboWindow = 1.2f;
+	float fireCurrComboTimer = 0.f;
+
 	float fireAbilityCost = 30.f;
 
 	float fireMovementCost = 5.f;
@@ -75,7 +81,7 @@ public:
 	float acidCurrMovementCooldown = 0.f;
 
 	// PLAYER PREFS
-	int maxPlayerHitPoints = 6;
+	int maxPlayerHitPoints = 50;
 	int currPlayerHitPoints;
 	bool isDead = false;
 
@@ -139,12 +145,16 @@ public:
 	utility::GUID lightningLMBPrefab;
 
 	utility::GUID firePrefab;
-	utility::GUID acidPrefab;
 	utility::GUID lightningPrefab;
 
 	utility::GUID fireDashPrefab;
 	utility::GUID lightningDashPrefab;
 	utility::GUID acidShieldPrefab;
+	utility::GUID airBlastPrefab;
+
+	utility::GUID absorbingVFXPrefab;
+	utility::GUID absorbingVFXSpawnPoint;
+	ecs::EntityID absorbVFXSpawnObjectID;
 
 	// BACKEND PLAYER DETAILS
 	float playerRotationX = 0.f, playerRotationY = 0.f;
@@ -179,6 +189,44 @@ public:
 	float acidShieldCost = 10.f; 
 	float acidShieldCooldown = 6.f; 
 	float acidCurrShieldCooldown = 0.f;
+
+	// LIGHTNING LMB - TIMESLOW PREFS
+	float lightningTimeslowDuration = 2.0f;
+	float lightningTimeslowCost = 10.0f;
+	float lightningTimeslowCooldown = 4.0f;
+	float lightningCurrTimeslowCooldown = 0.0f;
+	float lightningCurrTimeslowTimer = 0.0f;
+	bool  isTimeslowActive = false;
+	float lightningAbilityDelay = 1.0f; // FOR ANIM
+	float lightningAbilityTimer = 0.f;   //TRACKER FOR ANIM
+
+	float groundAcceleration = 15.f;
+	float airAcceleration = 25.f;
+	float groundFriction = 8.f;
+	float airControl = 0.3f;
+	float maxGroundSpeed = 18.f;
+	float maxAirSpeed = 16.f;
+	float jumpForce = 10.f;
+	float timeSinceGrounded = 0.f;
+	float coyoteTime = 0.2f;
+	float jumpGraceTime = 0.f;
+	float jumpGraceDuration = 0.05f;
+
+	float cameraTiltMaxAngle = 3.f;	// Max roll degrees left/right
+	float cameraTiltSpeed = 8.f;		// How fast it lerps to target
+	float cameraTiltReturnSpeed = 10.f; // How fast it returns to 0
+	float cameraCurrTiltZ = 0.f;		//current Z roll
+
+	float cameraShakeIntensity = 0.f;
+	float cameraShakeDuration = 0.f;
+	float cameraShakeTimer = 0.f;
+	float cameraShakeDelay = 0.f;
+	float cameraShakeElapsed = 0.f;
+	float cameraTiltSmoothedInput = 0.f;
+	bool  isCameraShaking = false;
+	glm::vec3 cameraShakeOriginalPos = glm::vec3(0.f);
+	glm::vec3 cameraShakeOffset = glm::vec3(0.f);
+
 
 	inline int GetMaxBulletsForCurrentWeapon() const {
 		switch (playerPowerupHeld) {
@@ -255,12 +303,19 @@ public:
 	utility::GUID fireSlashSfxGUID;
 	utility::GUID fireDashSfxGUID;
 
-	utility::GUID lightningDashSfxGUID;
+	utility::GUID lightningSlowSfxGUID;
 	utility::GUID lightningGunSfxGUID;
+
+	utility::GUID acidGrenadeGunSfxGUID;
+
 
 	//Dash VFX Timer
 	float fireDashVfxTimer = 0.0f;
 	float fireDashVfxDuration = 30.0f;
+
+
+
+
 
 	// --- FUNCTION DECLARATIONS ONLY ---
 	// Implementations are moved to the bottom of the file
@@ -271,6 +326,7 @@ public:
 	void PlayerMovementControls();
 	void PlayerCameraControls();
 	void PlayerCombatControls();
+	void CameraShake(float intensity, float duration);
 
 	bool GroundCheck();
 	//void TakeDamage(int amount); // Commented out in original
@@ -285,8 +341,8 @@ public:
 	glm::vec3 GetPlayerRightDirection();
 
 	REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
-		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, acidPrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab,
-		gunSfxGUID_1,gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningDashSfxGUID, lightningGunSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject);
+		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
+		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningSlowSfxGUID, lightningGunSfxGUID, acidGrenadeGunSfxGUID,pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject, absorbingVFXPrefab, absorbingVFXSpawnPoint);
 };
 
 // --- LATE INCLUDES & IMPLEMENTATION ---
@@ -312,6 +368,7 @@ inline void PlayerManagerScript::Start() {
 	playerGunModelPointObjectID = ecsPtr->GetEntityIDFromGUID(playerGunModelPointObject);
 	playerArmModelObjectID = ecsPtr->GetEntityIDFromGUID(playerArmModelObject);
 	playerGroundCheckObjectID = ecsPtr->GetEntityIDFromGUID(playerGroundCheckObject);
+	absorbVFXSpawnObjectID = ecsPtr->GetEntityIDFromGUID(absorbingVFXSpawnPoint);
 
 	currPlayerHitPoints = maxPlayerHitPoints;
 	currPlayerMovSpeed = maxPlayerMovSpeed;
@@ -376,16 +433,17 @@ inline void PlayerManagerScript::Update() {
 
 	if (PauseMenuScript::isPaused ||
 		WinScreenScript::isWinScreenActive ||
-		LoseScreenScript::isLoseScreenActive)
+		LoseScreenScript::isLoseScreenActive ||
+		LevelCompleteScript::isLevelCompleteActive)
 	{
-		return; // Skip ALL player input
+		return;
 	}
 
-	{
-		float& cd = GetCurrShootCooldownForCurrentWeapon();
-		if (cd > 0.0f) cd -= ecsPtr->m_GetDeltaTime();
-		if (cd < 0.0f) cd = 0.0f;
-	}
+
+	float& cd = GetCurrShootCooldownForCurrentWeapon();
+	if (cd > 0.0f) cd -= ecsPtr->m_GetDeltaTime();
+	if (cd < 0.0f) cd = 0.0f;
+
 
 	// R to manual relod
 	if (Input->IsKeyTriggered(keys::R)) {
@@ -419,11 +477,13 @@ inline void PlayerManagerScript::Update() {
 	}
 	
 	// LMB Ability Countdowns
-	if (fireCurrMeleeCooldown > 0.0f)
-	{
-		fireCurrMeleeCooldown -= ecsPtr->m_GetDeltaTime();
-		if (fireCurrMeleeCooldown < 0.0f)
-			fireCurrMeleeCooldown = 0.0f;
+	if (fireCurrComboTimer > 0.f) {
+		fireCurrComboTimer -= ecsPtr->m_GetDeltaTime();
+		if (fireCurrComboTimer <= 0.f) {
+			fireCurrComboTimer = 0.f;
+			fireSlashComboCount = 0; // Reset combo if window expired
+			std::cout << "[FireSlash] Combo expired. Reset to 0.\n";
+		}
 	}
 
 	// Dashing cooldown
@@ -438,6 +498,17 @@ inline void PlayerManagerScript::Update() {
 		PlayerMovementControls(); // Look at me
 	}
 
+	if (Input->IsKeyTriggered(keys::T)) {
+		CameraShake(0.3f, 1.0f);   // flat-ass light shake
+	}
+	if (Input->IsKeyTriggered(keys::Y)) {
+		CameraShake(4.0f, 1.0f);   // mid medium shake
+	}
+	if (Input->IsKeyTriggered(keys::U)) {
+		CameraShake(10.0f, 6.0f);   // nicki minaj ass heavy shake
+	}
+
+
 	// PlayerMovementControls(); I removed dis to disable movement while dashing, if anyone wants there to be more control during a dash need to look here
 	PlayerCameraControls();
 	PlayerCombatControls();
@@ -446,118 +517,335 @@ inline void PlayerManagerScript::Update() {
 		//std::cout << "[DEBUG] Space pressed - Grounded: " << GroundCheck() << std::endl;
 	}
 
+	if (lightningCurrTimeslowCooldown > 0.f) {
+		lightningCurrTimeslowCooldown -= ecsPtr->m_GetDeltaTime();
+		if (lightningCurrTimeslowCooldown < 0.f) {
+			lightningCurrTimeslowCooldown = 0.f;
+		}
+	}
+
+
+	// Timeslow countdown 
+	if (isTimeslowActive) {
+		lightningCurrTimeslowTimer -= ecsPtr->m_GetDeltaTime();
+		if (lightningCurrTimeslowTimer <= 0.0f) {
+			isTimeslowActive = false; 
+			lightningCurrTimeslowTimer = 0.0f;
+			ecsPtr->SetTimeScale(1.0f);
+			lightningCurrTimeslowCooldown = lightningTimeslowCooldown;
+		}
+	}
+
+	// delay for time slow
+	if (lightningAbilityTimer > 0.f) {
+
+		//SFX first
+		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+			for (auto& af : ac->audioFiles) {
+				if (af.audioGUID == lightningSlowSfxGUID && af.isSFX) {
+					af.requestPlay = true;
+					break;
+				}
+			}
+		}
+
+		lightningAbilityTimer -= ecsPtr->m_GetDeltaTime();
+		if (lightningAbilityTimer <= 0.f) {
+			ecsPtr->SetTimeScale(0.5f);
+			isTimeslowActive = true; // Activate time slow effect
+
+			lightningCurrTimeslowTimer = lightningTimeslowDuration;
+			lightningCurrTimeslowCooldown = lightningTimeslowCooldown;
+		}
+		return; // Skip further processing while the timer is active
+	}
+
+
 }
 
 inline void PlayerManagerScript::FixedUpdate() {
 
 }
 
-inline void PlayerManagerScript::PlayerMovementControls() {
+//inline void PlayerManagerScript::PlayerMovementControls() {
+//	auto* playerRigidbody = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity);
+//	if (!playerRigidbody) return;
+//
+//	// Calculate current horizontal velocity
+//	glm::vec3 currentVelocity = playerRigidbody->velocity;
+//	glm::vec3 horizontalVelocity = glm::vec3(currentVelocity.x, 0.f, currentVelocity.z);
+//	float currentSpeed = glm::length(horizontalVelocity);
+//
+//	// Determine target speed based on movement state
+//	float targetSpeed = 0.f;
+//	isMoving = (std::abs(Input->GetHorizontal()) > 0.1f || std::abs(Input->GetVertical()) > 0.1f);
+//
+//	// SPRINTING
+//	if (Input->IsKeyPressed(keys::LeftShift) && Input->GetVertical() > 0.f && GroundCheck() && !playerIsCrouching) {
+//		playerIsSprinting = true;
+//		targetSpeed = maxPlayerMovSpeed * playerSprintMultiplier; // 15 m/s
+//	}
+//
+//	// CROUCHING (not sliding)
+//	else if (playerIsCrouching && !playerIsSliding) {
+//		targetSpeed = maxPlayerMovSpeed * playerCrouchMultiplier; // 5 m/s
+//	}
+//
+//	// WALKING
+//	else if (isMoving) {
+//		playerIsWalking = true;
+//		targetSpeed = maxPlayerMovSpeed; // 10 m/s
+//	}
+//
+//	// CROUCH/SLIDE HANDLING
+//	if (Input->IsKeyPressed(keys::LeftControl) && !playerIsSliding && GroundCheck()) {
+//		if (!playerIsCrouching) {
+//			playerIsCrouching = true;
+//
+//			// Check if we should slide
+//			if (currentSpeed >= playerVelocityBeforeSlide) {
+//				playerIsSliding = true;
+//
+//				// Apply slide impulse in current movement direction
+//				glm::vec3 slideDirection = glm::length(horizontalVelocity) > 0.1f ?
+//					glm::normalize(horizontalVelocity) :
+//					GetPlayerFrontDirection();
+//
+//				glm::vec3 slideForce = slideDirection * playerSlideMultiplier;
+//				physicsPtr->AddForce(playerRigidbody->actor, slideForce, ForceMode::Impulse);
+//			}
+//		}
+//	}
+//
+//	else if (Input->IsKeyReleased(keys::LeftControl)) {
+//		playerIsCrouching = false;
+//		playerIsSliding = false;
+//	}
+//
+//	// MOVEMENT (don't apply if sliding - let physics handle it)
+//	if (!playerIsSliding && isMoving) {
+//		glm::vec3 inputDirection = GetPlayerFrontDirection() * Input->GetVertical() +
+//			GetPlayerRightDirection() * Input->GetHorizontal();
+//
+//		if (glm::length2(inputDirection) > glm::epsilon<float>()) {
+//			inputDirection = glm::normalize(inputDirection);
+//
+//			// Calculate desired velocity
+//			glm::vec3 desiredVelocity = inputDirection * targetSpeed;
+//
+//			// Calculate the force needed (proportional to velocity difference)
+//			glm::vec3 velocityError = desiredVelocity - horizontalVelocity;
+//
+//			// Apply acceleration force (this value controls responsiveness)
+//			float groundAcceleration = 25.f; // Units/s² - adjust for feel
+//			glm::vec3 moveForce = velocityError * groundAcceleration;
+//
+//			physicsPtr->AddForce(playerRigidbody->actor, moveForce, ForceMode::Acceleration);
+//		}
+//	}
+//
+//	// STOPPING - apply friction when no input and on ground
+//	else if (!playerIsSliding && GroundCheck() && !isMoving && currentSpeed > 0.1f) {
+//		float stopDeceleration = 20.f; // How fast to stop
+//		glm::vec3 stopForce = -glm::normalize(horizontalVelocity) * stopDeceleration;
+//		physicsPtr->AddForce(playerRigidbody->actor, stopForce, ForceMode::Acceleration);
+//	}
+//
+//	// SLIDING FRICTION - slow down while sliding
+//	if (playerIsSliding) {
+//		float slideFriction = 10.f; // How fast slide decays
+//		if (currentSpeed > maxPlayerMovSpeed * playerCrouchMultiplier) {
+//			glm::vec3 frictionForce = -glm::normalize(horizontalVelocity) * slideFriction;
+//			physicsPtr->AddForce(playerRigidbody->actor, frictionForce, ForceMode::Acceleration);
+//		}
+//		else {
+//			// Stop sliding when we slow down enough
+//			playerIsSliding = false;
+//		}
+//	}
+//
+//	// JUMPING
+//	if (Input->IsKeyTriggered(keys::SPACE) && GroundCheck()) {
+//		glm::vec3 jumpVelocity(0.f, currPlayerJumpForce, 0.f);
+//		physicsPtr->AddForce(playerRigidbody->actor, jumpVelocity, ForceMode::VelocityChange);
+//	}
+//
+//	// Reset flags
+//	playerIsWalking = false;
+//	playerIsSprinting = false;
+//}
+
+inline void PlayerManagerScript::PlayerMovementControls()
+{
+	float forward = Input->GetVertical();
+	float right = Input->GetHorizontal();
+
+	isMoving = (std::abs(forward) > 0.1f || std::abs(right) > 0.1f);
+
 	auto* playerRigidbody = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity);
+
 	if (!playerRigidbody) return;
 
-	// Calculate current horizontal velocity
-	glm::vec3 currentVelocity = playerRigidbody->velocity;
-	glm::vec3 horizontalVelocity = glm::vec3(currentVelocity.x, 0.f, currentVelocity.z);
-	float currentSpeed = glm::length(horizontalVelocity);
+	float dt = ecsPtr->m_GetDeltaTime();
 
-	// Determine target speed based on movement state
-	float targetSpeed = 0.f;
-	isMoving = (std::abs(Input->GetHorizontal()) > 0.1f || std::abs(Input->GetVertical()) > 0.1f);
+	glm::vec3 tempVelocity = playerRigidbody->velocity;
 
-	// SPRINTING
-	if (Input->IsKeyPressed(keys::LeftShift) && Input->GetVertical() > 0.f && GroundCheck() && !playerIsCrouching) {
-		playerIsSprinting = true;
-		targetSpeed = maxPlayerMovSpeed * playerSprintMultiplier; // 15 m/s
+	auto* playerTransform = ecsPtr->GetComponent<ecs::TransformComponent>(entity);
+	auto* playerCollider = ecsPtr->GetComponent<ecs::CapsuleColliderComponent>(entity);
+
+	jumpGraceTime -= dt;
+
+	// ==============================
+	// RAYCAST GROUND CHECK
+	// ==============================
+	bool grounded = false;
+
+	if (jumpGraceTime <= 0.f)  // Only check if grace period passed
+	{
+		// Get player position from Rigidbody
+		glm::vec3 playerPos = playerTransform->WorldTransformation.position;
+
+		RaycastHit hitInfo;
+		float rayDistance = (playerCollider->capsule.height / 2.f) + 0.1f;
+		grounded = physicsPtr->Raycast(
+			playerPos,
+			glm::vec3(0.f, -1.f, 0.f),
+			rayDistance,
+			hitInfo,
+			playerRigidbody->actor
+		);
 	}
 
-	// CROUCHING (not sliding)
-	else if (playerIsCrouching && !playerIsSliding) {
-		targetSpeed = maxPlayerMovSpeed * playerCrouchMultiplier; // 5 m/s
+	if (grounded)
+	{
+		timeSinceGrounded = 0.f; // reset timer
+	}
+	else
+	{
+		timeSinceGrounded += dt; // accumulate time in air
 	}
 
-	// WALKING
-	else if (isMoving) {
-		playerIsWalking = true;
-		targetSpeed = maxPlayerMovSpeed; // 10 m/s
+	// ==============================
+	// INPUT HANDLER
+	// ==============================
+
+	glm::vec3 wishDir =
+		GetPlayerFrontDirection() * forward +
+		GetPlayerRightDirection() * right;
+
+	if (glm::length2(wishDir) > 0.0001f)
+		wishDir = glm::normalize(wishDir);
+
+	// ==============================
+	// JUMP
+	// ==============================
+	if (Input->IsKeyTriggered(keys::SPACE) && timeSinceGrounded <= coyoteTime)
+	{
+		tempVelocity.y = jumpForce;
+		timeSinceGrounded = coyoteTime + 1.f; // prevent double jump using coyote
+		jumpGraceTime = jumpGraceDuration;
+		grounded = false;
 	}
 
-	// CROUCH/SLIDE HANDLING
-	if (Input->IsKeyPressed(keys::LeftControl) && !playerIsSliding && GroundCheck()) {
-		if (!playerIsCrouching) {
-			playerIsCrouching = true;
+	// ==============================
+	// GROUND MOVEMENT
+	// ==============================
+	if (grounded)
+	{
+		// --- Apply Friction ---//
+		float speed = glm::length(glm::vec2(tempVelocity.x, tempVelocity.z));
+		bool hasInput = glm::length2(wishDir) > 0.0001f;
 
-			// Check if we should slide
-			if (currentSpeed >= playerVelocityBeforeSlide) {
-				playerIsSliding = true;
+		if (speed > 0.0f)
+		{
+			float frictionScale = hasInput ? 0.3f : 1.0f;
+			float drop = speed * groundFriction * frictionScale * dt;
+			float newSpeed = glm::max(speed - drop, 0.f);
 
-				// Apply slide impulse in current movement direction
-				glm::vec3 slideDirection = glm::length(horizontalVelocity) > 0.1f ?
-					glm::normalize(horizontalVelocity) :
-					GetPlayerFrontDirection();
+			if (speed > 0.f)
+			{
+				float ratio = newSpeed / speed;
+				tempVelocity.x *= ratio;
+				tempVelocity.z *= ratio;
+			}
+		}
 
-				glm::vec3 slideForce = slideDirection * playerSlideMultiplier;
-				physicsPtr->AddForce(playerRigidbody->actor, slideForce, ForceMode::Impulse);
+
+		// --- Accelerate ---
+		if (glm::length2(wishDir) > 0.0f)
+		{
+			float wishSpeed = maxGroundSpeed;
+
+			float currentSpeed = glm::dot(
+				glm::vec3(tempVelocity.x, 0.f, tempVelocity.z),
+				wishDir
+			);
+
+			float addSpeed = wishSpeed - currentSpeed;
+
+			if (addSpeed > 0.f)
+			{
+				float accelSpeed = groundAcceleration * wishSpeed * dt;
+				if (accelSpeed > addSpeed)
+					accelSpeed = addSpeed;
+
+				tempVelocity += accelSpeed * wishDir;
 			}
 		}
 	}
 
-	else if (Input->IsKeyReleased(keys::LeftControl)) {
-		playerIsCrouching = false;
-		playerIsSliding = false;
-	}
+	// ==============================
+	// AIR MOVEMENT
+	// ==============================
+	else
+	{
+		if (glm::length2(wishDir) > 0.0f)
+		{
+			float wishSpeed = maxAirSpeed;
 
-	// MOVEMENT (don't apply if sliding - let physics handle it)
-	if (!playerIsSliding && isMoving) {
-		glm::vec3 inputDirection = GetPlayerFrontDirection() * Input->GetVertical() +
-			GetPlayerRightDirection() * Input->GetHorizontal();
+			float currentSpeed = glm::dot(
+				glm::vec3(tempVelocity.x, 0.f, tempVelocity.z),
+				wishDir
+			);
 
-		if (glm::length2(inputDirection) > glm::epsilon<float>()) {
-			inputDirection = glm::normalize(inputDirection);
+			float addSpeed = wishSpeed - currentSpeed;
 
-			// Calculate desired velocity
-			glm::vec3 desiredVelocity = inputDirection * targetSpeed;
+			if (addSpeed > 0.f)
+			{
+				float accelSpeed = airAcceleration * wishSpeed * dt;
+				if (accelSpeed > addSpeed)
+					accelSpeed = addSpeed;
 
-			// Calculate the force needed (proportional to velocity difference)
-			glm::vec3 velocityError = desiredVelocity - horizontalVelocity;
-
-			// Apply acceleration force (this value controls responsiveness)
-			float groundAcceleration = 25.f; // Units/s² - adjust for feel
-			glm::vec3 moveForce = velocityError * groundAcceleration;
-
-			physicsPtr->AddForce(playerRigidbody->actor, moveForce, ForceMode::Acceleration);
+				tempVelocity += accelSpeed * wishDir;
+			}
 		}
 	}
 
-	// STOPPING - apply friction when no input and on ground
-	else if (!playerIsSliding && GroundCheck() && !isMoving && currentSpeed > 0.1f) {
-		float stopDeceleration = 20.f; // How fast to stop
-		glm::vec3 stopForce = -glm::normalize(horizontalVelocity) * stopDeceleration;
-		physicsPtr->AddForce(playerRigidbody->actor, stopForce, ForceMode::Acceleration);
+	// ==============================
+	// HORIZONTAL SPEED CLAMP
+	// ==============================
+	glm::vec3 horizontal(tempVelocity.x, 0.f, tempVelocity.z);
+	float horizontalSpeed = glm::length(horizontal);
+
+	float maxSpeed = grounded ? maxGroundSpeed : maxAirSpeed;
+
+	if (horizontalSpeed > maxSpeed)
+	{
+		horizontal = glm::normalize(horizontal) * maxSpeed;
+		tempVelocity.x = horizontal.x;
+		tempVelocity.z = horizontal.z;
 	}
 
-	// SLIDING FRICTION - slow down while sliding
-	if (playerIsSliding) {
-		float slideFriction = 10.f; // How fast slide decays
-		if (currentSpeed > maxPlayerMovSpeed * playerCrouchMultiplier) {
-			glm::vec3 frictionForce = -glm::normalize(horizontalVelocity) * slideFriction;
-			physicsPtr->AddForce(playerRigidbody->actor, frictionForce, ForceMode::Acceleration);
-		}
-		else {
-			// Stop sliding when we slow down enough
-			playerIsSliding = false;
-		}
-	}
+	// Apply final velocity directly
+	glm::vec3 currentVel = playerRigidbody->velocity;
+	glm::vec3 delta = tempVelocity - currentVel;
 
-	// JUMPING
-	if (Input->IsKeyTriggered(keys::SPACE) && GroundCheck()) {
-		glm::vec3 jumpVelocity(0.f, currPlayerJumpForce, 0.f);
-		physicsPtr->AddForce(playerRigidbody->actor, jumpVelocity, ForceMode::VelocityChange);
-	}
-
-	// Reset flags
-	playerIsWalking = false;
-	playerIsSprinting = false;
+	physicsPtr->AddForce(
+		playerRigidbody->actor,
+		delta,
+		ForceMode::VelocityChange
+	);
 }
 
 inline void PlayerManagerScript::PlayerCameraControls() {
@@ -576,8 +864,67 @@ inline void PlayerManagerScript::PlayerCameraControls() {
 	playerRotationY += mouseRotationY;
 	playerRotationX = glm::clamp(playerRotationX, -90.f, 90.f);
 
-	playerCameraTransform->LocalTransformation.rotation = glm::vec3(playerRotationX, playerRotationY, 0.f);
-	playerGunCameraTransform->LocalTransformation.rotation = glm::vec3(playerRotationX, playerRotationY, 0.f);
+	//playerCameraTransform->LocalTransformation.rotation = glm::vec3(playerRotationX, playerRotationY, 0.f);
+	//playerGunCameraTransform->LocalTransformation.rotation = glm::vec3(playerRotationX, playerRotationY, 0.f);
+
+
+	// CAMERA TILT
+	float horizontalInput = Input->GetHorizontal();
+
+	float smoothSpeed = (std::abs(horizontalInput) > 0.05f) ? 10.f : 14.f;
+	cameraTiltSmoothedInput = glm::mix(cameraTiltSmoothedInput, horizontalInput, glm::clamp(smoothSpeed * ecsPtr->m_GetDeltaTime(), 0.f, 1.f));
+
+	float targetTiltZ = horizontalInput * cameraTiltMaxAngle;
+
+	float tiltBlend = (std::abs(horizontalInput) > 0.05f) ? cameraTiltSpeed : cameraTiltReturnSpeed;
+
+	cameraCurrTiltZ = glm::mix(cameraCurrTiltZ, targetTiltZ, glm::clamp(tiltBlend * ecsPtr->m_GetDeltaTime(), 0.f, 1.f));
+	// CAMERA SHAKE
+	if (isCameraShaking) {
+		cameraShakeElapsed += ecsPtr->m_GetDeltaTime();
+
+		if (cameraShakeElapsed >= cameraShakeDelay) {
+			float t = (cameraShakeElapsed - cameraShakeDelay) / cameraShakeDuration;
+
+			if (t >= 1.f) {
+				playerCameraTransform->LocalTransformation.position = cameraShakeOriginalPos;
+				isCameraShaking = false;
+				cameraShakeElapsed = 0.f;
+				cameraShakeOffset = glm::vec3(0.f);
+			}
+			else {
+				float curveValue = 1.f - t;
+				float currentIntensity = cameraShakeIntensity * curveValue;
+
+				auto randF = [](float range) -> float {
+					return ((float)rand() / (float)RAND_MAX) * 2.f * range - range;
+					};
+
+				glm::vec3 randomOffset = glm::vec3(
+					randF(currentIntensity),
+					randF(currentIntensity),
+					0.f
+				);
+
+				float yaw = glm::radians(playerRotationY);
+				float pitch = glm::radians(playerRotationX);
+
+				glm::mat4 rotMat = glm::rotate(glm::mat4(1.f), yaw, glm::vec3(0, 1, 0))
+					* glm::rotate(glm::mat4(1.f), pitch, glm::vec3(1, 0, 0));
+
+				cameraShakeOffset = glm::vec3(rotMat * glm::vec4(randomOffset, 0.f));
+			}
+		}
+	}
+
+
+	playerCameraTransform->LocalTransformation.rotation = glm::vec3(playerRotationX, playerRotationY, cameraCurrTiltZ);
+	playerGunCameraTransform->LocalTransformation.rotation = glm::vec3(playerRotationX, playerRotationY, cameraCurrTiltZ);
+
+
+
+
+
 
 	// PLAYER CROUCHING
 	if (playerIsCrouching) {
@@ -586,6 +933,15 @@ inline void PlayerManagerScript::PlayerCameraControls() {
 	else {
 		ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID)->LocalTransformation.position.y = glm::mix(ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID)->LocalTransformation.position.y, originalPlayerCrouchCameraPosY, playerCrouchTransitionSpeed * ecsPtr->m_GetDeltaTime());
 	}
+
+	//if (cameraShakeTimer > 0.f) {
+	//	playerCameraTransform->LocalTransformation.position += cameraShakeOffset;
+	//}
+
+	if (isCameraShaking && cameraShakeElapsed >= cameraShakeDelay) {
+		playerCameraTransform->LocalTransformation.position = cameraShakeOriginalPos + cameraShakeOffset;
+	}	
+
 
 	// PLAYER SPRINTING
 	auto* cameraComp = ecsPtr->GetComponent<CameraComponent>(playerCameraObjectID);
@@ -994,6 +1350,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 				if (powerupComp->powerupType == "FIRE") {
 					playerPowerupHeld = Powerup::FIRE;
+
+					//ecsPtr->SetActive()
 				}
 				else if (powerupComp->powerupType == "ACID") {
 					playerPowerupHeld = Powerup::ACID;
@@ -1006,6 +1364,20 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			/*	currInteractCooldown = interactCooldown;
 				std::cout << "Powerup picked up. Cooldown STARTO!!!!::: "
 					<< currInteractCooldown << "s\n";*/
+
+				//Raymond spawn ur absorbing here
+				if (absorbingVFXPrefab != utility::GUID{}) {
+					std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+					ecs::EntityID absorbVFXID = DuplicatePrefabIntoScene<R_Scene>(currentScene, absorbingVFXPrefab);
+
+					// Position at the designated spawn point
+					auto* spawnTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXSpawnObjectID);
+					auto* vfxTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXID);
+
+					if (spawnTf && vfxTf) {
+						vfxTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
+					}
+				}
 
 				// ADD SFX
 
@@ -1022,91 +1394,88 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 	}
 
 	// SHOOT
-	// ADD RELOAD HERE
-	if (Input->IsKeyTriggered(keys::LMB)) {
 
-		// Don't shoot while reloading
+	if (Input->IsKeyTriggered(keys::LMB) && playerPowerupHeld == Powerup::NONE) {
 		if (isReloading) return;
 
-		// Cooldown check
 		float& cd = GetCurrShootCooldownForCurrentWeapon();
 		if (cd > 0.0f) return;
 
-		// Ammo check
 		int& currBullets = GetCurrBulletsForCurrentWeapon();
 		if (currBullets <= 0) {
 			if (autoReload) StartReload();
 			return;
 		}
 
-		// Consume ammo + apply cooldown
 		currBullets -= 1;
 		cd = GetShootCooldownForCurrentWeapon();
 
-		if (animComp)
-		{
-			if (animComp->m_currentStateID)
-			{
-				//static_cast<AnimState*>(anim->m_currentState)->SetTrigger("hasShot");
-				playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("hasShot", animComp, playerController);
+		if (animComp && animComp->m_currentStateID)
+			playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("hasShot", animComp, playerController);
 
-			}
-		}
+		std::shared_ptr<R_Scene> bullet = resource->GetResource<R_Scene>(bulletPrefab);
+		if (bullet) {
+			std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+			ecs::EntityID bulletID = DuplicatePrefabIntoScene<R_Scene>(currentScene, bulletPrefab);
 
-		if (playerPowerupHeld == Powerup::NONE) {
-			std::shared_ptr<R_Scene> bullet = resource->GetResource<R_Scene>(bulletPrefab);
+			if (auto* bulletTransform = ecsPtr->GetComponent<TransformComponent>(bulletID))
+				bulletTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
 
-			if (bullet) {
-				std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-				ecs::EntityID bulletID = DuplicatePrefabIntoScene<R_Scene>(currentScene, bulletPrefab);
+			if (auto* bulletScript = ecsPtr->GetComponent<BulletLogic>(bulletID))
+				bulletScript->direction = GetPlayerCameraFrontDirection();
 
-				if (auto* bulletTransform = ecsPtr->GetComponent<TransformComponent>(bulletID)) {
-					bulletTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
-				}
-
-				if (auto* bulletScript = ecsPtr->GetComponent<BulletLogic>(bulletID)) {
-					bulletScript->direction = GetPlayerCameraFrontDirection();
-				}
-
-				// GUN SFX
-				//if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-				//	std::vector<ecs::AudioFile*> playerHurtSfxPool;
-
-				//	for (auto& af : ac->audioFiles) {
-				//		if (af.isSFX) {
-				//			playerHurtSfxPool.push_back(&af);
-				//		}
-				//	}
-
-				//	if (!playerHurtSfxPool.empty()) {
-				//		int idx = rand() % static_cast<int>(playerHurtSfxPool.size());
-				//		//std::cout << "[BulletLogic] Random SFX index chosen = " << idx << std::endl;
-
-				//		playerHurtSfxPool[idx]->requestPlay = true;
-				//	}
-				//}
-				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-
-					for (auto& af : ac->audioFiles) {
-						if (af.audioGUID == gunSfxGUID_1 && af.isSFX) {
-							af.requestPlay = true;
-							break;
-						}
+			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+				for (auto& af : ac->audioFiles) {
+					if (af.audioGUID == gunSfxGUID_1 && af.isSFX) {
+						af.requestPlay = true;
+						break;
 					}
 				}
-
-
-
 			}
 		}
-		else if (playerPowerupHeld == Powerup::FIRE) {
+	}
 
-			if (fireCurrMeleeCooldown > 0.0f)
-				return;
+	// ADD RELOAD HERE
+	if (Input->IsKeyTriggered(keys::LMB) && playerPowerupHeld != Powerup::NONE) {
+
+		float& cd = GetCurrShootCooldownForCurrentWeapon();
+		if (cd > 0.0f) return;
+
+		int& currBullets = GetCurrBulletsForCurrentWeapon();
+		if (currBullets <= 0) return; // No auto reload for powerups
+
+		currBullets -= 1;
+		cd = GetShootCooldownForCurrentWeapon();
+
+		 if (playerPowerupHeld == Powerup::FIRE) {
 
 			std::shared_ptr<R_Scene> fireLMB = resource->GetResource<R_Scene>(fireLMBPrefab);
 
-			fireCurrMeleeCooldown = fireMeleeCooldown;
+			//fireCurrMeleeCooldown = fireMeleeCooldown;
+
+			fireSlashComboCount++;
+			if (fireSlashComboCount > 3)
+				fireSlashComboCount = 1; // Loop to first slash
+
+			// Reset the combo window timer on each hit
+			fireCurrComboTimer = fireSlashComboWindow;
+
+			std::cout << "[FireSlash] Combo Hit: " << fireSlashComboCount << "\n";
+
+			// SEAN DEAR PUT YOUR ANIM HERE FOR FIRE SLASH
+			if (animComp && animComp->m_currentStateID) {
+				if (fireSlashComboCount == 1) {
+					// TODO: FIRE SLASH ANIM 1
+				}
+				else if (fireSlashComboCount == 2) {
+					// TODO: FIRE SLASH ANIM 2
+				}
+				else if (fireSlashComboCount == 3) {
+					// TODO: FIRE SLASH ANIMA 3
+					fireSlashComboCount = 0;
+					fireCurrComboTimer = 0.f;
+				}
+			}
 
 			if (fireLMB) {
 				std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
@@ -1166,21 +1535,35 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			std::shared_ptr<R_Scene> acidLMB = resource->GetResource<R_Scene>(acidLMBPrefab);
 
 			if (acidLMB) {
+
+				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+					for (auto& af : ac->audioFiles) {
+						if (af.audioGUID == acidGrenadeGunSfxGUID && af.isSFX) {
+							af.requestPlay = true;
+							break;
+						}
+					}
+				}
+
 				std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 				ecs::EntityID acidLMBID = DuplicatePrefabIntoScene<R_Scene>(currentScene, acidLMBPrefab);
 
-				if (auto* acidLMBTransform = ecsPtr->GetComponent<TransformComponent>(acidLMBID)) {
-					acidLMBTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
-				}
+				auto* spawnTf = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID);
+				auto* acidLMBTf = ecsPtr->GetComponent<TransformComponent>(acidLMBID);
+				if (!spawnTf || !acidLMBTf) return;
+
+				acidLMBTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
 
 				if (auto* acidLMBScript = ecsPtr->GetComponent<AcidLMB>(acidLMBID)) {
-					//fireLMBScript->direction = GetPlayerCameraFrontDirection();
+					glm::vec3 launchVel = GetPlayerCameraFrontDirection() * acidLMBScript->launchSpeed;
+					launchVel.y += acidLMBScript->arcUpwardKick;
+					acidLMBScript->velocity = launchVel;
 				}
-
 			}
-
 			// ADD SFX
-		}
+}
+
 		else if (playerPowerupHeld == Powerup::LIGHTNING) {
 			std::shared_ptr<R_Scene> lightningLMB = resource->GetResource<R_Scene>(lightningLMBPrefab);
 
@@ -1208,7 +1591,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			}
 
 
-			// ADD SFX
+
 		}
 	}
 
@@ -1234,22 +1617,63 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 			// ADD SFX
 		}
+
+		//Acid Blast
 		else if (playerPowerupHeld == Powerup::ACID) {
-			std::shared_ptr<R_Scene> acidCloud = resource->GetResource<R_Scene>(acidPrefab);
 
-			if (acidCloud) {
+			if (currMana < acidAbilityCost) return;
+
+			std::shared_ptr<R_Scene> airBlast = resource->GetResource<R_Scene>(airBlastPrefab);
+
+			if (airBlast) {
 				std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-				ecs::EntityID acidCloudID = DuplicatePrefabIntoScene<R_Scene>(currentScene, acidPrefab);
+				ecs::EntityID airBlastID = DuplicatePrefabIntoScene<R_Scene>(currentScene, airBlastPrefab);
 
-				if (auto* acidCloudTransform = ecsPtr->GetComponent<TransformComponent>(acidCloudID)) {
-					acidCloudTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
-				}
+				if (auto* airBlastTransform = ecsPtr->GetComponent<TransformComponent>(airBlastID)) {
+					//airBlastTransform->LocalTransformation.position =
+					//	ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
 
-				if (auto* acidCloudScript = ecsPtr->GetComponent<AcidPowerupManagerScript>(acidCloudID)) {
-					acidCloudScript->direction = GetPlayerCameraFrontDirection();
+					//auto* spawnTf = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID);
+					//auto* acidTf = ecsPtr->GetComponent<TransformComponent>(airBlastID);
+					//if (!spawnTf || !acidTf) return;
+
+					//glm::vec3 dir = GetPlayerCameraFrontDirection();
+					//dir.y = 0.f;
+					//if (glm::length(dir) > 0.0001f) dir = glm::normalize(dir);
+
+					//acidTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
+					//float yaw = glm::degrees(std::atan2(dir.x, dir.z));
+					//acidTf->LocalTransformation.rotation = glm::vec3(0.f, yaw, 0.f);
+
+					airBlastTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(playerProjectilePointObjectID)->WorldTransformation.position;
+
+					glm::vec3 dir = glm::normalize(GetPlayerCameraFrontDirection());
+					float yaw = glm::degrees(atan2(dir.x, dir.z)) + 180.f;
+					float pitch = glm::degrees(asin(-dir.y));
+					float roll = 0.f;
+
+					glm::vec3 rotationDegrees = glm::vec3(-pitch, yaw, roll);
+
+					if (auto* railgunTransform = ecsPtr->GetComponent<TransformComponent>(airBlastID)) {
+						railgunTransform->LocalTransformation.rotation = rotationDegrees;
+					}
+
+					std::vector<EntityID> children = ecsPtr->GetChild(airBlastID).value();
+
+					if (children[0]) {
+						ecsPtr->GetComponent<TransformComponent>(children[0])->LocalTransformation.rotation = glm::vec3(-pitch, yaw, 90.f);
+						ecsPtr->GetComponent<ParticleComponent>(children[0])->velocityModule.velocity_Modifier = dir * 10.f;
+					}
+
+					if (children[1]) {
+						ecsPtr->GetComponent<TransformComponent>(children[1])->LocalTransformation.rotation = glm::vec3(-pitch, yaw, 90.f);
+						ecsPtr->GetComponent<ParticleComponent>(children[0])->velocityModule.velocity_Modifier = dir * 10.f;
+					}
 				}
 
 				currMana -= acidAbilityCost;
+
+				std::cout << "[AirBlast] Spawned | Mana left: " << currMana << "\n";
 			}
 
 			// ADD SFX
@@ -1277,8 +1701,20 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				//	
 				//}
 
-				if (auto* railgunScript = ecsPtr->GetComponent<LightningPowerupManagerScript>(railgunID)) {
-					railgunScript->direction = GetPlayerCameraFrontDirection();
+				//std::vector<EntityID> childObj = ecsPtr->GetChild(railgunID).value();
+				//if (auto* railgunScript = ecsPtr->GetComponent<LightningPowerupManagerScript>(childObj[1])) {
+				//	railgunScript->direction = GetPlayerCameraFrontDirection();
+				//}
+
+				glm::vec3 dir = glm::normalize(GetPlayerCameraFrontDirection());
+				float yaw = glm::degrees(atan2(dir.x, dir.z)) + 180.f;
+				float pitch = glm::degrees(asin(-dir.y));
+				float roll = 0.f;
+
+				glm::vec3 rotationDegrees = glm::vec3(-pitch, yaw, roll);
+
+				if (auto* railgunTransform = ecsPtr->GetComponent<TransformComponent>(railgunID)) {
+					railgunTransform->LocalTransformation.rotation = rotationDegrees;
 				}
 
 				currMana -= lightningAbilityCost;
@@ -1335,7 +1771,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 			ecs::EntityID acidShieldID = DuplicatePrefabIntoScene<R_Scene>(currentScene, acidShieldPrefab);
 
-			ecsPtr->SetParent(entity, acidShieldID, false);
+			ecs::EntityID parentID = entity;
+			ecsPtr->SetParent(parentID, acidShieldID, false);
 
 			if (auto* shieldTf = ecsPtr->GetComponent<TransformComponent>(acidShieldID)) {
 				shieldTf->LocalTransformation.position = glm::vec3(0.f, 0.f, 0.f);
@@ -1352,44 +1789,19 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			// ADD SFX
 		}
 
+		//Time slow
+		else if (playerPowerupHeld == Powerup::LIGHTNING) {
 
-		else if (playerPowerupHeld == Powerup::LIGHTNING && lightningCurrMovementCooldown <= 0.f) {
+			if (lightningCurrTimeslowCooldown > 0.f) return;
+			if (isTimeslowActive)                    return;
 
-			glm::vec3 force = Input->GetVertical() * GetPlayerFrontDirection() + Input->GetHorizontal() * GetPlayerRightDirection();
-			force = glm::normalize(force);
-
-			std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-			ecs::EntityID lightningDashID = DuplicatePrefabIntoScene<R_Scene>(currentScene, lightningDashPrefab);
-			ecs::EntityID parentID = entity;
-			ecsPtr->SetParent(parentID, lightningDashID, false);
-			if (auto* vfxTf = ecsPtr->GetComponent<TransformComponent>(lightningDashID))
-			{
-				vfxTf->LocalTransformation.position = glm::vec3(1.f, 1.f, 0.f);  // offset
-				vfxTf->LocalTransformation.rotation = glm::vec3(0.f, 0.f, 0.f);
-			}
-
-			physicsPtr->AddForce(playerRigidbody->actor, force * 25.f, ForceMode::Impulse);
-
-
-			isDashing = true;
-			currentDashTimer = dashDuration;
-
-			currMana -= lightningMovementCost;
-			lightningCurrMovementCooldown = lightningMovementCooldown;
-
-			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-
-				for (auto& af : ac->audioFiles) {
-					if (af.audioGUID == lightningDashSfxGUID && af.isSFX) {
-						af.requestPlay = true;
-						break;
-					}
-				}
-			}
-			// ADD SFX
+			lightningAbilityTimer = lightningAbilityDelay;
+			currMana -= lightningTimeslowCost;
 		}
+
 	}
 }
+
 
 inline bool PlayerManagerScript::GroundCheck() {
 	if (auto* groundCheck = ecsPtr->GetComponent<GroundCheckScript>(playerGroundCheckObjectID)) {
@@ -1459,4 +1871,23 @@ inline glm::vec3 PlayerManagerScript::GetPlayerRightDirection() {
 	glm::vec3 dir(std::sin(glm::radians(-cameraRotationY)), 0.f, std::cos(glm::radians(-cameraRotationY)));
 
 	return dir;
+}
+
+inline void PlayerManagerScript::CameraShake(float intensity, float duration) {
+	// Save curr position
+	auto* cam = ecsPtr->GetComponent<ecs::TransformComponent>(playerCameraObjectID);
+	if (!cam) return;
+
+	// If already shaking, restore first 
+	if (isCameraShaking) {
+		cam->LocalTransformation.position = cameraShakeOriginalPos;
+	}
+
+	cameraShakeOriginalPos = cam->LocalTransformation.position;
+	cameraShakeIntensity = intensity;
+	cameraShakeDuration = duration;
+	cameraShakeDelay = 0.f;  
+	cameraShakeElapsed = 0.f;
+	cameraShakeOffset = glm::vec3(0.f);
+	isCameraShaking = true;
 }

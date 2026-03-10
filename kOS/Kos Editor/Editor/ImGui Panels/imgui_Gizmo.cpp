@@ -3,11 +3,6 @@
 
 
 namespace gui {
-    //floats to use
-    float posSnap[3]{ 1.f, 1.f, 1.f };
-    float rotSnap = 15.f;
-    float scaleSnap = 0.1f;
-    const float* snapVal;
 
     void ImGuiHandler::DrawGizmo(float renderPosX, float renderPosY, float renderWidth, float renderHeight)
     {
@@ -20,16 +15,25 @@ namespace gui {
         static ImGuizmo::OPERATION mCurrentGizmoOperation(ImGuizmo::TRANSLATE);
         static ImGuizmo::MODE mCurrentGizmoMode(ImGuizmo::WORLD);
         static bool useSnap{ false };
-        static float snap[3] = { 1.f, 1.f, 1.f };
+        static glm::vec3 snap = { 1.f, 1.f, 1.f };
 
-        if (ImGui::IsWindowHovered() && ImGui::IsKeyPressed(ImGuiKey_W) && !ImGuizmo::IsUsing())
-            mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
-        if (ImGui::IsWindowHovered() && ImGui::IsKeyPressed(ImGuiKey_E) && !ImGuizmo::IsUsing())
-            mCurrentGizmoOperation = ImGuizmo::ROTATE;
-        if (ImGui::IsWindowHovered() && ImGui::IsKeyPressed(ImGuiKey_R) && !ImGuizmo::IsUsing())
-            mCurrentGizmoOperation = ImGuizmo::SCALE;
-        if (ImGui::IsWindowHovered() && ImGui::IsKeyPressed(ImGuiKey_Q) && !ImGuizmo::IsUsing())
-            mCurrentGizmoMode = mCurrentGizmoMode ? ImGuizmo::LOCAL : ImGuizmo::WORLD;
+        if (ImGui::IsWindowHovered() && !ImGuizmo::IsUsing()) {
+            if(ImGui::IsKeyPressed(ImGuiKey_W)){
+                mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
+                snap = glm::vec3(1.f);
+            }
+            else if (ImGui::IsKeyPressed(ImGuiKey_E)) {
+                mCurrentGizmoOperation = ImGuizmo::ROTATE;
+                snap = glm::vec3(15.f);
+            }
+            else if (ImGui::IsKeyPressed(ImGuiKey_R)) {
+                mCurrentGizmoOperation = ImGuizmo::SCALE;
+                snap = glm::vec3(0.1f);
+            }
+            else if (ImGui::IsKeyPressed(ImGuiKey_Q)) {
+                mCurrentGizmoMode = mCurrentGizmoMode ? ImGuizmo::LOCAL : ImGuizmo::WORLD;
+            }
+        }
         if (ImGui::IsWindowHovered() && ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) {
             useSnap = true;
         }

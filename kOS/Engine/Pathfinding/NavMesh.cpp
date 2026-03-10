@@ -824,12 +824,11 @@ void NavMeshManager::Build(std::string sceneName, std::shared_ptr<Sample_TileMes
     }
 }
 
-void NavMeshManager::BuildRecastGeometry(std::string sceneName, std::shared_ptr<Sample_TileMesh>& tileMesh) {
+void NavMeshManager::BuildRecastGeometry(std::string sceneName, std::shared_ptr<Sample_TileMesh>& tileMesh)
+{
     const auto& entities = m_ecs.GetSceneData(sceneName);
-    std::vector<float> rcVerts;
-    std::vector<int> rcTris;
-    glm::vec3 min(std::numeric_limits<float>::max()), max(std::numeric_limits<float>::lowest());
-    std::vector<std::shared_ptr<R_Model>> models;
+    std::vector<RecastInputModel> inputs;
+
     for (auto obj : entities.sceneIDs)
     {
         const auto* navComp = m_ecs.GetComponent<NavMeshComponent>(obj);
@@ -838,38 +837,46 @@ void NavMeshManager::BuildRecastGeometry(std::string sceneName, std::shared_ptr<
         const auto* meshComp = m_ecs.GetComponent<MeshFilterComponent>(obj);
         if (!meshComp) continue;
 
+        const auto* trans = m_ecs.GetComponent<TransformComponent>(obj);
+        if (!trans) continue;
+
         auto meshData = resourceManager.GetResource<R_Model>(meshComp->meshGUID);
-        if (!meshData) {
+        if (!meshData)
+        {
             const auto* name = m_ecs.GetComponent<NameComponent>(obj);
             LOGGING_WARN("Unable to find meshData of " + name->entityName);
             continue;
         }
-  /*      else {
-            models.push_back(meshData);
-        }
+
+        RecastInputModel input;
+        input.model = meshData;
+        input.position = trans->WorldTransformation.position;
+        input.rotation = glm::radians(trans->WorldTransformation.rotation);
+        input.scale = trans->WorldTransformation.scale;
+
+        inputs.push_back(std::move(input));
     }
-    for (auto iter : models) {*/
-        auto trans = m_ecs.GetComponent<TransformComponent>(obj);
-        InputGeom* newGeom = new InputGeom;
-        if (!newGeom->loadMesh(&ctx, meshData, trans->WorldTransformation.scale.x)) {
-            const auto* name = m_ecs.GetComponent<NameComponent>(obj);
-            delete newGeom;
-            ctx.dumpLog("Geom load log %s:", name->entityName);
-            return;
-        }
-        LOGGING_INFO("Loading Mesh Process Completed");
-        if (!tileMesh)
-            tileMesh = std::make_shared<Sample_TileMesh>();
 
-        tileMesh->setContext(&ctx);
-        if (tileMesh && newGeom) {
-            tileMesh->handleMeshChanged(newGeom);
-        }
+    InputGeom* newGeom = new InputGeom;
+    if (!newGeom->loadMesh(&ctx, inputs))
+    {
+        delete newGeom;
+        ctx.dumpLog("Geom load log %s: Error");
+        return;
+    }
 
-        if (navMeshData.find(sceneName) == navMeshData.end()) {
-            auto result = navMeshData.emplace(sceneName, tileMesh);
-            LOGGING_INFO(sceneName + " geometry has been added to scene: " + sceneName);
-        }
+    LOGGING_INFO("Loading Mesh Process Completed");
+
+    if (!tileMesh)
+        tileMesh = std::make_shared<Sample_TileMesh>();
+
+    tileMesh->setContext(&ctx);
+    tileMesh->handleMeshChanged(newGeom);
+
+    if (navMeshData.find(sceneName) == navMeshData.end())
+    {
+        navMeshData.emplace(sceneName, tileMesh);
+        LOGGING_INFO(sceneName + " geometry has been added to scene: " + sceneName);
     }
 }
 

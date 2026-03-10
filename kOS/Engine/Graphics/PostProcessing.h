@@ -4,9 +4,11 @@
 enum PostProcessType {
 	PPT_Vigniette=0,
 	PPT_FilmGrain=1,
-	PPT_ChromaticAbberation=2
+	PPT_ChromaticAbberation=2,
+	PPT_Blur=3
 };
 struct PostProcessEffect {
+	static glm::vec2 screenResolution;
 	virtual Shader* GetShader()=0;
 	virtual void UpdateShader() {};
 	virtual PostProcessType GetType()=0;
@@ -16,6 +18,7 @@ struct Vigniette :public PostProcessEffect {
 	Vigniette(const Vigniette& other);
 	 void UpdateShader();
 	 float intensity,extent;
+	 glm::vec3 color;
 	 static Shader* currentShader;
 	 Shader* GetShader() { return currentShader;; };
 	 PostProcessType GetType() { return PostProcessType::PPT_Vigniette;;};
@@ -42,6 +45,18 @@ struct ChromaticAberration : public PostProcessEffect {
 	static Shader* currentShader;
 	Shader* GetShader() { return currentShader;; };
 	PostProcessType GetType() { return PostProcessType::PPT_ChromaticAbberation;;};
+};
+
+
+struct Blur : public PostProcessEffect {
+	Blur();
+	Blur(const Blur& other);
+	void UpdateShader();
+	float radius;
+	bool axis;
+	static Shader* currentShader;
+	Shader* GetShader() { return currentShader;; };
+	PostProcessType GetType() { return PostProcessType::PPT_Blur;; };
 };
 
 class PostProcessingProfile {

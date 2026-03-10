@@ -3,9 +3,9 @@
 
 class EnemyHurtboxScript : public TemplateSC {
 public:
-	int enemyDamage = 1;
+	int enemyDamage = 5;
 
-	float timeBeforeDeath = 0.5f;
+	float timeBeforeDeath = 1.f;
 	float currentTimer = 0.f;
 
 	utility::GUID playerHurtSfxGUID_1;
@@ -34,9 +34,10 @@ public:
 
 				ecsPtr->GetComponent<PlayerManagerScript>(col.otherEntityID)->currPlayerHitPoints -= enemyDamage;
 
-				if (ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth <= 0) {
-					// GAME OVER
-				}
+				// Prob redudant I'll comment first to see if it crashes anything
+				//if (ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth <= 0) {
+				//	// GAME OVER
+				//}
 			}
 
 			});

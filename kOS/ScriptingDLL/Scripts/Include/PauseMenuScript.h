@@ -1,5 +1,4 @@
 #pragma once
-
 #include "ECS/Component/Component.h"
 #include "Config/pch.h"
 #include "ScriptAdapter/TemplateSC.h"
@@ -9,6 +8,8 @@
 class PauseMenuScript : public TemplateSC {
 public:
     static bool requestRestart;
+    static bool isPaused;
+    static PauseMenuScript* instance;
 
     utility::GUID pauseMenuCanvasGUID;
     ecs::EntityID pauseMenuCanvasID = 0;
@@ -16,11 +17,11 @@ public:
     glm::vec3 originalCanvasPosition;
     glm::vec3 hiddenPosition = glm::vec3(-10000.0f, -10000.0f, 0.0f);
 
-    static bool isPaused;
-
     void Start() override {
+        instance = this;
+        isPaused = false;
         pauseMenuCanvasID = ecsPtr->GetEntityIDFromGUID(pauseMenuCanvasGUID);
-        
+
         if (auto* t = ecsPtr->GetComponent<TransformComponent>(pauseMenuCanvasID)) {
             originalCanvasPosition = t->LocalTransformation.position;
         }
@@ -28,24 +29,20 @@ public:
     }
 
     void Update() override {
-        // PauseMenuManager no longer reads ESC here
         // ESC is handled by PlayerManagerScript
     }
 
     void TogglePause() {
-        if (LoseScreenScript::isLoseScreenActive || WinScreenScript::isWinScreenActive) {
-            return;
-        }
+        if (LoseScreenScript::isLoseScreenActive || WinScreenScript::isWinScreenActive) return;
         isPaused ? ResumeGame() : PauseGame();
     }
 
     void PauseGame() {
         isPaused = true;
-        ecsPtr->SetTimeScale(0.5f);
+        ecsPtr->SetTimeScale(0.0f);
         ecsPtr->SetState(WAIT);
         SetPauseMenuActive(true);
         Input->HideCursor(false);
-        
         std::cout << "Game Paused\n";
     }
 
@@ -61,7 +58,7 @@ public:
     void RestartGame() {
         requestRestart = true;
         isPaused = false;
-        SetPauseMenuActive(false);   
+        SetPauseMenuActive(false);
     }
 
     bool IsPaused() const { return isPaused; }
@@ -74,9 +71,9 @@ private:
     }
 
 public:
-    REFLECTABLE(PauseMenuScript, pauseMenuCanvasGUID, isPaused, originalCanvasPosition, hiddenPosition);
+    REFLECTABLE(PauseMenuScript, pauseMenuCanvasGUID, originalCanvasPosition, hiddenPosition);
 };
 
 inline bool PauseMenuScript::requestRestart = false;
-bool PauseMenuScript::isPaused = false;
-
+inline bool PauseMenuScript::isPaused = false;
+inline PauseMenuScript* PauseMenuScript::instance = nullptr;

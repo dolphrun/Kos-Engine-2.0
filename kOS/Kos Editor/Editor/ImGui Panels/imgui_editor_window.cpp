@@ -47,6 +47,15 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 
 void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigned int windowHeight)
 {
+    for (const auto& line : m_physicsManager.m_debugRays) {
+        m_graphicsManager.gm_PushLineDebugData(DebugLineData{ line.start, line.end, line.color });
+    }
+    m_physicsManager.m_debugRays.clear();
+    for (const auto& sphere : m_physicsManager.m_debugSpheres) {
+        glm::mat4 model = glm::translate(glm::mat4{ 1.0f }, sphere.center) * glm::scale(glm::mat4{ 1.0f }, glm::vec3{ sphere.radius });
+        m_graphicsManager.gm_PushSphereDebugData(BasicDebugData{ model, sphere.color });
+    }
+    m_physicsManager.m_debugSpheres.clear();
 
     ImGuiWindowFlags window_flags = 0;
     window_flags |= ImGuiWindowFlags_MenuBar;
@@ -61,6 +70,8 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
 
         float textureAspectRatio = (float)windowWidth / (float)windowHeight;
         float renderWindowAspectRatio = renderWindowSize.x / renderWindowSize.y;
+
+        ImGuiIO& io = ImGui::GetIO();
 
         ImVec2 imageSize;
         imageSize.x = windowWidth / 2.f;
@@ -113,7 +124,12 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
             lAltPressed = false;
         }
         if (ImGui::IsMouseClicked(ImGuiMouseButton_Left) && ImGui::IsWindowHovered() && !ImGuizmo::IsOver()&&!lAltPressed) {
-            // Mouse click relative to image
+            std::cout << "CLICKING EDITOR WINDOW\n";
+            //GLenum err = glGetError();
+            //if (err != GL_NO_ERROR) {
+            //    //LOGGING_ERROR("First OpenGL Error: 0x%X", err);h
+            //    std::cout << "before OpenGL Error: " << err << std::endl;
+            //}            // Mouse click relative to image
             float relX = (mousePos.x - pos.x) / (pMax.x - pos.x);
             float relY = (mousePos.y - pos.y) / (pMax.y - pos.y);
             //Clamp
@@ -127,26 +143,40 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
             GLuint fbo;
             glGenFramebuffers(1, &fbo);
             glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+            //err = glGetError();
+            //if (err != GL_NO_ERROR) {
+            //    //LOGGING_ERROR("First OpenGL Error: 0x%X", err);h
+            //    std::cout << "after OpenGL Error3: " << err << std::endl;
+            //}
             // Bind your texture to the FBO
             glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_graphicsManager.gm_GetFBM()->gBuffer.gMaterial, 0);
             // Read just one pixel
+            //err = glGetError();
+            //if (err != GL_NO_ERROR) {
+            //    //LOGGING_ERROR("First OpenGL Error: 0x%X", err);h
+            //    std::cout << "after OpenGL Error2: " << err << std::endl;
+            //}
             float pixelVal;
             glReadPixels(pixelX, pixelY, 1, 1, GL_ALPHA, GL_FLOAT, &pixelVal);
-
-            //std::cout << "Clicked pixerl val is " << --pixelVal << '\n';
+            //err = glGetError();
+            //if (err != GL_NO_ERROR) {
+            //    //LOGGING_ERROR("First OpenGL Error: 0x%X", err);h
+            //    std::cout << "after OpenGL Error 1: " << err << std::endl;
+            //}
             --pixelVal;
+            std::cout << "Clicked pixerl val is " << pixelVal << '\n';
             m_lastClickedEntityId = pixelVal >= 0.f ? static_cast<int>(pixelVal) : m_lastClickedEntityId;
+            if (!io.KeyCtrl) {
+                m_selectedEntities.clear();
+            }
             if (pixelVal >= 0.f) {
                 m_selectedEntities.insert(m_lastClickedEntityId);
-            }
-            else {
-                m_selectedEntities.clear();
             }
             //std::cout << "PixelVal is " << pixelVal << '\n';
             if (m_ecs.HasComponent<ecs::CanvasRendererComponent>(static_cast<EntityID>(pixelVal))
                 || (m_ecs.GetParent(m_lastClickedEntityId).has_value() &&
                     m_ecs.HasComponent<ecs::CanvasRendererComponent>(m_ecs.GetParent(m_lastClickedEntityId).value()))) {
-                std::cout << "IS UI\n";
+                /*std::cout << "IS UI\n";*/
                 m_isUi = true;
             }
             else {
@@ -155,12 +185,11 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
             //Get texture
             glBindFramebuffer(GL_FRAMEBUFFER, 0);
             glDeleteFramebuffers(1, &fbo);
+
         }
 
         DrawGizmo(pos.x, pos.y, imageSize.x, imageSize.y);
 
-
-        ImGuiIO& io = ImGui::GetIO();
         float scrollInput = io.MouseWheel; // Positive for zoom in, negative for zoom out
 
         //Zoom In/Out Camera
@@ -274,28 +303,16 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
         }
 
 
-        if (ImGui::GetIO().KeysDown[ImGuiKey::ImGuiKey_F])
+        if (io.KeysDown[ImGuiKey::ImGuiKey_F])
         {
             ecs::TransformComponent* transCom = m_ecs.GetComponent<ecs::TransformComponent>(m_lastClickedEntityId);
             if (transCom != NULL) {
                 // EditorCamera::editorCamera.position = transCom->LocalTransformation.position;
                 EditorCamera::editorCamera.target = transCom->WorldTransformation.position;
-                //EditorCamera::editorCamera.r = glm::length(EditorCamera::editorCamera.position - EditorCamera::editorCamera.target);
-                //EditorCamera::editorCamera.alpha = glm::asin((EditorCamera::editorCamera.position.y - EditorCamera::editorCamera.target.y) / EditorCamera::editorCamera.r);
-                //EditorCamera::editorCamera.betta = std::atan2(EditorCamera::editorCamera.position.x - EditorCamera::editorCamera.target.x, EditorCamera::editorCamera.position.z - EditorCamera::editorCamera.target.z);
-                //EditorCamera::editorCamera.SwitchMode(true);
                 EditorCamera::editorCamera.r = 5.0f;
                 EditorCamera::editorCamera.targetDist = EditorCamera::editorCamera.minmaxTargetDist.x;
-                EditorCamera::editorCamera.alpha = 0.0f;
-                EditorCamera::editorCamera.betta = 0.0f;
-                EditorCamera::editorCamera.orbitMode = true;
-                EditorCamera::editorCamera.CalculateViewMtx();
-                EditorCamera::editorCamera.orbitMode = false;
-                // Recompute position from spherical coordinates
-                EditorCamera::editorCamera.position.x = EditorCamera::editorCamera.target.x + EditorCamera::editorCamera.r * glm::cos(EditorCamera::editorCamera.alpha) * glm::sin(EditorCamera::editorCamera.betta);
-                EditorCamera::editorCamera.position.y = EditorCamera::editorCamera.target.y + EditorCamera::editorCamera.r * glm::sin(EditorCamera::editorCamera.alpha);
-                EditorCamera::editorCamera.position.z = EditorCamera::editorCamera.target.z + EditorCamera::editorCamera.r * glm::cos(EditorCamera::editorCamera.alpha) * glm::cos(EditorCamera::editorCamera.betta);
-
+                EditorCamera::editorCamera.SwitchMode(true);
+                EditorCamera::editorCamera.SwitchMode(false);
             }
         }
         // Uncomment this block to enable Unity-style 2d view snapping thingy it's not the best but it does it's purpose for now
@@ -311,16 +328,14 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
         //}
         // 
 
-        static unsigned int lastEntity{};
+        //static unsigned int lastEntity{};
 
-        // Clean up behaviours when switching entities
-        if (static_cast<int>(lastEntity) != m_lastClickedEntityId) {
-            lastEntity = m_lastClickedEntityId;
-            m_collisionSetterMode = false;
-        }
-
+        //// Clean up behaviours when switching entities
+        //if (static_cast<int>(lastEntity) != m_lastClickedEntityId) {
+        //    lastEntity = m_lastClickedEntityId;
+        //    m_collisionSetterMode = false;
+        //}
     }
-
 
     ImGui::End();
 }

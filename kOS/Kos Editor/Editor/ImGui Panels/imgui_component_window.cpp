@@ -40,11 +40,9 @@ void gui::ImGuiHandler::DrawComponentWindow()
             ecs::EntityID entityID = m_lastClickedEntityId;
             ecs::ComponentSignature EntitySignature = m_ecs.GetEntitySignature(entityID);
 
-
             static std::vector<const char*>componentNames;
             static const auto& componentsString = m_ecs.GetComponentsString();
             if (componentNames.size() != componentsString.size()) {
-
                 componentNames.clear();
                 for (const auto& names : componentsString) {
                     componentNames.push_back(names.c_str());
@@ -104,17 +102,30 @@ void gui::ImGuiHandler::DrawComponentWindow()
                 ImGui::Text("Object Name: ");
                 ImGui::SameLine();
                 ImGui::SetNextItemWidth(100.0f);
-                ImGui::InputText("##NAMETEXT##", &nc->entityName);
+                if (nc->isPrefab) {
+                    ImGui::TextDisabled(nc->entityName.c_str());
+                }
+                else {
+                    ImGui::InputText("##NAMETEXT##", &nc->entityName);
+                }
                 ImGui::SameLine();
 
                 bool hidden = nc->hide;
                 if (ImGui::Checkbox("Hide", &hidden)) {
-                    m_commandHistory.AddCommand<CommandHistory::SetGameObjectActive>(entityID);
-                    m_ecs.SetActive(entityID, !hidden);
+                    for (auto id : m_selectedEntities) {
+                        m_commandHistory.AddCommand<CommandHistory::SetGameObjectActive>(id);
+                        m_ecs.SetActive(id, !hidden);
+                    }
                 }
 
                 ImGui::SameLine();
-                ImGui::Checkbox("Static", &nc->isStatic);
+                bool isStatic = nc->isStatic;
+                if (ImGui::Checkbox("Static", &isStatic)) {
+                    for (auto id : m_selectedEntities) {
+                        auto nameComponent = m_ecs.GetComponent<NameComponent>(id);
+                        nameComponent->isStatic = isStatic;
+                    }
+                }
 
                 ImGui::TextDisabled(std::string("Entity ID: " + std::to_string(entityID)).c_str());
                 if (!nc->entityGUID.Empty()) {
@@ -142,7 +153,12 @@ void gui::ImGuiHandler::DrawComponentWindow()
 
                     int layer_current = nc->Layer;
                     if (ImGui::Combo("Layers", &layer_current, items.data(), static_cast<int>(items.size()))) {
-                        m_layerManager.m_SwapEntityLayer((layer::LAYERS)layer_current, nc->Layer, entityID);
+
+                        for (auto id : m_selectedEntities) {
+                            auto nameComponent = m_ecs.GetComponent<NameComponent>(id);
+                            m_layerManager.m_SwapEntityLayer((layer::LAYERS)layer_current, nc->Layer, id);
+                        }
+                        
                     }
                 }
 
@@ -163,7 +179,10 @@ void gui::ImGuiHandler::DrawComponentWindow()
                     }
 
                     if (ImGui::Combo("Tag", &item, tag_Names.data(), static_cast<int>(tag_Names.size()))) {
-                        nc->entityTag = m_tags[item];
+                        for (auto id : m_selectedEntities) {
+                            auto nameComponent = m_ecs.GetComponent<NameComponent>(id);
+                            nameComponent->entityTag = m_tags[item];
+                        }
                     }
                 }
 
@@ -173,39 +192,26 @@ void gui::ImGuiHandler::DrawComponentWindow()
                         auto* tc = m_ecs.GetComponent<ecs::TransformComponent>(entityID);
                         if (!tc->m_haveParent || !m_ecs.GetComponent<ecs::NameComponent>(tc->m_parentID)->isPrefab) {
                             static bool isHeaderOpen = false;
-                            static std::vector<std::string> diffComp;
-                            //static std::map<ecs::EntityID, std::vector<std::string>> diffComp;
+                            // Instanced ID, <Prefab ID, Comp Sig>
+                            static std::map<EntityID, std::pair<EntityID, ecs::ComponentSignature>> comparedResult;
+
                             bool open = false;
                             std::string headerName = nc->prefabName + " [Changed]";
                             int IMGUI_ID = 0;
                             float pos = ImGui::GetCursorPosX() + ImGui::GetWindowSize().x - 200;
 
-                            if (open = ImGui::BeginCombo("##PrefabChanges", headerName.c_str())) {
-                                for (auto& compName : diffComp) { // Will do it such that it will show children changes too
-                                    if (compName == ecs::NameComponent::classname() || compName == ecs::TransformComponent::classname()) continue;
-                                    ImGui::TextDisabled(compName.c_str());
-                                    ImGui::SameLine();
-                                    ImGui::PushID(IMGUI_ID++);
-                                    ImGui::SetCursorPosX(pos);
-                                    if (ImGui::Button("Revert back")) {
-                                        // Look for component of prefab and set data into me
-                                        m_prefabManager.RevertToPrefab_Component(entityID, compName, nc->prefabName);
-                                        m_prefabManager.RefreshComponentDifferenceList(diffComp, entityID);
-                                    }
-                                    ImGui::SameLine();
-                                    if (ImGui::Button("Overwrite Prefab")) {
-                                        // Look for component of prefab and set data from me
-                                        m_prefabManager.OverwritePrefab_Component(entityID, compName, nc->prefabName);
-                                        m_prefabManager.RefreshComponentDifferenceList(diffComp, entityID);
-                                    }
-                                    ImGui::PopID();
-                                }
+                            if (open = ImGui::BeginCombo("##PrefabChanges", headerName.c_str(), ImGuiComboFlags_HeightLargest)) {
+
+                                DrawEntityChanges(comparedResult, entityID, entityID);
 
                                 // Overwrite All
-                                if (ImGui::Button("Overwrite All Components", { ImGui::GetContentRegionAvail().x, 0 })) {
+                                if (ImGui::Button("Overwrite Prefab [All]", { ImGui::GetContentRegionAvail().x, 0 })) {
                                     try {
+                                        m_prefabManager.SetPrefabStatus(m_lastClickedEntityId, true);
                                         m_prefabManager.OverwriteScenePrefab(m_lastClickedEntityId);
                                         m_prefabManager.UpdateAllPrefab(nc->prefabName);
+                                        // Disable scene to disable all prefab components (eg. Mesh Component & Particle Component)
+                                        m_sceneManager.SetSceneActive(nc->prefabName, false);
                                     }
                                     catch (...) {
                                         LOGGING_ERROR("Prefab overwrite, failed");
@@ -214,15 +220,45 @@ void gui::ImGuiHandler::DrawComponentWindow()
                                     ImGui::End();
                                     return;
                                 }
+
+                                if (ImGui::Button("Revert to Prefab [All]", { ImGui::GetContentRegionAvail().x, 0 })) {
+                                    try {
+                                        m_prefabManager.UpdateAllPrefab(nc->prefabName);
+                                    }
+                                    catch (...) {
+                                        LOGGING_ERROR("Prefab revert, failed");
+                                    }
+                                    ImGui::EndCombo();
+                                    ImGui::End();
+                                    return;
+                                }
+
+                                if (ImGui::Button("Update All Prefabs in Scene", { ImGui::GetContentRegionAvail().x, 0 })) {
+                                    std::vector<std::string> allPrefabsNamesInScene;
+                                    auto& sceneData = m_ecs.GetSceneData(m_activeScene);
+                                    for (auto id : sceneData.sceneIDs) {
+                                        auto iter = std::find(allPrefabsNamesInScene.begin(), allPrefabsNamesInScene.end(), m_ecs.GetComponent<NameComponent>(id)->prefabName);
+                                        if (iter == allPrefabsNamesInScene.end()) {
+                                            allPrefabsNamesInScene.push_back(m_ecs.GetComponent<NameComponent>(id)->prefabName);
+                                        }
+                                    }
+
+                                    if (allPrefabsNamesInScene.size() > 0) {
+                                        for (auto& sceneName : allPrefabsNamesInScene) {
+                                            if (sceneName == "Game Package.prefab" || sceneName == "LockRoomPrefab.prefab") continue;
+                                            m_prefabManager.UpdateAllPrefab(sceneName);
+                                        }
+                                    }
+                                }
                                 ImGui::EndCombo();
                             }
 
                             if (isHeaderOpen != open) { // Needed to show change in state
                                 if (open) {
-                                    m_prefabManager.RefreshComponentDifferenceList(diffComp, entityID);
+                                    m_prefabManager.CompareAll(comparedResult, entityID);
                                 }
                                 else {
-                                    diffComp.clear();
+                                    comparedResult.clear();
                                 }
                                 isHeaderOpen = open;
                             }
@@ -341,8 +377,62 @@ void gui::ImGuiHandler::DrawFieldComponent(ecs::Component* component, const std:
             else if (field.IsType<utility::GUID>()) {
                 draw(field.AsType<utility::GUID>());
             }
+            else if (field.IsType<std::vector<utility::GUID>>()) {
+                draw(field.AsType<std::vector<utility::GUID>>());
+            }
             else {
                 draw.count++;
+            }
+        }
+    }
+}
+
+void gui::ImGuiHandler::DrawEntityChanges(std::map<EntityID, std::pair<EntityID, ecs::ComponentSignature>>& result, ecs::EntityID entityID, ecs::EntityID root) {
+    auto childList = m_ecs.GetChild(entityID);
+    ecs::NameComponent* nc = m_ecs.GetComponent<ecs::NameComponent>(entityID);
+    if (childList.has_value()) {
+        std::string name = nc->entityName;
+        if (ImGui::TreeNodeEx(name.c_str(), ImGuiTreeNodeFlags_DefaultOpen)) {
+            DrawComponentChanges(result, entityID, root);
+
+            for (auto& child : childList.value()) {
+                DrawEntityChanges(result, child, root);
+            }
+            ImGui::TreePop();
+        }
+    }
+    else {
+        if (ImGui::TreeNodeEx(nc->entityName.c_str(), ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_DefaultOpen)) {
+            DrawComponentChanges(result, entityID, root);
+            ImGui::TreePop();
+        }
+    }
+}
+
+void gui::ImGuiHandler::DrawComponentChanges(std::map<EntityID, std::pair<EntityID, ecs::ComponentSignature>>& result, ecs::EntityID entityID, ecs::EntityID root) {
+    int IMGUI_ID = 0;
+    ecs::NameComponent* nc = m_ecs.GetComponent<ecs::NameComponent>(entityID);
+    if (result.find(entityID) != result.end()) {
+        if (result.find(entityID)->second.first < 0) return;
+
+        const auto& componentKey = m_ecs.GetComponentKeyData();
+        for (const auto& [ComponentName, key] : componentKey) {
+            if (result.find(entityID)->second.second.test(key)) {
+                ImGui::Text("-\t%s", ComponentName.c_str());
+                ImGui::SameLine();
+                ImGui::PushID(IMGUI_ID++);
+                if (ImGui::Button("Revert back")) {
+                    // Look for component of prefab and set data into me
+                    m_prefabManager.RevertToPrefab_Component(entityID, ComponentName, result.find(entityID)->second.first);
+                    m_prefabManager.CompareAll(result, root);
+                }
+                ImGui::SameLine();
+                if (ImGui::Button("Overwrite Prefab")) {
+                    // Look for component of prefab and set data from me
+                    m_prefabManager.OverwritePrefab_Component(entityID, ComponentName, nc->prefabName, result.find(entityID)->second.first);
+                    m_prefabManager.CompareAll(result, root);
+                }
+                ImGui::PopID();
             }
         }
     }

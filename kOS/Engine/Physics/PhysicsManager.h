@@ -63,8 +63,13 @@ namespace physics {
 		void AddTorque(void*, const glm::vec3&, ForceMode mode = ForceMode::Force);
 
 		bool Raycast(const glm::vec3& origin, const glm::vec3& direction, float maxDistance, RaycastHit& outHit, void* actorToIgnore);
+		bool Raycast(const glm::vec3& origin, const glm::vec3& direction, float maxDistance, RaycastHit& outHit, const std::vector<void*>& actorsToIgnore);
+		std::vector<int> OverlapSphere(const glm::vec3& center, float radius);
 
 		physicslayer::PhysicsLayer layers;
+
+		std::vector<DebugRay> m_debugRays;
+		std::vector<DebugSphere> m_debugSpheres;
 	private:
 		PhysicsManager(const PhysicsManager&) = delete;
 		PhysicsManager& operator=(const PhysicsManager&) = delete;

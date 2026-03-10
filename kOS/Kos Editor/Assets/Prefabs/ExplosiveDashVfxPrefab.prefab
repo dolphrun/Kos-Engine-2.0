@@ -11,13 +11,15 @@
         "entityGUID": "03980215-7ada-b867-5268-d7fe0ee4900b",
         "FireDashVfxScript": {
             "timeBeforeDeath": 0.75,
-            "currentTimer": 0.0
+            "currentTimer": 0.0,
+            "dashDamage": 10
         },
         "NameComponent": {
             "entityName": "ExplosiveDashVfxPrefab",
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "ExplosiveDashVfxPrefab.prefab",
             "hide": false
         },
@@ -184,6 +186,17 @@
             },
             "emissionInterval": 0.0010000000474974513,
             "no_Of_Particles": 35
+        },
+        "SphereColliderComponent": {
+            "isTrigger": true,
+            "sphere": {
+                "center": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "radius": 1.2999999523162842
+            }
         },
         "TransformComponent": {
             "WorldTransformation": {

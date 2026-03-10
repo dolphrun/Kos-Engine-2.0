@@ -38,11 +38,14 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 	RegisterScript<LightningLMB>(TemplateSC::ecsPtr);
 	RegisterScript<EnemyManagerScript>(TemplateSC::ecsPtr);
 	RegisterScript<PowerupManagerScript>(TemplateSC::ecsPtr);
+	RegisterScript<FireballSplash>(TemplateSC::ecsPtr);
+	RegisterScript<AcidAirBlast>(TemplateSC::ecsPtr);
 
 	RegisterScript<FirePowerupManagerScript>(TemplateSC::ecsPtr);
 	RegisterScript<LightningPowerupManagerScript>(TemplateSC::ecsPtr);
 	RegisterScript<AcidPowerupManagerScript>(TemplateSC::ecsPtr);
 	RegisterScript<AcidShield>(TemplateSC::ecsPtr);
+	RegisterScript<AcidGas>(TemplateSC::ecsPtr);
 
 	RegisterScript<FireLightningPowerupManagerScript>(TemplateSC::ecsPtr);
 	RegisterScript<FireAcidPowerupManagerScript>(TemplateSC::ecsPtr);
@@ -51,12 +54,13 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 
 	RegisterScript<GroundCheckScript>(TemplateSC::ecsPtr);
 	RegisterScript<PlayerManagerScript>(TemplateSC::ecsPtr);
-	//RegisterScript<AbilityUIScript>(TemplateSC::ecsPtr);
+	RegisterScript<LevelCompleteScript>(TemplateSC::ecsPtr);
 
 	RegisterScript<GameManager>(TemplateSC::ecsPtr);
 
 	RegisterScript<EnemyHurtboxScript>(TemplateSC::ecsPtr);
 	RegisterScript<EnemyBulletLogic>(TemplateSC::ecsPtr);
+	RegisterScript<TankAOEScript>(TemplateSC::ecsPtr);
 
 	RegisterScript<PlayerScript>(TemplateSC::ecsPtr);
 	RegisterScript<EnemyScripts>(TemplateSC::ecsPtr);
@@ -64,7 +68,7 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 
 	RegisterScript<EventColliderScript>(TemplateSC::ecsPtr);
 
-	RegisterScript<HealthBarScript>(TemplateSC::ecsPtr);
+	RegisterScript<EnemyHealthScript>(TemplateSC::ecsPtr);
 	RegisterScript<AbilityUIImageScript>(TemplateSC::ecsPtr);
 	RegisterScript<ScoreManagerScript>(TemplateSC::ecsPtr);
 	RegisterScript<PauseMenuScript>(TemplateSC::ecsPtr);
@@ -79,6 +83,8 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 	RegisterScript<AmmoUIScript>(TemplateSC::ecsPtr);
 	RegisterScript<NextSceneColliderScript>(TemplateSC::ecsPtr);
 	RegisterScript<Ability1Script>(TemplateSC::ecsPtr);
+
+	RegisterScript<RoomLockScript>(TemplateSC::ecsPtr);
 
 	FieldComponentTypeRegistry::CreateAllDrawers(static_cast<Fields*>(svm->field)->GetAction());
 }
