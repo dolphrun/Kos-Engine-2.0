@@ -2,192 +2,233 @@
 #include "ScriptAdapter/TemplateSC.h"
 #include "EnemyManagerScript.h"
 #include "PlayerManagerScript.h"
+#include <iostream>
+#include <unordered_map>
 
 class EnemyHealthScript : public TemplateSC {
 public:
-    // --- Player Reference ---
     utility::GUID playerObject;
     ecs::EntityID playerObjectID = -1;
-
-    // --- Raycast Settings ---
     float raycastRange = 30.0f;
 
-    // --- HUD Child Entities (assign in editor) ---
-    utility::GUID healthBarFillEntity;      // Enemy Healthbar (scales with HP)
+    utility::GUID healthBarFillEntity;
     ecs::EntityID healthBarFillID = -1;
 
-    utility::GUID resistanceEntity;         // Enemy Resistance (swaps sprite)
+    utility::GUID healthBarFullEntity;
+    ecs::EntityID healthBarFullID = -1;
+
+    utility::GUID healthBarFrameEntity;
+    ecs::EntityID healthBarFrameID = -1;
+
+    utility::GUID resistanceEntity;
     ecs::EntityID resistanceEntityID = -1;
 
-    // Affliction entities - stubbed for now, assign in editor when ready
     utility::GUID affliction1Entity;
     ecs::EntityID affliction1EntityID = -1;
-
     utility::GUID affliction2Entity;
     ecs::EntityID affliction2EntityID = -1;
-
     utility::GUID affliction3Entity;
     ecs::EntityID affliction3EntityID = -1;
 
-    // --- Resistance Sprites (assign PNGs in editor) ---
-    utility::GUID fireResistSprite;
-    utility::GUID acidResistSprite;
-    utility::GUID lightningResistSprite;
+    utility::GUID fireResistSprite, acidResistSprite, lightningResistSprite;
+    utility::GUID fireAfflictedSprite, acidAfflictedSprite, lightningAfflictedSprite;
 
-    // --- Affliction Sprites (assign PNGs in editor when ready) ---
-    utility::GUID fireAfflictedSprite;
-    utility::GUID acidAfflictedSprite;
-    utility::GUID lightningAfflictedSprite;
-
-    // --- Debug ---
     bool showDebugRay = true;
 
-    // --- Internal State ---
+    glm::vec3 originalHUDPosition = glm::vec3(0.f);
+    glm::vec3 hiddenPosition = glm::vec3(-10000.f, -10000.f, 0.f);
+    bool hudPositionCached = false;
+    bool isHUDVisible = false;
+
+    glm::vec3 originalResistancePosition = glm::vec3(0.f);
+    bool resistancePositionCached = false;
+    bool isResistanceVisible = false;
+
     glm::vec3 healthBarOriginalScale = glm::vec3(1.f);
     glm::vec3 healthBarOriginalPosition = glm::vec3(0.f);
     bool healthBarInitialized = false;
 
+    std::unordered_map<ecs::EntityID, float> enemyMaxHealthCache;
+
     void Start() override {
-        LOGGING_INFO("EnemyHealthScript: Start() called");
-
-        if (!ecsPtr) { LOGGING_ERROR("EnemyHealthScript: ecsPtr is null!");     return; }
-        if (!physicsPtr) { LOGGING_ERROR("EnemyHealthScript: physicsPtr is null!"); return; }
-
         playerObjectID = ecsPtr->GetEntityIDFromGUID(playerObject);
         healthBarFillID = ecsPtr->GetEntityIDFromGUID(healthBarFillEntity);
+        healthBarFullID = ecsPtr->GetEntityIDFromGUID(healthBarFullEntity);
+        healthBarFrameID = ecsPtr->GetEntityIDFromGUID(healthBarFrameEntity);
         resistanceEntityID = ecsPtr->GetEntityIDFromGUID(resistanceEntity);
         affliction1EntityID = ecsPtr->GetEntityIDFromGUID(affliction1Entity);
         affliction2EntityID = ecsPtr->GetEntityIDFromGUID(affliction2Entity);
         affliction3EntityID = ecsPtr->GetEntityIDFromGUID(affliction3Entity);
 
-        if (playerObjectID == -1) LOGGING_WARN("EnemyHealthScript: playerObject GUID not assigned!");
-        if (healthBarFillID == -1) LOGGING_WARN("EnemyHealthScript: healthBarFillEntity GUID not assigned!");
-        if (resistanceEntityID == -1) LOGGING_WARN("EnemyHealthScript: resistanceEntity GUID not assigned!");
+        if (playerObjectID == -1) std::cout << "[EnemyHealthScript] WARN: playerObject not resolved\n";
+        if (healthBarFillID == -1) std::cout << "[EnemyHealthScript] WARN: healthBarFillEntity not resolved\n";
+        if (healthBarFullID == -1) std::cout << "[EnemyHealthScript] WARN: healthBarFullEntity not resolved\n";
+        if (healthBarFrameID == -1) std::cout << "[EnemyHealthScript] WARN: healthBarFrameEntity not resolved\n";
+        if (resistanceEntityID == -1) std::cout << "[EnemyHealthScript] WARN: resistanceEntity not resolved\n";
 
-        // Hide resistance at start — afflictions skipped until implemented
-        if (resistanceEntityID != -1) ecsPtr->SetActive(resistanceEntityID, false);
+        // Cache HUD original position
+        auto* hudT = ecsPtr->GetComponent<TransformComponent>(entity);
+        if (hudT) {
+            originalHUDPosition = hudT->LocalTransformation.position;
+            hudPositionCached = true;
+        }
 
-        LOGGING_INFO("EnemyHealthScript: Start() complete");
+        // Cache resistance original position
+        if (resistanceEntityID != -1) {
+            auto* resistT = ecsPtr->GetComponent<TransformComponent>(resistanceEntityID);
+            if (resistT) {
+                originalResistancePosition = resistT->LocalTransformation.position;
+                resistancePositionCached = true;
+            }
+        }
+
+        // Cache health bar original transform
+        if (healthBarFillID != -1) {
+            auto* sc = ecsPtr->GetComponent<TransformComponent>(healthBarFillID);
+            if (sc) {
+                healthBarOriginalScale = sc->LocalTransformation.scale;
+                healthBarOriginalPosition = sc->LocalTransformation.position;
+                healthBarInitialized = true;
+            }
+        }
+
+        // Hide HUD at start
+        SetHUDVisible(false);
+        SetResistanceVisible(false);
     }
 
     void Update() override {
-        if (playerObjectID == -1 || healthBarFillID == -1 || resistanceEntityID == -1) {
-            LOGGING_WARN("EnemyHealthScript: IDs not resolved, skipping update");
-            return;
-        }
+        if (playerObjectID == -1 || healthBarFillID == -1) return;
 
         auto* playerMgr = ecsPtr->GetComponent<PlayerManagerScript>(playerObjectID);
-        if (!playerMgr) { LOGGING_WARN("EnemyHealthScript: playerMgr is null"); return; }
+        if (!playerMgr) return;
 
         auto* camTransform = ecsPtr->GetComponent<TransformComponent>(playerMgr->playerCameraObjectID);
-        if (!camTransform) { LOGGING_WARN("EnemyHealthScript: camTransform is null"); return; }
+        if (!camTransform) return;
 
         glm::vec3 origin = camTransform->WorldTransformation.position;
         glm::vec3 direction = playerMgr->GetPlayerCameraFrontDirection();
 
-        if (showDebugRay) {
+        if (showDebugRay)
             physicsPtr->m_debugRays.push_back({ origin, origin + direction * raycastRange });
-        }
+
+        auto* playerRb = ecsPtr->GetComponent<RigidbodyComponent>(playerObjectID);
 
         RaycastHit hit;
-        bool didHit = physicsPtr->Raycast(origin, direction, raycastRange, hit, nullptr);
-
-        LOGGING_INFO("EnemyHealthScript: didHit={} hitEntityID={}", didHit, didHit ? hit.entityID : -1);
+        bool didHit = physicsPtr->Raycast(origin, direction, raycastRange, hit, playerRb ? playerRb->actor : nullptr);
 
         if (didHit) {
             ecs::EntityID hitID = static_cast<ecs::EntityID>(hit.entityID);
+            EnemyManagerScript* enemyMgr = nullptr;
+            ecs::EntityID enemyEntityID = -1;
 
-            auto* enemyMgr = ecsPtr->GetComponent<EnemyManagerScript>(hitID);
+            auto isEnemyTag = [&](ecs::EntityID id) -> bool {
+                auto* nameComp = ecsPtr->GetComponent<NameComponent>(id);
+                return nameComp && nameComp->entityTag == "Enemy";
+                };
 
-            // Try parent if not found directly
-            if (!enemyMgr) {
+            if (isEnemyTag(hitID)) {
+                enemyMgr = ecsPtr->GetComponent<EnemyManagerScript>(hitID);
+                enemyEntityID = hitID;
+            }
+            else {
                 auto parent = ecsPtr->GetParent(hitID);
-                if (parent.has_value()) {
-                    LOGGING_INFO("EnemyHealthScript: EnemyManagerScript not on hitID={}, trying parent={}", hitID, parent.value());
+                if (parent.has_value() && isEnemyTag(parent.value())) {
                     enemyMgr = ecsPtr->GetComponent<EnemyManagerScript>(parent.value());
+                    enemyEntityID = parent.value();
                 }
             }
 
-            if (enemyMgr) {
-                LOGGING_INFO("EnemyHealthScript: Found EnemyManagerScript! enemyHealth={} isDead={}", enemyMgr->enemyHealth, enemyMgr->isDead);
-            }
-            else {
-                LOGGING_WARN("EnemyHealthScript: No EnemyManagerScript found on hitID={} or its parent", hitID);
-            }
-
             if (enemyMgr && !enemyMgr->isDead) {
-                UpdateHealthBar(enemyMgr);
+                std::cout << "[EnemyHealthScript] Hit enemy entityID=" << enemyEntityID
+                    << " enemyHealth=" << enemyMgr->enemyHealth
+                    << " isDead=" << enemyMgr->isDead << "\n";
+                SetHUDVisible(true);
+                UpdateHealthBar(enemyMgr, enemyEntityID);
                 UpdateResistanceSprite(enemyMgr);
                 return;
             }
         }
 
-        if (resistanceEntityID != -1) ecsPtr->SetActive(resistanceEntityID, false);
+        // Not pointing at enemy - hide HUD
+        SetHUDVisible(false);
     }
 
 private:
+    void SetHUDVisible(bool visible) {
+        if (!hudPositionCached) return;
+        if (isHUDVisible == visible) return;
+        auto* t = ecsPtr->GetComponent<TransformComponent>(entity);
+        if (!t) return;
+        t->LocalTransformation.position = visible ? originalHUDPosition : hiddenPosition;
+        isHUDVisible = visible;
+    }
 
-    void UpdateHealthBar(EnemyManagerScript* enemyMgr) {
-        if (!enemyMgr) return;
-        auto* tc = ecsPtr->GetComponent<TransformComponent>(healthBarFillID);
-        if (!tc) return;
+    void SetResistanceVisible(bool visible) {
+        if (!resistancePositionCached) return;
+        if (isResistanceVisible == visible) return;
+        auto* t = ecsPtr->GetComponent<TransformComponent>(resistanceEntityID);
+        if (!t) return;
+        t->LocalTransformation.position = visible ? originalResistancePosition : hiddenPosition;
+        isResistanceVisible = visible;
+    }
 
-        if (!healthBarInitialized) {
-            healthBarOriginalScale = tc->LocalTransformation.scale;
-            healthBarOriginalPosition = tc->LocalTransformation.position;
-            healthBarInitialized = true;
+    void UpdateHealthBar(EnemyManagerScript* enemyMgr, ecs::EntityID enemyEntityID) {
+        if (!healthBarInitialized || healthBarFillID == -1) return;
+
+        auto* sc = ecsPtr->GetComponent<TransformComponent>(healthBarFillID);
+        if (!sc) return;
+
+        // Only cache max health the first time we see this enemy
+        if (enemyMaxHealthCache.find(enemyEntityID) == enemyMaxHealthCache.end()) {
+            enemyMaxHealthCache[enemyEntityID] = (float)enemyMgr->enemyHealth;
         }
 
-        // TODO: replace 100.f with enemyMgr->maxEnemyHealth once your teammate adds it
-        float healthPct = std::clamp((float)enemyMgr->enemyHealth / 100.f, 0.f, 1.f);
+        float maxHealth = enemyMaxHealthCache[enemyEntityID];
+        float healthPct = std::clamp((float)enemyMgr->enemyHealth / maxHealth, 0.f, 1.f);
 
-        tc->LocalTransformation.scale.x = healthBarOriginalScale.x * healthPct;
-        tc->LocalTransformation.scale.y = healthBarOriginalScale.y;
-        tc->LocalTransformation.scale.z = healthBarOriginalScale.z;
+        std::cout << "[EnemyHealthScript] HP=" << enemyMgr->enemyHealth
+            << " max=" << maxHealth
+            << " pct=" << healthPct << "\n";
 
-        float scaleReduction = healthBarOriginalScale.x * (1.f - healthPct);
-        tc->LocalTransformation.position.x = healthBarOriginalPosition.x - (scaleReduction * 0.5f);
-        tc->LocalTransformation.position.y = healthBarOriginalPosition.y;
-        tc->LocalTransformation.position.z = healthBarOriginalPosition.z;
+        float newScaleX = healthBarOriginalScale.x * healthPct;
+        float scaleReduction = healthBarOriginalScale.x - newScaleX;
+
+        sc->LocalTransformation.scale.x = newScaleX;
+        sc->LocalTransformation.position.x = healthBarOriginalPosition.x - (scaleReduction * 0.5f);
     }
 
     void UpdateResistanceSprite(EnemyManagerScript* enemyMgr) {
         if (!enemyMgr) return;
         auto* sc = ecsPtr->GetComponent<ecs::SpriteComponent>(resistanceEntityID);
         if (!sc) return;
-
         // TODO: replace false with enemyMgr->isFireResistant etc. once your teammate adds them
         if (false) { // enemyMgr->isFireResistant
             sc->spriteGUID = fireResistSprite;
-            ecsPtr->SetActive(resistanceEntityID, true);
+            SetResistanceVisible(true);
         }
         else if (false) { // enemyMgr->isAcidResistant
             sc->spriteGUID = acidResistSprite;
-            ecsPtr->SetActive(resistanceEntityID, true);
+            SetResistanceVisible(true);
         }
         else if (false) { // enemyMgr->isLightningResistant
             sc->spriteGUID = lightningResistSprite;
-            ecsPtr->SetActive(resistanceEntityID, true);
+            SetResistanceVisible(true);
         }
         else {
-            ecsPtr->SetActive(resistanceEntityID, false);
+            SetResistanceVisible(false);
         }
     }
 
-    // --- STUBBED: hook in when afflictions are implemented ---
     void UpdateAfflictions(EnemyManagerScript* enemyMgr) {
-        // TODO: when your teammate adds affliction fields, implement this
-        // and wire up affliction1EntityID, affliction2EntityID, affliction3EntityID
-        // e.g:
-        //   if (enemyMgr->isOnFire)         -> show affliction1, set sprite to fireAfflictedSprite
-        //   if (enemyMgr->isAcidAfflicted)  -> show affliction2, set sprite to acidAfflictedSprite
-        //   if (enemyMgr->lightningStack>0) -> show affliction3, set sprite to lightningAfflictedSprite
+        // TODO: implement once teammate adds affliction fields
+        (void)enemyMgr;
     }
 
 public:
     REFLECTABLE(EnemyHealthScript,
         playerObject, raycastRange, showDebugRay,
-        healthBarFillEntity,
+        healthBarFillEntity, healthBarFullEntity, healthBarFrameEntity,
         resistanceEntity,
         affliction1Entity, affliction2Entity, affliction3Entity,
         fireResistSprite, acidResistSprite, lightningResistSprite,

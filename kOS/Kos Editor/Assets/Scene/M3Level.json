@@ -12649,22 +12649,24 @@
                 "CanvasRendererComponent": {
                     "isScreenSpace": true
                 },
-                "EnemyHealthScript": {
-                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
-                    "raycastRange": 30.0,
-                    "showDebugRay": true,
-                    "healthBarFillEntity": "e7892251-aed4-59ce-fdd8-80fe25ad7897",
-                    "resistanceEntity": "e2b11307-6e01-cf96-a181-f90bd7601ac9",
-                    "affliction1Entity": "63e02ded-b3e5-7331-7ce7-8cecdb3ee506",
-                    "affliction2Entity": "1d0d8167-1d07-0f64-d15f-83ba11c4a350",
-                    "affliction3Entity": "65632736-43cd-2588-1e27-24577e31b7ad",
-                    "fireResistSprite": "de2f3a51-50ac-8a75-3a34-5a4eee8e4333",
-                    "acidResistSprite": "a451bb8f-50f6-6020-2ee7-933afe5c0a77",
-                    "lightningResistSprite": "bce2523c-e969-0f28-70bb-019fa9a04676",
-                    "fireAfflictedSprite": "00000000-0000-0000-0000-000000000000",
-                    "acidAfflictedSprite": "00000000-0000-0000-0000-000000000000",
-                    "lightningAfflictedSprite": "00000000-0000-0000-0000-000000000000"
-                },
+              "EnemyHealthScript": {
+                "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                "raycastRange": 30.0,
+                "showDebugRay": true,
+                "healthBarFillEntity": "e7892251-aed4-59ce-fdd8-80fe25ad7897",
+                "healthBarFullEntity": "a86a3ae0-3e0b-8b2e-2444-8f77d1ef11ed",
+                "healthBarFrameEntity": "af2a82a0-1a78-4892-48f0-58f059cbf3c5",
+                "resistanceEntity": "e2b11307-6e01-cf96-a181-f90bd7601ac9",
+                "affliction1Entity": "63e02ded-b3e5-7331-7ce7-8cecdb3ee506",
+                "affliction2Entity": "1d0d8167-1d07-0f64-d15f-83ba11c4a350",
+                "affliction3Entity": "65632736-43cd-2588-1e27-24577e31b7ad",
+                "fireResistSprite": "de2f3a51-50ac-8a75-3a34-5a4eee8e4333",
+                "acidResistSprite": "a451bb8f-50f6-6020-2ee7-933afe5c0a77",
+                "lightningResistSprite": "bce2523c-e969-0f28-70bb-019fa9a04676",
+                "fireAfflictedSprite": "00000000-0000-0000-0000-000000000000",
+                "acidAfflictedSprite": "00000000-0000-0000-0000-000000000000",
+                "lightningAfflictedSprite": "00000000-0000-0000-0000-000000000000"
+              },
                 "NameComponent": {
                     "entityName": "Enemy HUD",
                     "Layer": 0,
