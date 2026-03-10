@@ -19,6 +19,7 @@ public:
 
     void Start() override {
         instance = this;
+        isPaused = false;
         pauseMenuCanvasID = ecsPtr->GetEntityIDFromGUID(pauseMenuCanvasGUID);
 
         if (auto* t = ecsPtr->GetComponent<TransformComponent>(pauseMenuCanvasID)) {
