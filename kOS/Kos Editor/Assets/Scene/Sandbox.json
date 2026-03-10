@@ -111,25 +111,25 @@
             "particleFade": 1,
             "velocityModule": {
                 "enabled": false,
-                "mode": 0,
+                "mode": 1,
                 "velocity_Modifier": {
-                    "x": 0.0,
+                    "x": -0.20000000298023224,
                     "y": 0.0,
                     "z": 0.0
                 }
             },
             "forceModule": {
-                "enabled": false,
+                "enabled": true,
                 "force": {
-                    "x": 0.0,
-                    "y": 0.0,
+                    "x": -5.599999904632568,
+                    "y": 5.400000095367432,
                     "z": 0.0
                 }
             },
             "shapeModule": {
                 "type": 1,
                 "emission_Direction": {
-                    "x": 0.0,
+                    "x": 0.6000000238418579,
                     "y": 1.0,
                     "z": 0.0
                 },
@@ -140,15 +140,15 @@
                 },
                 "sphere_Radius": 0.0,
                 "emit_From_Shell": false,
-                "cone_Angle": 0.0,
+                "cone_Angle": 1.2999999523162842,
                 "cone_Direction": {
                     "x": 0.0,
                     "y": 0.0,
                     "z": 0.0
                 },
-                "cone_Radius": 0.0,
-                "circle_Radius": 0.0,
-                "circle_Arc": 0.0,
+                "cone_Radius": 2.5999999046325684,
+                "circle_Radius": 0.4000000059604645,
+                "circle_Arc": 0.5,
                 "emit_From_Edge": false,
                 "edge_Length": 0.0,
                 "random_Direction_Amount": 0.0
@@ -265,9 +265,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 0.00784444808959961,
-                    "y": -0.6429027318954468,
-                    "z": -0.1811981201171875
+                    "x": 45.14028549194336,
+                    "y": -2.9263715744018555,
+                    "z": -0.2801511883735657
                 },
                 "rotation": {
                     "x": 0.0,
@@ -282,9 +282,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 0.00784444808959961,
-                    "y": -0.6429027318954468,
-                    "z": -0.1811981201171875
+                    "x": 45.14028549194336,
+                    "y": -2.9263715744018555,
+                    "z": -0.2801511883735657
                 },
                 "rotation": {
                     "x": 0.0,

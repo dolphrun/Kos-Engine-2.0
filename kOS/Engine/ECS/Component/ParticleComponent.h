@@ -6,24 +6,6 @@
 
 namespace ecs {
 
-	struct ParticleData {
-		glm::vec4 color;
-		glm::vec3 position;
-		glm::vec2 size;
-		glm::vec3 velocity;
-		float lifespan;
-		float lifetime;
-		glm::vec3 rotation;
-		int textureID;
-		int trailID = -1;
-	};
-
-	/*struct TrailPoint
-	{
-		glm::vec3 position;
-		float lifetime;
-	};*/
-
 	struct TrailData
 	{
 		std::vector<glm::vec3> points;
@@ -38,6 +20,26 @@ namespace ecs {
 		glm::vec3 lastPosition{};
 		bool firstFrame = true;
 	};
+
+	struct ParticleData {
+		glm::vec4 color;
+		glm::vec3 position;
+		glm::vec2 size;
+		glm::vec3 velocity;
+		float lifespan;
+		float lifetime;
+		glm::vec3 rotation;
+		int textureID;
+		TrailData trail;
+	};
+
+	/*struct TrailPoint
+	{
+		glm::vec3 position;
+		float lifetime;
+	};*/
+
+	
 
 	enum class PlayState {
 		PLAY,
@@ -302,7 +304,7 @@ namespace ecs {
 
 		//FOR THE ALIVE PARTICLES
 		std::vector<ParticleData> particle_List;
-		std::vector<TrailData> trail_List;
+		//std::vector<TrailData> trail_List;
 
 		
 
