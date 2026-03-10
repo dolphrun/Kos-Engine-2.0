@@ -25,7 +25,7 @@
             }
         },
         "FireLMB": {
-            "fireLMBDamage": 4,
+            "fireLMBDamage": 30,
             "enemyDeathSfxGUID_1": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000"

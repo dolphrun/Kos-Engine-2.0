@@ -55,6 +55,12 @@ struct DeepCopyComponents {
         count++;
     }
 
+    // GUID
+    void operator()(utility::GUID& dest, utility::GUID& source) {
+        dest = source;
+        count++;
+    }
+
     // std::vector
     template <typename U>
     void operator()(std::vector<U>& dest, const std::vector<U>& source) {
