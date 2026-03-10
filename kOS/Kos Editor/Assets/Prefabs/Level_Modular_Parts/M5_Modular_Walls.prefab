@@ -28,7 +28,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
-            "isStatic": false,
+            "isStatic": true,
             "prefabName": "M5_Modular_Walls.prefab",
             "hide": false
         },

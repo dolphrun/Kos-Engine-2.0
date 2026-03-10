@@ -268,7 +268,15 @@ namespace gui {
 
 								m_prefabSceneMode = true;
 
-								m_lastClickedEntityId = -1;
+								m_selectedEntities.clear();
+								auto& sceneData = m_ecs.sceneMap.at(prefabscene->first);
+								for (const auto id : sceneData.sceneIDs) {
+									if (!m_ecs.GetComponent<TransformComponent>(id)->m_haveParent) {
+										m_selectedEntities.insert(id);
+										m_lastClickedEntityId = id;
+										break;
+									}
+								}
 							}
 						}
 						else if (directoryPath.path().filename().extension().string() == ".json") {

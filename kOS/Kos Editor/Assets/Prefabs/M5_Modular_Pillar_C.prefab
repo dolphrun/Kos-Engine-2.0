@@ -9,16 +9,27 @@
     },
     {
         "entityGUID": "b6b3991d-d3db-9748-fb04-553f636b16a8",
+        "BoxColliderComponent": {
+            "isTrigger": false,
+            "box": {
+                "center": {
+                    "x": 0.0,
+                    "y": 900.0,
+                    "z": 0.0
+                },
+                "size": {
+                    "x": 200.0,
+                    "y": 1800.0,
+                    "z": 200.0
+                }
+            }
+        },
         "MaterialComponent": {
             "materialGUID": [
                 {
                     "materialGUID": "aafdfeda-cf30-032a-28d6-de8d7d39b241"
                 }
             ]
-        },
-        "MeshColliderComponent": {
-            "isTrigger": false,
-            "convex": false
         },
         "MeshFilterComponent": {
             "meshGUID": "f84cabb2-3277-9d67-9939-804df95b3a1d"
