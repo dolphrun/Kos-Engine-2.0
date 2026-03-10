@@ -9,16 +9,27 @@
     },
     {
         "entityGUID": "55e15050-e81b-34f2-5dc1-0860bd2be494",
+        "BoxColliderComponent": {
+            "isTrigger": false,
+            "box": {
+                "center": {
+                    "x": 25.0,
+                    "y": 400.0,
+                    "z": 0.0
+                },
+                "size": {
+                    "x": 50.0,
+                    "y": 800.0,
+                    "z": 800.0
+                }
+            }
+        },
         "MaterialComponent": {
             "materialGUID": [
                 {
                     "materialGUID": "35ad7074-7a4f-3b56-9cbf-0477d4e55639"
                 }
             ]
-        },
-        "MeshColliderComponent": {
-            "isTrigger": false,
-            "convex": false
         },
         "MeshFilterComponent": {
             "meshGUID": "928affd5-5a5e-0869-9434-f83add20059e"
@@ -28,7 +39,7 @@
             "Layer": 0,
             "entityTag": "Ground",
             "isPrefab": true,
-            "isStatic": false,
+            "isStatic": true,
             "prefabName": "M5_Modular_Floors.prefab",
             "hide": false
         },
@@ -46,8 +57,8 @@
                     "z": 89.99998474121094
                 },
                 "scale": {
-                    "x": 0.009999996982514858,
-                    "y": 0.009999996982514858,
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
                     "z": 0.009999999776482582
                 }
             },
@@ -63,8 +74,8 @@
                     "z": 89.9999771118164
                 },
                 "scale": {
-                    "x": 0.009999996982514858,
-                    "y": 0.009999996982514858,
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
                     "z": 0.009999999776482582
                 }
             }

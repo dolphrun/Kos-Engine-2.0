@@ -7,6 +7,7 @@ in vec2 Resolution;
 in float Intensity;
 in float Extent;
 uniform sampler2D screenTexture;
+in vec3 VignetteColor;
 
 void main()
 { 
@@ -20,7 +21,7 @@ void main()
     
     vig = pow(vig, Extent); // change pow for modifying the extend of the  vignette
     // Blend the vignette with the texture
-    texColor.rgb *= vig; // Apply the vignette effect to the texture's RGB channels
+    texColor.rgb = mix(VignetteColor, texColor.rgb, vig);
 
     // Output the final color
     FragColor = texColor;

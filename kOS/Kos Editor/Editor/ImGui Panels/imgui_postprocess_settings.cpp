@@ -9,7 +9,7 @@ namespace postProcessSettings{
 	std::string lastPPGUID;
 	char buffer[256];
 	PostProcessingProfile* ppp{ nullptr};
-	std::vector<const char*>profileNames = { "Add profile effect","Vigniette","Noise strength","Chromatic Abberation"};
+	std::vector<const char*>profileNames = { "Add profile effect","Vigniette","Noise strength","Chromatic Abberation","Blur"};
 }
 
 
@@ -56,6 +56,9 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 			case 3:
 				postProcessSettings::ppp->postProcessingEffects.push_back(std::make_unique<ChromaticAberration>(ChromaticAberration{}));
 				break;;
+			case 4:
+				postProcessSettings::ppp->postProcessingEffects.push_back(std::make_unique<Blur>(Blur{}));
+				break;;
 			}
 		}
 		for (auto& eff : postProcessSettings::ppp->postProcessingEffects) {
@@ -67,6 +70,7 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 				ImGui::Text("Vigniette");
 				ImGui::DragFloat("Intensity", &v->intensity, 0.01f);
 				ImGui::DragFloat("Extent", &v->extent, 0.01f);
+				ImGui::ColorEdit3("Vignette Color", glm::value_ptr(v->color));
 				break;;
 			}
 			case PPT_FilmGrain:
@@ -87,6 +91,11 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 				ImGui::DragFloat("Blue Offset", &v->blueOffset, 0.01f);
 				break;;
 			}
+			case PPT_Blur:
+				Blur* v = reinterpret_cast<Blur*>(eff.get());
+				ImGui::Text("Blur");
+				ImGui::DragFloat("Radius", &v->radius, 0.1f);
+				break;;
 			}
 		}
 		//Save profile 
@@ -116,6 +125,11 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 					Vigniette* v = reinterpret_cast<Vigniette*>(ptr.get());
 					entityData.AddMember("Intensity", v->intensity, allocator);
 					entityData.AddMember("Extent", v->extent, allocator);
+					rapidjson::Value colorArr(rapidjson::kArrayType);
+					colorArr.PushBack(v->color.r, allocator);
+					colorArr.PushBack(v->color.g, allocator);
+					colorArr.PushBack(v->color.b, allocator);
+					entityData.AddMember("Color", colorArr, allocator);
 					break;;
 				}
 				case 1:
@@ -130,6 +144,12 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 					entityData.AddMember("RedOffset", ca->redOffset, allocator);
 					entityData.AddMember("GreenOffset", ca->greenOffset, allocator);
 					entityData.AddMember("BlueOffset", ca->blueOffset, allocator);
+					break;;
+				}
+				case 3:
+				{
+					Blur* blr= reinterpret_cast<Blur*>(ptr.get());
+					entityData.AddMember("Radius", blr->radius, allocator);
 					break;;
 				}
 

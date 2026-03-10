@@ -72,6 +72,8 @@ void GraphicsManager::gm_Initialize(float width, float height) {
 	Vigniette::currentShader = &shaderManager.engineShaders.find("VignietteShader")->second;
 	FilmGrain::currentShader = &shaderManager.engineShaders.find("FilmGrainShader")->second;
 	ChromaticAberration::currentShader = &shaderManager.engineShaders.find("ChromaticAbberrationShader")->second;
+	Blur::currentShader = &shaderManager.engineShaders.find("BlurShader")->second;
+
 	//Load default texture resource
 	//Create default texture
 	std::array<unsigned char, 196608>defaultTexData{1.f};
@@ -800,6 +802,7 @@ unsigned int* GraphicsManager::gm_PostProcess() {
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_DEPTH_TEST); // Crucial for post-processing
 
+	PostProcessEffect::screenResolution = glm::vec2(windowWidth, windowHeight);
 	for (auto& ppe : postProcessProfile->postProcessingEffects) {
 		glBindFramebuffer(GL_FRAMEBUFFER, scratchFB->fbo);
 		glViewport(0, 0, scratchFB->width, scratchFB->height);

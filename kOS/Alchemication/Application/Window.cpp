@@ -262,11 +262,15 @@ namespace Application {
          if (enabledFullScreen) {
              glfwSetWindowFocusCallback(window, fullScreenFocusCallback);
              glfwSetWindowMonitor(window, monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
+             currentWidth = mode->width;
+             currentHeight = mode->height;
              enabledFullScreen = false;
         }
         else {
             glfwSetWindowFocusCallback(window, windowedFocusCallback);
             glfwSetWindowMonitor(window, nullptr, 100, 100, static_cast<int>(windowWidth), static_cast<int>(windowHeight), 0);
+            currentWidth = windowWidth;
+            currentHeight = windowHeight;
             enabledFullScreen = true;
         }
     }

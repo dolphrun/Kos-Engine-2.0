@@ -112,13 +112,10 @@ void gui::ImGuiHandler::DrawComponentWindow()
 
                 bool hidden = nc->hide;
                 if (ImGui::Checkbox("Hide", &hidden)) {
-
                     for (auto id : m_selectedEntities) {
                         m_commandHistory.AddCommand<CommandHistory::SetGameObjectActive>(id);
                         m_ecs.SetActive(id, !hidden);
                     }
-
-
                 }
 
                 ImGui::SameLine();
@@ -236,6 +233,22 @@ void gui::ImGuiHandler::DrawComponentWindow()
                                     return;
                                 }
 
+                                if (ImGui::Button("Update All Prefabs in Scene", { ImGui::GetContentRegionAvail().x, 0 })) {
+                                    std::vector<std::string> allPrefabsNamesInScene;
+                                    auto& sceneData = m_ecs.GetSceneData(m_activeScene);
+                                    for (auto id : sceneData.sceneIDs) {
+                                        auto iter = std::find(allPrefabsNamesInScene.begin(), allPrefabsNamesInScene.end(), m_ecs.GetComponent<NameComponent>(id)->prefabName);
+                                        if (iter == allPrefabsNamesInScene.end()) {
+                                            allPrefabsNamesInScene.push_back(m_ecs.GetComponent<NameComponent>(id)->prefabName);
+                                        }
+                                    }
+
+                                    if (allPrefabsNamesInScene.size() > 0) {
+                                        for (auto& sceneName : allPrefabsNamesInScene) {
+                                            m_prefabManager.UpdateAllPrefab(sceneName);
+                                        }
+                                    }
+                                }
                                 ImGui::EndCombo();
                             }
 

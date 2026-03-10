@@ -61,6 +61,8 @@ public:
 		engineShaders.insert({ "FilmGrainShader",Shader(filmGrainVS,filmGrainFS) });
 		engineShaders.insert({ "ChromaticAbberrationShader",Shader(chromAbbVS,chromAbbFS) });
 		engineShaders.insert({ "VideoShader",Shader(videoVS,videoFS) });
+		engineShaders.insert({ "BlurShader",Shader(blurVS,blurFS) });
+
 	}
 
 	std::unordered_map<std::string, Shader> engineShaders;
@@ -224,5 +226,12 @@ private:
 	};
 	const char* videoFS{
 		#include "CoreEngineShaders/Shaders/VideoShader/videoFragmentShader.fs"
+	};
+
+	const char* blurVS{
+	#include "CoreEngineShaders/Shaders/BlurShader/BlurShader.vs"
+	};
+	const char* blurFS{
+		#include "CoreEngineShaders/Shaders/BlurShader/BlurShader.fs"
 	};
 };

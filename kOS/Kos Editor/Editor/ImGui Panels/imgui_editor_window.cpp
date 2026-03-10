@@ -124,7 +124,12 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
             lAltPressed = false;
         }
         if (ImGui::IsMouseClicked(ImGuiMouseButton_Left) && ImGui::IsWindowHovered() && !ImGuizmo::IsOver()&&!lAltPressed) {
-            // Mouse click relative to image
+            std::cout << "CLICKING EDITOR WINDOW\n";
+            //GLenum err = glGetError();
+            //if (err != GL_NO_ERROR) {
+            //    //LOGGING_ERROR("First OpenGL Error: 0x%X", err);h
+            //    std::cout << "before OpenGL Error: " << err << std::endl;
+            //}            // Mouse click relative to image
             float relX = (mousePos.x - pos.x) / (pMax.x - pos.x);
             float relY = (mousePos.y - pos.y) / (pMax.y - pos.y);
             //Clamp
@@ -138,14 +143,28 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
             GLuint fbo;
             glGenFramebuffers(1, &fbo);
             glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+            //err = glGetError();
+            //if (err != GL_NO_ERROR) {
+            //    //LOGGING_ERROR("First OpenGL Error: 0x%X", err);h
+            //    std::cout << "after OpenGL Error3: " << err << std::endl;
+            //}
             // Bind your texture to the FBO
             glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_graphicsManager.gm_GetFBM()->gBuffer.gMaterial, 0);
             // Read just one pixel
+            //err = glGetError();
+            //if (err != GL_NO_ERROR) {
+            //    //LOGGING_ERROR("First OpenGL Error: 0x%X", err);h
+            //    std::cout << "after OpenGL Error2: " << err << std::endl;
+            //}
             float pixelVal;
             glReadPixels(pixelX, pixelY, 1, 1, GL_ALPHA, GL_FLOAT, &pixelVal);
-
-            //std::cout << "Clicked pixerl val is " << --pixelVal << '\n';
+            //err = glGetError();
+            //if (err != GL_NO_ERROR) {
+            //    //LOGGING_ERROR("First OpenGL Error: 0x%X", err);h
+            //    std::cout << "after OpenGL Error 1: " << err << std::endl;
+            //}
             --pixelVal;
+            std::cout << "Clicked pixerl val is " << pixelVal << '\n';
             m_lastClickedEntityId = pixelVal >= 0.f ? static_cast<int>(pixelVal) : m_lastClickedEntityId;
             if (!io.KeyCtrl) {
                 m_selectedEntities.clear();
@@ -166,6 +185,7 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
             //Get texture
             glBindFramebuffer(GL_FRAMEBUFFER, 0);
             glDeleteFramebuffers(1, &fbo);
+
         }
 
         DrawGizmo(pos.x, pos.y, imageSize.x, imageSize.y);

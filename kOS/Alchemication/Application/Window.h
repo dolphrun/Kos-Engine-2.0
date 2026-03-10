@@ -63,7 +63,8 @@ namespace Application {
 		float windowHeight;
 		float windowWidth;
 
-
+        float currentWidth;
+        float currentHeight;
         GLFWwindow* window;
 
         GLFWmonitor* monitor;

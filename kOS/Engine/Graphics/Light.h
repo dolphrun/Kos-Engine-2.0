@@ -64,6 +64,7 @@ struct DirectionalLightData :public PointLightData {
 	float intensity;
 	void SetUniform(Shader* shader, size_t number);
 	void SetShaderMtrx(Shader* shader, size_t number);
+	void SetShaderMtrx(Shader* shader, size_t number,const glm::mat4& viewMtx);
 };
 
 struct SpotLightData :public PointLightData {

@@ -101,7 +101,7 @@
             "WorldTransformation": {
                 "position": {
                     "x": -4.009737968444824,
-                    "y": 5.63681697845459,
+                    "y": -1.2450847625732422,
                     "z": 0.0
                 },
                 "rotation": {
@@ -118,7 +118,7 @@
             "LocalTransformation": {
                 "position": {
                     "x": -4.009737968444824,
-                    "y": 5.63681697845459,
+                    "y": -1.2450847625732422,
                     "z": 0.0
                 },
                 "rotation": {
@@ -168,7 +168,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -4.009737968444824,
-                            "y": 105.6368179321289,
+                            "y": 98.75491333007813,
                             "z": 0.0
                         },
                         "rotation": {
@@ -216,7 +216,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -4.009737968444824,
-                            "y": 105.6368179321289,
+                            "y": 98.75491333007813,
                             "z": 0.0
                         },
                         "rotation": {
@@ -283,7 +283,7 @@
                             "WorldTransformation": {
                                 "position": {
                                     "x": -3.4297380447387695,
-                                    "y": 104.82681274414063,
+                                    "y": 97.94490814208984,
                                     "z": -0.019999995827674866
                                 },
                                 "rotation": {
@@ -333,7 +333,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -4.009737968444824,
-                            "y": 105.6368179321289,
+                            "y": 98.75491333007813,
                             "z": 0.0
                         },
                         "rotation": {
@@ -406,7 +406,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -4.009737968444824,
-                            "y": 5.63681697845459,
+                            "y": -1.2450847625732422,
                             "z": 0.0
                         },
                         "rotation": {
@@ -603,7 +603,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -4.009737968444824,
-                            "y": 25.636817932128906,
+                            "y": 18.754915237426758,
                             "z": -4.0
                         },
                         "rotation": {
@@ -673,7 +673,7 @@
                             "WorldTransformation": {
                                 "position": {
                                     "x": -4.009737968444824,
-                                    "y": 26.386817932128906,
+                                    "y": 19.504915237426758,
                                     "z": -4.0
                                 },
                                 "rotation": {
@@ -754,7 +754,7 @@
                             "WorldTransformation": {
                                 "position": {
                                     "x": -4.009737968444824,
-                                    "y": 24.136817932128906,
+                                    "y": 17.254915237426758,
                                     "z": -4.0
                                 },
                                 "rotation": {
@@ -802,7 +802,7 @@
                             "WorldTransformation": {
                                 "position": {
                                     "x": -3.009737968444824,
-                                    "y": 26.386817932128906,
+                                    "y": 19.504915237426758,
                                     "z": -4.0
                                 },
                                 "rotation": {
@@ -866,7 +866,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -60.0,
-                            "y": -15.876151084899902,
+                            "y": -22.758052825927734,
                             "z": -75.9971694946289
                         },
                         "rotation": {
@@ -928,7 +928,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -44.0,
-                            "y": -16.689655303955078,
+                            "y": -23.571557998657227,
                             "z": -76.0
                         },
                         "rotation": {
@@ -990,7 +990,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -60.0,
-                            "y": -15.969090461730957,
+                            "y": -22.85099220275879,
                             "z": -36.01661682128906
                         },
                         "rotation": {
@@ -1052,7 +1052,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -52.0,
-                            "y": -12.074051856994629,
+                            "y": -18.95595359802246,
                             "z": -36.0
                         },
                         "rotation": {
@@ -1114,7 +1114,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -44.0,
-                            "y": -16.689655303955078,
+                            "y": -23.571557998657227,
                             "z": -36.0
                         },
                         "rotation": {
@@ -1176,7 +1176,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -76.0,
-                            "y": -16.689655303955078,
+                            "y": -23.571557998657227,
                             "z": -36.0
                         },
                         "rotation": {
@@ -1238,7 +1238,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -68.0,
-                            "y": -12.074051856994629,
+                            "y": -18.95595359802246,
                             "z": -36.0
                         },
                         "rotation": {
@@ -1300,7 +1300,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -76.0,
-                            "y": -16.689655303955078,
+                            "y": -23.571557998657227,
                             "z": -76.0
                         },
                         "rotation": {
@@ -1362,7 +1362,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -68.0,
-                            "y": -12.074051856994629,
+                            "y": -18.95595359802246,
                             "z": -76.0
                         },
                         "rotation": {
@@ -1424,7 +1424,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -52.0,
-                            "y": -12.074051856994629,
+                            "y": -18.95595359802246,
                             "z": -76.0
                         },
                         "rotation": {
@@ -1486,7 +1486,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 15.988450050354004,
-                            "y": -18.07306671142578,
+                            "y": -24.95496940612793,
                             "z": -187.99716186523438
                         },
                         "rotation": {
@@ -1548,7 +1548,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -60.0,
-                            "y": -7.969091415405273,
+                            "y": -14.850993156433105,
                             "z": -36.01661682128906
                         },
                         "rotation": {
@@ -1610,7 +1610,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -60.0,
-                            "y": -7.876151084899902,
+                            "y": -14.758052825927734,
                             "z": -75.9971694946289
                         },
                         "rotation": {
@@ -1672,7 +1672,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 24.0,
-                            "y": -14.503819465637207,
+                            "y": -21.38572120666504,
                             "z": -187.99716186523438
                         },
                         "rotation": {
@@ -1734,7 +1734,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 15.988450050354004,
-                            "y": -10.073067665100098,
+                            "y": -16.95496940612793,
                             "z": -187.99716186523438
                         },
                         "rotation": {
@@ -1796,7 +1796,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -8.011550903320313,
-                            "y": -10.073067665100098,
+                            "y": -16.95496940612793,
                             "z": -187.99716186523438
                         },
                         "rotation": {
@@ -1858,7 +1858,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -8.011550903320313,
-                            "y": -18.07306671142578,
+                            "y": -24.95496940612793,
                             "z": -187.99716186523438
                         },
                         "rotation": {
@@ -1920,7 +1920,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -16.0,
-                            "y": -14.666672706604004,
+                            "y": -21.548574447631836,
                             "z": -187.99716186523438
                         },
                         "rotation": {
@@ -1982,7 +1982,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 7.9884490966796875,
-                            "y": -13.93496036529541,
+                            "y": -20.816862106323242,
                             "z": -187.99716186523438
                         },
                         "rotation": {
@@ -2044,7 +2044,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -0.0115509033203125,
-                            "y": -13.93496036529541,
+                            "y": -20.816862106323242,
                             "z": -187.99716186523438
                         },
                         "rotation": {
@@ -2106,7 +2106,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -0.0115509033203125,
-                            "y": -5.93496036529541,
+                            "y": -12.816862106323242,
                             "z": -187.99716186523438
                         },
                         "rotation": {
@@ -2168,7 +2168,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 7.9884490966796875,
-                            "y": -5.93496036529541,
+                            "y": -12.816862106323242,
                             "z": -187.99716186523438
                         },
                         "rotation": {
@@ -44929,6 +44929,196 @@
                             "x": 0.010003284551203251,
                             "y": 0.009992559440433979,
                             "z": 0.009981930255889893
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "ba99afea-010a-4cd1-6172-88c93af2c5c5",
+        "BoxColliderComponent": {
+            "isTrigger": true,
+            "box": {
+                "center": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "size": {
+                    "x": 42.400001525878906,
+                    "y": 13.399999618530273,
+                    "z": 38.900001525878906
+                }
+            }
+        },
+        "NameComponent": {
+            "entityName": "LockRoomPrefab",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "LockRoomPrefab.prefab",
+            "hide": false
+        },
+        "RigidbodyComponent": {
+            "mass": 1.0,
+            "drag": 0.0,
+            "angularDrag": 0.05000000074505806,
+            "useGravity": false,
+            "isKinematic": false,
+            "interpolation": 0,
+            "collisionDetection": 0,
+            "constraints": 0,
+            "speed": 0.0,
+            "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "angularVelocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        "RoomLockScript": {
+            "enemyCountToKill": 3,
+            "doorPrefabA": "3a50f9cd-8131-dbc1-fed4-2dc13399e93a",
+            "doorPrefabB": "3a50f9cd-8131-dbc1-fed4-2dc13399e93a",
+            "doorSpawnPointA": "0b6065d5-9615-68e3-954b-4d9f94e3a81d",
+            "doorSpawnPointB": "feffd924-039f-f742-8aad-943506f89395",
+            "pointLightList": []
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -47.40618896484375,
+                    "y": 6.382465362548828,
+                    "z": -15.983797073364258
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -47.40618896484375,
+                    "y": 6.382465362548828,
+                    "z": -15.983797073364258
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "0b6065d5-9615-68e3-954b-4d9f94e3a81d",
+                "NameComponent": {
+                    "entityName": "SpawnPoint 1",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "LockRoomPrefab.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -57.95071792602539,
+                            "y": 3.1326966285705566,
+                            "z": 0.3458137512207031
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -10.54452896118164,
+                            "y": -3.2497687339782715,
+                            "z": 16.32961082458496
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "feffd924-039f-f742-8aad-943506f89395",
+                "NameComponent": {
+                    "entityName": "SpawnPoint 2",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "LockRoomPrefab.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -23.077747344970703,
+                            "y": 2.1125597953796387,
+                            "z": -1.0625896453857422
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 24.328441619873047,
+                            "y": -4.2699055671691895,
+                            "z": 14.921207427978516
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
                         }
                     }
                 }
