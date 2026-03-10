@@ -156,6 +156,12 @@ public:
 	utility::GUID absorbingVFXSpawnPoint;
 	ecs::EntityID absorbVFXSpawnObjectID;
 
+	utility::GUID muzzleFlashGUID;
+	ecs::EntityID muzzleFlashID;
+	bool isMuzzleActive = false;
+	float muzzleTimer = 0.35f;
+	float muzzleCurrTimer = muzzleTimer;
+
 	// BACKEND PLAYER DETAILS
 	float playerRotationX = 0.f, playerRotationY = 0.f;
 
@@ -342,7 +348,7 @@ public:
 
 	REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
-		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningSlowSfxGUID, lightningGunSfxGUID, acidGrenadeGunSfxGUID,pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject, absorbingVFXPrefab, absorbingVFXSpawnPoint);
+		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningSlowSfxGUID, lightningGunSfxGUID, acidGrenadeGunSfxGUID,pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject, absorbingVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashGUID);
 };
 
 // --- LATE INCLUDES & IMPLEMENTATION ---
@@ -401,6 +407,8 @@ inline void PlayerManagerScript::Start() {
 				currAnimState->Trigger("ForcedEntry", animComp, playerController);
 		}
 	};
+
+	muzzleFlashID = ecsPtr->GetEntityIDFromGUID(muzzleFlashGUID);
 }
 
 inline void PlayerManagerScript::Update() {
@@ -561,7 +569,13 @@ inline void PlayerManagerScript::Update() {
 		return; // Skip further processing while the timer is active
 	}
 
+	if (muzzleCurrTimer >= 0.f) {
+		muzzleCurrTimer -= ecsPtr->m_GetDeltaTime();
 
+		if (muzzleCurrTimer <= 0.f) {
+			ecsPtr->SetActive(muzzleFlashID, false);
+		}
+	}
 }
 
 inline void PlayerManagerScript::FixedUpdate() {
@@ -1423,6 +1437,9 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 			if (auto* bulletScript = ecsPtr->GetComponent<BulletLogic>(bulletID))
 				bulletScript->direction = GetPlayerCameraFrontDirection();
+
+			ecsPtr->SetActive(muzzleFlashID, true);
+			muzzleCurrTimer = muzzleTimer;
 
 			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 				for (auto& af : ac->audioFiles) {

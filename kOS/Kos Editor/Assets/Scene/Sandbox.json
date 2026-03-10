@@ -293,7 +293,15 @@
                         }
                     },
                     "emissionInterval": 0.004999999888241291,
-                    "no_Of_Particles": 40
+                    "no_Of_Particles": 40,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -505,7 +513,15 @@
                         }
                     },
                     "emissionInterval": 0.004999999888241291,
-                    "no_Of_Particles": 20
+                    "no_Of_Particles": 20,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -774,7 +790,499 @@
                                     "z": 0.019999992102384567
                                 }
                             }
-                        }
+                        },
+                        "children": [
+                            {
+                                "entityGUID": "7fa59a2b-b738-c1bc-d169-b5cb1f5f7030",
+                                "NameComponent": {
+                                    "entityName": "Muzzle flash",
+                                    "Layer": 0,
+                                    "entityTag": "Default",
+                                    "isPrefab": false,
+                                    "isStatic": false,
+                                    "prefabName": "",
+                                    "hide": true
+                                },
+                                "TransformComponent": {
+                                    "WorldTransformation": {
+                                        "position": {
+                                            "x": 1.9542529582977295,
+                                            "y": 100.07054138183594,
+                                            "z": 0.4032742977142334
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": 1.6675266722998572e-9,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 1.0,
+                                            "y": 1.0,
+                                            "z": 1.0
+                                        }
+                                    },
+                                    "LocalTransformation": {
+                                        "position": {
+                                            "x": -21.139999389648438,
+                                            "y": 44.02734375,
+                                            "z": 68.72000122070313
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": -89.98021697998047,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 50.000030517578125,
+                                            "y": 50.000003814697266,
+                                            "z": 50.000030517578125
+                                        }
+                                    }
+                                },
+                                "children": [
+                                    {
+                                        "entityGUID": "1409d032-d8d8-a09f-8188-65323d9e3eb0",
+                                        "NameComponent": {
+                                            "entityName": "Muzzle flash",
+                                            "Layer": 0,
+                                            "entityTag": "Default",
+                                            "isPrefab": false,
+                                            "isStatic": false,
+                                            "prefabName": "",
+                                            "hide": true
+                                        },
+                                        "ParticleComponent": {
+                                            "particleType": 0,
+                                            "duration": 0.15000000596046448,
+                                            "looping": false,
+                                            "play_On_Awake": true,
+                                            "start_Lifetime": 0.15000000596046448,
+                                            "end_Lifetime": 0.15000000596046448,
+                                            "lifetime_Random_Enable": true,
+                                            "textureGUID": "00000000-0000-0000-0000-000000000000",
+                                            "start_Velocity": 0.0,
+                                            "playback_State": 0,
+                                            "particleFade": 1,
+                                            "velocityModule": {
+                                                "enabled": false,
+                                                "mode": 0,
+                                                "velocity_Modifier": {
+                                                    "x": 0.0,
+                                                    "y": 1.0,
+                                                    "z": 0.0
+                                                }
+                                            },
+                                            "forceModule": {
+                                                "enabled": false,
+                                                "force": {
+                                                    "x": 5.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                }
+                                            },
+                                            "shapeModule": {
+                                                "type": 3,
+                                                "emission_Direction": {
+                                                    "x": 0.0,
+                                                    "y": 1.0,
+                                                    "z": 0.0
+                                                },
+                                                "box_Size": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                },
+                                                "sphere_Radius": 0.0,
+                                                "emit_From_Shell": false,
+                                                "cone_Angle": 25.0,
+                                                "cone_Direction": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                },
+                                                "cone_Radius": 0.0,
+                                                "circle_Radius": 0.10000000149011612,
+                                                "circle_Arc": 360.0,
+                                                "emit_From_Edge": false,
+                                                "edge_Length": 0.0,
+                                                "random_Direction_Amount": 0.0
+                                            },
+                                            "colorModule": {
+                                                "enabled": false,
+                                                "start_Color": {
+                                                    "x": 1.0,
+                                                    "y": 0.75,
+                                                    "z": 0.0,
+                                                    "w": 1.0
+                                                },
+                                                "end_Color": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0,
+                                                    "w": 0.0
+                                                }
+                                            },
+                                            "sizeModule": {
+                                                "enabled": true,
+                                                "start_Size": 0.3499999940395355,
+                                                "end_Size": 0.15000000596046448
+                                            },
+                                            "rotationModule": {
+                                                "enabled": true,
+                                                "start_Rotation": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                },
+                                                "end_Rotation": {
+                                                    "x": 360.0,
+                                                    "y": 360.0,
+                                                    "z": 360.0
+                                                },
+                                                "rotation_Modifier": {
+                                                    "x": 45.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                }
+                                            },
+                                            "gravityModule": {
+                                                "enabled": false,
+                                                "gravity": {
+                                                    "x": 0.0,
+                                                    "y": -9.800000190734863,
+                                                    "z": 0.0
+                                                }
+                                            },
+                                            "trailingModule": {
+                                                "enabled": false,
+                                                "startPoint": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                },
+                                                "endPoint": {
+                                                    "x": 20.0,
+                                                    "y": 20.0,
+                                                    "z": 20.0
+                                                },
+                                                "rotateEndPoint": false,
+                                                "rotationSpeed": 2.0,
+                                                "rotationRadius": 5.0,
+                                                "rotationCenter": {
+                                                    "x": 20.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                },
+                                                "rotationAxis": {
+                                                    "x": 0.0,
+                                                    "y": 1.0,
+                                                    "z": 0.0
+                                                },
+                                                "spiralRadius": 5.0,
+                                                "spiralFrequency": 3.0,
+                                                "spiralIntensityCurve": 0.5,
+                                                "pathSpeed": 2.0,
+                                                "arrivalThreshold": 0.5
+                                            },
+                                            "noiseModule": {
+                                                "enabled": false,
+                                                "strength": 1.0,
+                                                "strengthMultiplier": {
+                                                    "x": 1.0,
+                                                    "y": 1.0,
+                                                    "z": 1.0
+                                                },
+                                                "frequency": 0.5,
+                                                "scrollSpeed": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                },
+                                                "damping": true,
+                                                "octaves": 1,
+                                                "octaveMultiplier": 0.5,
+                                                "octaveScale": 2.0,
+                                                "quality": 1,
+                                                "remapEnabled": false,
+                                                "remapCurveStart": 1.0,
+                                                "remapCurveEnd": 1.0,
+                                                "positionOffset": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                }
+                                            },
+                                            "emissionInterval": 0.0010000000474974513,
+                                            "no_Of_Particles": 10,
+                                            "dynamicTrailingEnabled": false,
+                                            "trail_Color": {
+                                                "x": 1.0,
+                                                "y": 1.0,
+                                                "z": 1.0,
+                                                "w": 1.0
+                                            },
+                                            "trailLifeTime": 2.0
+                                        },
+                                        "TransformComponent": {
+                                            "WorldTransformation": {
+                                                "position": {
+                                                    "x": 2.058319091796875,
+                                                    "y": 100.07518005371094,
+                                                    "z": 0.4032742381095886
+                                                },
+                                                "rotation": {
+                                                    "x": 90.0,
+                                                    "y": -0.019776809960603714,
+                                                    "z": 0.00000682935569784604
+                                                },
+                                                "scale": {
+                                                    "x": 0.9999145269393921,
+                                                    "y": 0.9999141097068787,
+                                                    "z": 0.9999115467071533
+                                                }
+                                            },
+                                            "LocalTransformation": {
+                                                "position": {
+                                                    "x": 0.10406613349914551,
+                                                    "y": 0.004638671875,
+                                                    "z": -5.960464477539063e-8
+                                                },
+                                                "rotation": {
+                                                    "x": 90.0,
+                                                    "y": -0.019776813685894012,
+                                                    "z": 0.00000682935569784604
+                                                },
+                                                "scale": {
+                                                    "x": 0.9999145269393921,
+                                                    "y": 0.9999141097068787,
+                                                    "z": 0.9999116063117981
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "entityGUID": "626b5a8e-1618-3137-c6eb-1838dfea524b",
+                                        "NameComponent": {
+                                            "entityName": "Muzzle flash",
+                                            "Layer": 0,
+                                            "entityTag": "Default",
+                                            "isPrefab": false,
+                                            "isStatic": false,
+                                            "prefabName": "",
+                                            "hide": true
+                                        },
+                                        "ParticleComponent": {
+                                            "particleType": 0,
+                                            "duration": 0.15000000596046448,
+                                            "looping": false,
+                                            "play_On_Awake": true,
+                                            "start_Lifetime": 0.15000000596046448,
+                                            "end_Lifetime": 0.15000000596046448,
+                                            "lifetime_Random_Enable": true,
+                                            "textureGUID": "00000000-0000-0000-0000-000000000000",
+                                            "start_Velocity": 0.0,
+                                            "playback_State": 0,
+                                            "particleFade": 1,
+                                            "velocityModule": {
+                                                "enabled": false,
+                                                "mode": 0,
+                                                "velocity_Modifier": {
+                                                    "x": 0.0,
+                                                    "y": 1.0,
+                                                    "z": 0.0
+                                                }
+                                            },
+                                            "forceModule": {
+                                                "enabled": false,
+                                                "force": {
+                                                    "x": 5.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                }
+                                            },
+                                            "shapeModule": {
+                                                "type": 3,
+                                                "emission_Direction": {
+                                                    "x": 0.0,
+                                                    "y": 1.0,
+                                                    "z": 0.0
+                                                },
+                                                "box_Size": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                },
+                                                "sphere_Radius": 0.0,
+                                                "emit_From_Shell": false,
+                                                "cone_Angle": 25.0,
+                                                "cone_Direction": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                },
+                                                "cone_Radius": 0.0,
+                                                "circle_Radius": 0.10000000149011612,
+                                                "circle_Arc": 360.0,
+                                                "emit_From_Edge": false,
+                                                "edge_Length": 0.0,
+                                                "random_Direction_Amount": 0.0
+                                            },
+                                            "colorModule": {
+                                                "enabled": false,
+                                                "start_Color": {
+                                                    "x": 1.0,
+                                                    "y": 0.8500000238418579,
+                                                    "z": 0.30000001192092896,
+                                                    "w": 1.0
+                                                },
+                                                "end_Color": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0,
+                                                    "w": 0.0
+                                                }
+                                            },
+                                            "sizeModule": {
+                                                "enabled": true,
+                                                "start_Size": 0.25,
+                                                "end_Size": 0.10000000149011612
+                                            },
+                                            "rotationModule": {
+                                                "enabled": true,
+                                                "start_Rotation": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                },
+                                                "end_Rotation": {
+                                                    "x": 360.0,
+                                                    "y": 360.0,
+                                                    "z": 360.0
+                                                },
+                                                "rotation_Modifier": {
+                                                    "x": 45.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                }
+                                            },
+                                            "gravityModule": {
+                                                "enabled": false,
+                                                "gravity": {
+                                                    "x": 0.0,
+                                                    "y": -9.800000190734863,
+                                                    "z": 0.0
+                                                }
+                                            },
+                                            "trailingModule": {
+                                                "enabled": false,
+                                                "startPoint": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                },
+                                                "endPoint": {
+                                                    "x": 20.0,
+                                                    "y": 20.0,
+                                                    "z": 20.0
+                                                },
+                                                "rotateEndPoint": false,
+                                                "rotationSpeed": 2.0,
+                                                "rotationRadius": 5.0,
+                                                "rotationCenter": {
+                                                    "x": 20.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                },
+                                                "rotationAxis": {
+                                                    "x": 0.0,
+                                                    "y": 1.0,
+                                                    "z": 0.0
+                                                },
+                                                "spiralRadius": 5.0,
+                                                "spiralFrequency": 3.0,
+                                                "spiralIntensityCurve": 0.5,
+                                                "pathSpeed": 2.0,
+                                                "arrivalThreshold": 0.5
+                                            },
+                                            "noiseModule": {
+                                                "enabled": false,
+                                                "strength": 1.0,
+                                                "strengthMultiplier": {
+                                                    "x": 1.0,
+                                                    "y": 1.0,
+                                                    "z": 1.0
+                                                },
+                                                "frequency": 0.5,
+                                                "scrollSpeed": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                },
+                                                "damping": true,
+                                                "octaves": 1,
+                                                "octaveMultiplier": 0.5,
+                                                "octaveScale": 2.0,
+                                                "quality": 1,
+                                                "remapEnabled": false,
+                                                "remapCurveStart": 1.0,
+                                                "remapCurveEnd": 1.0,
+                                                "positionOffset": {
+                                                    "x": 0.0,
+                                                    "y": 0.0,
+                                                    "z": 0.0
+                                                }
+                                            },
+                                            "emissionInterval": 0.0010000000474974513,
+                                            "no_Of_Particles": 10,
+                                            "dynamicTrailingEnabled": false,
+                                            "trail_Color": {
+                                                "x": 1.0,
+                                                "y": 1.0,
+                                                "z": 1.0,
+                                                "w": 1.0
+                                            },
+                                            "trailLifeTime": 2.0
+                                        },
+                                        "TransformComponent": {
+                                            "WorldTransformation": {
+                                                "position": {
+                                                    "x": 1.9542336463928223,
+                                                    "y": 100.07044982910156,
+                                                    "z": 0.40328550338745117
+                                                },
+                                                "rotation": {
+                                                    "x": 90.0,
+                                                    "y": -0.01978280022740364,
+                                                    "z": 0.019782794639468193
+                                                },
+                                                "scale": {
+                                                    "x": 0.9999998807907104,
+                                                    "y": 0.999999463558197,
+                                                    "z": 1.0000003576278687
+                                                }
+                                            },
+                                            "LocalTransformation": {
+                                                "position": {
+                                                    "x": -0.000019311904907226563,
+                                                    "y": -0.000091552734375,
+                                                    "z": 0.000011205673217773438
+                                                },
+                                                "rotation": {
+                                                    "x": 90.0,
+                                                    "y": -0.01978280022740364,
+                                                    "z": 0.019782792776823044
+                                                },
+                                                "scale": {
+                                                    "x": 0.9999998807907104,
+                                                    "y": 0.999999463558197,
+                                                    "z": 1.0000004768371582
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
                     },
                     {
                         "entityGUID": "a93f27df-16bf-348a-555b-3d01656313eb",
@@ -1131,7 +1639,8 @@
                     "loseScreenCanvasObject": "dee61752-b669-2e75-a66d-ee0be6621e13",
                     "winScreenCanvasObject": "dd420147-13cd-2a52-32b4-107bc917a44d",
                     "absorbingVFXPrefab": "00000000-0000-0000-0000-000000000000",
-                    "absorbingVFXSpawnPoint": "00000000-0000-0000-0000-000000000000"
+                    "absorbingVFXSpawnPoint": "00000000-0000-0000-0000-000000000000",
+                    "muzzleFlashGUID": "7fa59a2b-b738-c1bc-d169-b5cb1f5f7030"
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,
@@ -4712,7 +5221,15 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -4924,7 +5441,15 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -5136,7 +5661,15 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -5348,7 +5881,15 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -5686,7 +6227,15 @@
                         }
                     },
                     "emissionInterval": 0.05000000074505806,
-                    "no_Of_Particles": 10
+                    "no_Of_Particles": 10,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -5881,492 +6430,6 @@
         }
     },
     {
-        "entityGUID": "4e2d825e-ac2d-912d-df9e-54bfeb9eabc8",
-        "CapsuleColliderComponent": {
-            "isTrigger": false,
-            "capsule": {
-                "center": {
-                    "x": 0.0,
-                    "y": 1.5,
-                    "z": 0.0
-                },
-                "radius": 0.800000011920929,
-                "height": 3.0,
-                "capsuleDirection": 1
-            }
-        },
-        "EnemyManagerScript": {
-            "enemyHealth": 5,
-            "enemyMovementSpeed": 3.0,
-            "enemyType": "Tank",
-            "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 15.0,
-            "enemyChaseRange": 25.0,
-            "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
-            "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-            "enemyHurtboxPosition": "239a2a55-7b16-a67e-b034-dabdac495a1d",
-            "shieldHealth": 30,
-            "shieldElement": "FIRE",
-            "shieldVisualObject": "0f6defc1-8c38-49d9-65b0-091f11064913",
-            "tankAoePrefab": "668543d2-276e-3941-8542-55d0401797a4",
-            "isLunging": false,
-            "lungeDuration": 0.800000011920929,
-            "lungeForwardSpeed": 12.0,
-            "lungeUpwardSpeed": 5.0,
-            "lungeGravity": 15.0,
-            "attackCooldown": 2.0
-        },
-        "NameComponent": {
-            "entityName": "TankEnemyPrefab",
-            "Layer": 0,
-            "entityTag": "Enemy",
-            "isPrefab": true,
-            "isStatic": false,
-            "prefabName": "TankEnemyPrefab.prefab",
-            "hide": false
-        },
-        "RigidbodyComponent": {
-            "mass": 1.0,
-            "drag": 0.0,
-            "angularDrag": 0.05000000074505806,
-            "useGravity": true,
-            "isKinematic": true,
-            "interpolation": 0,
-            "collisionDetection": 0,
-            "constraints": 11,
-            "speed": 0.0,
-            "velocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "angularVelocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": -16.975261688232422,
-                    "y": 26.64537239074707,
-                    "z": 14.266642570495605
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": -16.975261688232422,
-                    "y": 26.64537239074707,
-                    "z": 14.266642570495605
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        },
-        "children": [
-            {
-                "entityGUID": "b304f1d8-90b7-6445-d65b-f01668fcb7fe",
-                "NameComponent": {
-                    "entityName": "Enemy Hurtbox Position",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "TankEnemyPrefab.prefab",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -16.975261688232422,
-                            "y": 28.14537239074707,
-                            "z": 14.266642570495605
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 1.5,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "d76dfefd-15af-d7e5-0fde-7147ee621506",
-                "AnimatorComponent": {
-                    "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
-                    "m_PlaybackSpeed": 1.0,
-                    "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true,
-                    "m_currentStateID": 0,
-                    "m_transitioningStateID": 0
-                },
-                "NameComponent": {
-                    "entityName": "Enemy Model",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "TankEnemyPrefab.prefab",
-                    "hide": false
-                },
-                "SkinnedMeshRendererComponent": {
-                    "skinnedMeshGUID": "a6aa8f2d-fa87-1e2c-abc3-482c45c287dd",
-                    "materialGUID": "eb634c86-0002-7c8b-9f8e-2b128f11f57c"
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -16.975261688232422,
-                            "y": 26.64537239074707,
-                            "z": 14.266642570495605
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "bef72496-0c45-ce99-b962-4800c5e9ae4b",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "2e16031c-9593-31cb-ec41-58220ebbb736"
-                        }
-                    ]
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "4a1d4e3a-edc7-fcaa-f0c1-24ef1b8e630c"
-                },
-                "NameComponent": {
-                    "entityName": "FireShieldPrefab",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "TankEnemyPrefab.prefab",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -16.975261688232422,
-                            "y": 30.64537239074707,
-                            "z": 14.266642570495605
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.5,
-                            "y": 0.5,
-                            "z": 0.5
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 4.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.5,
-                            "y": 0.5,
-                            "z": 0.5
-                        }
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "entityGUID": "64a71243-a42b-5bce-2341-1afea3909185",
-        "CapsuleColliderComponent": {
-            "isTrigger": false,
-            "capsule": {
-                "center": {
-                    "x": 0.0,
-                    "y": 2.0,
-                    "z": 0.0
-                },
-                "radius": 0.5,
-                "height": 3.0,
-                "capsuleDirection": 1
-            }
-        },
-        "EnemyManagerScript": {
-            "enemyHealth": 40,
-            "enemyMovementSpeed": 5.0,
-            "enemyType": "Ranged",
-            "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 10.0,
-            "enemyChaseRange": 25.0,
-            "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
-            "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyBulletPrefab": "8393af65-4300-ebba-36fa-0720e42087f2",
-            "enemyHurtboxPosition": "6ac4caf1-1df9-0909-bbf9-fe20ccb6c10f",
-            "shieldHealth": 30,
-            "shieldElement": "NONE",
-            "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-            "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
-            "isLunging": false,
-            "lungeDuration": 0.800000011920929,
-            "lungeForwardSpeed": 12.0,
-            "lungeUpwardSpeed": 5.0,
-            "lungeGravity": 15.0,
-            "attackCooldown": 2.0
-        },
-        "NameComponent": {
-            "entityName": "RangedEnemyPrefab",
-            "Layer": 0,
-            "entityTag": "Enemy",
-            "isPrefab": true,
-            "isStatic": false,
-            "prefabName": "RangedEnemyPrefab.prefab",
-            "hide": false
-        },
-        "RigidbodyComponent": {
-            "mass": 1.0,
-            "drag": 0.0,
-            "angularDrag": 0.05000000074505806,
-            "useGravity": true,
-            "isKinematic": true,
-            "interpolation": 0,
-            "collisionDetection": 0,
-            "constraints": 0,
-            "speed": 0.0,
-            "velocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "angularVelocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": -12.950728416442871,
-                    "y": 24.99636459350586,
-                    "z": -8.249611854553223
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": -12.950728416442871,
-                    "y": 24.99636459350586,
-                    "z": -8.249611854553223
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        },
-        "children": [
-            {
-                "entityGUID": "e38512b9-557d-29b4-1e9a-3bcaf2199b74",
-                "NameComponent": {
-                    "entityName": "Enemy Hurtbox Position",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "RangedEnemyPrefab.prefab",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -12.950728416442871,
-                            "y": 26.69537925720215,
-                            "z": -8.249611854553223
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 1.699014663696289,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "d6dfbe32-2247-803a-2a80-8df326b8e49c",
-                "AnimatorComponent": {
-                    "controllerGUID": "baa80405-5c48-fba2-0cde-edc56c8d415d",
-                    "m_PlaybackSpeed": 1.0,
-                    "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true,
-                    "m_currentStateID": 0,
-                    "m_transitioningStateID": 0
-                },
-                "NameComponent": {
-                    "entityName": "Enemy Model",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "RangedEnemyPrefab.prefab",
-                    "hide": false
-                },
-                "SkinnedMeshRendererComponent": {
-                    "skinnedMeshGUID": "0c44c479-520e-8c24-acf1-0ef17cfe8e58",
-                    "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -12.950728416442871,
-                            "y": 24.99636459350586,
-                            "z": -8.249611854553223
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.014999999664723873,
-                            "y": 0.014999999664723873,
-                            "z": 0.014999999664723873
-                        }
-                    }
-                }
-            }
-        ]
-    },
-    {
         "entityGUID": "6ce7cebb-9214-a403-8b56-03f28fc07dc1",
         "BoxColliderComponent": {
             "isTrigger": true,
@@ -6434,5 +6497,219 @@
                 }
             }
         }
+    },
+    {
+        "entityGUID": "70a0e20a-44e0-8667-c5c5-400e88e80da3",
+        "CapsuleColliderComponent": {
+            "isTrigger": false,
+            "capsule": {
+                "center": {
+                    "x": 0.0,
+                    "y": 2.0999999046325684,
+                    "z": 0.0
+                },
+                "radius": 0.6000000238418579,
+                "height": 4.800000190734863,
+                "capsuleDirection": 1
+            }
+        },
+        "EnemyManagerScript": {
+            "enemyHealth": 5,
+            "enemyMovementSpeed": 5.0,
+            "enemyType": "Melee",
+            "enemyAttackRange": 8.0,
+            "enemyRangedAttackRange": 15.0,
+            "enemyChaseRange": 25.0,
+            "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+            "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
+            "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
+            "enemyHurtboxPosition": "570fa653-ab37-c9f9-82c3-bdb66764b658",
+            "shieldHealth": 30,
+            "shieldElement": "NONE",
+            "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+            "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+            "isLunging": false,
+            "lungeDuration": 0.800000011920929,
+            "lungeForwardSpeed": 12.0,
+            "lungeUpwardSpeed": 5.0,
+            "lungeGravity": 15.0,
+            "attackCooldown": 2.0
+        },
+        "NameComponent": {
+            "entityName": "EnemyPrefab",
+            "Layer": 0,
+            "entityTag": "Enemy",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "MeleeEnemyPrefab.prefab",
+            "hide": false
+        },
+        "RigidbodyComponent": {
+            "mass": 1.0,
+            "drag": 0.0,
+            "angularDrag": 0.05000000074505806,
+            "useGravity": true,
+            "isKinematic": true,
+            "interpolation": 0,
+            "collisionDetection": 0,
+            "constraints": 11,
+            "speed": 0.0,
+            "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "angularVelocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 18.39260482788086,
+                    "y": 25.41997718811035,
+                    "z": -14.537531852722168
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 18.39260482788086,
+                    "y": 25.41997718811035,
+                    "z": -14.537531852722168
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "414d489b-0ca9-31fb-a013-87889238bae3",
+                "NameComponent": {
+                    "entityName": "Enemy Hurtbox Position",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "MeleeEnemyPrefab.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 18.39260482788086,
+                            "y": 26.91997718811035,
+                            "z": -14.537531852722168
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 1.5,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "b7a4ef38-274c-4c85-c715-ab71de8e3658",
+                "AnimatorComponent": {
+                    "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
+                    "m_PlaybackSpeed": 1.0,
+                    "m_CurrentTime": 0.0,
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
+                },
+                "NameComponent": {
+                    "entityName": "Enemy Model",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "MeleeEnemyPrefab.prefab",
+                    "hide": false
+                },
+                "SkinnedMeshRendererComponent": {
+                    "skinnedMeshGUID": "8a830bfc-7794-b76e-2f45-0e765f0a2495",
+                    "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 18.39260482788086,
+                            "y": 25.41997718811035,
+                            "z": -14.537531852722168
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.019999999552965164,
+                            "y": 0.019999999552965164,
+                            "z": 0.019999999552965164
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.019999999552965164,
+                            "y": 0.019999999552965164,
+                            "z": 0.019999999552965164
+                        }
+                    }
+                }
+            }
+        ]
     }
 ]
