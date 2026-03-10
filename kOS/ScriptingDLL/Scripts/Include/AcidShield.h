@@ -23,6 +23,8 @@ public:
 	utility::GUID enemyDeathSfxGUID_1;
 	utility::GUID enemyDeathSfxGUID_2;
 	utility::GUID enemyDeathSfxGUID_3;
+	utility::GUID acidShieldSfxGUID;
+
 	std::vector<utility::GUID> enemyDeathSfxGUIDs;
 
 	std::unordered_map<ecs::EntityID, float> enemyTickTimers;
@@ -39,6 +41,15 @@ public:
 		if (!enemyDeathSfxGUID_1.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_1);
 		if (!enemyDeathSfxGUID_2.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_2);
 		if (!enemyDeathSfxGUID_3.Empty()) enemyDeathSfxGUIDs.push_back(enemyDeathSfxGUID_3);
+
+		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+			for (auto& af : ac->audioFiles) {
+				if (af.audioGUID == acidShieldSfxGUID && af.isSFX) {
+					af.requestPlay = true;
+					break;
+				}
+			}
+		}
 
 		//// ADD SFX OF ACID SPRAY HERE - Done
 		//if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
@@ -206,5 +217,5 @@ public:
 
 
 
-	REFLECTABLE(AcidShield, shieldDuration, shieldDamage, dotTickRate, slowMultiplier, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3)
+	REFLECTABLE(AcidShield, shieldDuration, shieldDamage, dotTickRate, slowMultiplier, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3, acidShieldSfxGUID)
 };

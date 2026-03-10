@@ -24,7 +24,7 @@ public:
 	utility::GUID enemyDeathSfxGUID_1;
 	utility::GUID enemyDeathSfxGUID_2;
 	utility::GUID enemyDeathSfxGUID_3;
-	
+
 	std::vector<utility::GUID> enemyDeathSfxGUIDs;
 
     void Start() override {

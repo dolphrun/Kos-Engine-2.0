@@ -145,7 +145,6 @@ public:
 	utility::GUID lightningLMBPrefab;
 
 	utility::GUID firePrefab;
-	utility::GUID acidPrefab;
 	utility::GUID lightningPrefab;
 
 	utility::GUID fireDashPrefab;
@@ -198,6 +197,8 @@ public:
 	float lightningCurrTimeslowCooldown = 0.0f;
 	float lightningCurrTimeslowTimer = 0.0f;
 	bool  isTimeslowActive = false;
+	float lightningAbilityDelay = 1.0f; // FOR ANIM
+	float lightningAbilityTimer = 0.f;   //TRACKER FOR ANIM
 
 	float groundAcceleration = 15.f;
 	float airAcceleration = 25.f;
@@ -302,8 +303,11 @@ public:
 	utility::GUID fireSlashSfxGUID;
 	utility::GUID fireDashSfxGUID;
 
-	utility::GUID lightningDashSfxGUID;
+	utility::GUID lightningSlowSfxGUID;
 	utility::GUID lightningGunSfxGUID;
+
+	utility::GUID acidGrenadeGunSfxGUID;
+
 
 	//Dash VFX Timer
 	float fireDashVfxTimer = 0.0f;
@@ -337,8 +341,8 @@ public:
 	glm::vec3 GetPlayerRightDirection();
 
 	REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
-		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, acidPrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
-		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningDashSfxGUID, lightningGunSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject, absorbingVFXPrefab, absorbingVFXSpawnPoint);
+		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
+		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningSlowSfxGUID, lightningGunSfxGUID, acidGrenadeGunSfxGUID,pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject, absorbingVFXPrefab, absorbingVFXSpawnPoint);
 };
 
 // --- LATE INCLUDES & IMPLEMENTATION ---
@@ -435,11 +439,11 @@ inline void PlayerManagerScript::Update() {
 		return;
 	}
 
-	{
-		float& cd = GetCurrShootCooldownForCurrentWeapon();
-		if (cd > 0.0f) cd -= ecsPtr->m_GetDeltaTime();
-		if (cd < 0.0f) cd = 0.0f;
-	}
+
+	float& cd = GetCurrShootCooldownForCurrentWeapon();
+	if (cd > 0.0f) cd -= ecsPtr->m_GetDeltaTime();
+	if (cd < 0.0f) cd = 0.0f;
+
 
 	// R to manual relod
 	if (Input->IsKeyTriggered(keys::R)) {
@@ -513,20 +517,48 @@ inline void PlayerManagerScript::Update() {
 		//std::cout << "[DEBUG] Space pressed - Grounded: " << GroundCheck() << std::endl;
 	}
 
+	if (lightningCurrTimeslowCooldown > 0.f) {
+		lightningCurrTimeslowCooldown -= ecsPtr->m_GetDeltaTime();
+		if (lightningCurrTimeslowCooldown < 0.f) {
+			lightningCurrTimeslowCooldown = 0.f;
+		}
+	}
+
+
 	// Timeslow countdown 
 	if (isTimeslowActive) {
 		lightningCurrTimeslowTimer -= ecsPtr->m_GetDeltaTime();
 		if (lightningCurrTimeslowTimer <= 0.0f) {
-			isTimeslowActive = false;
+			isTimeslowActive = false; 
 			lightningCurrTimeslowTimer = 0.0f;
 			ecsPtr->SetTimeScale(1.0f);
+			lightningCurrTimeslowCooldown = lightningTimeslowCooldown;
 		}
 	}
 
-	if (lightningCurrTimeslowCooldown > 0.f) {
-		lightningCurrTimeslowCooldown -= ecsPtr->m_GetDeltaTime();
-		if (lightningCurrTimeslowCooldown < 0.f)
-			lightningCurrTimeslowCooldown = 0.f;
+	// delay for time slow
+	if (lightningAbilityTimer > 0.f) {
+
+		//SFX first
+		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+			for (auto& af : ac->audioFiles) {
+				if (af.audioGUID == lightningSlowSfxGUID && af.isSFX) {
+					af.requestPlay = true;
+					break;
+				}
+			}
+		}
+
+		lightningAbilityTimer -= ecsPtr->m_GetDeltaTime();
+		if (lightningAbilityTimer <= 0.f) {
+			ecsPtr->SetTimeScale(0.5f);
+			isTimeslowActive = true; // Activate time slow effect
+
+			lightningCurrTimeslowTimer = lightningTimeslowDuration;
+			lightningCurrTimeslowCooldown = lightningTimeslowCooldown;
+		}
+		return; // Skip further processing while the timer is active
 	}
 
 
@@ -908,7 +940,7 @@ inline void PlayerManagerScript::PlayerCameraControls() {
 
 	if (isCameraShaking && cameraShakeElapsed >= cameraShakeDelay) {
 		playerCameraTransform->LocalTransformation.position = cameraShakeOriginalPos + cameraShakeOffset;
-	}
+	}	
 
 
 	// PLAYER SPRINTING
@@ -1415,9 +1447,6 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 		 if (playerPowerupHeld == Powerup::FIRE) {
 
-			/*if (fireCurrMeleeCooldown > 0.0f)
-				return;*/
-
 			std::shared_ptr<R_Scene> fireLMB = resource->GetResource<R_Scene>(fireLMBPrefab);
 
 			//fireCurrMeleeCooldown = fireMeleeCooldown;
@@ -1504,6 +1533,17 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			std::shared_ptr<R_Scene> acidLMB = resource->GetResource<R_Scene>(acidLMBPrefab);
 
 			if (acidLMB) {
+
+				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+					for (auto& af : ac->audioFiles) {
+						if (af.audioGUID == acidGrenadeGunSfxGUID && af.isSFX) {
+							af.requestPlay = true;
+							break;
+						}
+					}
+				}
+
 				std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 				ecs::EntityID acidLMBID = DuplicatePrefabIntoScene<R_Scene>(currentScene, acidLMBPrefab);
 
@@ -1749,31 +1789,12 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 		//Time slow
 		else if (playerPowerupHeld == Powerup::LIGHTNING) {
-			//Add VFX here?
 
 			if (lightningCurrTimeslowCooldown > 0.f) return;
-			if (currMana < lightningTimeslowCost)    return;
 			if (isTimeslowActive)                    return;
 
-			ecsPtr->SetTimeScale(0.5f);
-
-			isTimeslowActive = true;
-
-			lightningCurrTimeslowTimer = lightningTimeslowDuration;
-			lightningCurrTimeslowCooldown = lightningTimeslowCooldown;
-
+			lightningAbilityTimer = lightningAbilityDelay;
 			currMana -= lightningTimeslowCost;
-
-			// ADD SFX HERE 
-			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-
-				for (auto& af : ac->audioFiles) {
-					if (af.audioGUID == lightningDashSfxGUID && af.isSFX) {
-						af.requestPlay = true;
-						break;
-					}
-				}
-			}
 		}
 
 	}
