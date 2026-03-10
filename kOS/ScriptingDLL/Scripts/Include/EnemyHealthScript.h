@@ -60,11 +60,13 @@ public:
         affliction2EntityID = ecsPtr->GetEntityIDFromGUID(affliction2Entity);
         affliction3EntityID = ecsPtr->GetEntityIDFromGUID(affliction3Entity);
 
-        if (playerObjectID == -1) std::cout << "[EnemyHealthScript] WARN: playerObject not resolved\n";
-        if (healthBarFillID == -1) std::cout << "[EnemyHealthScript] WARN: healthBarFillEntity not resolved\n";
-        if (healthBarFullID == -1) std::cout << "[EnemyHealthScript] WARN: healthBarFullEntity not resolved\n";
-        if (healthBarFrameID == -1) std::cout << "[EnemyHealthScript] WARN: healthBarFrameEntity not resolved\n";
-        if (resistanceEntityID == -1) std::cout << "[EnemyHealthScript] WARN: resistanceEntity not resolved\n";
+        SetHUDVisible(false);
+
+        //if (playerObjectID == -1) std::cout << "[EnemyHealthScript] WARN: playerObject not resolved\n";
+        //if (healthBarFillID == -1) std::cout << "[EnemyHealthScript] WARN: healthBarFillEntity not resolved\n";
+        //if (healthBarFullID == -1) std::cout << "[EnemyHealthScript] WARN: healthBarFullEntity not resolved\n";
+        //if (healthBarFrameID == -1) std::cout << "[EnemyHealthScript] WARN: healthBarFrameEntity not resolved\n";
+        //if (resistanceEntityID == -1) std::cout << "[EnemyHealthScript] WARN: resistanceEntity not resolved\n";
 
         // Cache HUD original position
         auto* hudT = ecsPtr->GetComponent<TransformComponent>(entity);
@@ -93,7 +95,6 @@ public:
         }
 
         // Hide HUD at start
-        SetHUDVisible(false);
         SetResistanceVisible(false);
     }
 
