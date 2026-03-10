@@ -87,6 +87,10 @@ namespace ecs {
                 m_graphicsManager.gm_PushBasicTrailData(TrailRenderer::BasicTrailData{ particle->particle_List[i].trail.points, particle->particle_List[i].trail.lifetimes,particle->particle_List[i].trail.maxLifetime,
                     particle->particle_List[i].trail.width, particle->particle_List[i].trail.color, particle->particle_List[i].trail.lastPosition });
 
+            for (int i = 0; i < particle->dyingTrails.size(); i++)
+                m_graphicsManager.gm_PushBasicTrailData(TrailRenderer::BasicTrailData{ particle->dyingTrails[i].points, particle->dyingTrails[i].lifetimes,particle->dyingTrails[i].maxLifetime,
+                    particle->dyingTrails[i].width, particle->dyingTrails[i].color, particle->dyingTrails[i].lastPosition });
+
         }
     }
 
@@ -129,6 +133,7 @@ namespace ecs {
                 pd.trailID = CreateTrail(pd.position, particle);*/
             InitTrail(pd);
             pd.trail.maxLifetime = lifetime;
+            pd.trail.color = particle->trail_Color;
         }
         
 
@@ -461,38 +466,91 @@ namespace ecs {
             if(!updateTrailing) pd.position += pd.velocity * dt;
 
 
-            if (particle->dynamicTrailingEnabled) {
+            //if (particle->dynamicTrailingEnabled) {
+            //    TrailData& trail = pd.trail;
+
+            //    // Add new point if moved enough
+            //    float dist = glm::distance(trail.lastPosition, pd.position);
+            //    if (dist > trail.minDistance) {
+            //        trail.points.push_back(pd.position);
+            //        trail.lifetimes.push_back(0.0f);
+            //        trail.lastPosition = pd.position;
+            //    }
+
+            //    // Age existing trail points
+            //    for (size_t t = 0; t < trail.lifetimes.size(); ++t)
+            //        trail.lifetimes[t] += dt;
+
+            //    // Remove dead points
+            //    auto endIt = std::remove_if(trail.points.begin(), trail.points.end(),
+            //        [&](const glm::vec3&, size_t idx = 0) {
+            //            return trail.lifetimes[idx++] > trail.maxLifetime;
+            //        });
+            //    trail.points.erase(endIt, trail.points.end());
+            //    trail.lifetimes.resize(trail.points.size());
+            //    
+            //}
+            
+            if (pd.lifespan <= 0.0f) {
+                if (particle->dynamicTrailingEnabled && !pd.trail.points.empty()) 
+                {
+                    particle->dyingTrails.push_back(std::move(pd.trail));
+                }
+                particle->particle_List[i] = particle->particle_List.back();
+                //particle->particle_List[i] = std::move(particle->particle_List.back());
+                particle->particle_List.pop_back();
+                continue;
+
+            }
+
+            if (particle->dynamicTrailingEnabled)
+            {
                 TrailData& trail = pd.trail;
 
-                // Add new point if moved enough
                 float dist = glm::distance(trail.lastPosition, pd.position);
-                if (dist > trail.minDistance) {
+                if (dist > trail.minDistance)
+                {
                     trail.points.push_back(pd.position);
                     trail.lifetimes.push_back(0.0f);
                     trail.lastPosition = pd.position;
                 }
+
+                for (size_t t = 0; t < trail.lifetimes.size(); ++t)
+                    trail.lifetimes[t] += dt;
+
+                for (size_t t = 0; t < trail.lifetimes.size();)
+                {
+                    if (trail.lifetimes[t] > trail.maxLifetime)
+                    {
+                        trail.lifetimes.erase(trail.lifetimes.begin() + t);
+                        trail.points.erase(trail.points.begin() + t);
+                    }
+                    else
+                        t++;
+                }
+            }
+
+            //Dying trails
+            for (int i = static_cast<int>(particle->dyingTrails.size()) - 1; i >= 0; --i)
+            {
+                TrailData& trail = particle->dyingTrails[i];
 
                 // Age existing trail points
                 for (size_t t = 0; t < trail.lifetimes.size(); ++t)
                     trail.lifetimes[t] += dt;
 
                 // Remove dead points
-                auto endIt = std::remove_if(trail.points.begin(), trail.points.end(),
-                    [&](const glm::vec3&, size_t idx = 0) {
-                        return trail.lifetimes[idx++] > trail.maxLifetime;
-                    });
-                trail.points.erase(endIt, trail.points.end());
-                trail.lifetimes.resize(trail.points.size());
-            }
+                for (size_t t = 0; t < trail.lifetimes.size(); ) {
+                    if (trail.lifetimes[t] > trail.maxLifetime) {
+                        trail.lifetimes.erase(trail.lifetimes.begin() + t);
+                        trail.points.erase(trail.points.begin() + t);
+                    }
+                    else t++;
+                }
 
-
-            if (pd.lifespan <= 0.0f) {
-                particle->particle_List[i] = particle->particle_List.back();
-                //particle->particle_List[i] = std::move(particle->particle_List.back());
-                particle->particle_List.pop_back();
-
-              
-
+                // Remove the trail entirely if empty
+                if (trail.points.empty())
+                    particle->dyingTrails.erase(particle->dyingTrails.begin() + i);
             }
         } 
        

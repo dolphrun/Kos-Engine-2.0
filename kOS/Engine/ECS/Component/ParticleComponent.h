@@ -252,6 +252,7 @@ namespace ecs {
 		bool looping = true;
 		bool play_On_Awake = true;
 		bool dynamicTrailingEnabled = false;
+		glm::vec4 trail_Color { 1.f };
 		glm::vec3 particle_Spawn_Location = glm::vec3(0.f);
 
 		//Lifetime
@@ -304,7 +305,8 @@ namespace ecs {
 
 		//FOR THE ALIVE PARTICLES
 		std::vector<ParticleData> particle_List;
-		//std::vector<TrailData> trail_List;
+		//For trails that have no more particles
+		std::vector<TrailData> dyingTrails;
 
 		
 
@@ -318,7 +320,7 @@ namespace ecs {
 					textureGUID,
 					start_Velocity, playback_State, particleFade,
 					velocityModule,forceModule, shapeModule, colorModule, sizeModule, rotationModule, gravityModule, trailingModule, noiseModule,
-					emissionInterval, no_Of_Particles, dynamicTrailingEnabled);
+					emissionInterval, no_Of_Particles, dynamicTrailingEnabled, trail_Color);
 	};
 }
 #endif
