@@ -31,6 +31,7 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 	TemplateSC::physicsPtr = static_cast<physics::PhysicsManager*>(svm->physics);
 	TemplateSC::resource = static_cast<ResourceManager*>(svm->resource);
 	TemplateSC::navMeshPtr = static_cast<NavMeshManager*>(svm->navMesh);
+	TemplateSC::graphics = static_cast<GraphicsManager*>(svm->grpahics);
 
 	RegisterScript<BulletLogic>(TemplateSC::ecsPtr);
 	RegisterScript<FireLMB>(TemplateSC::ecsPtr);

@@ -59,7 +59,7 @@ namespace Application {
 			, serialization(ecs)
 			, sceneManager(ecs, serialization, resourceManager)
 			, navMeshManager(ecs, resourceManager, graphicsManager, sceneManager)
-			, scriptManager(ecs, sceneManager, input, physicsManager, resourceManager, reflectionField, navMeshManager)
+			, scriptManager(ecs, sceneManager, input, physicsManager, resourceManager, reflectionField, navMeshManager,graphicsManager)
 			, audioManager()
 			, assetManager()
 			, Editor(lvWindow, assetManager, graphicsManager, ecs, sceneManager, serialization, reflectionField, input, physicsManager, layersManager, resourceManager, scriptManager, peformance, audioManager, navMeshManager)

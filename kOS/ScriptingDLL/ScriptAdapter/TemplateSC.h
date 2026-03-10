@@ -20,6 +20,7 @@ public:
 	static physics::PhysicsManager* physicsPtr;
 	static ResourceManager* resource;
 	static NavMeshManager* navMeshPtr;
+	static GraphicsManager* graphics;
 private:
 };
 
