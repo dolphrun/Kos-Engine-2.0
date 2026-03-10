@@ -3,6 +3,7 @@
 #include "PauseMenuScript.h"
 #include "LoseScreenScript.h"
 #include "WinScreenScript.h"
+#include "LevelCompleteScript.h"
 
 // --- FORWARD DECLARATIONS ---
 // Tell the compiler these classes exist first, preventing circular dependency crashes
@@ -428,9 +429,10 @@ inline void PlayerManagerScript::Update() {
 
 	if (PauseMenuScript::isPaused ||
 		WinScreenScript::isWinScreenActive ||
-		LoseScreenScript::isLoseScreenActive)
+		LoseScreenScript::isLoseScreenActive ||
+		LevelCompleteScript::isLevelCompleteActive)
 	{
-		return; // Skip ALL player input
+		return;
 	}
 
 	{
