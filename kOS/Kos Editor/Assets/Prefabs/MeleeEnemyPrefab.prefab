@@ -36,13 +36,7 @@
             "shieldHealth": 30,
             "shieldElement": "NONE",
             "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
-            "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
-            "isLunging": false,
-            "lungeDuration": 0.800000011920929,
-            "lungeForwardSpeed": 12.0,
-            "lungeUpwardSpeed": 8.0,
-            "lungeGravity": 15.0,
-            "attackCooldown": 2.0
+            "tankAoePrefab": "00000000-0000-0000-0000-000000000000"
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
