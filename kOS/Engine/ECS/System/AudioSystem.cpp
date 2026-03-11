@@ -131,16 +131,22 @@ namespace ecs {
 
 					bool isPlaying = false;
 					if (ch->isPlaying(&isPlaying) == FMOD_OK && isPlaying) {
-						if (af.volume != af.lastVolume) {
+
+						if (std::abs(af.volume - af.lastVolume) > 0.001f) {
 							ch->setVolume(std::clamp(af.volume, 0.0f, 1.0f));
 							af.lastVolume = af.volume;
 						}
-					}
 
+						if (!af.use3D && std::abs(af.pan - af.lastPan) > 0.001f) {
+							ch->setPan(std::clamp(af.pan, -1.0f, 1.0f));
+							af.lastPan = af.volume; 
+						}
+					}
 					else {
 						af.channel = nullptr;
 					}
 				}
+
 
 				if (af.sourceType == AudioSourceType::Studio && af.studioInstance) {
 					auto* inst = static_cast<FMOD::Studio::EventInstance*>(af.studioInstance);

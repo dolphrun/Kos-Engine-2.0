@@ -1472,6 +1472,122 @@
                                 }
                             }
                         }
+                    },
+                    {
+                        "entityGUID": "37d48ab0-2443-b791-a713-ce7ad50f353e",
+                        "MaterialComponent": {
+                            "materialGUID": [
+                                {
+                                    "materialGUID": "61cfd855-ca21-6e2a-3bf8-8fc94756f547"
+                                }
+                            ]
+                        },
+                        "MeshFilterComponent": {
+                            "meshGUID": "5d4e705e-169d-b76b-60a6-43b8ed9a9217"
+                        },
+                        "NameComponent": {
+                            "entityName": "PLACEHOLDER ACID",
+                            "Layer": 1,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 1.7201091051101685,
+                                    "y": 99.18721771240234,
+                                    "z": 0.3845091164112091
+                                },
+                                "rotation": {
+                                    "x": -179.99964904785156,
+                                    "y": -89.18003845214844,
+                                    "z": 179.99964904785156
+                                },
+                                "scale": {
+                                    "x": 0.030000001192092896,
+                                    "y": 0.029999999329447746,
+                                    "z": 0.030000001192092896
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.3839152157306671,
+                                    "y": -0.8127822875976563,
+                                    "z": 1.7202420234680176
+                                },
+                                "rotation": {
+                                    "x": -180.0,
+                                    "y": 0.7999967336654663,
+                                    "z": -180.0
+                                },
+                                "scale": {
+                                    "x": 0.03000001050531864,
+                                    "y": 0.029999999329447746,
+                                    "z": 0.03000001050531864
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "8b880c16-1807-cd1e-54c3-42cdda789d3a",
+                        "MaterialComponent": {
+                            "materialGUID": [
+                                {
+                                    "materialGUID": "61cfd855-ca21-6e2a-3bf8-8fc94756f547"
+                                }
+                            ]
+                        },
+                        "MeshFilterComponent": {
+                            "meshGUID": "f9079c6a-10cc-e416-8507-bc4e4bd881e0"
+                        },
+                        "NameComponent": {
+                            "entityName": "PLACEHOLDER LIGHTNING",
+                            "Layer": 1,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 1.7201091051101685,
+                                    "y": 99.18721771240234,
+                                    "z": 0.3845091164112091
+                                },
+                                "rotation": {
+                                    "x": -179.99964904785156,
+                                    "y": -89.18003845214844,
+                                    "z": 179.99964904785156
+                                },
+                                "scale": {
+                                    "x": 0.030000001192092896,
+                                    "y": 0.029999999329447746,
+                                    "z": 0.030000001192092896
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.3839152157306671,
+                                    "y": -0.8127822875976563,
+                                    "z": 1.7202420234680176
+                                },
+                                "rotation": {
+                                    "x": -180.0,
+                                    "y": 0.7999967336654663,
+                                    "z": -180.0
+                                },
+                                "scale": {
+                                    "x": 0.03000001050531864,
+                                    "y": 0.029999999329447746,
+                                    "z": 0.03000001050531864
+                                }
+                            }
+                        }
                     }
                 ]
             },
@@ -1755,8 +1871,8 @@
                     "muzzleFlashGUID": "7fa59a2b-b738-c1bc-d169-b5cb1f5f7030",
                     "pistolModelObject": "1361fd6e-b3e0-48f2-5ab3-1599fcc561a4",
                     "fireSwordModelObject": "97f3df14-8a82-5e80-3c27-f1cf8b91d87e",
-                    "lightningModelObject": "97f3df14-8a82-5e80-3c27-f1cf8b91d87e",
-                    "acidModelObject": "97f3df14-8a82-5e80-3c27-f1cf8b91d87e"
+                    "lightningModelObject": "8b880c16-1807-cd1e-54c3-42cdda789d3a",
+                    "acidModelObject": "37d48ab0-2443-b791-a713-ce7ad50f353e"
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,
@@ -6618,5 +6734,219 @@
                 }
             }
         }
+    },
+    {
+        "entityGUID": "428973fd-df60-9dba-d535-51c5f4a42d1a",
+        "CapsuleColliderComponent": {
+            "isTrigger": false,
+            "capsule": {
+                "center": {
+                    "x": 0.0,
+                    "y": 2.0999999046325684,
+                    "z": 0.0
+                },
+                "radius": 0.6000000238418579,
+                "height": 4.800000190734863,
+                "capsuleDirection": 1
+            }
+        },
+        "EnemyManagerScript": {
+            "enemyHealth": 5,
+            "enemyMovementSpeed": 5.0,
+            "enemyType": "Melee",
+            "enemyAttackRange": 8.0,
+            "enemyRangedAttackRange": 15.0,
+            "enemyChaseRange": 25.0,
+            "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+            "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
+            "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
+            "enemyHurtboxPosition": "0cabcd7b-1145-2e77-02c5-8ec861dd583a",
+            "shieldHealth": 30,
+            "shieldElement": "NONE",
+            "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
+            "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
+            "isLunging": false,
+            "lungeDuration": 0.800000011920929,
+            "lungeForwardSpeed": 12.0,
+            "lungeUpwardSpeed": 5.0,
+            "lungeGravity": 15.0,
+            "attackCooldown": 2.0
+        },
+        "NameComponent": {
+            "entityName": "EnemyPrefab",
+            "Layer": 0,
+            "entityTag": "Enemy",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "MeleeEnemyPrefab.prefab",
+            "hide": false
+        },
+        "RigidbodyComponent": {
+            "mass": 1.0,
+            "drag": 0.0,
+            "angularDrag": 0.05000000074505806,
+            "useGravity": true,
+            "isKinematic": true,
+            "interpolation": 0,
+            "collisionDetection": 0,
+            "constraints": 11,
+            "speed": 0.0,
+            "velocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "angularVelocity": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 15.749917984008789,
+                    "y": 24.538196563720703,
+                    "z": 11.227187156677246
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 15.749917984008789,
+                    "y": 24.538196563720703,
+                    "z": 11.227187156677246
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "0cabcd7b-1145-2e77-02c5-8ec861dd583a",
+                "NameComponent": {
+                    "entityName": "Enemy Hurtbox Position",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "MeleeEnemyPrefab.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 15.749917984008789,
+                            "y": 26.038196563720703,
+                            "z": 11.227187156677246
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 1.5,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "1c6ed710-1178-703d-4402-2295a211cda8",
+                "AnimatorComponent": {
+                    "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
+                    "m_PlaybackSpeed": 1.0,
+                    "m_CurrentTime": 0.0,
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
+                },
+                "NameComponent": {
+                    "entityName": "Enemy Model",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "MeleeEnemyPrefab.prefab",
+                    "hide": false
+                },
+                "SkinnedMeshRendererComponent": {
+                    "skinnedMeshGUID": "8a830bfc-7794-b76e-2f45-0e765f0a2495",
+                    "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 15.749917984008789,
+                            "y": 24.538196563720703,
+                            "z": 11.227187156677246
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.019999999552965164,
+                            "y": 0.019999999552965164,
+                            "z": 0.019999999552965164
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.019999999552965164,
+                            "y": 0.019999999552965164,
+                            "z": 0.019999999552965164
+                        }
+                    }
+                }
+            }
+        ]
     }
 ]
