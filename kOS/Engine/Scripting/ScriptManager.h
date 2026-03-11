@@ -38,6 +38,7 @@ struct StaticVariableManager {
 	void* physics;
 	void* resource;
 	void* navMesh;
+	void* grpahics;
 	std::vector<std::string>* scriptNames;
 };
 
@@ -49,6 +50,8 @@ class ScriptManager {
 	ResourceManager& m_resourceManager;
 	Fields& m_field;
 	NavMeshManager& m_navmesh;
+	GraphicsManager& m_graphics;
+
 
 public: 
 	ScriptManager(
@@ -58,7 +61,8 @@ public:
 		physics::PhysicsManager& pm,
 		ResourceManager& rm,
 		Fields& field,
-		NavMeshManager& nm
+		NavMeshManager& nm,
+		GraphicsManager& graphics
 	)
 		: m_ecs(ecs)
 		, m_input(slm)
@@ -67,6 +71,7 @@ public:
 		, m_resourceManager(rm)
 		, m_field(field)
 		, m_navmesh(nm)
+		, m_graphics(graphics)
 	{
 		hInstDLL = nullptr;
 	}

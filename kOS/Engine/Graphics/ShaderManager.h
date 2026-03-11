@@ -63,6 +63,9 @@ public:
 		engineShaders.insert({ "VideoShader",Shader(videoVS,videoFS) });
 		engineShaders.insert({ "TrailShader", Shader(trailVS, trailFS) });
 		engineShaders.insert({ "BlurShader",Shader(blurVS,blurFS) });
+		engineShaders.insert({ "DownSamplingShader",Shader(downSamplingVS,downSamplingFS) });
+		engineShaders.insert({ "UpSamplingShader",Shader(upSamplingVS,upSamplingFS) });
+
 	}
 
 	std::unordered_map<std::string, Shader> engineShaders;
@@ -240,4 +243,19 @@ private:
 	const char* blurFS{
 		#include "CoreEngineShaders/Shaders/BlurShader/BlurShader.fs"
 	};
+
+	//sampling for post processing
+	const char* downSamplingVS{
+		#include "CoreEngineShaders/Shaders/DownSamplingShader/DownSamplingShader.vs"
+	};
+	const char* downSamplingFS{
+		#include "CoreEngineShaders/Shaders/DownSamplingShader/DownSamplingShader.fs"
+	};
+	const char* upSamplingVS{
+		#include "CoreEngineShaders/Shaders/UpSamplingShader/UpSamplingShader.vs"
+	};
+	const char* upSamplingFS{
+		#include "CoreEngineShaders/Shaders/UpSamplingShader/UpSamplingShader.fs"
+	};
+
 };

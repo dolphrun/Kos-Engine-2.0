@@ -51,17 +51,6 @@ public:
 			}
 		}
 
-		//// ADD SFX OF ACID SPRAY HERE - Done
-		//if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-
-		//	for (auto& af : ac->audioFiles) {
-		//		if (af.audioGUID == acidSpraySfxGUID && af.isSFX) {
-		//			af.requestPlay = true;
-		//			break;
-		//		}
-		//	}
-		//}
-
 		for (const auto& [entityID, signature] : ecsPtr->GetEntitySignatureData()) {
 			if (ecsPtr->HasComponent<ScoreManagerScript>(entityID)) {
 				scoreManager = ecsPtr->GetComponent<ScoreManagerScript>(entityID);
@@ -117,27 +106,29 @@ public:
 		//	}
 		//});
 
-		physicsPtr->GetEventCallback()->OnTriggerStay(entity, [this](const physics::Collision& col) {
-			if (!shieldActive) return;
+		//physicsPtr->GetEventCallback()->OnTriggerStay(entity, [this](const physics::Collision& col) {
+		//	if (!shieldActive) return;
 
-			auto* nameComp = ecsPtr->GetComponent<NameComponent>(col.otherEntityID);
-			if (!nameComp || nameComp->entityTag != "Enemy") return;
+		//	auto* nameComp = ecsPtr->GetComponent<NameComponent>(col.otherEntityID);
+		//	if (!nameComp || nameComp->entityTag != "Enemy") return;
 
-			// Each enemy gets its own tick timer
-			enemyTickTimers[col.otherEntityID] += ecsPtr->m_GetDeltaTime();
+		//	// Each enemy gets its own tick timer
+		//	enemyTickTimers[col.otherEntityID] += ecsPtr->m_GetDeltaTime();
 
-			if (enemyTickTimers[col.otherEntityID] >= dotTickRate) {
-				enemyTickTimers[col.otherEntityID] = 0.f;
+		//	if (enemyTickTimers[col.otherEntityID] >= dotTickRate) {
+		//		enemyTickTimers[col.otherEntityID] = 0.f;
 
-				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
-					enemyScript->TakeDamage(shieldDamage, "ACID");
+		//		if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
+		//			enemyScript->TakeDamage(shieldDamage, "ACID");
 
-					if (enemyScript->shieldHealth <= 0) {
-						enemyScript->TriggerStagger(0.5f);
-					}
-				}
-			}
-			});
+		//			std::cout << "[AcidShield] DOT tick! Enemy health now: " << ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)->enemyHealth << "\n";
+
+		//			if (enemyScript->shieldHealth <= 0) {
+		//				enemyScript->TriggerStagger(0.5f);
+		//			}
+		//		}
+		//	}
+		//	});
 
 
 
@@ -168,6 +159,38 @@ public:
 		if (currentTimer >= shieldDuration) {
 			ExpireShield();
 			return;
+		}
+
+		float dt = ecsPtr->m_GetDeltaTime();
+
+		for (ecs::EntityID enemyID : enemiesInside) {
+			enemyTickTimers[enemyID] += dt;
+
+			if (enemyTickTimers[enemyID] >= dotTickRate) {
+				enemyTickTimers[enemyID] = 0.f;
+
+				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(enemyID)) {
+					enemyScript->TakeDamage(shieldDamage, "ACID");
+
+					if (enemyScript->enemyHealth <= 0) {
+						// ADD SFX OF ENEMY DEATH HERE - DONE
+						PlayRandomEnemyDeathSFX();
+
+						if (scoreManager) {
+							scoreManager->AddScore(scoreValue);
+						}
+
+						enemyScript->Die();
+					}
+
+					std::cout << "[AcidShield] DOT tick! Enemy health now: "
+						<< enemyScript->enemyHealth << "\n";
+
+					if (enemyScript->shieldHealth <= 0) {
+						enemyScript->TriggerStagger(0.5f);
+					}
+				}
+			}
 		}
 	}
 

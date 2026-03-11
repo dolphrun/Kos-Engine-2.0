@@ -814,17 +814,29 @@ unsigned int* GraphicsManager::gm_PostProcess() {
 
 	PostProcessEffect::screenResolution = glm::vec2(windowWidth, windowHeight);
 	for (auto& ppe : postProcessProfile->postProcessingEffects) {
+
+		//If its in ppe... OVVERIDE AND KLILL IT DIE DIE 
+		if (ppe->GetType() == PPT_Bloom) {
+			//Need a whole other system to handle this :(
+			//Bind bloom fbo buffer
+			framebufferManager.bloomBuffer.BindForDrawing();
+			//Render down sampling
+
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+			continue;;
+		}
 		glBindFramebuffer(GL_FRAMEBUFFER, scratchFB->fbo);
 		glViewport(0, 0, scratchFB->width, scratchFB->height);
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+		
+		//render things differently if using the bloom shader
 		if (ppe->GetShader() == nullptr)continue;;
 		ppe->GetShader()->Use();
 		ppe->UpdateShader();
 		ppe->GetShader()->SetInt("screenTexture", 0);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, sceneFB->texID); 
-		
 		glBindVertexArray(sceneFB->vaoId);
 		glDrawElements(GL_TRIANGLE_STRIP, sceneFB->drawCount, GL_UNSIGNED_SHORT, NULL);
 		glBindFramebuffer(GL_FRAMEBUFFER, sceneFB->fbo);

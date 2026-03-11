@@ -59,7 +59,7 @@ namespace Application {
 			, layersManager(ecs)
 			, serialization(ecs)
 			, sceneManager(ecs, serialization, resourceManager)
-			, scriptManager(ecs, sceneManager, input, physicsManager, resourceManager, reflectionField, navMeshManager)
+			, scriptManager(ecs, sceneManager, input, physicsManager, resourceManager, reflectionField, navMeshManager,graphicsManager)
 			, audioManager()
 		{
 		}

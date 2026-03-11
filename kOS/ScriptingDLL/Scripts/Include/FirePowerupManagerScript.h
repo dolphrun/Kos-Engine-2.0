@@ -6,6 +6,7 @@ class FirePowerupManagerScript : public TemplateSC {
 public:
 	float fireballSpeed = 10.f;
 	int fireballDamage = 5;
+	float fireballSpin = 10.f;
 	glm::vec3 direction;
 
 	utility::GUID fireballSfxGUID;
@@ -80,13 +81,16 @@ public:
 	}
 
 	void Update() override {
-		if (auto* rb = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity)) {
-			rb->velocity = direction * fireballSpeed;
+		if (auto* transform = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
+			//transform->LocalTransformation.rotation += glm::vec3(1.f, 0.f, 0.f);
+			transform->LocalTransformation.rotation.x += ecsPtr->m_GetDeltaTime() * fireballSpin;
+			transform->LocalTransformation.rotation.y += ecsPtr->m_GetDeltaTime() * fireballSpin;
+			transform->LocalTransformation.position += direction * ecsPtr->m_GetDeltaTime() * fireballSpeed;
 		}
 
-		if (auto* transform = ecsPtr->GetComponent<ecs::TransformComponent>(entity)) {
-			transform->LocalTransformation.rotation += glm::vec3(1.f, 0.f, 0.f);
-		}
+		//if (auto* rb = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity)) {
+		//	rb->velocity = direction * fireballSpeed;
+		//}
 	}
 
 	void SpawnFireSplash(glm::vec3 position) {
@@ -100,5 +104,5 @@ public:
 		}
 	}
 
-	REFLECTABLE(FirePowerupManagerScript, fireballSpeed, fireballDamage, fireballSfxGUID, fireSplashPrefab)
+	REFLECTABLE(FirePowerupManagerScript, fireballSpeed, fireballDamage, fireballSfxGUID, fireSplashPrefab, fireballSpin)
 };

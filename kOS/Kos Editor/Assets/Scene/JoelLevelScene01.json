@@ -559,7 +559,6 @@
                     "acidLMBPrefab": "00000000-0000-0000-0000-000000000000",
                     "lightningLMBPrefab": "22008401-4fad-4af8-e998-498349593039",
                     "firePrefab": "a489a9c4-2ad1-24e0-9ad5-f1b1ef81e4b7",
-                    "acidPrefab": "df217809-aa63-539d-4bb6-d7ffde283b90",
                     "lightningPrefab": "ea36b838-cef9-7c8c-584a-29654652024a",
                     "fireDashPrefab": "2c08aaf0-6347-63db-2c50-728bcb1fff62",
                     "lightningDashPrefab": "00000000-0000-0000-0000-000000000000",
@@ -569,8 +568,9 @@
                     "gunReloadSfxGUID": "c93d030f-e7bf-2ee7-0425-c1f5f04d6483",
                     "fireSlashSfxGUID": "690a4f94-6928-a1a0-d76c-2e8f12929489",
                     "fireDashSfxGUID": "4ef03ed6-765a-ed95-b9bb-eafe53b75669",
-                    "lightningDashSfxGUID": "d461f812-5e6f-d941-fb84-4f07f11f56dc",
+                    "lightningSlowSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "lightningGunSfxGUID": "d461f812-5e6f-d941-fb84-4f07f11f56dc",
+                    "acidGrenadeGunSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "pauseMenuManagerObject": "155ba76a-ab15-3655-61d0-3eb0d2bccb85",
                     "healthUIObject": "00000000-0000-0000-0000-000000000000",
                     "loseScreenCanvasObject": "23dd4708-96d5-34e7-3d95-b85965156d5d",
@@ -26429,258 +26429,6 @@
                 }
             },
             {
-                "entityGUID": "a24b8d36-95e6-0c44-6865-10927568f269",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "a96e279c-ae47-df57-fedd-c3c083eedc72"
-                        }
-                    ]
-                },
-                "MeshColliderComponent": {
-                    "isTrigger": false,
-                    "convex": false
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
-                },
-                "NameComponent": {
-                    "entityName": "M5_Modular_Grounds_20M_B",
-                    "Layer": 0,
-                    "entityTag": "Ground",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "M5_Modular_Grounds_20M_B.prefab",
-                    "hide": false
-                },
-                "NavMeshComponent": {},
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -14.0,
-                            "y": 0.5,
-                            "z": -2.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": -14.0,
-                            "y": 0.5,
-                            "z": -2.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "c87e9eaf-ad08-47d7-2b23-b0df620f0334",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "a96e279c-ae47-df57-fedd-c3c083eedc72"
-                        }
-                    ]
-                },
-                "MeshColliderComponent": {
-                    "isTrigger": false,
-                    "convex": false
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
-                },
-                "NameComponent": {
-                    "entityName": "M5_Modular_Grounds_20M_B",
-                    "Layer": 0,
-                    "entityTag": "Ground",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "M5_Modular_Grounds_20M_B.prefab",
-                    "hide": false
-                },
-                "NavMeshComponent": {},
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 6.0,
-                            "y": 0.5,
-                            "z": -2.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 6.0,
-                            "y": 0.5,
-                            "z": -2.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "bbacd839-5e44-5274-d4b0-9abe395639be",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "a96e279c-ae47-df57-fedd-c3c083eedc72"
-                        }
-                    ]
-                },
-                "MeshColliderComponent": {
-                    "isTrigger": false,
-                    "convex": false
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
-                },
-                "NameComponent": {
-                    "entityName": "M5_Modular_Grounds_20M_B",
-                    "Layer": 0,
-                    "entityTag": "Ground",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "M5_Modular_Grounds_20M_B.prefab",
-                    "hide": false
-                },
-                "NavMeshComponent": {},
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 6.0,
-                            "y": 0.5,
-                            "z": 18.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 6.0,
-                            "y": 0.5,
-                            "z": 18.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "6589dbc8-593b-373c-791e-cda980133ee5",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "a96e279c-ae47-df57-fedd-c3c083eedc72"
-                        }
-                    ]
-                },
-                "MeshColliderComponent": {
-                    "isTrigger": false,
-                    "convex": false
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
-                },
-                "NameComponent": {
-                    "entityName": "M5_Modular_Grounds_20M_B",
-                    "Layer": 0,
-                    "entityTag": "Ground",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "M5_Modular_Grounds_20M_B.prefab",
-                    "hide": false
-                },
-                "NavMeshComponent": {},
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -14.0,
-                            "y": 0.5,
-                            "z": 18.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": -14.0,
-                            "y": 0.5,
-                            "z": 18.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    }
-                }
-            },
-            {
                 "entityGUID": "554ef25a-d29a-fdc7-aa42-c5bcf7deec9b",
                 "MaterialComponent": {
                     "materialGUID": [
@@ -47954,6 +47702,254 @@
                         }
                     }
                 }
+            },
+            {
+                "entityGUID": "b9390bbe-d931-f8ad-64f3-34f168c8a454",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "c0306709-d3cd-1429-1ece-2686b6afe461"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Ground_20M_Jacob",
+                    "Layer": 0,
+                    "entityTag": "Ground",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Ground_20M_Jacob.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -14.0,
+                            "y": 0.5,
+                            "z": 18.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -14.0,
+                            "y": 0.5,
+                            "z": 18.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "add09a66-3431-e61e-d7dd-e6cd0bba0107",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "c0306709-d3cd-1429-1ece-2686b6afe461"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Ground_20M_Jacob",
+                    "Layer": 0,
+                    "entityTag": "Ground",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Ground_20M_Jacob.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -14.0,
+                            "y": 0.5,
+                            "z": -2.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -14.0,
+                            "y": 0.5,
+                            "z": -2.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "f2856205-4f06-ab32-882e-a623df323c58",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "c0306709-d3cd-1429-1ece-2686b6afe461"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Ground_20M_Jacob",
+                    "Layer": 0,
+                    "entityTag": "Ground",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Ground_20M_Jacob.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 6.0,
+                            "y": 0.5,
+                            "z": -2.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 6.0,
+                            "y": 0.5,
+                            "z": -2.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "19f55bf3-085f-d277-dc69-01efd2b1bee5",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "c0306709-d3cd-1429-1ece-2686b6afe461"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Ground_20M_Jacob",
+                    "Layer": 0,
+                    "entityTag": "Ground",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Ground_20M_Jacob.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 6.0,
+                            "y": 0.5,
+                            "z": 18.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 6.0,
+                            "y": 0.5,
+                            "z": 18.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
             }
         ]
     },
@@ -48146,95 +48142,6 @@
                 }
             }
         ]
-    },
-    {
-        "entityGUID": "b234c17a-cbe8-1c72-0738-e6fd7a3eebf3",
-        "LightComponent": {
-            "lightType": 1,
-            "color": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 4.0
-            },
-            "diffuseStrength": {
-                "x": 36.099998474121094,
-                "y": 1.0,
-                "z": 1.0
-            },
-            "specularStrength": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            },
-            "linear": 0.09000000357627869,
-            "quadratic": 0.03200000151991844,
-            "direction": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            },
-            "cutOff": 5.5,
-            "outerCutOff": 10.5,
-            "intesnity": 41.400001525878906,
-            "shadowCast": false,
-            "bakedLighting": false,
-            "depthMapGUID": "00000000-0000-0000-0000-000000000000"
-        },
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
-                }
-            ]
-        },
-        "MeshFilterComponent": {
-            "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
-        },
-        "NameComponent": {
-            "entityName": "Point Light Prop",
-            "Layer": 0,
-            "entityTag": "Default",
-            "isPrefab": true,
-            "isStatic": false,
-            "prefabName": "Point Light Prop.prefab",
-            "hide": false
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": -21.8282470703125,
-                    "y": 4.80119514465332,
-                    "z": -0.47182750701904297
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 89.98021697998047,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": -21.8282470703125,
-                    "y": 4.80119514465332,
-                    "z": -0.47182750701904297
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 89.9999771118164,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            }
-        }
     },
     {
         "entityGUID": "d85d1432-a185-393e-fb4b-4b1c39443c27",
@@ -48533,7 +48440,16 @@
                         }
                     },
                     "emissionInterval": 0.05000000074505806,
-                    "no_Of_Particles": 10
+                    "no_Of_Particles": 10,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -48860,7 +48776,16 @@
                         }
                     },
                     "emissionInterval": 0.004999999888241291,
-                    "no_Of_Particles": 40
+                    "no_Of_Particles": 40,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -49072,7 +48997,16 @@
                         }
                     },
                     "emissionInterval": 0.004999999888241291,
-                    "no_Of_Particles": 20
+                    "no_Of_Particles": 20,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -49396,7 +49330,16 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -49608,7 +49551,16 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -49820,7 +49772,16 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -50032,7 +49993,16 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -50117,6 +50087,871 @@
                     "x": 1.0,
                     "y": 1.0,
                     "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "2a9dd927-9762-6682-58c6-ddb5f32c4619",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 2.0,
+                        "y": 2.0,
+                        "z": 4.0
+                    },
+                    "diffuseStrength": {
+                        "x": 36.099998474121094,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 0.09000000357627869,
+                    "quadratic": 0.03200000151991844,
+                    "direction": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 5.5,
+                    "outerCutOff": 10.5,
+                    "intesnity": 41.400001525878906,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
+                },
+                "NameComponent": {
+                    "entityName": "Point Light Prop",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "Point Light Prop.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -23.69668197631836,
+                            "y": 11.80119514465332,
+                            "z": 0.033300578594207764
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 89.98021697998047,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -23.69668197631836,
+                            "y": 11.80119514465332,
+                            "z": 0.033300578594207764
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 89.98021697998047,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "9d7af549-21f3-2192-6210-c6476b8bf0ff",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 2.0,
+                        "y": 2.0,
+                        "z": 4.0
+                    },
+                    "diffuseStrength": {
+                        "x": 36.099998474121094,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 0.09000000357627869,
+                    "quadratic": 0.03200000151991844,
+                    "direction": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 5.5,
+                    "outerCutOff": 10.5,
+                    "intesnity": 41.400001525878906,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
+                },
+                "NameComponent": {
+                    "entityName": "Point Light Prop",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "Point Light Prop.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -63.7349739074707,
+                            "y": 8.80119514465332,
+                            "z": 0.033300578594207764
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 89.98021697998047,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -63.7349739074707,
+                            "y": 8.80119514465332,
+                            "z": 0.033300578594207764
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 89.98021697998047,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "f31902bf-6601-b4cb-63b9-881d9cf10333",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 2.0,
+                        "y": 2.0,
+                        "z": 4.0
+                    },
+                    "diffuseStrength": {
+                        "x": 36.099998474121094,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 0.09000000357627869,
+                    "quadratic": 0.03200000151991844,
+                    "direction": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 5.5,
+                    "outerCutOff": 10.5,
+                    "intesnity": 41.400001525878906,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
+                },
+                "NameComponent": {
+                    "entityName": "Point Light Prop",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "Point Light Prop.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -99.36064910888672,
+                            "y": 17.80119514465332,
+                            "z": -55.966697692871094
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 89.98021697998047,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -99.36064910888672,
+                            "y": 17.80119514465332,
+                            "z": -55.966697692871094
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 89.98021697998047,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "5ef2ef20-e1c4-510f-e727-45234385621b",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 2.0,
+                        "y": 2.0,
+                        "z": 4.0
+                    },
+                    "diffuseStrength": {
+                        "x": 36.099998474121094,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 0.09000000357627869,
+                    "quadratic": 0.03200000151991844,
+                    "direction": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 5.5,
+                    "outerCutOff": 10.5,
+                    "intesnity": 41.400001525878906,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
+                },
+                "NameComponent": {
+                    "entityName": "Point Light Prop",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "Point Light Prop.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -20.416566848754883,
+                            "y": 17.80119514465332,
+                            "z": -55.966697692871094
+                        },
+                        "rotation": {
+                            "x": -179.84559631347656,
+                            "y": -89.95576477050781,
+                            "z": 179.84559631347656
+                        },
+                        "scale": {
+                            "x": 0.010002863593399525,
+                            "y": 0.009999999776482582,
+                            "z": 0.010002863593399525
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -20.416566848754883,
+                            "y": 17.80119514465332,
+                            "z": -55.966697692871094
+                        },
+                        "rotation": {
+                            "x": -179.84559631347656,
+                            "y": -89.95154571533203,
+                            "z": 179.84559631347656
+                        },
+                        "scale": {
+                            "x": 0.01000286266207695,
+                            "y": 0.009999999776482582,
+                            "z": 0.01000286266207695
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "24abd5f5-c6dd-4e95-93a1-9f7c9573b1ad",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 2.0,
+                        "y": 2.0,
+                        "z": 4.0
+                    },
+                    "diffuseStrength": {
+                        "x": 36.099998474121094,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 0.09000000357627869,
+                    "quadratic": 0.03200000151991844,
+                    "direction": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 5.5,
+                    "outerCutOff": 10.5,
+                    "intesnity": 41.400001525878906,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
+                },
+                "NameComponent": {
+                    "entityName": "Point Light Prop",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "Point Light Prop.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -59.832923889160156,
+                            "y": 16.210363388061523,
+                            "z": -80.70990753173828
+                        },
+                        "rotation": {
+                            "x": -5.0857760669487106e-8,
+                            "y": -0.048396773636341095,
+                            "z": 0.0001305854821112007
+                        },
+                        "scale": {
+                            "x": 0.01000332273542881,
+                            "y": 0.009999999776482582,
+                            "z": 0.01000332273542881
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -59.832923889160156,
+                            "y": 16.210363388061523,
+                            "z": -80.70990753173828
+                        },
+                        "rotation": {
+                            "x": -5.085775356405975e-8,
+                            "y": -0.048396773636341095,
+                            "z": 0.0001305854821112007
+                        },
+                        "scale": {
+                            "x": 0.01000332273542881,
+                            "y": 0.009999999776482582,
+                            "z": 0.01000332273542881
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "c8b2f3cb-dd33-a210-9a4c-09efdcf67546",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 2.0,
+                        "y": 2.0,
+                        "z": 4.0
+                    },
+                    "diffuseStrength": {
+                        "x": 36.099998474121094,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 0.09000000357627869,
+                    "quadratic": 0.03200000151991844,
+                    "direction": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 5.5,
+                    "outerCutOff": 10.5,
+                    "intesnity": 41.400001525878906,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
+                },
+                "NameComponent": {
+                    "entityName": "Point Light Prop",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "Point Light Prop.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -59.832923889160156,
+                            "y": -2.066378355026245,
+                            "z": -225.70989990234375
+                        },
+                        "rotation": {
+                            "x": -5.0890257341507095e-8,
+                            "y": -0.048396773636341095,
+                            "z": 0.0001305854821112007
+                        },
+                        "scale": {
+                            "x": 0.01000332273542881,
+                            "y": 0.009999999776482582,
+                            "z": 0.01000332273542881
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -59.832923889160156,
+                            "y": -2.066378355026245,
+                            "z": -225.70989990234375
+                        },
+                        "rotation": {
+                            "x": -5.0890253788793416e-8,
+                            "y": -0.048396773636341095,
+                            "z": 0.0001305854821112007
+                        },
+                        "scale": {
+                            "x": 0.01000332273542881,
+                            "y": 0.009999999776482582,
+                            "z": 0.01000332273542881
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "ee4d2d0f-6de8-34a5-c8e0-1c8484819622",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 2.0,
+                        "y": 2.0,
+                        "z": 4.0
+                    },
+                    "diffuseStrength": {
+                        "x": 36.099998474121094,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 0.09000000357627869,
+                    "quadratic": 0.03200000151991844,
+                    "direction": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 5.5,
+                    "outerCutOff": 10.5,
+                    "intesnity": 41.400001525878906,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
+                },
+                "NameComponent": {
+                    "entityName": "Point Light Prop",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "Point Light Prop.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -32.49097442626953,
+                            "y": 11.210363388061523,
+                            "z": -127.70989990234375
+                        },
+                        "rotation": {
+                            "x": -179.8319091796875,
+                            "y": -89.95576477050781,
+                            "z": 179.8319091796875
+                        },
+                        "scale": {
+                            "x": 0.010003456845879555,
+                            "y": 0.009999999776482582,
+                            "z": 0.010003456845879555
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -32.49097442626953,
+                            "y": 11.210363388061523,
+                            "z": -127.70989990234375
+                        },
+                        "rotation": {
+                            "x": -179.83192443847656,
+                            "y": -89.95154571533203,
+                            "z": 179.83192443847656
+                        },
+                        "scale": {
+                            "x": 0.01000345591455698,
+                            "y": 0.009999999776482582,
+                            "z": 0.01000345591455698
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "64570464-bc70-e8ae-5683-5c641f4155a4",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 2.0,
+                        "y": 2.0,
+                        "z": 4.0
+                    },
+                    "diffuseStrength": {
+                        "x": 36.099998474121094,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 0.09000000357627869,
+                    "quadratic": 0.03200000151991844,
+                    "direction": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 5.5,
+                    "outerCutOff": 10.5,
+                    "intesnity": 41.400001525878906,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
+                },
+                "NameComponent": {
+                    "entityName": "Point Light Prop",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "Point Light Prop.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -87.49097442626953,
+                            "y": 11.210363388061523,
+                            "z": -127.70989990234375
+                        },
+                        "rotation": {
+                            "x": 0.16547136008739471,
+                            "y": 89.95576477050781,
+                            "z": 0.16548648476600647
+                        },
+                        "scale": {
+                            "x": 0.01000320166349411,
+                            "y": 0.009999999776482582,
+                            "z": 0.01000320166349411
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -87.49097442626953,
+                            "y": 11.210363388061523,
+                            "z": -127.70989990234375
+                        },
+                        "rotation": {
+                            "x": 0.16551339626312256,
+                            "y": 89.95154571533203,
+                            "z": 0.1655285358428955
+                        },
+                        "scale": {
+                            "x": 0.010003202594816685,
+                            "y": 0.009999999776482582,
+                            "z": 0.010003202594816685
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "0edd7464-7e94-a3b5-b82c-6c9812231710",
+                "LightComponent": {
+                    "lightType": 1,
+                    "color": {
+                        "x": 2.0,
+                        "y": 2.0,
+                        "z": 4.0
+                    },
+                    "diffuseStrength": {
+                        "x": 36.099998474121094,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "specularStrength": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "linear": 0.09000000357627869,
+                    "quadratic": 0.03200000151991844,
+                    "direction": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "cutOff": 5.5,
+                    "outerCutOff": 10.5,
+                    "intesnity": 41.400001525878906,
+                    "shadowCast": false,
+                    "bakedLighting": false,
+                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
+                },
+                "NameComponent": {
+                    "entityName": "Point Light Prop",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "Point Light Prop.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -59.832923889160156,
+                            "y": 7.210363388061523,
+                            "z": -185.70989990234375
+                        },
+                        "rotation": {
+                            "x": -5.0881780566669477e-8,
+                            "y": -0.048396773636341095,
+                            "z": 0.0001305854821112007
+                        },
+                        "scale": {
+                            "x": 0.01000332273542881,
+                            "y": 0.009999999776482582,
+                            "z": 0.01000332273542881
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -59.832923889160156,
+                            "y": 7.210363388061523,
+                            "z": -185.70989990234375
+                        },
+                        "rotation": {
+                            "x": -5.088177346124212e-8,
+                            "y": -0.048396773636341095,
+                            "z": 0.0001305854821112007
+                        },
+                        "scale": {
+                            "x": 0.01000332273542881,
+                            "y": 0.009999999776482582,
+                            "z": 0.01000332273542881
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "ce7e2a4d-c346-68ae-defd-77ea06abf0c6",
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "12b2eec1-96be-a5f8-e2be-27355fb30805"
+                }
+            ]
+        },
+        "MeshColliderComponent": {
+            "isTrigger": false,
+            "convex": false
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
+        },
+        "NameComponent": {
+            "entityName": "M5_Modular_Ground_20M_Jacob_B",
+            "Layer": 0,
+            "entityTag": "Ground",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 29.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 29.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
                 }
             }
         }

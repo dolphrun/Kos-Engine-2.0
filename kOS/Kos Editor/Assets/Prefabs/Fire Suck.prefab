@@ -1,5 +1,13 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "35463a1f-1654-7a30-c9a8-7f87767acb62",
         "NameComponent": {
             "entityName": "Fire Suck",
@@ -172,14 +180,23 @@
                 }
             },
             "emissionInterval": 0.05000000074505806,
-            "no_Of_Particles": 50
+            "no_Of_Particles": 50,
+            "dynamicTrailingEnabled": false,
+            "trail_Color": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0,
+                "w": 1.0
+            },
+            "trailLifeTime": 2.0,
+            "trailWidth": 0.20000000298023224
         },
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 13.64486312866211,
-                    "y": 29.185443878173828,
-                    "z": 3.392188787460327
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -194,9 +211,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 13.64486312866211,
-                    "y": 29.185443878173828,
-                    "z": 3.392188787460327
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,

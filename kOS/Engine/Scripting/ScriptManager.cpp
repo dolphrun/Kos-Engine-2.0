@@ -61,6 +61,7 @@ void ScriptManager::RunDLL() {
 		svm.resource = &m_resourceManager;
 		svm.scriptNames = &m_ecs.scriptList;
 		svm.navMesh = &m_navmesh;
+		svm.grpahics = &m_graphics;
 		DLLUpdateStatic updateFunc = (DLLUpdateStatic)GetProcAddress(hInstDLL, "UpdateStatic");
 		updateFunc(&svm);
 		updateFunc = nullptr;

@@ -84,3 +84,19 @@ void Blur::UpdateShader() {
 	currentShader->SetVec2("iResoVal",screenResolution);
 
 }
+
+
+Bloom::Bloom()
+	: filterRadius(0.0f)
+{
+}
+
+Bloom::Bloom(const Bloom& other)
+	: filterRadius(other.filterRadius)
+{
+
+}
+void Bloom::UpdateShader() {
+
+
+}

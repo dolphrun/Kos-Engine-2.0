@@ -36,12 +36,14 @@ public:
 	FrameBuffer gameBuffer{};
 	FrameBuffer editorBuffer{};
 	FrameBuffer postProcessBuffer1{};
+
 	UIBuffer UIBuffer{};
 
 	GBuffer gBuffer{};
+	BloomBuffer bloomBuffer{};
 
 	void Initialize(unsigned int windowWidth, unsigned int windowHeight)
-	{
+	{	
 		sceneBuffer.InitializeFBO(static_cast<int>(windowWidth), static_cast<int>(windowHeight));
 		frameBuffer.InitializeFBO(static_cast<int>(windowWidth), static_cast<int>(windowHeight));
 		editorBuffer.InitializeFBO(static_cast<int>(windowWidth), static_cast<int>(windowHeight));
@@ -49,6 +51,7 @@ public:
 		depthBuffer.InitializeDepthBuffer(static_cast<int>(windowWidth), static_cast<int>(windowHeight));
 		gBuffer.InitializeGBuffer(static_cast<int>(windowWidth), static_cast<int>(windowHeight));
 		postProcessBuffer1.InitializeFBO(static_cast<int>(windowWidth), static_cast<int>(windowHeight));
+		bloomBuffer.InitializeBloomBuffer(static_cast<int>(windowWidth), static_cast<int>(windowHeight));
 		UIBuffer.InitializeUIBuffer(static_cast<int>(windowWidth), static_cast<int>(windowHeight),gBuffer.gMaterial);
 	}
 
@@ -61,6 +64,7 @@ public:
 		postProcessBuffer1.Update(static_cast<int>(windowWidth), static_cast<int>(windowHeight));
 		gBuffer.Clear();
 		gBuffer.InitializeGBuffer(static_cast<int>(windowWidth), static_cast<int>(windowHeight));
+		bloomBuffer.Update(static_cast<int>(windowWidth), static_cast<int>(windowHeight));
 		UIBuffer.Update(static_cast<int>(windowWidth), static_cast<int>(windowHeight), gBuffer.gMaterial);
 
 	}

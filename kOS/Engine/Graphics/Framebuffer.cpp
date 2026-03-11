@@ -232,3 +232,56 @@ void UIBuffer::BindForDrawing() {
     glClearBufferfv(GL_COLOR, 0, clearColor);
     //glEnable(GL_DEPTH_TEST);
 }
+
+void BloomBuffer::InitializeBloomBuffer(int windowWidth, int windowHeight) {
+    glGenFramebuffers(1, &bloomBuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, bloomBuffer);
+
+    glm::vec2 mipSize((float)windowWidth, (float)windowHeight);
+    glm::ivec2 mipIntSize((int)windowWidth, (int)windowHeight);
+    for (GLuint i = 0; i < mipChainLength; i++)
+    {
+        BloomMip mip;
+
+        mipSize *= 0.5f;
+        mipIntSize /= 2;
+        mip.size = mipSize;
+        mip.intSize = mipIntSize;
+
+        glGenTextures(1, &mip.texture);
+        glBindTexture(GL_TEXTURE_2D, mip.texture);
+        // we are downscaling an HDR color buffer, so we need a float texture format
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_R11F_G11F_B10F,
+            (int)mipSize.x, (int)mipSize.y,
+            0, GL_RGB, GL_FLOAT, nullptr);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        mipChain.emplace_back(mip);
+    }
+
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+        GL_TEXTURE_2D, mipChain[0].texture, 0);
+
+    // setup attachments
+    unsigned int attachments[1] = { GL_COLOR_ATTACHMENT0 };
+    glDrawBuffers(1, attachments);
+
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+void BloomBuffer::Update(int windowWidth, int windowHeight) {
+    // Delete mip textures
+    for (auto& mip : mipChain)
+    {
+        glDeleteTextures(1, &mip.texture);
+    }
+    mipChain.clear();
+    glDeleteFramebuffers(1, &bloomBuffer);
+    InitializeBloomBuffer(windowWidth, windowHeight);
+}
+//
+void BloomBuffer::BindForDrawing() {
+    glBindFramebuffer(GL_FRAMEBUFFER, bloomBuffer);
+}
