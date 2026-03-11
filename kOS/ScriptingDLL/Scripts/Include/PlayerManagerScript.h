@@ -239,8 +239,12 @@ public:
 	//Weapon spawn here
 	utility::GUID pistolModelObject;
 	utility::GUID fireSwordModelObject;
+	utility::GUID acidModelObject;
+	utility::GUID lightningModelObject;
 
 	ecs::EntityID pistolModelID = 0;
+	ecs::EntityID acidModelObjectID = 0;
+	ecs::EntityID lightningModelObjectID = 0;
 	ecs::EntityID fireSwordModelID = 0;
 
 
@@ -364,7 +368,7 @@ public:
 	REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
 		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningSlowSfxGUID, lightningGunSfxGUID, acidGrenadeGunSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
-		winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashGUID, pistolModelObject, fireSwordModelObject)
+		winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashGUID, pistolModelObject, fireSwordModelObject, lightningModelObject, acidModelObject)
 	
 };
 
@@ -394,6 +398,8 @@ inline void PlayerManagerScript::Start() {
 	absorbVFXSpawnObjectID = ecsPtr->GetEntityIDFromGUID(absorbingVFXSpawnPoint);
 	pistolModelID = ecsPtr->GetEntityIDFromGUID(pistolModelObject);
 	fireSwordModelID = ecsPtr->GetEntityIDFromGUID(fireSwordModelObject);
+	lightningModelObjectID = ecsPtr->GetEntityIDFromGUID(lightningModelObject);
+	acidModelObjectID = ecsPtr->GetEntityIDFromGUID(acidModelObject);
 
 	// Start with pistol visible, sword hidden
 	ecsPtr->SetActive(pistolModelID, true);
@@ -1406,9 +1412,13 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				}
 				else if (powerupComp->powerupType == "ACID") {
 					playerPowerupHeld = Powerup::ACID;
+					SwapWeaponModel(Powerup::ACID);
+
 				}
 				else if (powerupComp->powerupType == "LIGHTNING") {
 					playerPowerupHeld = Powerup::LIGHTNING;
+					SwapWeaponModel(Powerup::LIGHTNING);
+
 				}
 				
 				currMana = maxMana;
@@ -1973,14 +1983,31 @@ inline void PlayerManagerScript::CameraShake(float intensity, float duration) {
 }
 
 inline void  PlayerManagerScript::SwapWeaponModel(Powerup newPowerup) {
-	if (pistolModelID == 0 || fireSwordModelID == 0) return;
+	if (pistolModelID == 0 || fireSwordModelID == 0 || lightningModelObjectID==0 || acidModelObjectID == 0) return;
 
 	if (newPowerup == Powerup::FIRE) {
 		ecsPtr->SetActive(pistolModelID, false);
 		ecsPtr->SetActive(fireSwordModelID, true);
+		ecsPtr->SetActive(lightningModelObjectID, false);
+		ecsPtr->SetActive(acidModelObjectID, false);
+	}
+	if (newPowerup == Powerup::ACID) {
+		ecsPtr->SetActive(pistolModelID, false);
+		ecsPtr->SetActive(fireSwordModelID, false);
+		ecsPtr->SetActive(lightningModelObjectID, false);
+		ecsPtr->SetActive(acidModelObjectID, true);
+
+	}
+	if (newPowerup == Powerup::LIGHTNING) {
+		ecsPtr->SetActive(pistolModelID, false);
+		ecsPtr->SetActive(fireSwordModelID, false);
+		ecsPtr->SetActive(lightningModelObjectID, true);
+		ecsPtr->SetActive(acidModelObjectID, false);
 	}
 	else {
 		ecsPtr->SetActive(pistolModelID, true);
 		ecsPtr->SetActive(fireSwordModelID, false);
+		ecsPtr->SetActive(lightningModelObjectID, false);
+		ecsPtr->SetActive(acidModelObjectID, false);
 	}
 }
