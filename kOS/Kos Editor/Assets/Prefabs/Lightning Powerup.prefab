@@ -61,12 +61,12 @@
                     "isTrigger": false,
                     "box": {
                         "center": {
-                            "x": -70.15682220458984,
+                            "x": -1.9012279510498047,
                             "y": 105.373046875,
-                            "z": -9.03880500793457
+                            "z": -9.038804054260254
                         },
                         "size": {
-                            "x": 36.10176467895508,
+                            "x": 32.2993049621582,
                             "y": 217.58926391601563,
                             "z": 75.29580688476563
                         }
@@ -80,7 +80,7 @@
                     ]
                 },
                 "MeshFilterComponent": {
-                    "meshGUID": "d99f9522-9e6b-105a-4ef2-7e2b63bcc074"
+                    "meshGUID": "4956e3f7-d316-e764-1dcb-3646556adbb0"
                 },
                 "NameComponent": {
                     "entityName": "Lightning Prop",
@@ -304,14 +304,23 @@
                         }
                     },
                     "emissionInterval": 0.05000000074505806,
-                    "no_Of_Particles": 10
+                    "no_Of_Particles": 10,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -0.1430063247680664,
+                            "x": 0.05271100997924805,
                             "y": 30.727758407592773,
-                            "z": 0.7716483473777771
+                            "z": 0.34475672245025635
                         },
                         "rotation": {
                             "x": 0.0,
@@ -326,9 +335,9 @@
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": -0.1430063247680664,
+                            "x": 0.05271100997924805,
                             "y": 3.8249549865722656,
-                            "z": 0.7716483473777771
+                            "z": 0.34475672245025635
                         },
                         "rotation": {
                             "x": 0.0,
