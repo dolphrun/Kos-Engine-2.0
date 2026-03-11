@@ -152,7 +152,10 @@ public:
 	utility::GUID acidShieldPrefab;
 	utility::GUID airBlastPrefab;
 
-	utility::GUID absorbingVFXPrefab;
+	utility::GUID absorbFireVFXPrefab;
+	utility::GUID absorbLightningVFXPrefab;
+	utility::GUID absorbAcidVFXPrefab;
+
 	utility::GUID absorbingVFXSpawnPoint;
 	ecs::EntityID absorbVFXSpawnObjectID;
 
@@ -318,7 +321,11 @@ public:
 	//Dash VFX Timer
 	float fireDashVfxTimer = 0.0f;
 	float fireDashVfxDuration = 30.0f;
-
+	
+	//Absorbing vfx pref
+	ecs::EntityID activeAbsorbVFXID = 0;
+	float absorbVFXTimer = 0.f;
+	float absorbVFXDuration = 1.0f;
 
 
 
@@ -348,7 +355,8 @@ public:
 
 	REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
-		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningSlowSfxGUID, lightningGunSfxGUID, acidGrenadeGunSfxGUID,pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, winScreenCanvasObject, absorbingVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashGUID);
+		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningSlowSfxGUID, lightningGunSfxGUID, acidGrenadeGunSfxGUID,pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject, 
+		winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashGUID);
 };
 
 // --- LATE INCLUDES & IMPLEMENTATION ---
@@ -576,6 +584,19 @@ inline void PlayerManagerScript::Update() {
 			ecsPtr->SetActive(muzzleFlashID, false);
 		}
 	}
+
+	// Absorb VFX auto delete timer
+	if (absorbVFXTimer > 0.f) {
+		absorbVFXTimer -= ecsPtr->m_GetDeltaTime();
+		if (absorbVFXTimer <= 0.f) {
+			absorbVFXTimer = 0.f;
+			if (activeAbsorbVFXID != 0) {
+				ecsPtr->DeleteEntity(activeAbsorbVFXID);
+				activeAbsorbVFXID = 0;
+			}
+		}
+	}
+
 }
 
 inline void PlayerManagerScript::FixedUpdate() {
@@ -1380,20 +1401,48 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 					<< currInteractCooldown << "s\n";*/
 
 				//Raymond spawn ur absorbing here
-				if (absorbingVFXPrefab != utility::GUID{}) {
-					std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-					ecs::EntityID absorbVFXID = DuplicatePrefabIntoScene<R_Scene>(currentScene, absorbingVFXPrefab);
+				//if (absorbingVFXPrefab != utility::GUID{}) {
+				//	std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+				//	ecs::EntityID absorbVFXID = DuplicatePrefabIntoScene<R_Scene>(currentScene, absorbingVFXPrefab);
 
-					// Position at the designated spawn point
-					auto* spawnTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXSpawnObjectID);
-					auto* vfxTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXID);
+				//	// Position at the designated spawn point
+				//	auto* spawnTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXSpawnObjectID);
+				//	auto* vfxTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXID);
 
-					if (spawnTf && vfxTf) {
-						vfxTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
-					}
-				}
+				//	if (spawnTf && vfxTf) {
+				//		vfxTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
+				//	}
+				//}
 
 				// ADD SFX
+
+				utility::GUID selectedVFX;
+
+				if (powerupComp->powerupType == "FIRE")
+					selectedVFX = absorbFireVFXPrefab;
+				else if (powerupComp->powerupType == "ACID")
+					selectedVFX = absorbAcidVFXPrefab;
+				else if (powerupComp->powerupType == "LIGHTNING")
+					selectedVFX = absorbLightningVFXPrefab;
+
+				if (selectedVFX != utility::GUID{}) {
+					if (activeAbsorbVFXID != 0) {
+						ecsPtr->DeleteEntity(activeAbsorbVFXID);
+						activeAbsorbVFXID = 0;
+					}
+
+					std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+					ecs::EntityID absorbVFXID = DuplicatePrefabIntoScene<R_Scene>(currentScene, selectedVFX);
+
+					auto* spawnTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXSpawnObjectID);
+					if (auto* vfxTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXID)) {
+						vfxTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
+						vfxTf->LocalTransformation.rotation = spawnTf->WorldTransformation.rotation;
+					}
+
+					activeAbsorbVFXID = absorbVFXID;
+					absorbVFXTimer = absorbVFXDuration;
+				}
 
 				if (animComp && hasAbsorbed)
 				{

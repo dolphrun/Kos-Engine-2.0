@@ -301,7 +301,8 @@
                         "z": 1.0,
                         "w": 1.0
                     },
-                    "trailLifeTime": 2.0
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -521,7 +522,8 @@
                         "z": 1.0,
                         "w": 1.0
                     },
-                    "trailLifeTime": 2.0
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -1021,7 +1023,8 @@
                                                 "z": 1.0,
                                                 "w": 1.0
                                             },
-                                            "trailLifeTime": 2.0
+                                            "trailLifeTime": 2.0,
+                                            "trailWidth": 0.20000000298023224
                                         },
                                         "TransformComponent": {
                                             "WorldTransformation": {
@@ -1241,7 +1244,8 @@
                                                 "z": 1.0,
                                                 "w": 1.0
                                             },
-                                            "trailLifeTime": 2.0
+                                            "trailLifeTime": 2.0,
+                                            "trailWidth": 0.20000000298023224
                                         },
                                         "TransformComponent": {
                                             "WorldTransformation": {
@@ -1359,6 +1363,54 @@
                                     "x": 0.01999891921877861,
                                     "y": 0.019999999552965164,
                                     "z": 0.01999891921877861
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "a75b3459-7785-6de7-3d24-0d5616d12a5f",
+                        "NameComponent": {
+                            "entityName": "AbsorbSpawnPoint",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 3.7172701358795166,
+                                    "y": 99.3357162475586,
+                                    "z": -1.0625941753387451
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.9999998211860657,
+                                    "y": 1.0,
+                                    "z": 0.9999998211860657
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 1.063877820968628,
+                                    "y": -0.6642837524414063,
+                                    "z": 3.7169036865234375
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -89.98021697998047,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
                                 }
                             }
                         }
@@ -1638,8 +1690,10 @@
                     "healthUIObject": "00000000-0000-0000-0000-000000000000",
                     "loseScreenCanvasObject": "dee61752-b669-2e75-a66d-ee0be6621e13",
                     "winScreenCanvasObject": "dd420147-13cd-2a52-32b4-107bc917a44d",
-                    "absorbingVFXPrefab": "00000000-0000-0000-0000-000000000000",
-                    "absorbingVFXSpawnPoint": "00000000-0000-0000-0000-000000000000",
+                    "absorbFireVFXPrefab": "38778cef-57e7-5269-5e85-d38ac924e0fe",
+                    "absorbLightningVFXPrefab": "c0aa6144-dad2-22b5-9a18-f7305348a895",
+                    "absorbAcidVFXPrefab": "f55a0746-4f22-1558-7a37-d7339de62d6f",
+                    "absorbingVFXSpawnPoint": "a75b3459-7785-6de7-3d24-0d5616d12a5f",
                     "muzzleFlashGUID": "7fa59a2b-b738-c1bc-d169-b5cb1f5f7030"
                 },
                 "RigidbodyComponent": {
@@ -5229,7 +5283,8 @@
                         "z": 1.0,
                         "w": 1.0
                     },
-                    "trailLifeTime": 2.0
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -5449,7 +5504,8 @@
                         "z": 1.0,
                         "w": 1.0
                     },
-                    "trailLifeTime": 2.0
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -5669,7 +5725,8 @@
                         "z": 1.0,
                         "w": 1.0
                     },
-                    "trailLifeTime": 2.0
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -5889,7 +5946,8 @@
                         "z": 1.0,
                         "w": 1.0
                     },
-                    "trailLifeTime": 2.0
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -6235,7 +6293,8 @@
                         "z": 1.0,
                         "w": 1.0
                     },
-                    "trailLifeTime": 2.0
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
