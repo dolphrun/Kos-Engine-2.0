@@ -412,7 +412,7 @@ namespace ecs {
 
 	template<typename T>
 	T* ECS::DuplicateComponent(EntityID duplicateID, EntityID newID) {
-		T* duplicateComponent = GetComponent<T>(duplicateID);
+		
 
 		T* NewComponent;
 		if (HasComponent<T>(newID)) {
@@ -422,6 +422,7 @@ namespace ecs {
 			NewComponent = AddComponent<T>(newID);
 		}
 
+		T* duplicateComponent = GetComponent<T>(duplicateID);
 
 		DeepCopyComponents<T> duplicator;
 		NewComponent->ApplyFunctionPairwise(duplicator, *duplicateComponent);
