@@ -6,7 +6,7 @@ class AcidShield : public TemplateSC {
 public:
 	//int acidDamage = 5;
 	float shieldDuration = 3.0f;
-	int shieldDamage = 1;
+	int shieldDamage = 5;
 	float dotTickRate = 1.0f;
 
 	float currentTimer = 0.0f;
@@ -171,6 +171,17 @@ public:
 
 				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(enemyID)) {
 					enemyScript->TakeDamage(shieldDamage, "ACID");
+
+					if (enemyScript->enemyHealth <= 0) {
+						// ADD SFX OF ENEMY DEATH HERE - DONE
+						PlayRandomEnemyDeathSFX();
+
+						if (scoreManager) {
+							scoreManager->AddScore(scoreValue);
+						}
+
+						enemyScript->Die();
+					}
 
 					std::cout << "[AcidShield] DOT tick! Enemy health now: "
 						<< enemyScript->enemyHealth << "\n";
