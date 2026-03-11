@@ -16,6 +16,7 @@ public:
 
 	int agentid;
 	int enemyHealth;
+	int maxEnemyHealth = 0;
 	int lightningStack = 0;
 	float enemyMovementSpeed;
 
@@ -85,6 +86,7 @@ public:
 #include "TankAOEScript.h"
 
 inline void EnemyManagerScript::Start() {
+	maxEnemyHealth = enemyHealth;
 	playerToChaseID = ecsPtr->GetEntityIDFromGUID(playerToChase);
 	//enemyHurtboxPositionID = ecsPtr->GetEntityIDFromGUID(enemyHurtboxPosition);
 

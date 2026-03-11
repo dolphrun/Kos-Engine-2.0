@@ -396,14 +396,44 @@ inline void PlayerManagerScript::Start() {
 	playerArmModelObjectID = ecsPtr->GetEntityIDFromGUID(playerArmModelObject);
 	playerGroundCheckObjectID = ecsPtr->GetEntityIDFromGUID(playerGroundCheckObject);
 	absorbVFXSpawnObjectID = ecsPtr->GetEntityIDFromGUID(absorbingVFXSpawnPoint);
-	pistolModelID = ecsPtr->GetEntityIDFromGUID(pistolModelObject);
-	fireSwordModelID = ecsPtr->GetEntityIDFromGUID(fireSwordModelObject);
-	lightningModelObjectID = ecsPtr->GetEntityIDFromGUID(lightningModelObject);
-	acidModelObjectID = ecsPtr->GetEntityIDFromGUID(acidModelObject);
+	
+	// PISTOL
+	if (pistolModelObject != utility::GUID{}) {
+		pistolModelID = ecsPtr->GetEntityIDFromGUID(pistolModelObject);
+	}
+	else {
+		pistolModelID = 0;
+	}
 
-	// Start with pistol visible, sword hidden
-	ecsPtr->SetActive(pistolModelID, true);
-	ecsPtr->SetActive(fireSwordModelID, false);
+	// FIRE SWORD
+	if (fireSwordModelObject != utility::GUID{}) {
+		fireSwordModelID = ecsPtr->GetEntityIDFromGUID(fireSwordModelObject);
+	}
+	else {
+		fireSwordModelID = 0;
+	}
+
+	// LIGHTNING
+	if (lightningModelObject != utility::GUID{}) {
+		lightningModelObjectID = ecsPtr->GetEntityIDFromGUID(lightningModelObject);
+	}
+	else {
+		lightningModelObjectID = 0;
+	}
+
+	// ACID
+	if (acidModelObject != utility::GUID{}) {
+		acidModelObjectID = ecsPtr->GetEntityIDFromGUID(acidModelObject);
+	}
+	else {
+		acidModelObjectID = 0;
+	}
+
+	if (pistolModelID != 0)    ecsPtr->SetActive(pistolModelID, true);
+	if (fireSwordModelID != 0) ecsPtr->SetActive(fireSwordModelID, false);
+	if (lightningModelObjectID != 0) ecsPtr->SetActive(lightningModelObjectID, false);
+	if (acidModelObjectID != 0) ecsPtr->SetActive(acidModelObjectID, false);
+
 
 	currPlayerHitPoints = maxPlayerHitPoints;
 	currPlayerMovSpeed = maxPlayerMovSpeed;

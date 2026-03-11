@@ -26,6 +26,7 @@ public:
         }
 
         ecsPtr->SetTimeScale(1.0f);
+        ecsPtr->SetState(RUNNING);
         SetLevelCompleteActive(false);
     }
 
@@ -40,6 +41,7 @@ public:
         hasShownLevelComplete = true;
         isLevelCompleteActive = true;
         ecsPtr->SetTimeScale(0.0f);
+        ecsPtr->SetState(WAIT);
         SetLevelCompleteActive(true);
         Input->HideCursor(false);
 
@@ -53,6 +55,7 @@ public:
         hasShownLevelComplete = false;
         isLevelCompleteActive = false;
         ecsPtr->SetTimeScale(1.0f);
+        ecsPtr->SetState(RUNNING);
         SetLevelCompleteActive(false);
         Input->HideCursor(true);
 

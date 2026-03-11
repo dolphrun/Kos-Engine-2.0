@@ -3,7 +3,6 @@
 #include "EnemyManagerScript.h"
 #include "PlayerManagerScript.h"
 #include <iostream>
-#include <unordered_map>
 
 class EnemyHealthScript : public TemplateSC {
 public:
@@ -48,9 +47,14 @@ public:
     glm::vec3 healthBarOriginalPosition = glm::vec3(0.f);
     bool healthBarInitialized = false;
 
-    std::unordered_map<ecs::EntityID, float> enemyMaxHealthCache;
-
     void Start() override {
+        // Reset state for editor stop/play
+        isHUDVisible = true;
+        isResistanceVisible = true;
+        hudPositionCached = false;
+        resistancePositionCached = false;
+        healthBarInitialized = false;
+
         playerObjectID = ecsPtr->GetEntityIDFromGUID(playerObject);
         healthBarFillID = ecsPtr->GetEntityIDFromGUID(healthBarFillEntity);
         healthBarFullID = ecsPtr->GetEntityIDFromGUID(healthBarFullEntity);
@@ -60,22 +64,18 @@ public:
         affliction2EntityID = ecsPtr->GetEntityIDFromGUID(affliction2Entity);
         affliction3EntityID = ecsPtr->GetEntityIDFromGUID(affliction3Entity);
 
-        SetHUDVisible(false);
+        if (playerObjectID == -1) std::cout << "[EnemyHealthScript] WARN: playerObject not resolved\n";
+        if (healthBarFillID == -1) std::cout << "[EnemyHealthScript] WARN: healthBarFillEntity not resolved\n";
+        if (resistanceEntityID == -1) std::cout << "[EnemyHealthScript] WARN: resistanceEntity not resolved\n";
 
-        //if (playerObjectID == -1) std::cout << "[EnemyHealthScript] WARN: playerObject not resolved\n";
-        //if (healthBarFillID == -1) std::cout << "[EnemyHealthScript] WARN: healthBarFillEntity not resolved\n";
-        //if (healthBarFullID == -1) std::cout << "[EnemyHealthScript] WARN: healthBarFullEntity not resolved\n";
-        //if (healthBarFrameID == -1) std::cout << "[EnemyHealthScript] WARN: healthBarFrameEntity not resolved\n";
-        //if (resistanceEntityID == -1) std::cout << "[EnemyHealthScript] WARN: resistanceEntity not resolved\n";
-
-        // Cache HUD original position
+        // Cache HUD original position FIRST, then hide
         auto* hudT = ecsPtr->GetComponent<TransformComponent>(entity);
         if (hudT) {
             originalHUDPosition = hudT->LocalTransformation.position;
             hudPositionCached = true;
         }
 
-        // Cache resistance original position
+        // Cache resistance original position FIRST, then hide
         if (resistanceEntityID != -1) {
             auto* resistT = ecsPtr->GetComponent<TransformComponent>(resistanceEntityID);
             if (resistT) {
@@ -94,7 +94,8 @@ public:
             }
         }
 
-        // Hide HUD at start
+        // Now safe to hide since positions are cached
+        SetHUDVisible(false);
         SetResistanceVisible(false);
     }
 
@@ -141,11 +142,8 @@ public:
             }
 
             if (enemyMgr && !enemyMgr->isDead) {
-                std::cout << "[EnemyHealthScript] Hit enemy entityID=" << enemyEntityID
-                    << " enemyHealth=" << enemyMgr->enemyHealth
-                    << " isDead=" << enemyMgr->isDead << "\n";
                 SetHUDVisible(true);
-                UpdateHealthBar(enemyMgr, enemyEntityID);
+                UpdateHealthBar(enemyMgr);
                 UpdateResistanceSprite(enemyMgr);
                 return;
             }
@@ -174,23 +172,16 @@ private:
         isResistanceVisible = visible;
     }
 
-    void UpdateHealthBar(EnemyManagerScript* enemyMgr, ecs::EntityID enemyEntityID) {
+    void UpdateHealthBar(EnemyManagerScript* enemyMgr) {
         if (!healthBarInitialized || healthBarFillID == -1) return;
 
         auto* sc = ecsPtr->GetComponent<TransformComponent>(healthBarFillID);
         if (!sc) return;
 
-        // Only cache max health the first time we see this enemy
-        if (enemyMaxHealthCache.find(enemyEntityID) == enemyMaxHealthCache.end()) {
-            enemyMaxHealthCache[enemyEntityID] = (float)enemyMgr->enemyHealth;
-        }
+        float maxHealth = (float)enemyMgr->maxEnemyHealth;
+        if (maxHealth <= 0.f) return;
 
-        float maxHealth = enemyMaxHealthCache[enemyEntityID];
         float healthPct = std::clamp((float)enemyMgr->enemyHealth / maxHealth, 0.f, 1.f);
-
-        std::cout << "[EnemyHealthScript] HP=" << enemyMgr->enemyHealth
-            << " max=" << maxHealth
-            << " pct=" << healthPct << "\n";
 
         float newScaleX = healthBarOriginalScale.x * healthPct;
         float scaleReduction = healthBarOriginalScale.x - newScaleX;
@@ -203,7 +194,7 @@ private:
         if (!enemyMgr) return;
         auto* sc = ecsPtr->GetComponent<ecs::SpriteComponent>(resistanceEntityID);
         if (!sc) return;
-        // TODO: replace false with enemyMgr->isFireResistant etc. once your teammate adds them
+        // TODO: replace false with enemyMgr->isFireResistant etc. once teammate adds them
         if (false) { // enemyMgr->isFireResistant
             sc->spriteGUID = fireResistSprite;
             SetResistanceVisible(true);

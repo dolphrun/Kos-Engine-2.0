@@ -36,6 +36,7 @@ public:
         }
 
         ecsPtr->SetTimeScale(1.0f);
+        ecsPtr->SetState(RUNNING);
         // Always hide on start
         SetLoseScreenActive(false);
     }
@@ -53,6 +54,7 @@ public:
         hasShownLoseScreen = true;
         isLoseScreenActive = true; // BLOCK pause menu
         ecsPtr->SetTimeScale(0.0f);
+        ecsPtr->SetState(WAIT);
         SetLoseScreenActive(true);
         Input->HideCursor(false);
 
@@ -75,6 +77,7 @@ public:
         hasShownLoseScreen = false;
         isLoseScreenActive = false; // unblock pause menu
         ecsPtr->SetTimeScale(1.0f);
+        ecsPtr->SetState(RUNNING);
         SetLoseScreenActive(false);
         Input->HideCursor(true);
 

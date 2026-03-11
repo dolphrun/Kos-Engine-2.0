@@ -45,6 +45,8 @@ inline void AcidGas::Start() {
     }
 
     physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
+        if (currLifetime <= 0.f) return;
+
         auto* nameComp = ecsPtr->GetComponent<NameComponent>(col.otherEntityID);
         if (!nameComp) return;
         if (nameComp->entityTag != "Enemy") return;
@@ -54,12 +56,17 @@ inline void AcidGas::Start() {
         });
 
     physicsPtr->GetEventCallback()->OnTriggerExit(entity, [this](const physics::Collision& col) {
+        if (currLifetime <= 0.f) return;
+
+
         enemiesInCloud.erase(col.otherEntityID);
         std::cout << "[AcidGasCloud] Enemy exited cloud. Count: " << enemiesInCloud.size() << "\n";
         });
 }
 
 inline void AcidGas::Update() {
+    if (currLifetime <= 0.f) return;
+
     float dt = ecsPtr->m_GetDeltaTime();
 
     currTickTimer -= dt;
@@ -70,6 +77,11 @@ inline void AcidGas::Update() {
         std::vector<ecs::EntityID> toRemove;
 
         for (ecs::EntityID enemyID : enemiesInCloud) {
+
+            if (!ecsPtr->IsValidEntity(enemyID)) {
+                toRemove.push_back(enemyID);
+                continue;
+            }
 
             auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(enemyID);
             if (!enemyScript) {
@@ -95,7 +107,21 @@ inline void AcidGas::Update() {
     }
 
     currLifetime -= dt;
+    //if (currLifetime <= 0.f) {
+    //    ecsPtr->DeleteEntity(entity);
+    //}
+
+
     if (currLifetime <= 0.f) {
+        // Clear deleting
+        enemiesInCloud.clear();
+
+        // Unregister physics callbacks
+        physicsPtr->GetEventCallback()->DeregisterEntity(entity);
+        physicsPtr->GetEventCallback()->DeregisterEntity(entity);
+
         ecsPtr->DeleteEntity(entity);
+
+        return;
     }
 }

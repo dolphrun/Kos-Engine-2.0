@@ -35,6 +35,7 @@ public:
         }
 
         ecsPtr->SetTimeScale(1.0f);
+        ecsPtr->SetState(RUNNING);
         // Always hide on start
         SetWinScreenActive(false);
     }
@@ -51,6 +52,7 @@ public:
         hasShownWinScreen = true;
         isWinScreenActive = true; // block other inputs if needed
         ecsPtr->SetTimeScale(0.0f);
+        ecsPtr->SetState(WAIT);
         SetWinScreenActive(true);
         Input->HideCursor(false);
 
@@ -72,6 +74,7 @@ public:
         hasShownWinScreen = false;
         isWinScreenActive = false;
         ecsPtr->SetTimeScale(1.0f);
+        ecsPtr->SetState(RUNNING);
         SetWinScreenActive(false);
         Input->HideCursor(true);
 

@@ -48,7 +48,7 @@ namespace ecs {
         float minDistance = { 1.0f };   
         float maxDistance = { 20.0f };   
         void* channel = nullptr;
-
+        float lastPan{ 0.0f };
         AudioSourceType sourceType = AudioSourceType::Core;
         std::string studioEventPath;
         void* studioInstance = nullptr;
