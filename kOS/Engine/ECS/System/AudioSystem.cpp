@@ -256,22 +256,22 @@ namespace ecs {
 						ch->set3DLevel(1.0f);
 
 						if (af.loop) {
-							ch->setMode(FMOD_LOOP_NORMAL);
+							ch->setMode(FMOD_3D | FMOD_LOOP_NORMAL); 
 							ch->setLoopCount(-1);
 						}
 						else {
-							ch->setMode(FMOD_LOOP_OFF);
+							ch->setMode(FMOD_3D | FMOD_LOOP_OFF);
 							ch->setLoopCount(0);
 						}
 					}
 					else {
 						ch->setPan(std::clamp(af.pan, -1.0f, 1.0f));
 						if (af.loop) {
-							ch->setMode(FMOD_LOOP_NORMAL);
+							ch->setMode(FMOD_2D | FMOD_LOOP_NORMAL); 
 							ch->setLoopCount(-1);
 						}
 						else {
-							ch->setMode(FMOD_LOOP_OFF);
+							ch->setMode(FMOD_2D | FMOD_LOOP_OFF);    
 							ch->setLoopCount(0);
 						}
 					}
@@ -296,6 +296,30 @@ namespace ecs {
 		m_listenerPos = pos;
 		m_listenerFwd = fwd;
 		m_listenerUp = up;
+	}
+
+	void AudioSystem::SetAudioPaused(EntityID id, const std::string& audioName, bool paused) {
+		auto* audioComp = m_ecs.GetComponent<AudioComponent>(id);
+		if (!audioComp) return;
+
+		for (auto& af : audioComp->audioFiles) {
+			if (af.name != audioName) continue;
+
+			// --- Core ---
+			if (af.sourceType == AudioSourceType::Core && af.channel) {
+				FMOD::Channel* ch = static_cast<FMOD::Channel*>(af.channel);
+				ch->setPaused(paused);
+			}
+
+			// --- Studio ---
+			if (af.sourceType == AudioSourceType::Studio && af.studioInstance) {
+				auto* inst = static_cast<FMOD::Studio::EventInstance*>(af.studioInstance);
+				if (paused)
+					inst->setPaused(true);
+				else
+					inst->setPaused(false);
+			}
+		}
 	}
 
 }

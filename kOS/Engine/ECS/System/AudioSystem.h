@@ -38,6 +38,8 @@ namespace ecs {
             const glm::vec3& fwd,
             const glm::vec3& up);
 
+        void SetAudioPaused(EntityID id, const std::string& audioName, bool paused);
+
         REFLECTABLE(AudioSystem)
 
     private:

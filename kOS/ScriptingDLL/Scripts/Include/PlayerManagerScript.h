@@ -456,10 +456,22 @@ inline void PlayerManagerScript::Update() {
 
 	if (Input->IsKeyTriggered(keys::ESC)) {
 		if (auto* pauseManager = ecsPtr->GetComponent<PauseMenuScript>(pauseMenuManagerID)) {
-			//std::cout << "PAUSE PAUSE PAUSE\n";
 			pauseManager->TogglePause();
+
+			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+				for (auto& af : ac->audioFiles) {
+					if (af.audioGUID == gunSfxGUID_1) {
+						if (af.channel) {
+							FMOD::Channel* ch = static_cast<FMOD::Channel*>(af.channel);
+							ch->setPaused(pauseManager->isPaused); // true = pause, false = resume
+						}
+						break;
+					}
+				}
+			}
 		}
 	}
+
 
 	if (currPlayerHitPoints <= 0 && !LoseScreenScript::isLoseScreenActive) {
 		if (auto* loseScreen = ecsPtr->GetComponent<LoseScreenScript>(loseScreenCanvasID)) {
