@@ -1,14 +1,6 @@
 [
     {
-        "SceneData": {
-            "skyBoxGUID": [],
-            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
-            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
-            "ambientIntensity": 1.0
-        }
-    },
-    {
-        "entityGUID": "838d91ef-66d6-a325-73a2-f5c0e76bee25",
+        "entityGUID": "4be30933-2702-c78c-dc10-66bfad873e7f",
         "CapsuleColliderComponent": {
             "isTrigger": false,
             "capsule": {
@@ -26,7 +18,7 @@
             "enemyHealth": 60,
             "enemyMovementSpeed": 3.0,
             "enemyType": "Tank",
-            "enemyAttackRange": 2.5,
+            "enemyAttackRange": 3.0,
             "enemyRangedAttackRange": 15.0,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
@@ -35,7 +27,7 @@
             "enemyHurtboxPosition": "239a2a55-7b16-a67e-b034-dabdac495a1d",
             "shieldHealth": 30,
             "shieldElement": "FIRE",
-            "shieldVisualObject": "0f6defc1-8c38-49d9-65b0-091f11064913",
+            "shieldVisualObject": "3611a883-7160-83df-da76-aa0bd2272a8a",
             "tankAoePrefab": "668543d2-276e-3941-8542-55d0401797a4",
             "isLunging": false,
             "lungeDuration": 0.800000011920929,
@@ -50,7 +42,7 @@
             "entityTag": "Enemy",
             "isPrefab": true,
             "isStatic": false,
-            "prefabName": "TankEnemyPrefab.prefab",
+            "prefabName": "TankEnemyPrefab_1.prefab",
             "hide": false
         },
         "RigidbodyComponent": {
@@ -77,9 +69,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
+                    "x": -9.0,
+                    "y": 27.0,
+                    "z": 5.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -94,9 +86,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
+                    "x": -9.0,
+                    "y": 27.0,
+                    "z": 5.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -112,22 +104,22 @@
         },
         "children": [
             {
-                "entityGUID": "239a2a55-7b16-a67e-b034-dabdac495a1d",
+                "entityGUID": "949b0adf-b7cc-4763-c544-0756ca213ef9",
                 "NameComponent": {
                     "entityName": "Enemy Hurtbox Position",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "EnemyPrefab.prefab",
+                    "prefabName": "TankEnemyPrefab.prefab",
                     "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.0,
-                            "y": 1.5,
-                            "z": 0.0
+                            "x": -9.0,
+                            "y": 28.5,
+                            "z": 6.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -144,7 +136,7 @@
                         "position": {
                             "x": 0.0,
                             "y": 1.5,
-                            "z": 0.0
+                            "z": 1.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -160,13 +152,13 @@
                 }
             },
             {
-                "entityGUID": "d91513a6-802a-bc7b-e1a0-fe55a1f4d42a",
+                "entityGUID": "f5be72a0-01a8-54d6-1ddb-2e0fb963dd53",
                 "AnimatorComponent": {
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
-                    "m_CurrentTime": 0.0,
+                    "m_CurrentTime": 9.439529418945313,
                     "m_IsPlaying": true,
-                    "m_currentStateID": 0,
+                    "m_currentStateID": 4,
                     "m_transitioningStateID": 0
                 },
                 "NameComponent": {
@@ -175,7 +167,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "EnemyPrefab.prefab",
+                    "prefabName": "TankEnemyPrefab.prefab",
                     "hide": false
                 },
                 "SkinnedMeshRendererComponent": {
@@ -185,9 +177,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
+                            "x": -9.0,
+                            "y": 27.0,
+                            "z": 5.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -220,32 +212,22 @@
                 }
             },
             {
-                "entityGUID": "0f6defc1-8c38-49d9-65b0-091f11064913",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "2e16031c-9593-31cb-ec41-58220ebbb736"
-                        }
-                    ]
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "4a1d4e3a-edc7-fcaa-f0c1-24ef1b8e630c"
-                },
+                "entityGUID": "5892433a-604a-494e-91b2-4f8044f9e166",
                 "NameComponent": {
-                    "entityName": "FireShieldPrefab",
+                    "entityName": "Tank Shield Fire",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "TankFireShieldPrefab.prefab",
+                    "prefabName": "Tank Shield Fire.prefab",
                     "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 0.0,
-                            "y": 4.0,
-                            "z": 0.0
+                            "x": -9.0,
+                            "y": 27.0,
+                            "z": 5.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -253,15 +235,15 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.5,
-                            "y": 0.5,
-                            "z": 0.5
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
                         }
                     },
                     "LocalTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 4.0,
+                            "y": 0.0,
                             "z": 0.0
                         },
                         "rotation": {
@@ -270,12 +252,456 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.5,
-                            "y": 0.5,
-                            "z": 0.5
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
                         }
                     }
-                }
+                },
+                "children": [
+                    {
+                        "entityGUID": "97bc10a5-9326-a016-e126-ec50b9d34bdf",
+                        "NameComponent": {
+                            "entityName": "Tank Shield Fire Particles",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": true,
+                            "isStatic": false,
+                            "prefabName": "Tank Shield Fire.prefab",
+                            "hide": false
+                        },
+                        "ParticleComponent": {
+                            "particleType": 0,
+                            "duration": 0.25,
+                            "looping": true,
+                            "play_On_Awake": true,
+                            "start_Lifetime": 0.25,
+                            "end_Lifetime": 0.25,
+                            "lifetime_Random_Enable": true,
+                            "textureGUID": "00000000-0000-0000-0000-000000000000",
+                            "start_Velocity": 0.0,
+                            "playback_State": 0,
+                            "particleFade": 0,
+                            "velocityModule": {
+                                "enabled": false,
+                                "mode": 0,
+                                "velocity_Modifier": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                }
+                            },
+                            "forceModule": {
+                                "enabled": false,
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                }
+                            },
+                            "shapeModule": {
+                                "type": 3,
+                                "emission_Direction": {
+                                    "x": 0.0,
+                                    "y": 1.0,
+                                    "z": 0.0
+                                },
+                                "box_Size": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "sphere_Radius": 0.0,
+                                "emit_From_Shell": false,
+                                "cone_Angle": 0.0,
+                                "cone_Direction": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "cone_Radius": 0.0,
+                                "circle_Radius": 1.75,
+                                "circle_Arc": 360.0,
+                                "emit_From_Edge": true,
+                                "edge_Length": 0.0,
+                                "random_Direction_Amount": 0.0
+                            },
+                            "colorModule": {
+                                "enabled": false,
+                                "start_Color": {
+                                    "x": 0.699999988079071,
+                                    "y": 0.44999998807907104,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "end_Color": {
+                                    "x": 0.75,
+                                    "y": 0.25,
+                                    "z": 0.25,
+                                    "w": 1.0
+                                }
+                            },
+                            "sizeModule": {
+                                "enabled": false,
+                                "start_Size": 0.3499999940395355,
+                                "end_Size": 0.5
+                            },
+                            "rotationModule": {
+                                "enabled": true,
+                                "start_Rotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "end_Rotation": {
+                                    "x": 360.0,
+                                    "y": 360.0,
+                                    "z": 360.0
+                                },
+                                "rotation_Modifier": {
+                                    "x": 45.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                }
+                            },
+                            "gravityModule": {
+                                "enabled": false,
+                                "gravity": {
+                                    "x": 0.0,
+                                    "y": -9.800000190734863,
+                                    "z": 0.0
+                                }
+                            },
+                            "trailingModule": {
+                                "enabled": false,
+                                "startPoint": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "endPoint": {
+                                    "x": 20.0,
+                                    "y": 20.0,
+                                    "z": 20.0
+                                },
+                                "rotateEndPoint": false,
+                                "rotationSpeed": 2.0,
+                                "rotationRadius": 5.0,
+                                "rotationCenter": {
+                                    "x": 20.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "rotationAxis": {
+                                    "x": 0.0,
+                                    "y": 1.0,
+                                    "z": 0.0
+                                },
+                                "spiralRadius": 5.0,
+                                "spiralFrequency": 3.0,
+                                "spiralIntensityCurve": 0.5,
+                                "pathSpeed": 2.0,
+                                "arrivalThreshold": 0.5
+                            },
+                            "noiseModule": {
+                                "enabled": false,
+                                "strength": 1.0,
+                                "strengthMultiplier": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                },
+                                "frequency": 0.5,
+                                "scrollSpeed": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "damping": true,
+                                "octaves": 1,
+                                "octaveMultiplier": 0.5,
+                                "octaveScale": 2.0,
+                                "quality": 1,
+                                "remapEnabled": false,
+                                "remapCurveStart": 1.0,
+                                "remapCurveEnd": 1.0,
+                                "positionOffset": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                }
+                            },
+                            "emissionInterval": 0.009999999776482582,
+                            "no_Of_Particles": 15,
+                            "dynamicTrailingEnabled": false,
+                            "trail_Color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "trailLifeTime": 2.0,
+                            "trailWidth": 0.20000000298023224
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -9.0,
+                                    "y": 27.079551696777344,
+                                    "z": 5.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.07955169677734375,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "56430d91-edc3-da8e-17e8-fd5f9556f39d",
+                        "NameComponent": {
+                            "entityName": "Tank Shield Fire Particles",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": true,
+                            "isStatic": false,
+                            "prefabName": "Tank Shield Fire.prefab",
+                            "hide": false
+                        },
+                        "ParticleComponent": {
+                            "particleType": 0,
+                            "duration": 0.25,
+                            "looping": true,
+                            "play_On_Awake": true,
+                            "start_Lifetime": 0.25,
+                            "end_Lifetime": 0.25,
+                            "lifetime_Random_Enable": true,
+                            "textureGUID": "00000000-0000-0000-0000-000000000000",
+                            "start_Velocity": 0.0,
+                            "playback_State": 0,
+                            "particleFade": 0,
+                            "velocityModule": {
+                                "enabled": false,
+                                "mode": 0,
+                                "velocity_Modifier": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                }
+                            },
+                            "forceModule": {
+                                "enabled": false,
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                }
+                            },
+                            "shapeModule": {
+                                "type": 3,
+                                "emission_Direction": {
+                                    "x": 0.0,
+                                    "y": 1.0,
+                                    "z": 0.0
+                                },
+                                "box_Size": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "sphere_Radius": 0.0,
+                                "emit_From_Shell": false,
+                                "cone_Angle": 0.0,
+                                "cone_Direction": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "cone_Radius": 0.0,
+                                "circle_Radius": 2.0,
+                                "circle_Arc": 360.0,
+                                "emit_From_Edge": true,
+                                "edge_Length": 0.0,
+                                "random_Direction_Amount": 0.0
+                            },
+                            "colorModule": {
+                                "enabled": false,
+                                "start_Color": {
+                                    "x": 0.75,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "end_Color": {
+                                    "x": 0.75,
+                                    "y": 0.25,
+                                    "z": 0.25,
+                                    "w": 1.0
+                                }
+                            },
+                            "sizeModule": {
+                                "enabled": false,
+                                "start_Size": 0.5,
+                                "end_Size": 0.5
+                            },
+                            "rotationModule": {
+                                "enabled": true,
+                                "start_Rotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "end_Rotation": {
+                                    "x": 360.0,
+                                    "y": 360.0,
+                                    "z": 360.0
+                                },
+                                "rotation_Modifier": {
+                                    "x": 45.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                }
+                            },
+                            "gravityModule": {
+                                "enabled": false,
+                                "gravity": {
+                                    "x": 0.0,
+                                    "y": -9.800000190734863,
+                                    "z": 0.0
+                                }
+                            },
+                            "trailingModule": {
+                                "enabled": false,
+                                "startPoint": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "endPoint": {
+                                    "x": 20.0,
+                                    "y": 20.0,
+                                    "z": 20.0
+                                },
+                                "rotateEndPoint": false,
+                                "rotationSpeed": 2.0,
+                                "rotationRadius": 5.0,
+                                "rotationCenter": {
+                                    "x": 20.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "rotationAxis": {
+                                    "x": 0.0,
+                                    "y": 1.0,
+                                    "z": 0.0
+                                },
+                                "spiralRadius": 5.0,
+                                "spiralFrequency": 3.0,
+                                "spiralIntensityCurve": 0.5,
+                                "pathSpeed": 2.0,
+                                "arrivalThreshold": 0.5
+                            },
+                            "noiseModule": {
+                                "enabled": false,
+                                "strength": 1.0,
+                                "strengthMultiplier": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                },
+                                "frequency": 0.5,
+                                "scrollSpeed": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "damping": true,
+                                "octaves": 1,
+                                "octaveMultiplier": 0.5,
+                                "octaveScale": 2.0,
+                                "quality": 1,
+                                "remapEnabled": false,
+                                "remapCurveStart": 1.0,
+                                "remapCurveEnd": 1.0,
+                                "positionOffset": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                }
+                            },
+                            "emissionInterval": 0.009999999776482582,
+                            "no_Of_Particles": 25,
+                            "dynamicTrailingEnabled": false,
+                            "trail_Color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "trailLifeTime": 2.0,
+                            "trailWidth": 0.20000000298023224
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -9.0,
+                                    "y": 27.0,
+                                    "z": 5.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    }
+                ]
             }
         ]
     }

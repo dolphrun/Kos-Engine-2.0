@@ -1,5 +1,13 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "952906bc-ddeb-719a-eb89-e371df750767",
         "NameComponent": {
             "entityName": "Tank Shield Lightning",
@@ -13,8 +21,8 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": -10.4549560546875,
-                    "y": 27.543546676635742,
+                    "x": 0.0,
+                    "y": 0.0,
                     "z": 0.0
                 },
                 "rotation": {
@@ -30,8 +38,8 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": -10.4549560546875,
-                    "y": 27.543546676635742,
+                    "x": 0.0,
+                    "y": 0.0,
                     "z": 0.0
                 },
                 "rotation": {
@@ -234,8 +242,8 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -10.4549560546875,
-                            "y": 27.623098373413086,
+                            "x": 0.0,
+                            "y": 0.07955169677734375,
                             "z": 0.0
                         },
                         "rotation": {
@@ -455,8 +463,8 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -10.4549560546875,
-                            "y": 27.543546676635742,
+                            "x": 0.0,
+                            "y": 0.0,
                             "z": 0.0
                         },
                         "rotation": {

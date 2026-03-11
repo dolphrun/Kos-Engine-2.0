@@ -62,7 +62,7 @@
                     "y": 0.0,
                     "z": 0.0
                 },
-                "radius": 2.0
+                "radius": 3.5
             }
         },
         "TankAOEScript": {
@@ -169,7 +169,7 @@
                             "z": 0.0
                         },
                         "cone_Radius": 0.0,
-                        "circle_Radius": 2.5,
+                        "circle_Radius": 3.5,
                         "circle_Arc": 360.0,
                         "emit_From_Edge": true,
                         "edge_Length": 0.0,
@@ -390,7 +390,7 @@
                             "z": 0.0
                         },
                         "cone_Radius": 0.0,
-                        "circle_Radius": 2.5,
+                        "circle_Radius": 3.5,
                         "circle_Arc": 360.0,
                         "emit_From_Edge": false,
                         "edge_Length": 0.0,
