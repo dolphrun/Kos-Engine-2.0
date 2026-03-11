@@ -95,7 +95,7 @@ namespace gui {
 				}
 			}
 
-			m_selectedEntities.clear();
+			//m_selectedEntities.clear();
 
 		});
 	}
