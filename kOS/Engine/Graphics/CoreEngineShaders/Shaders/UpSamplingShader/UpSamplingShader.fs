@@ -6,7 +6,7 @@ R"(
 // Remember to add bilinear minification filter for this texture!
 // Remember to use a floating-point texture format (for HDR)!
 // Remember to use edge clamping for this texture!
-uniform sampler2D srcTexture;
+uniform sampler2D screenTexture;
 uniform float filterRadius;
 
 in vec2 texCoord;
@@ -24,17 +24,17 @@ void main()
 	// d - e - f
 	// g - h - i
 	// === ('e' is the current texel) ===
-	vec3 a = texture(srcTexture, vec2(texCoord.x - x, texCoord.y + y)).rgb;
-	vec3 b = texture(srcTexture, vec2(texCoord.x,     texCoord.y + y)).rgb;
-	vec3 c = texture(srcTexture, vec2(texCoord.x + x, texCoord.y + y)).rgb;
+	vec3 a = texture(screenTexture, vec2(texCoord.x - x, texCoord.y + y)).rgb;
+	vec3 b = texture(screenTexture, vec2(texCoord.x,     texCoord.y + y)).rgb;
+	vec3 c = texture(screenTexture, vec2(texCoord.x + x, texCoord.y + y)).rgb;
 
-	vec3 d = texture(srcTexture, vec2(texCoord.x - x, texCoord.y)).rgb;
-	vec3 e = texture(srcTexture, vec2(texCoord.x,     texCoord.y)).rgb;
-	vec3 f = texture(srcTexture, vec2(texCoord.x + x, texCoord.y)).rgb;
+	vec3 d = texture(screenTexture, vec2(texCoord.x - x, texCoord.y)).rgb;
+	vec3 e = texture(screenTexture, vec2(texCoord.x,     texCoord.y)).rgb;
+	vec3 f = texture(screenTexture, vec2(texCoord.x + x, texCoord.y)).rgb;
 
-	vec3 g = texture(srcTexture, vec2(texCoord.x - x, texCoord.y - y)).rgb;
-	vec3 h = texture(srcTexture, vec2(texCoord.x,     texCoord.y - y)).rgb;
-	vec3 i = texture(srcTexture, vec2(texCoord.x + x, texCoord.y - y)).rgb;
+	vec3 g = texture(screenTexture, vec2(texCoord.x - x, texCoord.y - y)).rgb;
+	vec3 h = texture(screenTexture, vec2(texCoord.x,     texCoord.y - y)).rgb;
+	vec3 i = texture(screenTexture, vec2(texCoord.x + x, texCoord.y - y)).rgb;
 
 	// Apply weighted distribution, by using a 3x3 tent filter:
 	//  1   | 1 2 1 |

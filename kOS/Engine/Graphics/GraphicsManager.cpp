@@ -247,15 +247,17 @@ void GraphicsManager::gm_RenderToGameFrameBuffer()
 		glBindFramebuffer(GL_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
 		glViewport(0, 0, static_cast<GLsizei>(framebufferManager.sceneBuffer.width), static_cast<GLsizei>(framebufferManager.sceneBuffer.height));
 		gm_RenderDeferredObjects(cd);
-		glEnable(GL_DEPTH_TEST);
-		gm_RenderParticles(cd);
-		glDisable(GL_DEPTH_TEST);
+
 		glDisable(GL_CULL_FACE);
 		gm_RenderVideo(cd);
 		glEnable(GL_CULL_FACE);
 	}
 	glDisable(GL_DEPTH_TEST);
 
+	//no touchy
+	glEnable(GL_DEPTH_TEST);
+	gm_RenderParticles(gameCameras[0]);
+	glDisable(GL_DEPTH_TEST);
 	//TEMPORARY CODE WARNING WARNING WARNING DELETE BEFORE M4 IF NOT DIE hi Sean
 /*	Vigniette vig;
 	vig.extent = 0.19;

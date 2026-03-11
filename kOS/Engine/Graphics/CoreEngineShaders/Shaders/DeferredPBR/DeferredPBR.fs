@@ -370,12 +370,21 @@ void main()
 
 
     pointShadow = clamp(pointShadow, 0.0, 1.0);
-    for(int i=0;i<pointLightNo;i++){
-       if(light[i].shadowCon==true||light[i].bakedCon==true){
-            pointShadow+=ShadowCalculationPoint(vec4(oldPos, 1.0).xyz-light[i].position,oldPos,positionMap,i);        
-        }
-        newLight+=microfacetModel(positionMap, normalMap,diffuseColor,newMat.g,i);
+for(int i = 0; i < pointLightNo; i++) {
+    pointShadow = 0.0; // Reset per light
+    
+    if(light[i].shadowCon == true || light[i].bakedCon == true) {
+        pointShadow = ShadowCalculationPoint(
+            vec4(oldPos, 1.0).xyz - light[i].position, 
+            oldPos, 
+            positionMap, 
+            i
+        );
+        pointShadow = clamp(pointShadow, 0.0, 1.0); // Clamp per light
     }
+    
+    newLight += microfacetModel(positionMap, normalMap, diffuseColor, newMat.g, i);
+}
     for(int i=0;i<spotLightNo;i++){
         newLight+=spotlightMicrofacetModel(positionMap, normalMap,diffuseColor,newMat.g,i);
     }

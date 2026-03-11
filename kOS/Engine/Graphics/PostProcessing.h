@@ -74,5 +74,11 @@ struct Bloom : public PostProcessEffect {
 class PostProcessingProfile {
 	public:
 	std::string profileName;
+	PostProcessEffect* GetEffect(PostProcessType ppt) {
+		for (auto& ppe :postProcessingEffects) {
+			if (ppe->GetType() == ppt)return ppe.get();
+		}
+		return nullptr;;
+	}
 	std::vector<std::unique_ptr<PostProcessEffect>>postProcessingEffects;
 };
