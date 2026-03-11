@@ -166,7 +166,9 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 				// Attach name
 				//KEEP THIS
 				//Save ALL DCMS
+				
 				std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/DepthMap/" + std::to_string(lcComp) + ".dcm";
+				if (!m_ecs.GetComponent<ecs::LightComponent>(lcComp)->bakedLighting)continue;;
 				m_graphicsManager.lightRenderer.dcm[0].SaveDepthCubeMap(filepath);
 
 
