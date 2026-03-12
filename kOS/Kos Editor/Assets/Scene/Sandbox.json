@@ -4273,6 +4273,22 @@
                                     "sourceType": 0,
                                     "audioBankGUID": "00000000-0000-0000-0000-000000000000",
                                     "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
                                 }
                             ]
                         },
@@ -4411,6 +4427,22 @@
                                     "sourceType": 0,
                                     "audioBankGUID": "00000000-0000-0000-0000-000000000000",
                                     "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
                                 }
                             ]
                         },
@@ -4511,7 +4543,7 @@
                             "wasPressed": false,
                             "resumeSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
                             "selectSfxGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                            "hoverSfxGUID": "0d044a11-aee8-4ff6-b5cb-004f4720e76d"
+                            "hoverSfxGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c"
                         }
                     },
                     {
@@ -4536,6 +4568,22 @@
                                 },
                                 {
                                     "audioGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c",
                                     "volume": 1.0,
                                     "loop": false,
                                     "playOnStart": false,
@@ -4674,6 +4722,22 @@
                                 },
                                 {
                                     "audioGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c",
                                     "volume": 1.0,
                                     "loop": false,
                                     "playOnStart": false,
@@ -5241,6 +5305,22 @@
                                     "sourceType": 0,
                                     "audioBankGUID": "00000000-0000-0000-0000-000000000000",
                                     "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
                                 }
                             ]
                         },
@@ -5696,6 +5776,22 @@
                                 },
                                 {
                                     "audioGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c",
                                     "volume": 1.0,
                                     "loop": false,
                                     "playOnStart": false,
@@ -8047,7 +8143,7 @@
                 "AnimatorComponent": {
                     "controllerGUID": "a8151059-f46f-1edd-8b81-a36f705c15fb",
                     "m_PlaybackSpeed": 1.0,
-                    "m_CurrentTime": 9.439529418945313,
+                    "m_CurrentTime": 13.439529418945313,
                     "m_IsPlaying": true,
                     "m_currentStateID": 4,
                     "m_transitioningStateID": 0
