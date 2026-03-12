@@ -28,6 +28,7 @@
 #include "AcidAirBlast.h"
 #include "AcidGas.h"
 #include "RoomLockScript.h"
+#include "EnemyHurtVFX.h"
 #include "LevelCompleteScript.h"
 #include "EventColliderScript.h"
 
