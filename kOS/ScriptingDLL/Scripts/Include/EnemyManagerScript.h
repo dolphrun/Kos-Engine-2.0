@@ -80,6 +80,9 @@ public:
 	utility::GUID enemyWalkSfxGUID;
 	std::vector<utility::GUID> enemyHurtSfxPool;
 
+	bool applyDeferredLungeForce = false;
+	glm::vec3 deferredLungeForce = glm::vec3(0.f);
+
 	// Declarations Only
 	void Start() override;
 	void Update() override;
@@ -104,7 +107,7 @@ inline void EnemyManagerScript::Start() {
 
 	auto* trans = ecsPtr->GetComponent<TransformComponent>(entity);
 	auto* capsule = ecsPtr->GetComponent<CapsuleColliderComponent>(entity);
-	navMeshPtr->AddAgent(agentid, entity, trans->WorldTransformation.position, capsule->capsule.radius, capsule->capsule.height);
+	navMeshPtr->AddAgent(agentid, entity, trans->WorldTransformation.position, capsule->capsule.radius, capsule->capsule.height, enemyMovementSpeed);
 
 	std::vector<EntityID> children = ecsPtr->GetChild(entity).value();
 	if (children.size() > 1)
@@ -145,7 +148,13 @@ inline void EnemyManagerScript::Update() {
 		return;
 	}
 
-	
+	if (applyDeferredLungeForce) {
+		auto* rb = ecsPtr->GetComponent<RigidbodyComponent>(entity);
+		if (rb && rb->actor) {
+			physicsPtr->AddForce(rb->actor, deferredLungeForce, ForceMode::Impulse);
+		}
+		applyDeferredLungeForce = false;
+	}
 
 	//Entity deletion fix for animation
 	animComp = ecsPtr->GetComponent<ecs::AnimatorComponent>(enemyModelID);
@@ -185,7 +194,8 @@ inline void EnemyManagerScript::Update() {
 		if (currentStaggerTimer <= 0.0f) {
 			isStaggered = false;
 			auto* capsule = ecsPtr->GetComponent<CapsuleColliderComponent>(entity);
-			navMeshPtr->AddAgent(agentid, entity, enemyTransform->WorldTransformation.position, capsule->capsule.radius, capsule->capsule.height);
+			navMeshPtr->AgentSetActive(agentid, true, enemyTransform->WorldTransformation.position);
+			//navMeshPtr->AddAgent(agentid, entity, enemyTransform->WorldTransformation.position, capsule->capsule.radius, capsule->capsule.height);
 		}
 	}
 
@@ -197,10 +207,10 @@ inline void EnemyManagerScript::Update() {
 	// Lunging logic
 	if (isLunging && !isDead) {
 		// Manual move (have to bypass Rigidbody for dis)
-		enemyTransform->LocalTransformation.position += lungeVelocity * ecsPtr->m_GetDeltaTime();
+		//enemyTransform->LocalTransformation.position += lungeVelocity * ecsPtr->m_GetDeltaTime();
 
 		// Grav
-		lungeVelocity.y -= lungeGravity * ecsPtr->m_GetDeltaTime();
+		//lungeVelocity.y -= lungeGravity * ecsPtr->m_GetDeltaTime();
 
 		currentLungeTimer -= ecsPtr->m_GetDeltaTime();
 
@@ -208,10 +218,16 @@ inline void EnemyManagerScript::Update() {
 		if (currentLungeTimer <= 0.0f) {
 			isLunging = false;
 
+			auto* rb = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity);
+			if (rb && rb->actor) {
+				rb->isKinematic = true;
+			}
+
 			// Re-add to NavMesh where they landed
 			auto* capsule = ecsPtr->GetComponent<CapsuleColliderComponent>(entity);
 			if (capsule) {
-				navMeshPtr->AddAgent(agentid, entity, enemyTransform->WorldTransformation.position, capsule->capsule.radius, capsule->capsule.height);
+				navMeshPtr->AgentSetActive(agentid, true, enemyTransform->WorldTransformation.position);
+				//navMeshPtr->AddAgent(agentid, entity, enemyTransform->WorldTransformation.position, capsule->capsule.radius, capsule->capsule.height);
 			}
 
 			// --- LANDING ANIMATION TRIGGER ---
@@ -405,13 +421,17 @@ inline void EnemyManagerScript::Update() {
 						}
 						else if (stateName == "Crouching")
 						{
+							RigidbodyComponent* rb = ecsPtr->GetComponent<RigidbodyComponent>(entity);
+							if (rb == nullptr || rb->actor == nullptr) return;
+
 							// Melee lunge logic
 							isLunging = true;
 							currentLungeTimer = lungeDuration;
 
 							currentAttackCooldown = attackCooldown;
 
-							navMeshPtr->RemoveAgent(agentid);
+							//navMeshPtr->RemoveAgent(agentid);
+							navMeshPtr->AgentSetActive(agentid, false);
 
 							glm::vec3 flatDir = glm::vec3(direction.x, 0.f, direction.z);
 							if (glm::length(flatDir) > 0.001f) flatDir = glm::normalize(flatDir);
@@ -425,6 +445,10 @@ inline void EnemyManagerScript::Update() {
 							if (heightDiff > 0.5f) {
 								lungeVelocity.y += (heightDiff * 2.0f); // Tweak the float to make them jump higher if needed
 							}
+
+							rb->isKinematic = false;
+							deferredLungeForce = lungeVelocity;
+							applyDeferredLungeForce = true;
 
 							// Hurtbox spawn
 							std::shared_ptr<R_Scene> enemyHurtbox = resource->GetResource<R_Scene>(enemyHurtboxPrefab);
@@ -453,7 +477,7 @@ inline void EnemyManagerScript::Update() {
 			}
 
 		}
-		else if (glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= enemyChaseRange) {
+		else if (glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= enemyChaseRange && !isLunging) {
 			// NAVMESH FOLLOW TOWARDS PLAYER
 			navMeshPtr->MoveAgent(agentid, playerTransform->LocalTransformation.position);
 
@@ -477,7 +501,8 @@ inline void EnemyManagerScript::Update() {
 inline void EnemyManagerScript::TriggerStagger(float duration) {
 	// Prevent engine crash: Don't remove NavMesh if already lunging!
 	if (!isStaggered && !isLunging) {
-		navMeshPtr->RemoveAgent(agentid);
+		navMeshPtr->AgentSetActive(agentid, false);
+		//navMeshPtr->RemoveAgent(agentid);
 	}
 
 	isStaggered = true;
