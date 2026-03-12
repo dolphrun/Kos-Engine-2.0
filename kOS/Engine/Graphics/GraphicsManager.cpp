@@ -230,34 +230,47 @@ void GraphicsManager::gm_RenderToGameFrameBuffer()
 		//Bind and clear g buffer
 		if (!cd.culling) {
 			gm_FillDataBuffersGame(cd);
+			glBindFramebuffer(GL_READ_FRAMEBUFFER, framebufferManager.gBuffer.RetrieveBuffer());
+			glBindFramebuffer(GL_DRAW_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
+			glBlitFramebuffer(
+				0, 0, framebufferManager.sceneBuffer.width, framebufferManager.sceneBuffer.height,
+				0, 0, framebufferManager.sceneBuffer.width, framebufferManager.sceneBuffer.height,
+				GL_DEPTH_BUFFER_BIT,
+				GL_NEAREST
+			);
+			glBindFramebuffer(GL_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
+			glViewport(0, 0, static_cast<GLsizei>(framebufferManager.sceneBuffer.width), static_cast<GLsizei>(framebufferManager.sceneBuffer.height));
+			gm_RenderDeferredObjects(cd);
+			//no touchy
+			glEnable(GL_DEPTH_TEST);
+			gm_RenderParticles(cd);
+			glDisable(GL_DEPTH_TEST);
+			glDisable(GL_CULL_FACE);
+			gm_RenderVideo(cd);
+			glEnable(GL_CULL_FACE);
 		}
 		else {
 			//Only render those that have been culled
 			gm_FillDataBuffersGame(cd, cd.layer);
-
+			glBindFramebuffer(GL_READ_FRAMEBUFFER, framebufferManager.gBuffer.RetrieveBuffer());
+			glBindFramebuffer(GL_DRAW_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
+			glBlitFramebuffer(
+				0, 0, framebufferManager.sceneBuffer.width, framebufferManager.sceneBuffer.height,
+				0, 0, framebufferManager.sceneBuffer.width, framebufferManager.sceneBuffer.height,
+				GL_DEPTH_BUFFER_BIT,
+				GL_NEAREST
+			);
+			glBindFramebuffer(GL_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
+			glViewport(0, 0, static_cast<GLsizei>(framebufferManager.sceneBuffer.width), static_cast<GLsizei>(framebufferManager.sceneBuffer.height));
+			gm_RenderDeferredObjects(cd);
+			glDisable(GL_CULL_FACE);
+			gm_RenderVideo(cd);
+			glEnable(GL_CULL_FACE);
 		}
-		glBindFramebuffer(GL_READ_FRAMEBUFFER, framebufferManager.gBuffer.RetrieveBuffer());
-		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
-		glBlitFramebuffer(
-			0, 0, framebufferManager.sceneBuffer.width, framebufferManager.sceneBuffer.height,
-			0, 0, framebufferManager.sceneBuffer.width, framebufferManager.sceneBuffer.height,
-			GL_DEPTH_BUFFER_BIT,
-			GL_NEAREST
-		);
-		glBindFramebuffer(GL_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
-		glViewport(0, 0, static_cast<GLsizei>(framebufferManager.sceneBuffer.width), static_cast<GLsizei>(framebufferManager.sceneBuffer.height));
-		gm_RenderDeferredObjects(cd);
 
-		glDisable(GL_CULL_FACE);
-		gm_RenderVideo(cd);
-		glEnable(GL_CULL_FACE);
 	}
 	glDisable(GL_DEPTH_TEST);
 
-	//no touchy
-	glEnable(GL_DEPTH_TEST);
-	gm_RenderParticles(gameCameras[0]);
-	glDisable(GL_DEPTH_TEST);
 	//TEMPORARY CODE WARNING WARNING WARNING DELETE BEFORE M4 IF NOT DIE hi Sean
 /*	Vigniette vig;
 	vig.extent = 0.19;
@@ -822,8 +835,33 @@ unsigned int* GraphicsManager::gm_PostProcess() {
 			//Need a whole other system to handle this :(
 			//Bind bloom fbo buffer
 			framebufferManager.bloomBuffer.BindForDrawing();
+			auto& mipChain = framebufferManager.bloomBuffer.mipChain;
 			//Render down sampling
+			Bloom::downSamplingShader->Use();
+			Bloom::downSamplingShader->SetVec2("Resolution", PostProcessEffect::screenResolution);
+			Bloom::downSamplingShader->SetInt("mipLevel", 0);
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, sceneFB->texID);
+			for (int i = 0; i < (int)mipChain.size(); i++)
+			{
+				const auto& mip = mipChain[i];
+				glViewport(0, 0, mip.size.x, mip.size.y);
+				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+					GL_TEXTURE_2D, mip.texture, 0);
 
+				// Render screen-filled quad of resolution of current mip
+				glBindVertexArray(sceneFB->vaoId);
+				glDrawElements(GL_TRIANGLE_STRIP, sceneFB->drawCount, GL_UNSIGNED_SHORT, NULL);
+				glBindVertexArray(0);
+				// Set current mip resolution as srcResolution for next iteration
+				Bloom::downSamplingShader->SetVec2("Resolution", mip.size);
+				// Set current mip as texture input for next iteration
+				glBindTexture(GL_TEXTURE_2D, mip.texture);
+				// Disable Karis average for consequent downsamples
+				if (i == 0) { Bloom::downSamplingShader->SetInt("mipLevel", 1); }
+			}
+
+			glUseProgram(0);
 			glBindFramebuffer(GL_FRAMEBUFFER, 0);
 			continue;;
 		}

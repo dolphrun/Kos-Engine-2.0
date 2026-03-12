@@ -1,5 +1,13 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "e5826443-a9f4-a6e1-cb7f-e7f386730d1d",
         "MaterialComponent": {
             "materialGUID": [
@@ -24,6 +32,7 @@
             "prefabName": "M5_Modular_Walls_8M_Plane.prefab",
             "hide": false
         },
+        "NavMeshComponent": {},
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {

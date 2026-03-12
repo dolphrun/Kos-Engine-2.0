@@ -161,15 +161,16 @@ void gui::ImGuiHandler::DrawRenderScreenWindow(unsigned int windowWidth, unsigne
             //    //LOGGING_ERROR("First OpenGL Error: 0x%X", err);h
             //    std::cout << "after OpenGL Error2: " << err << std::endl;
             //}
-            float pixelVal;
-            glReadPixels(pixelX, pixelY, 1, 1, GL_ALPHA, GL_FLOAT, &pixelVal);
+            float pixelVal,rgba[4];
+            glReadPixels(pixelX, pixelY, 1, 1, GL_RGBA, GL_FLOAT, &rgba);
+            pixelVal = rgba[3];
             //err = glGetError();
             //if (err != GL_NO_ERROR) {
             //    //LOGGING_ERROR("First OpenGL Error: 0x%X", err);h
             //    std::cout << "after OpenGL Error 1: " << err << std::endl;
             //}
             --pixelVal;
-            std::cout << "Clicked pixerl val is " << pixelVal << '\n';
+            //std::cout << "Clicked pixerl val is " << pixelVal << '\n';
             m_lastClickedEntityId = pixelVal >= 0.f ? static_cast<int>(pixelVal) : m_lastClickedEntityId;
             if (!io.KeyCtrl) {
                 m_selectedEntities.clear();

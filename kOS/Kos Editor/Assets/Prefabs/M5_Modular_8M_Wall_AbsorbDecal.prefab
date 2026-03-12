@@ -1,0 +1,65 @@
+[
+    {
+        "entityGUID": "523bb90f-6f22-8cdc-a78f-02acf1cff7ac",
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "65db7847-b771-0a2d-75b9-54c7234b69dd"
+                }
+            ]
+        },
+        "MeshColliderComponent": {
+            "isTrigger": false,
+            "convex": false
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+        },
+        "NameComponent": {
+            "entityName": "M5_Modular_8M_Wall_AbsorbDecal",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "M5_Modular_8M_Wall_AbsorbDecal.prefab",
+            "hide": false
+        },
+        "NavMeshComponent": {},
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            }
+        }
+    }
+]

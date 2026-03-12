@@ -1,0 +1,65 @@
+[
+    {
+        "entityGUID": "fb4ea02c-f6d1-6886-e57c-62201797e0b5",
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "e36b49cd-3baf-5008-b8e7-6ee3b156ac78"
+                }
+            ]
+        },
+        "MeshColliderComponent": {
+            "isTrigger": false,
+            "convex": false
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+        },
+        "NameComponent": {
+            "entityName": "M5_Modular_8M_Wall_RunDecal",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "M5_Modular_8M_Wall_RunDecal.prefab",
+            "hide": false
+        },
+        "NavMeshComponent": {},
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            }
+        }
+    }
+]
