@@ -14,6 +14,7 @@
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
+            "isStatic": false,
             "prefabName": "AcidFire Flamethrower VFX_1.prefab",
             "hide": false
         },
@@ -61,6 +62,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "AcidFire Flamethrower VFX.prefab",
                     "hide": false
                 },
@@ -226,7 +228,16 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -272,6 +283,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "AcidFire Flamethrower VFX.prefab",
                     "hide": false
                 },
@@ -437,7 +449,16 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -483,6 +504,7 @@
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
+                    "isStatic": false,
                     "prefabName": "AcidFire Flamethrower VFX.prefab",
                     "hide": false
                 },
@@ -648,7 +670,16 @@
                         }
                     },
                     "emissionInterval": 0.10000000149011612,
-                    "no_Of_Particles": 50
+                    "no_Of_Particles": 50,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

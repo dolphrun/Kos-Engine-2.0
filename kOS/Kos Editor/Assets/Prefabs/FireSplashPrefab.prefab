@@ -35,7 +35,7 @@
             "textureGUID": "00000000-0000-0000-0000-000000000000",
             "start_Velocity": 17.5,
             "playback_State": 0,
-            "particleFade": 1,
+            "particleFade": 0,
             "velocityModule": {
                 "enabled": false,
                 "mode": 0,
@@ -86,13 +86,13 @@
                     "x": 1.0,
                     "y": 0.0,
                     "z": 0.0,
-                    "w": 1.0
+                    "w": 0.75
                 },
                 "end_Color": {
                     "x": 1.0,
                     "y": 1.0,
                     "z": 0.0,
-                    "w": 1.0
+                    "w": 0.3499999940395355
                 }
             },
             "sizeModule": {
@@ -186,7 +186,16 @@
                 }
             },
             "emissionInterval": 0.0010000000474974513,
-            "no_Of_Particles": 200
+            "no_Of_Particles": 100,
+            "dynamicTrailingEnabled": false,
+            "trail_Color": {
+                "x": 1.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.6499999761581421
+            },
+            "trailLifeTime": 0.5,
+            "trailWidth": 0.20000000298023224
         },
         "RigidbodyComponent": {
             "mass": 1.0,

@@ -17,7 +17,7 @@
                     "y": 2.0,
                     "z": 0.0
                 },
-                "radius": 0.6000000238418579,
+                "radius": 1.2000000476837158,
                 "height": 4.900000095367432,
                 "capsuleDirection": 1
             }
@@ -42,7 +42,9 @@
             "lungeForwardSpeed": 12.0,
             "lungeUpwardSpeed": 5.0,
             "lungeGravity": 15.0,
-            "attackCooldown": 2.0
+            "attackCooldown": 2.0,
+            "enemyHurtVFXPrefab": "06c198bd-19c0-0432-e746-c72bbca505e7",
+            "enemyHurtVFXPosition": "eb22ef3e-5cf8-3da9-51bf-f0a9bb5b0ce6"
         },
         "NameComponent": {
             "entityName": "RangedEnemyPrefab",
@@ -215,6 +217,54 @@
                             "x": 0.019999999552965164,
                             "y": 0.019999999552965164,
                             "z": 0.019999999552965164
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "eb22ef3e-5cf8-3da9-51bf-f0a9bb5b0ce6",
+                "NameComponent": {
+                    "entityName": "Enemy Hurt VFX Position",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 23.768556594848633,
+                            "y": 7.230066776275635,
+                            "z": -30.937253952026367
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 3.2498011589050293,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
                         }
                     }
                 }

@@ -8,64 +8,22 @@
         }
     },
     {
-        "entityGUID": "b333ebe0-07f0-e189-a802-f7bdabe819c1",
-        "AcidShield": {
-            "shieldDuration": 3.0,
-            "shieldDamage": 5,
-            "dotTickRate": 1.0,
-            "slowMultiplier": 0.6000000238418579,
-            "enemyDeathSfxGUID_1": "00000000-0000-0000-0000-000000000000",
-            "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
-            "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000",
-            "acidShieldSfxGUID": "00000000-0000-0000-0000-000000000000"
-        },
+        "entityGUID": "49b34586-69b7-c660-a543-afcec50f0523",
         "NameComponent": {
-            "entityName": "AcidShieldPrefab",
+            "entityName": "Enemy Hurt VFX",
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
             "isStatic": false,
-            "prefabName": "AcidShieldPrefab.prefab",
+            "prefabName": "Enemy Hurt VFX.prefab",
             "hide": false
-        },
-        "RigidbodyComponent": {
-            "mass": 1.0,
-            "drag": 0.0,
-            "angularDrag": 0.05000000074505806,
-            "useGravity": false,
-            "isKinematic": true,
-            "interpolation": 0,
-            "collisionDetection": 0,
-            "constraints": 0,
-            "speed": 0.0,
-            "velocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "angularVelocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        "SphereColliderComponent": {
-            "isTrigger": true,
-            "sphere": {
-                "center": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "radius": 4.800000190734863
-            }
         },
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 25.202207565307617,
-                    "z": -15.44394302368164
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -81,8 +39,8 @@
             "LocalTransformation": {
                 "position": {
                     "x": 0.0,
-                    "y": 25.202207565307617,
-                    "z": -15.44394302368164
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -98,9 +56,9 @@
         },
         "children": [
             {
-                "entityGUID": "dab2b9d7-391c-6957-f4f7-188266ed920a",
+                "entityGUID": "d5723662-f6e2-b88d-18b4-d0de7b3f0f8c",
                 "NameComponent": {
-                    "entityName": "Acid Shield VFX",
+                    "entityName": "Enemy Hurt Particles",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
@@ -119,13 +77,13 @@
                     "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 5.0,
                     "playback_State": 0,
-                    "particleFade": 0,
+                    "particleFade": 1,
                     "velocityModule": {
-                        "enabled": true,
+                        "enabled": false,
                         "mode": 0,
                         "velocity_Modifier": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 0.0,
                             "z": 0.0
                         }
                     },
@@ -138,10 +96,10 @@
                         }
                     },
                     "shapeModule": {
-                        "type": 3,
+                        "type": 1,
                         "emission_Direction": {
                             "x": 0.0,
-                            "y": 0.0,
+                            "y": 1.0,
                             "z": 0.0
                         },
                         "box_Size": {
@@ -151,59 +109,59 @@
                         },
                         "sphere_Radius": 0.0,
                         "emit_From_Shell": false,
-                        "cone_Angle": 0.0,
+                        "cone_Angle": 45.0,
                         "cone_Direction": {
                             "x": 0.0,
-                            "y": 0.0,
+                            "y": 1.0,
                             "z": 0.0
                         },
-                        "cone_Radius": 0.0,
-                        "circle_Radius": 5.0,
-                        "circle_Arc": 360.0,
-                        "emit_From_Edge": true,
+                        "cone_Radius": 0.5,
+                        "circle_Radius": 0.0,
+                        "circle_Arc": 0.0,
+                        "emit_From_Edge": false,
                         "edge_Length": 0.0,
                         "random_Direction_Amount": 0.0
                     },
                     "colorModule": {
-                        "enabled": true,
+                        "enabled": false,
                         "start_Color": {
-                            "x": 0.0,
-                            "y": 1.0,
-                            "z": 0.25,
-                            "w": 0.6499999761581421
+                            "x": 0.75,
+                            "y": 0.0,
+                            "z": 0.0,
+                            "w": 1.0
                         },
                         "end_Color": {
                             "x": 0.0,
-                            "y": 0.75,
-                            "z": 0.25,
+                            "y": 0.0,
+                            "z": 0.0,
                             "w": 0.0
                         }
                     },
                     "sizeModule": {
-                        "enabled": true,
-                        "start_Size": 1.0,
-                        "end_Size": 0.0
+                        "enabled": false,
+                        "start_Size": 0.20000000298023224,
+                        "end_Size": 0.20000000298023224
                     },
                     "rotationModule": {
-                        "enabled": true,
+                        "enabled": false,
                         "start_Rotation": {
                             "x": 0.0,
                             "y": 0.0,
                             "z": 0.0
                         },
                         "end_Rotation": {
-                            "x": 360.0,
-                            "y": 360.0,
-                            "z": 360.0
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
                         },
                         "rotation_Modifier": {
-                            "x": 45.0,
+                            "x": 0.0,
                             "y": 0.0,
                             "z": 0.0
                         }
                     },
                     "gravityModule": {
-                        "enabled": false,
+                        "enabled": true,
                         "gravity": {
                             "x": 0.0,
                             "y": -9.800000190734863,
@@ -269,24 +227,24 @@
                             "z": 0.0
                         }
                     },
-                    "emissionInterval": 0.019999999552965164,
-                    "no_Of_Particles": 100,
+                    "emissionInterval": 0.0010000000474974513,
+                    "no_Of_Particles": 25,
                     "dynamicTrailingEnabled": false,
                     "trail_Color": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0,
+                        "x": 0.8500000238418579,
+                        "y": 0.0,
+                        "z": 0.0,
                         "w": 1.0
                     },
-                    "trailLifeTime": 2.0,
-                    "trailWidth": 0.20000000298023224
+                    "trailLifeTime": 0.6499999761581421,
+                    "trailWidth": 0.15000000596046448
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 25.202207565307617,
-                            "z": -15.44394302368164
+                            "y": 0.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,

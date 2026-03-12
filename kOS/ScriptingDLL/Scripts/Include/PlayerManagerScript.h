@@ -94,7 +94,7 @@ public:
 	float playerCameraSpeedX = 0.65f;
 	float playerCameraSpeedY = 0.65f;
 
-	float interactPowerupRange = 10.f;
+	float interactPowerupRange = 100.f;
 
 	float playerSprintMultiplier = 1.5f;
 	float playerCrouchMultiplier = 0.5f;
