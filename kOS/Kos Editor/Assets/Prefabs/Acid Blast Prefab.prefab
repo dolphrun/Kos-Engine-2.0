@@ -10,7 +10,7 @@
     {
         "entityGUID": "1e1c8338-1d98-e598-6f13-6796e7559ed5",
         "AirBlastScript": {
-            "blastDamage": 30,
+            "blastDamage": 100,
             "pushbackForce": 30.0,
             "staggerDuration": 1.0,
             "manaCost": 30,

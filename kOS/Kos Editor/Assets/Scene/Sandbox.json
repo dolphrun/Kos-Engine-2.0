@@ -7157,7 +7157,7 @@
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
             "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
             "enemyHurtboxPosition": "96f1fb69-3907-f145-e582-9adea5010634",
-            "shieldHealth": 30,
+            "shieldHealth": 0,
             "shieldElement": "NONE",
             "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
             "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
@@ -7567,7 +7567,7 @@
                 "AnimatorComponent": {
                     "controllerGUID": "a8151059-f46f-1edd-8b81-a36f705c15fb",
                     "m_PlaybackSpeed": 1.0,
-                    "m_CurrentTime": 44.93952941894531,
+                    "m_CurrentTime": 45.93952941894531,
                     "m_IsPlaying": true,
                     "m_currentStateID": 4,
                     "m_transitioningStateID": 0
@@ -8142,7 +8142,7 @@
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
             "enemyBulletPrefab": "8393af65-4300-ebba-36fa-0720e42087f2",
             "enemyHurtboxPosition": "6ac4caf1-1df9-0909-bbf9-fe20ccb6c10f",
-            "shieldHealth": 30,
+            "shieldHealth": 0,
             "shieldElement": "NONE",
             "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
             "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
