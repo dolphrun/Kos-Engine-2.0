@@ -45,7 +45,10 @@ FilmGrain::FilmGrain(const FilmGrain& other)
 }
 void FilmGrain::UpdateShader() {
 	//Set intensity
+	currentTime = glfwGetTime();
 	currentShader->SetFloat("iNoise", noiseStrength);
+	currentShader->SetFloat("iTime", currentTime-lastTime);
+	lastTime = currentTime;
 	//std::cout << intensity << ' ' << extent << '\n';
 }
 

@@ -31,6 +31,7 @@ struct FilmGrain : public PostProcessEffect {
 	FilmGrain(const FilmGrain& other);
 	void UpdateShader();
 	float noiseStrength;
+	double currentTime{ 0.0 }, lastTime{0.0};
 	static Shader* currentShader;
 	Shader* GetShader() { return currentShader;; };
 	PostProcessType GetType() { return PostProcessType::PPT_FilmGrain;; };
