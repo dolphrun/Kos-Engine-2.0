@@ -33,6 +33,10 @@ public:
     utility::GUID currentSceneGUID;
     utility::GUID targetSceneGUID;
 
+    utility::GUID selectSfxGUID;
+    utility::GUID resumeSfxGUID;
+    utility::GUID hoverSfxGUID;
+
     bool useKeyboardShortcuts = true;
     bool wasPressed = false;
 
@@ -55,12 +59,35 @@ public:
             auto* spr = ecsPtr->GetComponent<ecs::SpriteComponent>(entity);
 
             if (btn->useSpriteSwap) {
+                if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+                    for (auto& af : ac->audioFiles) {
+                        if (af.audioGUID == hoverSfxGUID && af.isSFX) {
+                            af.requestPlay = true;
+                            break;
+                        }
+                    }
+                }
+
                 if (btn->isPressed && !btn->pressedSprite.Empty())
                     spr->spriteGUID = btn->pressedSprite;
-                else if (btn->isHovered && !btn->hoveredSprite.Empty())
+                else if (btn->isHovered && !btn->hoveredSprite.Empty()) {
+
+ 
                     spr->spriteGUID = btn->hoveredSprite;
+
+                }
                 else if (!btn->normalSprite.Empty())
                     spr->spriteGUID = btn->normalSprite;
+
+                if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+                    for (auto& af : ac->audioFiles) {
+                        if (af.audioGUID == hoverSfxGUID && af.isSFX) {
+                            af.requestPlay = true;
+                            break;
+                        }
+                    }
+                }
+                spr->spriteGUID = btn->hoveredSprite;
             }
         }
 
@@ -101,6 +128,14 @@ public:
 
 private:
     void ExecuteAction(ButtonAction action) {
+        if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+            for (auto& af : ac->audioFiles) {
+                if (af.audioGUID == selectSfxGUID && af.isSFX) {
+                    af.requestPlay = true;
+                    break;
+                }
+            }
+        }
         switch (action) {
 
         case ButtonAction::None:
@@ -119,6 +154,15 @@ private:
 
         case ButtonAction::ResumeGame:
             std::cout << "[UIButtonScript] Action: ResumeGame\n";
+            if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+                for (auto& af : ac->audioFiles) {
+                    if (af.audioGUID == resumeSfxGUID && af.isSFX) {
+                        af.requestPlay = true;
+                        break;
+                    }
+                }
+            }
+
             if (PauseMenuScript::instance)
                 PauseMenuScript::instance->ResumeGame();
             break;
@@ -160,5 +204,8 @@ public:
         currentSceneGUID,
         targetSceneGUID,
         useKeyboardShortcuts,
-        wasPressed);
+        wasPressed,
+        resumeSfxGUID,
+        selectSfxGUID,
+        hoverSfxGUID);
 };

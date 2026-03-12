@@ -83,6 +83,7 @@ public:
 	void MoveAgent(int& agentID, const glm::vec3 targetPos);
 	void RemoveAgent(int agentID);
 	void RemoveAllAgent();
+	void AgentSetActive(int& agentID, bool state, glm::vec3 pos = glm::vec3(0));
 
 	TileMeshConfig cfg;
 	BuildContext ctx;

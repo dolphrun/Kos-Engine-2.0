@@ -110,6 +110,11 @@ namespace prefab
         SetPrefabStatus(id, true);
         nc->prefabName = filename;
 
+        SceneData data;
+        data.isPrefab = true;
+        data.isActive = false;
+        m_ecs.AddScene(filename, data);
+
         std::string path = m_jsonFilePath + filename;
         m_sceneManager.CreateNewScene(path);
         LOGGING_DEBUG(path.c_str());
@@ -125,6 +130,10 @@ namespace prefab
         rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
 
         std::unordered_set<ecs::EntityID> savedEntities;  //track saved entities
+
+        rapidjson::Value sceneData(rapidjson::kObjectType);
+        saveComponentreflect(&data, sceneData, allocator);
+        doc.PushBack(sceneData, allocator);
 
         //Start saving the entities
         m_serialization.SaveEntity(id, doc, allocator, savedEntities);

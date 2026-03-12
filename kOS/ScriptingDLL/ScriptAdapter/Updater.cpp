@@ -87,5 +87,7 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 
 	RegisterScript<RoomLockScript>(TemplateSC::ecsPtr);
 
+	RegisterScript<EnemyHurtVFX>(TemplateSC::ecsPtr);
+
 	FieldComponentTypeRegistry::CreateAllDrawers(static_cast<Fields*>(svm->field)->GetAction());
 }
