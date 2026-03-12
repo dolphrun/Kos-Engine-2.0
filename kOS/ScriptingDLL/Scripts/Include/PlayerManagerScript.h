@@ -139,6 +139,9 @@ public:
 	ecs::EntityID winScreenCanvasID;
 	ecs::EntityID fireDashID;
 
+	ecs::EntityID gameUICanvasID = -1;
+	utility::GUID gameUICanvasObject;
+
 	utility::GUID bulletPrefab;
 	utility::GUID fireLMBPrefab;
 	utility::GUID acidLMBPrefab;
@@ -395,7 +398,7 @@ public:
 		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, fireEquipSfxGUID, fireAbsorbSfxGUID, acidEquipSfxGUID, acidShieldSfxGuid, lightningSlowStartSfxGUID,lightningSlowEndSfxGUID, lightningGunSfxGUID,
 		lightningAbsorbSfxGUID, lightningEquipSfxGUID, acidGrenadeGunSfxGUID, acidAbsorbSfxGUID, pauseMenuOpenSfxGUID, pauseMenuCloseSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
 		winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashGUID, pistolModelObject,
-		fireSwordModelObject, lightningModelObject, acidModelObject)
+		fireSwordModelObject, lightningModelObject, acidModelObject, gameUICanvasObject)
 
 		/*REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 			bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
@@ -484,6 +487,7 @@ inline void PlayerManagerScript::Start() {
 	healthUIObjectID = ecsPtr->GetEntityIDFromGUID(healthUIObject);
 	loseScreenCanvasID = ecsPtr->GetEntityIDFromGUID(loseScreenCanvasObject);
 	winScreenCanvasID = ecsPtr->GetEntityIDFromGUID(winScreenCanvasObject);
+	gameUICanvasID = ecsPtr->GetEntityIDFromGUID(gameUICanvasObject);
 
 	//std::vector<EntityID> armChild = ecsPtr->GetChild(playerArmModelObjectID).value();
 	if (animComp = ecsPtr->GetComponent<ecs::AnimatorComponent>(pistolModelID))
@@ -580,9 +584,11 @@ inline void PlayerManagerScript::Update() {
 		LoseScreenScript::isLoseScreenActive ||
 		LevelCompleteScript::isLevelCompleteActive)
 	{
+		if (gameUICanvasID != -1) ecsPtr->SetActive(gameUICanvasID, false);
 		return;
 	}
 
+	ecsPtr->SetActive(gameUICanvasID, true);
 
 	float& cd = GetCurrShootCooldownForCurrentWeapon();
 	if (cd > 0.0f) cd -= ecsPtr->m_GetDeltaTime();
