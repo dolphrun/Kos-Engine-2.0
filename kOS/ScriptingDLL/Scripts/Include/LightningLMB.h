@@ -71,6 +71,9 @@ inline void LightningLMB::Start() {
 				// APPLY DAMAGE VIA TAKEDAMAGE
 				enemyScript->TakeDamage(lightningLMBDamage, "LIGHTNING");
 				enemyScript->lightningStack += lightningLMBDamage;
+				if (enemyScript->shieldHealth <= 0) {
+					enemyScript->TriggerStagger(0.5f);
+				}
 			}
 			else {
 				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
@@ -86,6 +89,9 @@ inline void LightningLMB::Start() {
 				// EXPLOSION DAMAGE
 				enemyScript->TakeDamage(explodeDamage, "LIGHTNING");
 				enemyScript->lightningStack = 0;
+				if (enemyScript->shieldHealth <= 0) {
+					enemyScript->TriggerStagger(0.5f);
+				}
 			}
 
 			if (enemyScript->enemyHealth <= 0) {

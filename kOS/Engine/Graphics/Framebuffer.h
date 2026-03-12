@@ -189,10 +189,10 @@ public:
 	void Update(int width, int height);
 	void BindForDrawing();
 	unsigned int RetrieveBuffer() { return bloomBuffer; }
+	std::vector<BloomMip> mipChain;
 private:
 	int mipChainLength{6};
 	int width{}, height{};
 	unsigned int bloomBuffer;
 	unsigned int rboDepth;
-	std::vector<BloomMip> mipChain;
 };

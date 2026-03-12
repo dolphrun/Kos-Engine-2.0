@@ -320,7 +320,7 @@ public:
 		currentReloadTimer = 0.0f;
 	}
 
-	// SFX
+	// Normal SFX
 	utility::GUID gunSfxGUID_1;
 	utility::GUID gunReloadSfxGUID;
 
@@ -343,7 +343,11 @@ public:
 	std::vector<utility::GUID> fireSlashSfxGUID;
 	utility::GUID fireDashSfxGUID;
 
-	//Dash VFX Timer
+	//UI SFX
+	utility::GUID pauseMenuOpenSfxGUID;
+	utility::GUID pauseMenuCloseSfxGUID;
+
+	//Dash VFX Timerw
 	float fireDashVfxTimer = 0.0f;
 	float fireDashVfxDuration = 30.0f;
 	
@@ -353,7 +357,7 @@ public:
 	float absorbVFXDuration = 1.0f;
 
 
-	// --- FUNCTION DECLARATIONS ONLY ---
+	// --- FUNCTION DECLARATIONS ONLY --
 	// Implementations are moved to the bottom of the file
 	void Start() override;
 	void Update() override;
@@ -380,7 +384,7 @@ public:
 	REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
 		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, fireEquipSfxGUID, fireAbsorbSfxGUID, acidEquipSfxGUID, acidShieldSfxGuid, lightningSlowStartSfxGUID,lightningSlowEndSfxGUID, lightningGunSfxGUID,
-		lightningAbsorbSfxGUID, lightningEquipSfxGUID, acidGrenadeGunSfxGUID, acidAbsorbSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
+		lightningAbsorbSfxGUID, lightningEquipSfxGUID, acidGrenadeGunSfxGUID, acidAbsorbSfxGUID, pauseMenuOpenSfxGUID, pauseMenuCloseSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
 		winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashGUID, pistolModelObject,
 		fireSwordModelObject, lightningModelObject, acidModelObject)
 
@@ -512,6 +516,22 @@ inline void PlayerManagerScript::Update() {
 		if (auto* pauseManager = ecsPtr->GetComponent<PauseMenuScript>(pauseMenuManagerID)) {
 			pauseManager->TogglePause();
 
+			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+				utility::GUID targetMenuSfx = pauseManager->isPaused
+					? pauseMenuOpenSfxGUID   //  opened
+					: pauseMenuCloseSfxGUID; //  closed
+
+				if (!targetMenuSfx.Empty()) {
+					for (auto& af : ac->audioFiles) {
+						if (af.audioGUID == targetMenuSfx && af.isSFX) {
+							af.requestPlay = true;
+							break;
+						}
+					}
+				}
+
+			}
 			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 				for (auto& af : ac->audioFiles) {
 					if (af.audioGUID == gunSfxGUID_1) {
@@ -807,11 +827,9 @@ inline void PlayerManagerScript::PlayerMovementControls()
 	isMoving = (std::abs(forward) > 0.1f || std::abs(right) > 0.1f);
 
 	auto* playerRigidbody = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity);
-
 	if (!playerRigidbody) return;
 
 	float dt = ecsPtr->m_GetDeltaTime();
-
 	glm::vec3 tempVelocity = playerRigidbody->velocity;
 
 	auto* playerTransform = ecsPtr->GetComponent<ecs::TransformComponent>(entity);
@@ -950,19 +968,29 @@ inline void PlayerManagerScript::PlayerMovementControls()
 	// ==============================
 	glm::vec3 horizontal(tempVelocity.x, 0.f, tempVelocity.z);
 	float horizontalSpeed = glm::length(horizontal);
-
 	float maxSpeed = grounded ? maxGroundSpeed : maxAirSpeed;
 
 	if (horizontalSpeed > maxSpeed)
 	{
-		horizontal = glm::normalize(horizontal) * maxSpeed;
+		float bleedRate = grounded ? 8.f : 3.f; // 
+		float targetSpeed = glm::max(horizontalSpeed - bleedRate * dt, maxSpeed);
+		horizontal = glm::normalize(horizontal) * targetSpeed;
 		tempVelocity.x = horizontal.x;
 		tempVelocity.z = horizontal.z;
 	}
 
 	// Apply final velocity directly
 	glm::vec3 currentVel = playerRigidbody->velocity;
-	glm::vec3 delta = tempVelocity - currentVel;
+	glm::vec3 delta = glm::vec3(
+		tempVelocity.x - currentVel.x,
+		0.f,                           
+		tempVelocity.z - currentVel.z
+	);
+
+	if (tempVelocity.y != currentVel.y && Input->IsKeyTriggered(keys::SPACE))
+	{
+		delta.y = tempVelocity.y - currentVel.y;
+	}
 
 	physicsPtr->AddForce(
 		playerRigidbody->actor,

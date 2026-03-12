@@ -530,30 +530,29 @@ namespace ecs {
                         t++;
                 }
             }
-
-            //Dying trails
-            for (int i = static_cast<int>(particle->dyingTrails.size()) - 1; i >= 0; --i)
-            {
-                TrailData& trail = particle->dyingTrails[i];
-
-                // Age existing trail points
-                for (size_t t = 0; t < trail.lifetimes.size(); ++t)
-                    trail.lifetimes[t] += dt;
-
-                // Remove dead points
-                for (size_t t = 0; t < trail.lifetimes.size(); ) {
-                    if (trail.lifetimes[t] > trail.maxLifetime) {
-                        trail.lifetimes.erase(trail.lifetimes.begin() + t);
-                        trail.points.erase(trail.points.begin() + t);
-                    }
-                    else t++;
-                }
-
-                // Remove the trail entirely if empty
-                if (trail.points.empty())
-                    particle->dyingTrails.erase(particle->dyingTrails.begin() + i);
-            }
         } 
+        //Dying trails
+        for (int i = static_cast<int>(particle->dyingTrails.size()) - 1; i >= 0; --i)
+        {
+            TrailData& trail = particle->dyingTrails[i];
+
+            // Age existing trail points
+            for (size_t t = 0; t < trail.lifetimes.size(); ++t)
+                trail.lifetimes[t] += dt;
+
+            // Remove dead points
+            for (size_t t = 0; t < trail.lifetimes.size(); ) {
+                if (trail.lifetimes[t] > trail.maxLifetime) {
+                    trail.lifetimes.erase(trail.lifetimes.begin() + t);
+                    trail.points.erase(trail.points.begin() + t);
+                }
+                else t++;
+            }
+
+            // Remove the trail entirely if empty
+            if (trail.points.empty())
+                particle->dyingTrails.erase(particle->dyingTrails.begin() + i);
+        }
        
     }
 
