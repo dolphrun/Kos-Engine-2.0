@@ -20,7 +20,7 @@
                     "pan": 0.0,
                     "isBGM": false,
                     "isSFX": true,
-                    "use3D": true,
+                    "use3D": false,
                     "minDistance": 1.0,
                     "maxDistance": 20.0,
                     "sourceType": 0,
@@ -36,7 +36,7 @@
                     "pan": 0.0,
                     "isBGM": false,
                     "isSFX": true,
-                    "use3D": true,
+                    "use3D": false,
                     "minDistance": 1.0,
                     "maxDistance": 20.0,
                     "sourceType": 0,
@@ -163,7 +163,8 @@
                 }
             ],
             "rangedEnemyDeathSfxGUID": [],
-            "tankEnemyDeathSfxGUID": []
+            "tankEnemyDeathSfxGUID": [],
+            "tankShieldBlockSfxGUID": []
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
