@@ -73,7 +73,9 @@ void GraphicsManager::gm_Initialize(float width, float height) {
 	FilmGrain::currentShader = &shaderManager.engineShaders.find("FilmGrainShader")->second;
 	ChromaticAberration::currentShader = &shaderManager.engineShaders.find("ChromaticAbberrationShader")->second;
 	Blur::currentShader = &shaderManager.engineShaders.find("BlurShader")->second;
-
+	Bloom::downSamplingShader = &shaderManager.engineShaders.find("DownSamplingShader")->second;
+	Bloom::upSamplingShader = &shaderManager.engineShaders.find("UpSamplingShader")->second;
+	Bloom::bloomShader= &shaderManager.engineShaders.find("BloomShader")->second;
 	//Load default texture resource
 	//Create default texture
 	std::array<unsigned char, 196608>defaultTexData{1.f};
@@ -820,7 +822,6 @@ void GraphicsManager::gm_RenderGameBuffer(){
 }
 
 unsigned int* GraphicsManager::gm_PostProcess() {
-	// 1. Setup Pointers
 	FrameBuffer* sceneFB = &framebufferManager.sceneBuffer;
 	FrameBuffer* scratchFB = &framebufferManager.postProcessBuffer1;
 
@@ -832,12 +833,14 @@ unsigned int* GraphicsManager::gm_PostProcess() {
 
 		//If its in ppe... OVVERIDE AND KLILL IT DIE DIE 
 		if (ppe->GetType() == PPT_Bloom) {
+			Bloom* blmPtr = reinterpret_cast<Bloom*>(ppe.get());
 			//Need a whole other system to handle this :(
 			//Bind bloom fbo buffer
 			framebufferManager.bloomBuffer.BindForDrawing();
 			auto& mipChain = framebufferManager.bloomBuffer.mipChain;
 			//Render down sampling
 			Bloom::downSamplingShader->Use();
+			Bloom::downSamplingShader->SetInt("screenTexture", 0);
 			Bloom::downSamplingShader->SetVec2("Resolution", PostProcessEffect::screenResolution);
 			Bloom::downSamplingShader->SetInt("mipLevel", 0);
 			glActiveTexture(GL_TEXTURE0);
@@ -860,9 +863,54 @@ unsigned int* GraphicsManager::gm_PostProcess() {
 				// Disable Karis average for consequent downsamples
 				if (i == 0) { Bloom::downSamplingShader->SetInt("mipLevel", 1); }
 			}
-
 			glUseProgram(0);
-			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+			
+			//Do upsampling
+
+			Bloom::upSamplingShader->Use();
+			Bloom::upSamplingShader->SetInt("screenTexture", 0);
+			Bloom::upSamplingShader->SetFloat("filterRadius", blmPtr->filterRadius);
+
+			// Enable additive blending
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_ONE, GL_ONE);
+			glBlendEquation(GL_FUNC_ADD);
+
+			for (int i = (int)mipChain.size() - 1; i > 0; i--)
+			{
+				const auto& mip = mipChain[i];
+				const auto& nextMip = mipChain[i - 1];
+
+				// Bind viewport and texture from where to read
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, mip.texture);
+
+				// Set framebuffer render target (we write to this texture)
+				glViewport(0, 0, nextMip.size.x, nextMip.size.y);
+				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+					GL_TEXTURE_2D, nextMip.texture, 0);
+
+				// Render screen-filled quad of resolution of current mip
+				glBindVertexArray(sceneFB->vaoId);
+				glDrawElements(GL_TRIANGLE_STRIP, sceneFB->drawCount, GL_UNSIGNED_SHORT, NULL);
+				glBindVertexArray(0);
+			}
+			glUseProgram(0);
+			Bloom::bloomShader->Use();
+			Bloom::bloomShader->SetInt("bloomTexture", 0);
+			Bloom::bloomShader->SetFloat("bloomStrength", blmPtr->bloomStrength);
+			// Composite bloom result back onto sceneFB
+			glBindFramebuffer(GL_FRAMEBUFFER, sceneFB->fbo);
+			glViewport(0, 0, sceneFB->width, sceneFB->height);
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_ONE, GL_ONE);
+			glActiveTexture(GL_TEXTURE0); // ADD THIS
+			glBindTexture(GL_TEXTURE_2D, mipChain[0].texture);
+			glBindVertexArray(sceneFB->vaoId);
+			glDrawElements(GL_TRIANGLE_STRIP, sceneFB->drawCount, GL_UNSIGNED_SHORT, NULL);
+			glBindVertexArray(0);
+			glDisable(GL_BLEND);
+			glUseProgram(0);
 			continue;;
 		}
 		glBindFramebuffer(GL_FRAMEBUFFER, scratchFB->fbo);

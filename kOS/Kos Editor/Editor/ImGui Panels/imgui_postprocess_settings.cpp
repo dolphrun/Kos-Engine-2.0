@@ -9,7 +9,7 @@ namespace postProcessSettings{
 	std::string lastPPGUID;
 	char buffer[256];
 	PostProcessingProfile* ppp{ nullptr};
-	std::vector<const char*>profileNames = { "Add profile effect","Vigniette","Noise strength","Chromatic Abberation","Blur"};
+	std::vector<const char*>profileNames = { "Add profile effect","Vigniette","Noise strength","Chromatic Abberation","Blur","Bloom"};
 }
 
 
@@ -59,6 +59,9 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 			case 4:
 				postProcessSettings::ppp->postProcessingEffects.push_back(std::make_unique<Blur>(Blur{}));
 				break;;
+			case 5:
+				postProcessSettings::ppp->postProcessingEffects.push_back(std::make_unique<Bloom>(Bloom{}));
+				break;;
 			}
 		}
 		for (auto& eff : postProcessSettings::ppp->postProcessingEffects) {
@@ -92,10 +95,24 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 				break;;
 			}
 			case PPT_Blur:
+			{
 				Blur* v = reinterpret_cast<Blur*>(eff.get());
 				ImGui::Text("Blur");
 				ImGui::DragFloat("Radius", &v->radius, 0.1f);
 				break;;
+			}
+
+			case PPT_Bloom:
+			{
+				Bloom* v = reinterpret_cast<Bloom*>(eff.get());
+				ImGui::Text("Bloom");
+				float rad = v->filterRadius * 1000.f;
+				ImGui::DragFloat("Filter radius", &rad, 0.01f);
+				v->filterRadius = rad/1000.f;
+				ImGui::DragFloat("Bloom Strength", &v->bloomStrength, 0.001f);
+
+				break;;
+			}
 			}
 		}
 		//Save profile 

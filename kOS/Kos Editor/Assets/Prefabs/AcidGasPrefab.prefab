@@ -10,8 +10,8 @@
     {
         "entityGUID": "9a3a623e-0ac8-1207-62df-88107057f806",
         "AcidGas": {
-            "gasDamage": 2,
-            "tickInterval": 1.0,
+            "gasDamage": 10,
+            "tickInterval": 0.75,
             "lifetime": 4.0,
             "scoreValue": 50
         },

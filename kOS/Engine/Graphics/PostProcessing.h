@@ -64,9 +64,11 @@ struct Bloom : public PostProcessEffect {
 	Bloom();
 	Bloom(const Bloom& other);
 	void UpdateShader();
-	float filterRadius;
+	float filterRadius{ 0.0001f };
+	float bloomStrength{ 1.f };
 	static Shader* downSamplingShader;
 	static Shader* upSamplingShader;
+	static Shader* bloomShader;
 	Shader* GetShader() { return nullptr;; };
 	PostProcessType GetType() { return PostProcessType::PPT_Bloom;; };
 };
