@@ -53,7 +53,8 @@ inline void TankAOEScript::Start() {
 			}
 
 			if (auto* player = ecsPtr->GetComponent<PlayerManagerScript>(col.otherEntityID)) {
-				player->currPlayerHitPoints -= aoeDamage;
+				//player->currPlayerHitPoints -= aoeDamage;
+				player->TakeDamage(aoeDamage);
 			}
 		}
 
