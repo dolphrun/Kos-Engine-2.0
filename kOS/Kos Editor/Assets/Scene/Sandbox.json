@@ -2323,8 +2323,8 @@
                     "angularDrag": 0.05000000074505806,
                     "useGravity": true,
                     "isKinematic": false,
-                    "interpolation": 0,
-                    "collisionDetection": 0,
+                    "interpolation": 2,
+                    "collisionDetection": 1,
                     "constraints": 14,
                     "speed": 0.0,
                     "velocity": {
