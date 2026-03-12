@@ -41,6 +41,8 @@ public:
 	float enemyAttackRange = 8.f;
 	float enemyRangedAttackRange = 15.f;
 
+	bool playerWentOutOfAttackRange = false;
+
 	float enemyChaseRange = 25.f;
 
 	utility::GUID playerToChase;
@@ -308,6 +310,16 @@ inline void EnemyManagerScript::Update() {
 
 			}
 		}
+		else if (enemyController->RetrieveStateByID(animComp->m_currentStateID)->name == "Crouching")
+		{
+			if (playerWentOutOfAttackRange)
+			{
+				enemyController->PlayOverlay("Chasing", animComp, 0.1f, 0.5f);
+				playerWentOutOfAttackRange = false;
+			}
+			
+		}
+				
 
 		if (enemyIsAttacking) {
 			// NAVMESH STOP FOLLOWING
@@ -453,6 +465,7 @@ inline void EnemyManagerScript::Update() {
 					enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("PlayerDetected", animComp, enemyController);
 				}
 			}
+			playerWentOutOfAttackRange = true;
 		}
 	}
 
