@@ -200,15 +200,15 @@
                             "hide": false
                         },
                         "SkinnedMeshRendererComponent": {
-                            "skinnedMeshGUID": "4d215f18-7b0d-7c34-1315-4803812d8960",
+                            "skinnedMeshGUID": "a74f5446-cca5-3f6a-259a-f13ac2757b50",
                             "materialGUID": "e9ece6d7-4ed7-73b3-9309-ec58d5d77a07"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": 0.5799999237060547,
-                                    "y": 99.18999481201172,
-                                    "z": -0.019999995827674866
+                                    "x": 0.5798404812812805,
+                                    "y": 99.18048095703125,
+                                    "z": -0.01999838836491108
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -216,26 +216,227 @@
                                     "z": 0.0
                                 },
                                 "scale": {
-                                    "x": 0.01999998837709427,
+                                    "x": 0.019997665658593178,
                                     "y": 0.019999999552965164,
-                                    "z": 0.01999998837709427
+                                    "z": 0.019997665658593178
                                 }
                             },
                             "LocalTransformation": {
                                 "position": {
-                                    "x": 0.020200267434120178,
-                                    "y": -0.8100051879882813,
-                                    "z": 0.5799930691719055
+                                    "x": 0.020198604092001915,
+                                    "y": -0.81951904296875,
+                                    "z": 0.5798336267471313
                                 },
                                 "rotation": {
                                     "x": 0.0,
-                                    "y": 1.302755681109602e-9,
+                                    "y": -0.000017077201846404932,
                                     "z": 0.0
                                 },
                                 "scale": {
-                                    "x": 0.019999992102384567,
+                                    "x": 0.019997669383883476,
                                     "y": 0.019999999552965164,
-                                    "z": 0.019999992102384567
+                                    "z": 0.019997669383883476
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "66cccab0-7e3c-37de-abde-899196a8fcaa",
+                        "AnimatorComponent": {
+                            "controllerGUID": "6df7b343-5e54-179d-5742-4d9ec700a89e",
+                            "m_PlaybackSpeed": 1.0,
+                            "m_CurrentTime": 0.0,
+                            "m_IsPlaying": true,
+                            "m_currentStateID": 0,
+                            "m_transitioningStateID": 0
+                        },
+                        "MaterialComponent": {
+                            "materialGUID": [
+                                {
+                                    "materialGUID": "e9ece6d7-4ed7-73b3-9309-ec58d5d77a07"
+                                }
+                            ]
+                        },
+                        "NameComponent": {
+                            "entityName": "Acid Weapon Model",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SkinnedMeshRendererComponent": {
+                            "skinnedMeshGUID": "df5619cb-87e1-b4f8-8c75-957d62f00eae",
+                            "materialGUID": "00000000-0000-0000-0000-000000000000"
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.5222084522247314,
+                                    "y": 99.18000030517578,
+                                    "z": 1.3096723705530167e-10
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": 89.98021697998047,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.9999998211860657,
+                                    "y": 1.0,
+                                    "z": 0.9999998211860657
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.00018031310173682868,
+                                    "y": -0.8199999928474426,
+                                    "z": 0.5222085118293762
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "bb8a504b-7d1c-5fbf-e734-36caf165b073",
+                        "AnimatorComponent": {
+                            "controllerGUID": "d37cc8c9-56d9-1632-05ef-d56ae1307205",
+                            "m_PlaybackSpeed": 1.0,
+                            "m_CurrentTime": 0.0,
+                            "m_IsPlaying": true,
+                            "m_currentStateID": 0,
+                            "m_transitioningStateID": 0
+                        },
+                        "MaterialComponent": {
+                            "materialGUID": [
+                                {
+                                    "materialGUID": "e9ece6d7-4ed7-73b3-9309-ec58d5d77a07"
+                                }
+                            ]
+                        },
+                        "NameComponent": {
+                            "entityName": "Lightning Weapon Model",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SkinnedMeshRendererComponent": {
+                            "skinnedMeshGUID": "90acbe4c-6122-905e-d09e-9fdf8b654aba",
+                            "materialGUID": "00000000-0000-0000-0000-000000000000"
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.5405575037002563,
+                                    "y": 99.18000030517578,
+                                    "z": 2.08092387765646e-9
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": 89.98021697998047,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.9999998211860657,
+                                    "y": 1.0,
+                                    "z": 0.9999998211860657
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0001866468955995515,
+                                    "y": -0.8199999928474426,
+                                    "z": 0.5405575633049011
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "9c08d339-2be8-e5f3-ccba-169897d12fdb",
+                        "AnimatorComponent": {
+                            "controllerGUID": "c28b2d85-9ef5-bf34-7591-d349e42c2ab5",
+                            "m_PlaybackSpeed": 1.0,
+                            "m_CurrentTime": 0.0,
+                            "m_IsPlaying": true,
+                            "m_currentStateID": 0,
+                            "m_transitioningStateID": 0
+                        },
+                        "MaterialComponent": {
+                            "materialGUID": [
+                                {
+                                    "materialGUID": "e9ece6d7-4ed7-73b3-9309-ec58d5d77a07"
+                                }
+                            ]
+                        },
+                        "NameComponent": {
+                            "entityName": "Fire Sword Model",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SkinnedMeshRendererComponent": {
+                            "skinnedMeshGUID": "90acbe4c-6122-905e-d09e-9fdf8b654aba",
+                            "materialGUID": "e9ece6d7-4ed7-73b3-9309-ec58d5d77a07"
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.5457476377487183,
+                                    "y": 99.18000030517578,
+                                    "z": -0.019134819507598877
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": 89.98021697998047,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.9999998211860657,
+                                    "y": 1.0,
+                                    "z": 0.9999998211860657
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.019323261454701424,
+                                    "y": -0.8199999928474426,
+                                    "z": 0.545741081237793
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
                                 }
                             }
                         }
@@ -442,11 +643,21 @@
                     "airBlastPrefab": "00000000-0000-0000-0000-000000000000",
                     "gunSfxGUID_1": "d98d60d5-127f-8dc2-b051-dc6d6b883682",
                     "gunReloadSfxGUID": "00000000-0000-0000-0000-000000000000",
-                    "fireSlashSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "fireSlashSfxGUID": [],
                     "fireDashSfxGUID": "00000000-0000-0000-0000-000000000000",
-                    "lightningSlowSfxGUID": "00000000-0000-0000-0000-000000000000",
-                    "lightningGunSfxGUID": "00000000-0000-0000-0000-000000000000",
-                    "acidGrenadeGunSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "fireEquipSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "fireAbsorbSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "acidEquipSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "acidShieldSfxGuid": "00000000-0000-0000-0000-000000000000",
+                    "lightningSlowStartSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "lightningSlowEndSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "lightningGunSfxGUID": [],
+                    "lightningAbsorbSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "lightningEquipSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "acidGrenadeGunSfxGUID": [],
+                    "acidAbsorbSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "pauseMenuOpenSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "pauseMenuCloseSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "pauseMenuManagerObject": "00000000-0000-0000-0000-000000000000",
                     "healthUIObject": "00000000-0000-0000-0000-000000000000",
                     "loseScreenCanvasObject": "00000000-0000-0000-0000-000000000000",
@@ -457,7 +668,9 @@
                     "absorbingVFXSpawnPoint": "00000000-0000-0000-0000-000000000000",
                     "muzzleFlashGUID": "00000000-0000-0000-0000-000000000000",
                     "pistolModelObject": "00000000-0000-0000-0000-000000000000",
-                    "fireSwordModelObject": "00000000-0000-0000-0000-000000000000"
+                    "fireSwordModelObject": "00000000-0000-0000-0000-000000000000",
+                    "lightningModelObject": "00000000-0000-0000-0000-000000000000",
+                    "acidModelObject": "00000000-0000-0000-0000-000000000000"
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,

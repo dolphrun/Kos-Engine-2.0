@@ -1,5 +1,13 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "dcbcdb14-c728-a183-0056-4f869c48fcb2",
         "BoxColliderComponent": {
             "isTrigger": true,
@@ -51,7 +59,19 @@
             "doorPrefabA": "00000000-0000-0000-0000-000000000000",
             "doorPrefabB": "00000000-0000-0000-0000-000000000000",
             "doorSpawnPointA": "00000000-0000-0000-0000-000000000000",
-            "doorSpawnPointB": "00000000-0000-0000-0000-000000000000"
+            "doorSpawnPointB": "00000000-0000-0000-0000-000000000000",
+            "pointLightList": [],
+            "roomEnemyGUIDs": [
+                {
+                    "roomEnemyGUIDs": "00000000-0000-0000-0000-000000000000"
+                },
+                {
+                    "roomEnemyGUIDs": "00000000-0000-0000-0000-000000000000"
+                },
+                {
+                    "roomEnemyGUIDs": "00000000-0000-0000-0000-000000000000"
+                }
+            ]
         },
         "TransformComponent": {
             "WorldTransformation": {

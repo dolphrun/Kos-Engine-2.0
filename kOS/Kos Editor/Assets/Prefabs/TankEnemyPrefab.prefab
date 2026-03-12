@@ -230,13 +230,13 @@
                     "tankShieldBlockSfxGUID": "4c22dc8a-e591-ba31-2b6a-6371e04c4da5"
                 },
                 {
-                    "tankShieldBlockSfxGUID": "373786d3-b5fc-0d5e-d12b-75f2fa91882c"
-                },
-                {
                     "tankShieldBlockSfxGUID": "a7d1eb15-af1b-237a-3826-769f73fe51eb"
                 },
                 {
                     "tankShieldBlockSfxGUID": "c359948d-d497-0f68-21b0-81b61af1d63f"
+                },
+                {
+                    "tankShieldBlockSfxGUID": "373786d3-b5fc-0d5e-d12b-75f2fa91882c"
                 }
             ]
         },

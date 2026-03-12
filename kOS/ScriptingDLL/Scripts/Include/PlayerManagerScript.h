@@ -1240,7 +1240,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				std::cout << "[WeaponSwap] Absorb anim done > triggering Swap Out\n";
 
 				playerController->RetrieveStateByID(animComp->m_currentStateID)
-					->Trigger("swapOut", animComp, playerController);
+					->Trigger("animationFinished", animComp, playerController);
 			}
 
 			// Swap out anim finish then trigger swap of model then swap in
@@ -1250,10 +1250,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 				playerPowerupHeld = pendingPowerup;
 				SwapWeaponModel(pendingPowerup);
-				pendingPowerup = Powerup::NONE; 
-
-				playerController->RetrieveStateByID(animComp->m_currentStateID)
-					->Trigger("swapIn", animComp, playerController);
+				pendingPowerup = Powerup::NONE;
 			}
 
 			// Swap in finish then idle
@@ -1294,7 +1291,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				}
 
 				playerController->RetrieveStateByID(animComp->m_currentStateID)
-					->Trigger("swapDone", animComp, playerController);
+					->Trigger("animationFinished", animComp, playerController);
 			}
 		}
 	}
@@ -1638,8 +1635,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 					hasAbsorbed = true;
 
 					if (powerupComp->powerupType == "FIRE") {
-						playerPowerupHeld = Powerup::FIRE; //DELETE THIS WHEN ANIM FINISH
-						SwapWeaponModel(Powerup::FIRE); //DELETE THIS WHEN ANIM FINISH
+						//playerPowerupHeld = Powerup::FIRE; //DELETE THIS WHEN ANIM FINISH
+						//SwapWeaponModel(Powerup::FIRE); //DELETE THIS WHEN ANIM FINISH
 						pendingPowerup = Powerup::FIRE;
 
 						if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
@@ -1662,8 +1659,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 						chro->blueOffset = 0.f;
 					}
 					else if (powerupComp->powerupType == "ACID") {
-						playerPowerupHeld = Powerup::ACID;//DELETE THIS WHEN ANIM FINISH
-						SwapWeaponModel(Powerup::ACID);//DELETE THIS WHEN ANIM FINISH
+						//playerPowerupHeld = Powerup::ACID;//DELETE THIS WHEN ANIM FINISH
+						//SwapWeaponModel(Powerup::ACID);//DELETE THIS WHEN ANIM FINISH
 						pendingPowerup = Powerup::ACID;
 						if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 							for (auto& af : ac->audioFiles) {
@@ -1687,8 +1684,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 					else if (powerupComp->powerupType == "LIGHTNING")
 					{
-						playerPowerupHeld = Powerup::LIGHTNING;//DELETE THIS WHEN ANIM FINISH
-						SwapWeaponModel(Powerup::LIGHTNING);//DELETE THIS WHEN ANIM FINISH
+						//playerPowerupHeld = Powerup::LIGHTNING;//DELETE THIS WHEN ANIM FINISH
+						//SwapWeaponModel(Powerup::LIGHTNING);//DELETE THIS WHEN ANIM FINISH
 						pendingPowerup = Powerup::LIGHTNING;
 
 						if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
@@ -1765,7 +1762,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 					{
 						if (animComp->m_currentStateID)
 						{
-							playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("hasAbsorbed", animComp, playerController);
+							//playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("hasAbsorbed", animComp, playerController);
+							playerController->SetState("Absorbing",animComp);
 							hasAbsorbed = false;
 						}
 					}
@@ -2029,9 +2027,6 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				}
 
 				currMana -= fireAbilityCost;
-
-
-				///ADD FIRE RIGHT CLICK ANIMATION HERE
 			}
 
 			// ADD SFX
@@ -2140,10 +2135,14 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				currMana -= lightningAbilityCost;
 
 				///ADD LIGHTNING RIGHT CLOCK ANIMATION HERE
+				
 			}
 
 			// ADD SFX
 		}
+
+		if (animComp && animComp->m_currentStateID)
+			playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("RightClick", animComp, playerController);
 	}
 
 	// MOVEMENT
@@ -2184,6 +2183,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				}
 			}
 			// ADD SFX
+
+			
 		}
 		
 		//Acid SHield
@@ -2208,6 +2209,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			//acidCurrMovementCooldown = acidMovementCooldown;
 
 			// ADD SFX
+
 		}
 
 		//Time slow
@@ -2230,6 +2232,9 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			lightningAbilityTimer = lightningAbilityDelay;
 			currMana -= lightningTimeslowCost;
 		}
+
+		if (animComp && animComp->m_currentStateID)
+			playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("FKey", animComp, playerController);
 
 	}
 }
@@ -2355,6 +2360,17 @@ inline void  PlayerManagerScript::SwapWeaponModel(Powerup newPowerup) {
 		ecsPtr->SetActive(acidModelObjectID, false);
 		currentModelID = pistolModelID;
 	}
+
+	//Switch animation resources
+	if (animComp = ecsPtr->GetComponent<ecs::AnimatorComponent>(currentModelID))
+	{
+		playerController = resource->GetResource<R_AnimController>(animComp->controllerGUID).get();
+		if (playerController)
+		{
+			//animComp->m_currentStateID = playerController->m_EnterState->id;
+			playerController->SetState("Swap In", animComp);
+		}
+	};
 }
 
 inline void PlayerManagerScript::TakeDamage(int damage) {

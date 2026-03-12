@@ -17,12 +17,14 @@ public:
 
     std::vector<utility::GUID> pointLightList;
 
+    std::vector<utility::GUID> roomEnemyGUIDs;
+    std::unordered_set<ecs::EntityID> enemiesInRoom;
+
     int remainingEnemies = 0;
     bool roomLocked = false;
     bool playerInside = false;
 
     // Track living enemy
-    std::unordered_set<ecs::EntityID> enemiesInRoom;
     std::unordered_set<ecs::EntityID> lightInRoom;
     //std::vector<ecs::EntityID> lightInRoom;
     // Track door 
@@ -33,72 +35,74 @@ public:
     void LockRoom();
     void UnlockRoom();
 
-    REFLECTABLE(RoomLockScript, enemyCountToKill,doorPrefabA, doorPrefabB, doorSpawnPointA, doorSpawnPointB, pointLightList)
+    REFLECTABLE(RoomLockScript, enemyCountToKill,doorPrefabA, doorPrefabB, doorSpawnPointA, doorSpawnPointB, pointLightList, roomEnemyGUIDs)
 };
 
 // --- IMPLEMENTATION SECTION ---
 #include "EnemyManagerScript.h"
 
 inline void RoomLockScript::Start() {
-
+    // Turn off room lights initially
     for (const auto& lightGUID : pointLightList) {
         ecs::EntityID lightID = ecsPtr->GetEntityIDFromGUID(lightGUID);
-        ecsPtr->SetActive(lightID, false);
+        if (lightID != 0) {
+            ecsPtr->SetActive(lightID, false);
+        }
     }
 
     roomLocked = false;
     playerInside = false;
+    remainingEnemies = 0;
+    enemiesInRoom.clear();
+    spawnedDoors.clear();
 
+    // Register room-owned enemies from editor-assigned GUID list
+    for (const auto& enemyGUID : roomEnemyGUIDs) {
+        ecs::EntityID enemyID = ecsPtr->GetEntityIDFromGUID(enemyGUID);
+        if (enemyID != 0) {
+            enemiesInRoom.insert(enemyID);
+        }
+    }
+
+    remainingEnemies = static_cast<int>(enemiesInRoom.size());
+
+    std::cout << "[RoomLock] Start() - Registered enemies: "
+        << remainingEnemies << "\n";
+
+    // Doorway trigger: only detect player entering
     physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
-
         auto* nameComp = ecsPtr->GetComponent<NameComponent>(col.otherEntityID);
         if (!nameComp) return;
 
-        // Player in, lock room
         if (nameComp->entityTag == "Player") {
             if (!roomLocked) {
                 playerInside = true;
                 LockRoom();
+
                 std::cout << "[RoomLock] Player entered. Room locked. Enemies to kill: "
-                    << remainingEnemies << "\n";
-                
+                    << enemiesInRoom.size() << "\n";
+
                 for (const auto& lightGUID : pointLightList) {
-                    ecs::EntityID lightID = ecsPtr-> GetEntityIDFromGUID(lightGUID);
-                    ecsPtr->SetActive(lightID, true);
+                    ecs::EntityID lightID = ecsPtr->GetEntityIDFromGUID(lightGUID);
+                    if (lightID != 0) {
+                        ecsPtr->SetActive(lightID, true);
+                    }
                 }
             }
         }
-
-        if (nameComp->entityTag == "Light") {
-            lightInRoom.insert(col.otherEntityID);
-            std::cout << "[RoomLock] Light in room. Tracking: " << enemiesInRoom.size() << "\n";
-        }
-      
-
-        // Enemy in
-        if (nameComp->entityTag == "Enemy") {
-            enemiesInRoom.insert(col.otherEntityID);
-            std::cout << "[RoomLock] Enemy entered room. Tracking: " << enemiesInRoom.size() << "\n";
-        }
         });
 
-        physicsPtr->GetEventCallback()->OnTriggerExit(entity, [this](const physics::Collision& col) {
-            auto* nameComp = ecsPtr->GetComponent<NameComponent>(col.otherEntityID);
-            if (!nameComp) return;
+    physicsPtr->GetEventCallback()->OnTriggerExit(entity, [this](const physics::Collision& col) {
+        auto* nameComp = ecsPtr->GetComponent<NameComponent>(col.otherEntityID);
+        if (!nameComp) return;
 
-            if (nameComp->entityTag == "Player") {
-                playerInside = false;
-                std::cout << "[RoomLock] Player left trigger zone.\n";
-            }
-
-            if (nameComp->entityTag == "Enemy") {
-                enemiesInRoom.erase(col.otherEntityID);
-                std::cout << "[RoomLock] Enemy exited trigger. Remaining: "
-                    << enemiesInRoom.size() << "\n";
-            }
-          });
-
+        if (nameComp->entityTag == "Player") {
+            playerInside = false;
+            std::cout << "[RoomLock] Player left trigger zone.\n";
+        }
+        });
 }
+
 
 inline void RoomLockScript::Update() {
     if (!roomLocked) return;
@@ -108,22 +112,30 @@ inline void RoomLockScript::Update() {
     for (ecs::EntityID enemyID : enemiesInRoom) {
         auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(enemyID);
 
-        if (!enemyScript || enemyScript->enemyHealth <= 0) {
+        if (!enemyScript) {
+            std::cout << "[RoomLock] WARNING: EnemyManagerScript missing for enemyID "
+                << enemyID << "\n";
+            continue;
+        }
+
+        if (enemyScript->enemyHealth <= 0) {
             toRemove.push_back(enemyID);
         }
     }
 
     for (ecs::EntityID id : toRemove) {
         enemiesInRoom.erase(id);
-        std::cout << "[RoomLock] Dead enemy removed. Remaining: " << enemiesInRoom.size() << "\n";
+        std::cout << "[RoomLock] Dead enemy removed. Remaining: "
+            << enemiesInRoom.size() << "\n";
     }
 
-    //Enemy dead all unclok room
+    remainingEnemies = static_cast<int>(enemiesInRoom.size());
+
+    // Enemy dead all unlock room
     if (enemiesInRoom.empty()) {
         UnlockRoom();
     }
 }
-
 
 inline void RoomLockScript::LockRoom() {
     if (roomLocked) return;
@@ -145,10 +157,11 @@ inline void RoomLockScript::LockRoom() {
                 }
             }
         }
+
         std::cout << "[RoomLock] Door A spawned.\n";
     }
 
-    // Spawn door B
+    // Spawn Door B
     if (doorPrefabB != utility::GUID{}) {
         ecs::EntityID doorB = DuplicatePrefabIntoScene<R_Scene>(currentScene, doorPrefabB);
         spawnedDoors.push_back(doorB);
@@ -162,6 +175,7 @@ inline void RoomLockScript::LockRoom() {
                 }
             }
         }
+
         std::cout << "[RoomLock] Door B spawned.\n";
     }
 
@@ -170,6 +184,8 @@ inline void RoomLockScript::LockRoom() {
 }
 
 inline void RoomLockScript::UnlockRoom() {
+    if (!roomLocked) return;
+
     std::cout << "[RoomLock] All enemies cleared! Unlocking room.\n";
 
     for (ecs::EntityID doorID : spawnedDoors) {
@@ -179,5 +195,5 @@ inline void RoomLockScript::UnlockRoom() {
 
     spawnedDoors.clear();
     roomLocked = false;
+    remainingEnemies = 0;
 }
-
