@@ -648,10 +648,8 @@ inline void EnemyManagerScript::TakeDamage(int damage, const std::string& elemen
 
 	if (shieldHealth > 0 && shieldElement != "NONE")
 	{
-		if (element == shieldElement)
+		if (element != shieldElement)
 		{
-			shieldHealth -= damage;
-
 			// PLAY SHIELD BLOCK SFX
 			utility::GUID blockSfx = GetShieldBlockSFX();
 
@@ -670,6 +668,13 @@ inline void EnemyManagerScript::TakeDamage(int damage, const std::string& elemen
 				}
 			}
 
+			return; // shield absorbed the hit, do NOT play normal hurt
+		}
+		else
+		{
+			// Correct element damages shield
+			shieldHealth -= damage;
+
 			if (shieldHealth <= 0)
 			{
 				shieldHealth = 0;
@@ -681,13 +686,7 @@ inline void EnemyManagerScript::TakeDamage(int damage, const std::string& elemen
 				}
 			}
 
-			return; // shield absorbed the hit, do NOT play normal hurt
-		}
-		else
-		{
-			// Wrong element while shield is active:
-			// no HP damage, no normal hurt sound
-			return;
+			return; // shield took the hit, do NOT play normal hurt
 		}
 	}
 
