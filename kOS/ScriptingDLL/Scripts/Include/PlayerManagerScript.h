@@ -330,8 +330,12 @@ public:
 	std::vector<utility::GUID>lightningGunSfxGUID;
 	utility::GUID lightningAbsorbSfxGUID;
 	utility::GUID lightningEquipSfxGUID;
-
-	utility::GUID acidGrenadeGunSfxGUID;
+	
+	//Acid Loadout SFX
+	std::vector<utility::GUID>acidGrenadeGunSfxGUID;
+	utility::GUID acidAbsorbSfxGUID;
+	utility::GUID acidEquipSfxGUID;
+	utility::GUID acidShieldSfxGuid;
 
 	//Fire Loadout SFX
 	utility::GUID fireAbsorbSfxGUID;
@@ -375,8 +379,8 @@ public:
 
 	REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
-		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, fireEquipSfxGUID, fireAbsorbSfxGUID, lightningSlowStartSfxGUID,lightningSlowEndSfxGUID, lightningGunSfxGUID, 
-		lightningAbsorbSfxGUID, lightningEquipSfxGUID, acidGrenadeGunSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
+		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, fireEquipSfxGUID, fireAbsorbSfxGUID, acidEquipSfxGUID, acidShieldSfxGuid, lightningSlowStartSfxGUID,lightningSlowEndSfxGUID, lightningGunSfxGUID,
+		lightningAbsorbSfxGUID, lightningEquipSfxGUID, acidGrenadeGunSfxGUID, acidAbsorbSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
 		winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashGUID, pistolModelObject,
 		fireSwordModelObject, lightningModelObject, acidModelObject)
 
@@ -1203,6 +1207,17 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 					}
 				}
 
+				else if (playerPowerupHeld == Powerup::ACID) {
+					if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+						for (auto& af : ac->audioFiles) {
+							if (af.audioGUID == acidEquipSfxGUID && af.isSFX) {
+								af.requestPlay = true;
+								break;
+							}
+						}
+					}
+				}
+
 				playerController->RetrieveStateByID(animComp->m_currentStateID)
 					->Trigger("swapDone", animComp, playerController);
 			}
@@ -1559,6 +1574,14 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 						playerPowerupHeld = Powerup::ACID;//DELETE THIS WHEN ANIM FINISH
 						SwapWeaponModel(Powerup::ACID);//DELETE THIS WHEN ANIM FINISH
 						pendingPowerup = Powerup::ACID;
+						if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+							for (auto& af : ac->audioFiles) {
+								if (af.audioGUID == acidAbsorbSfxGUID && af.isSFX) {
+									af.requestPlay = true;
+									break;
+								}
+							}
+						}
 					}
 
 					else if (powerupComp->powerupType == "LIGHTNING")
@@ -1802,11 +1825,17 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			if (acidLMB) {
 
 				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+					if (!acidGrenadeGunSfxGUID.empty()) {
+						int idx = rand() % static_cast<int>(acidGrenadeGunSfxGUID.size());
+						utility::GUID targetSfx = acidGrenadeGunSfxGUID[idx];
 
-					for (auto& af : ac->audioFiles) {
-						if (af.audioGUID == acidGrenadeGunSfxGUID && af.isSFX) {
-							af.requestPlay = true;
-							break;
+						if (!targetSfx.Empty()) {
+							for (auto& af : ac->audioFiles) {
+								if (af.audioGUID == targetSfx && af.isSFX) {
+									af.requestPlay = true;
+									break;
+								}
+							}
 						}
 					}
 				}

@@ -15,7 +15,27 @@
             "staggerDuration": 1.0,
             "manaCost": 30,
             "scoreValue": 150,
-            "blastSfxGUID": "00000000-0000-0000-0000-000000000000"
+            "blastSfxGUID": "278f9243-f225-a6f2-c38f-a8d24c831b11"
+        },
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "278f9243-f225-a6f2-c38f-a8d24c831b11",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
         },
         "BoxColliderComponent": {
             "isTrigger": true,

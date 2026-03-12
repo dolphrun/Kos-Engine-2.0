@@ -2019,6 +2019,118 @@
                             "sourceType": 0,
                             "audioBankGUID": "00000000-0000-0000-0000-000000000000",
                             "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "5d4630ab-3a59-8013-28d6-f67f5d79be9e",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "da68988d-e4fa-eeaa-28d2-375730057f55",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "f5ac864f-2dd9-c71e-785e-7579764e1101",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "04cade28-6a01-a1dd-6341-aff5f19039f5",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "cb3530c3-7bf7-c490-ed7a-5e49821c634d",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "521c0038-31ae-f9f1-2fde-2a2f4c1d1f7f",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "5fd1e778-8f0e-5687-8d82-b7c864715e61",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
                         }
                     ]
                 },
@@ -2077,6 +2189,8 @@
                     "fireDashSfxGUID": "eda01554-55fd-bef9-b08f-9daad6f19e38",
                     "fireEquipSfxGUID": "718bc70f-37b3-6b7f-331e-7e47e18eb4ef",
                     "fireAbsorbSfxGUID": "7081e84f-d48a-d137-ee4f-028e1ddc9794",
+                    "acidEquipSfxGUID": "5d4630ab-3a59-8013-28d6-f67f5d79be9e",
+                    "acidShieldSfxGuid": "5fd1e778-8f0e-5687-8d82-b7c864715e61",
                     "lightningSlowStartSfxGUID": "0c26ed03-f8fd-58c0-9296-15da8b172b4e",
                     "lightningSlowEndSfxGUID": "0c26ed03-f8fd-58c0-9296-15da8b172b4e",
                     "lightningGunSfxGUID": [
@@ -2095,7 +2209,21 @@
                     ],
                     "lightningAbsorbSfxGUID": "a8296b95-d488-33c5-772a-17a03aa4457d",
                     "lightningEquipSfxGUID": "8cfce385-fe26-f7ba-95d5-6af6a0a6af30",
-                    "acidGrenadeGunSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "acidGrenadeGunSfxGUID": [
+                        {
+                            "acidGrenadeGunSfxGUID": "f5ac864f-2dd9-c71e-785e-7579764e1101"
+                        },
+                        {
+                            "acidGrenadeGunSfxGUID": "cb3530c3-7bf7-c490-ed7a-5e49821c634d"
+                        },
+                        {
+                            "acidGrenadeGunSfxGUID": "04cade28-6a01-a1dd-6341-aff5f19039f5"
+                        },
+                        {
+                            "acidGrenadeGunSfxGUID": "521c0038-31ae-f9f1-2fde-2a2f4c1d1f7f"
+                        }
+                    ],
+                    "acidAbsorbSfxGUID": "da68988d-e4fa-eeaa-28d2-375730057f55",
                     "pauseMenuManagerObject": "53f83bac-2058-5939-b2a8-134497980574",
                     "healthUIObject": "00000000-0000-0000-0000-000000000000",
                     "loseScreenCanvasObject": "dee61752-b669-2e75-a66d-ee0be6621e13",

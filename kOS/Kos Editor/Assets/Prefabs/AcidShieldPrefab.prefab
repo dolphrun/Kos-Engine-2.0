@@ -17,7 +17,27 @@
             "enemyDeathSfxGUID_1": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000",
-            "acidShieldSfxGUID": "00000000-0000-0000-0000-000000000000"
+            "acidShieldSfxGUID": "5fd1e778-8f0e-5687-8d82-b7c864715e61"
+        },
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "5fd1e778-8f0e-5687-8d82-b7c864715e61",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
         },
         "NameComponent": {
             "entityName": "AcidShieldPrefab",
