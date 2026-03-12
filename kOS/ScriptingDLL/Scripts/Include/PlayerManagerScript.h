@@ -827,11 +827,9 @@ inline void PlayerManagerScript::PlayerMovementControls()
 	isMoving = (std::abs(forward) > 0.1f || std::abs(right) > 0.1f);
 
 	auto* playerRigidbody = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity);
-
 	if (!playerRigidbody) return;
 
 	float dt = ecsPtr->m_GetDeltaTime();
-
 	glm::vec3 tempVelocity = playerRigidbody->velocity;
 
 	auto* playerTransform = ecsPtr->GetComponent<ecs::TransformComponent>(entity);
@@ -970,19 +968,29 @@ inline void PlayerManagerScript::PlayerMovementControls()
 	// ==============================
 	glm::vec3 horizontal(tempVelocity.x, 0.f, tempVelocity.z);
 	float horizontalSpeed = glm::length(horizontal);
-
 	float maxSpeed = grounded ? maxGroundSpeed : maxAirSpeed;
 
 	if (horizontalSpeed > maxSpeed)
 	{
-		horizontal = glm::normalize(horizontal) * maxSpeed;
+		float bleedRate = grounded ? 8.f : 3.f; // 
+		float targetSpeed = glm::max(horizontalSpeed - bleedRate * dt, maxSpeed);
+		horizontal = glm::normalize(horizontal) * targetSpeed;
 		tempVelocity.x = horizontal.x;
 		tempVelocity.z = horizontal.z;
 	}
 
 	// Apply final velocity directly
 	glm::vec3 currentVel = playerRigidbody->velocity;
-	glm::vec3 delta = tempVelocity - currentVel;
+	glm::vec3 delta = glm::vec3(
+		tempVelocity.x - currentVel.x,
+		0.f,                           
+		tempVelocity.z - currentVel.z
+	);
+
+	if (tempVelocity.y != currentVel.y && Input->IsKeyTriggered(keys::SPACE))
+	{
+		delta.y = tempVelocity.y - currentVel.y;
+	}
 
 	physicsPtr->AddForce(
 		playerRigidbody->actor,

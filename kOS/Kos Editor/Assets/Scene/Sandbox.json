@@ -1733,7 +1733,7 @@
                             "studioEventPath": ""
                         },
                         {
-                            "audioGUID": "c93d030f-e7bf-2ee7-0425-c1f5f04d6483",
+                            "audioGUID": "0511b040-1db0-457e-a2b7-31c9e806a5b0",
                             "volume": 1.0,
                             "loop": false,
                             "playOnStart": false,
@@ -2206,7 +2206,7 @@
                     "acidShieldPrefab": "2d88569c-d9de-0cbe-c942-ac6797e9c6e0",
                     "airBlastPrefab": "b5cac5b3-11a2-d3ac-b9b8-28ec7838b3a2",
                     "gunSfxGUID_1": "0d044a11-aee8-4ff6-b5cb-004f4720e76d",
-                    "gunReloadSfxGUID": "c93d030f-e7bf-2ee7-0425-c1f5f04d6483",
+                    "gunReloadSfxGUID": "0511b040-1db0-457e-a2b7-31c9e806a5b0",
                     "fireSlashSfxGUID": [
                         {
                             "fireSlashSfxGUID": "03faf509-9863-c0db-5bbd-2c0d9d4410fc"
