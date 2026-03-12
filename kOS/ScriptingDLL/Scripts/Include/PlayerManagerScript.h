@@ -216,8 +216,8 @@ public:
 	float airAcceleration = 25.f;
 	float groundFriction = 8.f;
 	float airControl = 0.3f;
-	float maxGroundSpeed = 18.f;
-	float maxAirSpeed = 16.f;
+	float maxGroundSpeed = 20.f;
+	float maxAirSpeed = 27.f;
 	float jumpForce = 10.f;
 	float timeSinceGrounded = 0.f;
 	float coyoteTime = 0.2f;
@@ -365,6 +365,8 @@ public:
 	// Take Damage
 	float currentTakeDamageTimer = 0.f;
 	float TakeDamageTimer = 0.2f;
+
+	// Absorb post process
 
 
 	// --- FUNCTION DECLARATIONS ONLY --
@@ -723,6 +725,13 @@ inline void PlayerManagerScript::Update() {
 	// Absorb VFX auto delete timer
 	if (absorbVFXTimer > 0.f) {
 		absorbVFXTimer -= ecsPtr->m_GetDeltaTime();
+
+		//auto& profile = graphics->postProcessProfile;
+		//Vigniette* vig = reinterpret_cast<Vigniette*>(profile->GetEffect(PPT_Vigniette));
+		//vig->color = glm::vec3(0.15f, 0.6f, 0.15f);
+		//vig->extent = 0.330f;
+		//vig->intensity = 15.f;
+
 		if (absorbVFXTimer <= 0.f) {
 			absorbVFXTimer = 0.f;
 			if (activeAbsorbVFXID != 0) {
@@ -730,11 +739,11 @@ inline void PlayerManagerScript::Update() {
 				activeAbsorbVFXID = 0;
 			}
 
-			auto& profile = graphics->postProcessProfile;
-			Vigniette* vig = reinterpret_cast<Vigniette*>(profile->GetEffect(PPT_Vigniette));
-			vig->color = glm::vec3(0.f, 0.f, 0.f);
-			vig->extent = 0.03f;
-			vig->intensity = 7.3f;
+			//auto& profile = graphics->postProcessProfile;
+			//Vigniette* vig = reinterpret_cast<Vigniette*>(profile->GetEffect(PPT_Vigniette));
+			//vig->color = glm::vec3(0.f, 0.f, 0.f);
+			//vig->extent = 0.03f;
+			//vig->intensity = 7.3f;
 		}
 	}
 
@@ -1019,9 +1028,7 @@ inline void PlayerManagerScript::PlayerMovementControls()
 
 	if (horizontalSpeed > maxSpeed)
 	{
-		float bleedRate = grounded ? 8.f : 3.f; // 
-		float targetSpeed = glm::max(horizontalSpeed - bleedRate * dt, maxSpeed);
-		horizontal = glm::normalize(horizontal) * targetSpeed;
+		horizontal = glm::normalize(horizontal) * maxSpeed;
 		tempVelocity.x = horizontal.x;
 		tempVelocity.z = horizontal.z;
 	}
@@ -1615,6 +1622,10 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			pendingPowerup = Powerup::NONE;
 
 			auto& profile = graphics->postProcessProfile;
+			Vigniette* vig = reinterpret_cast<Vigniette*>(profile->GetEffect(PPT_Vigniette));
+			vig->color = glm::vec3(0.f, 0.f, 0.f);
+			vig->extent = 0.03f;
+			vig->intensity = 7.3f;
 			ChromaticAberration* chro = reinterpret_cast<ChromaticAberration*>(profile->GetEffect(PPT_ChromaticAbberation));
 			chro->redOffset = 0.f;
 			chro->greenOffset = 0.f;
@@ -1654,8 +1665,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 						auto& profile = graphics->postProcessProfile;
 						Vigniette* vig = reinterpret_cast<Vigniette*>(profile->GetEffect(PPT_Vigniette));
 						vig->color = glm::vec3(0.6f, 0.15f, 0.15f);
-						vig->extent = 0.025f;
-						vig->intensity = 0.05f;
+						vig->extent = 0.330f;
+						vig->intensity = 15.f;
 						ChromaticAberration* chro = reinterpret_cast<ChromaticAberration*>(profile->GetEffect(PPT_ChromaticAbberation));
 						chro->redOffset = 0.015f;
 						chro->greenOffset = -0.015f;
@@ -1677,8 +1688,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 						auto& profile = graphics->postProcessProfile;
 						Vigniette* vig = reinterpret_cast<Vigniette*>(profile->GetEffect(PPT_Vigniette));
 						vig->color = glm::vec3(0.15f, 0.6f, 0.15f);
-						vig->extent = 0.025f;
-						vig->intensity = 0.05f;
+						vig->extent = 0.330f;
+						vig->intensity = 15.f;
 						ChromaticAberration* chro = reinterpret_cast<ChromaticAberration*>(profile->GetEffect(PPT_ChromaticAbberation));
 						chro->redOffset = 0.015f;
 						chro->greenOffset = -0.015f;
@@ -1703,8 +1714,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 						auto& profile = graphics->postProcessProfile;
 						Vigniette* vig = reinterpret_cast<Vigniette*>(profile->GetEffect(PPT_Vigniette));
 						vig->color = glm::vec3(0.15f, 0.15f, 0.6f);
-						vig->extent = 0.025f;
-						vig->intensity = 0.05f;
+						vig->extent = 0.330f;
+						vig->intensity = 15.f;
 						ChromaticAberration* chro = reinterpret_cast<ChromaticAberration*>(profile->GetEffect(PPT_ChromaticAbberation));
 						chro->redOffset = 0.015f;
 						chro->greenOffset = -0.015f;

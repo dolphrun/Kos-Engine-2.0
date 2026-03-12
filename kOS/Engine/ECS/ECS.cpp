@@ -55,7 +55,6 @@ namespace ecs{
 		RegisterSystem<PhysicsSystem, TransformComponent, RigidbodyComponent>(0, RUNNING);
 
 
-
 		//Render Level 3
 		RegisterSystem<CameraSystem, TransformComponent, CameraComponent>(0);
 		RegisterSystem<MeshRenderSystem, TransformComponent, MaterialComponent, MeshFilterComponent>(0);
