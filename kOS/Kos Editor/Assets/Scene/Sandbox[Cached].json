@@ -1717,7 +1717,7 @@
                 "AudioComponent": {
                     "audioFiles": [
                         {
-                            "audioGUID": "0d044a11-aee8-4ff6-b5cb-004f4720e76d",
+                            "audioGUID": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
                             "volume": 1.0,
                             "loop": false,
                             "playOnStart": false,
@@ -1733,7 +1733,7 @@
                             "studioEventPath": ""
                         },
                         {
-                            "audioGUID": "0511b040-1db0-457e-a2b7-31c9e806a5b0",
+                            "audioGUID": "c93d030f-e7bf-2ee7-0425-c1f5f04d6483",
                             "volume": 1.0,
                             "loop": false,
                             "playOnStart": false,
@@ -2131,38 +2131,6 @@
                             "sourceType": 0,
                             "audioBankGUID": "00000000-0000-0000-0000-000000000000",
                             "studioEventPath": ""
-                        },
-                        {
-                            "audioGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                            "volume": 1.0,
-                            "loop": false,
-                            "playOnStart": false,
-                            "hasPlayed": false,
-                            "pan": 0.0,
-                            "isBGM": false,
-                            "isSFX": true,
-                            "use3D": false,
-                            "minDistance": 1.0,
-                            "maxDistance": 20.0,
-                            "sourceType": 0,
-                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                            "studioEventPath": ""
-                        },
-                        {
-                            "audioGUID": "f1247210-decf-0610-1b5e-ded142410901",
-                            "volume": 1.0,
-                            "loop": false,
-                            "playOnStart": false,
-                            "hasPlayed": false,
-                            "pan": 0.0,
-                            "isBGM": false,
-                            "isSFX": true,
-                            "use3D": false,
-                            "minDistance": 1.0,
-                            "maxDistance": 20.0,
-                            "sourceType": 0,
-                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                            "studioEventPath": ""
                         }
                     ]
                 },
@@ -2205,8 +2173,8 @@
                     "lightningDashPrefab": "7d805a6f-3abc-f50f-1cf6-dcbf5d720904",
                     "acidShieldPrefab": "2d88569c-d9de-0cbe-c942-ac6797e9c6e0",
                     "airBlastPrefab": "b5cac5b3-11a2-d3ac-b9b8-28ec7838b3a2",
-                    "gunSfxGUID_1": "0d044a11-aee8-4ff6-b5cb-004f4720e76d",
-                    "gunReloadSfxGUID": "0511b040-1db0-457e-a2b7-31c9e806a5b0",
+                    "gunSfxGUID_1": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
+                    "gunReloadSfxGUID": "c93d030f-e7bf-2ee7-0425-c1f5f04d6483",
                     "fireSlashSfxGUID": [
                         {
                             "fireSlashSfxGUID": "03faf509-9863-c0db-5bbd-2c0d9d4410fc"
@@ -2256,8 +2224,6 @@
                         }
                     ],
                     "acidAbsorbSfxGUID": "da68988d-e4fa-eeaa-28d2-375730057f55",
-                    "pauseMenuOpenSfxGUID": "f1247210-decf-0610-1b5e-ded142410901",
-                    "pauseMenuCloseSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
                     "pauseMenuManagerObject": "53f83bac-2058-5939-b2a8-134497980574",
                     "healthUIObject": "00000000-0000-0000-0000-000000000000",
                     "loseScreenCanvasObject": "dee61752-b669-2e75-a66d-ee0be6621e13",
@@ -2687,7 +2653,7 @@
                         "NEWHealthBarScript": {
                             "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                             "playerObjectID": 0,
-                            "healthbarSprite": "ea6464b2-63b1-af75-df4f-ae9c6d29e3cd",
+                            "healthbarSprite": "0dfd8ac3-6851-9f65-35ce-31279894850c",
                             "originalScale": {
                                 "x": 1.0,
                                 "y": 1.0,
@@ -2710,7 +2676,7 @@
                             "hide": false
                         },
                         "SpriteComponent": {
-                            "spriteGUID": "ea6464b2-63b1-af75-df4f-ae9c6d29e3cd",
+                            "spriteGUID": "0dfd8ac3-6851-9f65-35ce-31279894850c",
                             "color": {
                                 "x": 1.0,
                                 "y": 1.0,
@@ -2992,7 +2958,7 @@
                             "acidActiveSprite": "74fd412b-8eef-1613-4f0e-d48e4cda4bc2",
                             "acidInactiveSprite": "495c0496-1423-a35e-00e3-7cf49947da72",
                             "lightningActiveSprite": "8b8791dd-f49e-a551-953b-f2fdd7b570af",
-                            "lightningInactiveSprite": "8b8791dd-f49e-a551-953b-f2fdd7b570af"
+                            "lightningInactiveSprite": "45801c20-431f-c025-6143-1c7b5e158ee1"
                         },
                         "NameComponent": {
                             "entityName": "Ability 1",
@@ -3152,7 +3118,7 @@
                             "acidActiveSprite": "dda525e2-0a0b-7665-ca7e-c14f38b67001",
                             "acidInactiveSprite": "14f566a3-2fde-7782-97fd-4ac04fab425a",
                             "lightningActiveSprite": "a53240f2-b7d1-d960-b529-b707ee9a3f5d",
-                            "lightningInactiveSprite": "407f009c-3717-6aab-0a9d-0b73c1eeb134"
+                            "lightningInactiveSprite": "c9f3b88b-5431-2063-2b98-922ab0556542"
                         },
                         "NameComponent": {
                             "entityName": "Ability 3",
@@ -3423,112 +3389,44 @@
                                 }
                             }
                         }
-                    }
-                ]
-            },
-            {
-                "entityGUID": "5114a0f9-4f1b-79ec-d1d5-a7f3e55cfd19",
-                "CanvasRendererComponent": {
-                    "isScreenSpace": true
-                },
-                "EnemyHealthScript": {
-                    "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
-                    "raycastRange": 30.0,
-                    "showDebugRay": true,
-                    "healthBarFillEntity": "fcdccb14-b029-3752-38b6-8276375ce41c",
-                    "healthBarFullEntity": "e736b2e7-d848-f9f7-cf08-b4d5951197dc",
-                    "healthBarFrameEntity": "566151af-8ba8-1b8d-a60e-a725c44bd325",
-                    "resistanceEntity": "eda25219-bc1b-0696-d86e-e1fb9289566f",
-                    "affliction1Entity": "4c63c06d-8232-c96e-b952-b9dec4b2640a",
-                    "affliction2Entity": "1e7a267e-4769-528e-d128-b11500475267",
-                    "affliction3Entity": "b08a58ac-6b07-bfd9-0462-6a1cc824f6af",
-                    "fireResistSprite": "de2f3a51-50ac-8a75-3a34-5a4eee8e4333",
-                    "acidResistSprite": "a451bb8f-50f6-6020-2ee7-933afe5c0a77",
-                    "lightningResistSprite": "bce2523c-e969-0f28-70bb-019fa9a04676",
-                    "fireAfflictedSprite": "00000000-0000-0000-0000-000000000000",
-                    "acidAfflictedSprite": "00000000-0000-0000-0000-000000000000",
-                    "lightningAfflictedSprite": "00000000-0000-0000-0000-000000000000"
-                },
-                "NameComponent": {
-                    "entityName": "Enemy HUD",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "Enemy HUD.prefab",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
                     },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                },
-                "children": [
                     {
-                        "entityGUID": "e736b2e7-d848-f9f7-cf08-b4d5951197dc",
+                        "entityGUID": "5114a0f9-4f1b-79ec-d1d5-a7f3e55cfd19",
+                        "CanvasRendererComponent": {
+                            "isScreenSpace": true
+                        },
+                        "EnemyHealthScript": {
+                            "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
+                            "raycastRange": 30.0,
+                            "showDebugRay": true,
+                            "healthBarFillEntity": "fcdccb14-b029-3752-38b6-8276375ce41c",
+                            "healthBarFullEntity": "e736b2e7-d848-f9f7-cf08-b4d5951197dc",
+                            "healthBarFrameEntity": "566151af-8ba8-1b8d-a60e-a725c44bd325",
+                            "resistanceEntity": "eda25219-bc1b-0696-d86e-e1fb9289566f",
+                            "affliction1Entity": "4c63c06d-8232-c96e-b952-b9dec4b2640a",
+                            "affliction2Entity": "1e7a267e-4769-528e-d128-b11500475267",
+                            "affliction3Entity": "b08a58ac-6b07-bfd9-0462-6a1cc824f6af",
+                            "fireResistSprite": "de2f3a51-50ac-8a75-3a34-5a4eee8e4333",
+                            "acidResistSprite": "a451bb8f-50f6-6020-2ee7-933afe5c0a77",
+                            "lightningResistSprite": "bce2523c-e969-0f28-70bb-019fa9a04676",
+                            "fireAfflictedSprite": "00000000-0000-0000-0000-000000000000",
+                            "acidAfflictedSprite": "00000000-0000-0000-0000-000000000000",
+                            "lightningAfflictedSprite": "00000000-0000-0000-0000-000000000000"
+                        },
                         "NameComponent": {
-                            "entityName": "Enemy Healthbar Full",
+                            "entityName": "Enemy HUD",
                             "Layer": 0,
                             "entityTag": "Default",
-                            "isPrefab": true,
+                            "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Enemy HUD.prefab",
                             "hide": false
-                        },
-                        "SpriteComponent": {
-                            "spriteGUID": "a8994653-aaa4-b27c-5a0b-70a872e07c56",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            },
-                            "uvMin": {
-                                "x": 0.0,
-                                "y": 0.0
-                            },
-                            "uvMax": {
-                                "x": 1.0,
-                                "y": 1.0
-                            },
-                            "useCustomUV": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
                                     "x": 0.0,
-                                    "y": 0.2569913864135742,
+                                    "y": 0.0,
                                     "z": 0.0
                                 },
                                 "rotation": {
@@ -3537,15 +3435,15 @@
                                     "z": 0.0
                                 },
                                 "scale": {
-                                    "x": 0.5199999809265137,
-                                    "y": 0.09000000357627869,
+                                    "x": 1.0,
+                                    "y": 1.0,
                                     "z": 1.0
                                 }
                             },
                             "LocalTransformation": {
                                 "position": {
                                     "x": 0.0,
-                                    "y": 0.2569913864135742,
+                                    "y": 0.0,
                                     "z": 0.0
                                 },
                                 "rotation": {
@@ -3554,408 +3452,476 @@
                                     "z": 0.0
                                 },
                                 "scale": {
-                                    "x": 0.5199999809265137,
-                                    "y": 0.09000000357627869,
+                                    "x": 1.0,
+                                    "y": 1.0,
                                     "z": 1.0
                                 }
                             }
-                        }
-                    },
-                    {
-                        "entityGUID": "566151af-8ba8-1b8d-a60e-a725c44bd325",
-                        "NameComponent": {
-                            "entityName": "Enemy Healthbar Frame",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "Enemy HUD.prefab",
-                            "hide": false
                         },
-                        "SpriteComponent": {
-                            "spriteGUID": "c05af7da-ba16-6799-ba38-e2a4dd1ef801",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            },
-                            "uvMin": {
-                                "x": 0.0,
-                                "y": 0.0
-                            },
-                            "uvMax": {
-                                "x": 1.0,
-                                "y": 1.0
-                            },
-                            "useCustomUV": false
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": 0.0,
-                                    "y": 0.25699424743652344,
-                                    "z": 0.0
+                        "children": [
+                            {
+                                "entityGUID": "e736b2e7-d848-f9f7-cf08-b4d5951197dc",
+                                "NameComponent": {
+                                    "entityName": "Enemy Healthbar Full",
+                                    "Layer": 0,
+                                    "entityTag": "Default",
+                                    "isPrefab": false,
+                                    "isStatic": false,
+                                    "prefabName": "Enemy HUD.prefab",
+                                    "hide": false
                                 },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
+                                "SpriteComponent": {
+                                    "spriteGUID": "a8994653-aaa4-b27c-5a0b-70a872e07c56",
+                                    "color": {
+                                        "x": 1.0,
+                                        "y": 1.0,
+                                        "z": 1.0,
+                                        "w": 1.0
+                                    },
+                                    "uvMin": {
+                                        "x": 0.0,
+                                        "y": 0.0
+                                    },
+                                    "uvMax": {
+                                        "x": 1.0,
+                                        "y": 1.0
+                                    },
+                                    "useCustomUV": true
                                 },
-                                "scale": {
-                                    "x": 0.49000000953674316,
-                                    "y": 0.05000000074505806,
-                                    "z": 1.0
+                                "TransformComponent": {
+                                    "WorldTransformation": {
+                                        "position": {
+                                            "x": 0.0,
+                                            "y": 0.2569913864135742,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.5199999809265137,
+                                            "y": 0.09000000357627869,
+                                            "z": 1.0
+                                        }
+                                    },
+                                    "LocalTransformation": {
+                                        "position": {
+                                            "x": 0.0,
+                                            "y": 0.2569913864135742,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.5199999809265137,
+                                            "y": 0.09000000357627869,
+                                            "z": 1.0
+                                        }
+                                    }
                                 }
                             },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": 0.0,
-                                    "y": 0.25699424743652344,
-                                    "z": 0.0
+                            {
+                                "entityGUID": "566151af-8ba8-1b8d-a60e-a725c44bd325",
+                                "NameComponent": {
+                                    "entityName": "Enemy Healthbar Frame",
+                                    "Layer": 0,
+                                    "entityTag": "Default",
+                                    "isPrefab": false,
+                                    "isStatic": false,
+                                    "prefabName": "Enemy HUD.prefab",
+                                    "hide": false
                                 },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
+                                "SpriteComponent": {
+                                    "spriteGUID": "c05af7da-ba16-6799-ba38-e2a4dd1ef801",
+                                    "color": {
+                                        "x": 1.0,
+                                        "y": 1.0,
+                                        "z": 1.0,
+                                        "w": 1.0
+                                    },
+                                    "uvMin": {
+                                        "x": 0.0,
+                                        "y": 0.0
+                                    },
+                                    "uvMax": {
+                                        "x": 1.0,
+                                        "y": 1.0
+                                    },
+                                    "useCustomUV": true
                                 },
-                                "scale": {
-                                    "x": 0.49000000953674316,
-                                    "y": 0.05000000074505806,
-                                    "z": 1.0
+                                "TransformComponent": {
+                                    "WorldTransformation": {
+                                        "position": {
+                                            "x": 0.0,
+                                            "y": 0.25699424743652344,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.49000000953674316,
+                                            "y": 0.05000000074505806,
+                                            "z": 1.0
+                                        }
+                                    },
+                                    "LocalTransformation": {
+                                        "position": {
+                                            "x": 0.0,
+                                            "y": 0.25699424743652344,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.49000000953674316,
+                                            "y": 0.05000000074505806,
+                                            "z": 1.0
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "entityGUID": "fcdccb14-b029-3752-38b6-8276375ce41c",
+                                "NameComponent": {
+                                    "entityName": "Enemy Healthbar",
+                                    "Layer": 0,
+                                    "entityTag": "Default",
+                                    "isPrefab": false,
+                                    "isStatic": false,
+                                    "prefabName": "Enemy HUD.prefab",
+                                    "hide": false
+                                },
+                                "SpriteComponent": {
+                                    "spriteGUID": "0dfd8ac3-6851-9f65-35ce-31279894850c",
+                                    "color": {
+                                        "x": 1.0,
+                                        "y": 1.0,
+                                        "z": 1.0,
+                                        "w": 1.0
+                                    },
+                                    "uvMin": {
+                                        "x": 0.0,
+                                        "y": 0.0
+                                    },
+                                    "uvMax": {
+                                        "x": 1.0,
+                                        "y": 1.0
+                                    },
+                                    "useCustomUV": true
+                                },
+                                "TransformComponent": {
+                                    "WorldTransformation": {
+                                        "position": {
+                                            "x": 0.0,
+                                            "y": 0.25699424743652344,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.47999998927116394,
+                                            "y": 0.03999999910593033,
+                                            "z": 1.0
+                                        }
+                                    },
+                                    "LocalTransformation": {
+                                        "position": {
+                                            "x": 0.0,
+                                            "y": 0.25699424743652344,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.47999998927116394,
+                                            "y": 0.03999999910593033,
+                                            "z": 1.0
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "entityGUID": "eda25219-bc1b-0696-d86e-e1fb9289566f",
+                                "NameComponent": {
+                                    "entityName": "Enemy Resistance",
+                                    "Layer": 0,
+                                    "entityTag": "Default",
+                                    "isPrefab": false,
+                                    "isStatic": false,
+                                    "prefabName": "Enemy HUD.prefab",
+                                    "hide": false
+                                },
+                                "SpriteComponent": {
+                                    "spriteGUID": "e7cea814-4cbb-3b00-1a41-5f2f601c0341",
+                                    "color": {
+                                        "x": 1.0,
+                                        "y": 1.0,
+                                        "z": 1.0,
+                                        "w": 1.0
+                                    },
+                                    "uvMin": {
+                                        "x": 0.0,
+                                        "y": 0.0
+                                    },
+                                    "uvMax": {
+                                        "x": 1.0,
+                                        "y": 1.0
+                                    },
+                                    "useCustomUV": false
+                                },
+                                "TransformComponent": {
+                                    "WorldTransformation": {
+                                        "position": {
+                                            "x": -0.3370000123977661,
+                                            "y": 0.2569913864135742,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 45.000003814697266,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.07999999821186066,
+                                            "y": 0.07999999821186066,
+                                            "z": 1.0
+                                        }
+                                    },
+                                    "LocalTransformation": {
+                                        "position": {
+                                            "x": -0.3370000123977661,
+                                            "y": 0.2569913864135742,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 45.000003814697266,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.07999999821186066,
+                                            "y": 0.07999999821186066,
+                                            "z": 1.0
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "entityGUID": "4c63c06d-8232-c96e-b952-b9dec4b2640a",
+                                "NameComponent": {
+                                    "entityName": "Enemy Affliction 1",
+                                    "Layer": 0,
+                                    "entityTag": "Default",
+                                    "isPrefab": false,
+                                    "isStatic": false,
+                                    "prefabName": "Enemy HUD.prefab",
+                                    "hide": false
+                                },
+                                "SpriteComponent": {
+                                    "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
+                                    "color": {
+                                        "x": 1.0,
+                                        "y": 1.0,
+                                        "z": 1.0,
+                                        "w": 1.0
+                                    },
+                                    "uvMin": {
+                                        "x": 0.0,
+                                        "y": 0.0
+                                    },
+                                    "uvMax": {
+                                        "x": 1.0,
+                                        "y": 1.0
+                                    },
+                                    "useCustomUV": false
+                                },
+                                "TransformComponent": {
+                                    "WorldTransformation": {
+                                        "position": {
+                                            "x": -0.20000000298023224,
+                                            "y": 0.3140000104904175,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.0430000014603138,
+                                            "y": 0.0430000014603138,
+                                            "z": 1.0
+                                        }
+                                    },
+                                    "LocalTransformation": {
+                                        "position": {
+                                            "x": -0.20000000298023224,
+                                            "y": 0.3140000104904175,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.0430000014603138,
+                                            "y": 0.0430000014603138,
+                                            "z": 1.0
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "entityGUID": "1e7a267e-4769-528e-d128-b11500475267",
+                                "NameComponent": {
+                                    "entityName": "Enemy Affliction 2",
+                                    "Layer": 0,
+                                    "entityTag": "Default",
+                                    "isPrefab": false,
+                                    "isStatic": false,
+                                    "prefabName": "Enemy HUD.prefab",
+                                    "hide": false
+                                },
+                                "SpriteComponent": {
+                                    "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
+                                    "color": {
+                                        "x": 1.0,
+                                        "y": 1.0,
+                                        "z": 1.0,
+                                        "w": 1.0
+                                    },
+                                    "uvMin": {
+                                        "x": 0.0,
+                                        "y": 0.0
+                                    },
+                                    "uvMax": {
+                                        "x": 1.0,
+                                        "y": 1.0
+                                    },
+                                    "useCustomUV": false
+                                },
+                                "TransformComponent": {
+                                    "WorldTransformation": {
+                                        "position": {
+                                            "x": -0.14788997173309326,
+                                            "y": 0.3140000104904175,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.0430000014603138,
+                                            "y": 0.0430000014603138,
+                                            "z": 1.0
+                                        }
+                                    },
+                                    "LocalTransformation": {
+                                        "position": {
+                                            "x": -0.14788997173309326,
+                                            "y": 0.3140000104904175,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.0430000014603138,
+                                            "y": 0.0430000014603138,
+                                            "z": 1.0
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "entityGUID": "b08a58ac-6b07-bfd9-0462-6a1cc824f6af",
+                                "NameComponent": {
+                                    "entityName": "Enemy Affliction 3",
+                                    "Layer": 0,
+                                    "entityTag": "Default",
+                                    "isPrefab": false,
+                                    "isStatic": false,
+                                    "prefabName": "Enemy HUD.prefab",
+                                    "hide": false
+                                },
+                                "SpriteComponent": {
+                                    "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
+                                    "color": {
+                                        "x": 1.0,
+                                        "y": 1.0,
+                                        "z": 1.0,
+                                        "w": 1.0
+                                    },
+                                    "uvMin": {
+                                        "x": 0.0,
+                                        "y": 0.0
+                                    },
+                                    "uvMax": {
+                                        "x": 1.0,
+                                        "y": 1.0
+                                    },
+                                    "useCustomUV": false
+                                },
+                                "TransformComponent": {
+                                    "WorldTransformation": {
+                                        "position": {
+                                            "x": -0.0949999988079071,
+                                            "y": 0.3140000104904175,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.0430000014603138,
+                                            "y": 0.0430000014603138,
+                                            "z": 1.0
+                                        }
+                                    },
+                                    "LocalTransformation": {
+                                        "position": {
+                                            "x": -0.0949999988079071,
+                                            "y": 0.3140000104904175,
+                                            "z": 0.0
+                                        },
+                                        "rotation": {
+                                            "x": 0.0,
+                                            "y": -0.0,
+                                            "z": 0.0
+                                        },
+                                        "scale": {
+                                            "x": 0.0430000014603138,
+                                            "y": 0.0430000014603138,
+                                            "z": 1.0
+                                        }
+                                    }
                                 }
                             }
-                        }
-                    },
-                    {
-                        "entityGUID": "fcdccb14-b029-3752-38b6-8276375ce41c",
-                        "NameComponent": {
-                            "entityName": "Enemy Healthbar",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "Enemy HUD.prefab",
-                            "hide": false
-                        },
-                        "SpriteComponent": {
-                            "spriteGUID": "0dfd8ac3-6851-9f65-35ce-31279894850c",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            },
-                            "uvMin": {
-                                "x": 0.0,
-                                "y": 0.0
-                            },
-                            "uvMax": {
-                                "x": 1.0,
-                                "y": 1.0
-                            },
-                            "useCustomUV": false
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": 0.0,
-                                    "y": 0.25699424743652344,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.47999998927116394,
-                                    "y": 0.03999999910593033,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": 0.0,
-                                    "y": 0.25699424743652344,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.47999998927116394,
-                                    "y": 0.03999999910593033,
-                                    "z": 1.0
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "entityGUID": "eda25219-bc1b-0696-d86e-e1fb9289566f",
-                        "NameComponent": {
-                            "entityName": "Enemy Resistance",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "Enemy HUD.prefab",
-                            "hide": false
-                        },
-                        "SpriteComponent": {
-                            "spriteGUID": "e7cea814-4cbb-3b00-1a41-5f2f601c0341",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            },
-                            "uvMin": {
-                                "x": 0.0,
-                                "y": 0.0
-                            },
-                            "uvMax": {
-                                "x": 1.0,
-                                "y": 1.0
-                            },
-                            "useCustomUV": false
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": -0.3370000123977661,
-                                    "y": 0.2569913864135742,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 45.000003814697266,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.07999999821186066,
-                                    "y": 0.07999999821186066,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": -0.3370000123977661,
-                                    "y": 0.2569913864135742,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 45.000003814697266,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.07999999821186066,
-                                    "y": 0.07999999821186066,
-                                    "z": 1.0
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "entityGUID": "4c63c06d-8232-c96e-b952-b9dec4b2640a",
-                        "NameComponent": {
-                            "entityName": "Enemy Affliction 1",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "Enemy HUD.prefab",
-                            "hide": false
-                        },
-                        "SpriteComponent": {
-                            "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            },
-                            "uvMin": {
-                                "x": 0.0,
-                                "y": 0.0
-                            },
-                            "uvMax": {
-                                "x": 1.0,
-                                "y": 1.0
-                            },
-                            "useCustomUV": false
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": -0.20000000298023224,
-                                    "y": 0.3140000104904175,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.0430000014603138,
-                                    "y": 0.0430000014603138,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": -0.20000000298023224,
-                                    "y": 0.3140000104904175,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.0430000014603138,
-                                    "y": 0.0430000014603138,
-                                    "z": 1.0
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "entityGUID": "1e7a267e-4769-528e-d128-b11500475267",
-                        "NameComponent": {
-                            "entityName": "Enemy Affliction 2",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "Enemy HUD.prefab",
-                            "hide": false
-                        },
-                        "SpriteComponent": {
-                            "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            },
-                            "uvMin": {
-                                "x": 0.0,
-                                "y": 0.0
-                            },
-                            "uvMax": {
-                                "x": 1.0,
-                                "y": 1.0
-                            },
-                            "useCustomUV": false
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": -0.14788997173309326,
-                                    "y": 0.3140000104904175,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.0430000014603138,
-                                    "y": 0.0430000014603138,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": -0.14788997173309326,
-                                    "y": 0.3140000104904175,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.0430000014603138,
-                                    "y": 0.0430000014603138,
-                                    "z": 1.0
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "entityGUID": "b08a58ac-6b07-bfd9-0462-6a1cc824f6af",
-                        "NameComponent": {
-                            "entityName": "Enemy Affliction 3",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "Enemy HUD.prefab",
-                            "hide": false
-                        },
-                        "SpriteComponent": {
-                            "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            },
-                            "uvMin": {
-                                "x": 0.0,
-                                "y": 0.0
-                            },
-                            "uvMax": {
-                                "x": 1.0,
-                                "y": 1.0
-                            },
-                            "useCustomUV": false
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": -0.0949999988079071,
-                                    "y": 0.3140000104904175,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.0430000014603138,
-                                    "y": 0.0430000014603138,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": -0.0949999988079071,
-                                    "y": 0.3140000104904175,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.0430000014603138,
-                                    "y": 0.0430000014603138,
-                                    "z": 1.0
-                                }
-                            }
-                        }
+                        ]
                     }
                 ]
             },
@@ -4223,58 +4189,6 @@
                     },
                     {
                         "entityGUID": "4d2a8406-60ce-e7a5-137f-d24e4bdb7934",
-                        "AudioComponent": {
-                            "audioFiles": [
-                                {
-                                    "audioGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                }
-                            ]
-                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -4294,10 +4208,10 @@
                                 "z": 0.6000000238418579,
                                 "w": 1.0
                             },
-                            "normalSprite": "00000000-0000-0000-0000-000000000000",
-                            "hoveredSprite": "00000000-0000-0000-0000-000000000000",
-                            "pressedSprite": "00000000-0000-0000-0000-000000000000",
-                            "useSpriteSwap": false,
+                            "normalSprite": "00594efd-b6f0-489e-7c7f-c985999f4823",
+                            "hoveredSprite": "82443082-3958-8f50-e253-518ce37e5475",
+                            "pressedSprite": "82443082-3958-8f50-e253-518ce37e5475",
+                            "useSpriteSwap": true,
                             "isHovered": false,
                             "isPressed": false
                         },
@@ -4369,66 +4283,11 @@
                             "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": true,
-                            "wasPressed": false,
-                            "resumeSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                            "selectSfxGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                            "hoverSfxGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c"
+                            "wasPressed": false
                         }
                     },
                     {
                         "entityGUID": "0f7d914b-8846-2c63-a478-f577f74c6e92",
-                        "AudioComponent": {
-                            "audioFiles": [
-                                {
-                                    "audioGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "0d044a11-aee8-4ff6-b5cb-004f4720e76d",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                }
-                            ]
-                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -4451,7 +4310,7 @@
                             "normalSprite": "7ad55f44-7c75-51aa-c145-4b7af063d811",
                             "hoveredSprite": "6c9dbce3-b332-3724-52a7-2f5c8b52c537",
                             "pressedSprite": "6c9dbce3-b332-3724-52a7-2f5c8b52c537",
-                            "useSpriteSwap": false,
+                            "useSpriteSwap": true,
                             "isHovered": false,
                             "isPressed": false
                         },
@@ -4517,72 +4376,10 @@
                                     "z": 1.0
                                 }
                             }
-                        },
-                        "UIButtonScript": {
-                            "actionType": 0,
-                            "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
-                            "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
-                            "useKeyboardShortcuts": true,
-                            "wasPressed": false,
-                            "resumeSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                            "selectSfxGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                            "hoverSfxGUID": "0d044a11-aee8-4ff6-b5cb-004f4720e76d"
                         }
                     },
                     {
                         "entityGUID": "87eecf64-5740-4120-5e5e-c3541dc1309d",
-                        "AudioComponent": {
-                            "audioFiles": [
-                                {
-                                    "audioGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                }
-                            ]
-                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -4602,10 +4399,10 @@
                                 "z": 0.6000000238418579,
                                 "w": 1.0
                             },
-                            "normalSprite": "00000000-0000-0000-0000-000000000000",
-                            "hoveredSprite": "00000000-0000-0000-0000-000000000000",
-                            "pressedSprite": "00000000-0000-0000-0000-000000000000",
-                            "useSpriteSwap": false,
+                            "normalSprite": "c4e6323c-49f8-6914-17c8-48e7e8ea4374",
+                            "hoveredSprite": "1fb5b976-d929-9089-a67a-69087b279506",
+                            "pressedSprite": "1fb5b976-d929-9089-a67a-69087b279506",
+                            "useSpriteSwap": true,
                             "isHovered": false,
                             "isPressed": false
                         },
@@ -4677,66 +4474,11 @@
                             "currentSceneGUID": "ca193a98-4c22-da6d-5823-dc3256a568d3",
                             "targetSceneGUID": "873145a3-c01e-82b3-a4f5-d837cb0a0c51",
                             "useKeyboardShortcuts": true,
-                            "wasPressed": false,
-                            "resumeSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                            "selectSfxGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                            "hoverSfxGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c"
+                            "wasPressed": false
                         }
                     },
                     {
                         "entityGUID": "31d0d78f-d170-9e00-8cbb-35b587831475",
-                        "AudioComponent": {
-                            "audioFiles": [
-                                {
-                                    "audioGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                }
-                            ]
-                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -4756,10 +4498,10 @@
                                 "z": 0.6000000238418579,
                                 "w": 1.0
                             },
-                            "normalSprite": "00000000-0000-0000-0000-000000000000",
-                            "hoveredSprite": "00000000-0000-0000-0000-000000000000",
-                            "pressedSprite": "00000000-0000-0000-0000-000000000000",
-                            "useSpriteSwap": false,
+                            "normalSprite": "3efb3936-4a9f-1129-c2a6-db5bb3dd92c1",
+                            "hoveredSprite": "aeb1250e-3446-0b22-8b3f-8ad4bb5bfd14",
+                            "pressedSprite": "aeb1250e-3446-0b22-8b3f-8ad4bb5bfd14",
+                            "useSpriteSwap": true,
                             "isHovered": false,
                             "isPressed": false
                         },
@@ -4831,10 +4573,7 @@
                             "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": true,
-                            "wasPressed": false,
-                            "resumeSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                            "selectSfxGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                            "hoverSfxGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c"
+                            "wasPressed": false
                         }
                     }
                 ]
@@ -5255,58 +4994,6 @@
                     },
                     {
                         "entityGUID": "d51725c9-425d-1dd7-deb7-d1af508acaa9",
-                        "AudioComponent": {
-                            "audioFiles": [
-                                {
-                                    "audioGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                }
-                            ]
-                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -5326,10 +5013,10 @@
                                 "z": 0.6000000238418579,
                                 "w": 1.0
                             },
-                            "normalSprite": "00000000-0000-0000-0000-000000000000",
-                            "hoveredSprite": "00000000-0000-0000-0000-000000000000",
-                            "pressedSprite": "00000000-0000-0000-0000-000000000000",
-                            "useSpriteSwap": false,
+                            "normalSprite": "f08012fe-fdce-8122-e84a-04c32e8a3828",
+                            "hoveredSprite": "f57e7ed9-1a92-86fe-5417-55124bb6dcb8",
+                            "pressedSprite": "34327e36-c568-8671-0888-ffb987bc05bb",
+                            "useSpriteSwap": true,
                             "isHovered": false,
                             "isPressed": false
                         },
@@ -5343,7 +5030,7 @@
                             "hide": false
                         },
                         "SpriteComponent": {
-                            "spriteGUID": "a6918fdc-bfcb-feab-5f96-86e8d9485e45",
+                            "spriteGUID": "f08012fe-fdce-8122-e84a-04c32e8a3828",
                             "color": {
                                 "x": 1.0,
                                 "y": 1.0,
@@ -5401,10 +5088,7 @@
                             "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": true,
-                            "wasPressed": false,
-                            "resumeSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                            "selectSfxGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                            "hoverSfxGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c"
+                            "wasPressed": false
                         }
                     }
                 ]
@@ -5739,58 +5423,6 @@
                     },
                     {
                         "entityGUID": "6568cc28-05fd-f8bf-0d12-d267f91a3159",
-                        "AudioComponent": {
-                            "audioFiles": [
-                                {
-                                    "audioGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                }
-                            ]
-                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -5810,7 +5442,7 @@
                                 "z": 0.6000000238418579,
                                 "w": 1.0
                             },
-                            "normalSprite": "00000000-0000-0000-0000-000000000000",
+                            "normalSprite": "e7ac63e2-dc50-c7e5-f42a-8c2d3db5eccc",
                             "hoveredSprite": "00000000-0000-0000-0000-000000000000",
                             "pressedSprite": "00000000-0000-0000-0000-000000000000",
                             "useSpriteSwap": false,
@@ -5885,10 +5517,7 @@
                             "currentSceneGUID": "32e2f200-5b07-e5ca-62a0-e638c6b786c4",
                             "targetSceneGUID": "ca193a98-4c22-da6d-5823-dc3256a568d3",
                             "useKeyboardShortcuts": false,
-                            "wasPressed": false,
-                            "resumeSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                            "selectSfxGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                            "hoverSfxGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c"
+                            "wasPressed": false
                         }
                     }
                 ]
