@@ -65,7 +65,7 @@ public:
 		engineShaders.insert({ "BlurShader",Shader(blurVS,blurFS) });
 		engineShaders.insert({ "DownSamplingShader",Shader(downSamplingVS,downSamplingFS) });
 		engineShaders.insert({ "UpSamplingShader",Shader(upSamplingVS,upSamplingFS) });
-
+		engineShaders.insert({ "BloomShader",Shader(bloomVs,bloomFs) });
 	}
 
 	std::unordered_map<std::string, Shader> engineShaders;
@@ -257,5 +257,10 @@ private:
 	const char* upSamplingFS{
 		#include "CoreEngineShaders/Shaders/UpSamplingShader/UpSamplingShader.fs"
 	};
-
+	const char* bloomVs{
+		#include "CoreEngineShaders/Shaders/BloomShader/BloomShader.vs"
+	};
+	const char* bloomFs{
+		#include "CoreEngineShaders/Shaders/BloomShader/BloomShader.fs"
+	};
 };
