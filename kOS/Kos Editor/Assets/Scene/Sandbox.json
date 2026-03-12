@@ -2687,7 +2687,7 @@
                         "NEWHealthBarScript": {
                             "playerObject": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
                             "playerObjectID": 0,
-                            "healthbarSprite": "ea6464b2-63b1-af75-df4f-ae9c6d29e3cd",
+                            "healthbarSprite": "0dfd8ac3-6851-9f65-35ce-31279894850c",
                             "originalScale": {
                                 "x": 1.0,
                                 "y": 1.0,
@@ -2710,7 +2710,7 @@
                             "hide": false
                         },
                         "SpriteComponent": {
-                            "spriteGUID": "ea6464b2-63b1-af75-df4f-ae9c6d29e3cd",
+                            "spriteGUID": "0dfd8ac3-6851-9f65-35ce-31279894850c",
                             "color": {
                                 "x": 1.0,
                                 "y": 1.0,
