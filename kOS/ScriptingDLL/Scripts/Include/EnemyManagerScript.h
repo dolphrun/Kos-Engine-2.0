@@ -416,6 +416,7 @@ inline void EnemyManagerScript::Update() {
 
 
 		}
+		//For crouching enemy
 		else if (enemyController->RetrieveStateByID(animComp->m_currentStateID)->name == "Crouching")
 		{
 			if (playerWentOutOfAttackRange)
