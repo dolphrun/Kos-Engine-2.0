@@ -58,6 +58,15 @@ public:
             auto* btn = ecsPtr->GetComponent<ecs::ButtonComponent>(entity);
             auto* spr = ecsPtr->GetComponent<ecs::SpriteComponent>(entity);
 
+            if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+                for (auto& af : ac->audioFiles) {
+                    if (af.audioGUID == hoverSfxGUID && af.isSFX) {
+                        af.requestPlay = true;
+                        break;
+                    }
+                }
+            }
+
             if (btn->useSpriteSwap) {
                 if (btn->isPressed && !btn->pressedSprite.Empty())
                     spr->spriteGUID = btn->pressedSprite;
