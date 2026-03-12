@@ -49,7 +49,8 @@ inline void EnemyBulletLogic::Start() {
 			}
 
 			// Deal damage
-			ecsPtr->GetComponent<PlayerManagerScript>(col.otherEntityID)->currPlayerHitPoints -= bulletDamage;
+			//ecsPtr->GetComponent<PlayerManagerScript>(col.otherEntityID)->currPlayerHitPoints -= bulletDamage;
+			ecsPtr->GetComponent<PlayerManagerScript>(col.otherEntityID)->TakeDamage(bulletDamage);
 		}
 
 		if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Ground" || ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Default") {

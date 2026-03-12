@@ -9,58 +9,6 @@
     },
     {
         "entityGUID": "5e3accf6-6374-81c7-638f-0cd9ce1042b6",
-        "AudioComponent": {
-            "audioFiles": [
-                {
-                    "audioGUID": "80bc0a18-e742-f3e7-4f21-7d88824f985b",
-                    "volume": 1.0,
-                    "loop": false,
-                    "playOnStart": false,
-                    "hasPlayed": false,
-                    "pan": 0.0,
-                    "isBGM": false,
-                    "isSFX": true,
-                    "use3D": true,
-                    "minDistance": 1.0,
-                    "maxDistance": 100.0,
-                    "sourceType": 0,
-                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                    "studioEventPath": ""
-                },
-                {
-                    "audioGUID": "18bde09b-18c2-4f58-5770-048caf28d1c3",
-                    "volume": 1.0,
-                    "loop": false,
-                    "playOnStart": false,
-                    "hasPlayed": false,
-                    "pan": 0.0,
-                    "isBGM": false,
-                    "isSFX": true,
-                    "use3D": true,
-                    "minDistance": 1.0,
-                    "maxDistance": 100.0,
-                    "sourceType": 0,
-                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                    "studioEventPath": ""
-                },
-                {
-                    "audioGUID": "ef772eb3-1923-0835-dd9b-683167c10659",
-                    "volume": 1.0,
-                    "loop": false,
-                    "playOnStart": false,
-                    "hasPlayed": false,
-                    "pan": 0.0,
-                    "isBGM": false,
-                    "isSFX": true,
-                    "use3D": true,
-                    "minDistance": 1.0,
-                    "maxDistance": 100.0,
-                    "sourceType": 0,
-                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                    "studioEventPath": ""
-                }
-            ]
-        },
         "BulletLogic": {
             "bulletDamage": 20,
             "bulletSpeed": 100.0,

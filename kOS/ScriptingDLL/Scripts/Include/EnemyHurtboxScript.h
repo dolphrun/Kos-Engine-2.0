@@ -32,8 +32,8 @@ public:
 					}
 				}
 
-				ecsPtr->GetComponent<PlayerManagerScript>(col.otherEntityID)->currPlayerHitPoints -= enemyDamage;
-
+				//ecsPtr->GetComponent<PlayerManagerScript>(col.otherEntityID)->currPlayerHitPoints -= enemyDamage;
+				ecsPtr->GetComponent<PlayerManagerScript>(col.otherEntityID)->TakeDamage(enemyDamage);
 
 
 				// Prob redudant I'll comment first to see if it crashes anything

@@ -9,21 +9,6 @@
     },
     {
         "entityGUID": "6da7649c-8a7c-5c9a-ae19-f1e26be90b6d",
-        "BoxColliderComponent": {
-            "isTrigger": false,
-            "box": {
-                "center": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "size": {
-                    "x": 34.641021728515625,
-                    "y": 40.000003814697266,
-                    "z": 800.0
-                }
-            }
-        },
         "MaterialComponent": {
             "materialGUID": [
                 {

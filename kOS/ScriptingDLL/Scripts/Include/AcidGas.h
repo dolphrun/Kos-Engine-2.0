@@ -8,7 +8,7 @@ class EnemyManagerScript;
 class AcidGas : public TemplateSC {
 public:
     int     gasDamage = 10;        // Damage per tick
-    float   tickInterval = 1.f;  
+    float   tickInterval = 1.f;
     float   lifetime = 2.2f;
     int     scoreValue = 50;
 
@@ -44,23 +44,30 @@ inline void AcidGas::Start() {
         }
     }
 
-    physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
-        if (currLifetime <= 0.f) return;
+    auto* ecs = ecsPtr;
+    auto* physics = physicsPtr;
+    ecs::EntityID myID = entity;
 
-        auto* nameComp = ecsPtr->GetComponent<NameComponent>(col.otherEntityID);
-        if (!nameComp) return;
-        if (nameComp->entityTag != "Enemy") return;
+    physics->GetEventCallback()->OnTriggerEnter(myID, [ecs, myID](const physics::Collision& col) {
+        auto* self = ecs->GetComponent<AcidGas>(myID);
+        if (!self) return;
 
-        enemiesInCloud.insert(col.otherEntityID);
-        std::cout << "[AcidGasCloud] Enemy entered cloud. Count: " << enemiesInCloud.size() << "\n";
+        auto* nameComp = ecs->GetComponent<NameComponent>(col.otherEntityID);
+        if (!nameComp || nameComp->entityTag != "Enemy") return;
+
+        self->enemiesInCloud.insert(col.otherEntityID);
+        std::cout << "[AcidGasCloud] Enemy entered cloud. Count: " << self->enemiesInCloud.size() << "\n";
         });
 
-    physicsPtr->GetEventCallback()->OnTriggerExit(entity, [this](const physics::Collision& col) {
-        if (currLifetime <= 0.f) return;
+    physics->GetEventCallback()->OnTriggerExit(myID, [ecs, myID](const physics::Collision& col) {
+        auto* self = ecs->GetComponent<AcidGas>(myID);
+        if (!self) return;
 
+        auto* nameComp = ecs->GetComponent<NameComponent>(col.otherEntityID);
+        if (!nameComp || nameComp->entityTag != "Enemy") return;
 
-        enemiesInCloud.erase(col.otherEntityID);
-        std::cout << "[AcidGasCloud] Enemy exited cloud. Count: " << enemiesInCloud.size() << "\n";
+        self->enemiesInCloud.erase(col.otherEntityID);
+        std::cout << "[AcidGasCloud] Enemy exited cloud. Count: " << self->enemiesInCloud.size() << "\n";
         });
 }
 
@@ -107,19 +114,10 @@ inline void AcidGas::Update() {
     }
 
     currLifetime -= dt;
-    //if (currLifetime <= 0.f) {
-    //    ecsPtr->DeleteEntity(entity);
-    //}
-
 
     if (currLifetime <= 0.f) {
-        // Clear deleting
+
         enemiesInCloud.clear();
-
-        // Unregister physics callbacks
-        physicsPtr->GetEventCallback()->DeregisterEntity(entity);
-        physicsPtr->GetEventCallback()->DeregisterEntity(entity);
-
         ecsPtr->DeleteEntity(entity);
 
         return;

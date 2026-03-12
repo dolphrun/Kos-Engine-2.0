@@ -1,10 +1,18 @@
 [
     {
-        "entityGUID": "cff8369e-97a9-f14a-b597-335910013f97",
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
+        "entityGUID": "13d15d41-b8c5-ab9d-c0f0-55a8709cb62a",
         "MaterialComponent": {
             "materialGUID": [
                 {
-                    "materialGUID": "a8eafd3e-52ca-354e-e112-ad3345fb129c"
+                    "materialGUID": "0a9a20f2-77e3-ca4f-019b-7a1c93fe34c6"
                 }
             ]
         },
@@ -13,7 +21,7 @@
             "convex": false
         },
         "MeshFilterComponent": {
-            "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+            "meshGUID": "928affd5-5a5e-0869-9434-f83add20059e"
         },
         "NameComponent": {
             "entityName": "M5_Modular_8M_DOOR",
@@ -24,7 +32,6 @@
             "prefabName": "M5_Modular_8M_DOOR.prefab",
             "hide": false
         },
-        "NavMeshComponent": {},
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
