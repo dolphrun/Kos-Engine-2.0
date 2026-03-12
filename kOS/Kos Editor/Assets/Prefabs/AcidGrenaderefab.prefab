@@ -10,7 +10,7 @@
     {
         "entityGUID": "e92d0e45-dad6-f98a-4fcf-90d1e711a057",
         "AcidLMB": {
-            "acidLMBDamage": 4,
+            "acidLMBDamage": 10,
             "launchSpeed": 15.0,
             "arcUpwardKick": 5.0,
             "gravity": -18.0,

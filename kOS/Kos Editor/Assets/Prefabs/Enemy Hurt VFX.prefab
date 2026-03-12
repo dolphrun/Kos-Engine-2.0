@@ -9,6 +9,7 @@
     },
     {
         "entityGUID": "49b34586-69b7-c660-a543-afcec50f0523",
+        "EnemyHurtVFX": {},
         "NameComponent": {
             "entityName": "Enemy Hurt VFX",
             "Layer": 0,
@@ -68,11 +69,11 @@
                 },
                 "ParticleComponent": {
                     "particleType": 0,
-                    "duration": 2.0,
-                    "looping": true,
+                    "duration": 5.0,
+                    "looping": false,
                     "play_On_Awake": true,
-                    "start_Lifetime": 2.0,
-                    "end_Lifetime": 2.0,
+                    "start_Lifetime": 5.0,
+                    "end_Lifetime": 5.0,
                     "lifetime_Random_Enable": true,
                     "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 5.0,

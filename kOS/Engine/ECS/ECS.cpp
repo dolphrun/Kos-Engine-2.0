@@ -249,72 +249,82 @@ namespace ecs{
 
 	void ECS::DeleteEntityImmediate(EntityID ID) {
 
-		
-		//check if id is a thing
-		if (m_entityMap.find(ID) == m_entityMap.end()) {
+		// 1. Cache the entity iterator to avoid multiple lookups later
+		auto entityIt = m_entityMap.find(ID);
+		if (entityIt == m_entityMap.end()) {
 			LOGGING_ERROR("Entity Does Not Exist");
 			return;
 		}
 
+		// Cache the component signature/bitmask so we don't query the map 64 times
+		auto entitySignature = entityIt->second;
 
-		if (GetParent(ID).has_value()) {
-			EntityID parent = GetParent(ID).value();
-			// if parent id is deleted, no need to remove its child
+		// 2. Parent Cleanup (Using O(1) Swap-and-Pop)
+		if (auto parentOpt = GetParent(ID); parentOpt.has_value()) {
+			EntityID parent = parentOpt.value();
+
 			if (m_entityMap.find(parent) != m_entityMap.end()) {
 				TransformComponent* parentTransform = GetComponent<TransformComponent>(parent);
-				size_t pos{};
-				for (EntityID& id : parentTransform->m_childID) {
-					if (ID == id) {
-						parentTransform->m_childID.erase(parentTransform->m_childID.begin() + pos);
-						break;
+				if (parentTransform) {
+					auto& children = parentTransform->m_childID;
+					auto it = std::find(children.begin(), children.end(), ID);
+
+					if (it != children.end()) {
+						// O(1) removal: swap with the last element and pop
+						std::iter_swap(it, children.end() - 1);
+						children.pop_back();
 					}
-					pos++;
 				}
 			}
 		}
 
-
 		DeregisterEntity(ID);
 
+		// 3. Scene Cleanup (Iterator caching + Swap-and-Pop)
+		const auto& sceneName = GetSceneByEntityID(ID);
+		if (!sceneName.empty()) {
+			auto sceneIt = sceneMap.find(sceneName);
+			if (sceneIt != sceneMap.end()) {
+				auto& entityList = sceneIt->second.sceneIDs;
+				auto it = std::find(entityList.begin(), entityList.end(), ID);
 
-
-		// remove entity from scene
-		const auto& result = GetSceneByEntityID(ID);
-		if (!result.empty()) {
-			auto& entityList = sceneMap.find(result)->second.sceneIDs;
-			auto it = std::find(entityList.begin(), entityList.end(), ID);
-			sceneMap.find(result)->second.sceneIDs.erase(it);
-		}
-
-		//get child
-		if (GetChild(ID).has_value()) {
-			std::vector<EntityID> childs = GetChild(ID).value();
-			for (auto& x : childs) {
-				DeleteEntityImmediate(x);
+				if (it != entityList.end()) {
+					std::iter_swap(it, entityList.end() - 1);
+					entityList.pop_back();
+				}
 			}
 		}
 
-		//delete guid off map
-		utility::GUID guid = GetComponent<NameComponent>(ID)->entityGUID;
-		if (!guid.Empty() && GetEntityIDFromGUID(guid) == ID) {
-			
-			DeleteGUID(guid);
+		// 4. Recursive Child Deletion
+		if (auto childOpt = GetChild(ID); childOpt.has_value()) {
+			// Use a reference if possible, or keep the copy if GetChild returns by value.
+			// Because of our swap-and-pop fix above, these children will now remove 
+			// themselves from this parent in O(1) time instead of O(N^2).
+			for (EntityID childID : childOpt.value()) {
+				DeleteEntityImmediate(childID);
+			}
 		}
 
-		
+		// 5. GUID Cleanup
+		NameComponent* nameComp = GetComponent<NameComponent>(ID);
+		if (nameComp) {
+			utility::GUID guid = nameComp->entityGUID;
+			if (!guid.Empty() && GetEntityIDFromGUID(guid) == ID) {
+				DeleteGUID(guid);
+			}
+		}
 
-		// reset all components
+		// 6. Component Cleanup (Using the cached signature!)
 		for (const auto& [ComponentName, key] : m_componentKey) {
-			if (m_entityMap.find(ID)->second.test(key)) {
+			if (entitySignature.test(key)) {
 				m_combinedComponentPool[ComponentName]->Delete(ID);
 			}
 		}
 
-		//delete stored entity
-		m_entityMap.erase(ID);		
+		// 7. Final Map Cleanup
+		// We can use the iterator we found at the very beginning to erase in O(1)
+		m_entityMap.erase(entityIt);
 		m_availableEntityID.push_back(ID);
-
-		return;
 	}
 
 	
