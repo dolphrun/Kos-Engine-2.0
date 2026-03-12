@@ -14,10 +14,10 @@
             "capsule": {
                 "center": {
                     "x": 0.0,
-                    "y": 2.299999952316284,
+                    "y": 1.7000000476837158,
                     "z": 0.0
                 },
-                "radius": 1.0,
+                "radius": 1.7000000476837158,
                 "height": 5.0,
                 "capsuleDirection": 1
             }
@@ -26,7 +26,7 @@
             "enemyHealth": 60,
             "enemyMovementSpeed": 3.0,
             "enemyType": "Tank",
-            "enemyAttackRange": 3.0,
+            "enemyAttackRange": 6.0,
             "enemyRangedAttackRange": 15.0,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
@@ -81,9 +81,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": -9.0,
-                    "y": 27.0,
-                    "z": 5.0
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -98,9 +98,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": -9.0,
-                    "y": 27.0,
-                    "z": 5.0
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -129,9 +129,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -9.0,
-                            "y": 28.5,
-                            "z": 6.0
+                            "x": 0.0,
+                            "y": 1.5,
+                            "z": 1.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -189,9 +189,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -9.0,
-                            "y": 27.0,
-                            "z": 5.0
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -237,9 +237,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -9.0,
-                            "y": 29.0,
-                            "z": 5.0
+                            "x": 0.0,
+                            "y": 2.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -458,9 +458,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": -9.0,
-                                    "y": 29.079551696777344,
-                                    "z": 5.0
+                                    "x": 0.0,
+                                    "y": 2.0795516967773438,
+                                    "z": 0.0
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -679,9 +679,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": -9.0,
-                                    "y": 29.0,
-                                    "z": 5.0
+                                    "x": 0.0,
+                                    "y": 2.0,
+                                    "z": 0.0
                                 },
                                 "rotation": {
                                     "x": 0.0,
