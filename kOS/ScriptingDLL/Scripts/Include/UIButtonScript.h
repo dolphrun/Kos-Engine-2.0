@@ -39,10 +39,11 @@ public:
 
     bool useKeyboardShortcuts = true;
     bool wasPressed = false;
-
+    bool wasHovered = false;
     void Start() override {
         wasPressed = false;
-
+  
+        wasHovered = false;
         std::cout << "[UIButtonScript] Start() - Entity: " << entity << std::endl;
         std::cout << "  Action: " << GetActionName() << " (" << actionType << ")" << std::endl;
         std::cout << "  Current Scene: " << currentSceneGUID.GetToString() << std::endl;
@@ -58,26 +59,8 @@ public:
             auto* btn = ecsPtr->GetComponent<ecs::ButtonComponent>(entity);
             auto* spr = ecsPtr->GetComponent<ecs::SpriteComponent>(entity);
 
-            if (btn->useSpriteSwap) {
-                if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-                    for (auto& af : ac->audioFiles) {
-                        if (af.audioGUID == hoverSfxGUID && af.isSFX) {
-                            af.requestPlay = true;
-                            break;
-                        }
-                    }
-                }
-
-                if (btn->isPressed && !btn->pressedSprite.Empty())
-                    spr->spriteGUID = btn->pressedSprite;
-                else if (btn->isHovered && !btn->hoveredSprite.Empty()) {
-
- 
-                    spr->spriteGUID = btn->hoveredSprite;
-
-                }
-                else if (!btn->normalSprite.Empty())
-                    spr->spriteGUID = btn->normalSprite;
+            if (btn->isHovered && !wasHovered) {
+                std::cout << "[UIButtonScript] Hover entered on entity: " << entity << "\n";
 
                 if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
                     for (auto& af : ac->audioFiles) {
@@ -87,8 +70,23 @@ public:
                         }
                     }
                 }
-                spr->spriteGUID = btn->hoveredSprite;
             }
+
+            if (btn->useSpriteSwap) {
+
+                if (btn->isPressed && !btn->pressedSprite.Empty()) {
+                    spr->spriteGUID = btn->pressedSprite;
+                }
+                else if (btn->isHovered && !btn->hoveredSprite.Empty()) {
+                    spr->spriteGUID = btn->hoveredSprite;
+                }
+                else if (!btn->normalSprite.Empty()) {
+                    spr->spriteGUID = btn->normalSprite;
+                }
+            }
+
+            wasHovered = btn->isHovered;
+
         }
 
         bool shouldTrigger = false;
