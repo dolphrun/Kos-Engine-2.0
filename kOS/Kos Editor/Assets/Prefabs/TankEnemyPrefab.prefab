@@ -9,6 +9,154 @@
     },
     {
         "entityGUID": "7f532598-d51d-0046-dc2b-f034a9df3542",
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "8f4c9280-b173-0246-91fe-5d88a8a4b501",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "af1120a0-6279-b1e8-25ed-8dd407c9e884",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "3bfdc9b7-0117-141d-177b-43708f3e4814",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "ec251d64-509b-1b9f-d4c7-877144c5535b",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "e6d00138-66ba-d9f5-40fd-0ce2f528f9ed",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "4c22dc8a-e591-ba31-2b6a-6371e04c4da5",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "a7d1eb15-af1b-237a-3826-769f73fe51eb",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "c359948d-d497-0f68-21b0-81b61af1d63f",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "373786d3-b5fc-0d5e-d12b-75f2fa91882c",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
+        },
         "CapsuleColliderComponent": {
             "isTrigger": false,
             "capsule": {
@@ -46,7 +194,51 @@
             "enemyHurtVFXPrefab": "06c198bd-19c0-0432-e746-c72bbca505e7",
             "enemyAttackSfxGUID": "00000000-0000-0000-0000-000000000000",
             "enemyWalkSfxGUID": "00000000-0000-0000-0000-000000000000",
-            "enemyHurtSfxPool": []
+            "enemyHurtSfxPool": [],
+            "meleeEnemyAttackSfxGUID": [],
+            "rangeEnemyAttackSfxGUID": [],
+            "tankEnemyAttackSfxGUID": [
+                {
+                    "tankEnemyAttackSfxGUID": "8f4c9280-b173-0246-91fe-5d88a8a4b501"
+                },
+                {
+                    "tankEnemyAttackSfxGUID": "00000000-0000-0000-0000-000000000000"
+                }
+            ],
+            "meleeEnemyHurtSfxGUID": [],
+            "rangedEnemyHurtSfxGUID": [],
+            "tankEnemyHurtSfxGUID": [
+                {
+                    "tankEnemyHurtSfxGUID": "ec251d64-509b-1b9f-d4c7-877144c5535b"
+                },
+                {
+                    "tankEnemyHurtSfxGUID": "3bfdc9b7-0117-141d-177b-43708f3e4814"
+                },
+                {
+                    "tankEnemyHurtSfxGUID": "af1120a0-6279-b1e8-25ed-8dd407c9e884"
+                }
+            ],
+            "meleeEnemyDeathSfxGUID": [],
+            "rangedEnemyDeathSfxGUID": [],
+            "tankEnemyDeathSfxGUID": [
+                {
+                    "tankEnemyDeathSfxGUID": "e6d00138-66ba-d9f5-40fd-0ce2f528f9ed"
+                }
+            ],
+            "tankShieldBlockSfxGUID": [
+                {
+                    "tankShieldBlockSfxGUID": "4c22dc8a-e591-ba31-2b6a-6371e04c4da5"
+                },
+                {
+                    "tankShieldBlockSfxGUID": "373786d3-b5fc-0d5e-d12b-75f2fa91882c"
+                },
+                {
+                    "tankShieldBlockSfxGUID": "a7d1eb15-af1b-237a-3826-769f73fe51eb"
+                },
+                {
+                    "tankShieldBlockSfxGUID": "c359948d-d497-0f68-21b0-81b61af1d63f"
+                }
+            ]
         },
         "NameComponent": {
             "entityName": "TankEnemyPrefab",

@@ -7405,6 +7405,54 @@
                     "sourceType": 0,
                     "audioBankGUID": "00000000-0000-0000-0000-000000000000",
                     "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "64bd05f3-57e7-80ec-3c24-c55b31609ef4",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "b620f890-3562-e2bb-b015-c38905e0d879",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "bb23069a-bc2e-fec9-fcb7-6d1ca93fb281",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
                 }
             ]
         },
@@ -7431,8 +7479,8 @@
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
             "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-            "enemyHurtboxPosition": "96f1fb69-3907-f145-e582-9adea5010634",
-            "shieldHealth": 0,
+            "enemyHurtboxPosition": "570fa653-ab37-c9f9-82c3-bdb66764b658",
+            "shieldHealth": 30,
             "shieldElement": "NONE",
             "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
             "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
@@ -7443,17 +7491,43 @@
             "lungeGravity": 15.0,
             "attackCooldown": 2.0,
             "enemyHurtVFXPrefab": "06c198bd-19c0-0432-e746-c72bbca505e7",
-            "enemyHurtVFXPosition": "5ca5da39-faff-2299-5c97-ad4184195a5f",
             "enemyAttackSfxGUID": "00000000-0000-0000-0000-000000000000",
             "enemyWalkSfxGUID": "00000000-0000-0000-0000-000000000000",
-            "enemyHurtSfxPool": [
+            "enemyHurtSfxPool": [],
+            "meleeEnemyAttackSfxGUID": [
                 {
-                    "enemyHurtSfxPool": "2afcabc1-3d62-bb0b-f484-598f81dff049"
+                    "meleeEnemyAttackSfxGUID": "b620f890-3562-e2bb-b015-c38905e0d879"
                 },
                 {
-                    "enemyHurtSfxPool": "c5405e79-b219-7670-1235-e1482aae4941"
+                    "meleeEnemyAttackSfxGUID": "64bd05f3-57e7-80ec-3c24-c55b31609ef4"
+                },
+                {
+                    "meleeEnemyAttackSfxGUID": "bb23069a-bc2e-fec9-fcb7-6d1ca93fb281"
                 }
-            ]
+            ],
+            "rangeEnemyAttackSfxGUID": [],
+            "tankEnemyAttackSfxGUID": [],
+            "meleeEnemyHurtSfxGUID": [
+                {
+                    "meleeEnemyHurtSfxGUID": "2afcabc1-3d62-bb0b-f484-598f81dff049"
+                },
+                {
+                    "meleeEnemyHurtSfxGUID": "c5405e79-b219-7670-1235-e1482aae4941"
+                }
+            ],
+            "rangedEnemyHurtSfxGUID": [],
+            "tankEnemyHurtSfxGUID": [],
+            "meleeEnemyDeathSfxGUID": [
+                {
+                    "meleeEnemyDeathSfxGUID": "2afcabc1-3d62-bb0b-f484-598f81dff049"
+                },
+                {
+                    "meleeEnemyDeathSfxGUID": "c5405e79-b219-7670-1235-e1482aae4941"
+                }
+            ],
+            "rangedEnemyDeathSfxGUID": [],
+            "tankEnemyDeathSfxGUID": [],
+            "tankShieldBlockSfxGUID": []
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
@@ -7523,14 +7597,14 @@
         },
         "children": [
             {
-                "entityGUID": "96f1fb69-3907-f145-e582-9adea5010634",
+                "entityGUID": "2481c1b3-6256-c9f1-4a9b-b1eaa530bbab",
                 "NameComponent": {
                     "entityName": "Enemy Hurtbox Position",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "MeleeEnemyPrefab.prefab",
+                    "prefabName": "EnemyPrefab.prefab",
                     "hide": false
                 },
                 "TransformComponent": {
@@ -7571,7 +7645,7 @@
                 }
             },
             {
-                "entityGUID": "3c17c162-d059-69ab-dfe3-02e969918730",
+                "entityGUID": "44f6643b-841e-0a51-ad14-f65eb176305e",
                 "AnimatorComponent": {
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
@@ -7586,11 +7660,11 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "MeleeEnemyPrefab.prefab",
+                    "prefabName": "EnemyPrefab.prefab",
                     "hide": false
                 },
                 "SkinnedMeshRendererComponent": {
-                    "skinnedMeshGUID": "8a830bfc-7794-b76e-2f45-0e765f0a2495",
+                    "skinnedMeshGUID": "5c628160-06f2-ca8d-46b2-57bdf211fe36",
                     "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
                 },
                 "TransformComponent": {
@@ -7631,14 +7705,14 @@
                 }
             },
             {
-                "entityGUID": "5ca5da39-faff-2299-5c97-ad4184195a5f",
+                "entityGUID": "cbd75191-5745-2b14-0733-2490e726cab2",
                 "NameComponent": {
                     "entityName": "Enemy Hurt VFX Position",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": true,
+                    "isPrefab": false,
                     "isStatic": false,
-                    "prefabName": "MeleeEnemyPrefab.prefab",
+                    "prefabName": "",
                     "hide": false
                 },
                 "TransformComponent": {
@@ -7682,15 +7756,99 @@
     },
     {
         "entityGUID": "e51a3561-4413-6af0-16c6-fc2d9b76a4e2",
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "8f4c9280-b173-0246-91fe-5d88a8a4b501",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "af1120a0-6279-b1e8-25ed-8dd407c9e884",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "3bfdc9b7-0117-141d-177b-43708f3e4814",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "ec251d64-509b-1b9f-d4c7-877144c5535b",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "e6d00138-66ba-d9f5-40fd-0ce2f528f9ed",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
+        },
         "CapsuleColliderComponent": {
             "isTrigger": false,
             "capsule": {
                 "center": {
                     "x": 0.0,
-                    "y": 2.299999952316284,
+                    "y": 1.7000000476837158,
                     "z": 0.0
                 },
-                "radius": 1.0,
+                "radius": 1.7000000476837158,
                 "height": 5.0,
                 "capsuleDirection": 1
             }
@@ -7699,7 +7857,7 @@
             "enemyHealth": 60,
             "enemyMovementSpeed": 3.0,
             "enemyType": "Tank",
-            "enemyAttackRange": 3.0,
+            "enemyAttackRange": 6.0,
             "enemyRangedAttackRange": 15.0,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
@@ -7716,11 +7874,41 @@
             "lungeUpwardSpeed": 5.0,
             "lungeGravity": 15.0,
             "attackCooldown": 2.0,
-            "enemyHurtVFXPrefab": "00000000-0000-0000-0000-000000000000",
-            "enemyHurtVFXPosition": "00000000-0000-0000-0000-000000000000",
+            "enemyHurtVFXPrefab": "06c198bd-19c0-0432-e746-c72bbca505e7",
             "enemyAttackSfxGUID": "00000000-0000-0000-0000-000000000000",
             "enemyWalkSfxGUID": "00000000-0000-0000-0000-000000000000",
-            "enemyHurtSfxPool": []
+            "enemyHurtSfxPool": [],
+            "meleeEnemyAttackSfxGUID": [],
+            "rangeEnemyAttackSfxGUID": [],
+            "tankEnemyAttackSfxGUID": [
+                {
+                    "tankEnemyAttackSfxGUID": "8f4c9280-b173-0246-91fe-5d88a8a4b501"
+                },
+                {
+                    "tankEnemyAttackSfxGUID": "00000000-0000-0000-0000-000000000000"
+                }
+            ],
+            "meleeEnemyHurtSfxGUID": [],
+            "rangedEnemyHurtSfxGUID": [],
+            "tankEnemyHurtSfxGUID": [
+                {
+                    "tankEnemyHurtSfxGUID": "ec251d64-509b-1b9f-d4c7-877144c5535b"
+                },
+                {
+                    "tankEnemyHurtSfxGUID": "3bfdc9b7-0117-141d-177b-43708f3e4814"
+                },
+                {
+                    "tankEnemyHurtSfxGUID": "af1120a0-6279-b1e8-25ed-8dd407c9e884"
+                }
+            ],
+            "meleeEnemyDeathSfxGUID": [],
+            "rangedEnemyDeathSfxGUID": [],
+            "tankEnemyDeathSfxGUID": [
+                {
+                    "tankEnemyDeathSfxGUID": "e6d00138-66ba-d9f5-40fd-0ce2f528f9ed"
+                }
+            ],
+            "tankShieldBlockSfxGUID": []
         },
         "NameComponent": {
             "entityName": "TankEnemyPrefab",
@@ -7790,7 +7978,7 @@
         },
         "children": [
             {
-                "entityGUID": "6b6c1cfd-6afa-54ee-0e60-5827b6dbe98e",
+                "entityGUID": "8ec53f44-c859-27ac-fded-1579dd2cd0e2",
                 "NameComponent": {
                     "entityName": "Enemy Hurtbox Position",
                     "Layer": 0,
@@ -7838,11 +8026,11 @@
                 }
             },
             {
-                "entityGUID": "868f293e-7c60-cbf1-f27f-4c556e1fa826",
+                "entityGUID": "ec1fccf0-8e9a-b012-324f-098f2c8efbd4",
                 "AnimatorComponent": {
                     "controllerGUID": "a8151059-f46f-1edd-8b81-a36f705c15fb",
                     "m_PlaybackSpeed": 1.0,
-                    "m_CurrentTime": 45.93952941894531,
+                    "m_CurrentTime": 9.439529418945313,
                     "m_IsPlaying": true,
                     "m_currentStateID": 4,
                     "m_transitioningStateID": 0
@@ -7898,21 +8086,21 @@
                 }
             },
             {
-                "entityGUID": "6e4d296a-ada5-d907-6949-319ad9e3291f",
+                "entityGUID": "1d7b47f5-b231-5d4b-a2d5-0cb91d338907",
                 "NameComponent": {
                     "entityName": "Tank Shield Fire",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "TankEnemyPrefab.prefab",
+                    "prefabName": "Tank Shield Fire.prefab",
                     "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
                             "x": -9.0,
-                            "y": 27.0,
+                            "y": 29.0,
                             "z": 5.0
                         },
                         "rotation": {
@@ -7929,7 +8117,7 @@
                     "LocalTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 0.0,
+                            "y": 2.0,
                             "z": 0.0
                         },
                         "rotation": {
@@ -7946,14 +8134,14 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "9dc780ca-d074-0ff7-e6e9-86b0f7943c60",
+                        "entityGUID": "19368ddd-7821-dd86-462f-db3dac435616",
                         "NameComponent": {
                             "entityName": "Tank Shield Fire Particles",
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
-                            "prefabName": "TankEnemyPrefab.prefab",
+                            "prefabName": "Tank Shield Fire.prefab",
                             "hide": false
                         },
                         "ParticleComponent": {
@@ -8133,7 +8321,7 @@
                             "WorldTransformation": {
                                 "position": {
                                     "x": -9.0,
-                                    "y": 27.079551696777344,
+                                    "y": 29.079551696777344,
                                     "z": 5.0
                                 },
                                 "rotation": {
@@ -8167,14 +8355,14 @@
                         }
                     },
                     {
-                        "entityGUID": "540e74ce-8195-945a-6753-2f674e818542",
+                        "entityGUID": "05fdcbb5-fc0b-0f09-3695-d59d33a86663",
                         "NameComponent": {
                             "entityName": "Tank Shield Fire Particles",
                             "Layer": 0,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
-                            "prefabName": "TankEnemyPrefab.prefab",
+                            "prefabName": "Tank Shield Fire.prefab",
                             "hide": false
                         },
                         "ParticleComponent": {
@@ -8354,7 +8542,7 @@
                             "WorldTransformation": {
                                 "position": {
                                     "x": -9.0,
-                                    "y": 27.0,
+                                    "y": 29.0,
                                     "z": 5.0
                                 },
                                 "rotation": {
@@ -8393,6 +8581,138 @@
     },
     {
         "entityGUID": "ca841b62-fbd5-539a-8e3b-e4136367568e",
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "71d58ef2-b4f6-e065-2971-d8c866fb55c3",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "7d95194c-3dcb-71fc-709a-8a60513409d6",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "1d543759-364b-8abe-dd87-be492dba4527",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "0cf5fa7a-fc88-e946-6d91-b00d2b03c123",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "7650eb28-0964-e81c-16ad-133cf40bb717",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "8eec37b5-1d55-9a79-c0bf-9669013bb82e",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "9b92cc4a-4162-7052-297a-bc7a5c59fc26",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "d4d3cf58-877f-327b-89f8-af153800ed9f",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
+        },
         "CapsuleColliderComponent": {
             "isTrigger": false,
             "capsule": {
@@ -8417,7 +8737,7 @@
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
             "enemyBulletPrefab": "8393af65-4300-ebba-36fa-0720e42087f2",
             "enemyHurtboxPosition": "6ac4caf1-1df9-0909-bbf9-fe20ccb6c10f",
-            "shieldHealth": 0,
+            "shieldHealth": 30,
             "shieldElement": "NONE",
             "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
             "tankAoePrefab": "00000000-0000-0000-0000-000000000000",
@@ -8428,10 +8748,46 @@
             "lungeGravity": 15.0,
             "attackCooldown": 2.0,
             "enemyHurtVFXPrefab": "06c198bd-19c0-0432-e746-c72bbca505e7",
-            "enemyHurtVFXPosition": "eb22ef3e-5cf8-3da9-51bf-f0a9bb5b0ce6",
             "enemyAttackSfxGUID": "00000000-0000-0000-0000-000000000000",
             "enemyWalkSfxGUID": "00000000-0000-0000-0000-000000000000",
-            "enemyHurtSfxPool": []
+            "enemyHurtSfxPool": [],
+            "meleeEnemyAttackSfxGUID": [],
+            "rangeEnemyAttackSfxGUID": [
+                {
+                    "rangeEnemyAttackSfxGUID": "1d543759-364b-8abe-dd87-be492dba4527"
+                },
+                {
+                    "rangeEnemyAttackSfxGUID": "71d58ef2-b4f6-e065-2971-d8c866fb55c3"
+                },
+                {
+                    "rangeEnemyAttackSfxGUID": "7d95194c-3dcb-71fc-709a-8a60513409d6"
+                }
+            ],
+            "tankEnemyAttackSfxGUID": [],
+            "meleeEnemyHurtSfxGUID": [],
+            "rangedEnemyHurtSfxGUID": [
+                {
+                    "rangedEnemyHurtSfxGUID": "0cf5fa7a-fc88-e946-6d91-b00d2b03c123"
+                },
+                {
+                    "rangedEnemyHurtSfxGUID": "8eec37b5-1d55-9a79-c0bf-9669013bb82e"
+                },
+                {
+                    "rangedEnemyHurtSfxGUID": "7650eb28-0964-e81c-16ad-133cf40bb717"
+                }
+            ],
+            "tankEnemyHurtSfxGUID": [],
+            "meleeEnemyDeathSfxGUID": [],
+            "rangedEnemyDeathSfxGUID": [
+                {
+                    "rangedEnemyDeathSfxGUID": "d4d3cf58-877f-327b-89f8-af153800ed9f"
+                },
+                {
+                    "rangedEnemyDeathSfxGUID": "9b92cc4a-4162-7052-297a-bc7a5c59fc26"
+                }
+            ],
+            "tankEnemyDeathSfxGUID": [],
+            "tankShieldBlockSfxGUID": []
         },
         "NameComponent": {
             "entityName": "RangedEnemyPrefab",
@@ -8501,14 +8857,14 @@
         },
         "children": [
             {
-                "entityGUID": "a7abc3ee-18c4-1611-88d4-e0158af90409",
+                "entityGUID": "90adfb44-456c-534d-021e-80cbce471722",
                 "NameComponent": {
                     "entityName": "Enemy Hurtbox Position",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "RangedEnemyPrefab.prefab",
+                    "prefabName": "",
                     "hide": false
                 },
                 "TransformComponent": {
@@ -8549,7 +8905,7 @@
                 }
             },
             {
-                "entityGUID": "fa395247-30a9-01e5-f937-0f5d18554312",
+                "entityGUID": "9c322676-4c20-6854-f056-ec60aefb99f4",
                 "AnimatorComponent": {
                     "controllerGUID": "baa80405-5c48-fba2-0cde-edc56c8d415d",
                     "m_PlaybackSpeed": 1.0,
@@ -8564,7 +8920,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "RangedEnemyPrefab.prefab",
+                    "prefabName": "",
                     "hide": false
                 },
                 "SkinnedMeshRendererComponent": {
@@ -8609,14 +8965,14 @@
                 }
             },
             {
-                "entityGUID": "a7090c00-6f48-7239-302b-fdf11f0204c9",
+                "entityGUID": "3cdbb96c-7cf9-7221-130c-8ad264e07021",
                 "NameComponent": {
                     "entityName": "Enemy Hurt VFX Position",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": true,
+                    "isPrefab": false,
                     "isStatic": false,
-                    "prefabName": "RangedEnemyPrefab.prefab",
+                    "prefabName": "",
                     "hide": false
                 },
                 "TransformComponent": {

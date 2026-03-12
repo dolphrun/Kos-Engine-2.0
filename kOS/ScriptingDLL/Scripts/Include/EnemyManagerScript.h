@@ -80,6 +80,97 @@ public:
 
 	bool applyDeferredLungeForce = false;
 	glm::vec3 deferredLungeForce = glm::vec3(0.f);
+	 
+	//ATTACK SFX
+	std::vector<utility::GUID>meleeEnemyAttackSfxGUID;
+	std::vector<utility::GUID>tankEnemyAttackSfxGUID;
+	std::vector<utility::GUID>rangeEnemyAttackSfxGUID;
+
+	//HURT SFX
+	std::vector<utility::GUID> meleeEnemyHurtSfxGUID;
+	std::vector<utility::GUID> rangedEnemyHurtSfxGUID;
+	std::vector<utility::GUID> tankEnemyHurtSfxGUID;
+
+	std::vector<utility::GUID> meleeEnemyDeathSfxGUID;
+	std::vector<utility::GUID> rangedEnemyDeathSfxGUID;
+	std::vector<utility::GUID> tankEnemyDeathSfxGUID;
+
+	std::vector<utility::GUID> tankShieldBlockSfxGUID;
+
+	inline utility::GUID GetAttackSFX()
+	{
+		std::vector<utility::GUID>* pool = nullptr;
+
+		if (enemyType == "Melee")
+			pool = &meleeEnemyAttackSfxGUID;
+
+		else if (enemyType == "Ranged")
+			pool = &rangeEnemyAttackSfxGUID;
+
+		else if (enemyType == "Tank")
+			pool = &tankEnemyAttackSfxGUID;
+
+		if (pool && !pool->empty())
+		{
+			int idx = rand() % static_cast<int>(pool->size());
+			return (*pool)[idx];
+		}
+
+		return utility::GUID{};
+	}
+
+	inline utility::GUID GetHurtSFX()
+	{
+		std::vector<utility::GUID>* pool = nullptr;
+
+		if (enemyType == "Melee")
+			pool = &meleeEnemyHurtSfxGUID;
+
+		else if (enemyType == "Ranged")
+			pool = &rangedEnemyHurtSfxGUID;
+
+		else if (enemyType == "Tank")
+			pool = &tankEnemyHurtSfxGUID;
+
+		if (pool && !pool->empty())
+		{
+			int idx = rand() % static_cast<int>(pool->size());
+			return (*pool)[idx];
+		}
+
+		return utility::GUID{};
+	}
+
+	inline utility::GUID GetDeathSFX()
+	{
+		std::vector<utility::GUID>* pool = nullptr;
+
+		if (enemyType == "Melee")
+			pool = &meleeEnemyDeathSfxGUID;
+
+		else if (enemyType == "Ranged")
+			pool = &rangedEnemyDeathSfxGUID;
+
+		else if (enemyType == "Tank")
+			pool = &tankEnemyDeathSfxGUID;
+
+		if (pool && !pool->empty())
+		{
+			int idx = rand() % static_cast<int>(pool->size());
+			return (*pool)[idx];
+		}
+
+		return utility::GUID{};
+	}
+
+	inline utility::GUID GetShieldBlockSFX()
+	{
+		if (tankShieldBlockSfxGUID.empty())
+			return utility::GUID{};
+
+		int idx = rand() % static_cast<int>(tankShieldBlockSfxGUID.size());
+		return tankShieldBlockSfxGUID[idx];
+	}
 
 	// Declarations Only
 	void Start() override;
@@ -91,7 +182,8 @@ public:
 
 	REFLECTABLE(EnemyManagerScript, enemyHealth, enemyMovementSpeed, enemyType, enemyAttackRange, enemyRangedAttackRange, enemyChaseRange, playerToChase, 
 		enemyHurtboxPrefab, enemyBulletPrefab, enemyHurtboxPosition, shieldHealth, shieldElement, shieldVisualObject, tankAoePrefab, isLunging, lungeDuration,
-		lungeForwardSpeed, lungeUpwardSpeed, lungeGravity, attackCooldown, enemyHurtVFXPrefab, enemyAttackSfxGUID,enemyWalkSfxGUID, enemyHurtSfxPool);
+		lungeForwardSpeed, lungeUpwardSpeed, lungeGravity, attackCooldown, enemyHurtVFXPrefab, enemyAttackSfxGUID,enemyWalkSfxGUID, enemyHurtSfxPool
+	, meleeEnemyAttackSfxGUID, rangeEnemyAttackSfxGUID, tankEnemyAttackSfxGUID, meleeEnemyHurtSfxGUID, rangedEnemyHurtSfxGUID, tankEnemyHurtSfxGUID, meleeEnemyDeathSfxGUID, rangedEnemyDeathSfxGUID, tankEnemyDeathSfxGUID, tankShieldBlockSfxGUID);
 };
 
 // --- IMPLEMENTATION ---
@@ -321,6 +413,8 @@ inline void EnemyManagerScript::Update() {
 				}
 
 			}
+
+
 		}
 		else if (enemyController->RetrieveStateByID(animComp->m_currentStateID)->name == "Crouching")
 		{
@@ -375,6 +469,24 @@ inline void EnemyManagerScript::Update() {
 					if (animComp->m_CurrentTime >= animDuration * 0.5f)
 					{
 						std::string stateName = enemyController->RetrieveStateByID(animComp->m_currentStateID)->name;
+
+						utility::GUID attackSfx = GetAttackSFX();
+
+						if (!attackSfx.Empty())
+						{
+							if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity))
+							{
+								for (auto& af : ac->audioFiles)
+								{
+									if (af.audioGUID == attackSfx && af.isSFX)
+									{
+										af.requestPlay = true;
+										break;
+									}
+								}
+							}
+						}
+
 						// SWITCH SPAWN BEHAVIOR BASED ON STRING
 						if (enemyType == "Ranged" && stateName == "Attacking")
 						{
@@ -533,69 +645,89 @@ inline void EnemyManagerScript::ApplyPushback(glm::vec3 dir, float force) {
 inline void EnemyManagerScript::TakeDamage(int damage, const std::string& element) {
 	if (isDead) return;
 
-	//Enemy Hurt sfx
-	if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-		std::vector<ecs::AudioFile*> hurtSfxMatches;
-
-		for (auto& af : ac->audioFiles) {
-			if (!af.isSFX) continue;
-
-			for (const auto& poolGUID : enemyHurtSfxPool) {
-				if (af.audioGUID == poolGUID) {
-					hurtSfxMatches.push_back(&af);
-					break;
-				}
-			}
-		}
-
-		//Random Play 
-		if (!hurtSfxMatches.empty()) {
-			int idx = rand() % static_cast<int>(hurtSfxMatches.size());
-			hurtSfxMatches[idx]->requestPlay = true;
-		}
-	}
-
-
-	if (shieldHealth > 0 && shieldElement != "NONE") {
-
-		if (element == shieldElement) {
+	if (shieldHealth > 0 && shieldElement != "NONE")
+	{
+		if (element == shieldElement)
+		{
 			shieldHealth -= damage;
 
-			if (shieldHealth <= 0) {
+			// PLAY SHIELD BLOCK SFX
+			utility::GUID blockSfx = GetShieldBlockSFX();
+
+			if (!blockSfx.Empty())
+			{
+				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity))
+				{
+					for (auto& af : ac->audioFiles)
+					{
+						if (af.audioGUID == blockSfx && af.isSFX)
+						{
+							af.requestPlay = true;
+							break;
+						}
+					}
+				}
+			}
+
+			if (shieldHealth <= 0)
+			{
 				shieldHealth = 0;
 
-				if (shieldVisualID != 0) {
+				if (shieldVisualID != 0)
+				{
 					ecsPtr->DeleteEntity(shieldVisualID);
 					shieldVisualID = 0;
 				}
 			}
+
+			return; // shield absorbed the hit, do NOT play normal hurt
 		}
-		else {
-			// Its just immune to the power, this else is only here cuz it was for a cout, might remove in the future
+		else
+		{
+			// Wrong element while shield is active:
+			// no HP damage, no normal hurt sound
+			return;
 		}
 	}
-	else {
-		std::shared_ptr<R_Scene> enemyHurtVFX = resource->GetResource<R_Scene>(enemyHurtVFXPrefab);
-		if (enemyHurtVFX) {
-			std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-			ecs::EntityID enemyHurtVFXID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyHurtVFXPrefab);
 
-			if (auto* enemyHurtVFXTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtVFXID)) {
-				if (auto* targetTf = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxPositionID)) {
-					enemyHurtVFXTransform->LocalTransformation.position = targetTf->WorldTransformation.position;
-				}
-				else {
-					// Fallback to the enemy's feet if the hurtbox position is missing to prevent crash
-					enemyHurtVFXTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(entity)->WorldTransformation.position;
+	// Enemy Hurt sfx
+	utility::GUID hurtSfx = GetHurtSFX();
+
+	if (!hurtSfx.Empty())
+	{
+		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity))
+		{
+			for (auto& af : ac->audioFiles)
+			{
+				if (af.audioGUID == hurtSfx && af.isSFX)
+				{
+					af.requestPlay = true;
+					break;
 				}
 			}
 		}
-		// Normal health damage (Shield is gone or never existed)
-		enemyHealth -= damage;
+	}
 
-		if (enemyHealth < 0) {
-			enemyHealth = 0;
+	std::shared_ptr<R_Scene> enemyHurtVFX = resource->GetResource<R_Scene>(enemyHurtVFXPrefab);
+	if (enemyHurtVFX) {
+		std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+		ecs::EntityID enemyHurtVFXID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyHurtVFXPrefab);
+
+		if (auto* enemyHurtVFXTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtVFXID)) {
+			if (auto* targetTf = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxPositionID)) {
+				enemyHurtVFXTransform->LocalTransformation.position = targetTf->WorldTransformation.position;
+			}
+			else {
+				// Fallback to the enemy's feet if the hurtbox position is missing to prevent crash
+				enemyHurtVFXTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(entity)->WorldTransformation.position;
+			}
 		}
+	}
+	// Normal health damage (Shield is gone or never existed)
+	enemyHealth -= damage;
+
+	if (enemyHealth < 0) {
+		enemyHealth = 0;
 	}
 }
 
@@ -612,7 +744,23 @@ inline void EnemyManagerScript::Die() {
 		enemyController->SetState("Death", animComp);
 	}
 
-	
+	utility::GUID deathSfx = GetDeathSFX();
+
+	if (!deathSfx.Empty())
+	{
+		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity))
+		{
+			for (auto& af : ac->audioFiles)
+			{
+				if (af.audioGUID == deathSfx && af.isSFX)
+				{
+					af.requestPlay = true;
+					break;
+				}
+			}
+		}
+	}
+
 
 	isDead = true;
 
