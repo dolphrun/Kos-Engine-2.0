@@ -1645,7 +1645,23 @@
                     "audioFiles": [
                         {
                             "audioGUID": "2a0dbdbb-d496-2457-2c1c-f2953b1eee58",
-                            "volume": 0.15000000596046448,
+                            "volume": 0.19200000166893005,
+                            "loop": true,
+                            "playOnStart": true,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": true,
+                            "isSFX": false,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "8530d606-2ec9-2a44-665d-b50a4a24153f",
+                            "volume": 0.37599998712539673,
                             "loop": true,
                             "playOnStart": true,
                             "hasPlayed": false,
@@ -1664,7 +1680,8 @@
                 "GameManager": {
                     "enemyObjectPrefab": "a3a69a24-9a78-f0fd-f0a9-744fc055ecb2",
                     "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1",
-                    "gameBGM": "2a0dbdbb-d496-2457-2c1c-f2953b1eee58"
+                    "gameBGM": "2a0dbdbb-d496-2457-2c1c-f2953b1eee58",
+                    "ambienceBGM": "8530d606-2ec9-2a44-665d-b50a4a24153f"
                 },
                 "NameComponent": {
                     "entityName": "Game Manager",
@@ -7383,7 +7400,7 @@
                     "pan": 0.0,
                     "isBGM": false,
                     "isSFX": true,
-                    "use3D": true,
+                    "use3D": false,
                     "minDistance": 1.0,
                     "maxDistance": 20.0,
                     "sourceType": 0,
@@ -7399,7 +7416,7 @@
                     "pan": 0.0,
                     "isBGM": false,
                     "isSFX": true,
-                    "use3D": true,
+                    "use3D": false,
                     "minDistance": 1.0,
                     "maxDistance": 20.0,
                     "sourceType": 0,
@@ -7597,7 +7614,7 @@
         },
         "children": [
             {
-                "entityGUID": "2481c1b3-6256-c9f1-4a9b-b1eaa530bbab",
+                "entityGUID": "25056bff-9671-7f24-c689-fa94ea7fa093",
                 "NameComponent": {
                     "entityName": "Enemy Hurtbox Position",
                     "Layer": 0,
@@ -7645,7 +7662,7 @@
                 }
             },
             {
-                "entityGUID": "44f6643b-841e-0a51-ad14-f65eb176305e",
+                "entityGUID": "c0e1744f-0796-a08d-8640-ee2f4e3bb1e2",
                 "AnimatorComponent": {
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
@@ -7705,7 +7722,7 @@
                 }
             },
             {
-                "entityGUID": "cbd75191-5745-2b14-0733-2490e726cab2",
+                "entityGUID": "77a9c1d0-3caa-8555-714e-be69d9df035a",
                 "NameComponent": {
                     "entityName": "Enemy Hurt VFX Position",
                     "Layer": 0,

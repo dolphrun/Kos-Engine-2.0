@@ -9,6 +9,7 @@ public:
 	ecs::EntityID enemySpawnpointID;
 
 	utility::GUID gameBGM;
+	utility::GUID ambienceBGM;
 
 	void Start() override {
 		// ADD SFX OF BGM HERE - NEED WAV BUT CODE HERE ALR
@@ -23,6 +24,17 @@ public:
 			}
 
 			enemySpawnpointID = ecsPtr->GetEntityIDFromGUID(enemySpawnpoint);
+		}
+
+		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+			for (auto& af : ac->audioFiles) {
+				if (af.audioGUID == ambienceBGM && af.isBGM) {
+					std::cout << "audio playing";
+					af.requestPlay = true;
+					break;
+				}
+			}
 		}
 	}
 	void Update() override {
@@ -41,5 +53,5 @@ public:
 		//}
 	}
 
-	REFLECTABLE(GameManager, enemyObjectPrefab, enemySpawnpoint, gameBGM)
+	REFLECTABLE(GameManager, enemyObjectPrefab, enemySpawnpoint, gameBGM, ambienceBGM)
 };
