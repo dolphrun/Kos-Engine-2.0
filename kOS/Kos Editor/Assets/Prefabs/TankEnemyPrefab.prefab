@@ -1,15 +1,23 @@
 [
     {
-        "entityGUID": "4be30933-2702-c78c-dc10-66bfad873e7f",
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
+        "entityGUID": "7f532598-d51d-0046-dc2b-f034a9df3542",
         "CapsuleColliderComponent": {
             "isTrigger": false,
             "capsule": {
                 "center": {
                     "x": 0.0,
-                    "y": 2.299999952316284,
+                    "y": 1.7000000476837158,
                     "z": 0.0
                 },
-                "radius": 1.0,
+                "radius": 1.7000000476837158,
                 "height": 5.0,
                 "capsuleDirection": 1
             }
@@ -18,7 +26,7 @@
             "enemyHealth": 60,
             "enemyMovementSpeed": 3.0,
             "enemyType": "Tank",
-            "enemyAttackRange": 3.0,
+            "enemyAttackRange": 6.0,
             "enemyRangedAttackRange": 15.0,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
@@ -34,7 +42,11 @@
             "lungeForwardSpeed": 12.0,
             "lungeUpwardSpeed": 5.0,
             "lungeGravity": 15.0,
-            "attackCooldown": 2.0
+            "attackCooldown": 2.0,
+            "enemyHurtVFXPrefab": "06c198bd-19c0-0432-e746-c72bbca505e7",
+            "enemyAttackSfxGUID": "00000000-0000-0000-0000-000000000000",
+            "enemyWalkSfxGUID": "00000000-0000-0000-0000-000000000000",
+            "enemyHurtSfxPool": []
         },
         "NameComponent": {
             "entityName": "TankEnemyPrefab",
@@ -42,7 +54,7 @@
             "entityTag": "Enemy",
             "isPrefab": true,
             "isStatic": false,
-            "prefabName": "TankEnemyPrefab_1.prefab",
+            "prefabName": "TankEnemyPrefab.prefab",
             "hide": false
         },
         "RigidbodyComponent": {
@@ -69,9 +81,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": -9.0,
-                    "y": 27.0,
-                    "z": 5.0
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -86,9 +98,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": -9.0,
-                    "y": 27.0,
-                    "z": 5.0
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -104,7 +116,7 @@
         },
         "children": [
             {
-                "entityGUID": "949b0adf-b7cc-4763-c544-0756ca213ef9",
+                "entityGUID": "e49bcae4-4305-5a0b-bcd2-1fe9fd2d70d2",
                 "NameComponent": {
                     "entityName": "Enemy Hurtbox Position",
                     "Layer": 0,
@@ -117,9 +129,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -9.0,
-                            "y": 28.5,
-                            "z": 6.0
+                            "x": 0.0,
+                            "y": 1.5,
+                            "z": 1.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -152,7 +164,7 @@
                 }
             },
             {
-                "entityGUID": "f5be72a0-01a8-54d6-1ddb-2e0fb963dd53",
+                "entityGUID": "b904705a-cf94-d511-a0f2-bb1ae7ee3298",
                 "AnimatorComponent": {
                     "controllerGUID": "a8151059-f46f-1edd-8b81-a36f705c15fb",
                     "m_PlaybackSpeed": 1.0,
@@ -177,9 +189,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -9.0,
-                            "y": 27.0,
-                            "z": 5.0
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -212,7 +224,7 @@
                 }
             },
             {
-                "entityGUID": "5892433a-604a-494e-91b2-4f8044f9e166",
+                "entityGUID": "298df94b-046c-554c-20bb-d7ccc99a7dbd",
                 "NameComponent": {
                     "entityName": "Tank Shield Fire",
                     "Layer": 0,
@@ -225,9 +237,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -9.0,
-                            "y": 27.0,
-                            "z": 5.0
+                            "x": 0.0,
+                            "y": 2.0,
+                            "z": 0.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -243,7 +255,7 @@
                     "LocalTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 0.0,
+                            "y": 2.0,
                             "z": 0.0
                         },
                         "rotation": {
@@ -260,7 +272,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "97bc10a5-9326-a016-e126-ec50b9d34bdf",
+                        "entityGUID": "1f872af6-420c-1fd7-02a2-e1bb4a163c87",
                         "NameComponent": {
                             "entityName": "Tank Shield Fire Particles",
                             "Layer": 0,
@@ -446,9 +458,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": -9.0,
-                                    "y": 27.079551696777344,
-                                    "z": 5.0
+                                    "x": 0.0,
+                                    "y": 2.0795516967773438,
+                                    "z": 0.0
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -481,7 +493,7 @@
                         }
                     },
                     {
-                        "entityGUID": "56430d91-edc3-da8e-17e8-fd5f9556f39d",
+                        "entityGUID": "e669c831-cc7a-4b62-ec6d-d494bc8b9de3",
                         "NameComponent": {
                             "entityName": "Tank Shield Fire Particles",
                             "Layer": 0,
@@ -667,9 +679,9 @@
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": -9.0,
-                                    "y": 27.0,
-                                    "z": 5.0
+                                    "x": 0.0,
+                                    "y": 2.0,
+                                    "z": 0.0
                                 },
                                 "rotation": {
                                     "x": 0.0,
