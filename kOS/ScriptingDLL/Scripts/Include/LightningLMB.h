@@ -29,12 +29,14 @@ public:
 	utility::GUID enemyDeathSfxGUID_3;
 	std::vector<utility::GUID> enemyDeathSfxGUIDs;
 
+	utility::GUID lightningExplodeSfx;
+
 	// Declarations Only (Implementation at the bottom)
 	void Start() override;
 	void Update() override;
 	void PlayRandomEnemyDeathSFX();
 
-	REFLECTABLE(LightningLMB, lightningLMBDamage, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3)
+	REFLECTABLE(LightningLMB, lightningLMBDamage, enemyDeathSfxGUID_1, enemyDeathSfxGUID_2, enemyDeathSfxGUID_3, lightningExplodeSfx)
 };
 
 // --- IMPLEMENTATION SECTION ---
@@ -71,6 +73,16 @@ inline void LightningLMB::Start() {
 				enemyScript->lightningStack += lightningLMBDamage;
 			}
 			else {
+				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+					for (auto& af : ac->audioFiles) {
+						if (af.audioGUID == lightningExplodeSfx && af.isSFX) {
+							af.requestPlay = true;
+							break;
+						}
+					}
+				}
+
 				// EXPLOSION DAMAGE
 				enemyScript->TakeDamage(explodeDamage, "LIGHTNING");
 				enemyScript->lightningStack = 0;

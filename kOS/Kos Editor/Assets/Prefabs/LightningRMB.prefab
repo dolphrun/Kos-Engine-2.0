@@ -278,6 +278,26 @@
             },
             {
                 "entityGUID": "a74c2ad6-f85b-844e-5fca-a95a75d7d399",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "838f8cff-ba60-e483-8bfe-8f7e210b8e7f",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
                 "BoxColliderComponent": {
                     "isTrigger": true,
                     "box": {
@@ -299,7 +319,7 @@
                     "enemyDeathSfxGUID_1": "00000000-0000-0000-0000-000000000000",
                     "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
                     "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000",
-                    "lightningStrikeSfxGUID": "00000000-0000-0000-0000-000000000000"
+                    "lightningStrikeSfxGUID": "838f8cff-ba60-e483-8bfe-8f7e210b8e7f"
                 },
                 "NameComponent": {
                     "entityName": "LightningRMB Logic",

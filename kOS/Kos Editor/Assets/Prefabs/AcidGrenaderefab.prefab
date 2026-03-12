@@ -18,7 +18,28 @@
             "enemyDeathSfxGUID_1": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000",
+            "grenadeExplosionSfxGUID": "e97611c8-a84b-1d28-4f75-a680cfe43468",
             "gasCloudPrefab": "f123bd14-0bf8-cdc4-0687-96c7a1652735"
+        },
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "e97611c8-a84b-1d28-4f75-a680cfe43468",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
         },
         "MaterialComponent": {
             "materialGUID": [

@@ -9,11 +9,32 @@
     },
     {
         "entityGUID": "f0ff40c3-d6c9-5865-f10b-5bd49a235808",
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "90383689-b903-8ee5-8910-dd25604d4318",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
+        },
         "LightningLMB": {
             "lightningLMBDamage": 1,
             "enemyDeathSfxGUID_1": "314ec378-2be3-9009-8894-a86884eb7ccf",
             "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
-            "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000"
+            "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000",
+            "lightningExplodeSfx": "90383689-b903-8ee5-8910-dd25604d4318"
         },
         "NameComponent": {
             "entityName": "RailGunPrefab",
@@ -266,7 +287,16 @@
                         }
                     },
                     "emissionInterval": 0.0010000000474974513,
-                    "no_Of_Particles": 20
+                    "no_Of_Particles": 20,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -478,7 +508,16 @@
                         }
                     },
                     "emissionInterval": 0.0010000000474974513,
-                    "no_Of_Particles": 20
+                    "no_Of_Particles": 20,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -690,7 +729,16 @@
                         }
                     },
                     "emissionInterval": 0.0010000000474974513,
-                    "no_Of_Particles": 10
+                    "no_Of_Particles": 10,
+                    "dynamicTrailingEnabled": false,
+                    "trail_Color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "trailLifeTime": 2.0,
+                    "trailWidth": 0.20000000298023224
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
