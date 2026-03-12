@@ -284,6 +284,9 @@ public:
 	}
 
 	inline void StartReload() {
+		if (playerPowerupHeld != Powerup::NONE)
+			return;
+
 		if (isReloading) return;
 
 		int& curr = GetCurrBulletsForCurrentWeapon();
@@ -581,7 +584,7 @@ inline void PlayerManagerScript::Update() {
 
 
 	// R to manual relod
-	if (Input->IsKeyTriggered(keys::R)) {
+	if (Input->IsKeyTriggered(keys::R) && playerPowerupHeld == Powerup::NONE) {
 		StartReload();
 	}
 
@@ -1751,10 +1754,10 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 		int& currBullets = GetCurrBulletsForCurrentWeapon();
 		if (currBullets <= 0) {
-			if (autoReload) StartReload();
+			if (autoReload && playerPowerupHeld == Powerup::NONE)
+				StartReload();
 			return;
 		}
-
 		currBullets -= 1;
 		cd = GetShootCooldownForCurrentWeapon();
 
@@ -1791,12 +1794,12 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 		float& cd = GetCurrShootCooldownForCurrentWeapon();
 		if (cd > 0.0f) return;
+		cd = GetShootCooldownForCurrentWeapon(); // cooldown only, no ammo
 
-		int& currBullets = GetCurrBulletsForCurrentWeapon();
-		if (currBullets <= 0) return; // No auto reload for powerups
+		//int& currBullets = GetCurrBulletsForCurrentWeapon();
+		//if (currBullets <= 0) return; // No auto reload for powerups
 
-		currBullets -= 1;
-		cd = GetShootCooldownForCurrentWeapon();
+		//currBullets -= 1;
 
 		 if (playerPowerupHeld == Powerup::FIRE) {
 

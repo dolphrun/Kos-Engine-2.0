@@ -6,6 +6,7 @@ Shader* ChromaticAberration::currentShader{ nullptr };
 Shader* Blur::currentShader{ nullptr };
 Shader* Bloom::downSamplingShader{ nullptr };
 Shader* Bloom::upSamplingShader{nullptr};
+Shader* Bloom::bloomShader{ nullptr };
 glm::vec2 PostProcessEffect::screenResolution{ 1920.f,1080.f };
 Vigniette::Vigniette()
 	: intensity(0.0f),

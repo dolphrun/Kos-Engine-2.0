@@ -1008,4 +1008,22 @@ void NavMeshManager::RemoveAllAgent() {
     agentData.clear();
 }
 
+void NavMeshManager::AgentSetActive(int& agentID, bool state, glm::vec3 pos) {
+    auto tm = navMeshData.find(currentScene);
+    if (tm == navMeshData.end()) {
+        return;
+    }
+    dtCrowd* crowd = tm->second->m_crowd;
+    auto ag = crowd->getEditableAgent(agentID);
+    if (ag == nullptr) {
+        return;
+    }
+    ag->active = state;
+
+    if (state) {
+        ag->npos[0] = pos.x;
+        ag->npos[1] = pos.y;
+        ag->npos[2] = pos.z;
+    }
+}
 #undef TM_LOG
