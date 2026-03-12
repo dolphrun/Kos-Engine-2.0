@@ -353,7 +353,7 @@
                 },
                 "SkinnedMeshRendererComponent": {
                     "skinnedMeshGUID": "0c44c479-520e-8c24-acf1-0ef17cfe8e58",
-                    "materialGUID": "23e7b1cb-3d50-e7e5-20f9-515b8bddebf5"
+                    "materialGUID": "f1b9bde6-c466-e0fd-0906-2f78d0241c5b"
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
