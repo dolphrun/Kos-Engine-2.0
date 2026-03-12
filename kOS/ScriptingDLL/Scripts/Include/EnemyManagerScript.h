@@ -73,8 +73,6 @@ public:
 	bool attackHurtboxIsSpawn = false;
 
 	utility::GUID enemyHurtVFXPrefab;
-	utility::GUID enemyHurtVFXPosition;
-	ecs::EntityID enemyHurtVFXPositionID;
 
 	utility::GUID enemyAttackSfxGUID;
 	utility::GUID enemyWalkSfxGUID;
@@ -93,7 +91,7 @@ public:
 
 	REFLECTABLE(EnemyManagerScript, enemyHealth, enemyMovementSpeed, enemyType, enemyAttackRange, enemyRangedAttackRange, enemyChaseRange, playerToChase, 
 		enemyHurtboxPrefab, enemyBulletPrefab, enemyHurtboxPosition, shieldHealth, shieldElement, shieldVisualObject, tankAoePrefab, isLunging, lungeDuration,
-		lungeForwardSpeed, lungeUpwardSpeed, lungeGravity, attackCooldown, enemyHurtVFXPrefab, enemyHurtVFXPosition, enemyAttackSfxGUID,enemyWalkSfxGUID, enemyHurtSfxPool);
+		lungeForwardSpeed, lungeUpwardSpeed, lungeGravity, attackCooldown, enemyHurtVFXPrefab, enemyAttackSfxGUID,enemyWalkSfxGUID, enemyHurtSfxPool);
 };
 
 // --- IMPLEMENTATION ---
@@ -122,8 +120,6 @@ inline void EnemyManagerScript::Start() {
 			shieldVisualID = children[2];
 		}
 	}
-
-	enemyHurtVFXPositionID = ecsPtr->GetEntityIDFromGUID(enemyHurtVFXPosition);
 
 	//enemyModelID = ecsPtr->GetEntityIDFromGUID(enemyModel);
 	if (animComp = ecsPtr->GetComponent<ecs::AnimatorComponent>(enemyModelID))
@@ -499,6 +495,8 @@ inline void EnemyManagerScript::Update() {
 }
 
 inline void EnemyManagerScript::TriggerStagger(float duration) {
+	if (isDead) return;
+
 	// Prevent engine crash: Don't remove NavMesh if already lunging!
 	if (!isStaggered && !isLunging) {
 		navMeshPtr->AgentSetActive(agentid, false);
@@ -524,6 +522,8 @@ inline void EnemyManagerScript::TriggerStagger(float duration) {
 }
 
 inline void EnemyManagerScript::ApplyPushback(glm::vec3 dir, float force) {
+	if (isDead) return;
+
 	glm::vec3 flatDir = dir;
 	flatDir.y = 0.f;
 	if (glm::length(flatDir) > 0.001f) flatDir = glm::normalize(flatDir);
@@ -531,7 +531,8 @@ inline void EnemyManagerScript::ApplyPushback(glm::vec3 dir, float force) {
 }
 
 inline void EnemyManagerScript::TakeDamage(int damage, const std::string& element) {
-	
+	if (isDead) return;
+
 	//Enemy Hurt sfx
 	if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 		std::vector<ecs::AudioFile*> hurtSfxMatches;
@@ -579,10 +580,16 @@ inline void EnemyManagerScript::TakeDamage(int damage, const std::string& elemen
 			std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 			ecs::EntityID enemyHurtVFXID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyHurtVFXPrefab);
 
-			if (auto* enemyHurtVFXTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtVFXID))
-				enemyHurtVFXTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(enemyHurtVFXPositionID)->WorldTransformation.position;
+			if (auto* enemyHurtVFXTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtVFXID)) {
+				if (auto* targetTf = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxPositionID)) {
+					enemyHurtVFXTransform->LocalTransformation.position = targetTf->WorldTransformation.position;
+				}
+				else {
+					// Fallback to the enemy's feet if the hurtbox position is missing to prevent crash
+					enemyHurtVFXTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(entity)->WorldTransformation.position;
+				}
+			}
 		}
-
 		// Normal health damage (Shield is gone or never existed)
 		enemyHealth -= damage;
 
