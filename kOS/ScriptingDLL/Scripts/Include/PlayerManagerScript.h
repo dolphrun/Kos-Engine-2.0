@@ -247,8 +247,8 @@ public:
 	ecs::EntityID lightningModelObjectID = 0;
 	ecs::EntityID fireSwordModelID = 0;
 
-	// Weapon swapp ANIM state
-	Powerup pendingPowerup = Powerup::NONE;
+	ecs::EntityID currentModelID = 0;
+
 
 	inline int GetMaxBulletsForCurrentWeapon() const {
 		switch (playerPowerupHeld) {
@@ -443,6 +443,8 @@ inline void PlayerManagerScript::Start() {
 	if (lightningModelObjectID != 0) ecsPtr->SetActive(lightningModelObjectID, false);
 	if (acidModelObjectID != 0) ecsPtr->SetActive(acidModelObjectID, false);
 
+	currentModelID = pistolModelID;
+
 
 	currPlayerHitPoints = maxPlayerHitPoints;
 	currPlayerMovSpeed = maxPlayerMovSpeed;
@@ -460,16 +462,12 @@ inline void PlayerManagerScript::Start() {
 	loseScreenCanvasID = ecsPtr->GetEntityIDFromGUID(loseScreenCanvasObject);
 	winScreenCanvasID = ecsPtr->GetEntityIDFromGUID(winScreenCanvasObject);
 
-	std::vector<EntityID> armChild = ecsPtr->GetChild(playerArmModelObjectID).value();
-	if (animComp = ecsPtr->GetComponent<ecs::AnimatorComponent>(armChild[0]))
+	//std::vector<EntityID> armChild = ecsPtr->GetChild(playerArmModelObjectID).value();
+	if (animComp = ecsPtr->GetComponent<ecs::AnimatorComponent>(pistolModelID))
 	{
 		playerController = resource->GetResource<R_AnimController>(animComp->controllerGUID).get();
 		if (playerController)
 		{
-			// COMMENTED OUT FOR ANIM
-			/*currAnimationState = *playerController->m_EnterState;
-			anim->m_currentState = &currAnimationState;
-			static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");*/
 			animComp->m_currentStateID = playerController->m_EnterState->id;
 			if (auto* currAnimState = playerController->RetrieveStateByID(animComp->m_currentStateID))
 				currAnimState->Trigger("ForcedEntry", animComp, playerController);
@@ -480,14 +478,14 @@ inline void PlayerManagerScript::Start() {
 }
 
 inline void PlayerManagerScript::Update() {
-	//auto* camTf = ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID);
-	//if (camTf) {
-	//	audioSystem->SetListener(
-	//		camTf->WorldTransformation.position,  // ✅ correct position
-	//		GetPlayerCameraFrontDirection(),       // ✅ use your existing helper
-	//		GetPlayerCameraUpDirection()           // ✅ use your existing helper
-	//	);
-	//}
+
+	
+
+	if (animComp = ecsPtr->GetComponent<ecs::AnimatorComponent>(currentModelID))
+	{
+		playerController = resource->GetResource<R_AnimController>(animComp->controllerGUID).get();
+	};
+
 	if (Input->IsKeyTriggered(keys::L)) {
 		//std::cout << "L RELEASED\n";
 		Scenes->ReloadScene();
@@ -1505,6 +1503,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 		if (currMana <= 0.0f){
 			currMana = 0.0f;
 			SwapWeaponModel(Powerup::NONE);
+			///PLAY SWAP TO DEFAULT WEAPON ANIMATION HERE
 			playerPowerupHeld = Powerup::NONE;
 			pendingPowerup = Powerup::NONE;
 		}
@@ -1694,14 +1693,17 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			if (animComp && animComp->m_currentStateID) {
 				if (fireSlashComboCount == 1) {
 					// TODO: FIRE SLASH ANIM 1
+						playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("FirstSlash", animComp, playerController);
 				}
 				else if (fireSlashComboCount == 2) {
 					// TODO: FIRE SLASH ANIM 2
+						playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("SecondSlash", animComp, playerController);
 				}
 				else if (fireSlashComboCount == 3) {
 					// TODO: FIRE SLASH ANIMA 3
 					fireSlashComboCount = 0;
 					fireCurrComboTimer = 0.f;
+						playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("ThirdSlash", animComp, playerController);
 				}
 			}
 
@@ -1799,6 +1801,10 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				}
 			}
 			// ADD SFX
+
+			///ADD ACID LEFT CLICK ANIMATION HERE
+			if (animComp && animComp->m_currentStateID)
+				playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AcidShot", animComp, playerController);
 }
 
 		else if (playerPowerupHeld == Powerup::LIGHTNING) {
@@ -1827,7 +1833,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				}
 			}
 
-
+			if (animComp && animComp->m_currentStateID)
+				playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("LightningShot", animComp, playerController);
 
 		}
 	}
@@ -1850,6 +1857,9 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				}
 
 				currMana -= fireAbilityCost;
+
+
+				///ADD FIRE RIGHT CLICK ANIMATION HERE
 			}
 
 			// ADD SFX
@@ -1909,6 +1919,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 				currMana -= acidAbilityCost;
 
+				/// ADD ACID RIGHT CLOCK ANIMATION HERE
+
 				std::cout << "[AirBlast] Spawned | Mana left: " << currMana << "\n";
 			}
 
@@ -1954,6 +1966,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				}
 
 				currMana -= lightningAbilityCost;
+
+				///ADD LIGHTNING RIGHT CLOCK ANIMATION HERE
 			}
 
 			// ADD SFX
@@ -2135,24 +2149,27 @@ inline void  PlayerManagerScript::SwapWeaponModel(Powerup newPowerup) {
 		ecsPtr->SetActive(fireSwordModelID, true);
 		ecsPtr->SetActive(lightningModelObjectID, false);
 		ecsPtr->SetActive(acidModelObjectID, false);
+		currentModelID = fireSwordModelID;
 	}
 	else if (newPowerup == Powerup::ACID) {
 		ecsPtr->SetActive(pistolModelID, false);
 		ecsPtr->SetActive(fireSwordModelID, false);
 		ecsPtr->SetActive(lightningModelObjectID, false);
 		ecsPtr->SetActive(acidModelObjectID, true);
-
+		currentModelID = acidModelObjectID;
 	}
 	else if (newPowerup == Powerup::LIGHTNING) {
 		ecsPtr->SetActive(pistolModelID, false);
 		ecsPtr->SetActive(fireSwordModelID, false);
 		ecsPtr->SetActive(lightningModelObjectID, true);
 		ecsPtr->SetActive(acidModelObjectID, false);
+		currentModelID = lightningModelObjectID;
 	}
 	else {
 		ecsPtr->SetActive(pistolModelID, true);
 		ecsPtr->SetActive(fireSwordModelID, false);
 		ecsPtr->SetActive(lightningModelObjectID, false);
 		ecsPtr->SetActive(acidModelObjectID, false);
+		currentModelID = pistolModelID;
 	}
 }

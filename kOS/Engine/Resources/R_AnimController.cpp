@@ -64,3 +64,12 @@ AnimState* R_AnimController::RetrieveEntryState()
 
     return nullptr;
 }
+
+AnimState* R_AnimController::FindStateByName(const std::string& name)
+{
+    for (auto& state : m_AnimControllerData.states)
+    {
+        if (state.name == name) return &state;
+    }
+    return nullptr;
+}

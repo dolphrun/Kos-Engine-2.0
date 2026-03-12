@@ -126,10 +126,6 @@ inline void EnemyManagerScript::Start() {
 		enemyController = resource->GetResource<R_AnimController>(animComp->controllerGUID).get();
 		if (enemyController)
 		{
-			// COMMENTED OUT FOR ANIM
-			/*currAnimationState = *enemyController->m_EnterState;
-			anim->m_currentState = &currAnimationState;
-			static_cast<AnimState*>(anim->m_currentState)->SetTrigger("ForcedEntry");*/
 			animComp->m_currentStateID = enemyController->m_EnterState->id;
 			if (auto* currAnimState = enemyController->RetrieveStateByID(animComp->m_currentStateID))
 				currAnimState->Trigger("ForcedEntry", animComp, enemyController);
@@ -147,14 +143,7 @@ inline void EnemyManagerScript::Update() {
 		return;
 	}
 
-	//Copy state from controller
-	if (enemyController)
-	{
-		//if (anim->m_currentState != &currAnimationState) {
-		//	currAnimationState = *static_cast<AnimState*>(anim->m_currentState);
-		//	anim->m_currentState = &currAnimationState;
-		//}
-	}
+	
 
 	//Entity deletion fix for animation
 	animComp = ecsPtr->GetComponent<ecs::AnimatorComponent>(enemyModelID);
@@ -166,7 +155,8 @@ inline void EnemyManagerScript::Update() {
 			if (animComp->m_currentStateID) {
 				if (R_Animation* currAnim = resource->GetResource<R_Animation>(enemyController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get()) {
 					float animDuration = currAnim->GetDuration();
-					if (animComp->m_CurrentTime >= animDuration) {
+					if (animComp->m_CurrentTime >= anim
+) {
 						ecsPtr->DeleteEntity(entity);
 					}
 				}
@@ -311,14 +301,6 @@ inline void EnemyManagerScript::Update() {
 			enemyIsAttacking = true;
 			if (animComp)
 			{
-				// COMMENTED OUT FOR ANIM
-				/*
-				if (anim->m_currentState)
-				{
-					//This will transition into attacking state
-					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("AttackingPlayer");
-				}
-				*/
 				if (animComp->m_currentStateID)
 				{
 					enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AttackingPlayer", animComp, enemyController);
@@ -366,10 +348,11 @@ inline void EnemyManagerScript::Update() {
 
 					//CHECK IF ANIMATION OF THE ENEMY IS AFTER THE ENEMY CLAWED OR SOME SHIT(e.g: ANIMATION TIMER IS AT 2s MARK
 					//Simulating 2 secconds, you might wanna change this
-					if (animComp->m_CurrentTime >= animDuration * 0.5f && enemyController->RetrieveStateByID(animComp->m_currentStateID)->name == "Attacking")
+					if (animComp->m_CurrentTime >= animDuration * 0.5f)
 					{
+						std::string stateName = enemyController->RetrieveStateByID(animComp->m_currentStateID)->name;
 						// SWITCH SPAWN BEHAVIOR BASED ON STRING
-						if (enemyType == "Ranged")
+						if (enemyType == "Ranged" && stateName == "Attacking")
 						{
 							// Ranged: Spawn Bullet
 							std::shared_ptr<R_Scene> bullet = resource->GetResource<R_Scene>(enemyBulletPrefab);
@@ -388,7 +371,7 @@ inline void EnemyManagerScript::Update() {
 								}
 							}
 						}
-						else if (enemyType == "Tank") {
+						else if (enemyType == "Tank" && stateName == "Attacking") {
 							std::shared_ptr<R_Scene> tankAOE = resource->GetResource<R_Scene>(tankAoePrefab);
 							if (tankAOE) {
 								std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
@@ -408,7 +391,7 @@ inline void EnemyManagerScript::Update() {
 								}
 							}
 						}
-						else
+						else if (stateName == "Crouching")
 						{
 							// Melee lunge logic
 							isLunging = true;
@@ -445,9 +428,9 @@ inline void EnemyManagerScript::Update() {
 								}
 							}
 
-							// --- JUMP ANIM TRIGGER ---
+							// --- LUNGE ANIM TRIGGER ---
 							if (animComp && animComp->m_currentStateID) {
-								enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("Jump", animComp, enemyController);
+								enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("Lunge", animComp, enemyController);
 							}
 						}
 
@@ -465,20 +448,10 @@ inline void EnemyManagerScript::Update() {
 			// ADD ENEMY RUNNING ANIMATION
 			if (animComp)
 			{
-				// COMMENTED OUT FOR ANIM
-				/*
-				if (anim->m_currentState)
-				{
-					//This will transition into chasing state
-					static_cast<AnimState*>(anim->m_currentState)->SetTrigger("PlayerDetected");
-				}
-				*/
 				if (animComp->m_currentStateID)
 				{
 					enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("PlayerDetected", animComp, enemyController);
 				}
-
-
 			}
 		}
 	}
@@ -499,6 +472,14 @@ inline void EnemyManagerScript::TriggerStagger(float duration) {
 	currentStaggerTimer = duration;
 
 	// ADD STAGGER ANIM HERE
+	if (animComp)
+	{
+		if (animComp->m_currentStateID)
+		{
+			//enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("Staggered", animComp, enemyController);
+			enemyController->PlayOverlay("Stagger", animComp, 0.2f, 0.8f);
+		}
+	}
 
 	enemyIsAttacking = false;
 	attackHurtboxIsSpawn = false;
@@ -577,6 +558,16 @@ inline void EnemyManagerScript::Die() {
 	if (isDead) return;
 
 	// ADD DEATH ANIM HERE
+	if (animComp)
+	{
+		/*if (animComp->m_currentStateID)
+		{
+			enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("Dead", animComp, enemyController);
+		}*/
+		enemyController->SetState("Death", animComp);
+	}
+
+	
 
 	isDead = true;
 

@@ -154,7 +154,7 @@
             {
                 "entityGUID": "f5be72a0-01a8-54d6-1ddb-2e0fb963dd53",
                 "AnimatorComponent": {
-                    "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
+                    "controllerGUID": "a8151059-f46f-1edd-8b81-a36f705c15fb",
                     "m_PlaybackSpeed": 1.0,
                     "m_CurrentTime": 9.439529418945313,
                     "m_IsPlaying": true,

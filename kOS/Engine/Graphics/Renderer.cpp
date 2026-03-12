@@ -240,10 +240,59 @@ void SkinnedMeshRenderer::Update() {
 	for (std::vector<SkinnedMeshData>& meshData : skinnedMeshesToDraw) {
 		for (SkinnedMeshData& mesh : meshData)
 		{
-			if (mesh.animationToUse) {
+			/*if (mesh.animationToUse) {
 				size_t boneCount = mesh.meshToUse->GetBoneInfo().size();
 				mesh.finalBoneMatrices.resize(boneCount, glm::mat4(1.0f));
 				mesh.animationToUse->Update(mesh.currentDuration, glm::mat4(1.f), glm::mat4(1.f), mesh.meshToUse->GetBoneMap(), mesh.meshToUse->GetBoneInfo(), mesh.finalBoneMatrices);
+			}*/
+			if (!mesh.animationToUse) continue;
+
+			size_t boneCount = mesh.meshToUse->GetBoneInfo().size();
+			mesh.finalBoneMatrices.resize(boneCount, glm::mat4(1.0f));
+
+			// Base animation — unchanged from your original
+			mesh.animationToUse->Update(
+				mesh.currentDuration, glm::mat4(1.f), glm::mat4(1.f),
+				mesh.meshToUse->GetBoneMap(),
+				mesh.meshToUse->GetBoneInfo(),
+				mesh.finalBoneMatrices);
+
+			// No overlay active
+			if (!mesh.overlayAnimation || mesh.overlayWeight <= 0.f) continue;
+
+			std::vector<glm::mat4> overlayMatrices(boneCount, glm::mat4(1.0f));
+			mesh.overlayAnimation->Update(
+				mesh.overlayTime, glm::mat4(1.f), glm::mat4(1.f),
+				mesh.meshToUse->GetBoneMap(),
+				mesh.meshToUse->GetBoneInfo(),
+				overlayMatrices);
+
+			// Build mask flags once before the blend loop
+			const auto& boneMap = mesh.meshToUse->GetBoneMap();
+			bool hasMask = !mesh.overlayBoneMask.empty();
+			std::vector<bool> boneInMask(boneCount, true);
+
+			if (hasMask)
+			{
+				// Default all bones to excluded
+				std::fill(boneInMask.begin(), boneInMask.end(), false);
+
+				// Only mark bones that are in the mask list
+				for (const std::string& boneName : mesh.overlayBoneMask)
+				{
+					auto it = boneMap.find(boneName);
+					if (it != boneMap.end() && it->second < boneCount)
+						boneInMask[it->second] = true;
+				}
+			}
+
+			float base = 1.0f - mesh.overlayWeight;
+			for (size_t i = 0; i < boneCount; i++)
+			{
+				if (!boneInMask[i]) continue;  // skip bones not in mask
+
+				mesh.finalBoneMatrices[i] = (mesh.finalBoneMatrices[i] * base)
+					+ (overlayMatrices[i] * mesh.overlayWeight);
 			}
 		}
 	}

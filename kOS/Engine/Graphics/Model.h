@@ -42,7 +42,11 @@ struct SkinnedMeshData
 {
     R_Model* meshToUse{ nullptr };
     R_Animation* animationToUse{ nullptr };
-    std::shared_ptr <PBRMaterialList> meshMaterial;
+    R_Animation* overlayAnimation{ nullptr };
+    float overlayTime{ 0.f };
+    float overlayWeight{ 0.f };
+    std::vector<std::string> overlayBoneMask;
+    std::shared_ptr<PBRMaterialList> meshMaterial;
     glm::mat4 transformation{ 1.f };
     float currentDuration{};
     int entityID{ -1 };

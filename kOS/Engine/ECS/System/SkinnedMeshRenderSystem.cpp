@@ -54,6 +54,10 @@ namespace ecs
             R_Model *mesh{};
             R_Animation *animation{};
             R_AnimController* controller{};
+            R_Animation* overlayAnimation{};
+            float        overlayTime{ 0.f };
+            float        overlayWeight{ 0.f };
+            std::vector<std::string> overlayBoneMask{};
             // if (skinnedMesh->cachedSkinnedMeshGUID != skinnedMesh->skinnedMeshGUID)
             {
 
@@ -76,6 +80,16 @@ namespace ecs
                     //anim->m_currentState = controller->m_EnterState;
                    if (anim->m_currentStateID)
                         animation = m_resourceManager.GetResource<R_Animation>(controller->RetrieveStateByID(anim->m_currentStateID)->animationGUID).get();
+                   if (anim->m_overlayStateID)
+                   {
+                       if (AnimState* overlayState = controller->RetrieveStateByID(anim->m_overlayStateID))
+                       {
+                           overlayAnimation = m_resourceManager.GetResource<R_Animation>(overlayState->animationGUID).get();
+                           overlayTime = anim->m_overlayTime;
+                           overlayWeight = anim->m_overlayWeight;
+                           overlayBoneMask = anim->m_overlayBoneMask;
+                       }
+                   }
                 }
                     
                 std::vector<PBRMaterial>pbrTmpList;
@@ -89,7 +103,15 @@ namespace ecs
                 
 
                 if (mesh)
-                    m_graphicsManager.gm_PushSkinnedMeshData(SkinnedMeshData{mesh, animation, std::make_shared<PBRMaterialList>(pbrTmpList,true), transform->transformation, anim->m_CurrentTime, id, std::vector<glm::mat4>()}, nameComp->Layer);
+                    m_graphicsManager.gm_PushSkinnedMeshData(SkinnedMeshData{
+                   mesh, animation, overlayAnimation,
+                   overlayTime, overlayWeight,
+                   overlayBoneMask,
+                   std::make_shared<PBRMaterialList>(pbrTmpList, true),
+                   transform->transformation,
+                   anim->m_CurrentTime, id,
+                   std::vector<glm::mat4>()
+                                    }, nameComp->Layer);
             }
             // else
             //  mesh = static_cast<R_Model*>(skinnedMesh->cachedSkinnedMeshResource);

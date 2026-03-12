@@ -77,22 +77,7 @@ struct AnimState {
 
     std::vector<AnimTransition> outgoingTransitions;
     AnimState* anyState = nullptr;
-
-
-    // Parameter storage for the state
-    ///Change this to vector, hashing is causing weird behaviour
-    //std::unordered_map<std::string, AnimCondition> parameterMap;
-
     
-
-
-    // Setters for different condition types
-    //void CheckExistence(const std::string& name) { if (!parameterMap.contains(name)) parameterMap[name] = {}; };
-    //void SetBool(const std::string& name, bool v) { CheckExistence(name);  parameterMap[name].boolValue = v; }
-    //void SetTrigger(const std::string& name) { CheckExistence(name); parameterMap[name].triggerValue = true; }
-    //void SetFloat(const std::string& name, float v) { CheckExistence(name); parameterMap[name].floatValue = v; }
-    //void SetInt(const std::string& name, int v) { CheckExistence(name); parameterMap[name].intValue = v; }
-    //void SetOperator(const std::string& name, AnimCondition::CompareOp op) { CheckExistence(name); parameterMap[name].op = op; };
     template <typename T, typename U>
     void Trigger(const std::string& name ,T entity, U controller)
     { 
@@ -111,54 +96,7 @@ struct AnimState {
             }
         }
     }
-    /*bool CompareFloatCondition(const std::string& name, float value , bool& outcome)
-    {
-        AnimCondition* condition = nullptr;
 
-        for (int i = 0; i < outgoingTransitions.size(); i++)
-        {
-            for (int j = 0; j < outgoingTransitions[i].conditions.size(); j++)
-            {
-                if (name == outgoingTransitions[i].conditions[j].name) condition = &outgoingTransitions[i].conditions[j];
-            }
-        }
-
-        if (condition = CheckExistence(name)) return false; 
-        return Compare(value, condition->floatValue, condition->op);
-    }
-    bool CompareBoolCondition(const std::string& name, bool value)
-    {
-        AnimCondition* condition = nullptr;
-
-        for (int i = 0; i < outgoingTransitions.size(); i++)
-        {
-            for (int j = 0; j < outgoingTransitions[i].conditions.size(); j++)
-            {
-                if (name == outgoingTransitions[i].conditions[j].name) condition = &outgoingTransitions[i].conditions[j];
-            }
-        }
-
-        if (condition == nullptr) return false;
-
-        if (Compare(value, condition->boolValue, condition->op))
-        {
-            transiti
-        }
-    }
-    bool CompareIntCondition(const std::string& name, int value)
-    {
-        for (int i = 0; i < outgoingTransitions.size(); i++)
-        {
-            for (int j = 0; j < outgoingTransitions[i].conditions.size(); j++)
-            {
-                if (name == outgoingTransitions[i].conditions[j].name) return &outgoingTransitions[i].conditions[j];
-            }
-        }
-        AnimCondition* condition = nullptr;
-        if (condition = CheckExistence(name)) return false;
-        return Compare(value, condition->intValue, condition->op);
-
-    }*/
 
     AnimCondition* CheckExistence(const std::string& name)
     {
@@ -185,47 +123,6 @@ struct AnimState {
         }
         return false;
     };
-
-    // Evaluates conditions for transitions
-
-   /* bool EvaluateCondition(const AnimCondition& c)
-    {
-        switch (c.type)
-        {
-        case AnimConditionType::Bool:
-            return compare(param.boolValue, c.boolValue);
-
-
-        case AnimConditionType::Trigger:
-            if (param.triggerValue)
-            {
-                param.triggerValue = false;
-                return true;
-            }
-            return false;
-        case AnimConditionType::Float:
-            return compare(param.floatValue, c.floatValue);
-
-
-        case AnimConditionType::Int:
-            return compare(param.intValue, c.intValue);
-        }
-        return false;
-    }*/
-    // Check if a transition is valid
-   /* bool CanTransition(const AnimTransition& t)
-    {
-        if (t.conditions.empty())
-        {
-            return false;
-        }
-        for (auto& cond : t.conditions)
-        {
-            if (!EvaluateCondition(cond))
-                return false;
-        }
-        return true;
-    }*/
 
 
     REFLECTABLE(AnimState, id, inputs, outputs, name, animationGUID, playSpeed, isLooping, outgoingTransitions);
@@ -262,6 +159,33 @@ public:
     AnimState* RetrieveStateByID(int stateID);
     AnimState* FindStateFromPin(int pinId);
     AnimPin* FindPin(int pinId);
+    AnimState* FindStateByName(const std::string& name);  // needed for lookup below
+
+    template <typename T>
+    void PlayOverlay(const std::string& stateName, T entity,
+        float fadeIn = 0.1f, float fadeOut = 0.2f,
+        std::vector<std::string> boneMask = {})
+    {
+        AnimState* state = FindStateByName(stateName);
+        if (!state) return;
+
+        entity->m_overlayStateID = state->id;
+        entity->m_overlayTime = 0.f;
+        entity->m_overlayWeight = 0.f;
+        entity->m_overlayFadeIn = fadeIn;
+        entity->m_overlayFadeOut = fadeOut;
+        entity->m_overlayFadingOut = false;
+        entity->m_overlayBoneMask = std::move(boneMask);
+    }
+
+    template <typename T>
+    void SetState(const std::string& stateName, T entity)
+    {
+        AnimState* state = FindStateByName(stateName);
+        if (!state) return;
+
+        entity->m_transitioningStateID = state->id;
+    }
 
     REFLECTABLE(R_AnimController);
 };
