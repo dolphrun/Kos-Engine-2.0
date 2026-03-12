@@ -76,18 +76,17 @@ namespace serialization{
 		/*******************INSERT INTO FUNCTION*****************************/
 
 		// Iterate through each component entry in the JSON array
-		for (rapidjson::SizeType i = 0; i < doc.Size(); i++) {
-			const rapidjson::Value& entityData = doc[i];
+		for (const auto& entityData : doc.GetArray()) {
+			// Single lookup using FindMember
+			auto sceneDataItr = entityData.FindMember(SceneData::classname());
 
-			if (entityData.HasMember(SceneData::classname())) {
-				//load scene data
+			if (sceneDataItr != entityData.MemberEnd()) {
+				// load scene data
 				SceneData sceneData;
-
 				LoadComponentreflect(&sceneData, entityData);
 				sceneData.sceneName = scenename;
 
 				m_ecs.AddScene(scenename, sceneData);
-				
 			}
 			else {
 				LoadEntity(entityData, std::nullopt, scenename);
@@ -230,41 +229,41 @@ namespace serialization{
 	{
 		ecs::EntityID newEntityId = m_ecs.CreateEntity(sceneName);
 
-		{
-			//Set GUID
-			if (entityData.HasMember("entityGUID") && entityData["entityGUID"].IsString()) {
-				std::string guidStr = entityData["entityGUID"].GetString();
-				ecs::NameComponent* nameComp = m_ecs.GetComponent<ecs::NameComponent>(newEntityId);
-				if (nameComp) {
-					nameComp->entityGUID.SetFromString(guidStr);
-					
-					m_ecs.InsertGUID(nameComp->entityGUID, newEntityId);
+		// 1. Optimize GUID Loading
+		auto guidItr = entityData.FindMember("entityGUID");
+		if (guidItr != entityData.MemberEnd() && guidItr->value.IsString()) {
+			ecs::NameComponent* nameComp = m_ecs.GetComponent<ecs::NameComponent>(newEntityId);
+			if (nameComp) {
+				// Try to avoid std::string allocation here if SetFromString accepts const char* or std::string_view
+				nameComp->entityGUID.SetFromString(guidItr->value.GetString());
+				m_ecs.InsertGUID(nameComp->entityGUID, newEntityId);
+			}
+		}
+
+		// 2. Invert the Component Loop
+		for (auto itr = entityData.MemberBegin(); itr != entityData.MemberEnd(); ++itr) {
+			// Only components are expected to be JSON objects (skip strings, arrays, etc.)
+			if (itr->value.IsObject()) {
+				const char* keyName = itr->name.GetString();
+
+				// Check if this JSON key exists in our component action map
+				auto actionItr = m_ecs.componentAction.find(keyName);
+				if (actionItr != m_ecs.componentAction.end()) {
+					actionItr->second->Load(newEntityId, entityData);
 				}
 			}
 		}
 
-		
-
-		const auto& componentKey = m_ecs.GetComponentKeyData();
-		for (const auto& [ComponentName, key] : componentKey) {
-			if (entityData.HasMember(ComponentName.c_str()) && entityData[ComponentName.c_str()].IsObject()) {
-				auto& actionInvoker = m_ecs.componentAction[ComponentName];
-				actionInvoker->Load(newEntityId, entityData);
-			}
-
-		}
-
-
-		//Attach entity to parent
+		// Attach entity to parent
 		if (parentID.has_value()) {
 			m_ecs.SetParent(parentID.value(), newEntityId);
 		}
 
-		// Load children 
-		if (entityData.HasMember("children") && entityData["children"].IsArray()) {
-			const rapidjson::Value& childrenArray = entityData["children"];
-			for (rapidjson::SizeType i = 0; i < childrenArray.Size(); i++) {
-				LoadEntity(childrenArray[i], newEntityId, sceneName);
+		// 3. Optimize Children Loading
+		auto childrenItr = entityData.FindMember("children");
+		if (childrenItr != entityData.MemberEnd() && childrenItr->value.IsArray()) {
+			for (const auto& child : childrenItr->value.GetArray()) {
+				LoadEntity(child, newEntityId, sceneName);
 			}
 		}
 	}
