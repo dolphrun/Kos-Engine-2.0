@@ -1811,6 +1811,102 @@
                             "sourceType": 0,
                             "audioBankGUID": "00000000-0000-0000-0000-000000000000",
                             "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "cebdac3f-51ce-e3ea-27d5-fbade42bd70b",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "c123661d-dbae-230c-a578-724cd75e15af",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "03faf509-9863-c0db-5bbd-2c0d9d4410fc",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "7081e84f-d48a-d137-ee4f-028e1ddc9794",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "eda01554-55fd-bef9-b08f-9daad6f19e38",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "718bc70f-37b3-6b7f-331e-7e47e18eb4ef",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
                         }
                     ]
                 },
@@ -1855,8 +1951,20 @@
                     "airBlastPrefab": "b5cac5b3-11a2-d3ac-b9b8-28ec7838b3a2",
                     "gunSfxGUID_1": "f73fbd2e-15e7-5d4b-1662-91a2f4132644",
                     "gunReloadSfxGUID": "c93d030f-e7bf-2ee7-0425-c1f5f04d6483",
-                    "fireSlashSfxGUID": "690a4f94-6928-a1a0-d76c-2e8f12929489",
-                    "fireDashSfxGUID": "4ef03ed6-765a-ed95-b9bb-eafe53b75669",
+                    "fireSlashSfxGUID": [
+                        {
+                            "fireSlashSfxGUID": "03faf509-9863-c0db-5bbd-2c0d9d4410fc"
+                        },
+                        {
+                            "fireSlashSfxGUID": "c123661d-dbae-230c-a578-724cd75e15af"
+                        },
+                        {
+                            "fireSlashSfxGUID": "cebdac3f-51ce-e3ea-27d5-fbade42bd70b"
+                        }
+                    ],
+                    "fireDashSfxGUID": "eda01554-55fd-bef9-b08f-9daad6f19e38",
+                    "fireEquipSfxGUID": "718bc70f-37b3-6b7f-331e-7e47e18eb4ef",
+                    "fireAbsorbSfxGUID": "7081e84f-d48a-d137-ee4f-028e1ddc9794",
                     "lightningSlowSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "lightningGunSfxGUID": "d461f812-5e6f-d941-fb84-4f07f11f56dc",
                     "acidGrenadeGunSfxGUID": "00000000-0000-0000-0000-000000000000",
@@ -6668,6 +6776,9 @@
     },
     {
         "entityGUID": "6ce7cebb-9214-a403-8b56-03f28fc07dc1",
+        "AudioListenerComponent": {
+            "active": true
+        },
         "BoxColliderComponent": {
             "isTrigger": true,
             "box": {
@@ -6736,7 +6847,43 @@
         }
     },
     {
-        "entityGUID": "239390d4-520c-1c97-5d83-501277869419",
+        "entityGUID": "cb0412bf-0966-1cb8-2336-845a88d83928",
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "2afcabc1-3d62-bb0b-f484-598f81dff049",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": true,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "c5405e79-b219-7670-1235-e1482aae4941",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": true,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
+        },
         "CapsuleColliderComponent": {
             "isTrigger": false,
             "capsule": {
@@ -6760,7 +6907,7 @@
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
             "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-            "enemyHurtboxPosition": "570fa653-ab37-c9f9-82c3-bdb66764b658",
+            "enemyHurtboxPosition": "96f1fb69-3907-f145-e582-9adea5010634",
             "shieldHealth": 30,
             "shieldElement": "NONE",
             "shieldVisualObject": "00000000-0000-0000-0000-000000000000",
@@ -6772,7 +6919,17 @@
             "lungeGravity": 15.0,
             "attackCooldown": 2.0,
             "enemyHurtVFXPrefab": "06c198bd-19c0-0432-e746-c72bbca505e7",
-            "enemyHurtVFXPosition": "da448f82-04d5-6e25-1df0-21906029affd"
+            "enemyHurtVFXPosition": "5ca5da39-faff-2299-5c97-ad4184195a5f",
+            "enemyAttackSfxGUID": "00000000-0000-0000-0000-000000000000",
+            "enemyWalkSfxGUID": "00000000-0000-0000-0000-000000000000",
+            "enemyHurtSfxPool": [
+                {
+                    "enemyHurtSfxPool": "2afcabc1-3d62-bb0b-f484-598f81dff049"
+                },
+                {
+                    "enemyHurtSfxPool": "c5405e79-b219-7670-1235-e1482aae4941"
+                }
+            ]
         },
         "NameComponent": {
             "entityName": "EnemyPrefab",
@@ -6807,9 +6964,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 23.768556594848633,
-                    "y": 24.800189971923828,
-                    "z": -14.537531852722168
+                    "x": 19.818471908569336,
+                    "y": 25.59993553161621,
+                    "z": -5.152132987976074
                 },
                 "rotation": {
                     "x": 0.0,
@@ -6824,9 +6981,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 23.768556594848633,
-                    "y": 24.800189971923828,
-                    "z": -14.537531852722168
+                    "x": 19.818471908569336,
+                    "y": 25.59993553161621,
+                    "z": -5.152132987976074
                 },
                 "rotation": {
                     "x": 0.0,
@@ -6842,22 +6999,22 @@
         },
         "children": [
             {
-                "entityGUID": "854088ae-ace1-bb6f-6e45-d5f6e1f4ee14",
+                "entityGUID": "96f1fb69-3907-f145-e582-9adea5010634",
                 "NameComponent": {
                     "entityName": "Enemy Hurtbox Position",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "EnemyPrefab.prefab",
+                    "prefabName": "MeleeEnemyPrefab.prefab",
                     "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 23.768556594848633,
-                            "y": 26.300189971923828,
-                            "z": -14.537531852722168
+                            "x": 19.818471908569336,
+                            "y": 27.09993553161621,
+                            "z": -5.152132987976074
                         },
                         "rotation": {
                             "x": 0.0,
@@ -6890,7 +7047,7 @@
                 }
             },
             {
-                "entityGUID": "ea911035-671b-861f-b05b-6fcc442cbe47",
+                "entityGUID": "3c17c162-d059-69ab-dfe3-02e969918730",
                 "AnimatorComponent": {
                     "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                     "m_PlaybackSpeed": 1.0,
@@ -6905,7 +7062,7 @@
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "EnemyPrefab.prefab",
+                    "prefabName": "MeleeEnemyPrefab.prefab",
                     "hide": false
                 },
                 "SkinnedMeshRendererComponent": {
@@ -6915,9 +7072,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 23.768556594848633,
-                            "y": 24.800189971923828,
-                            "z": -14.537531852722168
+                            "x": 19.818471908569336,
+                            "y": 25.59993553161621,
+                            "z": -5.152132987976074
                         },
                         "rotation": {
                             "x": 0.0,
@@ -6950,22 +7107,22 @@
                 }
             },
             {
-                "entityGUID": "aeeead1d-8e33-6938-d729-5cf2484ad054",
+                "entityGUID": "5ca5da39-faff-2299-5c97-ad4184195a5f",
                 "NameComponent": {
                     "entityName": "Enemy Hurt VFX Position",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "isStatic": false,
-                    "prefabName": "",
+                    "prefabName": "MeleeEnemyPrefab.prefab",
                     "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 23.768556594848633,
-                            "y": 27.820314407348633,
-                            "z": -14.537531852722168
+                            "x": 19.818471908569336,
+                            "y": 28.620059967041016,
+                            "z": -5.152132987976074
                         },
                         "rotation": {
                             "x": 0.0,
@@ -6987,328 +7144,6 @@
                         "rotation": {
                             "x": 0.0,
                             "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "entityGUID": "2c32fa8b-71ca-b46c-9fd6-87fd482760d8",
-        "CapsuleColliderComponent": {
-            "isTrigger": false,
-            "capsule": {
-                "center": {
-                    "x": 0.0,
-                    "y": 2.299999952316284,
-                    "z": 0.0
-                },
-                "radius": 1.600000023841858,
-                "height": 5.0,
-                "capsuleDirection": 1
-            }
-        },
-        "EnemyManagerScript": {
-            "enemyHealth": 60,
-            "enemyMovementSpeed": 3.0,
-            "enemyType": "Tank",
-            "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 15.0,
-            "enemyChaseRange": 25.0,
-            "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
-            "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
-            "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",
-            "enemyHurtboxPosition": "239a2a55-7b16-a67e-b034-dabdac495a1d",
-            "shieldHealth": 30,
-            "shieldElement": "FIRE",
-            "shieldVisualObject": "0f6defc1-8c38-49d9-65b0-091f11064913",
-            "tankAoePrefab": "668543d2-276e-3941-8542-55d0401797a4",
-            "isLunging": false,
-            "lungeDuration": 0.800000011920929,
-            "lungeForwardSpeed": 12.0,
-            "lungeUpwardSpeed": 5.0,
-            "lungeGravity": 15.0,
-            "attackCooldown": 2.0,
-            "enemyHurtVFXPrefab": "06c198bd-19c0-0432-e746-c72bbca505e7",
-            "enemyHurtVFXPosition": "822ea27b-ddae-fa3c-523e-5c95dfb7aa4f"
-        },
-        "NameComponent": {
-            "entityName": "TankEnemyPrefab",
-            "Layer": 0,
-            "entityTag": "Enemy",
-            "isPrefab": true,
-            "isStatic": false,
-            "prefabName": "TankEnemyPrefab.prefab",
-            "hide": false
-        },
-        "RigidbodyComponent": {
-            "mass": 1.0,
-            "drag": 0.0,
-            "angularDrag": 0.05000000074505806,
-            "useGravity": true,
-            "isKinematic": true,
-            "interpolation": 0,
-            "collisionDetection": 0,
-            "constraints": 11,
-            "speed": 0.0,
-            "velocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "angularVelocity": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 25.36013412475586,
-                    "z": 8.560098648071289
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 0.0,
-                    "y": 25.36013412475586,
-                    "z": 8.560098648071289
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        },
-        "children": [
-            {
-                "entityGUID": "5ed923ef-22f6-b738-3495-4125c4443533",
-                "NameComponent": {
-                    "entityName": "Enemy Hurtbox Position",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "EnemyPrefab.prefab",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 26.86013412475586,
-                            "z": 8.560098648071289
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 1.5,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "f04bddd2-57ab-d0bb-43e3-94dcec176b32",
-                "AnimatorComponent": {
-                    "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
-                    "m_PlaybackSpeed": 1.0,
-                    "m_CurrentTime": 0.0,
-                    "m_IsPlaying": true,
-                    "m_currentStateID": 0,
-                    "m_transitioningStateID": 0
-                },
-                "NameComponent": {
-                    "entityName": "Enemy Model",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "EnemyPrefab.prefab",
-                    "hide": false
-                },
-                "SkinnedMeshRendererComponent": {
-                    "skinnedMeshGUID": "a6aa8f2d-fa87-1e2c-abc3-482c45c287dd",
-                    "materialGUID": "eb634c86-0002-7c8b-9f8e-2b128f11f57c"
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 25.36013412475586,
-                            "z": 8.560098648071289
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.019999999552965164,
-                            "y": 0.019999999552965164,
-                            "z": 0.019999999552965164
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.019999999552965164,
-                            "y": 0.019999999552965164,
-                            "z": 0.019999999552965164
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "6efab6cc-72e2-4797-8427-0d552798cee9",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "2e16031c-9593-31cb-ec41-58220ebbb736"
-                        }
-                    ]
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "4a1d4e3a-edc7-fcaa-f0c1-24ef1b8e630c"
-                },
-                "NameComponent": {
-                    "entityName": "FireShieldPrefab",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "TankFireShieldPrefab.prefab",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 29.36013412475586,
-                            "z": 8.560098648071289
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.5,
-                            "y": 0.5,
-                            "z": 0.5
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 4.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 0.5,
-                            "y": 0.5,
-                            "z": 0.5
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "656c8820-1abf-3961-5468-e422ed096743",
-                "NameComponent": {
-                    "entityName": "Enemy Hurt VFX Position",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": false,
-                    "isStatic": false,
-                    "prefabName": "",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 25.36013412475586,
-                            "z": 8.560098648071289
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": 0.0,
                             "z": 0.0
                         },
                         "scale": {

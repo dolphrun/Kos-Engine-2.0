@@ -248,6 +248,7 @@ public:
 	ecs::EntityID fireSwordModelID = 0;
 
 	ecs::EntityID currentModelID = 0;
+	Powerup pendingPowerup = Powerup::NONE;
 
 
 	inline int GetMaxBulletsForCurrentWeapon() const {
@@ -322,14 +323,18 @@ public:
 	// SFX
 	utility::GUID gunSfxGUID_1;
 	utility::GUID gunReloadSfxGUID;
-	utility::GUID fireSlashSfxGUID;
-	utility::GUID fireDashSfxGUID;
+
 
 	utility::GUID lightningSlowSfxGUID;
 	utility::GUID lightningGunSfxGUID;
 
 	utility::GUID acidGrenadeGunSfxGUID;
 
+	//Fire Loadout SFX
+	utility::GUID fireAbsorbSfxGUID;
+	utility::GUID fireEquipSfxGUID;
+	std::vector<utility::GUID> fireSlashSfxGUID;
+	utility::GUID fireDashSfxGUID;
 
 	//Dash VFX Timer
 	float fireDashVfxTimer = 0.0f;
@@ -339,8 +344,6 @@ public:
 	ecs::EntityID activeAbsorbVFXID = 0;
 	float absorbVFXTimer = 0.f;
 	float absorbVFXDuration = 1.0f;
-
-
 
 
 	// --- FUNCTION DECLARATIONS ONLY ---
@@ -369,9 +372,14 @@ public:
 
 	REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
-		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningSlowSfxGUID, lightningGunSfxGUID, acidGrenadeGunSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
+		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, fireEquipSfxGUID, fireAbsorbSfxGUID, lightningSlowSfxGUID, lightningGunSfxGUID, acidGrenadeGunSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
 		winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashGUID, pistolModelObject, fireSwordModelObject, lightningModelObject, acidModelObject)
-	
+
+		/*REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
+			bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
+			gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, lightningSlowSfxGUID, lightningGunSfxGUID, acidGrenadeGunSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
+			winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashGUID, pistolModelObject, fireSwordModelObject, lightningModelObject, acidModelObject)
+*/
 };
 
 // --- LATE INCLUDES & IMPLEMENTATION ---
@@ -1109,19 +1117,82 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 	projectilePointTransform->LocalTransformation.position = cameraTransform->LocalTransformation.position + GetPlayerCameraFrontDirection() * 1.5f;
 
 	//Animation Handling
-	if (animComp)
+	//if (animComp)
+	//{
+	//	// COMMENTED OUT FOR ANIM
+	//	if (animComp->m_currentStateID)
+	//	{
+	//		R_Animation* currAnim = resource->GetResource<R_Animation>(playerController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get();
+	//		if (animComp->m_CurrentTime >= currAnim->GetDuration())
+	//		{
+	//			playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("animationFinished", animComp, playerController);
+	//		}
+	//	}
+	//	
+	//}
+
+	//SEAN
+	if (animComp && animComp->m_currentStateID && playerController)
 	{
-		// COMMENTED OUT FOR ANIM
-		if (animComp->m_currentStateID)
+		R_Animation* currAnim = resource->GetResource<R_Animation>(playerController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get();
+
+		if (currAnim)
 		{
-			R_Animation* currAnim = resource->GetResource<R_Animation>(playerController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get();
-			if (animComp->m_CurrentTime >= currAnim->GetDuration())
+			float animDuration = currAnim->GetDuration();
+			std::string stateName = playerController->RetrieveStateByID(animComp->m_currentStateID)->name;
+
+			//Anim finish trigger
+			if (animComp->m_CurrentTime >= animDuration)
 			{
-				playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("animationFinished", animComp, playerController);
+				playerController->RetrieveStateByID(animComp->m_currentStateID)
+					->Trigger("animationFinished", animComp, playerController);
+			}
+
+
+			// Absorb anim finish then trigger swap out anim
+			if (animComp->m_CurrentTime >= animDuration && stateName == "Absorbing")
+			{
+				std::cout << "[WeaponSwap] Absorb anim done > triggering Swap Out\n";
+
+				playerController->RetrieveStateByID(animComp->m_currentStateID)
+					->Trigger("swapOut", animComp, playerController);
+			}
+
+			// Swap out anim finish then trigger swap of model then swap in
+			if (animComp->m_CurrentTime >= animDuration && stateName == "Swap Out")
+			{
+				std::cout << "[WeaponSwap] Swap Out anim done > applying weapon: " << (int)pendingPowerup << "\n";
+
+				playerPowerupHeld = pendingPowerup;
+				SwapWeaponModel(pendingPowerup);
+				pendingPowerup = Powerup::NONE; 
+
+				playerController->RetrieveStateByID(animComp->m_currentStateID)
+					->Trigger("swapIn", animComp, playerController);
+			}
+
+			// Swap in finish then idle
+			if (animComp->m_CurrentTime >= animDuration && stateName == "Swap In")
+			{
+				std::cout << "[WeaponSwap] Swap In done > going Idle\n";
+
+				if (playerPowerupHeld == Powerup::FIRE) {
+					if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+						for (auto& af : ac->audioFiles) {
+							if (af.audioGUID == fireEquipSfxGUID && af.isSFX) {
+								af.requestPlay = true;
+								break;
+							}
+						}
+					}
+				}
+
+				playerController->RetrieveStateByID(animComp->m_currentStateID)
+					->Trigger("swapDone", animComp, playerController);
 			}
 		}
-		
 	}
+
 
 	// SHOOT
 	//if (Input->IsKeyTriggered(keys::LMB)) {
@@ -1435,106 +1506,121 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			SwapWeaponModel(Powerup::NONE);
 			///PLAY SWAP TO DEFAULT WEAPON ANIMATION HERE
 			playerPowerupHeld = Powerup::NONE;
+			pendingPowerup = Powerup::NONE;
 		}
 	}
 
 	// INTERACT
 	if (Input->IsKeyTriggered(keys::E)) {
 
-		if (currMana > 0.0f || playerPowerupHeld != Powerup::NONE)
-			return;
-
-		bool hasAbsorbed = false;
+		if (currMana <= 0.0f && playerPowerupHeld == Powerup::NONE) {
+			bool hasAbsorbed = false;
 
 
-		RaycastHit hit;
-		hit.entityID = 9999999;
-		physicsPtr->Raycast(cameraTransform->WorldTransformation.position, GetPlayerCameraFrontDirection(), interactPowerupRange, hit, ecsPtr->GetComponent<RigidbodyComponent>(entity)->actor);
+			RaycastHit hit;
+			hit.entityID = 9999999;
+			physicsPtr->Raycast(cameraTransform->WorldTransformation.position, GetPlayerCameraFrontDirection(), interactPowerupRange, hit, ecsPtr->GetComponent<RigidbodyComponent>(entity)->actor);
 
-		if (hit.entityID != 9999999 && ecsPtr->GetComponent<NameComponent>(hit.entityID)->entityTag == "Powerup") {
-			if (auto* powerupComp = ecsPtr->GetComponent<PowerupManagerScript>(hit.entityID)) {
-				hasAbsorbed = true;
+			if (hit.entityID != 9999999 && ecsPtr->GetComponent<NameComponent>(hit.entityID)->entityTag == "Powerup") {
+				if (auto* powerupComp = ecsPtr->GetComponent<PowerupManagerScript>(hit.entityID)) {
+					hasAbsorbed = true;
 
-				if (powerupComp->powerupType == "FIRE") {
-					playerPowerupHeld = Powerup::FIRE;
-					SwapWeaponModel(Powerup::FIRE);
-
-				}
-				else if (powerupComp->powerupType == "ACID") {
-					playerPowerupHeld = Powerup::ACID;
-					SwapWeaponModel(Powerup::ACID);
-
-				}
-				else if (powerupComp->powerupType == "LIGHTNING") {
-					playerPowerupHeld = Powerup::LIGHTNING;
-					SwapWeaponModel(Powerup::LIGHTNING);
-
-				}
-				
-				currMana = maxMana;
-			/*	currInteractCooldown = interactCooldown;
-				std::cout << "Powerup picked up. Cooldown STARTO!!!!::: "
-					<< currInteractCooldown << "s\n";*/
-
-				//Raymond spawn ur absorbing here
-				//if (absorbingVFXPrefab != utility::GUID{}) {
-				//	std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-				//	ecs::EntityID absorbVFXID = DuplicatePrefabIntoScene<R_Scene>(currentScene, absorbingVFXPrefab);
-
-				//	// Position at the designated spawn point
-				//	auto* spawnTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXSpawnObjectID);
-				//	auto* vfxTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXID);
-
-				//	if (spawnTf && vfxTf) {
-				//		vfxTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
-				//	}
-				//}
-
-				// ADD SFX
-
-				utility::GUID selectedVFX;
-
-				if (powerupComp->powerupType == "FIRE")
-					selectedVFX = absorbFireVFXPrefab;
-				else if (powerupComp->powerupType == "ACID")
-					selectedVFX = absorbAcidVFXPrefab;
-				else if (powerupComp->powerupType == "LIGHTNING")
-					selectedVFX = absorbLightningVFXPrefab;
-
-				if (selectedVFX != utility::GUID{}) {
-					if (activeAbsorbVFXID != 0) {
-						ecsPtr->DeleteEntity(activeAbsorbVFXID);
-						activeAbsorbVFXID = 0;
+					if (powerupComp->powerupType == "FIRE") {
+						playerPowerupHeld = Powerup::FIRE; //DELETE THIS WHEN ANIM FINISH
+						SwapWeaponModel(Powerup::FIRE); //DELETE THIS WHEN ANIM FINISH
+						pendingPowerup = Powerup::FIRE;
+					}
+					else if (powerupComp->powerupType == "ACID") {
+						playerPowerupHeld = Powerup::ACID;//DELETE THIS WHEN ANIM FINISH
+						SwapWeaponModel(Powerup::ACID);//DELETE THIS WHEN ANIM FINISH
+						pendingPowerup = Powerup::ACID;
 					}
 
-					std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-					ecs::EntityID absorbVFXID = DuplicatePrefabIntoScene<R_Scene>(currentScene, selectedVFX);
-
-					auto* spawnTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXSpawnObjectID);
-					if (auto* vfxTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXID)) {
-						vfxTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
-						vfxTf->LocalTransformation.rotation = spawnTf->WorldTransformation.rotation;
-					}
-
-					activeAbsorbVFXID = absorbVFXID;
-					absorbVFXTimer = absorbVFXDuration;
-				}
-
-				if (animComp && hasAbsorbed)
-				{
-					if (animComp->m_currentStateID)
+					else if (powerupComp->powerupType == "LIGHTNING")
 					{
-						playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("hasAbsorbed", animComp, playerController);
-						hasAbsorbed = false;
+						playerPowerupHeld = Powerup::LIGHTNING;//DELETE THIS WHEN ANIM FINISH
+						SwapWeaponModel(Powerup::LIGHTNING);//DELETE THIS WHEN ANIM FINISH
+						pendingPowerup = Powerup::LIGHTNING;
+					}
+
+
+					if (powerupComp->powerupType == "FIRE") {
+						if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+							for (auto& af : ac->audioFiles) {
+								if (af.audioGUID == fireAbsorbSfxGUID && af.isSFX) {
+									af.requestPlay = true;
+									break;
+								}
+							}
+						}
+					}
+
+					//if (powerupComp->powerupType == "FIRE") {
+					//	playerPowerupHeld = Powerup::FIRE;
+					//	SwapWeaponModel(Powerup::FIRE);
+
+					//}
+					//else if (powerupComp->powerupType == "ACID") {
+					//	playerPowerupHeld = Powerup::ACID;
+					//	SwapWeaponModel(Powerup::ACID);
+
+					//}
+					//else if (powerupComp->powerupType == "LIGHTNING") {
+					//	playerPowerupHeld = Powerup::LIGHTNING;
+					//	SwapWeaponModel(Powerup::LIGHTNING);
+
+					//}
+
+					currMana = maxMana;
+
+
+					utility::GUID selectedVFX;
+
+					if (powerupComp->powerupType == "FIRE")
+						selectedVFX = absorbFireVFXPrefab;
+					else if (powerupComp->powerupType == "ACID")
+						selectedVFX = absorbAcidVFXPrefab;
+					else if (powerupComp->powerupType == "LIGHTNING")
+						selectedVFX = absorbLightningVFXPrefab;
+
+					if (selectedVFX != utility::GUID{}) {
+						if (activeAbsorbVFXID != 0) {
+							ecsPtr->DeleteEntity(activeAbsorbVFXID);
+							activeAbsorbVFXID = 0;
+						}
+
+						std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+						ecs::EntityID absorbVFXID = DuplicatePrefabIntoScene<R_Scene>(currentScene, selectedVFX);
+
+						auto* spawnTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXSpawnObjectID);
+						if (auto* vfxTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXID)) {
+							vfxTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
+							vfxTf->LocalTransformation.rotation = spawnTf->WorldTransformation.rotation;
+						}
+
+						activeAbsorbVFXID = absorbVFXID;
+						absorbVFXTimer = absorbVFXDuration;
+					}
+
+					if (animComp && hasAbsorbed)
+					{
+						if (animComp->m_currentStateID)
+						{
+							playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("hasAbsorbed", animComp, playerController);
+							hasAbsorbed = false;
+						}
 					}
 				}
 			}
 		}
+			
 	}
 
 	// SHOOT
 
 	if (Input->IsKeyTriggered(keys::LMB) && playerPowerupHeld == Powerup::NONE) {
+		if (pendingPowerup != Powerup::NONE) return;
+
 		if (isReloading) return;
 
 		float& cd = GetCurrShootCooldownForCurrentWeapon();
@@ -1660,16 +1746,25 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				if (auto* fireLMBScript = ecsPtr->GetComponent<FireLMB>(fireLMBID)) {
 					fireLMBScript->direction = dir; 
 				}
-
 				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 
-					for (auto& af : ac->audioFiles) {
-						if (af.audioGUID == fireSlashSfxGUID && af.isSFX) {
-							af.requestPlay = true;
-							break;
+					int slashIndex = fireSlashComboCount - 1;
+
+					if (slashIndex >= 0 && slashIndex < static_cast<int>(fireSlashSfxGUID.size())) {
+
+						utility::GUID targetSlashSfx = fireSlashSfxGUID[slashIndex];
+
+						if (!targetSlashSfx.Empty()) {
+							for (auto& af : ac->audioFiles) {
+								if (af.audioGUID == targetSlashSfx && af.isSFX) {
+									af.requestPlay = true;
+									break;
+								}
+							}
 						}
 					}
 				}
+
 
 			}
 

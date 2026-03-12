@@ -16,19 +16,20 @@ public:
 	float currentTimer = 0.f;
 
 	bool hasDealtDamage = false;
+	bool sfxPlayed = false; 
 
 
 	void Start() override {
 		// ADD SFX OF FIREBALL HERE - Done?
-		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+		//if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 
-			for (auto& af : ac->audioFiles) {
-				if (af.audioGUID == splashSfxGUID && af.isSFX) {
-					af.requestPlay = true;
-					break;
-				}
-			}
-		}
+		//	for (auto& af : ac->audioFiles) {
+		//		if (af.audioGUID == splashSfxGUID && af.isSFX) {
+		//			af.requestPlay = true;
+		//			break;
+		//		}
+		//	}
+		//}
 
 		for (const auto& [entityID, signature] : ecsPtr->GetEntitySignatureData()) {
 			if (ecsPtr->HasComponent<ScoreManagerScript>(entityID)) {
@@ -118,6 +119,19 @@ public:
 	}
 
 	void Update() override {
+
+		if (!sfxPlayed) {
+			sfxPlayed = true;
+			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+				for (auto& af : ac->audioFiles) {
+					if (af.audioGUID == splashSfxGUID && af.isSFX) {
+						af.requestPlay = true;
+						break;
+					}
+				}
+			}
+		}
+
 		if (currentTimer < timeBeforeDeath) {
 			currentTimer += ecsPtr->m_GetDeltaTime();
 

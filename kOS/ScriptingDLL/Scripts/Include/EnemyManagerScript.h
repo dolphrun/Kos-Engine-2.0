@@ -74,6 +74,10 @@ public:
 	utility::GUID enemyHurtVFXPosition;
 	ecs::EntityID enemyHurtVFXPositionID;
 
+	utility::GUID enemyAttackSfxGUID;
+	utility::GUID enemyWalkSfxGUID;
+	std::vector<utility::GUID> enemyHurtSfxPool;
+
 	// Declarations Only
 	void Start() override;
 	void Update() override;
@@ -82,7 +86,9 @@ public:
 	void TakeDamage(int damage, const std::string& element);
 	void Die();
 
-	REFLECTABLE(EnemyManagerScript, enemyHealth, enemyMovementSpeed, enemyType, enemyAttackRange, enemyRangedAttackRange, enemyChaseRange, playerToChase, enemyHurtboxPrefab, enemyBulletPrefab, enemyHurtboxPosition, shieldHealth, shieldElement, shieldVisualObject, tankAoePrefab, isLunging, lungeDuration, lungeForwardSpeed, lungeUpwardSpeed, lungeGravity, attackCooldown, enemyHurtVFXPrefab, enemyHurtVFXPosition);
+	REFLECTABLE(EnemyManagerScript, enemyHealth, enemyMovementSpeed, enemyType, enemyAttackRange, enemyRangedAttackRange, enemyChaseRange, playerToChase, 
+		enemyHurtboxPrefab, enemyBulletPrefab, enemyHurtboxPosition, shieldHealth, shieldElement, shieldVisualObject, tankAoePrefab, isLunging, lungeDuration,
+		lungeForwardSpeed, lungeUpwardSpeed, lungeGravity, attackCooldown, enemyHurtVFXPrefab, enemyHurtVFXPosition, enemyAttackSfxGUID,enemyWalkSfxGUID, enemyHurtSfxPool);
 };
 
 // --- IMPLEMENTATION ---
@@ -487,6 +493,30 @@ inline void EnemyManagerScript::ApplyPushback(glm::vec3 dir, float force) {
 }
 
 inline void EnemyManagerScript::TakeDamage(int damage, const std::string& element) {
+	
+	//Enemy Hurt sfx
+	if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+		std::vector<ecs::AudioFile*> hurtSfxMatches;
+
+		for (auto& af : ac->audioFiles) {
+			if (!af.isSFX) continue;
+
+			for (const auto& poolGUID : enemyHurtSfxPool) {
+				if (af.audioGUID == poolGUID) {
+					hurtSfxMatches.push_back(&af);
+					break;
+				}
+			}
+		}
+
+		//Random Play 
+		if (!hurtSfxMatches.empty()) {
+			int idx = rand() % static_cast<int>(hurtSfxMatches.size());
+			hurtSfxMatches[idx]->requestPlay = true;
+		}
+	}
+
+
 	if (shieldHealth > 0 && shieldElement != "NONE") {
 
 		if (element == shieldElement) {

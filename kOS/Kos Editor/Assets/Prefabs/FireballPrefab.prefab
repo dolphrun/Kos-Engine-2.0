@@ -12,7 +12,7 @@
         "AudioComponent": {
             "audioFiles": [
                 {
-                    "audioGUID": "4ef03ed6-765a-ed95-b9bb-eafe53b75669",
+                    "audioGUID": "8d38804b-5aaa-f60d-f92d-7fc7b3175a59",
                     "volume": 1.0,
                     "loop": false,
                     "playOnStart": false,
@@ -47,7 +47,7 @@
         "FirePowerupManagerScript": {
             "fireballSpeed": 20.0,
             "fireballDamage": 5,
-            "fireballSfxGUID": "4ef03ed6-765a-ed95-b9bb-eafe53b75669",
+            "fireballSfxGUID": "8d38804b-5aaa-f60d-f92d-7fc7b3175a59",
             "fireSplashPrefab": "05a543f1-82b0-f476-13fe-c77995bdfa57",
             "fireballSpin": 100.0
         },

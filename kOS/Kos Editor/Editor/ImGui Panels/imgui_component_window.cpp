@@ -276,18 +276,35 @@ void gui::ImGuiHandler::DrawComponentWindow()
                 if (EntitySignature.test(key) && ComponentName != ecs::NameComponent::classname()) {
                     auto* component = m_ecs.GetIComponent<ecs::Component*>(ComponentName, entityID);
 
+                    //ImGui::PushID(ImguiID++);
+                    //if (componentDrawers.find(ComponentName) != componentDrawers.end()) {
+                    //    auto& editorAction = componentDrawers[ComponentName];
+                    //    editorAction->Draw(component);
+                    //}
+                    //else {
+                    //    // auto& actionMap = GetComponentActionMap();
+                    //     //scrpt components
+                    //    DrawFieldComponent(component, ComponentName, entityID);
+
+                    //}
+                    //ImGui::PopID();
+
                     ImGui::PushID(ImguiID++);
-                    if (componentDrawers.find(ComponentName) != componentDrawers.end()) {
+
+                    if (ComponentName == ecs::AudioComponent::classname()) {
+                        DrawFieldComponent(component, ComponentName, entityID);
+                    }
+                    else if (componentDrawers.find(ComponentName) != componentDrawers.end()) {
                         auto& editorAction = componentDrawers[ComponentName];
                         editorAction->Draw(component);
                     }
                     else {
-                        // auto& actionMap = GetComponentActionMap();
-                         //scrpt components
                         DrawFieldComponent(component, ComponentName, entityID);
-
                     }
+
                     ImGui::PopID();
+
+
                 }
             }
 
@@ -313,6 +330,195 @@ void gui::ImGuiHandler::DrawComponentWindow()
 
 
 void gui::ImGuiHandler::DrawFieldComponent(ecs::Component* component, const std::string& ComponentName, ecs::EntityID entityID) {
+    // Handle AudioComponent separately
+    if (ComponentName == ecs::AudioComponent::classname()) {
+        auto* audioComp = static_cast<ecs::AudioComponent*>(component);
+
+        bool open = ImGui::CollapsingHeader(ComponentName.c_str(), ImGuiTreeNodeFlags_DefaultOpen);
+
+        if (ImGui::BeginPopupContextItem()) {
+            if (ImGui::MenuItem("Delete Component")) {
+                m_ecs.componentAction.at(ComponentName)->RemoveComponent(entityID);
+            }
+            if (ImGui::MenuItem("Reset Component")) {
+                m_ecs.componentAction.at(ComponentName)->ResetComponent(entityID);
+            }
+            ImGui::EndPopup();
+        }
+
+        if (open) {
+            auto& audioFiles = audioComp->audioFiles;
+
+            ImGui::SeparatorText("Audio Files");
+
+            if (ImGui::Button("+ Add Audio File")) {
+                audioFiles.emplace_back();
+            }
+
+            ImGui::Spacing();
+
+            int removeIndex = -1;
+
+            for (int i = 0; i < static_cast<int>(audioFiles.size()); ++i) {
+                auto& af = audioFiles[i];
+
+                ImGui::PushID(i);
+
+                std::string label;
+
+                if (!af.name.empty()) {
+                    // Manually set name
+                    label = af.name;
+                }
+                else if (!af.audioGUID.Empty()) {
+                    // if not just use filename
+                    std::filesystem::path audioPath = m_assetManager.GetFileFromGUID(af.audioGUID);
+                    if (!audioPath.empty()) {
+                        label = audioPath.filename().string(); // e.g. "explosion.wav"
+                    }
+                    else {
+                        label = "Audio File [" + std::to_string(i) + "]";
+                    }
+                }
+                else {
+                    // No GUID assigned yet
+                    label = "Audio File [" + std::to_string(i) + "]";
+                }
+
+                std::string fullLabel = label + "##AudioFile_" + std::to_string(i);
+                bool entryOpen = ImGui::CollapsingHeader(fullLabel.c_str());
+
+
+                if (ImGui::BeginPopupContextItem()) {
+                    if (ImGui::MenuItem("Remove")) removeIndex = i;
+                    ImGui::EndPopup();
+                }
+
+                if (entryOpen) {
+                    ImGui::Indent();
+
+                    ImGui::InputText("Name", &af.name);
+
+                    ImGui::Text("Audio GUID:");
+                    ImGui::SameLine();
+
+                    std::string guidDisplay = af.audioGUID.Empty()
+                        ? "[ Drop WAV here ]"
+                        : af.audioGUID.GetToString();
+
+                    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.2f, 0.2f, 1.f));
+                    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.5f, 0.3f, 1.f)); 
+                    ImGui::Button(guidDisplay.c_str(), ImVec2(ImGui::GetContentRegionAvail().x, 0));
+                    ImGui::PopStyleColor(2);
+
+                    if (ImGui::BeginDragDropTarget()) {
+                        if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("file")) {
+
+                            std::filesystem::path droppedPath(
+                                static_cast<const char*>(payload->Data)
+                            );
+
+                            if (droppedPath.extension() == ".wav" || droppedPath.extension() == ".WAV") {
+                                utility::GUID resolvedGUID = m_assetManager.GetGUIDfromFilePath(droppedPath);
+                                if (!resolvedGUID.Empty()) {
+                                    af.audioGUID = resolvedGUID;
+
+                                    if (af.name.empty()) {
+                                        af.name = droppedPath.stem().string();
+                                    }
+                                }
+                            }
+                        }
+                        ImGui::EndDragDropTarget();
+                    }
+
+
+
+                    ImGui::Text("Bank GUID:");
+                    ImGui::SameLine();
+
+                    std::string bankDisplay = af.audioBankGUID.Empty()
+                        ? "[ Drop Bank here ]"
+                        : af.audioBankGUID.GetToString();
+
+                    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.2f, 0.2f, 1.f));
+                    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.3f, 0.5f, 1.f)); // blue tint on hover
+                    ImGui::Button(bankDisplay.c_str(), ImVec2(ImGui::GetContentRegionAvail().x, 0));
+                    ImGui::PopStyleColor(2);
+
+                    if (ImGui::BeginDragDropTarget()) {
+                        if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("file")) {
+
+                            std::filesystem::path droppedPath(
+                                static_cast<const char*>(payload->Data)
+                            );
+
+                            utility::GUID resolvedGUID = m_assetManager.GetGUIDfromFilePath(droppedPath);
+                            if (!resolvedGUID.Empty()) {
+                                af.audioBankGUID = resolvedGUID;
+                            }
+                        }
+                        ImGui::EndDragDropTarget();
+                    }
+
+
+
+                    ImGui::InputText("Studio Event Path", &af.studioEventPath);
+
+                    ImGui::Spacing();
+                    ImGui::Separator();
+
+                    ImGui::SliderFloat("Volume", &af.volume, 0.0f, 1.0f);
+                    ImGui::SliderFloat("Pan", &af.pan, -1.0f, 1.0f);
+
+                    ImGui::Spacing();
+                    ImGui::Separator();
+
+                    ImGui::Columns(2, "AudioFlagsColumns", false);
+                    ImGui::Checkbox("Loop", &af.loop);           ImGui::NextColumn();
+                    ImGui::Checkbox("Play On Start", &af.playOnStart); ImGui::NextColumn();
+                    ImGui::Checkbox("Is BGM", &af.isBGM);        ImGui::NextColumn();
+                    ImGui::Checkbox("Is SFX", &af.isSFX);        ImGui::NextColumn();
+                    ImGui::Checkbox("Use 3D", &af.use3D);        ImGui::NextColumn();
+                    ImGui::Columns(1);
+
+                    if (af.use3D) {
+                        ImGui::Indent();
+                        ImGui::SliderFloat("Min Distance", &af.minDistance, 0.0f, 50.0f);
+                        ImGui::SliderFloat("Max Distance", &af.maxDistance, 0.0f, 200.0f);
+                        ImGui::Unindent();
+                    }
+
+                    ImGui::Spacing();
+
+                    const char* sourceTypes[] = { "Core", "Studio" };
+                    int srcType = static_cast<int>(af.sourceType);
+                    if (ImGui::Combo("Source Type", &srcType, sourceTypes, 2)) {
+                        af.sourceType = static_cast<AudioSourceType>(srcType);
+                    }
+
+                    ImGui::Spacing();
+
+                    ImGui::BeginDisabled();
+                    ImGui::Checkbox("Has Played", &af.hasPlayed);
+                    ImGui::Checkbox("Request Play", &af.requestPlay);
+                    ImGui::EndDisabled();
+
+                    ImGui::Unindent();
+                }
+
+                ImGui::PopID();
+                ImGui::Spacing();
+            }
+
+            if (removeIndex >= 0) {
+                audioFiles.erase(audioFiles.begin() + removeIndex);
+            }
+        }
+        return;
+    }
+
+
     auto fields = m_reflectionField.GetAction();
 
     if (fields.find(ComponentName) == fields.end()) return;
@@ -380,6 +586,7 @@ void gui::ImGuiHandler::DrawFieldComponent(ecs::Component* component, const std:
             else if (field.IsType<std::vector<utility::GUID>>()) {
                 draw(field.AsType<std::vector<utility::GUID>>());
             }
+
             else {
                 draw.count++;
             }
