@@ -36,6 +36,8 @@
 #include "EnemyBulletLogic.h"
 #include "TankAOEScript.h"
 
+#include "Deathzone.h"
+
 #include "EnemyHealthScript.h"
 #include "AnimationTestScript.h"
 #include "AbilityUIImageScript.h"
