@@ -1193,8 +1193,8 @@
                 "AudioComponent": {
                     "audioFiles": [
                         {
-                            "audioGUID": "2a0dbdbb-d496-2457-2c1c-f2953b1eee58",
-                            "volume": 0.0820000022649765,
+                            "audioGUID": "8530d606-2ec9-2a44-665d-b50a4a24153f",
+                            "volume": 0.37599998712539673,
                             "loop": true,
                             "playOnStart": true,
                             "hasPlayed": false,
@@ -1209,8 +1209,8 @@
                             "studioEventPath": ""
                         },
                         {
-                            "audioGUID": "8530d606-2ec9-2a44-665d-b50a4a24153f",
-                            "volume": 0.37599998712539673,
+                            "audioGUID": "71d0b950-9177-d4ef-2cc0-773b4a4c6276",
+                            "volume": 0.11400000005960464,
                             "loop": true,
                             "playOnStart": true,
                             "hasPlayed": false,
@@ -1229,7 +1229,7 @@
                 "GameManager": {
                     "enemyObjectPrefab": "a3a69a24-9a78-f0fd-f0a9-744fc055ecb2",
                     "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1",
-                    "gameBGM": "2a0dbdbb-d496-2457-2c1c-f2953b1eee58",
+                    "gameBGM": "71d0b950-9177-d4ef-2cc0-773b4a4c6276",
                     "ambienceBGM": "8530d606-2ec9-2a44-665d-b50a4a24153f"
                 },
                 "NameComponent": {
@@ -90722,7 +90722,7 @@
                         "AnimatorComponent": {
                             "controllerGUID": "a8151059-f46f-1edd-8b81-a36f705c15fb",
                             "m_PlaybackSpeed": 1.0,
-                            "m_CurrentTime": 49.43952941894531,
+                            "m_CurrentTime": 17.439529418945313,
                             "m_IsPlaying": true,
                             "m_currentStateID": 4,
                             "m_transitioningStateID": 0
@@ -93918,7 +93918,7 @@
                         "AnimatorComponent": {
                             "controllerGUID": "a8151059-f46f-1edd-8b81-a36f705c15fb",
                             "m_PlaybackSpeed": 1.0,
-                            "m_CurrentTime": 49.43952941894531,
+                            "m_CurrentTime": 17.439529418945313,
                             "m_IsPlaying": true,
                             "m_currentStateID": 4,
                             "m_transitioningStateID": 0
