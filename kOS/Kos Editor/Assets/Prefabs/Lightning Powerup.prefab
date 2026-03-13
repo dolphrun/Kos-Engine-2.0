@@ -61,12 +61,12 @@
                     "isTrigger": false,
                     "box": {
                         "center": {
-                            "x": -1.9012279510498047,
+                            "x": -3.9800682067871094,
                             "y": 105.373046875,
                             "z": -9.038804054260254
                         },
                         "size": {
-                            "x": 32.2993049621582,
+                            "x": 28.141624450683594,
                             "y": 217.58926391601563,
                             "z": 75.29580688476563
                         }
@@ -92,7 +92,7 @@
                     "hide": false
                 },
                 "PowerupManagerScript": {
-                    "powerupType": "lightning"
+                    "powerupType": "LIGHTNING"
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

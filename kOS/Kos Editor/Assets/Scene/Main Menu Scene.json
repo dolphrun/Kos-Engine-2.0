@@ -1,885 +1,917 @@
 [
-  {
-    "SceneData": {
-      "skyBoxGUID": [],
-      "NavMeshGuid": "00000000-0000-002c-0000-01a1d13476c0",
-      "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
-      "ambientIntensity": 1.0
-    }
-  },
-  {
-    "entityGUID": "36e0f6cf-7d76-0e22-cd3c-3cc344cdf4a6",
-    "CameraComponent": {
-      "cameraType": 0,
-      "fov": 45.0,
-      "nearPlane": 0.05000000074505806,
-      "farPlane": 200.0,
-      "size": {
-        "x": 1600.0,
-        "y": 900.0
-      },
-      "target": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": -1.0
-      },
-      "active": false,
-      "culling": false,
-      "layer": 0,
-      "renderOrder": 0
-    },
-    "NameComponent": {
-      "entityName": "Camera",
-      "Layer": 0,
-      "entityTag": "Default",
-      "isPrefab": false,
-      "prefabName": "",
-      "hide": false
-    },
-    "TransformComponent": {
-      "WorldTransformation": {
-        "position": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "rotation": {
-          "x": 0.0,
-          "y": -0.0,
-          "z": 0.0
-        },
-        "scale": {
-          "x": 1.0,
-          "y": 1.0,
-          "z": 1.0
+    {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-002c-0000-01a1d13476c0",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
         }
-      },
-      "LocalTransformation": {
-        "position": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "rotation": {
-          "x": 0.0,
-          "y": -0.0,
-          "z": 0.0
-        },
-        "scale": {
-          "x": 1.0,
-          "y": 1.0,
-          "z": 1.0
-        }
-      }
-    }
-  },
-  {
-    "entityGUID": "d16302c7-baec-0283-643a-d50fe3c69fc8",
-    "CanvasRendererComponent": {
-      "isScreenSpace": true
     },
-    "NameComponent": {
-      "entityName": "Canvas",
-      "Layer": 0,
-      "entityTag": "Default",
-      "isPrefab": false,
-      "prefabName": "",
-      "hide": false
-    },
-    "TransformComponent": {
-      "WorldTransformation": {
-        "position": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.705436646938324
-        },
-        "rotation": {
-          "x": 0.0,
-          "y": -0.0,
-          "z": 0.0
-        },
-        "scale": {
-          "x": 1.0,
-          "y": 1.0,
-          "z": 1.0
-        }
-      },
-      "LocalTransformation": {
-        "position": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.705436646938324
-        },
-        "rotation": {
-          "x": 0.0,
-          "y": -0.0,
-          "z": 0.0
-        },
-        "scale": {
-          "x": 1.0,
-          "y": 1.0,
-          "z": 1.0
-        }
-      }
-    },
-    "children": [
-      {
-        "entityGUID": "5b528fb2-c429-b5c0-428d-096501efe657",
-        "AudioComponent": {
-          "audioFiles": [
-            {
-              "audioGUID": "443f286e-68b9-b863-113f-54f5a7b09cc6",
-              "volume": 1.0,
-              "loop": false,
-              "playOnStart": true,
-              "hasPlayed": false,
-              "pan": 0.0,
-              "isBGM": false,
-              "isSFX": true,
-              "use3D": false,
-              "minDistance": 1.0,
-              "maxDistance": 20.0,
-              "sourceType": 0,
-              "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-              "studioEventPath": ""
+    {
+        "entityGUID": "36e0f6cf-7d76-0e22-cd3c-3cc344cdf4a6",
+        "CameraComponent": {
+            "cameraType": 0,
+            "fov": 45.0,
+            "nearPlane": 0.05000000074505806,
+            "farPlane": 200.0,
+            "size": {
+                "x": 1600.0,
+                "y": 900.0
             },
-            {
-              "audioGUID": "6e559e95-7682-d4fd-96d1-f431aa156dbe",
-              "volume": 1.0,
-              "loop": false,
-              "playOnStart": false,
-              "hasPlayed": false,
-              "pan": 0.0,
-              "isBGM": false,
-              "isSFX": true,
-              "use3D": false,
-              "minDistance": 1.0,
-              "maxDistance": 20.0,
-              "sourceType": 0,
-              "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-              "studioEventPath": ""
-            }
-          ]
-        },
-        "CutSceneScript": {
-          "video_GUID": "155a9ebf-7e02-c70e-8851-62da19e75e25",
-          "current_Scene": "8c4f218c-65c6-b2b7-fd2c-a55d31909e2f",
-          "next_Scene": "2f4dc450-3563-7399-23f3-38b816ea2631",
-          "start_Button": "740d1045-3a7d-4252-204a-0cceda4bd0ab",
-          "quit_Button": "772f05b0-8cab-bdfe-93fd-6a819ec80123",
-          "audio": "443f286e-68b9-b863-113f-54f5a7b09cc6",
-          "audio_2": "6e559e95-7682-d4fd-96d1-f431aa156dbe",
-          "button_canva": "d4890e0d-7b7d-cce8-50d0-171a10480ed8"
+            "target": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "active": false,
+            "culling": false,
+            "layer": 0,
+            "renderOrder": 0
         },
         "NameComponent": {
-          "entityName": "Script",
-          "Layer": 0,
-          "entityTag": "Default",
-          "isPrefab": false,
-          "prefabName": "",
-          "hide": false
+            "entityName": "Camera",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
         },
         "TransformComponent": {
-          "WorldTransformation": {
-            "position": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
             },
-            "rotation": {
-              "x": 0.0,
-              "y": -0.0,
-              "z": 0.0
-            },
-            "scale": {
-              "x": 1.0,
-              "y": 1.0,
-              "z": 1.0
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
             }
-          },
-          "LocalTransformation": {
-            "position": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": -0.705436646938324
-            },
-            "rotation": {
-              "x": 0.0,
-              "y": -0.0,
-              "z": 0.0
-            },
-            "scale": {
-              "x": 1.0,
-              "y": 1.0,
-              "z": 1.0
-            }
-          }
         }
-      },
-      {
-        "entityGUID": "ed9b61c3-31aa-dee8-0dff-a71f4e79d631",
-        "NameComponent": {
-          "entityName": "Audio",
-          "Layer": 0,
-          "entityTag": "Default",
-          "isPrefab": false,
-          "prefabName": "",
-          "hide": false
-        },
-        "TransformComponent": {
-          "WorldTransformation": {
-            "position": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "rotation": {
-              "x": 0.0,
-              "y": -0.0,
-              "z": 0.0
-            },
-            "scale": {
-              "x": 1.0,
-              "y": 1.0,
-              "z": 1.0
-            }
-          },
-          "LocalTransformation": {
-            "position": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": -0.705436646938324
-            },
-            "rotation": {
-              "x": 0.0,
-              "y": -0.0,
-              "z": 0.0
-            },
-            "scale": {
-              "x": 1.0,
-              "y": 1.0,
-              "z": 1.0
-            }
-          }
-        }
-      },
-      {
-        "entityGUID": "c8f6ac26-ad8e-45d1-76b9-a80cc672afc7",
-        "NameComponent": {
-          "entityName": "Text",
-          "Layer": 0,
-          "entityTag": "Default",
-          "isPrefab": false,
-          "prefabName": "",
-          "hide": false
-        },
-        "TextComponent": {
-          "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-          "text": "Press K to Skip",
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "fontSize": 90.0
-        },
-        "TransformComponent": {
-          "WorldTransformation": {
-            "position": {
-              "x": 0.3773244321346283,
-              "y": 0.800000011920929,
-              "z": 0.0
-            },
-            "rotation": {
-              "x": 0.0,
-              "y": -0.0,
-              "z": 0.0
-            },
-            "scale": {
-              "x": 1.0,
-              "y": 1.0,
-              "z": 1.0
-            }
-          },
-          "LocalTransformation": {
-            "position": {
-              "x": 0.3773244321346283,
-              "y": 0.800000011920929,
-              "z": -0.705436646938324
-            },
-            "rotation": {
-              "x": 0.0,
-              "y": -0.0,
-              "z": 0.0
-            },
-            "scale": {
-              "x": 1.0,
-              "y": 1.0,
-              "z": 1.0
-            }
-          }
-        }
-      }
-    ]
-  },
-  {
-    "entityGUID": "155a9ebf-7e02-c70e-8851-62da19e75e25",
-    "NameComponent": {
-      "entityName": "Video",
-      "Layer": 0,
-      "entityTag": "Default",
-      "isPrefab": false,
-      "prefabName": "",
-      "hide": false
     },
-    "TransformComponent": {
-      "WorldTransformation": {
-        "position": {
-          "x": 2.9800000190734863,
-          "y": 0.1599999964237213,
-          "z": 0.00543665885925293
-        },
-        "rotation": {
-          "x": 0.0,
-          "y": -89.98021697998047,
-          "z": 0.0
-        },
-        "scale": {
-          "x": 1.7999998331069946,
-          "y": 1.399999976158142,
-          "z": 0.9999997615814209
-        }
-      },
-      "LocalTransformation": {
-        "position": {
-          "x": 2.9800000190734863,
-          "y": 0.1599999964237213,
-          "z": 0.00543665885925293
-        },
-        "rotation": {
-          "x": 0.0,
-          "y": -89.98021697998047,
-          "z": 0.0
-        },
-        "scale": {
-          "x": 1.7999998331069946,
-          "y": 1.399999976158142,
-          "z": 0.9999997615814209
-        }
-      }
-    },
-    "VideoComponent": {
-      "videoGUID": "17928dcd-309c-7349-38ec-eee2b78a8c8f",
-      "pause": false,
-      "loop": false
-    }
-  },
-  {
-    "entityGUID": "d4890e0d-7b7d-cce8-50d0-171a10480ed8",
-    "CanvasRendererComponent": {
-      "isScreenSpace": true
-    },
-    "NameComponent": {
-      "entityName": "Canvas",
-      "Layer": 0,
-      "entityTag": "Default",
-      "isPrefab": false,
-      "prefabName": "",
-      "hide": true
-    },
-    "TransformComponent": {
-      "WorldTransformation": {
-        "position": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.705436646938324
-        },
-        "rotation": {
-          "x": 0.0,
-          "y": -0.0,
-          "z": 0.0
-        },
-        "scale": {
-          "x": 1.0,
-          "y": 1.0,
-          "z": 1.0
-        }
-      },
-      "LocalTransformation": {
-        "position": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.705436646938324
-        },
-        "rotation": {
-          "x": 0.0,
-          "y": -0.0,
-          "z": 0.0
-        },
-        "scale": {
-          "x": 1.0,
-          "y": 1.0,
-          "z": 1.0
-        }
-      }
-    },
-    "children": [
-      {
-        "entityGUID": "772f05b0-8cab-bdfe-93fd-6a819ec80123",
-        "ButtonComponent": {
-          "normalColor": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "hoveredColor": {
-            "x": 0.800000011920929,
-            "y": 0.800000011920929,
-            "z": 0.800000011920929,
-            "w": 1.0
-          },
-          "pressedColor": {
-            "x": 0.6000000238418579,
-            "y": 0.6000000238418579,
-            "z": 0.6000000238418579,
-            "w": 1.0
-          },
-          "isHovered": false,
-          "isPressed": false
+    {
+        "entityGUID": "d16302c7-baec-0283-643a-d50fe3c69fc8",
+        "CanvasRendererComponent": {
+            "isScreenSpace": true
         },
         "NameComponent": {
-          "entityName": "Quit Button",
-          "Layer": 0,
-          "entityTag": "Default",
-          "isPrefab": false,
-          "prefabName": "",
-          "hide": true
-        },
-        "SpriteComponent": {
-          "spriteGUID": "a6918fdc-bfcb-feab-5f96-86e8d9485e45",
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "uvMin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "uvMax": {
-            "x": 1.0,
-            "y": 1.0
-          },
-          "useCustomUV": false
+            "entityName": "Canvas",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
         },
         "TransformComponent": {
-          "WorldTransformation": {
-            "position": {
-              "x": 0.0,
-              "y": -0.6000000238418579,
-              "z": 0.0
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.705436646938324
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
             },
-            "rotation": {
-              "x": 0.0,
-              "y": -0.0,
-              "z": 0.0
-            },
-            "scale": {
-              "x": 0.699999988079071,
-              "y": 0.4000000059604645,
-              "z": 1.0
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.705436646938324
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
             }
-          },
-          "LocalTransformation": {
-            "position": {
-              "x": 0.0,
-              "y": -0.6000000238418579,
-              "z": -0.705436646938324
-            },
-            "rotation": {
-              "x": 0.0,
-              "y": -0.0,
-              "z": 0.0
-            },
-            "scale": {
-              "x": 0.699999988079071,
-              "y": 0.4000000059604645,
-              "z": 1.0
-            }
-          }
-        }
-      },
-      {
-        "entityGUID": "740d1045-3a7d-4252-204a-0cceda4bd0ab",
-        "ButtonComponent": {
-          "normalColor": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "hoveredColor": {
-            "x": 0.800000011920929,
-            "y": 0.800000011920929,
-            "z": 0.800000011920929,
-            "w": 1.0
-          },
-          "pressedColor": {
-            "x": 0.6000000238418579,
-            "y": 0.6000000238418579,
-            "z": 0.6000000238418579,
-            "w": 1.0
-          },
-          "isHovered": false,
-          "isPressed": false
-        },
-        "NameComponent": {
-          "entityName": "Start Button",
-          "Layer": 0,
-          "entityTag": "Default",
-          "isPrefab": false,
-          "prefabName": "",
-          "hide": true
-        },
-        "SpriteComponent": {
-          "spriteGUID": "612c45df-5d4b-204c-4b6b-92465dd7f6f4",
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "uvMin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "uvMax": {
-            "x": 1.0,
-            "y": 1.0
-          },
-          "useCustomUV": false
-        },
-        "TransformComponent": {
-          "WorldTransformation": {
-            "position": {
-              "x": 0.0,
-              "y": -0.10000002384185791,
-              "z": 0.0
-            },
-            "rotation": {
-              "x": 0.0,
-              "y": -0.0,
-              "z": 0.0
-            },
-            "scale": {
-              "x": 0.699999988079071,
-              "y": 0.4000000059604645,
-              "z": 1.0
-            }
-          },
-          "LocalTransformation": {
-            "position": {
-              "x": 0.0,
-              "y": -0.10000002384185791,
-              "z": -0.705436646938324
-            },
-            "rotation": {
-              "x": 0.0,
-              "y": -0.0,
-              "z": 0.0
-            },
-            "scale": {
-              "x": 0.699999988079071,
-              "y": 0.4000000059604645,
-              "z": 1.0
-            }
-          }
         },
         "children": [
-          {
-            "entityGUID": "64b6c41d-a3bc-ee59-8125-f379e7d6724d",
-            "ButtonComponent": {
-              "normalColor": {
+            {
+                "entityGUID": "5b528fb2-c429-b5c0-428d-096501efe657",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "443f286e-68b9-b863-113f-54f5a7b09cc6",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": true,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "6e559e95-7682-d4fd-96d1-f431aa156dbe",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
+                "CutSceneScript": {
+                    "video_GUID": "155a9ebf-7e02-c70e-8851-62da19e75e25",
+                    "current_Scene": "873145a3-c01e-82b3-a4f5-d837cb0a0c51",
+                    "next_Scene": "7d1be7c7-26e7-58c8-67b5-c3640955da4c",
+                    "start_Button": "740d1045-3a7d-4252-204a-0cceda4bd0ab",
+                    "quit_Button": "772f05b0-8cab-bdfe-93fd-6a819ec80123",
+                    "audio": "443f286e-68b9-b863-113f-54f5a7b09cc6",
+                    "audio_2": "6e559e95-7682-d4fd-96d1-f431aa156dbe",
+                    "button_canva": "d4890e0d-7b7d-cce8-50d0-171a10480ed8"
+                },
+                "NameComponent": {
+                    "entityName": "Script",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": -0.705436646938324
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "ed9b61c3-31aa-dee8-0dff-a71f4e79d631",
+                "NameComponent": {
+                    "entityName": "Audio",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": -0.705436646938324
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "c8f6ac26-ad8e-45d1-76b9-a80cc672afc7",
+                "NameComponent": {
+                    "entityName": "Text",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TextComponent": {
+                    "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                    "text": "Press K to Skip",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "fontSize": 90.0
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.3773244321346283,
+                            "y": 0.800000011920929,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.3773244321346283,
+                            "y": 0.800000011920929,
+                            "z": -0.705436646938324
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "155a9ebf-7e02-c70e-8851-62da19e75e25",
+        "NameComponent": {
+            "entityName": "Video",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 2.9800000190734863,
+                    "y": 0.1599999964237213,
+                    "z": 0.00543665885925293
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -89.98021697998047,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.7999998331069946,
+                    "y": 1.399999976158142,
+                    "z": 0.9999997615814209
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 2.9800000190734863,
+                    "y": 0.1599999964237213,
+                    "z": 0.00543665885925293
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -89.98021697998047,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.7999998331069946,
+                    "y": 1.399999976158142,
+                    "z": 0.9999997615814209
+                }
+            }
+        },
+        "VideoComponent": {
+            "videoGUID": "17928dcd-309c-7349-38ec-eee2b78a8c8f",
+            "pause": false,
+            "loop": false
+        }
+    },
+    {
+        "entityGUID": "d4890e0d-7b7d-cce8-50d0-171a10480ed8",
+        "CanvasRendererComponent": {
+            "isScreenSpace": true
+        },
+        "NameComponent": {
+            "entityName": "Canvas",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": true
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.705436646938324
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.705436646938324
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "772f05b0-8cab-bdfe-93fd-6a819ec80123",
+                "ButtonComponent": {
+                    "normalColor": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "hoveredColor": {
+                        "x": 0.800000011920929,
+                        "y": 0.800000011920929,
+                        "z": 0.800000011920929,
+                        "w": 1.0
+                    },
+                    "pressedColor": {
+                        "x": 0.6000000238418579,
+                        "y": 0.6000000238418579,
+                        "z": 0.6000000238418579,
+                        "w": 1.0
+                    },
+                    "normalSprite": "00000000-0000-0000-0000-000000000000",
+                    "hoveredSprite": "00000000-0000-0000-0000-000000000000",
+                    "pressedSprite": "00000000-0000-0000-0000-000000000000",
+                    "useSpriteSwap": false,
+                    "isHovered": false,
+                    "isPressed": false
+                },
+                "NameComponent": {
+                    "entityName": "Quit Button",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": true
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "a6918fdc-bfcb-feab-5f96-86e8d9485e45",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": -0.6000000238418579,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.699999988079071,
+                            "y": 0.4000000059604645,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": -0.6000000238418579,
+                            "z": -0.705436646938324
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.699999988079071,
+                            "y": 0.4000000059604645,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "740d1045-3a7d-4252-204a-0cceda4bd0ab",
+                "ButtonComponent": {
+                    "normalColor": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "hoveredColor": {
+                        "x": 0.800000011920929,
+                        "y": 0.800000011920929,
+                        "z": 0.800000011920929,
+                        "w": 1.0
+                    },
+                    "pressedColor": {
+                        "x": 0.6000000238418579,
+                        "y": 0.6000000238418579,
+                        "z": 0.6000000238418579,
+                        "w": 1.0
+                    },
+                    "normalSprite": "00000000-0000-0000-0000-000000000000",
+                    "hoveredSprite": "00000000-0000-0000-0000-000000000000",
+                    "pressedSprite": "00000000-0000-0000-0000-000000000000",
+                    "useSpriteSwap": false,
+                    "isHovered": false,
+                    "isPressed": false
+                },
+                "NameComponent": {
+                    "entityName": "Start Button",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": true
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "612c45df-5d4b-204c-4b6b-92465dd7f6f4",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": -0.10000002384185791,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.699999988079071,
+                            "y": 0.4000000059604645,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": -0.10000002384185791,
+                            "z": -0.705436646938324
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.699999988079071,
+                            "y": 0.4000000059604645,
+                            "z": 1.0
+                        }
+                    }
+                },
+                "children": [
+                    {
+                        "entityGUID": "64b6c41d-a3bc-ee59-8125-f379e7d6724d",
+                        "ButtonComponent": {
+                            "normalColor": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "hoveredColor": {
+                                "x": 0.800000011920929,
+                                "y": 0.800000011920929,
+                                "z": 0.800000011920929,
+                                "w": 1.0
+                            },
+                            "pressedColor": {
+                                "x": 0.6000000238418579,
+                                "y": 0.6000000238418579,
+                                "z": 0.6000000238418579,
+                                "w": 1.0
+                            },
+                            "normalSprite": "00000000-0000-0000-0000-000000000000",
+                            "hoveredSprite": "00000000-0000-0000-0000-000000000000",
+                            "pressedSprite": "00000000-0000-0000-0000-000000000000",
+                            "useSpriteSwap": false,
+                            "isHovered": false,
+                            "isPressed": true
+                        },
+                        "NameComponent": {
+                            "entityName": "Button",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": true
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 1.0068352222442627,
+                                    "y": -0.10656070709228516,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 1.4383360147476196,
+                                    "y": -0.016401708126068115,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.4285714626312256,
+                                    "y": 2.5,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "entityGUID": "5e70cfc6-1c21-e8f3-6467-a05d1a071887",
+        "NameComponent": {
+            "entityName": "Partidcle",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "ParticleComponent": {
+            "particleType": 0,
+            "duration": 5.0,
+            "looping": true,
+            "play_On_Awake": true,
+            "start_Lifetime": 3.0,
+            "end_Lifetime": 7.0,
+            "lifetime_Random_Enable": true,
+            "textureGUID": "00000000-0000-0000-0000-000000000000",
+            "start_Velocity": 5.0,
+            "playback_State": 0,
+            "particleFade": 1,
+            "velocityModule": {
+                "enabled": false,
+                "mode": 0,
+                "velocity_Modifier": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "forceModule": {
+                "enabled": false,
+                "force": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "shapeModule": {
+                "type": 1,
+                "emission_Direction": {
+                    "x": 0.0,
+                    "y": 1.0,
+                    "z": 0.0
+                },
+                "box_Size": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "sphere_Radius": 0.0,
+                "emit_From_Shell": false,
+                "cone_Angle": 0.0,
+                "cone_Direction": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "cone_Radius": 0.0,
+                "circle_Radius": 0.0,
+                "circle_Arc": 0.0,
+                "emit_From_Edge": false,
+                "edge_Length": 0.0,
+                "random_Direction_Amount": 0.0
+            },
+            "colorModule": {
+                "enabled": false,
+                "start_Color": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0,
+                    "w": 1.0
+                },
+                "end_Color": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                }
+            },
+            "sizeModule": {
+                "enabled": false,
+                "start_Size": 1.0,
+                "end_Size": 1.0
+            },
+            "rotationModule": {
+                "enabled": false,
+                "start_Rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "end_Rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation_Modifier": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "gravityModule": {
+                "enabled": false,
+                "gravity": {
+                    "x": 0.0,
+                    "y": -9.800000190734863,
+                    "z": 0.0
+                }
+            },
+            "trailingModule": {
+                "enabled": false,
+                "startPoint": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "endPoint": {
+                    "x": 20.0,
+                    "y": 20.0,
+                    "z": 20.0
+                },
+                "rotateEndPoint": false,
+                "rotationSpeed": 2.0,
+                "rotationRadius": 5.0,
+                "rotationCenter": {
+                    "x": 20.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotationAxis": {
+                    "x": 0.0,
+                    "y": 1.0,
+                    "z": 0.0
+                },
+                "spiralRadius": 5.0,
+                "spiralFrequency": 3.0,
+                "spiralIntensityCurve": 0.5,
+                "pathSpeed": 2.0,
+                "arrivalThreshold": 0.5
+            },
+            "noiseModule": {
+                "enabled": false,
+                "strength": 1.0,
+                "strengthMultiplier": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "frequency": 0.5,
+                "scrollSpeed": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "damping": true,
+                "octaves": 1,
+                "octaveMultiplier": 0.5,
+                "octaveScale": 2.0,
+                "quality": 1,
+                "remapEnabled": false,
+                "remapCurveStart": 1.0,
+                "remapCurveEnd": 1.0,
+                "positionOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "emissionInterval": 0.10000000149011612,
+            "no_Of_Particles": 1,
+            "dynamicTrailingEnabled": false,
+            "trail_Color": {
                 "x": 1.0,
                 "y": 1.0,
                 "z": 1.0,
                 "w": 1.0
-              },
-              "hoveredColor": {
-                "x": 0.800000011920929,
-                "y": 0.800000011920929,
-                "z": 0.800000011920929,
-                "w": 1.0
-              },
-              "pressedColor": {
-                "x": 0.6000000238418579,
-                "y": 0.6000000238418579,
-                "z": 0.6000000238418579,
-                "w": 1.0
-              },
-              "isHovered": false,
-              "isPressed": true
             },
-            "NameComponent": {
-              "entityName": "Button",
-              "Layer": 0,
-              "entityTag": "Default",
-              "isPrefab": false,
-              "prefabName": "",
-              "hide": true
-            },
-            "TransformComponent": {
-              "WorldTransformation": {
+            "trailLifeTime": 2.0,
+            "trailWidth": 0.20000000298023224
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
                 "position": {
-                  "x": 1.0068352222442627,
-                  "y": -0.10656070709228516,
-                  "z": 0.0
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
-                  "x": 0.0,
-                  "y": -0.0,
-                  "z": 0.0
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
                 },
                 "scale": {
-                  "x": 1.0,
-                  "y": 1.0,
-                  "z": 1.0
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
                 }
-              },
-              "LocalTransformation": {
+            },
+            "LocalTransformation": {
                 "position": {
-                  "x": 1.4383360147476196,
-                  "y": -0.016401708126068115,
-                  "z": 0.0
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "rotation": {
-                  "x": 0.0,
-                  "y": -0.0,
-                  "z": 0.0
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
                 },
                 "scale": {
-                  "x": 1.4285714626312256,
-                  "y": 2.5,
-                  "z": 1.0
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
                 }
-              }
             }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "entityGUID": "5e70cfc6-1c21-e8f3-6467-a05d1a071887",
-    "NameComponent": {
-      "entityName": "Partidcle",
-      "Layer": 0,
-      "entityTag": "Default",
-      "isPrefab": false,
-      "prefabName": "",
-      "hide": false
-    },
-    "ParticleComponent": {
-      "particleType": 0,
-      "duration": 5.0,
-      "looping": true,
-      "play_On_Awake": true,
-      "start_Lifetime": 3.0,
-      "end_Lifetime": 7.0,
-      "lifetime_Random_Enable": true,
-      "textureGUID": "00000000-0000-0000-0000-000000000000",
-      "start_Velocity": 5.0,
-      "playback_State": 0,
-      "particleFade": 1,
-      "velocityModule": {
-        "enabled": false,
-        "mode": 0,
-        "velocity_Modifier": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
         }
-      },
-      "forceModule": {
-        "enabled": false,
-        "force": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        }
-      },
-      "shapeModule": {
-        "type": 1,
-        "emission_Direction": {
-          "x": 0.0,
-          "y": 1.0,
-          "z": 0.0
-        },
-        "box_Size": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "sphere_Radius": 0.0,
-        "emit_From_Shell": false,
-        "cone_Angle": 0.0,
-        "cone_Direction": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "cone_Radius": 0.0,
-        "circle_Radius": 0.0,
-        "circle_Arc": 0.0,
-        "emit_From_Edge": false,
-        "edge_Length": 0.0,
-        "random_Direction_Amount": 0.0
-      },
-      "colorModule": {
-        "enabled": false,
-        "start_Color": {
-          "x": 1.0,
-          "y": 1.0,
-          "z": 1.0,
-          "w": 1.0
-        },
-        "end_Color": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0,
-          "w": 0.0
-        }
-      },
-      "sizeModule": {
-        "enabled": false,
-        "start_Size": 1.0,
-        "end_Size": 1.0
-      },
-      "rotationModule": {
-        "enabled": false,
-        "start_Rotation": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "end_Rotation": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "rotation_Modifier": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        }
-      },
-      "gravityModule": {
-        "enabled": false,
-        "gravity": {
-          "x": 0.0,
-          "y": -9.800000190734863,
-          "z": 0.0
-        }
-      },
-      "trailingModule": {
-        "enabled": false,
-        "startPoint": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "endPoint": {
-          "x": 20.0,
-          "y": 20.0,
-          "z": 20.0
-        },
-        "rotateEndPoint": false,
-        "rotationSpeed": 2.0,
-        "rotationRadius": 5.0,
-        "rotationCenter": {
-          "x": 20.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "rotationAxis": {
-          "x": 0.0,
-          "y": 1.0,
-          "z": 0.0
-        },
-        "spiralRadius": 5.0,
-        "spiralFrequency": 3.0,
-        "spiralIntensityCurve": 0.5,
-        "pathSpeed": 2.0,
-        "arrivalThreshold": 0.5
-      },
-      "noiseModule": {
-        "enabled": false,
-        "strength": 1.0,
-        "strengthMultiplier": {
-          "x": 1.0,
-          "y": 1.0,
-          "z": 1.0
-        },
-        "frequency": 0.5,
-        "scrollSpeed": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "damping": true,
-        "octaves": 1,
-        "octaveMultiplier": 0.5,
-        "octaveScale": 2.0,
-        "quality": 1,
-        "remapEnabled": false,
-        "remapCurveStart": 1.0,
-        "remapCurveEnd": 1.0,
-        "positionOffset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        }
-      },
-      "emissionInterval": 0.10000000149011612,
-      "no_Of_Particles": 1
-    },
-    "TransformComponent": {
-      "WorldTransformation": {
-        "position": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "rotation": {
-          "x": 0.0,
-          "y": -0.0,
-          "z": 0.0
-        },
-        "scale": {
-          "x": 1.0,
-          "y": 1.0,
-          "z": 1.0
-        }
-      },
-      "LocalTransformation": {
-        "position": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "rotation": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "scale": {
-          "x": 1.0,
-          "y": 1.0,
-          "z": 1.0
-        }
-      }
     }
-  }
 ]

@@ -432,6 +432,7 @@ public:
 
 inline void PlayerManagerScript::Start() {
 	ecsPtr->SetTimeScale(1.0f);
+	ecsPtr->SetState(RUNNING);
 	playerCameraObjectID = ecsPtr->GetEntityIDFromGUID(playerCameraObject);
 	playerGunCameraObjectID = ecsPtr->GetEntityIDFromGUID(playerGunCameraObject);
 	playerProjectilePointObjectID = ecsPtr->GetEntityIDFromGUID(playerProjectilePointObject);
@@ -522,6 +523,8 @@ inline void PlayerManagerScript::Start() {
 	chro->blueOffset = 0.f;
 	Blur* blur = reinterpret_cast<Blur*>(profile->GetEffect(PPT_Blur));
 	blur->radius = 0.01f;
+
+	if (LevelCompleteScript::instance) LevelCompleteScript::instance->HideLevelComplete();
 }
 
 inline void PlayerManagerScript::Update() {

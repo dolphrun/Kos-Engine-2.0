@@ -3,7 +3,7 @@
         "SceneData": {
             "skyBoxGUID": [],
             "NavMeshGuid": "ac306523-8c08-8088-be88-701fd8c02b7a",
-            "postProcessingProfile": "c3a79a26-21f4-7f96-81b0-a3d406909579",
+            "postProcessingProfile": "b773310d-91c5-cbfb-ceda-2538c8cb7b4f",
             "ambientIntensity": 1.0
         }
     },
@@ -5450,7 +5450,7 @@
                         "UIButtonScript": {
                             "actionType": 1,
                             "currentSceneGUID": "7d1be7c7-26e7-58c8-67b5-c3640955da4c",
-                            "targetSceneGUID": "3340bc3d-ca6f-b3cd-b15c-265523f696c5",
+                            "targetSceneGUID": "8b1b25ff-568a-5bb5-d5d7-c6fd2f0a8905",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
                             "resumeSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
@@ -53955,6 +53955,12 @@
                 }
             }
         },
+        "EventColliderScript": {
+            "eventType": 1,
+            "eventCanvasObject": "3529358a-f95b-7f7d-1ea2-858dd996747a",
+            "activationDelay": 10.0,
+            "timer": 0.0
+        },
         "NameComponent": {
             "entityName": "WinObject",
             "Layer": 0,
@@ -53963,12 +53969,6 @@
             "isStatic": false,
             "prefabName": "",
             "hide": false
-        },
-        "NextSceneColliderScript": {
-            "nextSceneGUID": "3340bc3d-ca6f-b3cd-b15c-265523f696c5",
-            "minActivationTime": 10.0,
-            "timer": 0.0,
-            "hasTriggered": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -54314,7 +54314,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "35e0113e-9142-7379-871f-f6ab23fac11b",
+                        "entityGUID": "5014dda3-149d-5106-16ad-d4a0733dfa1f",
                         "MaterialComponent": {
                             "materialGUID": [
                                 {
@@ -54337,6 +54337,9 @@
                             "isStatic": false,
                             "prefabName": "",
                             "hide": false
+                        },
+                        "PowerupManagerScript": {
+                            "powerupType": "ACID"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -54376,7 +54379,7 @@
                         }
                     },
                     {
-                        "entityGUID": "7f4734e4-1752-1036-014e-af3b162ae6ef",
+                        "entityGUID": "7ce31152-d8be-65c7-3aa8-6225d06a1681",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 1",
                             "Layer": 0,
@@ -54597,7 +54600,7 @@
                         }
                     },
                     {
-                        "entityGUID": "096223b0-3ab5-16eb-8a20-8b85083e388c",
+                        "entityGUID": "a5c60e64-6110-fdb9-cd64-62b2ae3a6f34",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 2",
                             "Layer": 0,
@@ -54818,7 +54821,7 @@
                         }
                     },
                     {
-                        "entityGUID": "e45c18dc-bd6b-cac7-02df-ca068f7b1be9",
+                        "entityGUID": "efa26021-f537-2f03-6829-1f7c97ad8e3e",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 3",
                             "Layer": 0,
@@ -55039,7 +55042,7 @@
                         }
                     },
                     {
-                        "entityGUID": "528bdc4e-bf32-08bc-753e-1471f385b9ff",
+                        "entityGUID": "bdf8fdae-15e3-e715-9f47-d659633df984",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 4",
                             "Layer": 0,
@@ -55310,7 +55313,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "41cfa504-9b72-acee-12f2-4a15f48bf47c",
+                        "entityGUID": "4dec211b-f9e7-1be2-9cae-0507391caf82",
                         "MaterialComponent": {
                             "materialGUID": [
                                 {
@@ -55333,6 +55336,9 @@
                             "isStatic": false,
                             "prefabName": "",
                             "hide": false
+                        },
+                        "PowerupManagerScript": {
+                            "powerupType": "ACID"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -55372,7 +55378,7 @@
                         }
                     },
                     {
-                        "entityGUID": "8246a481-7417-bc15-4c67-1fc2fbdbb802",
+                        "entityGUID": "3c80f7c4-6ea0-92d4-bc8c-987e084217ef",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 1",
                             "Layer": 0,
@@ -55593,7 +55599,7 @@
                         }
                     },
                     {
-                        "entityGUID": "edcd55df-996f-34fb-835a-1eea5c703f22",
+                        "entityGUID": "f76c68bd-db41-7369-e028-9ad383e45151",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 2",
                             "Layer": 0,
@@ -55814,7 +55820,7 @@
                         }
                     },
                     {
-                        "entityGUID": "2d0048b5-1599-c66a-7cf9-bc503caa7b70",
+                        "entityGUID": "59d131da-0c27-aa89-df60-66048ddac72e",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 3",
                             "Layer": 0,
@@ -56035,7 +56041,7 @@
                         }
                     },
                     {
-                        "entityGUID": "a811966f-ab1c-79d0-a9e3-dab247f1e857",
+                        "entityGUID": "553e427a-d777-df34-894d-43d492031382",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 4",
                             "Layer": 0,
@@ -56306,7 +56312,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "6015879c-8e33-49b9-e2f0-c064245ea700",
+                        "entityGUID": "b7d182a2-075b-2793-c8db-f5393ad2ed4f",
                         "MaterialComponent": {
                             "materialGUID": [
                                 {
@@ -56331,7 +56337,7 @@
                             "hide": false
                         },
                         "PowerupManagerScript": {
-                            "powerupType": "fire"
+                            "powerupType": "FIRE"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -56371,7 +56377,7 @@
                         }
                     },
                     {
-                        "entityGUID": "67025f56-43f3-46b4-edb7-8106bc934e49",
+                        "entityGUID": "9b808042-2f89-6505-c225-919a300b267f",
                         "NameComponent": {
                             "entityName": "Fire Prop Particles",
                             "Layer": 0,
@@ -56592,7 +56598,7 @@
                         }
                     },
                     {
-                        "entityGUID": "8760012f-6052-60c2-770c-83808dfece40",
+                        "entityGUID": "1784c448-e216-b787-7a87-648b0ee1e382",
                         "NameComponent": {
                             "entityName": "Fire Prop Particles",
                             "Layer": 0,
@@ -56863,7 +56869,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "131fa8bd-70d5-5ff7-877d-2f13cb741bc1",
+                        "entityGUID": "e7608a34-8649-ec6b-27f0-4e2486f6ed86",
                         "MaterialComponent": {
                             "materialGUID": [
                                 {
@@ -56888,7 +56894,7 @@
                             "hide": false
                         },
                         "PowerupManagerScript": {
-                            "powerupType": "fire"
+                            "powerupType": "FIRE"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -56928,7 +56934,7 @@
                         }
                     },
                     {
-                        "entityGUID": "da11cd8c-b2fc-e9f5-b0b8-f661ce9ce05a",
+                        "entityGUID": "337975bd-1ee4-e1e4-711a-502f33a1f334",
                         "NameComponent": {
                             "entityName": "Fire Prop Particles",
                             "Layer": 0,
@@ -57149,7 +57155,7 @@
                         }
                     },
                     {
-                        "entityGUID": "10e3326e-9daf-f4a9-d346-4838757e761d",
+                        "entityGUID": "cf115a93-d5e8-51bc-3ea7-0014ba2d4038",
                         "NameComponent": {
                             "entityName": "Fire Prop Particles",
                             "Layer": 0,
@@ -58188,7 +58194,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "4d120fec-85ff-469d-6645-98b2f8e146d5",
+                        "entityGUID": "2a15e0a3-74a1-245b-5c16-e3378f5e933a",
                         "BoxColliderComponent": {
                             "isTrigger": false,
                             "box": {
@@ -58224,7 +58230,7 @@
                             "hide": false
                         },
                         "PowerupManagerScript": {
-                            "powerupType": "lightning"
+                            "powerupType": "LIGHTNING"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -58264,7 +58270,7 @@
                         }
                     },
                     {
-                        "entityGUID": "6305b6da-68c9-75eb-4912-6d2a321eca1c",
+                        "entityGUID": "b8762c24-8ff9-89ff-b51d-90903230bd57",
                         "NameComponent": {
                             "entityName": "Lightning Prop Particles",
                             "Layer": 0,
@@ -58535,7 +58541,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "47c0e7aa-d156-f513-29b0-2c18704f5249",
+                        "entityGUID": "4cab9e3c-9590-78d4-7d24-6741b144f00f",
                         "BoxColliderComponent": {
                             "isTrigger": false,
                             "box": {
@@ -58571,7 +58577,7 @@
                             "hide": false
                         },
                         "PowerupManagerScript": {
-                            "powerupType": "lightning"
+                            "powerupType": "LIGHTNING"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -58611,7 +58617,7 @@
                         }
                     },
                     {
-                        "entityGUID": "2afe0d89-1bb2-a43a-2748-4a0fdb309c3f",
+                        "entityGUID": "bb2c6a70-c4c7-6f96-197d-2824155a5442",
                         "NameComponent": {
                             "entityName": "Lightning Prop Particles",
                             "Layer": 0,
@@ -58882,7 +58888,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "fd32f88d-e992-4925-5a9e-8e43f88e3608",
+                        "entityGUID": "1157ee72-1991-1ffa-54ef-1fc032401822",
                         "MaterialComponent": {
                             "materialGUID": [
                                 {
@@ -58905,6 +58911,9 @@
                             "isStatic": false,
                             "prefabName": "",
                             "hide": false
+                        },
+                        "PowerupManagerScript": {
+                            "powerupType": "ACID"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -58944,7 +58953,7 @@
                         }
                     },
                     {
-                        "entityGUID": "b0e62c77-2db8-1994-e3b4-5ce1dbe5ecf2",
+                        "entityGUID": "1724d8c3-ac97-bc6e-1dbf-b002adf30530",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 1",
                             "Layer": 0,
@@ -59165,7 +59174,7 @@
                         }
                     },
                     {
-                        "entityGUID": "09299d2a-e5d2-ad99-7949-cb2745d1f756",
+                        "entityGUID": "828334bb-8d8c-f174-9f76-0b39e0a7404f",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 2",
                             "Layer": 0,
@@ -59386,7 +59395,7 @@
                         }
                     },
                     {
-                        "entityGUID": "93885599-f90e-5770-37e9-53ef327362b2",
+                        "entityGUID": "a36f1aa0-fc2c-83c4-2f9a-459d91bd26d2",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 3",
                             "Layer": 0,
@@ -59607,7 +59616,7 @@
                         }
                     },
                     {
-                        "entityGUID": "60e7d18a-44a2-f42d-4e48-d9dbfd0d7be2",
+                        "entityGUID": "31a96ca3-22b8-34f6-f2a2-43cfea8fce04",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 4",
                             "Layer": 0,
@@ -59878,7 +59887,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "5242c8db-5d90-2572-5a00-06336aa5eb65",
+                        "entityGUID": "b885069e-de08-8604-2f52-e70712cec0e8",
                         "MaterialComponent": {
                             "materialGUID": [
                                 {
@@ -59901,6 +59910,9 @@
                             "isStatic": false,
                             "prefabName": "",
                             "hide": false
+                        },
+                        "PowerupManagerScript": {
+                            "powerupType": "ACID"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -59940,7 +59952,7 @@
                         }
                     },
                     {
-                        "entityGUID": "ba3e9f51-a56d-1bc8-c35d-3131354acb34",
+                        "entityGUID": "e98bd20d-5331-b33b-ce23-76f7b596218a",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 1",
                             "Layer": 0,
@@ -60161,7 +60173,7 @@
                         }
                     },
                     {
-                        "entityGUID": "51c8f6dc-a2e7-1f88-2556-e2d8e241004c",
+                        "entityGUID": "d328a2a3-5ca3-c348-9978-1eb8892c0425",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 2",
                             "Layer": 0,
@@ -60382,7 +60394,7 @@
                         }
                     },
                     {
-                        "entityGUID": "cf32e691-3bb9-1d61-a095-93d1f9316e9b",
+                        "entityGUID": "8f6165d7-b99a-686e-d203-a79d90ab27ce",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 3",
                             "Layer": 0,
@@ -60603,7 +60615,7 @@
                         }
                     },
                     {
-                        "entityGUID": "5ab97003-e771-05b0-afd7-3d2bc262e66a",
+                        "entityGUID": "aa4aeab8-028e-3eb1-c953-0c5e40618707",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 4",
                             "Layer": 0,
@@ -60874,7 +60886,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "14966b7e-9e49-73ec-0497-022548e65c0c",
+                        "entityGUID": "75e8042d-b8c7-7bdd-74d9-39852454bf2a",
                         "MaterialComponent": {
                             "materialGUID": [
                                 {
@@ -60899,7 +60911,7 @@
                             "hide": false
                         },
                         "PowerupManagerScript": {
-                            "powerupType": "fire"
+                            "powerupType": "FIRE"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -60939,7 +60951,7 @@
                         }
                     },
                     {
-                        "entityGUID": "5c610d58-6c24-744d-be7c-2114bce690ac",
+                        "entityGUID": "ec99fef4-3e21-0700-559e-d0941bba8cab",
                         "NameComponent": {
                             "entityName": "Fire Prop Particles",
                             "Layer": 0,
@@ -61160,7 +61172,7 @@
                         }
                     },
                     {
-                        "entityGUID": "0e7734f2-dea7-3376-b1ab-4c257d9db4e7",
+                        "entityGUID": "bc5279eb-f4d5-1fbe-a8f4-e44dc6f913c6",
                         "NameComponent": {
                             "entityName": "Fire Prop Particles",
                             "Layer": 0,
@@ -61431,7 +61443,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "44b08bae-a49e-edc4-b459-e5940c04f7fe",
+                        "entityGUID": "1ada9890-e53a-b2af-37a5-e135df59464d",
                         "MaterialComponent": {
                             "materialGUID": [
                                 {
@@ -61456,7 +61468,7 @@
                             "hide": false
                         },
                         "PowerupManagerScript": {
-                            "powerupType": "fire"
+                            "powerupType": "FIRE"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -61496,7 +61508,7 @@
                         }
                     },
                     {
-                        "entityGUID": "1bf4335b-7c85-f062-121b-b5708ccae294",
+                        "entityGUID": "3fddc9e1-6c2f-d891-0c75-1f0c193dad45",
                         "NameComponent": {
                             "entityName": "Fire Prop Particles",
                             "Layer": 0,
@@ -61717,7 +61729,7 @@
                         }
                     },
                     {
-                        "entityGUID": "b3da1479-e17a-e104-e13a-a0320682dbcc",
+                        "entityGUID": "4148eaf3-0357-1c65-af81-c22f68b13207",
                         "NameComponent": {
                             "entityName": "Fire Prop Particles",
                             "Layer": 0,
@@ -61988,7 +62000,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "e03a6cd6-af1b-e9e4-506b-1d4d25bd05c7",
+                        "entityGUID": "48ebbbfc-1d27-dbe9-7e16-4385c6ce1d2c",
                         "BoxColliderComponent": {
                             "isTrigger": false,
                             "box": {
@@ -62024,7 +62036,7 @@
                             "hide": false
                         },
                         "PowerupManagerScript": {
-                            "powerupType": "lightning"
+                            "powerupType": "LIGHTNING"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -62064,7 +62076,7 @@
                         }
                     },
                     {
-                        "entityGUID": "a4f71324-8601-4925-1a21-ccd042a22b70",
+                        "entityGUID": "684e669f-fb16-313e-3482-a1954ee8decd",
                         "NameComponent": {
                             "entityName": "Lightning Prop Particles",
                             "Layer": 0,
@@ -62335,7 +62347,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "06e61544-d6c9-a7f9-5201-9b79d493d140",
+                        "entityGUID": "755ddf31-e69e-af8d-2dce-1a107f467386",
                         "BoxColliderComponent": {
                             "isTrigger": false,
                             "box": {
@@ -62371,7 +62383,7 @@
                             "hide": false
                         },
                         "PowerupManagerScript": {
-                            "powerupType": "lightning"
+                            "powerupType": "LIGHTNING"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -62411,7 +62423,7 @@
                         }
                     },
                     {
-                        "entityGUID": "2e537161-5829-e2a2-53e6-30a2c5a62c8e",
+                        "entityGUID": "5f682eb2-1ac4-f738-d825-275aa1814e41",
                         "NameComponent": {
                             "entityName": "Lightning Prop Particles",
                             "Layer": 0,
@@ -62682,7 +62694,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "37205419-a73f-268b-abce-ed5613358550",
+                        "entityGUID": "0b14419e-58a8-8aa4-e244-ac3f1b1ebdfc",
                         "MaterialComponent": {
                             "materialGUID": [
                                 {
@@ -62705,6 +62717,9 @@
                             "isStatic": false,
                             "prefabName": "",
                             "hide": false
+                        },
+                        "PowerupManagerScript": {
+                            "powerupType": "ACID"
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -62744,7 +62759,7 @@
                         }
                     },
                     {
-                        "entityGUID": "7144fb7b-cd7c-4fb4-5813-09b1ea0fef90",
+                        "entityGUID": "761694d7-a457-fc94-c86d-e51e000cedf7",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 1",
                             "Layer": 0,
@@ -62965,7 +62980,7 @@
                         }
                     },
                     {
-                        "entityGUID": "a3993cee-55ac-b111-a4e6-46320c7bb7c9",
+                        "entityGUID": "57638b88-2bec-40b0-c7e1-2409fc1caea2",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 2",
                             "Layer": 0,
@@ -63186,7 +63201,7 @@
                         }
                     },
                     {
-                        "entityGUID": "515db5a6-88b9-8f7b-a5a7-b7c620bf803a",
+                        "entityGUID": "6ad09706-9f05-8565-37a3-2db6de457409",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 3",
                             "Layer": 0,
@@ -63407,7 +63422,7 @@
                         }
                     },
                     {
-                        "entityGUID": "5d9aea2e-1cec-8195-1c2b-8607ed350c56",
+                        "entityGUID": "7573c408-24f2-f206-986b-f5500d4a0d55",
                         "NameComponent": {
                             "entityName": "Acid Prop Particles 4",
                             "Layer": 0,

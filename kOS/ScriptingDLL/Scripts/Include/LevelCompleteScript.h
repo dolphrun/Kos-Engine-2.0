@@ -8,6 +8,7 @@
 class LevelCompleteScript : public TemplateSC {
 public:
     static bool isLevelCompleteActive;
+    static LevelCompleteScript* instance;
 
     utility::GUID levelCompleteCanvasGUID;
     ecs::EntityID levelCompleteCanvasID = 0;
@@ -18,6 +19,7 @@ public:
     bool hasShownLevelComplete = false;
 
     void Start() override {
+        instance = this;
         isLevelCompleteActive = false;
         levelCompleteCanvasID = ecsPtr->GetEntityIDFromGUID(levelCompleteCanvasGUID);
 
@@ -49,8 +51,7 @@ public:
     }
 
     void HideLevelComplete() {
-        if (!hasShownLevelComplete)
-            return;
+        
 
         hasShownLevelComplete = false;
         isLevelCompleteActive = false;
@@ -77,3 +78,4 @@ public:
 };
 
 inline bool LevelCompleteScript::isLevelCompleteActive = false;
+inline LevelCompleteScript* LevelCompleteScript::instance = nullptr;
