@@ -64,6 +64,9 @@ namespace physics {
 
 		bool Raycast(const glm::vec3& origin, const glm::vec3& direction, float maxDistance, RaycastHit& outHit, void* actorToIgnore);
 		bool Raycast(const glm::vec3& origin, const glm::vec3& direction, float maxDistance, RaycastHit& outHit, const std::vector<void*>& actorsToIgnore);
+		bool Raycast(const glm::vec3& origin, const glm::vec3& direction, float maxDistance, RaycastHit& outHit, int ignoredLayerMask, void* actorToIgnore);
+		bool Raycast(const glm::vec3& origin, const glm::vec3& direction, float maxDistance, RaycastHit& outHit, int ignoredLayerMask, const std::vector<void*>& actorsToIgnore);
+
 		std::vector<int> OverlapSphere(const glm::vec3& center, float radius);
 
 		physicslayer::PhysicsLayer layers;

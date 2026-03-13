@@ -233,6 +233,67 @@ namespace physics {
 		return false;
 	}
 
+	bool PhysicsManager::Raycast(const glm::vec3& origin, const glm::vec3& direction, float maxDistance, RaycastHit& outHit, int ignoredLayerMask, void* actorToIgnore) {
+		if (!m_scene) { return false; }
+
+		PxVec3 pxOrigin{ origin.x, origin.y, origin.z };
+		PxVec3 pxDirection{ direction.x, direction.y, direction.z };
+		pxDirection.normalize();
+
+		struct LayerFilter : public PxQueryFilterCallback {
+			int mask;
+			PxRigidActor* ignore;
+			LayerFilter(int m, PxRigidActor* a) : mask(m), ignore(a) {}
+			PxQueryHitType::Enum preFilter(const PxFilterData& filterData, const PxShape* shape, const PxRigidActor* actor, PxHitFlags&) override {
+				int layer = static_cast<int>(shape->getQueryFilterData().word0);
+				if (mask & (1 << layer)) { return PxQueryHitType::eNONE; }
+				if (ignore && actor == ignore) { return PxQueryHitType::eNONE; }
+				return PxQueryHitType::eBLOCK;
+			}
+			PxQueryHitType::Enum postFilter(const PxFilterData& filterData, const PxQueryHit& hit, const PxShape* shape, const PxRigidActor* actor) override {
+				return PxQueryHitType::eBLOCK;
+			}
+		};
+
+		PxRaycastBuffer hit;
+		PxQueryFilterData filterData{ PxQueryFlag::eSTATIC | PxQueryFlag::eDYNAMIC | PxQueryFlag::ePREFILTER };
+		LayerFilter cb{ ignoredLayerMask, static_cast<PxRigidActor*>(actorToIgnore) };
+		m_scene->raycast(pxOrigin, pxDirection, maxDistance, hit, PxHitFlag::eDEFAULT, filterData, &cb);
+		return ResolveHit(hit, origin, direction, maxDistance, outHit, m_debugRays);
+	}
+
+	bool PhysicsManager::Raycast(const glm::vec3& origin, const glm::vec3& direction, float maxDistance, RaycastHit& outHit, int ignoredLayerMask, const std::vector<void*>& actorsToIgnore) {
+		if (!m_scene) { return false; }
+
+		PxVec3 pxOrigin{ origin.x,    origin.y,    origin.z };
+		PxVec3 pxDirection{ direction.x, direction.y, direction.z };
+		pxDirection.normalize();
+
+		struct LayerFilter : public PxQueryFilterCallback {
+			int mask;
+			const std::vector<void*>& ignoreList;
+			LayerFilter(int m, const std::vector<void*>& l) : mask(m), ignoreList(l) {}
+			PxQueryHitType::Enum preFilter(const PxFilterData& filterData, const PxShape* shape, const PxRigidActor* actor, PxHitFlags&) override {
+				int layer = static_cast<int>(shape->getQueryFilterData().word0);
+				if (mask & (1 << layer)) { return PxQueryHitType::eNONE; }
+				for (void* ignored : ignoreList) {
+					if (actor == static_cast<const PxRigidActor*>(ignored)) { return PxQueryHitType::eNONE; }
+				}
+				return PxQueryHitType::eBLOCK;
+			}
+			PxQueryHitType::Enum postFilter(const PxFilterData& filterData, const PxQueryHit& hit, const PxShape* shape, const PxRigidActor* actor) override {
+				return PxQueryHitType::eBLOCK;
+			}
+		};
+
+		PxRaycastBuffer hit;
+		PxQueryFilterData filterData{ PxQueryFlag::eSTATIC | PxQueryFlag::eDYNAMIC | PxQueryFlag::ePREFILTER };
+		LayerFilter cb{ ignoredLayerMask, actorsToIgnore };
+
+		m_scene->raycast(pxOrigin, pxDirection, maxDistance, hit, PxHitFlag::eDEFAULT, filterData, &cb);
+		return ResolveHit(hit, origin, direction, maxDistance, outHit, m_debugRays);
+	}
+
 	std::vector<int> PhysicsManager::OverlapSphere(const glm::vec3& center, float radius) {
 		std::vector<int> result;
 		if (!m_scene) { return result; }

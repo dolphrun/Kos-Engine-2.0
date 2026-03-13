@@ -219,4 +219,19 @@ struct DebugSphere {
 	glm::vec3 color{ 1.0f, 0.0f, 0.0f };
 };
 
+inline bool ResolveHit(const PxRaycastBuffer& hit, const glm::vec3& origin, const glm::vec3& direction, float maxDistance, RaycastHit& outHit, std::vector<DebugRay>& debugRays) {
+	if (hit.hasBlock) {
+		outHit.point = { hit.block.position.x, hit.block.position.y, hit.block.position.z };
+		outHit.normal = { hit.block.normal.x, hit.block.normal.y, hit.block.normal.z };
+		outHit.distance = hit.block.distance;
+		if (hit.block.actor && hit.block.actor->userData) {
+			outHit.entityID = reinterpret_cast<unsigned int>(hit.block.actor->userData);
+		}
+		debugRays.push_back({ origin, outHit.point });
+		return true;
+	}
+	debugRays.push_back({ origin, origin + glm::normalize(direction) * maxDistance });
+	return false;
+}
+
 #endif
