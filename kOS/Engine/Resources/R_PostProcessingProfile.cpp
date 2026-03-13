@@ -74,6 +74,13 @@ void R_PostProcessingProfile::Load()
 				this->profile.postProcessingEffects.push_back(std::make_unique<Blur>(blur));
 				break;;
 			}
+			case 4:
+				Bloom blur;
+				blur.bloomStrength = e["BloomStrength"].GetFloat();
+				this->profile.postProcessingEffects.push_back(std::make_unique<Bloom>(blur));
+				break;;
+
+				break;;
 
 
 		}

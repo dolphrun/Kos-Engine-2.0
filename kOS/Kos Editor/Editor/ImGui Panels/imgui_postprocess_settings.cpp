@@ -169,6 +169,12 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 					entityData.AddMember("Radius", blr->radius, allocator);
 					break;;
 				}
+				case 4:
+				{
+					Bloom* blr = reinterpret_cast<Bloom*>(ptr.get());
+					entityData.AddMember("BloomStrength", blr->bloomStrength, allocator);
+					break;;
+				}
 
 				}
 				postProfileEffects.PushBack(entityData, allocator);

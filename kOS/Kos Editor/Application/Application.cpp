@@ -113,7 +113,10 @@ namespace Application {
         --------------------------------------------------------------*/
         sceneManager.onSceneLoaded.Add([this](SceneData Data) {
             //std::cout << "Post processing added " << Data.postProcessingProfile.GetToString() << '\n';
-            if (!Data.postProcessingProfile.Empty())graphicsManager.postProcessProfile= &resourceManager.GetResource<R_PostProcessingProfile>(Data.postProcessingProfile)->profile;
+            if (!Data.postProcessingProfile.Empty()) {
+                std::cout << "Loaded pp\n";
+                graphicsManager.postProcessProfile = &resourceManager.GetResource<R_PostProcessingProfile>(Data.postProcessingProfile)->profile;
+            }
             });
 
         LOGGING_INFO("Application Init Successful");

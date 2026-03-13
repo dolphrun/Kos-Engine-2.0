@@ -1255,7 +1255,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			}
 
 			// Swap out anim finish then trigger swap of model then swap in
-			if (animComp->m_CurrentTime >= animDuration && stateName == "Swap Out")
+			if (/*animComp->m_CurrentTime >= animDuration && */stateName == "Swap Out")
 			{
 				std::cout << "[WeaponSwap] Swap Out anim done > applying weapon: " << (int)pendingPowerup << "\n";
 
@@ -1635,8 +1635,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 						auto& profile = graphics->postProcessProfile;
 						Vigniette* vig = reinterpret_cast<Vigniette*>(profile->GetEffect(PPT_Vigniette));
 						vig->color = glm::vec3(0.6f, 0.15f, 0.15f);
-						vig->extent = 0.330f;
-						vig->intensity = 15.f;
+						vig->extent = 0.130f;
+						vig->intensity = 12.5f;
 						ChromaticAberration* chro = reinterpret_cast<ChromaticAberration*>(profile->GetEffect(PPT_ChromaticAbberation));
 						chro->redOffset = 0.015f;
 						chro->greenOffset = -0.015f;
@@ -1657,9 +1657,9 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 						auto& profile = graphics->postProcessProfile;
 						Vigniette* vig = reinterpret_cast<Vigniette*>(profile->GetEffect(PPT_Vigniette));
-						vig->color = glm::vec3(0.15f, 0.6f, 0.15f);
-						vig->extent = 0.330f;
-						vig->intensity = 15.f;
+						vig->color = glm::vec3(0.15f, 0.45f, 0.15f);
+						vig->extent = 0.09f;
+						vig->intensity = 13.5f;
 						ChromaticAberration* chro = reinterpret_cast<ChromaticAberration*>(profile->GetEffect(PPT_ChromaticAbberation));
 						chro->redOffset = 0.015f;
 						chro->greenOffset = -0.015f;
@@ -1684,8 +1684,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 						auto& profile = graphics->postProcessProfile;
 						Vigniette* vig = reinterpret_cast<Vigniette*>(profile->GetEffect(PPT_Vigniette));
 						vig->color = glm::vec3(0.15f, 0.15f, 0.6f);
-						vig->extent = 0.330f;
-						vig->intensity = 15.f;
+						vig->extent = 0.130f;
+						vig->intensity = 12.5f;
 						ChromaticAberration* chro = reinterpret_cast<ChromaticAberration*>(profile->GetEffect(PPT_ChromaticAbberation));
 						chro->redOffset = 0.015f;
 						chro->greenOffset = -0.015f;
@@ -2130,7 +2130,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 	}
 
 	// MOVEMENT
-	if (Input->IsKeyTriggered(keys::F)) {
+	if (Input->IsKeyTriggered(keys::LeftShift)) {
 		auto* playerRigidbody = ecsPtr->GetComponent<ecs::RigidbodyComponent>(entity);
 		if (!playerRigidbody) return;
 

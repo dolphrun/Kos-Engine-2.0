@@ -39,7 +39,7 @@ public:
 				break;
 			}
 		}
-		physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
+		physicsPtr->GetEventCallback()->OnTriggerStay(entity, [this](const physics::Collision& col) {
 			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
 				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
 					enemyScript->TakeDamage(lightningDamage, "LIGHTNING");
