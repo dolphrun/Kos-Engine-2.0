@@ -89956,7 +89956,7 @@
     {
         "entityGUID": "ea7440a1-1e90-6918-1f2f-9c3b031dde2d",
         "BoxColliderComponent": {
-            "isTrigger": false,
+            "isTrigger": true,
             "box": {
                 "center": {
                     "x": 0.0,
