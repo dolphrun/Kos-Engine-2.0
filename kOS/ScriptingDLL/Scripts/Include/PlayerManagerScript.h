@@ -326,11 +326,13 @@ public:
 		currentReloadTimer = 0.0f;
 
 		if (animComp && playerController) {
-			playerController->SetState("Idle", animComp);
-			animComp->m_CurrentTime = 0.0f;
+			auto* state = playerController->RetrieveStateByID(animComp->m_currentStateID);
+			if (state && (state->name == "Reload" || state->name == "Reloading")) {
+				playerController->SetState("Idle", animComp);
+				animComp->m_CurrentTime = 0.0f;
+			}
 		}
 	}
-
 	// Normal SFX
 	utility::GUID gunSfxGUID_1;
 	utility::GUID gunReloadSfxGUID;
@@ -1602,6 +1604,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 	// INTERACT
 	if (Input->IsKeyTriggered(keys::E)) {
+
 
 		if (currMana <= 0.0f && playerPowerupHeld == Powerup::NONE) {
 			bool hasAbsorbed = false;
