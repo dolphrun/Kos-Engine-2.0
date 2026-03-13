@@ -212,13 +212,13 @@ public:
 	float lightningAbilityDelay = 0.5f; // FOR ANIM
 	float lightningAbilityTimer = 0.f;   //TRACKER FOR ANIM
 
-	float groundAcceleration = 15.f;
-	float airAcceleration = 25.f;
+	float groundAcceleration = 10.f;
+	float airAcceleration = 10.f;
 	float groundFriction = 8.f;
-	float airControl = 0.3f;
-	float maxGroundSpeed = 20.f;
-	float maxAirSpeed = 27.f;
-	float jumpForce = 10.f;
+	float airControl = 0.2f;
+	float maxGroundSpeed = 15.f;
+	float maxAirSpeed = 16.f;
+	float jumpForce = 15.f;
 	float timeSinceGrounded = 0.f;
 	float coyoteTime = 0.2f;
 	float jumpGraceTime = 0.f;
