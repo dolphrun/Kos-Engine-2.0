@@ -2556,8 +2556,8 @@
                             "baseInactiveSprite": "00000000-0000-0000-0000-000000000000",
                             "fireActiveSprite": "2a0a15fd-ef55-f2c9-0aad-90ea75e1846b",
                             "fireInactiveSprite": "9473b153-a2ce-b062-1dde-512047582a2b",
-                            "acidActiveSprite": "74fd412b-8eef-1613-4f0e-d48e4cda4bc2",
-                            "acidInactiveSprite": "495c0496-1423-a35e-00e3-7cf49947da72",
+                            "acidActiveSprite": "56ee0fc9-04df-4ef2-9d7c-e5f2071717af",
+                            "acidInactiveSprite": "d824da45-1909-34c2-df7b-be7b3fbee6d7",
                             "lightningActiveSprite": "8b8791dd-f49e-a551-953b-f2fdd7b570af",
                             "lightningInactiveSprite": "45801c20-431f-c025-6143-1c7b5e158ee1"
                         },
@@ -2636,8 +2636,8 @@
                             "baseInactiveSprite": "00000000-0000-0000-0000-000000000000",
                             "fireActiveSprite": "de851943-035a-eda7-919b-8336d9a8eaf8",
                             "fireInactiveSprite": "de851943-035a-eda7-919b-8336d9a8eaf8",
-                            "acidActiveSprite": "0907b7de-2996-1352-e837-ad0782c9fbfa",
-                            "acidInactiveSprite": "0907b7de-2996-1352-e837-ad0782c9fbfa",
+                            "acidActiveSprite": "00dd5591-298c-f373-996a-ff02a197cd36",
+                            "acidInactiveSprite": "00dd5591-298c-f373-996a-ff02a197cd36",
                             "lightningActiveSprite": "2e02b31c-e74e-d1e1-3386-984bb567192e",
                             "lightningInactiveSprite": "2e02b31c-e74e-d1e1-3386-984bb567192e"
                         },
@@ -2716,8 +2716,8 @@
                             "baseInactiveSprite": "00000000-0000-0000-0000-000000000000",
                             "fireActiveSprite": "047d0373-a1b3-2cb0-0bca-a4376e6b72e8",
                             "fireInactiveSprite": "fe3f2389-442e-3a6a-06fc-9c20ac75f95d",
-                            "acidActiveSprite": "dda525e2-0a0b-7665-ca7e-c14f38b67001",
-                            "acidInactiveSprite": "14f566a3-2fde-7782-97fd-4ac04fab425a",
+                            "acidActiveSprite": "ad5c96b9-2e80-939d-b443-756523f6e0ba",
+                            "acidInactiveSprite": "f3f71581-ae33-30ca-8ff1-7b2aa99ad23d",
                             "lightningActiveSprite": "a53240f2-b7d1-d960-b529-b707ee9a3f5d",
                             "lightningInactiveSprite": "407f009c-3717-6aab-0a9d-0b73c1eeb134"
                         },
@@ -4896,7 +4896,7 @@
                             "normalSprite": "f08012fe-fdce-8122-e84a-04c32e8a3828",
                             "hoveredSprite": "f57e7ed9-1a92-86fe-5417-55124bb6dcb8",
                             "pressedSprite": "34327e36-c568-8671-0888-ffb987bc05bb",
-                            "useSpriteSwap": false,
+                            "useSpriteSwap": true,
                             "isHovered": false,
                             "isPressed": false
                         },
