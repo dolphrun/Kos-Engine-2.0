@@ -119,7 +119,9 @@ void EditorCamera::onScroll(double xoffset, double yoffset) {
     position += direction * scrollAmount;
 }
 glm::mat4 EditorCamera::CalculateViewMtx() {
+    glm::vec3 front, right, up;
     if (orbitMode) {
+        front = glm::normalize(target - position);
         viewMtx = glm::lookAt(position, target, glm::vec3{ 0.0f, 1.0f, 0.0f });
     }
     else {
@@ -128,10 +130,12 @@ glm::mat4 EditorCamera::CalculateViewMtx() {
         direction.y = sin(glm::radians(rotation.x));
         direction.z = sin(glm::radians(rotation.y)) * cos(glm::radians(rotation.x));
         direction = glm::normalize(direction);
-
-
+        front = direction;
         viewMtx = glm::lookAt(position, position + direction, glm::vec3{ 0.0f, 1.0f, 0.0f });
     }
+    right = glm::normalize(glm::cross(front, glm::vec3(0.0f, 1.0f, 0.0f)));
+    up = glm::normalize(glm::cross(right, front));
+    ComputeFustrum(front, right, up);
     return viewMtx;
 }
 

@@ -178,6 +178,8 @@ bool InFrustum(glm::vec3 center, glm::vec3 extents, utility::Fustrum const& fust
 	}
 	return true;
 }
+
+
 void MeshRenderer::Render(const CameraData& camera, Shader& shader)
 {
 	shader.SetBool("isRigged", false);
@@ -359,25 +361,58 @@ void LightRenderer::InitializeLightRenderer() {
 	LOGGING_INFO("Initialized shadow maps\n");
 }
 void LightRenderer::UpdateDCM() {
+
+	int j = 0;
 	for (size_t i = 0; i < pointLightsToDraw.size(); i++)
 	{
 		PointLightData& pointLight = pointLightsToDraw[i];
 		if (pointLight.shadowCon) {
-			dcm[i].FillMap(pointLight.position);
+			dcm[j++].FillMap(pointLight.position);
 		}
 	}
 }
+
+bool SphereIntersect(glm::vec3 posA, glm::vec3 posB, float radA, float radB)
+{
+	float distSq = glm::dot(posA - posB, posA - posB);
+	float radSum = radA + radB;
+	return distSq <= radSum * radSum;
+}
 void LightRenderer::RenderAllLights(const CameraData& camera, Shader& shader)
 {
+	glm::vec3 lightRadius{ 5.f };
+	int j = 0;
+
 	for (size_t i = 0; i < pointLightsToDraw.size(); i++)
 	{
+		//Check if its in fustrum
+		//use new center and extents to compute fustrun
+		std::stringstream s;
+		shader.Use();
+		s << "light[" << i << "].intensity";
+		shader.SetFloat(s.str(), 0);
+		shader.Disuse();
+
+		if (!InFrustum(pointLightsToDraw[i].position, lightRadius, camera.viewFrustum) && !SphereIntersect(pointLightsToDraw[i].position,camera.position,1.f,60.f)) {
+			/*			std::cout << "TEST TEST\n";
+						std::cout << worldCenter.x << ' ' << worldCenter.y << ' ' << worldCenter.z<<'\n';
+						std::cout << extents.x << ' ' << extents.y << ' ' << extents.z << '\n';*/
+			continue;;
+		}
+		//std::cout << pointLightsToDraw[i].position.x << ' ' << pointLightsToDraw[i].position.y << ' ' << pointLightsToDraw[i].position.z << '\n';
+		//for (int i = 0; i < 6; i++) {
+		//	auto& p = camera.viewFrustum.planes[i];
+		//	std::cout << "Plane " << i << " normal(" << p.normal.x << "," << p.normal.y << "," << p.normal.z
+		//		<< ") dist=" << p.distance << "\n";
+		//}
+		
 		PointLightData& pointLight = pointLightsToDraw[i];
 		if (pointLight.shadowCon) {
 			//FIll up with uniform data
 		}
-		pointLight.SetUniform(&shader, i);
+		pointLight.SetUniform(&shader, j++);
 		//pointLight.SetShaderMtrx(&shader, i);
-
+		//break;;
 	}
 
 	for (size_t i = 0; i < directionLightsToDraw.size(); i++)

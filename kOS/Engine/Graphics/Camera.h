@@ -46,7 +46,7 @@ public:
 	virtual void onCursor(double xoffset, double yoffset);
 	virtual void onScroll(double xoffset, double yoffset);
 	float CalculateAspectRatio();
-	void ComputeFustrum();
+	void ComputeFustrum(glm::vec3 front, glm::vec3 right, glm::vec3 up);
 
 	float fov{ 45.0f };  // Field of view angle in degrees
 	float nearPlane{0.05f};         // Near clipping plane
