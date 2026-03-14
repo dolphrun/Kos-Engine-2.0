@@ -50,16 +50,32 @@ namespace gui {
 			//assetmanager::AssetManager* assetmanager = assetmanager::AssetManager::m_funcGetInstance();
 			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("file"))
 			{
-
 				IM_ASSERT(payload->DataSize == sizeof(std::filesystem::path));
 				std::filesystem::path* filename = static_cast<std::filesystem::path*>(payload->Data);
 
+				if (newDirectory == *filename) {
+					ImGui::EndDragDropTarget();
+					return;
+				}
 
-				if (newDirectory == *filename) return;
+				// 1. Determine destination path for the main file/folder
 				std::filesystem::path destinationFile = newDirectory / filename->filename();
 
+				// 2. Determine paths for the potential .meta file
+				// Using += appends the string directly to the filename (e.g., "myFile.png" -> "myFile.png.meta")
+				std::filesystem::path metaSource = *filename;
+				metaSource += ".meta";
+
+				std::filesystem::path metaDestination = destinationFile;
+				metaDestination += ".meta";
+
+				// 3. Move the main file/folder
 				std::filesystem::rename(*filename, destinationFile);
 
+				// 4. Move the meta file if it exists
+				if (std::filesystem::exists(metaSource)) {
+					std::filesystem::rename(metaSource, metaDestination);
+				}
 			}
 			ImGui::EndDragDropTarget();
 		}
