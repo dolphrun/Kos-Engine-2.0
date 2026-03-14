@@ -194,7 +194,9 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 					//Save ALL DCMS
 					//std::cout << "TEST TEST\n";
 					i++;
-					std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/DepthMap/" + std::to_string(lcComp) + ".dcm";
+					//Getnerate a GUID
+					
+					std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/DepthMap/" + utility::GenerateGUID().GetToString() + ".dcm";
 
 					if (!m_ecs.GetComponent<ecs::LightComponent>(lcComp)->bakedLighting)continue;;
 

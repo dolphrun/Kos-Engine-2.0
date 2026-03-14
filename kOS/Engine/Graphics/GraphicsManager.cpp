@@ -176,9 +176,7 @@ void GraphicsManager::gm_InitializeMeshes()
 
 void GraphicsManager::gm_RenderToEditorFrameBuffer()
 {
-	editorCamera.ComputeFustrum();
 	gm_FillDataBuffers(editorCamera);
-	//lightRenderer.dcm[0]=lightRenderer.testDCM;
 	framebufferManager.sceneBuffer.BindForDrawing();
 	glBindFramebuffer(GL_READ_FRAMEBUFFER, framebufferManager.gBuffer.RetrieveBuffer());
 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
@@ -227,7 +225,6 @@ void GraphicsManager::gm_RenderToGameFrameBuffer()
 	framebufferManager.sceneBuffer.BindForDrawing();
 	//gm_RenderCubeMap(cd);
 	for (CameraData& cd : gameCameras) {
-		cd.ComputeFustrum();
 		//Clear G buffer at the start maybe
 		//Bind and clear g buffer
 		if (!cd.culling) {
@@ -708,6 +705,8 @@ void GraphicsManager::gm_RenderDeferredObjects(const CameraData& camera)
 	glActiveTexture(GL_TEXTURE6);
 	glBindTexture(GL_TEXTURE_2D, framebufferManager.depthBuffer.RetrieveBuffer());
 
+	//Compute fustrum and ONLY render lights in fustrum
+	
 	//Fill point shadow stuff
 	for (int i = 0; i < lightRenderer.pointLightsToDraw.size(); i++) {
 		//if (lightRenderer.pointLightsToDraw[i].bakedCon&& !lightRenderer.pointLightsToDraw[i].bakedmapGUID.Empty()) {

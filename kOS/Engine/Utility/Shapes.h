@@ -73,7 +73,9 @@ namespace utility {
 		Plane() = default;
 		Plane(const glm::vec3& p, const glm::vec3& n)
 			: normal(glm::normalize(n)),
-			distance(glm::dot(normal, p)) {}
+			distance(glm::dot(normal, p)) {
+			distance = glm::dot(normal, p);
+		}
 		REFLECTABLE(Plane, normal, distance);
 	};
 	struct Fustrum {
