@@ -1,86 +1,104 @@
 #pragma once
 #include "ECS/Component/Component.h"
+#include "Config/pch.h"
 #include "ScriptAdapter/TemplateSC.h"
 #include <iostream>
-#include "ECS/Component/TextComponent.h" // assuming you have a TextComponent
 
 class ScoreManagerScript : public TemplateSC {
 public:
-    // Score values
-    int currentScore = 0;
-    int mult = 1; // multiplier starts at 1
-    static int bestScore;
-    static int lastScore;
+    // Static game statistics - tracked globally
+    static float timeTaken;
+    static int enemiesKilled;
+    static int elementsAbsorbed;
+    static int abilitiesUsed;
+    static int damageTaken;
+    static bool isTimerActive;
 
-    // GUIDs for dynamic text objects
-    utility::GUID scoreTextGUID;
-    utility::GUID multTextGUID;
+    // Static variables for final display
+    static float lastTimeTaken;
+    static int lastEnemiesKilled;
+    static int lastElementsAbsorbed;
+    static int lastAbilitiesUsed;
+    static int lastDamageTaken;
 
-    // Entity IDs assigned at Start
-    ecs::EntityID scoreTextID = 0;
-    ecs::EntityID multTextID = 0;
-
-    void Start() override {
-        currentScore = 0;
-        bestScore = 5000;
-        mult = 1;
-
-        // Convert GUIDs to ECS entity IDs
-        scoreTextID = ecsPtr->GetEntityIDFromGUID(scoreTextGUID);
-        multTextID = ecsPtr->GetEntityIDFromGUID(multTextGUID);
-
-        // Initialize text
-        UpdateScoreText();
-        UpdateMultText();
+    // Initialize/reset all stats (call at game start)
+    static void Initialize() {
+        timeTaken = 0.0f;
+        enemiesKilled = 0;
+        elementsAbsorbed = 0;
+        abilitiesUsed = 0;
+        damageTaken = 0;
+        isTimerActive = true;
+        std::cout << "ScoreManager initialized" << std::endl;
     }
 
-    void Update() override {
-        // Optional: debug print
-        // std::cout << "Score: " << currentScore << " | Multiplier: " << mult << "\n";
-    }
-
-    void AddScore(int scoreAdded) {
-        if (mult <= 0) mult = 1;
-
-        currentScore += scoreAdded * mult;
-        mult += 1; // increase multiplier on each kill
-
-        TallyScore();
-
-        // Update UI immediately
-        UpdateScoreText();
-        UpdateMultText();
-    }
-
-    void ResetMultiplier() {
-        mult = 1;
-        UpdateMultText();
-    }
-
-    void TallyScore() {
-        if (currentScore > bestScore) bestScore = currentScore;
-        lastScore = currentScore;
-    }
-
-private:
-    void UpdateScoreText() {
-        if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(scoreTextID)) {
-            textComp->text = std::to_string(currentScore); // Update UI
+    // Update timer (call this every frame from your game manager or player script)
+    static void UpdateTimer(float deltaTime) {
+        if (isTimerActive) {
+            timeTaken += deltaTime;
         }
-        std::cout << "Current Score: " << currentScore << std::endl; // Print to console
     }
 
-    void UpdateMultText() {
-        if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(multTextID)) {
-            textComp->text = std::to_string(mult) + "x"; // Update UI
-        }
-        std::cout << "Multiplier: " << mult << "x" << std::endl; // Print to console
+    // Called when an enemy is killed
+    static void AddEnemyKill() {
+        enemiesKilled++;
+        std::cout << "Enemies Killed: " << enemiesKilled << std::endl;
     }
 
+    // Called when player presses 'E' to absorb element
+    static void AddElementAbsorbed() {
+        elementsAbsorbed++;
+        std::cout << "Elements Absorbed: " << elementsAbsorbed << std::endl;
+    }
+
+    // Called when player uses an ability (LSHIFT, LMB, RMB)
+    static void AddAbilityUsed() {
+        abilitiesUsed++;
+        std::cout << "Abilities Used: " << abilitiesUsed << std::endl;
+    }
+
+    // Called when player takes damage
+    static void AddDamageTaken(int damage) {
+        damageTaken += damage;
+        std::cout << "Total Damage Taken: " << damageTaken << std::endl;
+    }
+
+    // Stop the timer (call when game ends)
+    static void StopTimer() {
+        isTimerActive = false;
+    }
+
+    // Save current stats to "last" variables (call before showing any end screen)
+    static void FinalizeStats() {
+        StopTimer();
+        lastTimeTaken = timeTaken;
+        lastEnemiesKilled = enemiesKilled;
+        lastElementsAbsorbed = elementsAbsorbed;
+        lastAbilitiesUsed = abilitiesUsed;
+        lastDamageTaken = damageTaken;
+
+        std::cout << "=== FINAL STATS ===" << std::endl;
+        std::cout << "Time Taken: " << lastTimeTaken << "s" << std::endl;
+        std::cout << "Enemies Killed: " << lastEnemiesKilled << std::endl;
+        std::cout << "Elements Absorbed: " << lastElementsAbsorbed << std::endl;
+        std::cout << "Abilities Used: " << lastAbilitiesUsed << std::endl;
+        std::cout << "Damage Taken: " << lastDamageTaken << std::endl;
+    }
 
 public:
-    REFLECTABLE(ScoreManagerScript, currentScore, mult, scoreTextGUID, multTextGUID);
+    REFLECTABLE(ScoreManagerScript, timeTaken, enemiesKilled, elementsAbsorbed, abilitiesUsed, damageTaken, isTimerActive);
 };
 
-inline int ScoreManagerScript::bestScore = 0;
-inline int ScoreManagerScript::lastScore = 0;
+// Static definitions
+inline float ScoreManagerScript::timeTaken = 0.0f;
+inline int ScoreManagerScript::enemiesKilled = 0;
+inline int ScoreManagerScript::elementsAbsorbed = 0;
+inline int ScoreManagerScript::abilitiesUsed = 0;
+inline int ScoreManagerScript::damageTaken = 0;
+inline bool ScoreManagerScript::isTimerActive = true;
+
+inline float ScoreManagerScript::lastTimeTaken = 0.0f;
+inline int ScoreManagerScript::lastEnemiesKilled = 0;
+inline int ScoreManagerScript::lastElementsAbsorbed = 0;
+inline int ScoreManagerScript::lastAbilitiesUsed = 0;
+inline int ScoreManagerScript::lastDamageTaken = 0;

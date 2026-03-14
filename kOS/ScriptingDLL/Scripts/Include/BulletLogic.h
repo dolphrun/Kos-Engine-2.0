@@ -84,9 +84,6 @@ inline void BulletLogic::Start() {
 				enemyScript->TakeDamage(bulletDamage, "DEFAULT");
 
 				if (enemyScript->enemyHealth <= 0) {
-					if (scoreManager) {
-						scoreManager->AddScore(scoreValue); // or whatever value you want per kill
-					}
 
 					enemyScript->Die();
 				}

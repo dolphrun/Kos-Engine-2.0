@@ -100,9 +100,6 @@ inline void AcidGas::Update() {
             std::cout << "[AcidGasCloud] Tick damage to enemy | HP left: " << enemyScript->enemyHealth << "\n";
 
             if (enemyScript->enemyHealth <= 0) {
-                if (scoreManager) {
-                    scoreManager->AddScore(scoreValue);
-                }
                 enemyScript->Die();
                 toRemove.push_back(enemyID);
             }

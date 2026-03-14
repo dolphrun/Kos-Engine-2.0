@@ -52,9 +52,6 @@ inline void FireDashVfxScript::Start() {
 			if (enemyScript->enemyHealth <= 0) {
 				enemyScript->Die();
 
-				if (scoreManager) {
-					scoreManager->AddScore(scoreValue);
-				}
 			}
 		}
 		});

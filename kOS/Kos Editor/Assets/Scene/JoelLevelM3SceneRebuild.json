@@ -4407,576 +4407,6 @@
                 ]
             },
             {
-                "entityGUID": "dee61752-b669-2e75-a66d-ee0be6621e13",
-                "CanvasRendererComponent": {
-                    "isScreenSpace": true
-                },
-                "LoseScreenScript": {
-                    "loseScreenCanvasGUID": "dee61752-b669-2e75-a66d-ee0be6621e13",
-                    "hiddenPosition": {
-                        "x": -10000.0,
-                        "y": -10000.0,
-                        "z": 0.0
-                    },
-                    "originalCanvasPosition": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "currentScoreTextGUID": "5200bfa5-e689-4777-b4a3-1dbda4c52f1d",
-                    "bestScoreTextGUID": "b7395b27-92fb-74df-2e89-8a1d5f4537bf"
-                },
-                "NameComponent": {
-                    "entityName": "Lose Screen Canvas",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "Lose Screen Canvas.prefab",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                },
-                "children": [
-                    {
-                        "entityGUID": "af7aa472-2abb-f226-e3d9-02d921409b0b",
-                        "NameComponent": {
-                            "entityName": "Lose Text",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
-                        },
-                        "TextComponent": {
-                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                            "text": "YOU LOSE!",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0
-                            },
-                            "fontSize": 180.0
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": -0.4971816837787628,
-                                    "y": 0.7400000095367432,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": -0.4971816837787628,
-                                    "y": 0.7400000095367432,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "entityGUID": "6ea074b6-cee3-7552-ad57-fb538558e4bf",
-                        "NameComponent": {
-                            "entityName": "Current Score Text",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
-                        },
-                        "TextComponent": {
-                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                            "text": "Current Score:",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0
-                            },
-                            "fontSize": 128.0
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": -1.3891839981079102,
-                                    "y": 0.27888453006744385,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": -1.3891839981079102,
-                                    "y": 0.27888453006744385,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "entityGUID": "f6f82547-e6a6-3dd4-f595-a2b03313de95",
-                        "NameComponent": {
-                            "entityName": "Current Score",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
-                        },
-                        "TextComponent": {
-                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                            "text": "000",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0
-                            },
-                            "fontSize": 128.0
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": 0.03655751422047615,
-                                    "y": 0.2828686237335205,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": 0.03655751422047615,
-                                    "y": 0.2828686237335205,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "entityGUID": "59b7251d-fb9e-0c0e-a47f-ea03e132ed68",
-                        "NameComponent": {
-                            "entityName": "High Score Text",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
-                        },
-                        "TextComponent": {
-                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                            "text": "High Score:",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0
-                            },
-                            "fontSize": 128.0
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": -1.034576654434204,
-                                    "y": -0.019999999552965164,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": -1.034576654434204,
-                                    "y": -0.019999999552965164,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "entityGUID": "aaa57dfd-9e7e-1fe7-ef14-10612ad29b7b",
-                        "NameComponent": {
-                            "entityName": "High Score",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
-                        },
-                        "TextComponent": {
-                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                            "text": "000",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0
-                            },
-                            "fontSize": 128.0
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": 0.03999999910593033,
-                                    "y": -0.019999999552965164,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": 0.03999999910593033,
-                                    "y": -0.019999999552965164,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "entityGUID": "4334abec-f2d0-eb39-07a0-122771ec6261",
-                        "NameComponent": {
-                            "entityName": "Restart Text",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
-                        },
-                        "TextComponent": {
-                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                            "text": "Press L To Restart",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0
-                            },
-                            "fontSize": 128.0
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": -0.7823299765586853,
-                                    "y": -0.4000000059604645,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": -0.7823299765586853,
-                                    "y": -0.4000000059604645,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "entityGUID": "d51725c9-425d-1dd7-deb7-d1af508acaa9",
-                        "AudioComponent": {
-                            "audioFiles": [
-                                {
-                                    "audioGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                },
-                                {
-                                    "audioGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c",
-                                    "volume": 1.0,
-                                    "loop": false,
-                                    "playOnStart": false,
-                                    "hasPlayed": false,
-                                    "pan": 0.0,
-                                    "isBGM": false,
-                                    "isSFX": true,
-                                    "use3D": false,
-                                    "minDistance": 1.0,
-                                    "maxDistance": 20.0,
-                                    "sourceType": 0,
-                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
-                                    "studioEventPath": ""
-                                }
-                            ]
-                        },
-                        "ButtonComponent": {
-                            "normalColor": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            },
-                            "hoveredColor": {
-                                "x": 0.800000011920929,
-                                "y": 0.800000011920929,
-                                "z": 0.800000011920929,
-                                "w": 1.0
-                            },
-                            "pressedColor": {
-                                "x": 0.6000000238418579,
-                                "y": 0.6000000238418579,
-                                "z": 0.6000000238418579,
-                                "w": 1.0
-                            },
-                            "normalSprite": "f08012fe-fdce-8122-e84a-04c32e8a3828",
-                            "hoveredSprite": "f57e7ed9-1a92-86fe-5417-55124bb6dcb8",
-                            "pressedSprite": "34327e36-c568-8671-0888-ffb987bc05bb",
-                            "useSpriteSwap": true,
-                            "isHovered": false,
-                            "isPressed": false
-                        },
-                        "NameComponent": {
-                            "entityName": "Quit Button Image",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
-                        },
-                        "SpriteComponent": {
-                            "spriteGUID": "f08012fe-fdce-8122-e84a-04c32e8a3828",
-                            "color": {
-                                "x": 1.0,
-                                "y": 1.0,
-                                "z": 1.0,
-                                "w": 1.0
-                            },
-                            "uvMin": {
-                                "x": 0.0,
-                                "y": 0.0
-                            },
-                            "uvMax": {
-                                "x": 1.0,
-                                "y": 1.0
-                            },
-                            "useCustomUV": false
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": 0.0,
-                                    "y": -0.699999988079071,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.699999988079071,
-                                    "y": 0.30000001192092896,
-                                    "z": 1.0
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": 0.0,
-                                    "y": -0.699999988079071,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 0.699999988079071,
-                                    "y": 0.30000001192092896,
-                                    "z": 1.0
-                                }
-                            }
-                        },
-                        "UIButtonScript": {
-                            "actionType": 2,
-                            "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
-                            "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
-                            "useKeyboardShortcuts": false,
-                            "wasPressed": false,
-                            "resumeSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
-                            "selectSfxGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
-                            "hoverSfxGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c"
-                        }
-                    }
-                ]
-            },
-            {
                 "entityGUID": "3529358a-f95b-7f7d-1ea2-858dd996747a",
                 "CanvasRendererComponent": {
                     "isScreenSpace": true
@@ -4992,10 +4422,15 @@
                         "x": -10000.0,
                         "y": -10000.0,
                         "z": 0.0
-                    }
+                    },
+                    "timeTakenValueGUID": "8d364448-fd5e-2fa0-cdd5-4341557bfba7",
+                    "enemiesKilledValueGUID": "ec9b885b-4c02-6d63-fc34-a99f4bec4516",
+                    "elementsAbsorbedValueGUID": "8fd3f25d-ce93-edc6-784c-cec20be78f00",
+                    "abilitiesUsedValueGUID": "f6f8079f-6292-5ae0-c6c8-9b5eec943d84",
+                    "damageTakenValueGUID": "c85faff1-0d17-1766-2969-5a32cb29cdbc"
                 },
                 "NameComponent": {
-                    "entityName": "Level Complete Canvas",
+                    "entityName": "NEW Level Complete Canvas",
                     "Layer": 0,
                     "entityTag": "Default",
                     "isPrefab": false,
@@ -5271,7 +4706,7 @@
                             "WorldTransformation": {
                                 "position": {
                                     "x": 0.0,
-                                    "y": 0.30000001192092896,
+                                    "y": 0.49439865350723267,
                                     "z": 0.0
                                 },
                                 "rotation": {
@@ -5288,7 +4723,7 @@
                             "LocalTransformation": {
                                 "position": {
                                     "x": 0.0,
-                                    "y": 0.30000001192092896,
+                                    "y": 0.49439865350723267,
                                     "z": 0.0
                                 },
                                 "rotation": {
@@ -5451,6 +4886,1449 @@
                             "actionType": 1,
                             "currentSceneGUID": "7d1be7c7-26e7-58c8-67b5-c3640955da4c",
                             "targetSceneGUID": "8b1b25ff-568a-5bb5-d5d7-c6fd2f0a8905",
+                            "useKeyboardShortcuts": false,
+                            "wasPressed": false,
+                            "resumeSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
+                            "selectSfxGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
+                            "hoverSfxGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c"
+                        }
+                    },
+                    {
+                        "entityGUID": "ddc99a00-5356-ddb8-3b34-74b2cde7c446",
+                        "NameComponent": {
+                            "entityName": "Time Taken Text",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "Time Taken:",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 80.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.5799999833106995,
+                                    "y": 0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.5799999833106995,
+                                    "y": 0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "98a1f829-29fd-b1fd-9a81-5ec53df43ad6",
+                        "NameComponent": {
+                            "entityName": "Enemies Killed Text",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "Enemies Killed:",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 80.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.7900000214576721,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.7900000214576721,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "e7883c82-3db6-0902-6dc3-56c06cd57d3f",
+                        "NameComponent": {
+                            "entityName": "Elements Absorbed Text",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "Elements Absorbed:",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 80.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -1.059999942779541,
+                                    "y": -0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -1.059999942779541,
+                                    "y": -0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "bd79c669-c184-9d1c-75d1-2d2a768522a7",
+                        "NameComponent": {
+                            "entityName": "Abilities Used Text",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "Abilities Used:",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 80.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.7599999904632568,
+                                    "y": -0.30000001192092896,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.7599999904632568,
+                                    "y": -0.30000001192092896,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "e7b6e685-78f6-b76d-dea3-ea9fe1a7c612",
+                        "NameComponent": {
+                            "entityName": "Damage Taken Text",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "Damage Taken:",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 80.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.7620000243186951,
+                                    "y": -0.44999998807907104,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.7620000243186951,
+                                    "y": -0.44999998807907104,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "8d364448-fd5e-2fa0-cdd5-4341557bfba7",
+                        "NameComponent": {
+                            "entityName": "Time Taken",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "0000000",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 80.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.10000000149011612,
+                                    "y": 0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.10000000149011612,
+                                    "y": 0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "ec9b885b-4c02-6d63-fc34-a99f4bec4516",
+                        "NameComponent": {
+                            "entityName": "Enemies Killed",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "0000000",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 80.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.10000000149011612,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.10000000149011612,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "8fd3f25d-ce93-edc6-784c-cec20be78f00",
+                        "NameComponent": {
+                            "entityName": "Elements Absorbed",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "0000000",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 80.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.10000000149011612,
+                                    "y": -0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.10000000149011612,
+                                    "y": -0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "f6f8079f-6292-5ae0-c6c8-9b5eec943d84",
+                        "NameComponent": {
+                            "entityName": "Abilities Used",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "0000000",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 80.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.10000000149011612,
+                                    "y": -0.30000001192092896,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.10000000149011612,
+                                    "y": -0.30000001192092896,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "c85faff1-0d17-1766-2969-5a32cb29cdbc",
+                        "NameComponent": {
+                            "entityName": "Damage Taken",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "0000000",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 80.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.10000000149011612,
+                                    "y": -0.44999998807907104,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.10000000149011612,
+                                    "y": -0.44999998807907104,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "entityGUID": "dee61752-b669-2e75-a66d-ee0be6621e13",
+                "CanvasRendererComponent": {
+                    "isScreenSpace": true
+                },
+                "LoseScreenScript": {
+                    "loseScreenCanvasGUID": "dee61752-b669-2e75-a66d-ee0be6621e13",
+                    "hiddenPosition": {
+                        "x": -10000.0,
+                        "y": -10000.0,
+                        "z": 0.0
+                    },
+                    "originalCanvasPosition": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "timeTakenValueGUID": "c1616144-4a18-068a-0378-cbbf7a53077f",
+                    "enemiesKilledValueGUID": "3e6aacfb-fbf7-120c-647e-bae078f3c3a9",
+                    "elementsAbsorbedValueGUID": "392f5ad8-d2b7-28c3-98d0-19300a7f67fa",
+                    "abilitiesUsedValueGUID": "88888fab-7d38-6a4c-0f25-1cf7fb5b7f15",
+                    "damageTakenValueGUID": "2de23b45-9828-ebb8-4df0-179ab49cb1be"
+                },
+                "NameComponent": {
+                    "entityName": "UPDATED Lose Screen Canvas",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "Lose Screen Canvas.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                },
+                "children": [
+                    {
+                        "entityGUID": "af7aa472-2abb-f226-e3d9-02d921409b0b",
+                        "NameComponent": {
+                            "entityName": "Lose Text",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "Lose Screen Canvas.prefab",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "YOU LOSE!",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 180.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.4971816837787628,
+                                    "y": 0.6000000238418579,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.4971816837787628,
+                                    "y": 0.6000000238418579,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "6ea074b6-cee3-7552-ad57-fb538558e4bf",
+                        "NameComponent": {
+                            "entityName": "Time Taken Text",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "Lose Screen Canvas.prefab",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "Time Taken:",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 90.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.6789944171905518,
+                                    "y": 0.30000001192092896,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.6789944171905518,
+                                    "y": 0.30000001192092896,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "f6f82547-e6a6-3dd4-f595-a2b03313de95",
+                        "NameComponent": {
+                            "entityName": "Enemies Killed Text",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "Lose Screen Canvas.prefab",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "Enemies Killed:",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 90.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.9179999828338623,
+                                    "y": 0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.9179999828338623,
+                                    "y": 0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "59b7251d-fb9e-0c0e-a47f-ea03e132ed68",
+                        "NameComponent": {
+                            "entityName": "Elements Absorbed Text",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "Lose Screen Canvas.prefab",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "Elements Absorbed:",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 90.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -1.2188100814819336,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -1.2188100814819336,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "aaa57dfd-9e7e-1fe7-ef14-10612ad29b7b",
+                        "NameComponent": {
+                            "entityName": "Abilities Used Text",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "Lose Screen Canvas.prefab",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "Abilities Used:",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 90.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.8841381669044495,
+                                    "y": -0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.8841381669044495,
+                                    "y": -0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "4334abec-f2d0-eb39-07a0-122771ec6261",
+                        "NameComponent": {
+                            "entityName": "Damage Taken Text",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "Lose Screen Canvas.prefab",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "Damage Taken:",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 90.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -0.8803895115852356,
+                                    "y": -0.30000001192092896,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.8803895115852356,
+                                    "y": -0.30000001192092896,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "c1616144-4a18-068a-0378-cbbf7a53077f",
+                        "NameComponent": {
+                            "entityName": "Time Taken",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "0000000",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 90.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.15000000596046448,
+                                    "y": 0.30000001192092896,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.15000000596046448,
+                                    "y": 0.30000001192092896,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "3e6aacfb-fbf7-120c-647e-bae078f3c3a9",
+                        "NameComponent": {
+                            "entityName": "Enemies Killed",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "0000000",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 90.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.15000000596046448,
+                                    "y": 0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.15000000596046448,
+                                    "y": 0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "392f5ad8-d2b7-28c3-98d0-19300a7f67fa",
+                        "NameComponent": {
+                            "entityName": "Elements Absorbed",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "0000000",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 90.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.15000000596046448,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.15000000596046448,
+                                    "y": 0.0,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "88888fab-7d38-6a4c-0f25-1cf7fb5b7f15",
+                        "NameComponent": {
+                            "entityName": "Abilities Used",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "0000000",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 90.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.15000000596046448,
+                                    "y": -0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.15000000596046448,
+                                    "y": -0.15000000596046448,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "2de23b45-9828-ebb8-4df0-179ab49cb1be",
+                        "NameComponent": {
+                            "entityName": "Damage Taken",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TextComponent": {
+                            "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                            "text": "0000000",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0
+                            },
+                            "fontSize": 90.0
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.15000000596046448,
+                                    "y": -0.30000001192092896,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.15000000596046448,
+                                    "y": -0.30000001192092896,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "entityGUID": "d51725c9-425d-1dd7-deb7-d1af508acaa9",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
+                        "ButtonComponent": {
+                            "normalColor": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "hoveredColor": {
+                                "x": 0.800000011920929,
+                                "y": 0.800000011920929,
+                                "z": 0.800000011920929,
+                                "w": 1.0
+                            },
+                            "pressedColor": {
+                                "x": 0.6000000238418579,
+                                "y": 0.6000000238418579,
+                                "z": 0.6000000238418579,
+                                "w": 1.0
+                            },
+                            "normalSprite": "f08012fe-fdce-8122-e84a-04c32e8a3828",
+                            "hoveredSprite": "f57e7ed9-1a92-86fe-5417-55124bb6dcb8",
+                            "pressedSprite": "34327e36-c568-8671-0888-ffb987bc05bb",
+                            "useSpriteSwap": true,
+                            "isHovered": false,
+                            "isPressed": false
+                        },
+                        "NameComponent": {
+                            "entityName": "Quit Button Image",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "Lose Screen Canvas.prefab",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "f08012fe-fdce-8122-e84a-04c32e8a3828",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": -0.699999988079071,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.699999988079071,
+                                    "y": 0.30000001192092896,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": -0.699999988079071,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.699999988079071,
+                                    "y": 0.30000001192092896,
+                                    "z": 1.0
+                                }
+                            }
+                        },
+                        "UIButtonScript": {
+                            "actionType": 2,
+                            "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
+                            "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
                             "resumeSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",

@@ -4,6 +4,7 @@
 #include "LoseScreenScript.h"
 #include "WinScreenScript.h"
 #include "LevelCompleteScript.h"
+#include "ScoreManagerScript.h"
 
 // --- FORWARD DECLARATIONS ---
 // Tell the compiler these classes exist first, preventing circular dependency crashes
@@ -435,6 +436,9 @@ public:
 inline void PlayerManagerScript::Start() {
 	ecsPtr->SetTimeScale(1.0f);
 	ecsPtr->SetState(RUNNING);
+
+	ScoreManagerScript::Initialize();
+
 	playerCameraObjectID = ecsPtr->GetEntityIDFromGUID(playerCameraObject);
 	playerGunCameraObjectID = ecsPtr->GetEntityIDFromGUID(playerGunCameraObject);
 	playerProjectilePointObjectID = ecsPtr->GetEntityIDFromGUID(playerProjectilePointObject);
@@ -531,7 +535,7 @@ inline void PlayerManagerScript::Start() {
 
 inline void PlayerManagerScript::Update() {
 
-	
+	ScoreManagerScript::UpdateTimer(ecsPtr->m_GetDeltaTime());
 
 	if (animComp = ecsPtr->GetComponent<ecs::AnimatorComponent>(currentModelID))
 	{
@@ -1609,7 +1613,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 		if (currMana <= 0.0f && playerPowerupHeld == Powerup::NONE) {
 			bool hasAbsorbed = false;
 
-
+			
 			RaycastHit hit;
 			hit.entityID = 9999999;
 			physicsPtr->Raycast(cameraTransform->WorldTransformation.position, GetPlayerCameraFrontDirection(), interactPowerupRange, hit, ecsPtr->GetComponent<RigidbodyComponent>(entity)->actor);
@@ -1617,6 +1621,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			if (hit.entityID != 9999999 && ecsPtr->GetComponent<NameComponent>(hit.entityID)->entityTag == "Powerup") {
 				if (auto* powerupComp = ecsPtr->GetComponent<PowerupManagerScript>(hit.entityID)) {
 					hasAbsorbed = true;
+					ScoreManagerScript::AddElementAbsorbed();
 
 					if (powerupComp->powerupType == "FIRE") {
 						//playerPowerupHeld = Powerup::FIRE; //DELETE THIS WHEN ANIM FINISH
@@ -1850,6 +1855,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			}
 
 			if (fireLMB) {
+				ScoreManagerScript::AddAbilityUsed();
 				std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 				ecs::EntityID fireLMBID = DuplicatePrefabIntoScene<R_Scene>(currentScene, fireLMBPrefab);
 
@@ -1913,6 +1919,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			// ADD SFX
 		}
 		else if (playerPowerupHeld == Powerup::ACID) {
+			ScoreManagerScript::AddAbilityUsed();
 			std::shared_ptr<R_Scene> acidLMB = resource->GetResource<R_Scene>(acidLMBPrefab);
 
 			if (acidLMB) {
@@ -1956,6 +1963,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 }
 
 		else if (playerPowerupHeld == Powerup::LIGHTNING) {
+			ScoreManagerScript::AddAbilityUsed();
 			std::shared_ptr<R_Scene> lightningLMB = resource->GetResource<R_Scene>(lightningLMBPrefab);
 
 			if (lightningLMB) {
@@ -1996,6 +2004,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 	// ABILITY
 	if (Input->IsKeyTriggered(keys::RMB)) {
 		if (playerPowerupHeld == Powerup::FIRE ) {
+			ScoreManagerScript::AddAbilityUsed();
 			std::shared_ptr<R_Scene> fireball = resource->GetResource<R_Scene>(firePrefab);
 
 			if (fireball) {
@@ -2018,7 +2027,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 		//Acid Blast
 		else if (playerPowerupHeld == Powerup::ACID) {
-
+			ScoreManagerScript::AddAbilityUsed();
 
 			std::shared_ptr<R_Scene> airBlast = resource->GetResource<R_Scene>(airBlastPrefab);
 
@@ -2078,6 +2087,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			// ADD SFX
 		}
 		else if (playerPowerupHeld == Powerup::LIGHTNING ) {
+			ScoreManagerScript::AddAbilityUsed();
 			std::shared_ptr<R_Scene> railgun = resource->GetResource<R_Scene>(lightningPrefab);
 
 			if (railgun) {
@@ -2135,6 +2145,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 		if (!playerRigidbody) return;
 
 		if (playerPowerupHeld == Powerup::FIRE && fireCurrMovementCooldown <= 0.f) {
+			ScoreManagerScript::AddAbilityUsed();
 		
 			std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 			ecs::EntityID fireDashID = DuplicatePrefabIntoScene<R_Scene>(currentScene, fireDashPrefab);
@@ -2173,6 +2184,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 		
 		//Acid SHield
 		else if (playerPowerupHeld == Powerup::ACID && acidCurrShieldCooldown <= 0.f) {
+			ScoreManagerScript::AddAbilityUsed();
 
 			std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 			ecs::EntityID acidShieldID = DuplicatePrefabIntoScene<R_Scene>(currentScene, acidShieldPrefab);
@@ -2201,6 +2213,8 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 			if (lightningCurrTimeslowCooldown > 0.f) return;
 			if (isTimeslowActive)                    return;
+
+			ScoreManagerScript::AddAbilityUsed();
 
 			//SFX first
 			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
@@ -2381,6 +2395,8 @@ inline void  PlayerManagerScript::SwapWeaponModel(Powerup newPowerup) {
 }
 
 inline void PlayerManagerScript::TakeDamage(int damage) {
+
+	ScoreManagerScript::AddDamageTaken(damage);
 	currPlayerHitPoints -= damage;
 
 	CameraShake(0.15f,0.3f);

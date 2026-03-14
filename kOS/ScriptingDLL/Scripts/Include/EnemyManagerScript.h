@@ -1,5 +1,6 @@
 #pragma once
 #include "ScriptAdapter/TemplateSC.h"
+#include "ScoreManagerScript.h"
 
 // Forward Declaration (Crucial for compiling)
 class EnemyBulletLogic;
@@ -720,6 +721,8 @@ inline void EnemyManagerScript::TakeDamage(int damage, const std::string& elemen
 
 inline void EnemyManagerScript::Die() {
 	if (isDead) return;
+
+	ScoreManagerScript::AddEnemyKill();
 
 	// ADD DEATH ANIM HERE
 	if (animComp)

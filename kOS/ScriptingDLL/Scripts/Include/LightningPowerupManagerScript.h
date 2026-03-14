@@ -51,10 +51,6 @@ public:
 					if (enemyScript->enemyHealth <= 0) {
 						PlayRandomEnemyDeathSFX();
 
-						if (scoreManager) {
-							scoreManager->AddScore(scoreValue); // or whatever value you want per kill
-						}
-
 						enemyScript->Die();
 					}
 				}

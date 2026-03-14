@@ -8,7 +8,7 @@ class EnemyHealthScript : public TemplateSC {
 public:
     utility::GUID playerObject;
     ecs::EntityID playerObjectID = -1;
-    float raycastRange = 30.0f;
+    float raycastRange = 1000.0f;
 
     utility::GUID healthBarFillEntity;
     ecs::EntityID healthBarFillID = -1;

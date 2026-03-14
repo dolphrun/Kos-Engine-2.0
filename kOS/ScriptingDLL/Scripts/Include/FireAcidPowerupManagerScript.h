@@ -58,10 +58,6 @@ public:
 						// ADD SFX OF ENEMY DEATH HERE - Done
 						PlayRandomEnemyDeathSFX();
 
-						if (scoreManager) {
-							scoreManager->AddScore(scoreValue); // or whatever value you want per kill
-						}
-
 						ecsPtr->DeleteEntity(col.otherEntityID);
 						navMeshPtr->RemoveAgent(enemyScript->agentid);
 					}

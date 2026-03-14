@@ -80,9 +80,7 @@ inline void AcidLMB::Start() {
 			
 
 			if (enemyScript->enemyHealth <= 0) {
-				if (scoreManager) {
-					scoreManager->AddScore(scoreValue);
-				}
+
 				enemyScript->Die();
 			}
 

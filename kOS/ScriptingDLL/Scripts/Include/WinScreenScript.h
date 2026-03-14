@@ -3,7 +3,10 @@
 #include "ECS/Component/Component.h"
 #include "Config/pch.h"
 #include "ScriptAdapter/TemplateSC.h"
+#include "ScoreManagerScript.h"
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 
 class WinScreenScript : public TemplateSC {
 public:
@@ -13,11 +16,19 @@ public:
     utility::GUID winScreenCanvasGUID;
     ecs::EntityID winScreenCanvasID = 0;
 
-    utility::GUID currentScoreTextGUID;
-    utility::GUID bestScoreTextGUID;
+    // GUIDs for stat display text components
+    utility::GUID timeTakenValueGUID;
+    utility::GUID enemiesKilledValueGUID;
+    utility::GUID elementsAbsorbedValueGUID;
+    utility::GUID abilitiesUsedValueGUID;
+    utility::GUID damageTakenValueGUID;
 
-    ecs::EntityID currentScoreTextID = 0;
-    ecs::EntityID bestScoreTextID = 0;
+    // Entity IDs for stat displays
+    ecs::EntityID timeTakenValueID = 0;
+    ecs::EntityID enemiesKilledValueID = 0;
+    ecs::EntityID elementsAbsorbedValueID = 0;
+    ecs::EntityID abilitiesUsedValueID = 0;
+    ecs::EntityID damageTakenValueID = 0;
 
     glm::vec3 originalCanvasPosition;
     glm::vec3 hiddenPosition = glm::vec3(-10000.0f, -10000.0f, 0.0f);
@@ -25,10 +36,15 @@ public:
     bool hasShownWinScreen = false;
 
     void Start() override {
-        isWinScreenActive = false; // reset static flag each run
+        isWinScreenActive = false;
         winScreenCanvasID = ecsPtr->GetEntityIDFromGUID(winScreenCanvasGUID);
-        currentScoreTextID = ecsPtr->GetEntityIDFromGUID(currentScoreTextGUID);
-        bestScoreTextID = ecsPtr->GetEntityIDFromGUID(bestScoreTextGUID);
+
+        // Get all stat text entity IDs
+        timeTakenValueID = ecsPtr->GetEntityIDFromGUID(timeTakenValueGUID);
+        enemiesKilledValueID = ecsPtr->GetEntityIDFromGUID(enemiesKilledValueGUID);
+        elementsAbsorbedValueID = ecsPtr->GetEntityIDFromGUID(elementsAbsorbedValueGUID);
+        abilitiesUsedValueID = ecsPtr->GetEntityIDFromGUID(abilitiesUsedValueGUID);
+        damageTakenValueID = ecsPtr->GetEntityIDFromGUID(damageTakenValueGUID);
 
         if (auto* t = ecsPtr->GetComponent<TransformComponent>(winScreenCanvasID)) {
             originalCanvasPosition = t->LocalTransformation.position;
@@ -50,20 +66,23 @@ public:
             return; // prevents double activation
 
         hasShownWinScreen = true;
-        isWinScreenActive = true; // block other inputs if needed
+        isWinScreenActive = true;
         ecsPtr->SetTimeScale(0.0f);
         ecsPtr->SetState(WAIT);
         SetWinScreenActive(true);
         Input->HideCursor(false);
 
-        if (auto* currentText = ecsPtr->GetComponent<ecs::TextComponent>(currentScoreTextID)) {
-            currentText->text = std::to_string(ScoreManagerScript::lastScore);
-        }
-        if (auto* bestText = ecsPtr->GetComponent<ecs::TextComponent>(bestScoreTextID)) {
-            bestText->text = std::to_string(ScoreManagerScript::bestScore);
-        }
+        ScoreManagerScript::FinalizeStats();
 
-        std::cout << "WIN SCREEN SHOWN\n";
+        // Update all stat displays
+        UpdateTimeTakenText();
+        UpdateEnemiesKilledText();
+        UpdateElementsAbsorbedText();
+        UpdateAbilitiesUsedText();
+        UpdateDamageTakenText();
+        
+
+        std::cout << "WIN SCREEN SHOWN WITH STATS" << std::endl;
     }
 
     // Optional: hide the win screen if needed
@@ -78,7 +97,7 @@ public:
         SetWinScreenActive(false);
         Input->HideCursor(true);
 
-        std::cout << "WIN SCREEN HIDDEN\n";
+        std::cout << "WIN SCREEN HIDDEN" << std::endl;
     }
 
 private:
@@ -88,8 +107,48 @@ private:
         }
     }
 
+    void UpdateTimeTakenText() {
+        if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(timeTakenValueID)) {
+            // Format time as _m __s (e.g., "2m 34s")
+            float totalSeconds = ScoreManagerScript::lastTimeTaken;
+            int minutes = static_cast<int>(totalSeconds) / 60;
+            int seconds = static_cast<int>(totalSeconds) % 60;
+
+            std::stringstream ss;
+            ss << minutes << "m " << std::setw(2) << std::setfill('0') << seconds << "s";
+
+            textComp->text = ss.str();
+        }
+    }
+
+    void UpdateEnemiesKilledText() {
+        if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(enemiesKilledValueID)) {
+            textComp->text = std::to_string(ScoreManagerScript::lastEnemiesKilled);
+        }
+    }
+
+    void UpdateElementsAbsorbedText() {
+        if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(elementsAbsorbedValueID)) {
+            textComp->text = std::to_string(ScoreManagerScript::lastElementsAbsorbed);
+        }
+    }
+
+    void UpdateAbilitiesUsedText() {
+        if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(abilitiesUsedValueID)) {
+            textComp->text = std::to_string(ScoreManagerScript::lastAbilitiesUsed);
+        }
+    }
+
+    void UpdateDamageTakenText() {
+        if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(damageTakenValueID)) {
+            textComp->text = std::to_string(ScoreManagerScript::lastDamageTaken);
+        }
+    }
+
 public:
-    REFLECTABLE(WinScreenScript, winScreenCanvasGUID, hiddenPosition, originalCanvasPosition, currentScoreTextGUID, bestScoreTextGUID);
+    REFLECTABLE(WinScreenScript, winScreenCanvasGUID, hiddenPosition, originalCanvasPosition,
+        timeTakenValueGUID, enemiesKilledValueGUID, elementsAbsorbedValueGUID,
+        abilitiesUsedValueGUID, damageTakenValueGUID);
 };
 
 // Static definition

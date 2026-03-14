@@ -176,10 +176,6 @@ public:
 						// ADD SFX OF ENEMY DEATH HERE - DONE
 						PlayRandomEnemyDeathSFX();
 
-						if (scoreManager) {
-							scoreManager->AddScore(scoreValue);
-						}
-
 						enemyScript->Die();
 					}
 

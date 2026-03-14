@@ -3,8 +3,10 @@
 #include "ECS/Component/Component.h"
 #include "Config/pch.h"
 #include "ScriptAdapter/TemplateSC.h"
-#include <iostream>
 #include "ScoreManagerScript.h"
+#include <iostream>
+#include <iomanip>
+#include <sstream>
 
 class LoseScreenScript : public TemplateSC {
 public:
@@ -14,22 +16,35 @@ public:
     utility::GUID loseScreenCanvasGUID;
     ecs::EntityID loseScreenCanvasID = 0;
 
-    utility::GUID currentScoreTextGUID;
-    utility::GUID bestScoreTextGUID;
+    // GUIDs for stat display text components
+    utility::GUID timeTakenValueGUID;
+    utility::GUID enemiesKilledValueGUID;
+    utility::GUID elementsAbsorbedValueGUID;
+    utility::GUID abilitiesUsedValueGUID;
+    utility::GUID damageTakenValueGUID;
 
-    ecs::EntityID currentScoreTextID = 0;
-    ecs::EntityID bestScoreTextID = 0;
+    // Entity IDs for stat displays
+    ecs::EntityID timeTakenValueID = 0;
+    ecs::EntityID enemiesKilledValueID = 0;
+    ecs::EntityID elementsAbsorbedValueID = 0;
+    ecs::EntityID abilitiesUsedValueID = 0;
+    ecs::EntityID damageTakenValueID = 0;
 
     glm::vec3 originalCanvasPosition;
     glm::vec3 hiddenPosition = glm::vec3(-10000.0f, -10000.0f, 0.0f);
 
     bool hasShownLoseScreen = false;
 
-    void Start() override{
-		isLoseScreenActive = false; // reset static flag each run 
+    void Start() override {
+        isLoseScreenActive = false;
         loseScreenCanvasID = ecsPtr->GetEntityIDFromGUID(loseScreenCanvasGUID);
-        currentScoreTextID = ecsPtr->GetEntityIDFromGUID(currentScoreTextGUID);
-        bestScoreTextID = ecsPtr->GetEntityIDFromGUID(bestScoreTextGUID);
+
+        // Get all stat text entity IDs
+        timeTakenValueID = ecsPtr->GetEntityIDFromGUID(timeTakenValueGUID);
+        enemiesKilledValueID = ecsPtr->GetEntityIDFromGUID(enemiesKilledValueGUID);
+        elementsAbsorbedValueID = ecsPtr->GetEntityIDFromGUID(elementsAbsorbedValueGUID);
+        abilitiesUsedValueID = ecsPtr->GetEntityIDFromGUID(abilitiesUsedValueGUID);
+        damageTakenValueID = ecsPtr->GetEntityIDFromGUID(damageTakenValueGUID);
 
         if (auto* t = ecsPtr->GetComponent<TransformComponent>(loseScreenCanvasID)) {
             originalCanvasPosition = t->LocalTransformation.position;
@@ -42,12 +57,11 @@ public:
     }
 
     void Update() override {
-        // Nothing needed here.
+        // Nothing needed here
     }
 
     // Call this when the player dies
-    void ShowLoseScreen()
-    {
+    void ShowLoseScreen() {
         if (hasShownLoseScreen)
             return; // prevents double activation
 
@@ -58,19 +72,20 @@ public:
         SetLoseScreenActive(true);
         Input->HideCursor(false);
 
-        if (auto* currentText = ecsPtr->GetComponent<ecs::TextComponent>(currentScoreTextID)) {
-            currentText->text = std::to_string(ScoreManagerScript::lastScore);
-        }
-        if (auto* bestText = ecsPtr->GetComponent<ecs::TextComponent>(bestScoreTextID)) {
-            bestText->text = std::to_string(ScoreManagerScript::bestScore);
-        }
+        ScoreManagerScript::FinalizeStats();
 
-        std::cout << "LOSE SCREEN SHOWN\n";
+        // Update all stat displays
+        UpdateTimeTakenText();
+        UpdateEnemiesKilledText();
+        UpdateElementsAbsorbedText();
+        UpdateAbilitiesUsedText();
+        UpdateDamageTakenText();
+
+        std::cout << "LOSE SCREEN SHOWN WITH STATS" << std::endl;
     }
 
     // Optional: hide the lose screen if needed
-    void HideLoseScreen()
-    {
+    void HideLoseScreen() {
         if (!hasShownLoseScreen)
             return;
 
@@ -81,19 +96,58 @@ public:
         SetLoseScreenActive(false);
         Input->HideCursor(true);
 
-        std::cout << "LOSE SCREEN HIDDEN\n";
+        std::cout << "LOSE SCREEN HIDDEN" << std::endl;
     }
 
 private:
-    void SetLoseScreenActive(bool active)
-    {
+    void SetLoseScreenActive(bool active) {
         if (auto* t = ecsPtr->GetComponent<TransformComponent>(loseScreenCanvasID)) {
             t->LocalTransformation.position = active ? originalCanvasPosition : hiddenPosition;
         }
     }
 
+    void UpdateTimeTakenText() {
+        if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(timeTakenValueID)) {
+            // Format time as _m __s (e.g., "2m 34s")
+            float totalSeconds = ScoreManagerScript::lastTimeTaken;
+            int minutes = static_cast<int>(totalSeconds) / 60;
+            int seconds = static_cast<int>(totalSeconds) % 60;
+
+            std::stringstream ss;
+            ss << minutes << "m " << std::setw(2) << std::setfill('0') << seconds << "s";
+
+            textComp->text = ss.str();
+        }
+    }
+
+    void UpdateEnemiesKilledText() {
+        if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(enemiesKilledValueID)) {
+            textComp->text = std::to_string(ScoreManagerScript::lastEnemiesKilled);
+        }
+    }
+
+    void UpdateElementsAbsorbedText() {
+        if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(elementsAbsorbedValueID)) {
+            textComp->text = std::to_string(ScoreManagerScript::lastElementsAbsorbed);
+        }
+    }
+
+    void UpdateAbilitiesUsedText() {
+        if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(abilitiesUsedValueID)) {
+            textComp->text = std::to_string(ScoreManagerScript::lastAbilitiesUsed);
+        }
+    }
+
+    void UpdateDamageTakenText() {
+        if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(damageTakenValueID)) {
+            textComp->text = std::to_string(ScoreManagerScript::lastDamageTaken);
+        }
+    }
+
 public:
-    REFLECTABLE(LoseScreenScript, loseScreenCanvasGUID, hiddenPosition, originalCanvasPosition, currentScoreTextGUID, bestScoreTextGUID);
+    REFLECTABLE(LoseScreenScript, loseScreenCanvasGUID, hiddenPosition, originalCanvasPosition,
+        timeTakenValueGUID, enemiesKilledValueGUID, elementsAbsorbedValueGUID,
+        abilitiesUsedValueGUID, damageTakenValueGUID);
 };
 
 // Static definition

@@ -77,9 +77,6 @@ public:
             std::cout << "[AirBlast] Hit enemy | HP left: " << enemyScript->enemyHealth << "\n";
 
             if (enemyScript->enemyHealth <= 0) {
-                if (scoreManager) {
-                    scoreManager->AddScore(scoreValue);
-                }
                 enemyScript->Die(); 
             }
             });
