@@ -1,10 +1,18 @@
 [
     {
-        "entityGUID": "19f55bf3-085f-d277-dc69-01efd2b1bee5",
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
+        "entityGUID": "a1f52b09-3983-e0a0-1198-ffe37f6ab1fa",
         "MaterialComponent": {
             "materialGUID": [
                 {
-                    "materialGUID": "c0306709-d3cd-1429-1ece-2686b6afe461"
+                    "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                 }
             ]
         },
@@ -16,14 +24,15 @@
             "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
         },
         "NameComponent": {
-            "entityName": "M5_Modular_Ground_20M_Jacob",
+            "entityName": "M5_Modular_Grounds_20M_B",
             "Layer": 0,
             "entityTag": "Ground",
             "isPrefab": true,
             "isStatic": false,
-            "prefabName": "M5_Modular_Ground_20M_Jacob.prefab",
+            "prefabName": "M5_Modular_Grounds_20M_B.prefab",
             "hide": false
         },
+        "NavMeshComponent": {},
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {

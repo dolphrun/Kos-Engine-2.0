@@ -68,6 +68,11 @@ namespace ecs {
 						}
 						box->box.center = (minBound + maxBound) * 0.5f;
 						box->box.size = maxBound - minBound;
+
+						box->box.size.x = glm::max(box->box.size.x, MINSIZE);
+						box->box.size.y = glm::max(box->box.size.y, MINSIZE);
+						box->box.size.z = glm::max(box->box.size.z, MINSIZE);
+
 						box->autoFit = true;
 						halfExtents = box->box.size * scale * 0.5f;
 						geometry = PxBoxGeometry{ halfExtents.x, halfExtents.y, halfExtents.z };
