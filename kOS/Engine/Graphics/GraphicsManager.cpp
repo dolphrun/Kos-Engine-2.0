@@ -718,12 +718,14 @@ void GraphicsManager::gm_RenderDeferredObjects(const CameraData& camera)
 		//}
 		if (!lightRenderer.actualPointLightsToDraw[i]->shadowCon&&!lightRenderer.actualPointLightsToDraw[i]->bakedCon)continue;;
 		
-		
+		//std::cout << " NEW Point lighty index" << i<<' '<< lightRenderer.actualPointLightsToDraw.size() << '\n';
+
 		glActiveTexture(GL_TEXTURE7 + i);
 		glBindTexture(GL_TEXTURE_CUBE_MAP, lightRenderer.actualDcm[i]->RetrieveID());
 		deferredPBRShader->SetFloat("far_plane", lightRenderer.actualDcm[i]->far_plane);
 
 	}
+	//std::cout << " END" << '\n';
 
 	//for (int i = 0; i < lightRenderer.pointLightsToDraw.size(); i++) {
 	//	//if (lightRenderer.pointLightsToDraw[i].bakedCon&& !lightRenderer.pointLightsToDraw[i].bakedmapGUID.Empty()) {

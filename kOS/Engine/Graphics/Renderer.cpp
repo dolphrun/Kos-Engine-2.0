@@ -405,7 +405,10 @@ void LightRenderer::RenderAllLights(const CameraData& camera, Shader& shader)
 		//	std::cout << "Plane " << i << " normal(" << p.normal.x << "," << p.normal.y << "," << p.normal.z
 		//		<< ") dist=" << p.distance << "\n";
 		//}
-		
+		if(pointLightsToDraw[i].shadowCon|| pointLightsToDraw[i].bakedCon){
+			//std::cout << "Point liugh index" << i << '\n';
+			//std::cout << "Point lighty index" << j << '\n';
+		}
 		PointLightData& pointLight = pointLightsToDraw[i];
 		pointLight.SetUniform(&shader, j++);
 		actualPointLightsToDraw.push_back(&pointLightsToDraw[i]);

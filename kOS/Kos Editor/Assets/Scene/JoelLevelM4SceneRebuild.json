@@ -95,7 +95,7 @@
             "isPrefab": true,
             "isStatic": false,
             "prefabName": "Game Package.prefab",
-            "hide": false
+            "hide": true
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -162,7 +162,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "",
-                    "hide": false
+                    "hide": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -210,7 +210,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "",
-                    "hide": false
+                    "hide": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -273,7 +273,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SkinnedMeshRendererComponent": {
                             "skinnedMeshGUID": "a74f5446-cca5-3f6a-259a-f13ac2757b50",
@@ -325,7 +325,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "",
-                                    "hide": false
+                                    "hide": true
                                 },
                                 "TransformComponent": {
                                     "WorldTransformation": {
@@ -373,7 +373,7 @@
                                             "isPrefab": false,
                                             "isStatic": false,
                                             "prefabName": "",
-                                            "hide": false
+                                            "hide": true
                                         },
                                         "ParticleComponent": {
                                             "particleType": 0,
@@ -594,7 +594,7 @@
                                             "isPrefab": false,
                                             "isStatic": false,
                                             "prefabName": "",
-                                            "hide": false
+                                            "hide": true
                                         },
                                         "ParticleComponent": {
                                             "particleType": 0,
@@ -850,7 +850,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -898,7 +898,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -961,7 +961,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SkinnedMeshRendererComponent": {
                             "skinnedMeshGUID": "90acbe4c-6122-905e-d09e-9fdf8b654aba",
@@ -1028,7 +1028,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SkinnedMeshRendererComponent": {
                             "skinnedMeshGUID": "df5619cb-87e1-b4f8-8c75-957d62f00eae",
@@ -1095,7 +1095,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SkinnedMeshRendererComponent": {
                             "skinnedMeshGUID": "ecd8276e-2da8-2e23-6c30-b8d563b368ec",
@@ -1149,7 +1149,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "",
-                    "hide": false
+                    "hide": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -1239,7 +1239,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "",
-                    "hide": false
+                    "hide": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -1752,7 +1752,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "",
-                    "hide": false
+                    "hide": true
                 },
                 "PlayerManagerScript": {
                     "playerCameraObject": "401c12be-d52c-d521-768f-a871850b8151",
@@ -1928,7 +1928,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -1977,7 +1977,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -2025,7 +2025,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -2078,7 +2078,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "Game UI Canvas.prefab",
-                    "hide": false
+                    "hide": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -2126,7 +2126,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "e351c60b-1901-61b9-c552-3f646f787f21",
@@ -2192,7 +2192,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "76b092fd-5118-402b-1a16-8b7d628d7286",
@@ -2274,7 +2274,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "0dfd8ac3-6851-9f65-35ce-31279894850c",
@@ -2340,7 +2340,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "85954e03-c605-181a-72de-0e8df4a355ad",
@@ -2422,7 +2422,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "1776dd9e-9311-f406-80a6-a74993197923",
@@ -2488,7 +2488,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "318d7588-5596-eca6-ca7e-5d7af5d9a875",
@@ -2568,7 +2568,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "00000000-0000-0000-0000-000000000000",
@@ -2648,7 +2648,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "00000000-0000-0000-0000-000000000000",
@@ -2728,7 +2728,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "00000000-0000-0000-0000-000000000000",
@@ -2794,7 +2794,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "26b06809-cebf-df1a-80c1-6782c4366403",
@@ -2868,7 +2868,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "00000000-0000-0000-0000-000000000000",
@@ -2934,7 +2934,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "956ebc81-6f4d-b2c4-a208-9f949489add7",
@@ -3021,7 +3021,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Enemy HUD.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -3069,7 +3069,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": false
+                                    "hide": true
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "a8994653-aaa4-b27c-5a0b-70a872e07c56",
@@ -3135,7 +3135,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": false
+                                    "hide": true
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "c05af7da-ba16-6799-ba38-e2a4dd1ef801",
@@ -3201,7 +3201,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": false
+                                    "hide": true
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "0dfd8ac3-6851-9f65-35ce-31279894850c",
@@ -3267,7 +3267,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": false
+                                    "hide": true
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "e7cea814-4cbb-3b00-1a41-5f2f601c0341",
@@ -3333,7 +3333,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": false
+                                    "hide": true
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
@@ -3399,7 +3399,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": false
+                                    "hide": true
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
@@ -3465,7 +3465,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": false
+                                    "hide": true
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
@@ -3538,7 +3538,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "Pause Screen Canvas.prefab",
-                    "hide": false
+                    "hide": true
                 },
                 "PauseMenuScript": {
                     "pauseMenuCanvasGUID": "53f83bac-2058-5939-b2a8-134497980574",
@@ -3599,7 +3599,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "6988c495-899e-e79d-0cb8-3cc55bceeedd",
@@ -3665,7 +3665,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "1432a2fc-cfcb-05ad-493f-84aeed00ce8d",
@@ -3731,7 +3731,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "e115a1eb-7c39-2bfa-75bc-c019179fc084",
@@ -3875,7 +3875,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "00594efd-b6f0-489e-7c7f-c985999f4823",
@@ -4029,7 +4029,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "7ad55f44-7c75-51aa-c145-4b7af063d811",
@@ -4183,7 +4183,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "c4e6323c-49f8-6914-17c8-48e7e8ea4374",
@@ -4337,7 +4337,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "3efb3936-4a9f-1129-c2a6-db5bb3dd92c1",
@@ -4436,7 +4436,7 @@
                     "isPrefab": false,
                     "isStatic": false,
                     "prefabName": "Level Complete Canvas.prefab",
-                    "hide": false
+                    "hide": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -4484,7 +4484,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Level Complete Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "6988c495-899e-e79d-0cb8-3cc55bceeedd",
@@ -4550,7 +4550,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Level Complete Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "d198064c-9163-4676-1140-bc1dc97ce847",
@@ -4616,7 +4616,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Level Complete Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "af1dadc5-efbb-c724-a131-6e10fe338758",
@@ -4682,7 +4682,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Level Complete Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "5ff7b122-936f-8e72-4ad7-047d88f31b90",
@@ -4826,7 +4826,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Level Complete Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "e7ac63e2-dc50-c7e5-f42a-8c2d3db5eccc",
@@ -4902,7 +4902,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -4960,7 +4960,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5018,7 +5018,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5076,7 +5076,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5134,7 +5134,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5192,7 +5192,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5250,7 +5250,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5308,7 +5308,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5366,7 +5366,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5424,7 +5424,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5505,7 +5505,7 @@
                     "isPrefab": false,
                     "isStatic": false,
                     "prefabName": "Lose Screen Canvas.prefab",
-                    "hide": false
+                    "hide": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -5553,7 +5553,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5611,7 +5611,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5669,7 +5669,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5727,7 +5727,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5785,7 +5785,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5843,7 +5843,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5901,7 +5901,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5959,7 +5959,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -6017,7 +6017,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -6075,7 +6075,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -6133,7 +6133,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -6269,7 +6269,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "f08012fe-fdce-8122-e84a-04c32e8a3828",
@@ -88249,95 +88249,6 @@
         },
         "children": [
             {
-                "entityGUID": "141c23f8-b538-3c4b-7ef5-bc27dfdc908a",
-                "LightComponent": {
-                    "lightType": 1,
-                    "color": {
-                        "x": 0.0,
-                        "y": 5.0,
-                        "z": 2.0
-                    },
-                    "diffuseStrength": {
-                        "x": 36.099998474121094,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "specularStrength": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "linear": 0.09000000357627869,
-                    "quadratic": 0.03200000151991844,
-                    "direction": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "cutOff": 5.5,
-                    "outerCutOff": 10.5,
-                    "intesnity": 41.400001525878906,
-                    "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
-                },
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
-                        }
-                    ]
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
-                },
-                "NameComponent": {
-                    "entityName": "Point Light Prop",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "Point Light Prop.prefab",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -129.24000549316406,
-                            "y": -0.0997309684753418,
-                            "z": 78.21343231201172
-                        },
-                        "rotation": {
-                            "x": 179.21180725097656,
-                            "y": 89.91377258300781,
-                            "z": 179.21316528320313
-                        },
-                        "scale": {
-                            "x": 0.010000898502767086,
-                            "y": 0.009999999776482582,
-                            "z": 0.010000898502767086
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": -129.24000549316406,
-                            "y": -0.0997309684753418,
-                            "z": 78.21343231201172
-                        },
-                        "rotation": {
-                            "x": 179.21180725097656,
-                            "y": 89.91377258300781,
-                            "z": 179.21316528320313
-                        },
-                        "scale": {
-                            "x": 0.01000089943408966,
-                            "y": 0.009999999776482582,
-                            "z": 0.01000089943408966
-                        }
-                    }
-                }
-            },
-            {
                 "entityGUID": "fceddde7-4d19-01e0-d019-f20f763ca3e0",
                 "LightComponent": {
                     "lightType": 1,
@@ -88367,8 +88278,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "4ec80516-8b26-7130-2660-80edd61dfa75"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -88456,8 +88367,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "28e40f43-9759-9596-52e6-09c442c0d853"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -88545,8 +88456,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "8bf4eade-a4bc-74a9-e3ba-c37156d9f97d"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -88634,8 +88545,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "bdb8bb9b-0004-46b2-be9c-d3723e9828ec"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -88723,8 +88634,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "d9f2c22e-f692-75d4-2ccb-d2c4e2a80f32"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -88812,8 +88723,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "81e886fd-6d50-9267-27d4-a3010c5ea659"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -88901,8 +88812,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "928747da-fc27-ae61-ce42-a09c8f27d2d8"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -88990,8 +88901,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "e39b6114-3f8a-d8e8-1669-d647f02d21c4"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -89079,8 +88990,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "6ee8b775-5aab-a439-f977-7f25846fa65e"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -89168,8 +89079,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "478ae70f-7f4a-6196-b213-f5fc75a4e0ed"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -89257,8 +89168,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "e106243f-b161-a8fa-c700-ac30f39331c0"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -89346,8 +89257,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "59354a27-6e9d-f88a-e89b-4246bcb57c5d"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -89524,8 +89435,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "19ea428c-4154-827d-2af3-9c41f2e1aeb3"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -89613,8 +89524,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "139922a5-1b59-5f6c-a563-9b28716ac757"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -90474,95 +90385,6 @@
                 }
             },
             {
-                "entityGUID": "072d21b3-d640-becd-17fe-11bf7c643948",
-                "LightComponent": {
-                    "lightType": 1,
-                    "color": {
-                        "x": 0.0,
-                        "y": 5.0,
-                        "z": 2.0
-                    },
-                    "diffuseStrength": {
-                        "x": 36.099998474121094,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "specularStrength": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "linear": 0.09000000357627869,
-                    "quadratic": 0.03200000151991844,
-                    "direction": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "cutOff": 5.5,
-                    "outerCutOff": 10.5,
-                    "intesnity": 41.400001525878906,
-                    "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
-                },
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
-                        }
-                    ]
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
-                },
-                "NameComponent": {
-                    "entityName": "Point Light Prop",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "Point Light Prop.prefab",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -67.39160919189453,
-                            "y": 41.43657684326172,
-                            "z": 85.57038116455078
-                        },
-                        "rotation": {
-                            "x": 179.90977478027344,
-                            "y": 89.19279479980469,
-                            "z": 179.9106903076172
-                        },
-                        "scale": {
-                            "x": 0.010003416799008846,
-                            "y": 0.009999999776482582,
-                            "z": 0.010003416799008846
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": -67.39160919189453,
-                            "y": 41.43657684326172,
-                            "z": 85.57038116455078
-                        },
-                        "rotation": {
-                            "x": 179.90977478027344,
-                            "y": 89.19279479980469,
-                            "z": 179.9106903076172
-                        },
-                        "scale": {
-                            "x": 0.010003417730331421,
-                            "y": 0.009999999776482582,
-                            "z": 0.010003417730331421
-                        }
-                    }
-                }
-            },
-            {
                 "entityGUID": "2480679b-6d22-abb1-c8f8-2c97333f49e6",
                 "LightComponent": {
                     "lightType": 1,
@@ -90919,6 +90741,184 @@
                 }
             }
         ]
+    },
+    {
+        "entityGUID": "072d21b3-d640-becd-17fe-11bf7c643948",
+        "LightComponent": {
+            "lightType": 1,
+            "color": {
+                "x": 0.0,
+                "y": 5.0,
+                "z": 2.0
+            },
+            "diffuseStrength": {
+                "x": 36.099998474121094,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "specularStrength": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "linear": 0.09000000357627869,
+            "quadratic": 0.03200000151991844,
+            "direction": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "cutOff": 5.5,
+            "outerCutOff": 10.5,
+            "intesnity": 41.400001525878906,
+            "shadowCast": false,
+            "bakedLighting": false,
+            "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+        },
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
+                }
+            ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
+        },
+        "NameComponent": {
+            "entityName": "Point Light Prop",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "Point Light Prop.prefab",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -67.39160919189453,
+                    "y": 41.43657684326172,
+                    "z": 85.57038116455078
+                },
+                "rotation": {
+                    "x": 179.90977478027344,
+                    "y": 89.19279479980469,
+                    "z": 179.9106903076172
+                },
+                "scale": {
+                    "x": 0.010003415867686272,
+                    "y": 0.009999999776482582,
+                    "z": 0.010003415867686272
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -67.39160919189453,
+                    "y": 41.43657684326172,
+                    "z": 85.57038116455078
+                },
+                "rotation": {
+                    "x": 179.90977478027344,
+                    "y": 89.19279479980469,
+                    "z": 179.9106903076172
+                },
+                "scale": {
+                    "x": 0.010003416799008846,
+                    "y": 0.009999999776482582,
+                    "z": 0.010003416799008846
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "141c23f8-b538-3c4b-7ef5-bc27dfdc908a",
+        "LightComponent": {
+            "lightType": 1,
+            "color": {
+                "x": 0.0,
+                "y": 5.0,
+                "z": 2.0
+            },
+            "diffuseStrength": {
+                "x": 36.099998474121094,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "specularStrength": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "linear": 0.09000000357627869,
+            "quadratic": 0.03200000151991844,
+            "direction": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "cutOff": 5.5,
+            "outerCutOff": 10.5,
+            "intesnity": 41.400001525878906,
+            "shadowCast": false,
+            "bakedLighting": false,
+            "depthMapGUID": "830f5179-cdc9-9da2-372b-834ac068f9fa"
+        },
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
+                }
+            ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
+        },
+        "NameComponent": {
+            "entityName": "Point Light Prop",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "Point Light Prop.prefab",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -129.24000549316406,
+                    "y": -0.0997309684753418,
+                    "z": 78.21343231201172
+                },
+                "rotation": {
+                    "x": 179.21180725097656,
+                    "y": 89.91377258300781,
+                    "z": 179.21316528320313
+                },
+                "scale": {
+                    "x": 0.010000897571444511,
+                    "y": 0.009999999776482582,
+                    "z": 0.010000897571444511
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -129.24000549316406,
+                    "y": -0.0997309684753418,
+                    "z": 78.21343231201172
+                },
+                "rotation": {
+                    "x": 179.21180725097656,
+                    "y": 89.91377258300781,
+                    "z": 179.21316528320313
+                },
+                "scale": {
+                    "x": 0.010000898502767086,
+                    "y": 0.009999999776482582,
+                    "z": 0.010000898502767086
+                }
+            }
+        }
     },
     {
         "entityGUID": "ea7440a1-1e90-6918-1f2f-9c3b031dde2d",
