@@ -1193,8 +1193,8 @@
                 "AudioComponent": {
                     "audioFiles": [
                         {
-                            "audioGUID": "2a0dbdbb-d496-2457-2c1c-f2953b1eee58",
-                            "volume": 0.0820000022649765,
+                            "audioGUID": "ccbd2308-8fa9-45a0-4169-19aee6a12665",
+                            "volume": 1.0,
                             "loop": true,
                             "playOnStart": true,
                             "hasPlayed": false,
@@ -1209,8 +1209,8 @@
                             "studioEventPath": ""
                         },
                         {
-                            "audioGUID": "8530d606-2ec9-2a44-665d-b50a4a24153f",
-                            "volume": 0.37599998712539673,
+                            "audioGUID": "621fa748-0a44-cc54-f693-42f3710bfb23",
+                            "volume": 0.6610000133514404,
                             "loop": true,
                             "playOnStart": true,
                             "hasPlayed": false,
@@ -1229,8 +1229,8 @@
                 "GameManager": {
                     "enemyObjectPrefab": "a3a69a24-9a78-f0fd-f0a9-744fc055ecb2",
                     "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1",
-                    "gameBGM": "2a0dbdbb-d496-2457-2c1c-f2953b1eee58",
-                    "ambienceBGM": "8530d606-2ec9-2a44-665d-b50a4a24153f"
+                    "gameBGM": "ccbd2308-8fa9-45a0-4169-19aee6a12665",
+                    "ambienceBGM": "621fa748-0a44-cc54-f693-42f3710bfb23"
                 },
                 "NameComponent": {
                     "entityName": "Game Manager",
@@ -1603,7 +1603,7 @@
                             "studioEventPath": ""
                         },
                         {
-                            "audioGUID": "da68988d-e4fa-eeaa-28d2-375730057f55",
+                            "audioGUID": "931be329-4da3-be93-b610-5e9f30345243",
                             "volume": 1.0,
                             "loop": false,
                             "playOnStart": false,
@@ -1821,7 +1821,7 @@
                             "acidGrenadeGunSfxGUID": "521c0038-31ae-f9f1-2fde-2a2f4c1d1f7f"
                         }
                     ],
-                    "acidAbsorbSfxGUID": "da68988d-e4fa-eeaa-28d2-375730057f55",
+                    "acidAbsorbSfxGUID": "931be329-4da3-be93-b610-5e9f30345243",
                     "pauseMenuOpenSfxGUID": "f1247210-decf-0610-1b5e-ded142410901",
                     "pauseMenuCloseSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
                     "pauseMenuManagerObject": "53f83bac-2058-5939-b2a8-134497980574",
@@ -6393,7 +6393,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -6456,7 +6456,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -6519,7 +6519,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -6582,7 +6582,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -6645,7 +6645,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -6708,7 +6708,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -6771,7 +6771,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -6834,7 +6834,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -9598,7 +9598,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -14575,7 +14575,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -14638,7 +14638,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -14701,7 +14701,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -14764,7 +14764,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -14827,7 +14827,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -14890,7 +14890,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -14953,7 +14953,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -15016,7 +15016,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -15079,7 +15079,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -15142,7 +15142,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -15205,7 +15205,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -15520,7 +15520,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -15709,7 +15709,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -15772,7 +15772,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -15835,7 +15835,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -19489,7 +19489,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -19615,7 +19615,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -19678,7 +19678,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -19741,7 +19741,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -19804,7 +19804,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -19867,7 +19867,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -20371,7 +20371,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -20434,7 +20434,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -20497,7 +20497,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -20812,7 +20812,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -20875,7 +20875,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -20938,7 +20938,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -21001,7 +21001,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -28247,7 +28247,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -28310,7 +28310,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -28625,7 +28625,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -28688,7 +28688,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -29762,7 +29762,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -29888,7 +29888,7 @@
                 "MaterialComponent": {
                     "materialGUID": [
                         {
-                            "materialGUID": "5d51dc45-842a-001e-0baa-d14e3083546c"
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
                         }
                     ]
                 },
@@ -49794,7 +49794,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "72451f81-f152-fc70-1d3a-1129d351d5d8",
+                        "entityGUID": "f3526aca-6d8e-2688-e46b-2f2b7998c348",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
                             "Layer": 0,
@@ -49842,7 +49842,7 @@
                         }
                     },
                     {
-                        "entityGUID": "d120f310-9cac-9436-a1a3-d4eed1273bab",
+                        "entityGUID": "254fda20-e63a-9f3e-a7c5-d12d2be48257",
                         "AnimatorComponent": {
                             "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                             "m_PlaybackSpeed": 1.0,
@@ -49902,7 +49902,7 @@
                         }
                     },
                     {
-                        "entityGUID": "d65ed07a-8a23-c1c1-ffa1-8196b3a8a1d5",
+                        "entityGUID": "c7712a74-ed7d-2428-8e8b-ab3d18836cac",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
                             "Layer": 0,
@@ -50178,7 +50178,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "ac6de517-d5e9-cc23-782b-a4e60512be71",
+                        "entityGUID": "949a3f41-c59f-1d19-6e02-4a8b81477209",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
                             "Layer": 0,
@@ -50226,7 +50226,7 @@
                         }
                     },
                     {
-                        "entityGUID": "2f7b52f5-044c-e079-2c85-8b9425b26fb2",
+                        "entityGUID": "b5b38595-ebf6-0366-38e4-af3274efa546",
                         "AnimatorComponent": {
                             "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                             "m_PlaybackSpeed": 1.0,
@@ -50286,7 +50286,7 @@
                         }
                     },
                     {
-                        "entityGUID": "c4bcd0f0-dd17-8b51-dcbf-fb27f56ce6d7",
+                        "entityGUID": "bfdac65d-037f-2d4f-299e-fc66f05318c6",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
                             "Layer": 0,
@@ -50562,7 +50562,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "8a8789cd-65e8-7adb-7a96-f25939ba34a8",
+                        "entityGUID": "e08637c8-e275-dc8d-3b80-8ca7cf96adca",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
                             "Layer": 0,
@@ -50610,7 +50610,7 @@
                         }
                     },
                     {
-                        "entityGUID": "9e96932f-3c1c-23dc-c653-01596766d1fd",
+                        "entityGUID": "b1213c0e-6136-f296-a457-3873814adbdf",
                         "AnimatorComponent": {
                             "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                             "m_PlaybackSpeed": 1.0,
@@ -50670,7 +50670,7 @@
                         }
                     },
                     {
-                        "entityGUID": "57bbf2ad-61d4-866d-729c-6297f58723e6",
+                        "entityGUID": "5e55a3af-4b12-df9c-9e3d-1bb978b8e564",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
                             "Layer": 0,
@@ -51381,7 +51381,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "384b0a48-d159-6716-4180-44b8ad69158b",
+                        "entityGUID": "966d5457-6abe-c485-2c1b-7e419cec7f7a",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
                             "Layer": 0,
@@ -51429,7 +51429,7 @@
                         }
                     },
                     {
-                        "entityGUID": "5352a9ad-ae0b-aaa9-7417-54818446f8e4",
+                        "entityGUID": "696e82a4-c37a-d62f-d7db-f170b54d5339",
                         "AnimatorComponent": {
                             "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                             "m_PlaybackSpeed": 1.0,
@@ -51489,7 +51489,7 @@
                         }
                     },
                     {
-                        "entityGUID": "ca85f641-3523-8590-0a96-b097854cd3a2",
+                        "entityGUID": "93e6df0f-96c0-6262-8ed6-7bdd04eedee5",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
                             "Layer": 0,
@@ -52635,7 +52635,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "e45656ad-d4d6-3215-bd27-2f36c3a5cede",
+                        "entityGUID": "9a6eaa23-3fd9-31fd-c640-f3c695bb402f",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
                             "Layer": 0,
@@ -52683,7 +52683,7 @@
                         }
                     },
                     {
-                        "entityGUID": "f169e64b-eec5-d218-bdd7-0085e907a41a",
+                        "entityGUID": "c63de422-7627-eb12-20ff-abbb0f682b1c",
                         "AnimatorComponent": {
                             "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                             "m_PlaybackSpeed": 1.0,
@@ -52743,7 +52743,7 @@
                         }
                     },
                     {
-                        "entityGUID": "838c01e3-fc4d-22b3-2850-c1b78b44d753",
+                        "entityGUID": "a3b06752-6fac-c93e-9bfd-a0da6be79115",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
                             "Layer": 0,
@@ -53019,7 +53019,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "5347a519-314d-e785-e4fe-8ee4f8b171e2",
+                        "entityGUID": "ce1a962e-1a65-55f2-d2a8-2ca080f4e5de",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
                             "Layer": 0,
@@ -53067,7 +53067,7 @@
                         }
                     },
                     {
-                        "entityGUID": "4c5d83b6-b456-aaaf-5fd4-ba46aee361f9",
+                        "entityGUID": "539c50f8-a8f6-d290-7a96-7809484de43b",
                         "AnimatorComponent": {
                             "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                             "m_PlaybackSpeed": 1.0,
@@ -53127,7 +53127,7 @@
                         }
                     },
                     {
-                        "entityGUID": "6ec2348d-c2d3-a152-6407-733e40d2e710",
+                        "entityGUID": "e088b175-1244-92e5-108b-df7fa7b74687",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
                             "Layer": 0,
@@ -53403,7 +53403,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "a102c24f-c4d8-f08e-f68b-c77d52e54645",
+                        "entityGUID": "bef5d6ab-49ed-9eed-5433-b6e0f7be26fb",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
                             "Layer": 0,
@@ -53451,7 +53451,7 @@
                         }
                     },
                     {
-                        "entityGUID": "566afff8-6462-759c-5326-0d970f31fa38",
+                        "entityGUID": "8d206020-6522-adae-af89-1926979d3473",
                         "AnimatorComponent": {
                             "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                             "m_PlaybackSpeed": 1.0,
@@ -53511,7 +53511,7 @@
                         }
                     },
                     {
-                        "entityGUID": "8fda9927-a2b0-1482-c95a-94095856115f",
+                        "entityGUID": "a0b819d4-7df5-8b89-eec2-b3ff4bc21bff",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
                             "Layer": 0,
@@ -53787,7 +53787,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "445c75aa-9183-4ea3-87af-fbfbffab8a59",
+                        "entityGUID": "73b731e4-dda5-bce0-1d65-4cf8599efbd0",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
                             "Layer": 0,
@@ -53835,7 +53835,7 @@
                         }
                     },
                     {
-                        "entityGUID": "85104517-5c3a-8da0-4cb7-9c9b8bedc804",
+                        "entityGUID": "d6b49e2d-c505-72bd-864f-1cfbb0b8e5cc",
                         "AnimatorComponent": {
                             "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                             "m_PlaybackSpeed": 1.0,
@@ -53895,7 +53895,7 @@
                         }
                     },
                     {
-                        "entityGUID": "2ce457f0-5734-3083-fb08-c78935b40842",
+                        "entityGUID": "29fbab0c-dae6-d2dd-3e83-7c9ad2d40f6e",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
                             "Layer": 0,
@@ -54933,7 +54933,7 @@
             }
         },
         "RoomLockScript": {
-            "enemyCountToKill": 3,
+            "enemyCountToKill": 6,
             "doorPrefabA": "2a0ea1a6-6d22-051b-191a-0e5ac364ea6e",
             "doorPrefabB": "2a0ea1a6-6d22-051b-191a-0e5ac364ea6e",
             "doorSpawnPointA": "dc8af41e-1741-882f-c491-608ca6c2e134",
@@ -58482,7 +58482,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "647be279-2f91-dd96-e67e-2fbf9bb66743",
+                        "entityGUID": "d2c31664-f8f0-fedf-3a33-2fe439c443f0",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
                             "Layer": 0,
@@ -58530,7 +58530,7 @@
                         }
                     },
                     {
-                        "entityGUID": "e6810a0a-d755-251e-7886-e89cd73ed06d",
+                        "entityGUID": "b761f52f-4a73-be8f-5a55-06c6c2b5d1c7",
                         "AnimatorComponent": {
                             "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                             "m_PlaybackSpeed": 1.0,
@@ -58590,7 +58590,7 @@
                         }
                     },
                     {
-                        "entityGUID": "da395d7b-d1fb-adc1-9e56-d5cb47f7ca93",
+                        "entityGUID": "72843f5f-4e12-27bc-472a-24f975333bb4",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
                             "Layer": 0,
@@ -58866,7 +58866,7 @@
                 },
                 "children": [
                     {
-                        "entityGUID": "17934148-61ef-80ec-88a4-40c3dd80f5d3",
+                        "entityGUID": "b0e7ad96-7343-b245-d6b9-e427706fc353",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
                             "Layer": 0,
@@ -58914,7 +58914,7 @@
                         }
                     },
                     {
-                        "entityGUID": "bada325d-d185-f8f1-393c-e1487165b187",
+                        "entityGUID": "8cf88fbe-ea7e-e945-9d2c-d89487052cd6",
                         "AnimatorComponent": {
                             "controllerGUID": "959228b7-3789-fba1-c60f-18a77dc3fc15",
                             "m_PlaybackSpeed": 1.0,
@@ -58974,7 +58974,7 @@
                         }
                     },
                     {
-                        "entityGUID": "f78ba845-ef14-b884-f62e-d6ef89859640",
+                        "entityGUID": "b54b22df-6c56-e466-b16c-ee926f005da9",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
                             "Layer": 0,

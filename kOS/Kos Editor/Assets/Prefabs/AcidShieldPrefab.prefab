@@ -17,12 +17,12 @@
             "enemyDeathSfxGUID_1": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_2": "00000000-0000-0000-0000-000000000000",
             "enemyDeathSfxGUID_3": "00000000-0000-0000-0000-000000000000",
-            "acidShieldSfxGUID": "5fd1e778-8f0e-5687-8d82-b7c864715e61"
+            "acidShieldSfxGUID": "a4e268f4-a94a-2d9b-8b6c-9f0e187b2447"
         },
         "AudioComponent": {
             "audioFiles": [
                 {
-                    "audioGUID": "5fd1e778-8f0e-5687-8d82-b7c864715e61",
+                    "audioGUID": "a4e268f4-a94a-2d9b-8b6c-9f0e187b2447",
                     "volume": 1.0,
                     "loop": false,
                     "playOnStart": false,

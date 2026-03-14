@@ -13,7 +13,7 @@
             "audioFiles": [
                 {
                     "audioGUID": "71d58ef2-b4f6-e065-2971-d8c866fb55c3",
-                    "volume": 1.0,
+                    "volume": 0.6579999923706055,
                     "loop": false,
                     "playOnStart": false,
                     "hasPlayed": false,
@@ -29,7 +29,7 @@
                 },
                 {
                     "audioGUID": "7d95194c-3dcb-71fc-709a-8a60513409d6",
-                    "volume": 1.0,
+                    "volume": 0.6389999985694885,
                     "loop": false,
                     "playOnStart": false,
                     "hasPlayed": false,
@@ -45,7 +45,7 @@
                 },
                 {
                     "audioGUID": "1d543759-364b-8abe-dd87-be492dba4527",
-                    "volume": 1.0,
+                    "volume": 0.6620000004768372,
                     "loop": false,
                     "playOnStart": false,
                     "hasPlayed": false,
