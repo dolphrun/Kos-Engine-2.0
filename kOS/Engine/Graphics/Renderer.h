@@ -120,6 +120,9 @@ struct LightRenderer : BasicRenderer
 	std::vector<DirectionalLightData> directionLightsToDraw{};
 	std::vector<SpotLightData> spotLightsToDraw{};
 	DepthCubeMap dcm[32];
+	std::vector<DepthCubeMap*> actualDcm;
+	std::vector<PointLightData*> actualPointLightsToDraw{};
+
 	DepthCubeMap testDCM;
 };
 
