@@ -30,6 +30,14 @@ public:
     ecs::EntityID abilitiesUsedValueID = 0;
     ecs::EntityID damageTakenValueID = 0;
 
+    //// Video background
+    //utility::GUID winVideoGUID;
+    //ecs::EntityID winVideoID = 0;
+
+    //// Optional audio
+    //utility::GUID winAudioGUID;
+    //bool hasPlayedAudio = false;
+
     glm::vec3 originalCanvasPosition;
     glm::vec3 hiddenPosition = glm::vec3(-10000.0f, -10000.0f, 0.0f);
 
@@ -46,6 +54,11 @@ public:
         abilitiesUsedValueID = ecsPtr->GetEntityIDFromGUID(abilitiesUsedValueGUID);
         damageTakenValueID = ecsPtr->GetEntityIDFromGUID(damageTakenValueGUID);
 
+        //// Get video player
+        //if (!winVideoGUID.Empty()) {
+        //    winVideoID = ecsPtr->GetEntityIDFromGUID(winVideoGUID);
+        //}
+
         if (auto* t = ecsPtr->GetComponent<TransformComponent>(winScreenCanvasID)) {
             originalCanvasPosition = t->LocalTransformation.position;
         }
@@ -57,7 +70,7 @@ public:
     }
 
     void Update() override {
-        // Nothing needed here for now
+        // Nothing needed here - video will loop automatically if loop=true
     }
 
     // Call this when the player wins
@@ -67,6 +80,7 @@ public:
 
         hasShownWinScreen = true;
         isWinScreenActive = true;
+        /*hasPlayedAudio = false;*/
         ecsPtr->SetTimeScale(0.0f);
         ecsPtr->SetState(WAIT);
         SetWinScreenActive(true);
@@ -80,7 +94,29 @@ public:
         UpdateElementsAbsorbedText();
         UpdateAbilitiesUsedText();
         UpdateDamageTakenText();
-        
+
+        //// Start video playback
+        //if (winVideoID != 0) {
+        //    auto* vc = ecsPtr->GetComponent<ecs::VideoComponent>(winVideoID);
+        //    if (vc) {
+        //        vc->loop = true;   // Enable looping
+        //        vc->pause = false; // Start playing
+        //        std::cout << "Win screen video started" << std::endl;
+        //    }
+        //}
+
+        //// Play audio if available
+        //if (!winAudioGUID.Empty() && !hasPlayedAudio) {
+        //    if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+        //        for (auto& af : ac->audioFiles) {
+        //            if (af.audioGUID == winAudioGUID && af.isSFX) {
+        //                af.requestPlay = true;
+        //                hasPlayedAudio = true;
+        //                break;
+        //            }
+        //        }
+        //    }
+        //}
 
         std::cout << "WIN SCREEN SHOWN WITH STATS" << std::endl;
     }
@@ -96,6 +132,14 @@ public:
         ecsPtr->SetState(RUNNING);
         SetWinScreenActive(false);
         Input->HideCursor(true);
+
+        //// Stop video
+        //if (winVideoID != 0) {
+        //    auto* vc = ecsPtr->GetComponent<ecs::VideoComponent>(winVideoID);
+        //    if (vc) {
+        //        vc->pause = true;
+        //    }
+        //}
 
         std::cout << "WIN SCREEN HIDDEN" << std::endl;
     }
