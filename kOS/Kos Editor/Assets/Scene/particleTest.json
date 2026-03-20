@@ -6,5 +6,191 @@
             "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
             "ambientIntensity": 1.0
         }
+    },
+    {
+        "entityGUID": "5ab48dda-fee0-b077-62d5-59fb153769a4",
+        "CanvasRendererComponent": {
+            "isScreenSpace": false
+        },
+        "NameComponent": {
+            "entityName": "canvas",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.9999968409538269,
+                    "y": 0.9999988079071045,
+                    "z": 0.9999964237213135
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.9999968409538269,
+                    "y": 0.9999988079071045,
+                    "z": 0.9999964237213135
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "c434e3c4-6d85-936f-9549-340061d1ab57",
+                "NameComponent": {
+                    "entityName": "ANIMATED SPRITE TEST",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "8631c627-a6ad-5431-d19f-7fad7f7c9490",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.9999968409538269,
+                            "y": 0.9999988079071045,
+                            "z": 0.9999964237213135
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "3cb9f503-09bc-e042-b048-7b63353e3af2",
+        "CameraComponent": {
+            "cameraType": 0,
+            "fov": 45.0,
+            "nearPlane": 0.05000000074505806,
+            "farPlane": 200.0,
+            "size": {
+                "x": 1600.0,
+                "y": 900.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "active": false,
+            "culling": false,
+            "layer": 0,
+            "renderOrder": 0
+        },
+        "NameComponent": {
+            "entityName": "camera",
+            "Layer": 0,
+            "entityTag": "Camera",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        }
     }
 ]

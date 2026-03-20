@@ -10,6 +10,7 @@
 #include "CanvasTextRenderSystem.h"
 #include "CanvasSpriteRenderSystem.h"
 #include "CanvasButtonRenderSystem.h"
+#include "CanvasAnimatedSpriteRenderSystem.h"
 #include "RigidbodySystem.h"
 #include "BoxColliderSystem.h"
 #include "SphereColliderSystem.h"
@@ -26,3 +27,4 @@
 #include "PhysicsSystem.h"
 #include "ParticleSystem.h"
 #include "VideoSystem.h"
+

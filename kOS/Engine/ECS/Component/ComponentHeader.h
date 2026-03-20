@@ -26,3 +26,4 @@
 #include "RigidbodyComponent.h"
 #include "ParticleComponent.h"
 #include "NavMeshComponent.h"
+#include "AnimatedSpriteComponent.h"
