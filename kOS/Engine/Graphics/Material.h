@@ -35,12 +35,14 @@ struct PBRMaterial {
 				std::shared_ptr<R_Texture> specularTex = nullptr,
 				std::shared_ptr<R_Texture> roughnessTex = nullptr,
 				std::shared_ptr<R_Texture> aoTex = nullptr,
-				std::shared_ptr<R_Texture> normalTex = nullptr);
+				std::shared_ptr<R_Texture> normalTex = nullptr,
+				std::shared_ptr<R_Texture> emissionTex=nullptr);
 	std::shared_ptr<R_Texture> albedo;
 	std::shared_ptr<R_Texture> specular;
 	std::shared_ptr<R_Texture> roughness;
 	std::shared_ptr<R_Texture> ao;
 	std::shared_ptr<R_Texture> normal;
+	std::shared_ptr<R_Texture> emission;
 	bool listCon=false;
 };
 struct PBRMaterialList :public PBRMaterial {

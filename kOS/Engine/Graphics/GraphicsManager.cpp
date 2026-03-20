@@ -921,6 +921,8 @@ unsigned int* GraphicsManager::gm_PostProcess() {
 			Bloom::bloomShader->Use();
 			Bloom::bloomShader->SetInt("bloomTexture", 0);
 			Bloom::bloomShader->SetFloat("bloomStrength", blmPtr->bloomStrength);
+			Bloom::bloomShader->SetFloat("bloomThreshold", blmPtr->bloomThreshold);
+
 			// Composite bloom result back onto sceneFB
 			glBindFramebuffer(GL_FRAMEBUFFER, sceneFB->fbo);
 			glViewport(0, 0, sceneFB->width, sceneFB->height);

@@ -18,6 +18,7 @@ uniform sampler2D texture_specular1;
 uniform sampler2D texture_normal1;
 uniform sampler2D texture_ao1;
 uniform sampler2D texture_roughness1;
+uniform sampler2D texture_emissive1;
 struct Material 
 {
     float reflectivity;
@@ -36,7 +37,7 @@ void main()
     gAlbedoSpec.rgb *= texture(texture_diffuse1, TexCoords).rgb;
     //store specular intensity in gAlbedoSpec's alpha component
     gAlbedoSpec.a = texture(texture_specular1, TexCoords).r;
-    gReflect=ReflectDir;
+    gReflect=texture(texture_emissive1, TexCoords).rgb;
     gMaterial.r=texture(texture_ao1, TexCoords).g;
     gMaterial.g=texture(texture_roughness1, TexCoords).r;
     gMaterial.b=shaderType;

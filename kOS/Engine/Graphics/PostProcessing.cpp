@@ -97,7 +97,7 @@ Bloom::Bloom()
 }
 
 Bloom::Bloom(const Bloom& other)
-	: filterRadius(other.filterRadius),bloomStrength(other.bloomStrength)
+	: filterRadius(other.filterRadius), bloomStrength(other.bloomStrength), bloomThreshold{other.bloomThreshold }
 {
 }
 void Bloom::UpdateShader() {

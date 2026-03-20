@@ -108,6 +108,10 @@ void R_Model::Mesh::PBRDraw(Shader& shader, PBRMaterial const& mat) {
     currentTexture = (mat.roughness) ? mat.roughness->RetrieveTexture() : 0;
     glBindTexture(GL_TEXTURE_2D, currentTexture);
 
+    glActiveTexture(GL_TEXTURE6); // activate proper texture unit before binding
+    currentTexture = (mat.emission) ? mat.emission->RetrieveTexture() : 0;
+    glBindTexture(GL_TEXTURE_2D, currentTexture);
+
     glActiveTexture(GL_TEXTURE0);
 
     // draw mesh

@@ -308,6 +308,7 @@ void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader)
 	shader.SetInt("texture_normal1", 2);
 	shader.SetInt("texture_ao1", 4);
 	shader.SetInt("texture_roughness1", 5);
+	shader.SetInt("texture_emissive1", 6);
 	shader.SetBool("isRigged", true);
 	shader.SetVec3("color", glm::vec3{ 1.f,1.f,1.f });
 	for (std::vector<SkinnedMeshData>& meshData : skinnedMeshesToDraw) {

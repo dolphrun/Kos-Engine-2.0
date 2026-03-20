@@ -342,7 +342,7 @@ void main()
 
     specularColor =testColor.a;
     //Create Reflection
-    vec3 envMap = texture(cubeTexture, vec3(texture(gReflect, TexCoords)) ).rgb;
+    //vec3 envMap = texture(cubeTexture, vec3(texture(gReflect, TexCoords)) ).rgb;
     vec3 newMat=vec3(texture(gMaterial, TexCoords));
 
     //Check whether to render shader as per normal
@@ -391,6 +391,7 @@ for(int i = 0; i < pointLightNo; i++) {
     for(int i=0;i<dirLightNo;i++){
         newLight+=microFacetDirection(positionMap, normalMap,diffuseColor,newMat.g,i);
     }
+    newLight+=vec3(texture(gReflect, TexCoords));
      vec3 color = newLight/ (newLight + vec3(1.0));
      //Exposure tone mapping HUH
 

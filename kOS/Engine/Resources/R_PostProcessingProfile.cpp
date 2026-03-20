@@ -77,6 +77,7 @@ void R_PostProcessingProfile::Load()
 			case 4:
 				Bloom blur;
 				blur.bloomStrength = e["BloomStrength"].GetFloat();
+				blur.bloomThreshold = e.HasMember("BloomThreshold") ? e["BloomThreshold"].GetFloat() : 1.0f;
 				this->profile.postProcessingEffects.push_back(std::make_unique<Bloom>(blur));
 				break;;
 

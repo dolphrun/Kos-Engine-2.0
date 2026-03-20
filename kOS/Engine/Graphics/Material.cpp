@@ -46,6 +46,7 @@ PBRMaterial::PBRMaterial(std::shared_ptr<R_Texture> albedoTex ,
                          std::shared_ptr<R_Texture> specularTex ,
                          std::shared_ptr<R_Texture> roughnessTex ,
                          std::shared_ptr<R_Texture> aoTex ,
-                         std::shared_ptr<R_Texture> normalTex ) :
-                          albedo{albedoTex}, specular{ specularTex }, roughness{ roughnessTex }, ao{ aoTex }, normal{ normalTex }
+                         std::shared_ptr<R_Texture> normalTex,
+                         std::shared_ptr<R_Texture> emissiveTex) :
+    albedo{ albedoTex }, specular{ specularTex }, roughness{ roughnessTex }, ao{ aoTex }, normal{ normalTex }, emission{emissiveTex}
 {}
