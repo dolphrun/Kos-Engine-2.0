@@ -46,9 +46,6 @@ namespace ecs {
             NameComponent* nameComp = m_ecs.GetComponent<NameComponent>(id);
             CanvasRendererComponent* canvas = m_ecs.GetComponent<CanvasRendererComponent>(id);
 
-             //Skip entities not in this scene or hidden
-            if (nameComp->hide)
-                continue;
 
             std::optional<std::vector<EntityID>> childEntities = m_ecs.GetChild(id);
             if (!childEntities.has_value()) continue;
