@@ -6,5 +6,212 @@
             "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
             "ambientIntensity": 1.0
         }
+    },
+    {
+        "entityGUID": "3cb9f503-09bc-e042-b048-7b63353e3af2",
+        "CameraComponent": {
+            "cameraType": 0,
+            "fov": 45.0,
+            "nearPlane": 0.05000000074505806,
+            "farPlane": 200.0,
+            "size": {
+                "x": 1600.0,
+                "y": 900.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "active": false,
+            "culling": false,
+            "layer": 0,
+            "renderOrder": 0
+        },
+        "NameComponent": {
+            "entityName": "camera",
+            "Layer": 0,
+            "entityTag": "Camera",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "3be5670a-64f5-cdd8-39dc-a617890f8eb0",
+        "CanvasRendererComponent": {
+            "isScreenSpace": true
+        },
+        "NameComponent": {
+            "entityName": "canvas",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "e28f0451-5054-4105-99d1-165da2d86ae5",
+                "AnimatedSpriteComponent": {
+                    "spriteGUID": [
+                        {
+                            "spriteGUID": "8523e9f0-9eda-ed9d-7432-79f8d85b9dcb"
+                        },
+                        {
+                            "spriteGUID": "6f49bd99-03ba-db76-7343-c90c3db42c9b"
+                        },
+                        {
+                            "spriteGUID": "4cfdf186-6213-096c-9c62-0f680ff4cb4e"
+                        }
+                    ],
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "currentFrame": 0,
+                    "framesPerSecond": 24,
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false,
+                    "isLooping": false
+                },
+                "AnimatorComponent": {
+                    "controllerGUID": "00000000-0000-0000-0000-000000000000",
+                    "m_PlaybackSpeed": 1.0,
+                    "m_CurrentTime": 0.0,
+                    "m_IsPlaying": true,
+                    "m_currentStateID": 0,
+                    "m_transitioningStateID": 0
+                },
+                "NameComponent": {
+                    "entityName": "something",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            }
+        ]
     }
 ]
