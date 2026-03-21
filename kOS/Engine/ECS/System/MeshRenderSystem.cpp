@@ -66,7 +66,9 @@ namespace ecs {
                     std::shared_ptr<R_Texture> norm = m_resourceManager.GetResource<R_Texture>(mat->md.normalMaterialGUID);
                     std::shared_ptr<R_Texture> ao = m_resourceManager.GetResource<R_Texture>(mat->md.ambientOcclusionMaterialGUID);
                     std::shared_ptr<R_Texture> rough = m_resourceManager.GetResource<R_Texture>(mat->md.roughnessMaterialGUID);
-                    pbrTmpList.push_back(PBRMaterial{ diff,spec,rough,ao,norm });
+                    std::shared_ptr<R_Texture> emissive = m_resourceManager.GetResource<R_Texture>(mat->md.emissiveMaterialGUID);
+
+                    pbrTmpList.push_back(PBRMaterial{ diff,spec,rough,ao,norm ,emissive});
                 }
                 if (mesh)
                     m_graphicsManager.gm_PushMeshData(MeshData{ mesh,std::make_shared<PBRMaterialList>(pbrTmpList,true), transform->transformation,id }, nameComp->Layer);

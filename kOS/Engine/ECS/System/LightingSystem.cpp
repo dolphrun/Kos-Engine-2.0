@@ -54,7 +54,7 @@ namespace ecs {
 				m_graphicsManager.gm_PushPointLightData(PointLightData{ transform->WorldTransformation.position, light->color, light->diffuseStrength,
 										light->specularStrength,light->linear,light->quadratic,light->intesnity,light->shadowCast,light->bakedLighting,light->depthMapGUID });
 				std::shared_ptr<R_DepthMapCube> ptr = m_resourceManager.GetResource<R_DepthMapCube>(light->depthMapGUID);;
-				if (ptr)m_graphicsManager.lightRenderer.dcm[m_graphicsManager.lightRenderer.pointLightsToDraw.size() - 1] = ptr->dcm;
+				if (ptr)m_graphicsManager.lightRenderer.bakedDCM[m_graphicsManager.lightRenderer.pointLightsToDraw.size() - 1] = ptr->dcm;
 			}
 				break;
 			case LightComponent::LightType::DIRECTIONAL:

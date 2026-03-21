@@ -10,13 +10,15 @@ struct MaterialData
     utility::GUID normalMaterialGUID{};
     utility::GUID ambientOcclusionMaterialGUID{};
     utility::GUID roughnessMaterialGUID{};
+    utility::GUID emissiveMaterialGUID{};
 
     REFLECTABLE(MaterialData,
         diffuseMaterialGUID,
         specularMaterialGUID,
         normalMaterialGUID,
         ambientOcclusionMaterialGUID,
-        roughnessMaterialGUID
+        roughnessMaterialGUID,
+        emissiveMaterialGUID
 	);
 };
 

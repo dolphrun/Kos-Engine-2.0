@@ -390,7 +390,9 @@ public:
 	void SetMat4(const std::string& name, const glm::mat4& value) {
 		glUniformMatrix4fv(GetLocation(name), 1, GL_FALSE, glm::value_ptr(value));
 	}
-
+	void SetMat4(const std::string& name, const std::vector<glm::mat4>& value,size_t size) {
+		glUniformMatrix4fv(GetLocation(name), size, GL_FALSE, &value[0][0][0]);
+	}
 	void SetMat4Array(const std::string& name, const glm::mat4& value, size_t arraySize) {
 		glUniformMatrix4fv(GetLocation(name), static_cast<GLsizei>(arraySize), GL_FALSE, glm::value_ptr(value));
 	}

@@ -308,6 +308,7 @@ void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader)
 	shader.SetInt("texture_normal1", 2);
 	shader.SetInt("texture_ao1", 4);
 	shader.SetInt("texture_roughness1", 5);
+	shader.SetInt("texture_emissive1", 6);
 	shader.SetBool("isRigged", true);
 	shader.SetVec3("color", glm::vec3{ 1.f,1.f,1.f });
 	for (std::vector<SkinnedMeshData>& meshData : skinnedMeshesToDraw) {
@@ -353,7 +354,7 @@ void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader, layer
 }
 
 void LightRenderer::InitializeLightRenderer() {
-	for (int i{ 0 }; i < 16; i++) {
+	for (int i{ 0 }; i < 32; i++) {
 		dcm[i].InitializeMap();
 	}
 	//testDCM.LoadDepthCubeMap("D:/CJJJ2/kOS/Kos Editor/Assets/DepthMap/test.dcm");
@@ -577,6 +578,14 @@ void LightRenderer::Clear()
 	directionLightsToDraw.clear();
 	actualPointLightsToDraw.clear();
 	actualDcm.clear();
+	//Clear dcm
+	for (int i{ 0 }; i < 32; i++) {
+		glViewport(0, 0, static_cast<GLsizei>(1024.f), static_cast<GLsizei>(1024.f));
+		glBindFramebuffer(GL_FRAMEBUFFER, dcm[i].GetFBO());
+		glClear(GL_DEPTH_BUFFER_BIT);
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	}
 }
 
 void DebugRenderer::InitializeDebugRendererMeshes() {
