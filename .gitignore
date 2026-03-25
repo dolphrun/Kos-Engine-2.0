@@ -13,6 +13,7 @@
 *.ipdb
 *.ini
 *.set
+*.cache
 .ini
 .vs
 .tmp
