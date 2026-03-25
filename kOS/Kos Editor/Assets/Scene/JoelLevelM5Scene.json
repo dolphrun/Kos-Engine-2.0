@@ -1137,6 +1137,54 @@
                                 }
                             }
                         }
+                    },
+                    {
+                        "entityGUID": "f178b1a2-d208-95b8-ec3d-23dd3e9e526b",
+                        "NameComponent": {
+                            "entityName": "ProjectileSpawnPoint",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 7.969753265380859,
+                                    "y": 99.99457550048828,
+                                    "z": -17.63040542602539
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.9999998211860657,
+                                    "y": 1.0,
+                                    "z": 0.9999998211860657
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 17.633159637451172,
+                                    "y": -0.00542449951171875,
+                                    "z": 7.9636664390563965
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -89.98021697998047,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
                     }
                 ]
             },
@@ -1837,7 +1885,8 @@
                     "fireSwordModelObject": "97f3df14-8a82-5e80-3c27-f1cf8b91d87e",
                     "lightningModelObject": "8b880c16-1807-cd1e-54c3-42cdda789d3a",
                     "acidModelObject": "37d48ab0-2443-b791-a713-ce7ad50f353e",
-                    "gameUICanvasObject": "633d8af2-15c0-434b-4a26-f9093932c2e4"
+                    "gameUICanvasObject": "633d8af2-15c0-434b-4a26-f9093932c2e4",
+                    "projSpawnPointGUID": "00000000-0000-0000-0000-000000000000"
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,

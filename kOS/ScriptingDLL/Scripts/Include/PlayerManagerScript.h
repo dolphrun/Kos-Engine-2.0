@@ -168,6 +168,9 @@ public:
 	bool isMuzzleActive = false;
 	float muzzleTimer = 0.35f;
 	float muzzleCurrTimer = muzzleTimer;
+	
+	utility::GUID projSpawnPointGUID;
+	ecs::EntityID projSpawnPointID;
 
 	// BACKEND PLAYER DETAILS
 	float playerRotationX = 0.f, playerRotationY = 0.f;
@@ -414,7 +417,7 @@ public:
 		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, fireEquipSfxGUID, fireAbsorbSfxGUID, acidEquipSfxGUID, acidShieldSfxGuid, lightningSlowStartSfxGUID,lightningSlowEndSfxGUID, lightningGunSfxGUID,
 		lightningAbsorbSfxGUID, lightningEquipSfxGUID, acidGrenadeGunSfxGUID, acidAbsorbSfxGUID, pauseMenuOpenSfxGUID, pauseMenuCloseSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
 		winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashGUID, pistolModelObject,
-		fireSwordModelObject, lightningModelObject, acidModelObject, gameUICanvasObject)
+		fireSwordModelObject, lightningModelObject, acidModelObject, gameUICanvasObject, projSpawnPointGUID)
 
 		/*REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 			bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
@@ -452,7 +455,8 @@ inline void PlayerManagerScript::Start() {
 	playerArmModelObjectID = ecsPtr->GetEntityIDFromGUID(playerArmModelObject);
 	playerGroundCheckObjectID = ecsPtr->GetEntityIDFromGUID(playerGroundCheckObject);
 	absorbVFXSpawnObjectID = ecsPtr->GetEntityIDFromGUID(absorbingVFXSpawnPoint);
-	
+	projSpawnPointID = ecsPtr->GetEntityIDFromGUID(projSpawnPointGUID);
+
 	// PISTOL
 	if (pistolModelObject != utility::GUID{}) {
 		pistolModelID = ecsPtr->GetEntityIDFromGUID(pistolModelObject);
@@ -1235,7 +1239,16 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 	bool playerIsAttacking = false;
 
-	projectilePointTransform->LocalTransformation.position = cameraTransform->LocalTransformation.position + GetPlayerCameraFrontDirection() * 1.5f;
+	//projectilePointTransform->LocalTransformation.position = cameraTransform->LocalTransformation.position + GetPlayerCameraFrontDirection() * 1.5f;
+
+	if (projSpawnPointID != 0) {
+		auto* muzzleTf = ecsPtr->GetComponent<TransformComponent>(projSpawnPointID);
+		if (muzzleTf)
+			projectilePointTransform->WorldTransformation.position = muzzleTf->WorldTransformation.position;
+	}
+	else {
+		projectilePointTransform->LocalTransformation.position = cameraTransform->LocalTransformation.position + GetPlayerCameraFrontDirection() * 1.5f;
+	}
 
 	//Animation Handling
 	//if (animComp)
