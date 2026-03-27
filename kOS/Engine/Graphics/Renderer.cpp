@@ -890,18 +890,18 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader, TrailRen
 			std::transform(p.particlePositions.begin(), p.particlePositions.end(),
 				std::back_inserter(instancedBasicParticles),
 				[&, j = 0](const glm::vec3& pos) mutable {
-					if (p.texture_IDs != nullptr) {
-						if (storedIDs.contains(p.texture_IDs->RetrieveTexture()))
+					if (p.texture_IDs[j] != nullptr) {
+						if (storedIDs.contains(p.texture_IDs[j]->RetrieveTexture()))
 						{
-							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], storedIDs[p.texture_IDs->RetrieveTexture()], p.particleType};
+							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j], storedIDs[p.texture_IDs[j++]->RetrieveTexture()], p.particleType};
 						}
 						else
 						{
 							int size = static_cast<int>(textureIDs.size());
-							storedIDs[p.texture_IDs->RetrieveTexture()] = static_cast<unsigned int>(textureIDs.size());
-							textureIDs.push_back(p.texture_IDs->RetrieveTexture());
-							int currentID = storedIDs[p.texture_IDs->RetrieveTexture()];
-							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], storedIDs[p.texture_IDs->RetrieveTexture()] , p.particleType};
+							storedIDs[p.texture_IDs[j]->RetrieveTexture()] = static_cast<unsigned int>(textureIDs.size());
+							textureIDs.push_back(p.texture_IDs[j]->RetrieveTexture());
+							int currentID = storedIDs[p.texture_IDs[j]->RetrieveTexture()];
+							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j], storedIDs[p.texture_IDs[j++]->RetrieveTexture()] , p.particleType};
 						}
 					}
 					else {
