@@ -26,10 +26,10 @@ namespace ecs {
 		glm::vec3 position;
 		glm::vec2 size;
 		glm::vec3 velocity;
-		float lifespan;
-		float lifetime;
+		float lifespan{};
+		float lifetime{};
+		unsigned int currentFrame{};
 		glm::vec3 rotation;
-		int textureID;
 		TrailData trail;
 	};
 
@@ -270,7 +270,10 @@ namespace ecs {
 		float localTimeAccumulator = 0.0f; // NEW: Local clock for this component
 		float timeScale = 1.0f;           // Allows for slow-motion lightning
 
-		utility::GUID textureGUID;
+		std::vector<utility::GUID> textureGUID;
+		unsigned int framesPerSecond = 24;
+		bool isLooping = false;
+		bool  m_IsPlaying{ true };
 
 		PlayState playback_State = PlayState::PLAY;
 
@@ -323,7 +326,7 @@ namespace ecs {
 
 		REFLECTABLE(ParticleComponent, particleType, duration, looping, play_On_Awake, 
 					start_Lifetime, end_Lifetime, lifetime_Random_Enable,
-					textureGUID,
+					textureGUID, framesPerSecond , isLooping, m_IsPlaying,
 					start_Velocity, playback_State, particleFade,
 					velocityModule,forceModule, shapeModule, colorModule, sizeModule, rotationModule, gravityModule, trailingModule, noiseModule,
 					emissionInterval, no_Of_Particles, dynamicTrailingEnabled, trail_Color, trailLifeTime, trailWidth);

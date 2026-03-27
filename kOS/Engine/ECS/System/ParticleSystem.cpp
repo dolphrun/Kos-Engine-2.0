@@ -76,13 +76,16 @@ namespace ecs {
             // Sending over to the Graphic Pipeline to render
             // ==========================================
 
-            std::shared_ptr<R_Texture> textureResource = m_resourceManager.GetResource<R_Texture>(particle->textureGUID);
             
+            //Set Type
             float type = 0.f;
             if (particle->particleType == ParticleComponent::ParticleType::THREE_DIMENSIONAL_ROTATION_BILLBOARD)
                 type = 1.f;
-            m_graphicsManager.gm_PushBasicParticleData(BasicParticleData{ sending.positions_Particle, sending.colors, sending.sizes, sending.rotates, textureResource.get(), type });
 
+            //Push all the particle data
+            m_graphicsManager.gm_PushBasicParticleData(BasicParticleData{ sending.positions_Particle, sending.colors, sending.sizes, sending.rotates, sending.textures, type });
+
+            //Push all the trail data
             for (int i = 0; i < particle->particle_List.size(); i++)
                 m_graphicsManager.gm_PushBasicTrailData(TrailRenderer::BasicTrailData{ particle->particle_List[i].trail.points, particle->particle_List[i].trail.lifetimes,particle->particle_List[i].trail.maxLifetime,
                     particle->particle_List[i].trail.width, particle->particle_List[i].trail.color, particle->particle_List[i].trail.lastPosition });
@@ -356,6 +359,43 @@ namespace ecs {
                         pd.velocity = glm::vec3(0);
                     }
                 }
+            }
+            //Animation
+            ///Port over animator component
+            if (!particle->textureGUID.empty())
+            {
+                //Animator 
+                if (particle->m_IsPlaying)
+                {
+                    int steps = m_physicsManager.FrameCount();
+
+                    for (int i = 0; i < steps; i++)
+                    {
+                        float delta = m_physicsManager.FixedDeltaTime();
+
+                        float totalDuration = static_cast<float>(static_cast<float>(particle->textureGUID.size()) / static_cast<float>(particle->framesPerSecond));
+                            
+                        float currentTime = pd.lifetime - pd.lifespan;
+
+                        if (particle->isLooping)
+                        {
+                            if (totalDuration > 0.0f)
+                                currentTime = fmod(currentTime, totalDuration);
+                        }
+                        else
+                        {
+                            if (currentTime > totalDuration)
+                                currentTime = totalDuration;
+                        }
+
+                        pd.currentFrame = static_cast<int>(
+                            currentTime * particle->framesPerSecond
+                            );
+                    }
+                        
+                }
+               
+                   
             }
             //// ENHANCED TRAILING MODULE - Twister Effect
             //if (updateTrailing) {
@@ -686,6 +726,7 @@ namespace ecs {
             data.colors.clear();
             data.rotates.clear();
             data.sizes.clear();
+            data.textures.clear();
             return;
         }
 
@@ -697,12 +738,14 @@ namespace ecs {
             data.colors.reserve(particle->max_Particles);
             data.rotates.reserve(particle->max_Particles);
             data.sizes.reserve(particle->max_Particles);
+            data.textures.reserve(particle->max_Particles);
         }
 
         data.positions_Particle.resize(aliveCount);
         data.colors.resize(aliveCount);
         data.rotates.resize(aliveCount);
         data.sizes.resize(aliveCount);
+        data.textures.resize(aliveCount);
 
         // Extract data from particle_List
         for (size_t i = 0; i < aliveCount; ++i) {
@@ -712,6 +755,13 @@ namespace ecs {
             data.colors[i] = pd.color;
             data.sizes[i] = pd.size;
             data.rotates[i] = pd.rotation;
+
+            R_Texture* texture = nullptr;
+
+            if (particle->textureGUID.size() > pd.currentFrame && !particle->textureGUID[pd.currentFrame].Empty())
+                 texture = m_resourceManager.GetResource<R_Texture>(particle->textureGUID[pd.currentFrame]).get();
+
+            data.textures[i] = texture;
         }
     }
     // ========================================
