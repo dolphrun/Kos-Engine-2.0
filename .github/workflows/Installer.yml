@@ -29,5 +29,5 @@ jobs:
       - name: Compile Assets via KosEngine
         working-directory: .\kOS\bin\Release
         run: .\Kos_Editor.exe --pack-assets
-        shell: powershell
+        shell: cmd
         
