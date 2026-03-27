@@ -24,6 +24,10 @@ public:
     bool roomLocked = false;
     bool playerInside = false;
 
+    bool isUnlocking = false;
+    float doorRaiseSpeed = 5.f;
+    float doorRaiseHeight = 5.f;
+
     // Track living enemy
     std::unordered_set<ecs::EntityID> lightInRoom;
     //std::vector<ecs::EntityID> lightInRoom;
@@ -61,6 +65,7 @@ inline void RoomLockScript::Start() {
         ecs::EntityID enemyID = ecsPtr->GetEntityIDFromGUID(enemyGUID);
         if (enemyID != 0) {
             enemiesInRoom.insert(enemyID);
+            ecsPtr->SetActive(enemyID, false); // hide until player enters
         }
     }
 
@@ -105,7 +110,7 @@ inline void RoomLockScript::Start() {
 
 
 inline void RoomLockScript::Update() {
-    if (!roomLocked) return;
+    if (!roomLocked && !isUnlocking) return;
 
     std::vector<ecs::EntityID> toRemove;
 
@@ -134,6 +139,31 @@ inline void RoomLockScript::Update() {
     // Enemy dead all unlock room
     if (enemiesInRoom.empty()) {
         UnlockRoom();
+    }
+
+    // Raise doors when unlocking
+    if (isUnlocking && !spawnedDoors.empty()) {
+        bool allRaised = true;
+
+        for (ecs::EntityID doorID : spawnedDoors) {
+            auto* doorTf = ecsPtr->GetComponent<TransformComponent>(doorID);
+            if (!doorTf) continue;
+
+            doorTf->LocalTransformation.position.y += doorRaiseSpeed * ecsPtr->m_GetDeltaTime();
+
+            if (doorTf->LocalTransformation.position.y < doorRaiseHeight) {
+                allRaised = false;
+            }
+        }
+
+        if (allRaised) {
+            for (ecs::EntityID doorID : spawnedDoors) {
+                ecsPtr->DeleteEntity(doorID);
+            }
+            spawnedDoors.clear();
+            isUnlocking = false;
+            std::cout << "[RoomLock] Doors fully raised and removed.\n";
+        }
     }
 }
 
@@ -179,21 +209,34 @@ inline void RoomLockScript::LockRoom() {
         std::cout << "[RoomLock] Door B spawned.\n";
     }
 
+    for (ecs::EntityID enemyID : enemiesInRoom) {
+        ecsPtr->SetActive(enemyID, true);
+    }
+
     std::cout << "[RoomLock] Room locked! Enemies to clear: "
         << enemiesInRoom.size() << "\n";
 }
 
+//inline void RoomLockScript::UnlockRoom() {
+//    if (!roomLocked) return;
+//
+//    std::cout << "[RoomLock] All enemies cleared! Unlocking room.\n";
+//
+//    for (ecs::EntityID doorID : spawnedDoors) {
+//        ecsPtr->DeleteEntity(doorID);
+//        std::cout << "[RoomLock] Door removed.\n";
+//    }
+//
+//    spawnedDoors.clear();
+//    roomLocked = false;
+//    remainingEnemies = 0;
+//}
+
 inline void RoomLockScript::UnlockRoom() {
     if (!roomLocked) return;
 
-    std::cout << "[RoomLock] All enemies cleared! Unlocking room.\n";
-
-    for (ecs::EntityID doorID : spawnedDoors) {
-        ecsPtr->DeleteEntity(doorID);
-        std::cout << "[RoomLock] Door removed.\n";
-    }
-
-    spawnedDoors.clear();
+    std::cout << "[RoomLock] All enemies cleared! Raising doors.\n";
     roomLocked = false;
     remainingEnemies = 0;
+    isUnlocking = true;
 }

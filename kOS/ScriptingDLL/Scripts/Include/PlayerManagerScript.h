@@ -383,6 +383,13 @@ public:
 	// VOLUME
 	float masterVolume = 1.0f; // 0.0 = mute, 1.0 = full
 
+	// Health Regen
+	float healthRegenDelay = 5.f;      // seconds without damage before regen starts
+	float healthRegenRate = 5.f;       // HP per second
+	float healthRegenTimer = 0.f;      // tracks time since last damage
+	bool  isRegening = false;
+	float healthRegenAccum = 0.f;
+
 	// --- FUNCTION DECLARATIONS ONLY --
 	// Implementations are moved to the bottom of the file
 	void Start() override;
@@ -790,6 +797,34 @@ inline void PlayerManagerScript::Update() {
 			blur->radius = 0.01f;
 		}
 	}
+
+
+	// HEALTH REGEN
+	if (currPlayerHitPoints > 0 && currPlayerHitPoints < maxPlayerHitPoints) {
+		healthRegenTimer += ecsPtr->m_GetDeltaTime();
+
+		if (healthRegenTimer >= healthRegenDelay) {
+			isRegening = true;
+			healthRegenAccum += healthRegenRate * ecsPtr->m_GetDeltaTime();
+
+			if (healthRegenAccum >= 1.f) {
+				int toAdd = static_cast<int>(healthRegenAccum);
+				currPlayerHitPoints += toAdd;
+				healthRegenAccum -= static_cast<float>(toAdd);
+
+				if (currPlayerHitPoints >= maxPlayerHitPoints) {
+					currPlayerHitPoints = maxPlayerHitPoints;
+					healthRegenTimer = 0.f;
+					healthRegenAccum = 0.f;
+					isRegening = false;
+				}
+			}
+		}
+	}
+	else {
+		isRegening = false;
+	}
+
 }
 
 inline void PlayerManagerScript::FixedUpdate() {
@@ -1955,6 +1990,10 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			// ADD SFX
 		}
 		else if (playerPowerupHeld == Powerup::ACID) {
+			float& cd = GetCurrShootCooldownForCurrentWeapon();
+			if (cd > 0.0f) return;
+			cd = GetShootCooldownForCurrentWeapon();
+
 			ScoreManagerScript::AddAbilityUsed();
 			std::shared_ptr<R_Scene> acidLMB = resource->GetResource<R_Scene>(acidLMBPrefab);
 
@@ -2432,8 +2471,12 @@ inline void PlayerManagerScript::TakeDamage(int damage) {
 
 	ScoreManagerScript::AddDamageTaken(damage);
 	currPlayerHitPoints -= damage;
+	healthRegenAccum = 0.0f;
+	healthRegenTimer = 0.f;  // reset regen timer on damage
+	isRegening = false;
 
 	CameraShake(0.15f,0.3f);
+	std::cout << "[TakeDamage] HP: " << currPlayerHitPoints << " RegenTimer reset\n"; // temp debug
 
 	currentTakeDamageTimer = TakeDamageTimer;
 
