@@ -26,10 +26,6 @@ prior written consent of DigiPen Institute of Technology is prohibited.
                 _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
         #endif
 
-        std::filesystem::path exePath = std::filesystem::current_path();
-        std::filesystem::path root = exePath.parent_path().parent_path(); // up two levels
-        std::filesystem::current_path(root);
-
         for (int i = 1; i < argc; ++i) {
             std::string arg = argv[i];
             if (arg == "--pack-assets") {
@@ -39,7 +35,12 @@ prior written consent of DigiPen Institute of Technology is prohibited.
                 try {
                     assetManager.Init(configpath::assetFilePath, configpath::resourceFilePath);
                 }
-                catch(...){
+                catch (const std::exception& e) {
+                    std::cerr << "[KosEngine Fatal] AssetManager failed: " << e.what() << std::endl;
+                    return 1;
+                }
+                catch (...) {
+                    std::cerr << "[KosEngine Fatal] AssetManager failed with unknown exception." << std::endl;
                     return 1;
                 }
 
@@ -48,6 +49,9 @@ prior written consent of DigiPen Institute of Technology is prohibited.
             }
         }
 
+        std::filesystem::path exePath = std::filesystem::current_path();
+        std::filesystem::path root = exePath.parent_path().parent_path(); // up two levels
+        std::filesystem::current_path(root);
 
         Application::Application app{};
 		app.exePath = exePath;
