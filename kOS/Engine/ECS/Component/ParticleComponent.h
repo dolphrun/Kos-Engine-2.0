@@ -234,6 +234,15 @@ namespace ecs {
 		REFLECTABLE(LightningModule, enabled, jitterAmount, jitterFrequency, branchingEnabled, branchProbability);
 	};
 
+	struct AnimationModule {
+		std::vector<utility::GUID> textureGUID;
+		int framesPerSecond = 24;
+		bool isLooping = false;
+		bool  isPlaying{ true };
+
+		REFLECTABLE(AnimationModule, textureGUID, framesPerSecond, isLooping, isPlaying);
+	};
+
 
 
 	class ParticleComponent : public Component {
@@ -270,14 +279,13 @@ namespace ecs {
 		float localTimeAccumulator = 0.0f; // NEW: Local clock for this component
 		float timeScale = 1.0f;           // Allows for slow-motion lightning
 
-		std::vector<utility::GUID> textureGUID;
-		unsigned int framesPerSecond = 24;
-		bool isLooping = false;
-		bool  m_IsPlaying{ true };
+		
 
 		PlayState playback_State = PlayState::PLAY;
 
 		ParticleFade particleFade = ParticleFade::LIFETIME;
+
+		AnimationModule animationModule;
 
 		//Color over lifetime
 		ColorOverLifetimeModule colorModule;
@@ -326,9 +334,8 @@ namespace ecs {
 
 		REFLECTABLE(ParticleComponent, particleType, duration, looping, play_On_Awake, 
 					start_Lifetime, end_Lifetime, lifetime_Random_Enable,
-					textureGUID, framesPerSecond , isLooping, m_IsPlaying,
 					start_Velocity, playback_State, particleFade,
-					velocityModule,forceModule, shapeModule, colorModule, sizeModule, rotationModule, gravityModule, trailingModule, noiseModule,
+					animationModule, velocityModule,forceModule, shapeModule, colorModule, sizeModule, rotationModule, gravityModule, trailingModule, noiseModule,
 					emissionInterval, no_Of_Particles, dynamicTrailingEnabled, trail_Color, trailLifeTime, trailWidth);
 	};
 }

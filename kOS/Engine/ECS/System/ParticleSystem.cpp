@@ -362,10 +362,10 @@ namespace ecs {
             }
             //Animation
             ///Port over animator component
-            if (!particle->textureGUID.empty())
+            if (!particle->animationModule.textureGUID.empty())
             {
                 //Animator 
-                if (particle->m_IsPlaying)
+                if (particle->animationModule.isPlaying)
                 {
                     int steps = m_physicsManager.FrameCount();
 
@@ -373,24 +373,30 @@ namespace ecs {
                     {
                         float delta = m_physicsManager.FixedDeltaTime();
 
-                        float totalDuration = static_cast<float>(static_cast<float>(particle->textureGUID.size()) / static_cast<float>(particle->framesPerSecond));
+                        float totalDuration = static_cast<float>(static_cast<float>(particle->animationModule.textureGUID.size()) / static_cast<float>(particle->animationModule.framesPerSecond));
                             
                         float currentTime = pd.lifetime - pd.lifespan;
 
-                        if (particle->isLooping)
+                        if (particle->animationModule.isLooping)
                         {
                             if (totalDuration > 0.0f)
                                 currentTime = fmod(currentTime, totalDuration);
+
+                            pd.currentFrame = static_cast<int>(
+                                currentTime * particle->animationModule.framesPerSecond
+                                );
                         }
                         else
                         {
                             if (currentTime > totalDuration)
-                                currentTime = totalDuration;
+                                pd.currentFrame = particle->animationModule.textureGUID.size() - 1;
+                            else
+                                pd.currentFrame = static_cast<int>(
+                                    currentTime * particle->animationModule.framesPerSecond
+                                    );
                         }
 
-                        pd.currentFrame = static_cast<int>(
-                            currentTime * particle->framesPerSecond
-                            );
+                       
                     }
                         
                 }
@@ -758,8 +764,8 @@ namespace ecs {
 
             R_Texture* texture = nullptr;
 
-            if (particle->textureGUID.size() > pd.currentFrame && !particle->textureGUID[pd.currentFrame].Empty())
-                 texture = m_resourceManager.GetResource<R_Texture>(particle->textureGUID[pd.currentFrame]).get();
+            if (particle->animationModule.textureGUID.size() > pd.currentFrame && !particle->animationModule.textureGUID[pd.currentFrame].Empty())
+                 texture = m_resourceManager.GetResource<R_Texture>(particle->animationModule.textureGUID[pd.currentFrame]).get();
 
             data.textures[i] = texture;
         }
