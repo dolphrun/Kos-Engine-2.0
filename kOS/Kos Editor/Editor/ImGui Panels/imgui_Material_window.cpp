@@ -27,6 +27,7 @@ void gui::ImGuiHandler::DrawMaterialWindow() {
             std::shared_ptr<R_Material> testMat = m_resourceManager.GetResource<R_Material>(selectedAsset.GUID);
             if (testMat) {
                 //Update material list
+                materialData.materialName = testMat->Names()[0];
                 materialData.data.diffuseMaterialGUID = testMat->md.diffuseMaterialGUID;
                 materialData.data.specularMaterialGUID = testMat->md.specularMaterialGUID;
                 materialData.data.normalMaterialGUID = testMat->md.normalMaterialGUID;

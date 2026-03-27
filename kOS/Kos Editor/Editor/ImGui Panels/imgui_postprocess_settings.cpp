@@ -110,6 +110,8 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 				ImGui::DragFloat("Filter radius", &rad, 0.01f);
 				v->filterRadius = rad/1000.f;
 				ImGui::DragFloat("Bloom Strength", &v->bloomStrength, 0.001f);
+				ImGui::DragFloat("Bloom Threshold", &v->bloomThreshold, 0.001f);
+
 
 				break;;
 			}
@@ -173,6 +175,7 @@ void gui::ImGuiHandler::DrawPostProcessWindow() {
 				{
 					Bloom* blr = reinterpret_cast<Bloom*>(ptr.get());
 					entityData.AddMember("BloomStrength", blr->bloomStrength, allocator);
+					entityData.AddMember("BloomThreshold", blr->bloomThreshold, allocator);
 					break;;
 				}
 
