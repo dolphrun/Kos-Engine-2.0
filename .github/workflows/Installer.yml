@@ -31,4 +31,38 @@ jobs:
         continue-on-error: true
         run: .\Kos_Editor.exe --pack-assets
         shell: cmd
+
+        # 2. Populate the GAMEDIRECTORY
+      - name: Prepare Game Directory
+        shell: powershell
+        run: |
+          # 1. Create all the destination directories first, so PowerShell doesn't panic
+          New-Item -ItemType Directory -Force -Path "Installer\GAMEDIRECTORY\bin\Release"
+          New-Item -ItemType Directory -Force -Path "Installer\GAMEDIRECTORY\Resource"
+          New-Item -ItemType Directory -Force -Path "Installer\GAMEDIRECTORY\Engine\Physics"
+          New-Item -ItemType Directory -Force -Path "Installer\GAMEDIRECTORY\Alchemication\Configs"
+          
+          # 2. Copy compiled binaries (-Recurse is used for folders)
+          Copy-Item -Path "kOS\bin\Release\*" -Destination "Installer\GAMEDIRECTORY\bin\Release\" -Recurse -Force
+          
+          # 3. Copy Resource folder contents
+          Copy-Item -Path "kOS\Resource\*" -Destination "Installer\GAMEDIRECTORY\Resource\" -Recurse -Force
+
+          # 4. Copy specific single files (No Recurse needed)
+          Copy-Item -Path "kOS\Engine\Physics\Layer.json" -Destination "Installer\GAMEDIRECTORY\Engine\Physics\" -Force
+          Copy-Item -Path "kOS\Alchemication\Configs\Config.json" -Destination "Installer\GAMEDIRECTORY\Alchemication\Configs\" -Force
+          Copy-Item -Path "kOS\Alchemication\Configs\icon.png" -Destination "Installer\GAMEDIRECTORY\Alchemication\Configs\" -Force
+
+      # 3. Run Inno Setup to generate the installer
+      - name: Compile Inno Setup Script
+        uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+        with:
+          path: Installer\InstallScript.iss
+
+      # 4. Upload the final installer
+      - name: Upload Installer Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-installer
+          path: INSTALLER/
         
