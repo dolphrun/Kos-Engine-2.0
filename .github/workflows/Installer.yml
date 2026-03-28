@@ -9,6 +9,8 @@ on:
 jobs:
   build-and-package-windows:
     runs-on: windows-latest
+    container:
+      image: mcr.microsoft.com/windows/servercore:ltsc2022
     
     steps:
       - name: Checkout code
