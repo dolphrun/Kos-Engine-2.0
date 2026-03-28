@@ -62,7 +62,7 @@
                     "y": 0.0,
                     "z": 0.0
                 },
-                "radius": 3.5
+                "radius": 7.0
             }
         },
         "TankAOEScript": {
@@ -127,10 +127,15 @@
                     "start_Lifetime": 0.5,
                     "end_Lifetime": 0.5,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 0.0,
                     "playback_State": 0,
                     "particleFade": 0,
+                    "animationModule": {
+                        "textureGUID": [],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": false,
                         "mode": 0,
@@ -169,7 +174,7 @@
                             "z": 0.0
                         },
                         "cone_Radius": 0.0,
-                        "circle_Radius": 3.5,
+                        "circle_Radius": 7.0,
                         "circle_Arc": 360.0,
                         "emit_From_Edge": true,
                         "edge_Length": 0.0,
@@ -348,10 +353,15 @@
                     "start_Lifetime": 0.5,
                     "end_Lifetime": 0.5,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 3.5,
                     "playback_State": 0,
                     "particleFade": 1,
+                    "animationModule": {
+                        "textureGUID": [],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": false,
                         "mode": 0,
@@ -390,7 +400,7 @@
                             "z": 0.0
                         },
                         "cone_Radius": 0.0,
-                        "circle_Radius": 3.5,
+                        "circle_Radius": 7.0,
                         "circle_Arc": 360.0,
                         "emit_From_Edge": false,
                         "edge_Length": 0.0,
@@ -569,10 +579,15 @@
                     "start_Lifetime": 0.5,
                     "end_Lifetime": 0.5,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 7.0,
                     "playback_State": 0,
                     "particleFade": 0,
+                    "animationModule": {
+                        "textureGUID": [],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": false,
                         "mode": 0,
@@ -611,7 +626,7 @@
                             "z": 0.0
                         },
                         "cone_Radius": 0.0,
-                        "circle_Radius": 2.0,
+                        "circle_Radius": 7.0,
                         "circle_Arc": 360.0,
                         "emit_From_Edge": true,
                         "edge_Length": 0.0,
@@ -790,10 +805,15 @@
                     "start_Lifetime": 0.5,
                     "end_Lifetime": 0.5,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 10.0,
                     "playback_State": 0,
                     "particleFade": 0,
+                    "animationModule": {
+                        "textureGUID": [],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": false,
                         "mode": 0,
@@ -832,7 +852,7 @@
                             "z": 0.0
                         },
                         "cone_Radius": 0.0,
-                        "circle_Radius": 3.0,
+                        "circle_Radius": 6.0,
                         "circle_Arc": 360.0,
                         "emit_From_Edge": true,
                         "edge_Length": 0.0,
