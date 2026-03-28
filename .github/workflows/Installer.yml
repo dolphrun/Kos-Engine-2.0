@@ -18,7 +18,11 @@ jobs:
           
       - name: Install Visual C++ Redistributable
         run: choco install vcredist-all -y
-        
+
+      - name: Setup DirectX Software Rendering
+        run: |
+          setx DIRECT3D_DEVICE WARP
+    
       - name: Enable graphics for compilers
         run: |
           # Ensure DirectX is available
