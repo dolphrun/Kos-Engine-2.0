@@ -60,9 +60,11 @@ jobs:
           path: Installer\InstallScript.iss
 
       # 4. Upload the final installer
-      - name: Upload Installer Artifact
-        uses: actions/upload-artifact@v4
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: windows-installer
-          path: INSTALLER/
-        
+          files: Installer/INSTALLER/Alchemication_Setup.exe # Point exactly to your generated installer
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
