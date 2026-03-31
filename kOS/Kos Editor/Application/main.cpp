@@ -35,18 +35,22 @@ prior written consent of DigiPen Institute of Technology is prohibited.
             if (arg == "--pack-assets") {
                 std::cout << "[KosEngine] Running in headless asset packing mode..." << std::endl;
 
-                AssetManager assetManager;
-                try {
-                    assetManager.Init(configpath::assetFilePath, configpath::resourceFilePath);
-                }
-                catch (const std::exception& e) {
-                    std::cerr << "[KosEngine Fatal] AssetManager failed: " << e.what() << std::endl;
-                    return 1;
-                }
-                catch (...) {
-                    std::cerr << "[KosEngine Fatal] AssetManager failed with unknown exception." << std::endl;
-                    return 1;
-                }
+				// do it twice in case it missed any assets in the first
+				
+				for (int n = 0; n < 2; ++n){
+	                AssetManager assetManager;
+	                try {
+	                    assetManager.Init(configpath::assetFilePath, configpath::resourceFilePath);
+	                }
+	                catch (const std::exception& e) {
+	                    std::cerr << "[KosEngine Fatal] AssetManager failed: " << e.what() << std::endl;
+	                    return 1;
+	                }
+	                catch (...) {
+	                    std::cerr << "[KosEngine Fatal] AssetManager failed with unknown exception." << std::endl;
+	                    return 1;
+	                }
+				}
 
                 // Return 0 on success, 1 on failure so GitHub Actions knows if it crashed
                 return 0;
