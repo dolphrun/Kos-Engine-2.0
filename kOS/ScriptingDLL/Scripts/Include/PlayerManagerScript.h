@@ -5,6 +5,7 @@
 #include "WinScreenScript.h"
 #include "LevelCompleteScript.h"
 #include "ScoreManagerScript.h"
+#include "RoomLockScript.h"
 
 // --- FORWARD DECLARATIONS ---
 // Tell the compiler these classes exist first, preventing circular dependency crashes
@@ -17,6 +18,7 @@ class AcidPowerupManagerScript;
 class LightningPowerupManagerScript;
 class PowerupManagerScript;
 class GroundCheckScript;
+class RoomLockScript;
 
 class PlayerManagerScript : public TemplateSC {
 public:
@@ -823,6 +825,15 @@ inline void PlayerManagerScript::Update() {
 	}
 	else {
 		isRegening = false;
+	}
+
+	for (const auto& [entityID, signature] : ecsPtr->GetEntitySignatureData()) {
+		if (auto* roomLock = ecsPtr->GetComponent<RoomLockScript>(entityID)) {
+			if (roomLock->requestShake) {
+				CameraShake(roomLock->requestShakeIntensity, roomLock->requestShakeDuration); // both args
+				roomLock->requestShake = false;
+			}
+		}
 	}
 
 }

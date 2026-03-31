@@ -20,6 +20,13 @@ public:
     std::vector<utility::GUID> roomEnemyGUIDs;
     std::unordered_set<ecs::EntityID> enemiesInRoom;
 
+    utility::GUID doorCloseSfxGUID;
+    utility::GUID doorOpenSfxGUID;
+
+    bool requestShake = false;
+    float requestShakeIntensity = 0.f;
+    float requestShakeDuration = 0.f;
+
     int remainingEnemies = 0;
     bool roomLocked = false;
     bool playerInside = false;
@@ -27,7 +34,8 @@ public:
     bool isUnlocking = false;
     float doorRaiseSpeed = 5.f;
     float doorRaiseHeight = 5.f;
-
+    float doorRaiseTargetY = 0.f;
+    
     // Track living enemy
     std::unordered_set<ecs::EntityID> lightInRoom;
     //std::vector<ecs::EntityID> lightInRoom;
@@ -39,7 +47,7 @@ public:
     void LockRoom();
     void UnlockRoom();
 
-    REFLECTABLE(RoomLockScript, enemyCountToKill,doorPrefabA, doorPrefabB, doorSpawnPointA, doorSpawnPointB, pointLightList, roomEnemyGUIDs)
+    REFLECTABLE(RoomLockScript, enemyCountToKill,doorPrefabA, doorPrefabB, doorSpawnPointA, doorSpawnPointB, pointLightList, roomEnemyGUIDs , doorCloseSfxGUID, doorOpenSfxGUID)
 };
 
 // --- IMPLEMENTATION SECTION ---
@@ -151,7 +159,7 @@ inline void RoomLockScript::Update() {
 
             doorTf->LocalTransformation.position.y += doorRaiseSpeed * ecsPtr->m_GetDeltaTime();
 
-            if (doorTf->LocalTransformation.position.y < doorRaiseHeight) {
+            if (doorTf->LocalTransformation.position.y < doorRaiseTargetY) {
                 allRaised = false;
             }
         }
@@ -171,6 +179,20 @@ inline void RoomLockScript::LockRoom() {
     if (roomLocked) return;
     roomLocked = true;
 
+    if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+        for (auto& af : ac->audioFiles) {
+            if (af.audioGUID == doorCloseSfxGUID && af.isSFX) {
+                af.requestPlay = true;
+                break;
+            }
+        }
+    }
+
+    requestShake = true;
+    requestShakeIntensity = 3.0f;
+    requestShakeDuration = 0.6f;
+
     std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 
     // Spawn Door A
@@ -184,6 +206,8 @@ inline void RoomLockScript::LockRoom() {
                 if (auto* doorTf = ecsPtr->GetComponent<TransformComponent>(doorA)) {
                     doorTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
                     doorTf->LocalTransformation.rotation = spawnTf->WorldTransformation.rotation;
+                    doorRaiseTargetY = doorTf->LocalTransformation.position.y + doorRaiseHeight;
+
                 }
             }
         }
@@ -202,6 +226,7 @@ inline void RoomLockScript::LockRoom() {
                 if (auto* doorTf = ecsPtr->GetComponent<TransformComponent>(doorB)) {
                     doorTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
                     doorTf->LocalTransformation.rotation = spawnTf->WorldTransformation.rotation;
+                    doorRaiseTargetY = doorTf->LocalTransformation.position.y + doorRaiseHeight; 
                 }
             }
         }
@@ -217,23 +242,22 @@ inline void RoomLockScript::LockRoom() {
         << enemiesInRoom.size() << "\n";
 }
 
-//inline void RoomLockScript::UnlockRoom() {
-//    if (!roomLocked) return;
-//
-//    std::cout << "[RoomLock] All enemies cleared! Unlocking room.\n";
-//
-//    for (ecs::EntityID doorID : spawnedDoors) {
-//        ecsPtr->DeleteEntity(doorID);
-//        std::cout << "[RoomLock] Door removed.\n";
-//    }
-//
-//    spawnedDoors.clear();
-//    roomLocked = false;
-//    remainingEnemies = 0;
-//}
-
 inline void RoomLockScript::UnlockRoom() {
     if (!roomLocked) return;
+
+    if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+
+        for (auto& af : ac->audioFiles) {
+            if (af.audioGUID == doorOpenSfxGUID && af.isSFX) {
+                af.requestPlay = true;
+                break;
+            }
+        }
+    }
+
+    requestShake = true;
+    requestShakeIntensity = 1.5f;
+    requestShakeDuration = 0.4f;
 
     std::cout << "[RoomLock] All enemies cleared! Raising doors.\n";
     roomLocked = false;
