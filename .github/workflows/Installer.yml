@@ -5,7 +5,10 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
-
+  
+permissions:
+  contents: write  # This allows the token to create tags and releases
+  
 jobs:
   build-and-package-windows:
     runs-on: self-hosted
