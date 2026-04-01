@@ -35,7 +35,7 @@
             },
             "cutOff": 5.5,
             "outerCutOff": 10.5,
-            "intesnity": 4.699999809265137,
+            "intesnity": 8.399999618530273,
             "shadowCast": false,
             "bakedLighting": false,
             "depthMapGUID": "00000000-0000-0000-0000-000000000000"
@@ -6252,69 +6252,6 @@
                 }
             },
             {
-                "entityGUID": "60eec117-8090-f189-a601-4c4f61e0a3f2",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "cd7d0856-3065-c7fb-1eaa-0715067e5c83"
-                        }
-                    ]
-                },
-                "MeshColliderComponent": {
-                    "isTrigger": false,
-                    "convex": false
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
-                },
-                "NameComponent": {
-                    "entityName": "M5_Modular_Walls_20M",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "M5_Modular_Walls_20M.prefab",
-                    "hide": false
-                },
-                "NavMeshComponent": {},
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 7.0,
-                            "y": -5.0,
-                            "z": -12.0
-                        },
-                        "rotation": {
-                            "x": 0.07804154604673386,
-                            "y": 89.98021697998047,
-                            "z": 0.07804504036903381
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 7.0,
-                            "y": -5.0,
-                            "z": -12.0
-                        },
-                        "rotation": {
-                            "x": 0.0780353769659996,
-                            "y": 89.98021697998047,
-                            "z": 0.07803887128829956
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    }
-                }
-            },
-            {
                 "entityGUID": "98a7c10a-cc86-b126-4afb-8f93c21b92b6",
                 "MaterialComponent": {
                     "materialGUID": [
@@ -6368,258 +6305,6 @@
                             "x": -89.99797821044922,
                             "y": 0.00029882078524678946,
                             "z": 89.95567321777344
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "464fa962-3c2b-4017-2e6f-ef2c08345791",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "cd7d0856-3065-c7fb-1eaa-0715067e5c83"
-                        }
-                    ]
-                },
-                "MeshColliderComponent": {
-                    "isTrigger": false,
-                    "convex": false
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
-                },
-                "NameComponent": {
-                    "entityName": "M5_Modular_Walls_20M",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "M5_Modular_Walls_20M.prefab",
-                    "hide": false
-                },
-                "NavMeshComponent": {},
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": -5.0,
-                            "z": -19.0
-                        },
-                        "rotation": {
-                            "x": -0.0003416026593185961,
-                            "y": -0.019714199006557465,
-                            "z": 0.000027029160264646634
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": -5.0,
-                            "z": -19.0
-                        },
-                        "rotation": {
-                            "x": -0.00034160257200710475,
-                            "y": -0.019714199006557465,
-                            "z": 0.000027029154807678424
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "dec6b160-5d85-2809-f1ee-9b1c30613555",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "cd7d0856-3065-c7fb-1eaa-0715067e5c83"
-                        }
-                    ]
-                },
-                "MeshColliderComponent": {
-                    "isTrigger": false,
-                    "convex": false
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
-                },
-                "NameComponent": {
-                    "entityName": "M5_Modular_Walls_20M",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "M5_Modular_Walls_20M.prefab",
-                    "hide": false
-                },
-                "NavMeshComponent": {},
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -13.0,
-                            "y": -5.0,
-                            "z": -12.0
-                        },
-                        "rotation": {
-                            "x": 0.07804154604673386,
-                            "y": 89.98021697998047,
-                            "z": 0.07804504036903381
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": -13.0,
-                            "y": -5.0,
-                            "z": -12.0
-                        },
-                        "rotation": {
-                            "x": 0.0780353769659996,
-                            "y": 89.98021697998047,
-                            "z": 0.07803887128829956
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "1a9dc970-fe60-9e63-2e73-b4eef336e618",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "cd7d0856-3065-c7fb-1eaa-0715067e5c83"
-                        }
-                    ]
-                },
-                "MeshColliderComponent": {
-                    "isTrigger": false,
-                    "convex": false
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
-                },
-                "NameComponent": {
-                    "entityName": "M5_Modular_Walls_20M",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "M5_Modular_Walls_20M.prefab",
-                    "hide": false
-                },
-                "NavMeshComponent": {},
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -13.0,
-                            "y": -5.0,
-                            "z": 12.0
-                        },
-                        "rotation": {
-                            "x": -179.9220733642578,
-                            "y": -89.98021697998047,
-                            "z": 179.92173767089844
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": -13.0,
-                            "y": -5.0,
-                            "z": 12.0
-                        },
-                        "rotation": {
-                            "x": -179.92205810546875,
-                            "y": -89.98021697998047,
-                            "z": 179.92172241210938
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "d2755180-0d8a-00fc-ccd1-80c318a9bffc",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "cd7d0856-3065-c7fb-1eaa-0715067e5c83"
-                        }
-                    ]
-                },
-                "MeshColliderComponent": {
-                    "isTrigger": false,
-                    "convex": false
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
-                },
-                "NameComponent": {
-                    "entityName": "M5_Modular_Walls_20M",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "M5_Modular_Walls_20M.prefab",
-                    "hide": false
-                },
-                "NavMeshComponent": {},
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 7.0,
-                            "y": -5.0,
-                            "z": 12.0
-                        },
-                        "rotation": {
-                            "x": -179.9220733642578,
-                            "y": -89.98021697998047,
-                            "z": 179.92173767089844
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 7.0,
-                            "y": -5.0,
-                            "z": 12.0
-                        },
-                        "rotation": {
-                            "x": -179.92205810546875,
-                            "y": -89.98021697998047,
-                            "z": 179.92172241210938
                         },
                         "scale": {
                             "x": 0.009999999776482582,
@@ -6687,69 +6372,6 @@
                         "scale": {
                             "x": 0.009999999776482582,
                             "y": 0.00999872013926506,
-                            "z": 0.009999999776482582
-                        }
-                    }
-                }
-            },
-            {
-                "entityGUID": "fc3518c2-9563-b946-d260-d1b7ede74528",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "cd7d0856-3065-c7fb-1eaa-0715067e5c83"
-                        }
-                    ]
-                },
-                "MeshColliderComponent": {
-                    "isTrigger": false,
-                    "convex": false
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
-                },
-                "NameComponent": {
-                    "entityName": "M5_Modular_Walls_20M",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "M5_Modular_Walls_20M.prefab",
-                    "hide": false
-                },
-                "NavMeshComponent": {},
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": -5.0,
-                            "z": 1.0
-                        },
-                        "rotation": {
-                            "x": -0.0003415784740354866,
-                            "y": -0.019714199006557465,
-                            "z": 0.00002702829624467995
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.0,
-                            "y": -5.0,
-                            "z": 1.0
-                        },
-                        "rotation": {
-                            "x": -0.0003415783867239952,
-                            "y": -0.019714199006557465,
-                            "z": 0.00002702829078771174
-                        },
-                        "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
                             "z": 0.009999999776482582
                         }
                     }
@@ -8611,9 +8233,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -24.0,
+                            "x": -1.0,
                             "y": -0.30692577362060547,
-                            "z": 11.608030319213867
+                            "z": -11.391969680786133
                         },
                         "rotation": {
                             "x": 0.0,
@@ -8628,9 +8250,9 @@
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": -24.0,
+                            "x": -1.0,
                             "y": -0.30692577362060547,
-                            "z": 11.608030319213867
+                            "z": -11.391969680786133
                         },
                         "rotation": {
                             "x": 0.0,
@@ -9112,9 +8734,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -49.23298263549805,
+                            "x": -69.23298645019531,
                             "y": -8.5,
-                            "z": -7.298033714294434
+                            "z": -27.29803466796875
                         },
                         "rotation": {
                             "x": 0.0,
@@ -9129,9 +8751,9 @@
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": -49.23298263549805,
+                            "x": -69.23298645019531,
                             "y": -8.5,
-                            "z": -7.298033714294434
+                            "z": -27.29803466796875
                         },
                         "rotation": {
                             "x": 0.0,
@@ -9348,121 +8970,6 @@
                 }
             },
             {
-                "entityGUID": "267cfa62-f5da-0363-ee1a-46c1f28adcb1",
-                "MaterialComponent": {
-                    "materialGUID": [
-                        {
-                            "materialGUID": "7cfd03c5-f514-7268-163d-e3287573cd1f"
-                        }
-                    ]
-                },
-                "MeshFilterComponent": {
-                    "meshGUID": "5c6dc96e-7c00-5668-dd0c-277ac695aa41"
-                },
-                "NameComponent": {
-                    "entityName": "M6_STAIRS",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": true,
-                    "isStatic": false,
-                    "prefabName": "M6_STAIRS.prefab",
-                    "hide": false
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": -31.768627166748047,
-                            "y": -3.860360622406006,
-                            "z": -7.0
-                        },
-                        "rotation": {
-                            "x": -179.999755859375,
-                            "y": 0.01979704760015011,
-                            "z": -179.99989318847656
-                        },
-                        "scale": {
-                            "x": 0.010007794946432114,
-                            "y": 0.009999999776482582,
-                            "z": 0.010007794946432114
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": -31.768627166748047,
-                            "y": -3.860360622406006,
-                            "z": -7.0
-                        },
-                        "rotation": {
-                            "x": -179.999755859375,
-                            "y": 0.01979704760015011,
-                            "z": -179.99989318847656
-                        },
-                        "scale": {
-                            "x": 0.010007794015109539,
-                            "y": 0.009999999776482582,
-                            "z": 0.010007794015109539
-                        }
-                    }
-                },
-                "children": [
-                    {
-                        "entityGUID": "530a4000-b1f8-4d09-d1cc-c9ce710e5da8",
-                        "MeshColliderComponent": {
-                            "isTrigger": false,
-                            "convex": false
-                        },
-                        "MeshFilterComponent": {
-                            "meshGUID": "a5b1fa71-9ad1-0c5d-2032-d2e9d6d31118"
-                        },
-                        "NameComponent": {
-                            "entityName": "M6_STAIRS_COLLIDER",
-                            "Layer": 0,
-                            "entityTag": "Default",
-                            "isPrefab": true,
-                            "isStatic": false,
-                            "prefabName": "",
-                            "hide": false
-                        },
-                        "TransformComponent": {
-                            "WorldTransformation": {
-                                "position": {
-                                    "x": -31.768625259399414,
-                                    "y": -3.9652440547943115,
-                                    "z": -6.999999523162842
-                                },
-                                "rotation": {
-                                    "x": -179.999755859375,
-                                    "y": 0.01979704760015011,
-                                    "z": -179.99989318847656
-                                },
-                                "scale": {
-                                    "x": 0.010007794946432114,
-                                    "y": 0.009999999776482582,
-                                    "z": 0.010007794946432114
-                                }
-                            },
-                            "LocalTransformation": {
-                                "position": {
-                                    "x": -0.0001220703125,
-                                    "y": -10.48834228515625,
-                                    "z": 0.0
-                                },
-                                "rotation": {
-                                    "x": 0.0,
-                                    "y": -0.0,
-                                    "z": 0.0
-                                },
-                                "scale": {
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        }
-                    }
-                ]
-            },
-            {
                 "entityGUID": "102f5881-acc9-445d-fc2d-357b6ea98b12",
                 "BoxColliderComponent": {
                     "isTrigger": false,
@@ -9578,9 +9085,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -24.0,
-                            "y": -0.30692577362060547,
-                            "z": -11.391969680786133
+                            "x": -40.0,
+                            "y": -9.306925773620605,
+                            "z": -2.391969680786133
                         },
                         "rotation": {
                             "x": 0.0,
@@ -9595,9 +9102,9 @@
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": -24.0,
-                            "y": -0.30692577362060547,
-                            "z": -11.391969680786133
+                            "x": -40.0,
+                            "y": -9.306925773620605,
+                            "z": -2.391969680786133
                         },
                         "rotation": {
                             "x": 0.0,
@@ -10044,36 +9551,36 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -28.96300506591797,
+                            "x": -36.96300506591797,
                             "y": 8.0,
                             "z": -10.808719635009766
                         },
                         "rotation": {
-                            "x": -59.29677200317383,
+                            "x": -59.27891159057617,
                             "y": 89.96573638916016,
-                            "z": -59.257957458496094
+                            "z": -59.240089416503906
                         },
                         "scale": {
-                            "x": 0.00999982189387083,
+                            "x": 0.009999816305935383,
                             "y": 0.009999992325901985,
-                            "z": 0.009999390691518784
+                            "z": 0.009999185800552368
                         }
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": -28.96300506591797,
+                            "x": -36.96300506591797,
                             "y": 8.0,
                             "z": -10.808719635009766
                         },
                         "rotation": {
-                            "x": -59.3226318359375,
+                            "x": -59.269412994384766,
                             "y": 89.98021697998047,
-                            "z": -59.28312683105469
+                            "z": -59.22990036010742
                         },
                         "scale": {
-                            "x": 0.009999820962548256,
+                            "x": 0.009999815374612808,
                             "y": 0.009999992325901985,
-                            "z": 0.009999390691518784
+                            "z": 0.009999184869229794
                         }
                     }
                 }
@@ -10107,7 +9614,7 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -28.96300506591797,
+                            "x": -36.96300506591797,
                             "y": 8.0,
                             "z": -3.0
                         },
@@ -10124,7 +9631,7 @@
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": -28.96300506591797,
+                            "x": -36.96300506591797,
                             "y": 8.0,
                             "z": -3.0
                         },
@@ -10143,6 +9650,258 @@
             },
             {
                 "entityGUID": "f385e0b8-1faa-b9fe-81a9-145b97cb2bec",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "96b89f2f-928a-b256-fea0-0182c7df10e4"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Walls_8M_Plane",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Walls_8M_Plane.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -36.96300506591797,
+                            "y": -8.0,
+                            "z": -10.808719635009766
+                        },
+                        "rotation": {
+                            "x": -59.29677200317383,
+                            "y": 89.96573638916016,
+                            "z": -59.257957458496094
+                        },
+                        "scale": {
+                            "x": 0.009999813511967659,
+                            "y": 0.009999992325901985,
+                            "z": 0.00999913178384304
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -36.96300506591797,
+                            "y": -8.0,
+                            "z": -10.808719635009766
+                        },
+                        "rotation": {
+                            "x": -59.3226318359375,
+                            "y": 89.98021697998047,
+                            "z": -59.28312683105469
+                        },
+                        "scale": {
+                            "x": 0.009999812580645084,
+                            "y": 0.009999992325901985,
+                            "z": 0.00999913178384304
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "5705c80b-e435-d698-7930-1b8f873c64c7",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "96b89f2f-928a-b256-fea0-0182c7df10e4"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Walls_8M_Plane",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Walls_8M_Plane.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -36.96300506591797,
+                            "y": -8.0,
+                            "z": -3.0
+                        },
+                        "rotation": {
+                            "x": 61.94281005859375,
+                            "y": -89.9720230102539,
+                            "z": -61.95651626586914
+                        },
+                        "scale": {
+                            "x": 0.009999849833548069,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999845176935196
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -36.96300506591797,
+                            "y": -8.0,
+                            "z": -3.0
+                        },
+                        "rotation": {
+                            "x": 61.930870056152344,
+                            "y": -89.9720230102539,
+                            "z": -61.943416595458984
+                        },
+                        "scale": {
+                            "x": 0.009999849833548069,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999844245612621
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "718c57db-5a7b-1fa6-498e-4f038bdf219a",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "96b89f2f-928a-b256-fea0-0182c7df10e4"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Walls_8M_Plane",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Walls_8M_Plane.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -36.96300506591797,
+                            "y": 0.0,
+                            "z": -10.808719635009766
+                        },
+                        "rotation": {
+                            "x": -59.28605651855469,
+                            "y": 89.96573638916016,
+                            "z": -59.24724197387695
+                        },
+                        "scale": {
+                            "x": 0.00999982375651598,
+                            "y": 0.009999992325901985,
+                            "z": 0.009999485686421394
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -36.96300506591797,
+                            "y": 0.0,
+                            "z": -10.808719635009766
+                        },
+                        "rotation": {
+                            "x": -59.315494537353516,
+                            "y": 89.98021697998047,
+                            "z": -59.27597427368164
+                        },
+                        "scale": {
+                            "x": 0.009999822825193405,
+                            "y": 0.009999992325901985,
+                            "z": 0.009999485686421394
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "f950f761-053f-7b47-2223-f96ec950b277",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "96b89f2f-928a-b256-fea0-0182c7df10e4"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Walls_8M_Plane",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Walls_8M_Plane.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -36.96300506591797,
+                            "y": 0.0,
+                            "z": -3.0
+                        },
+                        "rotation": {
+                            "x": 61.92591094970703,
+                            "y": -89.9720230102539,
+                            "z": -61.94179153442383
+                        },
+                        "scale": {
+                            "x": 0.009999849833548069,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999844245612621
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -36.96300506591797,
+                            "y": 0.0,
+                            "z": -3.0
+                        },
+                        "rotation": {
+                            "x": 61.934043884277344,
+                            "y": -89.98021697998047,
+                            "z": -61.94989013671875
+                        },
+                        "scale": {
+                            "x": 0.009999849833548069,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999845176935196
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "ab149061-76e7-70cc-a41f-77245e62dc41",
                 "MaterialComponent": {
                     "materialGUID": [
                         {
@@ -10205,7 +9964,7 @@
                 }
             },
             {
-                "entityGUID": "5705c80b-e435-d698-7930-1b8f873c64c7",
+                "entityGUID": "311b570d-eb66-5354-7088-979b1d9bbed0",
                 "MaterialComponent": {
                     "materialGUID": [
                         {
@@ -10268,7 +10027,7 @@
                 }
             },
             {
-                "entityGUID": "718c57db-5a7b-1fa6-498e-4f038bdf219a",
+                "entityGUID": "ccc5992c-ee23-18c6-c92f-faec3ed40a27",
                 "MaterialComponent": {
                     "materialGUID": [
                         {
@@ -10331,7 +10090,7 @@
                 }
             },
             {
-                "entityGUID": "f950f761-053f-7b47-2223-f96ec950b277",
+                "entityGUID": "a6888eb5-c64a-cc59-361f-a80dcccc2b96",
                 "MaterialComponent": {
                     "materialGUID": [
                         {
@@ -10392,6 +10151,1933 @@
                         }
                     }
                 }
+            },
+            {
+                "entityGUID": "dd33a5f8-8af6-16ec-9f9f-b3e2aa5d6415",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "96b89f2f-928a-b256-fea0-0182c7df10e4"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Walls_8M_Plane",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Walls_8M_Plane.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -28.96300506591797,
+                            "y": 8.0,
+                            "z": -10.808719635009766
+                        },
+                        "rotation": {
+                            "x": -59.29677200317383,
+                            "y": 89.96573638916016,
+                            "z": -59.257957458496094
+                        },
+                        "scale": {
+                            "x": 0.00999982189387083,
+                            "y": 0.009999992325901985,
+                            "z": 0.009999390691518784
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -28.96300506591797,
+                            "y": 8.0,
+                            "z": -10.808719635009766
+                        },
+                        "rotation": {
+                            "x": -59.3226318359375,
+                            "y": 89.98021697998047,
+                            "z": -59.28312683105469
+                        },
+                        "scale": {
+                            "x": 0.009999820962548256,
+                            "y": 0.009999992325901985,
+                            "z": 0.009999390691518784
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "526af1c0-20ea-5576-f570-c683ae42fb85",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "96b89f2f-928a-b256-fea0-0182c7df10e4"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Walls_8M_Plane",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Walls_8M_Plane.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -28.96300506591797,
+                            "y": 8.0,
+                            "z": -3.0
+                        },
+                        "rotation": {
+                            "x": 61.92591094970703,
+                            "y": -89.9720230102539,
+                            "z": -61.94179153442383
+                        },
+                        "scale": {
+                            "x": 0.009999849833548069,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999844245612621
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -28.96300506591797,
+                            "y": 8.0,
+                            "z": -3.0
+                        },
+                        "rotation": {
+                            "x": 61.934043884277344,
+                            "y": -89.98021697998047,
+                            "z": -61.94989013671875
+                        },
+                        "scale": {
+                            "x": 0.009999849833548069,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999845176935196
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "5d37b2dc-7c27-db97-a72c-5c9022391738",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 0.0,
+                            "y": 900.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 200.0,
+                            "y": 1800.0,
+                            "z": 200.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9b1b014a-0e83-6402-ff4b-28b2aba7d5f1"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "f84cabb2-3277-9d67-9939-804df95b3a1d"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Pillar_18M_D",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Pillar_18M_D.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -24.0,
+                            "y": -0.30692577362060547,
+                            "z": -11.391969680786133
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -24.0,
+                            "y": -0.30692577362060547,
+                            "z": -11.391969680786133
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "eda43a20-1723-53ec-948a-aecea5749b07",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 0.0,
+                            "y": 900.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 200.0,
+                            "y": 1800.0,
+                            "z": 200.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9b1b014a-0e83-6402-ff4b-28b2aba7d5f1"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "f84cabb2-3277-9d67-9939-804df95b3a1d"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Pillar_18M_D",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Pillar_18M_D.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -40.0,
+                            "y": -9.306925773620605,
+                            "z": -11.391969680786133
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -40.0,
+                            "y": -9.306925773620605,
+                            "z": -11.391969680786133
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "40c93a13-d1ad-478c-c1bb-80c5840502d4",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Grounds_20M_B",
+                    "Layer": 0,
+                    "entityTag": "Ground",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Grounds_20M_B.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -49.23298645019531,
+                            "y": -8.5,
+                            "z": 12.701966285705566
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -49.23298645019531,
+                            "y": -8.5,
+                            "z": 12.701966285705566
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "cfec22e4-d338-08f9-6c0e-83d6dc513040",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Grounds_20M_B",
+                    "Layer": 0,
+                    "entityTag": "Ground",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Grounds_20M_B.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -49.23298263549805,
+                            "y": -8.5,
+                            "z": -7.298033714294434
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -49.23298263549805,
+                            "y": -8.5,
+                            "z": -7.298033714294434
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "8182be46-dd52-2667-c4f5-aac1c47079bc",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Grounds_20M_B",
+                    "Layer": 0,
+                    "entityTag": "Ground",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Grounds_20M_B.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -49.23298263549805,
+                            "y": -8.5,
+                            "z": -27.29803466796875
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -49.23298263549805,
+                            "y": -8.5,
+                            "z": -27.29803466796875
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "050c50fc-ad2f-ae54-f5ca-c9bc261d96ea",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "6cd433ea-f144-29d2-fa3b-de71bbd3d6b9"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "15c04629-6d54-1951-083c-c721fe1a9128"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Grounds_20M_B",
+                    "Layer": 0,
+                    "entityTag": "Ground",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Grounds_20M_B.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -69.23298645019531,
+                            "y": -8.5,
+                            "z": 12.701966285705566
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -69.23298645019531,
+                            "y": -8.5,
+                            "z": 12.701966285705566
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "f0d83c7f-2e2d-0d96-4d21-df5b9356485c",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "5ca0b4b6-a0d4-3f1b-e19c-a2e5f894e751"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_8M_GroundWall_Transition",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_8M_GroundWall_Transition.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -51.0,
+                            "y": -9.0,
+                            "z": -22.0
+                        },
+                        "rotation": {
+                            "x": -27.944278717041016,
+                            "y": 89.98021697998047,
+                            "z": -27.94632911682129
+                        },
+                        "scale": {
+                            "x": 0.010000073350965977,
+                            "y": 0.009999999776482582,
+                            "z": 0.00999996904283762
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -51.0,
+                            "y": -9.0,
+                            "z": -22.0
+                        },
+                        "rotation": {
+                            "x": -27.94445037841797,
+                            "y": 89.98021697998047,
+                            "z": -27.94615936279297
+                        },
+                        "scale": {
+                            "x": 0.010000073350965977,
+                            "y": 0.009999999776482582,
+                            "z": 0.00999996904283762
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "c00b7b92-5093-4d67-ba8c-440aeaf66334",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9d359f6f-be90-6093-1447-9e616483ce81"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_8M_GroundWallRebar_Transition",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_8M_GroundWallRebar_Transition.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -51.0,
+                            "y": -9.0,
+                            "z": -17.0
+                        },
+                        "rotation": {
+                            "x": 1.045950082101399e-8,
+                            "y": 0.01971639133989811,
+                            "z": 0.0000613146330579184
+                        },
+                        "scale": {
+                            "x": 0.010000225156545639,
+                            "y": 0.009999999776482582,
+                            "z": 0.010000225156545639
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -51.0,
+                            "y": -9.0,
+                            "z": -17.0
+                        },
+                        "rotation": {
+                            "x": 1.0459496380121891e-8,
+                            "y": 0.01971639133989811,
+                            "z": 0.0000613146330579184
+                        },
+                        "scale": {
+                            "x": 0.010000225156545639,
+                            "y": 0.009999999776482582,
+                            "z": 0.010000225156545639
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "fcfbf8f9-ad30-de06-c32c-9c13e972b0cf",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 25.0,
+                            "y": 1000.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 150.0,
+                            "y": 2000.0,
+                            "z": 2000.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9f6ec55e-1be2-6071-6a9d-2df45fff4cdf"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_20M_GroundWall_Transition",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_20M_GroundWall_Transition.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 7.0,
+                            "y": 0.0,
+                            "z": 12.0
+                        },
+                        "rotation": {
+                            "x": -0.5707280039787292,
+                            "y": -89.98021697998047,
+                            "z": 0.5699536204338074
+                        },
+                        "scale": {
+                            "x": 0.010000523179769516,
+                            "y": 0.009999999776482582,
+                            "z": 0.010000523179769516
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 7.0,
+                            "y": 0.0,
+                            "z": 12.0
+                        },
+                        "rotation": {
+                            "x": -0.5707661509513855,
+                            "y": -89.98021697998047,
+                            "z": 0.5699916481971741
+                        },
+                        "scale": {
+                            "x": 0.010000523179769516,
+                            "y": 0.009999999776482582,
+                            "z": 0.010000523179769516
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "c1e19e5b-7a16-8f56-3937-64fb765ec0b8",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 25.0,
+                            "y": 1000.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 150.0,
+                            "y": 2000.0,
+                            "z": 2000.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9f6ec55e-1be2-6071-6a9d-2df45fff4cdf"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_20M_GroundWall_Transition",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_20M_GroundWall_Transition.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -40.0,
+                            "y": -9.0,
+                            "z": 8.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.019851740449666977,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -40.0,
+                            "y": -9.0,
+                            "z": 8.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.019851740449666977,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "3332a71a-f17b-1bf3-9796-1fe22c4927bf",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 25.0,
+                            "y": 1000.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 150.0,
+                            "y": 2000.0,
+                            "z": 2000.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9f6ec55e-1be2-6071-6a9d-2df45fff4cdf"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_20M_GroundWall_Transition",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_20M_GroundWall_Transition.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 7.0,
+                            "y": 0.0,
+                            "z": -12.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 89.98021697998047,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 7.0,
+                            "y": 0.0,
+                            "z": -12.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 89.98021697998047,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "b41c94d9-4575-c848-262a-503a9f48475f",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 25.0,
+                            "y": 1000.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 150.0,
+                            "y": 2000.0,
+                            "z": 2000.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9f6ec55e-1be2-6071-6a9d-2df45fff4cdf"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_20M_GroundWall_Transition",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_20M_GroundWall_Transition.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": -2.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.019832901656627655,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": -2.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.019832901656627655,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "86ad882d-3954-ea49-ef3b-4c3359fbfe1d",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 25.0,
+                            "y": 1000.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 150.0,
+                            "y": 2000.0,
+                            "z": 2000.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9f6ec55e-1be2-6071-6a9d-2df45fff4cdf"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_20M_GroundWall_Transition",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_20M_GroundWall_Transition.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 18.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.019832901656627655,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 18.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.019832901656627655,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "5d5e8571-44e6-7ae7-4ff2-2455d4e83a66",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 25.0,
+                            "y": 1000.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 150.0,
+                            "y": 2000.0,
+                            "z": 2000.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9f6ec55e-1be2-6071-6a9d-2df45fff4cdf"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_20M_GroundWall_Transition",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_20M_GroundWall_Transition.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -13.0,
+                            "y": 0.0,
+                            "z": 12.0
+                        },
+                        "rotation": {
+                            "x": -0.5708034634590149,
+                            "y": -89.98021697998047,
+                            "z": 0.5699880719184875
+                        },
+                        "scale": {
+                            "x": 0.010000327602028847,
+                            "y": 0.009999999776482582,
+                            "z": 0.010000327602028847
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -13.0,
+                            "y": 0.0,
+                            "z": 12.0
+                        },
+                        "rotation": {
+                            "x": -0.5707868933677673,
+                            "y": -89.98021697998047,
+                            "z": 0.5699713230133057
+                        },
+                        "scale": {
+                            "x": 0.010000327602028847,
+                            "y": 0.009999999776482582,
+                            "z": 0.010000327602028847
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "28606e46-a6f5-e05a-ceea-a02af4c60826",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 0.0,
+                            "y": 900.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 200.0,
+                            "y": 1800.0,
+                            "z": 200.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9b1b014a-0e83-6402-ff4b-28b2aba7d5f1"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "f84cabb2-3277-9d67-9939-804df95b3a1d"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Pillar_18M_D",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Pillar_18M_D.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -24.0,
+                            "y": -0.30692577362060547,
+                            "z": 11.608030319213867
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -24.0,
+                            "y": -0.30692577362060547,
+                            "z": 11.608030319213867
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "a56231cc-1922-e0ef-669a-9f8d4dd4418f",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 0.0,
+                            "y": 900.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 200.0,
+                            "y": 1800.0,
+                            "z": 200.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9b1b014a-0e83-6402-ff4b-28b2aba7d5f1"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "f84cabb2-3277-9d67-9939-804df95b3a1d"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Pillar_18M_D",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Pillar_18M_D.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -1.0,
+                            "y": -0.30692577362060547,
+                            "z": 11.608030319213867
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -1.0,
+                            "y": -0.30692577362060547,
+                            "z": 11.608030319213867
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "e4f941ad-244f-8a1e-91b3-7c9c7721f88e",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9d359f6f-be90-6093-1447-9e616483ce81"
+                        }
+                    ]
+                },
+                "MeshColliderComponent": {
+                    "isTrigger": false,
+                    "convex": false
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_8M_GroundWallRebar_Transition",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_8M_GroundWallRebar_Transition.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -51.0,
+                            "y": -9.0,
+                            "z": 2.0
+                        },
+                        "rotation": {
+                            "x": 1.0459834776099797e-8,
+                            "y": 0.01971639133989811,
+                            "z": 0.0000613146330579184
+                        },
+                        "scale": {
+                            "x": 0.010000225156545639,
+                            "y": 0.009999999776482582,
+                            "z": 0.010000225156545639
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -51.0,
+                            "y": -9.0,
+                            "z": 2.0
+                        },
+                        "rotation": {
+                            "x": 1.0459831223386118e-8,
+                            "y": 0.01971639133989811,
+                            "z": 0.0000613146330579184
+                        },
+                        "scale": {
+                            "x": 0.010000225156545639,
+                            "y": 0.009999999776482582,
+                            "z": 0.010000225156545639
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "b7c52d7c-ba7f-8d4d-bd1c-9d40996b8042",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 25.0,
+                            "y": 1000.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 150.0,
+                            "y": 2000.0,
+                            "z": 2000.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9f6ec55e-1be2-6071-6a9d-2df45fff4cdf"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_20M_GroundWall_Transition",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_20M_GroundWall_Transition.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -13.0,
+                            "y": 0.0,
+                            "z": -12.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 89.98021697998047,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -13.0,
+                            "y": 0.0,
+                            "z": -12.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 89.98021697998047,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "08f8ea9b-a549-8ad4-e6a4-6205f5c5d673",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 25.0,
+                            "y": 1000.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 150.0,
+                            "y": 2000.0,
+                            "z": 2000.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9f6ec55e-1be2-6071-6a9d-2df45fff4cdf"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "5e94c22c-732d-c93f-54cf-c9b4ec91ce59"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_20M_GroundWall_Transition",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_20M_GroundWall_Transition.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -40.0,
+                            "y": -9.0,
+                            "z": -22.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.019851740449666977,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -40.0,
+                            "y": -9.0,
+                            "z": -22.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.019851740449666977,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "01062f20-5fa4-e88d-f00e-46c7c3ea4540",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "7cfd03c5-f514-7268-163d-e3287573cd1f"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "5c6dc96e-7c00-5668-dd0c-277ac695aa41"
+                },
+                "NameComponent": {
+                    "entityName": "M6_STAIRS",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_STAIRS.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -31.768627166748047,
+                            "y": -3.860360622406006,
+                            "z": -7.0
+                        },
+                        "rotation": {
+                            "x": -179.999755859375,
+                            "y": 0.01979704760015011,
+                            "z": -179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.010007794946432114,
+                            "y": 0.009999999776482582,
+                            "z": 0.010007794946432114
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -31.768627166748047,
+                            "y": -3.860360622406006,
+                            "z": -7.0
+                        },
+                        "rotation": {
+                            "x": -179.999755859375,
+                            "y": 0.01979704760015011,
+                            "z": -179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.010007794015109539,
+                            "y": 0.009999999776482582,
+                            "z": 0.010007794015109539
+                        }
+                    }
+                },
+                "children": [
+                    {
+                        "entityGUID": "d97cba4b-4c51-2c85-b684-297c473ad01a",
+                        "MeshColliderComponent": {
+                            "isTrigger": false,
+                            "convex": false
+                        },
+                        "MeshFilterComponent": {
+                            "meshGUID": "a5b1fa71-9ad1-0c5d-2032-d2e9d6d31118"
+                        },
+                        "NameComponent": {
+                            "entityName": "M6_STAIRS_COLLIDER",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -31.768625259399414,
+                                    "y": -3.9652440547943115,
+                                    "z": -6.999999523162842
+                                },
+                                "rotation": {
+                                    "x": -179.999755859375,
+                                    "y": 0.01979704760015011,
+                                    "z": -179.99989318847656
+                                },
+                                "scale": {
+                                    "x": 0.010007794946432114,
+                                    "y": 0.009999999776482582,
+                                    "z": 0.010007794946432114
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.0001220703125,
+                                    "y": -10.48834228515625,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "entityGUID": "96542989-323d-a022-5467-a39bbd900fe9",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "7cfd03c5-f514-7268-163d-e3287573cd1f"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "5c6dc96e-7c00-5668-dd0c-277ac695aa41"
+                },
+                "NameComponent": {
+                    "entityName": "M6_STAIRS",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_STAIRS.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -59.216651916503906,
+                            "y": -8.391691207885742,
+                            "z": -7.0
+                        },
+                        "rotation": {
+                            "x": -179.999755859375,
+                            "y": 0.019792165607213974,
+                            "z": -179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.010010389611124992,
+                            "y": 0.009999999776482582,
+                            "z": 0.010010389611124992
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -59.216651916503906,
+                            "y": -8.391691207885742,
+                            "z": -7.0
+                        },
+                        "rotation": {
+                            "x": -179.999755859375,
+                            "y": 0.019792167469859123,
+                            "z": -179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.010010388679802418,
+                            "y": 0.009999999776482582,
+                            "z": 0.010010388679802418
+                        }
+                    }
+                },
+                "children": [
+                    {
+                        "entityGUID": "b7fb0819-60e1-81ab-95b7-e2b336ac4ab2",
+                        "MeshColliderComponent": {
+                            "isTrigger": false,
+                            "convex": false
+                        },
+                        "MeshFilterComponent": {
+                            "meshGUID": "a5b1fa71-9ad1-0c5d-2032-d2e9d6d31118"
+                        },
+                        "NameComponent": {
+                            "entityName": "M6_STAIRS_COLLIDER",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -59.216651916503906,
+                                    "y": -8.496574401855469,
+                                    "z": -6.999999523162842
+                                },
+                                "rotation": {
+                                    "x": -179.999755859375,
+                                    "y": 0.019792165607213974,
+                                    "z": -179.99989318847656
+                                },
+                                "scale": {
+                                    "x": 0.010010389611124992,
+                                    "y": 0.009999999776482582,
+                                    "z": 0.010010389611124992
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.0001220703125,
+                                    "y": -10.48834228515625,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "entityGUID": "1816667a-7cbf-f5fc-c8b1-c7e7bc8ea5e5",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "7cfd03c5-f514-7268-163d-e3287573cd1f"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "5c6dc96e-7c00-5668-dd0c-277ac695aa41"
+                },
+                "NameComponent": {
+                    "entityName": "M6_STAIRS",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_STAIRS.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -75.2166519165039,
+                            "y": -8.391691207885742,
+                            "z": -7.0
+                        },
+                        "rotation": {
+                            "x": -179.999755859375,
+                            "y": 0.01979103498160839,
+                            "z": -179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.010011004284024239,
+                            "y": 0.009999999776482582,
+                            "z": 0.010011004284024239
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -75.2166519165039,
+                            "y": -8.391691207885742,
+                            "z": -7.0
+                        },
+                        "rotation": {
+                            "x": -179.999755859375,
+                            "y": 0.01979103684425354,
+                            "z": -179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.010011003352701664,
+                            "y": 0.009999999776482582,
+                            "z": 0.010011003352701664
+                        }
+                    }
+                },
+                "children": [
+                    {
+                        "entityGUID": "02f99aee-5050-c169-41a6-4d4f1ac50583",
+                        "MeshColliderComponent": {
+                            "isTrigger": false,
+                            "convex": false
+                        },
+                        "MeshFilterComponent": {
+                            "meshGUID": "a5b1fa71-9ad1-0c5d-2032-d2e9d6d31118"
+                        },
+                        "NameComponent": {
+                            "entityName": "M6_STAIRS_COLLIDER",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -75.2166519165039,
+                                    "y": -8.496574401855469,
+                                    "z": -6.999999523162842
+                                },
+                                "rotation": {
+                                    "x": -179.999755859375,
+                                    "y": 0.01979103498160839,
+                                    "z": -179.99989318847656
+                                },
+                                "scale": {
+                                    "x": 0.010011004284024239,
+                                    "y": 0.009999999776482582,
+                                    "z": 0.010011004284024239
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.0001220703125,
+                                    "y": -10.48834228515625,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "entityGUID": "48b1dcc4-6cc5-abdb-4def-a6435b60dd7e",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "7cfd03c5-f514-7268-163d-e3287573cd1f"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "5c6dc96e-7c00-5668-dd0c-277ac695aa41"
+                },
+                "NameComponent": {
+                    "entityName": "M6_STAIRS",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_STAIRS.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -67.2166519165039,
+                            "y": -8.391691207885742,
+                            "z": -7.0
+                        },
+                        "rotation": {
+                            "x": -179.999755859375,
+                            "y": 0.019791588187217712,
+                            "z": -179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.010010713711380959,
+                            "y": 0.009999999776482582,
+                            "z": 0.010010713711380959
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -67.2166519165039,
+                            "y": -8.391691207885742,
+                            "z": -7.0
+                        },
+                        "rotation": {
+                            "x": -179.999755859375,
+                            "y": 0.01979159004986286,
+                            "z": -179.99989318847656
+                        },
+                        "scale": {
+                            "x": 0.010010712780058384,
+                            "y": 0.009999999776482582,
+                            "z": 0.010010712780058384
+                        }
+                    }
+                },
+                "children": [
+                    {
+                        "entityGUID": "069eecfb-ec43-b823-6474-cd99fafa902d",
+                        "MeshColliderComponent": {
+                            "isTrigger": false,
+                            "convex": false
+                        },
+                        "MeshFilterComponent": {
+                            "meshGUID": "a5b1fa71-9ad1-0c5d-2032-d2e9d6d31118"
+                        },
+                        "NameComponent": {
+                            "entityName": "M6_STAIRS_COLLIDER",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": -67.2166519165039,
+                                    "y": -8.496574401855469,
+                                    "z": -6.999999523162842
+                                },
+                                "rotation": {
+                                    "x": -179.999755859375,
+                                    "y": 0.019791588187217712,
+                                    "z": -179.99989318847656
+                                },
+                                "scale": {
+                                    "x": 0.010010713711380959,
+                                    "y": 0.009999999776482582,
+                                    "z": 0.010010713711380959
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": -0.0001220703125,
+                                    "y": -10.48834228515625,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -10404,7 +12090,7 @@
             "isPrefab": false,
             "isStatic": false,
             "prefabName": "",
-            "hide": false
+            "hide": true
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -10493,7 +12179,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "Point Light Prop.prefab",
-                    "hide": false
+                    "hide": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
