@@ -8,31 +8,26 @@
         }
     },
     {
-        "entityGUID": "714c4edf-6d0c-da0a-510f-16abda43a3a4",
+        "entityGUID": "0e1ef324-5253-e0ee-07cc-6dfa7ea68fa0",
         "MaterialComponent": {
             "materialGUID": [
                 {
-                    "materialGUID": "9d359f6f-be90-6093-1447-9e616483ce81"
+                    "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
                 }
             ]
         },
-        "MeshColliderComponent": {
-            "isTrigger": false,
-            "convex": false
-        },
         "MeshFilterComponent": {
-            "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
+            "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
         },
         "NameComponent": {
-            "entityName": "M5_Modular_8M_GroundWallRebar_Transition",
+            "entityName": "M6_Pipes_Small4X",
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": true,
             "isStatic": false,
-            "prefabName": "M5_Modular_8M_GroundWallRebar_Transition.prefab",
+            "prefabName": "M6_Pipes_Small4X.prefab",
             "hide": false
         },
-        "NavMeshComponent": {},
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
@@ -59,7 +54,7 @@
                 },
                 "rotation": {
                     "x": 0.0,
-                    "y": -0.0,
+                    "y": 0.0,
                     "z": 0.0
                 },
                 "scale": {
