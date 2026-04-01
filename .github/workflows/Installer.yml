@@ -71,39 +71,4 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # 5. Update README and push
-# 5. Update README and push (PowerShell Native)
-      - name: Update README with Latest Release Link
-        shell: powershell
-        run: |
-          $TagName = "v1.0.${{ github.run_number }}"
-          $RepoUrl = "https://github.com/jazwinn/Kos-Engine-2.0/releases/tag/$TagName"
-          
-          # Read file, filter out the old auto-generated line, and store the rest
-          $ReadmeContent = Get-Content README.md -ErrorAction SilentlyContinue | Where-Object { $_ -notmatch '\[🎉 Download Latest kOS Engine Release' }
-          
-          # If the file was empty or didn't exist, initialize it as an array
-          if ($null -eq $ReadmeContent) { $ReadmeContent = @() }
-          
-          # Append the new versioned link to the bottom
-          $ReadmeContent += "[🎉 Download Latest kOS Engine Release ($TagName)]($RepoUrl)"
-          
-          # Save it back to the README.md file
-          $ReadmeContent | Set-Content README.md -Encoding UTF8
-          
-          # Setup Git
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          
-          # Commit and push ONLY if there are changes
-          if (git diff --staged --name-only) {
-              git commit -m "docs: auto-update release link to $TagName"
-              git push
-          } else {
-              Write-Host "No changes to README.md needed."
-          }
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
