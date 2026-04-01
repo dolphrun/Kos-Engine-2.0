@@ -112,7 +112,7 @@ namespace scenes {
             }
 
             DeleteAllCacheScenes();
-            cacheScenePath.clear();
+            
         }
         else {
             //store scene path
@@ -352,6 +352,7 @@ namespace scenes {
         for (auto const& filePath : cacheScenePath) {
             std::filesystem::remove(filePath);
         }
+        cacheScenePath.clear();
     }
 
     void SceneManager::LoadSceneToCurrent(const std::string& currentScene, const std::filesystem::path& filepath) {
