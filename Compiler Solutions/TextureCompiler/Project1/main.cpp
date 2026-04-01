@@ -1,9 +1,10 @@
-
 #include <Windows.h>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <filesystem>
+#include <cstdint> // Added for uint32_t
+
 #include <RAPIDJSON/rapidjson.h>
 #include <RAPIDJSON/document.h>
 #include <RAPIDJSON/error/en.h>
@@ -16,44 +17,48 @@ std::string getShortPath(const std::string& longPath) {
 	}
 	return longPath; // fallback
 }
+
+// Fast helper to read width/height directly from a PNG header
+bool GetPNGDimensions(const std::string& filepath, uint32_t& outWidth, uint32_t& outHeight) {
+	std::ifstream file(filepath, std::ios::binary);
+	if (!file) return false;
+
+	unsigned char header[24];
+	if (!file.read(reinterpret_cast<char*>(header), 24)) return false;
+
+	// Verify it's actually a PNG (Magic Number check)
+	if (header[0] != 0x89 || header[1] != 0x50 || header[2] != 0x4E || header[3] != 0x47) {
+		return false;
+	}
+
+	// Extract width and height from the IHDR chunk (Big Endian)
+	outWidth = (header[16] << 24) | (header[17] << 16) | (header[18] << 8) | header[19];
+	outHeight = (header[20] << 24) | (header[21] << 16) | (header[22] << 8) | header[23];
+	return true;
+}
+
 int main(int argc, char* argv[])
 {
 	std::string texturePath{ std::filesystem::absolute(argv[1]).string() };
 	std::string metaPath{ std::filesystem::absolute(argv[2]).string() };
-	std::string outputPath{ std::filesystem::absolute(argv[3]).string()};
-	//std::string tempBatch = "temp_run_texturecompiler.bat";
-	// Write the batch file
-	/*std::ofstream batchFile(tempBatch);
-	if (!batchFile) {
-		std::cerr << "Failed to create batch file!" << std::endl;
-		return 0;
-	}*/
-	//Manipulate output file path
-	//Remove file name 
-	//Iterate backwards
+	std::string outputPath{ std::filesystem::absolute(argv[3]).string() };
+
+	// Manipulate output file path (Remove file name)
 	auto endStringIterator{ outputPath.end() };
 	endStringIterator--;
 	while (*endStringIterator != '\\') {
 		endStringIterator--;
 	}
-	std::string outputFilePath=std::string(outputPath.begin(), endStringIterator);
+	std::string outputFilePath = std::string(outputPath.begin(), endStringIterator);
 
-	//Get file name
+	// Get file name
 	std::filesystem::path p(texturePath);
 	std::string fileName = p.stem().string();
 
-	//std::cout<<"Test output: " << outputFilePath<<fileName<<".dds" << '\n';
-	//std::string shortPath{ getShortPath(texturePath) };
-	//batchFile << "@echo off\n";
-	//batchFile << "set EXE=\"" << ".\\Compilers\\Executable\\Texture Compiler\\texconv.exe" << "\"\n";
-	//batchFile << "%EXE% -ft DDS -f BC3_UNORM -y -o ";
-	//batchFile << "\"" << outputFilePath << "\" ";
-	//batchFile << "\"" << texturePath << "\"";
-	//batchFile << std::endl;
-	//batchFile.close();
-	std::cout << "Output file path basrgaregret test" << outputFilePath<< '\n';
-	std::cout << "Texture file path" << texturePath << '\n';
-	//Open texture META file path settings
+	std::cout << "Output file path: " << outputFilePath << '\n';
+	std::cout << "Texture file path: " << texturePath << '\n';
+
+	// Open texture META file path settings
 	std::ifstream ifs(metaPath);
 	if (!ifs.is_open()) {
 		std::cerr << "Could not open file: " << metaPath << std::endl;
@@ -64,75 +69,127 @@ int main(int argc, char* argv[])
 	std::string jsonStr = buffer.str();
 
 	rapidjson::Document doc;
-	doc.Parse(jsonStr.c_str());	
+	doc.Parse(jsonStr.c_str());
 
-	bool hf,vf;
+	bool hf, vf;
 	double width, height;
 	int mipLevel, wrapSetting, colorSpace;
 
 	const auto& arrObj = doc[1];
 	const auto& assetData = arrObj["TextureCompilerData"];
 	hf = assetData["HoriztonalFlip"].GetBool();
-	vf=assetData["VerticalFlip"].GetBool();
+	vf = assetData["VerticalFlip"].GetBool();
 	width = assetData["Width"].GetDouble();
 	height = assetData["Height"].GetDouble();
 	mipLevel = assetData["MipLevels"].GetInt();
 	wrapSetting = assetData["Wrap"].GetInt();
 	colorSpace = assetData["ColorSpace"].GetInt();
 
-	std::cout << "Horizontal Flip " << hf << std::endl;
-	std::cout << "Vertical Flip " << vf << std::endl;
-	std::cout << "Width " << width << std::endl;
-	std::cout << "Height " << height << std::endl;
-	std::cout << "mipLevel " << mipLevel << std::endl;
-	std::cout << "wrapSetting " << wrapSetting << std::endl;
-	std::cout << "colorSpace " << colorSpace << std::endl;
+	std::cout << "Horizontal Flip: " << hf << std::endl;
+	std::cout << "Vertical Flip: " << vf << std::endl;
+	std::cout << "Width (JSON): " << width << std::endl;
+	std::cout << "Height (JSON): " << height << std::endl;
+	std::cout << "mipLevel: " << mipLevel << std::endl;
+	std::cout << "wrapSetting: " << wrapSetting << std::endl;
+	std::cout << "colorSpace: " << colorSpace << std::endl;
 
 	std::string srgbSetting;
 	switch (colorSpace) {
 	case 0:
 		srgbSetting = "-srgb ";
-		break;;
+		break;
 	case 1:
 		srgbSetting = "-srgbi ";
-		break;;
+		break;
 	case 2:
 		srgbSetting = "-srgbo ";
-		break;;
+		break;
 	}
+
+	// --- DIMENSION CORRECTION LOGIC ---
+	uint32_t actualWidth = static_cast<uint32_t>(width);
+	uint32_t actualHeight = static_cast<uint32_t>(height);
+
+	// If the JSON said width/height is 0 (keep original), read the file directly
+	if (actualWidth == 0 || actualHeight == 0) {
+		if (!GetPNGDimensions(texturePath, actualWidth, actualHeight)) {
+			std::cout << "WARNING: Failed to read PNG dimensions for: " << texturePath << "\n";
+		}
+		else {
+			std::cout << "SUCCESS: Read original dimensions " << actualWidth << "x" << actualHeight << " from file.\n";
+		}
+	}
+
+	uint32_t safeWidth = actualWidth;
+	uint32_t safeHeight = actualHeight;
+
+	// Apply multiple-of-4 rounding fix for BC3 compatibility
+	if (actualWidth > 0 && actualHeight > 0) {
+		safeWidth = (actualWidth + 3) & ~3;
+		safeHeight = (actualHeight + 3) & ~3;
+
+		if (safeWidth != actualWidth || safeHeight != actualHeight) {
+			std::cout << "RESIZING: " << actualWidth << "x" << actualHeight
+				<< " -> " << safeWidth << "x" << safeHeight << " for BC3 compatibility.\n";
+		}
+	}
+	// ----------------------------------
+
+	// Build the texconv flags
 	std::stringstream flags{};
-	flags<<"\" -ft DDS -f BC3_UNORM ";
-	if(hf)flags << "-hflip ";
-	if (vf)flags << "-vflip ";
-	if (width > 0)  flags << "-w " << (int)width << " ";
-	if (height > 0) flags << "-h " << (int)height << " ";
-	if (mipLevel > 0) flags << "-m " << (int)mipLevel << " ";
+	flags << "\" -ft DDS -f BC3_UNORM ";
+
+	if (hf) flags << "-hflip ";
+	if (vf) flags << "-vflip ";
+
+	// Pass the corrected dimensions to texconv
+	if (safeWidth > 0) flags << "-w " << safeWidth << " ";
+	if (safeHeight > 0) flags << "-h " << safeHeight << " ";
+
+	// Apply Mip levels and color space
 	flags << "-m " << mipLevel << " ";
 	flags << srgbSetting << " ";
+
 	if (wrapSetting) {
-		flags <<"-mirror " << " ";
+		flags << "-mirror ";
 	}
-	//End flag
+
+	// End flag
 	flags << "-y -o \"";
-	std::cout << "FLAGS " << flags.str()<<'\n';
-	// Run the batch file
+	std::cout << "FLAGS: " << flags.str() << '\n';
+
+	// Run the texconv process
 	std::string exePath = std::filesystem::absolute(".\\Kos Editor\\Compilers\\Executable\\Texture Compiler\\texconv.exe").string();
 	std::string command = "\"\"" + exePath + flags.str() + outputFilePath + "\" \"" + texturePath + "\"\"";
-	/*command += outputFilePath + "\" \"" + texturePath + "\"";*/
-	std::cout <<"COMMAND: " << command << '\n';
+
+	std::cout << "COMMAND: " << command << '\n';
+
 	int result = std::system(command.c_str());
 	if (result != 0) {
-		std::cerr << "Command failed with code: " << result << std::endl;
+		std::cout << "Command failed with code: " << result << std::endl;
 	}
-	// Delete the temporary batch file
-	//std::filesystem::remove(tempBatch);
-	//Rename the file
+
+	// Construct the expected output path
 	outputFilePath += '\\';
 	outputFilePath += fileName;
 	outputFilePath += ".dds";
-	std::cout<<"Output file path" << outputFilePath << '\n';
-	std::cout<<"New file path" << outputPath << '\n';
-	std::filesystem::rename(outputFilePath, outputPath);
+	std::cout << "Expected output file path: " << outputFilePath << '\n';
+	std::cout << "New file path: " << outputPath << '\n';
 
-	return 0;;
+	// 1. Check if texconv actually created the file
+	if (!std::filesystem::exists(outputFilePath)) {
+		std::cout << "ERROR: Texture compiler failed to generate " << fileName << ".dds! (Check image dimensions or format)" << std::endl;
+		return -1; // Exit gracefully instead of crashing
+	}
+
+	// 2. Use std::error_code to prevent unhandled exception crashes
+	std::error_code ec;
+	std::filesystem::rename(outputFilePath, outputPath, ec);
+
+	if (ec) {
+		std::cout << "ERROR: Failed to rename file: " << ec.message() << std::endl;
+		return -1;
+	}
+
+	return 0;
 }
