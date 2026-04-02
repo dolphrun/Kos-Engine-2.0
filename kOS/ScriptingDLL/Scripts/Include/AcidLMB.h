@@ -10,9 +10,9 @@ public:
 	int acidLMBDamage = 10;
 
 	glm::vec3 velocity = glm::vec3(0.f);
-	float     launchSpeed = 15.f;
+	float     launchSpeed = 25.f;
 	float     arcUpwardKick = 5.f;
-	float     gravity = -18.f;
+	float     gravity = -50.f;
 
 	float     timeBeforeDeath = 2.5f;
 	float     currentTimer = 0.f;
