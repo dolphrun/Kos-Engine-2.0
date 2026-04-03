@@ -139,10 +139,15 @@
                     "start_Lifetime": 2.0,
                     "end_Lifetime": 3.0,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 0.5,
                     "playback_State": 0,
                     "particleFade": 1,
+                    "animationModule": {
+                        "textureGUID": [],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": true,
                         "mode": 1,
@@ -360,10 +365,15 @@
                     "start_Lifetime": 2.0,
                     "end_Lifetime": 3.0,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 0.5,
                     "playback_State": 0,
                     "particleFade": 1,
+                    "animationModule": {
+                        "textureGUID": [],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": true,
                         "mode": 1,
@@ -861,10 +871,15 @@
                                             "start_Lifetime": 0.15000000596046448,
                                             "end_Lifetime": 0.15000000596046448,
                                             "lifetime_Random_Enable": true,
-                                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                                             "start_Velocity": 0.0,
                                             "playback_State": 0,
                                             "particleFade": 1,
+                                            "animationModule": {
+                                                "textureGUID": [],
+                                                "framesPerSecond": 24,
+                                                "isLooping": false,
+                                                "isPlaying": true
+                                            },
                                             "velocityModule": {
                                                 "enabled": false,
                                                 "mode": 0,
@@ -1082,10 +1097,15 @@
                                             "start_Lifetime": 0.15000000596046448,
                                             "end_Lifetime": 0.15000000596046448,
                                             "lifetime_Random_Enable": true,
-                                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                                             "start_Velocity": 0.0,
                                             "playback_State": 0,
                                             "particleFade": 1,
+                                            "animationModule": {
+                                                "textureGUID": [],
+                                                "framesPerSecond": 24,
+                                                "isLooping": false,
+                                                "isPlaying": true
+                                            },
                                             "velocityModule": {
                                                 "enabled": false,
                                                 "mode": 0,
@@ -4564,7 +4584,7 @@
                             }
                         },
                         "UIButtonScript": {
-                            "actionType": 0,
+                            "actionType": 4,
                             "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": true,
@@ -4914,7 +4934,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "Lose Screen Canvas.prefab",
-                    "hide": false
+                    "hide": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -4962,7 +4982,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5020,7 +5040,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5078,7 +5098,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5136,7 +5156,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5194,7 +5214,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5252,7 +5272,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5388,7 +5408,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "a6918fdc-bfcb-feab-5f96-86e8d9485e45",
@@ -5487,7 +5507,7 @@
                     "isPrefab": false,
                     "isStatic": false,
                     "prefabName": "Level Complete Canvas.prefab",
-                    "hide": false
+                    "hide": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -5535,7 +5555,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Level Complete Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "6988c495-899e-e79d-0cb8-3cc55bceeedd",
@@ -5601,7 +5621,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Level Complete Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "d198064c-9163-4676-1140-bc1dc97ce847",
@@ -5667,7 +5687,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Level Complete Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "af1dadc5-efbb-c724-a131-6e10fe338758",
@@ -5733,7 +5753,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Level Complete Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "5ff7b122-936f-8e72-4ad7-047d88f31b90",
@@ -5877,7 +5897,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Level Complete Canvas.prefab",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "e7ac63e2-dc50-c7e5-f42a-8c2d3db5eccc",
@@ -6080,10 +6100,15 @@
                     "start_Lifetime": 1.0,
                     "end_Lifetime": 1.0,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 2.0,
                     "playback_State": 0,
                     "particleFade": 1,
+                    "animationModule": {
+                        "textureGUID": [],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": true,
                         "mode": 0,
@@ -6301,10 +6326,15 @@
                     "start_Lifetime": 1.0,
                     "end_Lifetime": 1.0,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 2.0,
                     "playback_State": 0,
                     "particleFade": 1,
+                    "animationModule": {
+                        "textureGUID": [],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": true,
                         "mode": 0,
@@ -6522,10 +6552,15 @@
                     "start_Lifetime": 1.0,
                     "end_Lifetime": 1.0,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 2.0,
                     "playback_State": 0,
                     "particleFade": 1,
+                    "animationModule": {
+                        "textureGUID": [],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": true,
                         "mode": 0,
@@ -6743,10 +6778,15 @@
                     "start_Lifetime": 1.0,
                     "end_Lifetime": 1.0,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 2.0,
                     "playback_State": 0,
                     "particleFade": 1,
+                    "animationModule": {
+                        "textureGUID": [],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": true,
                         "mode": 0,
@@ -7091,10 +7131,15 @@
                     "start_Lifetime": 3.0,
                     "end_Lifetime": 7.0,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 1.0,
                     "playback_State": 0,
                     "particleFade": 1,
+                    "animationModule": {
+                        "textureGUID": [],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": false,
                         "mode": 0,
@@ -8381,10 +8426,15 @@
                             "start_Lifetime": 0.25,
                             "end_Lifetime": 0.25,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.0,
                             "playback_State": 0,
                             "particleFade": 0,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -8602,10 +8652,15 @@
                             "start_Lifetime": 0.25,
                             "end_Lifetime": 0.25,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.0,
                             "playback_State": 0,
                             "particleFade": 0,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -9307,5 +9362,612 @@
                 }
             }
         }
+    },
+    {
+        "entityGUID": "e2482f0d-5fd0-56e3-bd66-668163fbabd1",
+        "CanvasRendererComponent": {
+            "isScreenSpace": true
+        },
+        "NameComponent": {
+            "entityName": "Options Menu Canvas",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "OptionsMenuScript": {
+            "optionsMenuCanvasGUID": "e2482f0d-5fd0-56e3-bd66-668163fbabd1",
+            "optionsMenuCanvasID": 0,
+            "pauseMenuManagerGUID": "53f83bac-2058-5939-b2a8-134497980574",
+            "pauseMenuManagerID": 0,
+            "masterVolumeSliderBarGUID": "4591af4a-1224-bf18-996f-0e9560cb72ad",
+            "masterVolumeSliderBarID": 0,
+            "masterVolumeMinusButtonGUID": "d427ce0c-e7ea-9de8-0e65-aabf0325dba0",
+            "masterVolumeMinusButtonID": 0,
+            "masterVolumePlusButtonGUID": "fab3d1a9-8024-6352-bbd4-2b5f63596084",
+            "masterVolumePlusButtonID": 0,
+            "masterVolumeLevel": 10,
+            "originalOptionsPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "hiddenPosition": {
+                "x": -10000.0,
+                "y": -10000.0,
+                "z": 0.0
+            },
+            "sliderOriginalScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "sliderOriginalPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "sliderInitialized": true,
+            "wasMinusPressed": false,
+            "wasPlusPressed": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "fd04f159-3758-4d09-74ec-8a542688c244",
+                "NameComponent": {
+                    "entityName": "Background Image",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "6988c495-899e-e79d-0cb8-3cc55bceeedd",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0043789297342300415,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 3.559999942779541,
+                            "y": 2.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0043789297342300415,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 3.559999942779541,
+                            "y": 2.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "cb7ded03-e70d-7d77-3619-95a7e2c8b01d",
+                "NameComponent": {
+                    "entityName": "Options Title",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TextComponent": {
+                    "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                    "text": "OPTIONS",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "fontSize": 150.0
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -0.3700000047683716,
+                            "y": 0.6000000238418579,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -0.3700000047683716,
+                            "y": 0.6000000238418579,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "925b15e2-f625-73eb-3591-0958e29932ef",
+                "NameComponent": {
+                    "entityName": "Master Volume Text",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "TextComponent": {
+                    "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
+                    "text": "Master Volume",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "fontSize": 90.0
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -1.600000023841858,
+                            "y": 0.25,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -1.600000023841858,
+                            "y": 0.25,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "decda1eb-3408-5362-148b-f19859ff0db6",
+                "NameComponent": {
+                    "entityName": "Slider Background (Master)",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "e351c60b-1901-61b9-c552-3f646f787f21",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.6000000238418579,
+                            "y": 0.31200000643730164,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": -179.99989318847656,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.5,
+                            "y": 0.20000000298023224,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.6000000238418579,
+                            "y": 0.31200000643730164,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": -179.99989318847656,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.5,
+                            "y": 0.20000000298023224,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "4591af4a-1224-bf18-996f-0e9560cb72ad",
+                "NameComponent": {
+                    "entityName": "Slider Bar (Master)",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "1776dd9e-9311-f406-80a6-a74993197923",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.6000000238418579,
+                            "y": 0.2849999964237213,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.440000057220459,
+                            "y": 0.14000000059604645,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.6000000238418579,
+                            "y": 0.2849999964237213,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.440000057220459,
+                            "y": 0.14000000059604645,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "d427ce0c-e7ea-9de8-0e65-aabf0325dba0",
+                "ButtonComponent": {
+                    "normalColor": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "hoveredColor": {
+                        "x": 0.800000011920929,
+                        "y": 0.800000011920929,
+                        "z": 0.800000011920929,
+                        "w": 1.0
+                    },
+                    "pressedColor": {
+                        "x": 0.6000000238418579,
+                        "y": 0.6000000238418579,
+                        "z": 0.6000000238418579,
+                        "w": 1.0
+                    },
+                    "normalSprite": "00000000-0000-0000-0000-000000000000",
+                    "hoveredSprite": "00000000-0000-0000-0000-000000000000",
+                    "pressedSprite": "00000000-0000-0000-0000-000000000000",
+                    "useSpriteSwap": false,
+                    "isHovered": false,
+                    "isPressed": false
+                },
+                "NameComponent": {
+                    "entityName": "- Button (Master)",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "8631c627-a6ad-5431-d19f-7fad7f7c9490",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -0.36000001430511475,
+                            "y": 0.30000001192092896,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": -180.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.4000000059604645,
+                            "y": 0.4000000059604645,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -0.36000001430511475,
+                            "y": 0.30000001192092896,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 180.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.4000000059604645,
+                            "y": 0.4000000059604645,
+                            "z": 1.0
+                        }
+                    }
+                },
+                "UIButtonScript": {
+                    "actionType": 6,
+                    "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
+                    "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
+                    "useKeyboardShortcuts": true,
+                    "wasPressed": false,
+                    "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                }
+            },
+            {
+                "entityGUID": "fab3d1a9-8024-6352-bbd4-2b5f63596084",
+                "ButtonComponent": {
+                    "normalColor": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "hoveredColor": {
+                        "x": 0.800000011920929,
+                        "y": 0.800000011920929,
+                        "z": 0.800000011920929,
+                        "w": 1.0
+                    },
+                    "pressedColor": {
+                        "x": 0.6000000238418579,
+                        "y": 0.6000000238418579,
+                        "z": 0.6000000238418579,
+                        "w": 1.0
+                    },
+                    "normalSprite": "00000000-0000-0000-0000-000000000000",
+                    "hoveredSprite": "00000000-0000-0000-0000-000000000000",
+                    "pressedSprite": "00000000-0000-0000-0000-000000000000",
+                    "useSpriteSwap": false,
+                    "isHovered": false,
+                    "isPressed": false
+                },
+                "NameComponent": {
+                    "entityName": "+ Button (Master)",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "8631c627-a6ad-5431-d19f-7fad7f7c9490",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 1.5700000524520874,
+                            "y": 0.30000001192092896,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": -180.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.4000000059604645,
+                            "y": 0.4000000059604645,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 1.5700000524520874,
+                            "y": 0.30000001192092896,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 180.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.4000000059604645,
+                            "y": 0.4000000059604645,
+                            "z": 1.0
+                        }
+                    }
+                },
+                "UIButtonScript": {
+                    "actionType": 7,
+                    "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
+                    "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
+                    "useKeyboardShortcuts": true,
+                    "wasPressed": false,
+                    "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
+                    "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                }
+            }
+        ]
     }
 ]
