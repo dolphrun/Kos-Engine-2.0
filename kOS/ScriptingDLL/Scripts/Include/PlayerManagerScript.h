@@ -393,6 +393,21 @@ public:
 	bool  isRegening = false;
 	float healthRegenAccum = 0.f;
 
+	// Cinematic intro
+	bool isCinematicPlaying = false;
+	float cinematicTimer = 0.f;
+	int cinematicWaypointIndex = 0;
+	float cinematicWaypointDuration = 3.f; // seconds per waypoint
+	float cinematicTotalDuration = 0.f;
+	glm::vec3 cinematicStartPos = glm::vec3(0.f);
+	glm::vec3 cinematicStartRot = glm::vec3(0.f);
+
+	std::vector<glm::vec3> cinematicWaypointPositions; // world positions to visit
+	std::vector<glm::vec3> cinematicWaypointRotations; // rotations at each point
+
+	std::vector<utility::GUID> cinematicWaypointObjects;
+	std::vector<ecs::EntityID> cinematicWaypointIDs;
+
 	// --- FUNCTION DECLARATIONS ONLY --
 	// Implementations are moved to the bottom of the file
 	void Start() override;
@@ -425,7 +440,7 @@ public:
 		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, fireEquipSfxGUID, fireAbsorbSfxGUID, acidEquipSfxGUID, acidShieldSfxGuid, lightningSlowStartSfxGUID,lightningSlowEndSfxGUID, lightningGunSfxGUID,
 		lightningAbsorbSfxGUID, lightningEquipSfxGUID, acidGrenadeGunSfxGUID, acidAbsorbSfxGUID, pauseMenuOpenSfxGUID, pauseMenuCloseSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
 		winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashGUID, pistolModelObject,
-		fireSwordModelObject, lightningModelObject, acidModelObject, gameUICanvasObject)
+		fireSwordModelObject, lightningModelObject, acidModelObject, gameUICanvasObject, cinematicWaypointObjects)
 
 		/*REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 			bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
@@ -548,9 +563,91 @@ inline void PlayerManagerScript::Start() {
 	blur->radius = 0.01f;
 
 	if (LevelCompleteScript::instance) LevelCompleteScript::instance->HideLevelComplete();
+
+	cinematicWaypointPositions.clear();
+	cinematicWaypointRotations.clear();
+	cinematicWaypointIDs.clear();
+
+	for (auto& guid : cinematicWaypointObjects) {
+		if (guid == utility::GUID{}) continue;
+
+		ecs::EntityID id = ecsPtr->GetEntityIDFromGUID(guid);
+		cinematicWaypointIDs.push_back(id);
+
+		auto* tf = ecsPtr->GetComponent<TransformComponent>(id);
+		if (tf) {
+			cinematicWaypointPositions.push_back(tf->WorldTransformation.position);
+			cinematicWaypointRotations.push_back(tf->WorldTransformation.rotation);
+		}
+	}
+
+	cinematicTotalDuration = cinematicWaypointDuration * cinematicWaypointPositions.size();
+	isCinematicPlaying = true;
+	if (gameUICanvasID != -1) ecsPtr->SetActive(gameUICanvasID, false);
+
+	if (currentModelID != 0) ecsPtr->SetActive(currentModelID, false);
+	//if (playerArmModelObjectID != 0) ecsPtr->SetActive(playerArmModelObjectID, false);
+	cinematicTimer = 0.f;
+	cinematicWaypointIndex = 0;
+	Input->HideCursor(true);
 }
 
 inline void PlayerManagerScript::Update() {
+
+	if (isCinematicPlaying) {
+		// Safety guard - skip cinematic if no waypoints assigned
+		if (cinematicWaypointPositions.empty()) {
+			isCinematicPlaying = false;
+			return;
+		}
+
+		cinematicTimer += ecsPtr->m_GetDeltaTime();
+		int totalWaypoints = static_cast<int>(cinematicWaypointPositions.size());
+		int currIdx = glm::min(cinematicWaypointIndex, totalWaypoints - 1);
+		int nextIdx = glm::min(currIdx + 1, totalWaypoints - 1);
+
+		float t = glm::clamp((cinematicTimer - currIdx * cinematicWaypointDuration) / cinematicWaypointDuration, 0.f, 1.f);
+		float smoothT = t * t * (3.f - 2.f * t);
+
+		auto* camTf = ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID);
+		auto* playerTf = ecsPtr->GetComponent<TransformComponent>(entity);
+
+		if (camTf && playerTf) {
+			glm::vec3 worldPos = glm::mix(
+				cinematicWaypointPositions[currIdx],
+				cinematicWaypointPositions[nextIdx],
+				smoothT
+			);
+
+			camTf->LocalTransformation.position = worldPos - playerTf->WorldTransformation.position;
+
+			camTf->LocalTransformation.rotation = glm::mix(
+				cinematicWaypointRotations[currIdx],
+				cinematicWaypointRotations[nextIdx],
+				smoothT
+			);
+		}
+
+		if (cinematicTimer >= (currIdx + 1) * cinematicWaypointDuration)
+			cinematicWaypointIndex++;
+
+		if (cinematicTimer >= cinematicTotalDuration) {
+			isCinematicPlaying = false;
+			cinematicTimer = 0.f;
+
+			if (gameUICanvasID != -1) ecsPtr->SetActive(gameUICanvasID, true);
+
+			if (currentModelID != 0) ecsPtr->SetActive(currentModelID, true);
+
+			auto* camTf2 = ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID);
+			if (camTf2) {
+				camTf2->LocalTransformation.rotation = glm::vec3(playerRotationX, playerRotationY, 0.f);
+				camTf2->LocalTransformation.position = glm::vec3(0.f, originalPlayerCrouchCameraPosY, 0.f);
+			}
+		}
+
+		return;
+	}
 
 	ScoreManagerScript::UpdateTimer(ecsPtr->m_GetDeltaTime());
 
