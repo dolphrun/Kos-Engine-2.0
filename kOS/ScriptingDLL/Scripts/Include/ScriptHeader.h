@@ -54,3 +54,8 @@
 #include "Ability1Script.h"
 #include "EndSceneScript.h"
 #include "OptionsMenuScript.h"
+
+#include "MainMenuCameraScript.h"
+#include "MainMenuBottleScript.h"
+#include "MainMenuHandBlockScript.h"
+#include "FadeTransition.h"
