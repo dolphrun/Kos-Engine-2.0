@@ -769,6 +769,10 @@ inline void PlayerManagerScript::Update() {
 			fireCurrComboTimer = 0.f;
 			fireSlashComboCount = 0; // Reset combo if window expired
 			std::cout << "[FireSlash] Combo expired. Reset to 0.\n";
+
+			if (animComp && animComp->m_currentStateID)
+				playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("Reset", animComp, playerController);
+
 		}
 	}
 
