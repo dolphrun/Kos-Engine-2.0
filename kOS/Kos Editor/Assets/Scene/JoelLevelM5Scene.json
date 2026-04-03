@@ -383,10 +383,15 @@
                                             "start_Lifetime": 0.15000000596046448,
                                             "end_Lifetime": 0.15000000596046448,
                                             "lifetime_Random_Enable": true,
-                                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                                             "start_Velocity": 0.0,
                                             "playback_State": 0,
                                             "particleFade": 1,
+                                            "animationModule": {
+                                                "textureGUID": [],
+                                                "framesPerSecond": 24,
+                                                "isLooping": false,
+                                                "isPlaying": true
+                                            },
                                             "velocityModule": {
                                                 "enabled": false,
                                                 "mode": 0,
@@ -604,10 +609,15 @@
                                             "start_Lifetime": 0.15000000596046448,
                                             "end_Lifetime": 0.15000000596046448,
                                             "lifetime_Random_Enable": true,
-                                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                                             "start_Velocity": 0.0,
                                             "playback_State": 0,
                                             "particleFade": 1,
+                                            "animationModule": {
+                                                "textureGUID": [],
+                                                "framesPerSecond": 24,
+                                                "isLooping": false,
+                                                "isPlaying": true
+                                            },
                                             "velocityModule": {
                                                 "enabled": false,
                                                 "mode": 0,
@@ -1886,7 +1896,17 @@
                     "lightningModelObject": "8b880c16-1807-cd1e-54c3-42cdda789d3a",
                     "acidModelObject": "37d48ab0-2443-b791-a713-ce7ad50f353e",
                     "gameUICanvasObject": "633d8af2-15c0-434b-4a26-f9093932c2e4",
-                    "projSpawnPointGUID": "00000000-0000-0000-0000-000000000000"
+                    "cinematicWaypointObjects": [
+                        {
+                            "cinematicWaypointObjects": "b66db183-76c0-e5b3-99bc-e898bbba271d"
+                        },
+                        {
+                            "cinematicWaypointObjects": "0163c348-ea15-1c6d-a726-c3cb81562d5f"
+                        },
+                        {
+                            "cinematicWaypointObjects": "29bdeebe-363a-8d92-260c-b26098f7a5c7"
+                        }
+                    ]
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,
@@ -1913,7 +1933,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -12.295450210571289,
-                            "y": 37.04388427734375,
+                            "y": 3.6996054649353027,
                             "z": 0.6596717834472656
                         },
                         "rotation": {
@@ -1930,12 +1950,12 @@
                     "LocalTransformation": {
                         "position": {
                             "x": -12.295450210571289,
-                            "y": 37.04388427734375,
+                            "y": 3.6996054649353027,
                             "z": 0.6596717834472656
                         },
                         "rotation": {
                             "x": 0.0,
-                            "y": -0.0,
+                            "y": 0.0,
                             "z": 0.0
                         },
                         "scale": {
@@ -1983,7 +2003,7 @@
                             "WorldTransformation": {
                                 "position": {
                                     "x": -12.295450210571289,
-                                    "y": 38.651580810546875,
+                                    "y": 5.307300090789795,
                                     "z": 0.6596717834472656
                                 },
                                 "rotation": {
@@ -2005,7 +2025,7 @@
                                 },
                                 "rotation": {
                                     "x": 0.0,
-                                    "y": -0.0,
+                                    "y": 0.0,
                                     "z": 0.0
                                 },
                                 "scale": {
@@ -2032,7 +2052,7 @@
                             "WorldTransformation": {
                                 "position": {
                                     "x": -12.295450210571289,
-                                    "y": 34.81165313720703,
+                                    "y": 1.4673724174499512,
                                     "z": 0.6596717834472656
                                 },
                                 "rotation": {
@@ -2080,7 +2100,7 @@
                             "WorldTransformation": {
                                 "position": {
                                     "x": -11.295450210571289,
-                                    "y": 37.79388427734375,
+                                    "y": 4.449605464935303,
                                     "z": 0.6596717834472656
                                 },
                                 "rotation": {
@@ -74589,10 +74609,15 @@
                             "start_Lifetime": 1.0,
                             "end_Lifetime": 1.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 2.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 0,
@@ -74810,10 +74835,15 @@
                             "start_Lifetime": 1.0,
                             "end_Lifetime": 1.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 2.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 0,
@@ -75031,10 +75061,15 @@
                             "start_Lifetime": 1.0,
                             "end_Lifetime": 1.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 2.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 0,
@@ -75252,10 +75287,15 @@
                             "start_Lifetime": 1.0,
                             "end_Lifetime": 1.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 2.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 0,
@@ -75600,10 +75640,15 @@
                             "start_Lifetime": 3.0,
                             "end_Lifetime": 7.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 1.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -75821,10 +75866,15 @@
                             "start_Lifetime": 3.0,
                             "end_Lifetime": 7.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 1.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -76042,10 +76092,15 @@
                             "start_Lifetime": 3.0,
                             "end_Lifetime": 7.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 1.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -76378,10 +76433,15 @@
                             "start_Lifetime": 2.0,
                             "end_Lifetime": 3.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.5,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 1,
@@ -76599,10 +76659,15 @@
                             "start_Lifetime": 2.0,
                             "end_Lifetime": 3.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.5,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 1,
@@ -76947,10 +77012,15 @@
                             "start_Lifetime": 3.0,
                             "end_Lifetime": 7.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 1.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -77295,10 +77365,15 @@
                             "start_Lifetime": 3.0,
                             "end_Lifetime": 7.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 1.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -77516,10 +77591,15 @@
                             "start_Lifetime": 3.0,
                             "end_Lifetime": 7.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 1.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -77737,10 +77817,15 @@
                             "start_Lifetime": 3.0,
                             "end_Lifetime": 7.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 1.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -78073,10 +78158,15 @@
                             "start_Lifetime": 2.0,
                             "end_Lifetime": 3.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.5,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 1,
@@ -78294,10 +78384,15 @@
                             "start_Lifetime": 2.0,
                             "end_Lifetime": 3.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.5,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 1,
@@ -78630,10 +78725,15 @@
                             "start_Lifetime": 2.0,
                             "end_Lifetime": 3.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.5,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 1,
@@ -78851,10 +78951,15 @@
                             "start_Lifetime": 2.0,
                             "end_Lifetime": 3.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.5,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 1,
@@ -79199,10 +79304,15 @@
                             "start_Lifetime": 3.0,
                             "end_Lifetime": 7.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 1.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -79547,10 +79657,15 @@
                             "start_Lifetime": 3.0,
                             "end_Lifetime": 7.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 1.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -79895,10 +80010,15 @@
                             "start_Lifetime": 3.0,
                             "end_Lifetime": 7.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 1.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -80231,10 +80351,15 @@
                             "start_Lifetime": 1.0,
                             "end_Lifetime": 1.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 2.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 0,
@@ -80452,10 +80577,15 @@
                             "start_Lifetime": 1.0,
                             "end_Lifetime": 1.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 2.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 0,
@@ -80673,10 +80803,15 @@
                             "start_Lifetime": 1.0,
                             "end_Lifetime": 1.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 2.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 0,
@@ -80894,10 +81029,15 @@
                             "start_Lifetime": 1.0,
                             "end_Lifetime": 1.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 2.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 0,
@@ -81230,10 +81370,15 @@
                             "start_Lifetime": 2.0,
                             "end_Lifetime": 3.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.5,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 1,
@@ -81451,10 +81596,15 @@
                             "start_Lifetime": 2.0,
                             "end_Lifetime": 3.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.5,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 1,
@@ -81787,10 +81937,15 @@
                             "start_Lifetime": 2.0,
                             "end_Lifetime": 3.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.5,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 1,
@@ -82008,10 +82163,15 @@
                             "start_Lifetime": 2.0,
                             "end_Lifetime": 3.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.5,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 1,
@@ -82344,10 +82504,15 @@
                             "start_Lifetime": 1.0,
                             "end_Lifetime": 1.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 2.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 0,
@@ -82565,10 +82730,15 @@
                             "start_Lifetime": 1.0,
                             "end_Lifetime": 1.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 2.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 0,
@@ -82786,10 +82956,15 @@
                             "start_Lifetime": 1.0,
                             "end_Lifetime": 1.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 2.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 0,
@@ -83007,10 +83182,15 @@
                             "start_Lifetime": 1.0,
                             "end_Lifetime": 1.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 2.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 0,
@@ -83343,10 +83523,15 @@
                             "start_Lifetime": 2.0,
                             "end_Lifetime": 3.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.5,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 1,
@@ -83564,10 +83749,15 @@
                             "start_Lifetime": 2.0,
                             "end_Lifetime": 3.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.5,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": true,
                                 "mode": 1,
@@ -83912,10 +84102,15 @@
                             "start_Lifetime": 3.0,
                             "end_Lifetime": 7.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 1.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -84260,10 +84455,15 @@
                             "start_Lifetime": 3.0,
                             "end_Lifetime": 7.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 1.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -84608,10 +84808,15 @@
                             "start_Lifetime": 3.0,
                             "end_Lifetime": 7.0,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 1.0,
                             "playback_State": 0,
                             "particleFade": 1,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -84915,7 +85120,9 @@
                 {
                     "roomEnemyGUIDs": "ac18959a-eff7-699a-9081-91500f7c3726"
                 }
-            ]
+            ],
+            "doorCloseSfxGUID": "00000000-0000-0000-0000-000000000000",
+            "doorOpenSfxGUID": "00000000-0000-0000-0000-000000000000"
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -91191,7 +91398,9 @@
                 {
                     "roomEnemyGUIDs": "03eaf7bd-84fa-44e7-e149-906b92fb58b2"
                 }
-            ]
+            ],
+            "doorCloseSfxGUID": "00000000-0000-0000-0000-000000000000",
+            "doorOpenSfxGUID": "00000000-0000-0000-0000-000000000000"
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -94150,7 +94359,9 @@
                 {
                     "roomEnemyGUIDs": "40564ea6-abb4-517a-41aa-88d7a8a924ee"
                 }
-            ]
+            ],
+            "doorCloseSfxGUID": "00000000-0000-0000-0000-000000000000",
+            "doorOpenSfxGUID": "00000000-0000-0000-0000-000000000000"
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -95072,7 +95283,7 @@
                         "AnimatorComponent": {
                             "controllerGUID": "a8151059-f46f-1edd-8b81-a36f705c15fb",
                             "m_PlaybackSpeed": 1.0,
-                            "m_CurrentTime": 31.939529418945313,
+                            "m_CurrentTime": 50.93952941894531,
                             "m_IsPlaying": true,
                             "m_currentStateID": 4,
                             "m_transitioningStateID": 0
@@ -95194,10 +95405,15 @@
                                     "start_Lifetime": 0.25,
                                     "end_Lifetime": 0.25,
                                     "lifetime_Random_Enable": true,
-                                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                                     "start_Velocity": 0.0,
                                     "playback_State": 0,
                                     "particleFade": 0,
+                                    "animationModule": {
+                                        "textureGUID": [],
+                                        "framesPerSecond": 24,
+                                        "isLooping": false,
+                                        "isPlaying": true
+                                    },
                                     "velocityModule": {
                                         "enabled": false,
                                         "mode": 0,
@@ -95415,10 +95631,15 @@
                                     "start_Lifetime": 0.25,
                                     "end_Lifetime": 0.25,
                                     "lifetime_Random_Enable": true,
-                                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                                     "start_Velocity": 0.0,
                                     "playback_State": 0,
                                     "particleFade": 0,
+                                    "animationModule": {
+                                        "textureGUID": [],
+                                        "framesPerSecond": 24,
+                                        "isLooping": false,
+                                        "isPlaying": true
+                                    },
                                     "velocityModule": {
                                         "enabled": false,
                                         "mode": 0,
@@ -95974,7 +96195,7 @@
                         "AnimatorComponent": {
                             "controllerGUID": "a8151059-f46f-1edd-8b81-a36f705c15fb",
                             "m_PlaybackSpeed": 1.0,
-                            "m_CurrentTime": 31.939529418945313,
+                            "m_CurrentTime": 50.93952941894531,
                             "m_IsPlaying": true,
                             "m_currentStateID": 4,
                             "m_transitioningStateID": 0
@@ -96096,10 +96317,15 @@
                                     "start_Lifetime": 0.25,
                                     "end_Lifetime": 0.25,
                                     "lifetime_Random_Enable": true,
-                                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                                     "start_Velocity": 0.0,
                                     "playback_State": 0,
                                     "particleFade": 0,
+                                    "animationModule": {
+                                        "textureGUID": [],
+                                        "framesPerSecond": 24,
+                                        "isLooping": false,
+                                        "isPlaying": true
+                                    },
                                     "velocityModule": {
                                         "enabled": false,
                                         "mode": 0,
@@ -96317,10 +96543,15 @@
                                     "start_Lifetime": 0.25,
                                     "end_Lifetime": 0.25,
                                     "lifetime_Random_Enable": true,
-                                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                                     "start_Velocity": 0.0,
                                     "playback_State": 0,
                                     "particleFade": 0,
+                                    "animationModule": {
+                                        "textureGUID": [],
+                                        "framesPerSecond": 24,
+                                        "isLooping": false,
+                                        "isPlaying": true
+                                    },
                                     "velocityModule": {
                                         "enabled": false,
                                         "mode": 0,
@@ -97746,7 +97977,7 @@
                         "AnimatorComponent": {
                             "controllerGUID": "a8151059-f46f-1edd-8b81-a36f705c15fb",
                             "m_PlaybackSpeed": 1.0,
-                            "m_CurrentTime": 31.939529418945313,
+                            "m_CurrentTime": 50.93952941894531,
                             "m_IsPlaying": true,
                             "m_currentStateID": 4,
                             "m_transitioningStateID": 0
@@ -97868,10 +98099,15 @@
                                     "start_Lifetime": 0.25,
                                     "end_Lifetime": 0.25,
                                     "lifetime_Random_Enable": true,
-                                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                                     "start_Velocity": 0.0,
                                     "playback_State": 0,
                                     "particleFade": 0,
+                                    "animationModule": {
+                                        "textureGUID": [],
+                                        "framesPerSecond": 24,
+                                        "isLooping": false,
+                                        "isPlaying": true
+                                    },
                                     "velocityModule": {
                                         "enabled": false,
                                         "mode": 0,
@@ -98089,10 +98325,15 @@
                                     "start_Lifetime": 0.25,
                                     "end_Lifetime": 0.25,
                                     "lifetime_Random_Enable": true,
-                                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                                     "start_Velocity": 0.0,
                                     "playback_State": 0,
                                     "particleFade": 0,
+                                    "animationModule": {
+                                        "textureGUID": [],
+                                        "framesPerSecond": 24,
+                                        "isLooping": false,
+                                        "isPlaying": true
+                                    },
                                     "velocityModule": {
                                         "enabled": false,
                                         "mode": 0,
@@ -100600,5 +100841,149 @@
                 ]
             }
         ]
+    },
+    {
+        "entityGUID": "b66db183-76c0-e5b3-99bc-e898bbba271d",
+        "NameComponent": {
+            "entityName": "1",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -19.231576919555664,
+                    "y": 2.7836976051330566,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0003738373634405434,
+                    "y": 54.48066329956055,
+                    "z": 0.00019158425857312977
+                },
+                "scale": {
+                    "x": 0.9999998211860657,
+                    "y": 1.0,
+                    "z": 0.9999998211860657
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -19.231576919555664,
+                    "y": 2.7836976051330566,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0003738374507520348,
+                    "y": 54.48067092895508,
+                    "z": 0.00019158436043653637
+                },
+                "scale": {
+                    "x": 0.9999998807907104,
+                    "y": 1.0,
+                    "z": 0.9999998807907104
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "0163c348-ea15-1c6d-a726-c3cb81562d5f",
+        "NameComponent": {
+            "entityName": "2",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -60.623390197753906,
+                    "y": 2.5309340953826904,
+                    "z": -1.9053330421447754
+                },
+                "rotation": {
+                    "x": -0.00011034683120669797,
+                    "y": -86.08383178710938,
+                    "z": -0.00008744929073145613
+                },
+                "scale": {
+                    "x": 0.9999997615814209,
+                    "y": 1.0,
+                    "z": 0.9999997615814209
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -60.623390197753906,
+                    "y": 2.5309340953826904,
+                    "z": -1.9053330421447754
+                },
+                "rotation": {
+                    "x": -0.00011034673661924899,
+                    "y": -86.08381652832031,
+                    "z": -0.0000874494799063541
+                },
+                "scale": {
+                    "x": 0.9999997615814209,
+                    "y": 1.0,
+                    "z": 0.9999997615814209
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "29bdeebe-363a-8d92-260c-b26098f7a5c7",
+        "NameComponent": {
+            "entityName": "2",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -60.623390197753906,
+                    "y": 2.5309340953826904,
+                    "z": -12.026683807373047
+                },
+                "rotation": {
+                    "x": -0.00011034683120669797,
+                    "y": -86.08383178710938,
+                    "z": -0.00008744929073145613
+                },
+                "scale": {
+                    "x": 0.9999997615814209,
+                    "y": 1.0,
+                    "z": 0.9999997615814209
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -60.623390197753906,
+                    "y": 2.5309340953826904,
+                    "z": -12.026683807373047
+                },
+                "rotation": {
+                    "x": -0.00011034673661924899,
+                    "y": -86.08381652832031,
+                    "z": -0.0000874494799063541
+                },
+                "scale": {
+                    "x": 0.9999997615814209,
+                    "y": 1.0,
+                    "z": 0.9999997615814209
+                }
+            }
+        }
     }
 ]
