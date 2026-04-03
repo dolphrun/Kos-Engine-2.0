@@ -770,8 +770,8 @@ inline void PlayerManagerScript::Update() {
 			fireSlashComboCount = 0; // Reset combo if window expired
 			std::cout << "[FireSlash] Combo expired. Reset to 0.\n";
 
-			if (animComp && animComp->m_currentStateID)
-				playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("Reset", animComp, playerController);
+			/*if (animComp && animComp->m_currentStateID)
+				playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("Reset", animComp, playerController);*/
 
 		}
 	}
@@ -1414,19 +1414,19 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 	//}
 
 	//Animation Handling
-	//if (animComp)
-	//{
-	//	// COMMENTED OUT FOR ANIM
-	//	if (animComp->m_currentStateID)
-	//	{
-	//		R_Animation* currAnim = resource->GetResource<R_Animation>(playerController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get();
-	//		if (animComp->m_CurrentTime >= currAnim->GetDuration())
-	//		{
-	//			playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("animationFinished", animComp, playerController);
-	//		}
-	//	}
-	//	
-	//}
+	if (animComp)
+	{
+		// COMMENTED OUT FOR ANIM
+		if (animComp->m_currentStateID)
+		{
+			R_Animation* currAnim = resource->GetResource<R_Animation>(playerController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get();
+			if (animComp->m_CurrentTime >= currAnim->GetDuration())
+			{
+				playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("animationFinished", animComp, playerController);
+			}
+		}
+		
+	}
 
 	//SEAN
 	if (animComp && animComp->m_currentStateID && playerController)
