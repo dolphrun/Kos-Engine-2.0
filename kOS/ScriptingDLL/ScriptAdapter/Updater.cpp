@@ -90,9 +90,15 @@ extern "C"  __declspec(dllexport) void UpdateStatic(StaticVariableManager* svm) 
 
 	RegisterScript<EnemyHurtVFX>(TemplateSC::ecsPtr);
 	RegisterScript<Deathzone>(TemplateSC::ecsPtr);
+	RegisterScript<OptionsMenuScript>(TemplateSC::ecsPtr);
 
 
 	RegisterScript<EndSceneScript>(TemplateSC::ecsPtr);
+
+	RegisterScript<MainMenuCameraScript>(TemplateSC::ecsPtr);
+	RegisterScript<MainMenuBottleScript>(TemplateSC::ecsPtr);
+	RegisterScript<MainMenuHandBlockScript>(TemplateSC::ecsPtr);
+	RegisterScript<FadeTransition>(TemplateSC::ecsPtr);
 
 	FieldComponentTypeRegistry::CreateAllDrawers(static_cast<Fields*>(svm->field)->GetAction());
 }
