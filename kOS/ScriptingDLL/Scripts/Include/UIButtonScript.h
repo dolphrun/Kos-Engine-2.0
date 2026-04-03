@@ -3,6 +3,7 @@
 #include "Config/pch.h"
 #include "ScriptAdapter/TemplateSC.h"
 #include "PauseMenuScript.h"
+#include "OptionsMenuScript.h"
 
 /*
     UIButtonScript
@@ -25,7 +26,10 @@ public:
         LoadScene = 1,
         QuitGame = 2,
         ResumeGame = 3,
-        Options = 4
+        Options = 4,
+        CloseOptions = 5,
+        MasterVolumeUp = 6,
+        MasterVolumeDown = 7
     };
 
     int actionType = 0;
@@ -116,6 +120,22 @@ public:
                 shouldTrigger = true; triggeredAction = 2;
                 std::cout << "[UIButtonScript] Key '2' pressed!\n";
             }
+            else if (Input->IsKeyTriggered(keys::NUM4)) {
+                shouldTrigger = true; triggeredAction = 4;
+                std::cout << "[UIButtonScript] Key '4' pressed!\n";
+            }
+            else if (Input->IsKeyTriggered(keys::NUM5)) {
+                shouldTrigger = true; triggeredAction = 5;
+                std::cout << "[UIButtonScript] Key '5' pressed!\n";
+            }
+            else if (Input->IsKeyTriggered(keys::NUM6)) {
+                shouldTrigger = true; triggeredAction = 6;
+                std::cout << "[UIButtonScript] Key '6' pressed!\n";
+            }
+            else if (Input->IsKeyTriggered(keys::NUM7)) {
+                shouldTrigger = true; triggeredAction = 7;
+                std::cout << "[UIButtonScript] Key '7' pressed!\n";
+            }
         }
 
         if (shouldTrigger && triggeredAction != -1) {
@@ -166,7 +186,27 @@ private:
             break;
 
         case ButtonAction::Options:
-            std::cout << "[UIButtonScript] Action: Options (stub)\n";
+            std::cout << "[UIButtonScript] Action: OPEN Options\n";
+            if (OptionsMenuScript::instance)
+                OptionsMenuScript::instance->OpenOptions();
+            break;
+
+        case ButtonAction::CloseOptions:
+            std::cout << "[UIButtonScript] Action: CLOSE Options\n";
+            if (OptionsMenuScript::instance)
+                OptionsMenuScript::instance->CloseOptions();
+            break;
+
+        case ButtonAction::MasterVolumeUp:
+            std::cout << "[UIButtonScript] Action: VolumeDown\n";
+            if (OptionsMenuScript::instance)
+                OptionsMenuScript::instance->DecreaseMasterVolume();
+            break;
+
+        case ButtonAction::MasterVolumeDown:
+            std::cout << "[UIButtonScript] Action: VolumeUp\n";
+           if (OptionsMenuScript::instance)
+                OptionsMenuScript::instance->IncreaseMasterVolume();
             break;
 
         default:
@@ -187,12 +227,15 @@ private:
 
     std::string GetActionName() {
         switch (static_cast<ButtonAction>(actionType)) {
-        case ButtonAction::None:       return "None";
-        case ButtonAction::LoadScene:  return "LoadScene";
-        case ButtonAction::QuitGame:   return "QuitGame";
-        case ButtonAction::ResumeGame: return "ResumeGame";
-        case ButtonAction::Options:    return "Options";
-        default:                       return "Unknown";
+        case ButtonAction::None:                    return "None";
+        case ButtonAction::LoadScene:               return "LoadScene";
+        case ButtonAction::QuitGame:                return "QuitGame";
+        case ButtonAction::ResumeGame:              return "ResumeGame";
+        case ButtonAction::Options:                 return "Options";
+        case ButtonAction::CloseOptions:            return "Back";
+        case ButtonAction::MasterVolumeDown:        return "MasterVolumeDown";
+        case ButtonAction::MasterVolumeUp:          return "MasterVolumeUp";
+        default:                                    return "Unknown";
         }
     }
 
