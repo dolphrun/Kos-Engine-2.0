@@ -66,3 +66,5 @@
 
 #include "QuitWindowConfirmScript.h"
 #include "QuitMenuConfirmScript.h"
+
+#include "TurnOffLight.h"
