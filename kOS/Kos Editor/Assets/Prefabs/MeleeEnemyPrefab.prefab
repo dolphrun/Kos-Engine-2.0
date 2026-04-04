@@ -107,12 +107,12 @@
             }
         },
         "EnemyManagerScript": {
-            "enemyHealth": 5,
-            "enemyMovementSpeed": 5.0,
+            "enemyHealth": 40,
+            "enemyMovementSpeed": 8.0,
             "enemyType": "Melee",
             "enemyAttackRange": 8.0,
             "enemyRangedAttackRange": 15.0,
-            "enemyChaseRange": 25.0,
+            "enemyChaseRange": 50.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
             "enemyBulletPrefab": "66adf257-5e24-d6e6-4321-1cf241444414",

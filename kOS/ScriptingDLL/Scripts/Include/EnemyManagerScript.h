@@ -64,7 +64,8 @@ public:
 	float lungeGravity = 15.f;       // Fake gravity pulling them down
 
 	float attackCooldown = 2.0f;
-	float currentAttackCooldown = 0.f;
+	float currentAttackCooldown = 1.5f;
+	float attackFailsafeTimer = 0.f;
 
 	utility::GUID enemyHurtboxPosition;
 	ecs::EntityID enemyHurtboxPositionID;
@@ -82,7 +83,7 @@ public:
 
 	bool applyDeferredLungeForce = false;
 	glm::vec3 deferredLungeForce = glm::vec3(0.f);
-	 
+
 	//ATTACK SFX
 	std::vector<utility::GUID>meleeEnemyAttackSfxGUID;
 	std::vector<utility::GUID>tankEnemyAttackSfxGUID;
@@ -182,10 +183,10 @@ public:
 	void TakeDamage(int damage, const std::string& element);
 	void Die();
 
-	REFLECTABLE(EnemyManagerScript, enemyHealth, enemyMovementSpeed, enemyType, enemyAttackRange, enemyRangedAttackRange, enemyChaseRange, playerToChase, 
+	REFLECTABLE(EnemyManagerScript, enemyHealth, enemyMovementSpeed, enemyType, enemyAttackRange, enemyRangedAttackRange, enemyChaseRange, playerToChase,
 		enemyHurtboxPrefab, enemyBulletPrefab, enemyHurtboxPosition, shieldHealth, shieldElement, shieldVisualObject, tankAoePrefab, isLunging, lungeDuration,
-		lungeForwardSpeed, lungeUpwardSpeed, lungeGravity, attackCooldown, enemyHurtVFXPrefab, enemyAttackSfxGUID,enemyWalkSfxGUID, enemyHurtSfxPool
-	, meleeEnemyAttackSfxGUID, rangeEnemyAttackSfxGUID, tankEnemyAttackSfxGUID, meleeEnemyHurtSfxGUID, rangedEnemyHurtSfxGUID, tankEnemyHurtSfxGUID, meleeEnemyDeathSfxGUID, rangedEnemyDeathSfxGUID, tankEnemyDeathSfxGUID, tankShieldBlockSfxGUID);
+		lungeForwardSpeed, lungeUpwardSpeed, lungeGravity, attackCooldown, enemyHurtVFXPrefab, enemyAttackSfxGUID, enemyWalkSfxGUID, enemyHurtSfxPool
+		, meleeEnemyAttackSfxGUID, rangeEnemyAttackSfxGUID, tankEnemyAttackSfxGUID, meleeEnemyHurtSfxGUID, rangedEnemyHurtSfxGUID, tankEnemyHurtSfxGUID, meleeEnemyDeathSfxGUID, rangedEnemyDeathSfxGUID, tankEnemyDeathSfxGUID, tankShieldBlockSfxGUID);
 };
 
 // --- IMPLEMENTATION ---
@@ -288,10 +289,6 @@ inline void EnemyManagerScript::Update() {
 			//navMeshPtr->AddAgent(agentid, entity, enemyTransform->WorldTransformation.position, capsule->capsule.radius, capsule->capsule.height);
 		}
 	}
-
-	static float deathSfxCooldown = 0.f;
-	if (deathSfxCooldown > 0.f)
-		deathSfxCooldown -= ecsPtr->m_GetDeltaTime();
 
 	// Cooldown for lunging
 	if (currentAttackCooldown > 0.f) {
@@ -406,6 +403,7 @@ inline void EnemyManagerScript::Update() {
 					enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AnimationFinished", animComp, enemyController);
 					enemyIsAttacking = false;
 					attackHurtboxIsSpawn = false;
+					attackFailsafeTimer = 0.f;
 				}
 			}
 		}
@@ -415,11 +413,13 @@ inline void EnemyManagerScript::Update() {
 		// SWITCH DISTANCE BASED ON STRING
 		float currentActiveRange = (enemyType == "Ranged") ? enemyRangedAttackRange : enemyAttackRange;
 
-		bool forceTankCommit = (enemyType == "Tank" && enemyIsAttacking);
+		bool forceCommit = enemyIsAttacking;
 
-		// --- FIX: MUST HAVE LINE OF SIGHT TO ATTACK ---
-		if (((glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= currentActiveRange && currentAttackCooldown <= 0.f) && hasLineOfSight) || forceTankCommit) {
-			if (!enemyIsAttacking || enemyType != "Tank") {
+		// MUST HAVE LOS PLS
+		if (((glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= currentActiveRange && currentAttackCooldown <= 0.f) && hasLineOfSight) || forceCommit) {
+
+			// LOCK DA TRIGGER
+			if (!enemyIsAttacking) {
 				enemyIsAttacking = true;
 				if (animComp)
 				{
@@ -439,7 +439,7 @@ inline void EnemyManagerScript::Update() {
 				enemyController->PlayOverlay("Chasing", animComp, 0.1f, 0.5f);
 				playerWentOutOfAttackRange = false;
 			}
-			
+
 		}
 
 		if (enemyIsAttacking) {
@@ -448,24 +448,17 @@ inline void EnemyManagerScript::Update() {
 			// ADD ENEMY ATTACKING ANIMATION
 
 			// FORCE STOP for Ranged enemies
-			if (enemyType == "Ranged") {
+			if (enemyType == "Ranged" || enemyType == "Tank") {
 				navMeshPtr->MoveAgent(agentid, enemyTransform->WorldTransformation.position);
 			}
 
-			// BEFORE CODE WORKS, I TESTED
-			// if (CHECK IF ANIMATION OF THE ENEMY IS AFTER THE ENEMY CLAWED OR SOME SHIT (e.g: ANIMATION TIMER IS AT 2s MARK)) {
-					//std::shared_ptr<R_Scene> enemyHurtbox = resource->GetResource<R_Scene>(enemyHurtboxPrefab);
-
-					//if (enemyHurtbox) {
-					//	std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-					//	ecs::EntityID enemyHurtboxID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyHurtboxPrefab);
-
-					//	if (auto* enemyHurtboxTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxID)) {
-					//		enemyHurtboxTransform->LocalTransformation.position = enemyTransform->LocalTransformation.position + direction;
-					//	}
-					//}
-			// }
-
+			// FAILSAFE
+			attackFailsafeTimer += ecsPtr->m_GetDeltaTime();
+			if (attackFailsafeTimer >= 2.5f) {
+				enemyIsAttacking = false;
+				attackHurtboxIsSpawn = false;
+				attackFailsafeTimer = 0.f;
+			}
 
 			// if (CHECK IF ANIMATION IS DONE) {
 			//		enemyIsAttacking = false;
@@ -508,6 +501,8 @@ inline void EnemyManagerScript::Update() {
 							// SWITCH SPAWN BEHAVIOR BASED ON STRING
 							if (enemyType == "Ranged" && stateName == "Attacking")
 							{
+								currentAttackCooldown = attackCooldown;
+
 								// Ranged: Spawn Bullet
 								std::shared_ptr<R_Scene> bullet = resource->GetResource<R_Scene>(enemyBulletPrefab);
 
@@ -780,23 +775,23 @@ inline void EnemyManagerScript::Die() {
 		enemyController->SetState("Death", animComp);
 	}
 
-	static float deathSfxCooldown = 0.f;
+	utility::GUID deathSfx = GetDeathSFX();
 
-	if (deathSfxCooldown <= 0.f) {
-		deathSfxCooldown = 0.15f;
-
-		utility::GUID deathSfx = GetDeathSFX();
-		if (!deathSfx.Empty()) {
-			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-				for (auto& af : ac->audioFiles) {
-					if (af.audioGUID == deathSfx && af.isSFX) {
-						af.requestPlay = true;
-						break;
-					}
+	if (!deathSfx.Empty())
+	{
+		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity))
+		{
+			for (auto& af : ac->audioFiles)
+			{
+				if (af.audioGUID == deathSfx && af.isSFX)
+				{
+					af.requestPlay = true;
+					break;
 				}
 			}
 		}
 	}
+
 
 	isDead = true;
 
