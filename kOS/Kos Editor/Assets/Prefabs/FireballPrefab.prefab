@@ -42,7 +42,8 @@
                     "y": 2.5,
                     "z": 1.0
                 }
-            }
+            },
+            "autoFit": false
         },
         "FirePowerupManagerScript": {
             "fireballSpeed": 40.0,
@@ -137,10 +138,15 @@
                     "start_Lifetime": 1.5,
                     "end_Lifetime": 2.5,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 5.0,
                     "playback_State": 0,
                     "particleFade": 0,
+                    "animationModule": {
+                        "textureGUID": [],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": true,
                         "mode": 0,
@@ -358,10 +364,15 @@
                     "start_Lifetime": 1.0,
                     "end_Lifetime": 2.0,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 5.0,
                     "playback_State": 0,
                     "particleFade": 0,
+                    "animationModule": {
+                        "textureGUID": [],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": true,
                         "mode": 0,

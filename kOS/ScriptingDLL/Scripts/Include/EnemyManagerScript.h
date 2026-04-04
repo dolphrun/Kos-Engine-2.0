@@ -289,6 +289,10 @@ inline void EnemyManagerScript::Update() {
 		}
 	}
 
+	static float deathSfxCooldown = 0.f;
+	if (deathSfxCooldown > 0.f)
+		deathSfxCooldown -= ecsPtr->m_GetDeltaTime();
+
 	// Cooldown for lunging
 	if (currentAttackCooldown > 0.f) {
 		currentAttackCooldown -= ecsPtr->m_GetDeltaTime();
@@ -776,23 +780,23 @@ inline void EnemyManagerScript::Die() {
 		enemyController->SetState("Death", animComp);
 	}
 
-	utility::GUID deathSfx = GetDeathSFX();
+	static float deathSfxCooldown = 0.f;
 
-	if (!deathSfx.Empty())
-	{
-		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity))
-		{
-			for (auto& af : ac->audioFiles)
-			{
-				if (af.audioGUID == deathSfx && af.isSFX)
-				{
-					af.requestPlay = true;
-					break;
+	if (deathSfxCooldown <= 0.f) {
+		deathSfxCooldown = 0.15f;
+
+		utility::GUID deathSfx = GetDeathSFX();
+		if (!deathSfx.Empty()) {
+			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+				for (auto& af : ac->audioFiles) {
+					if (af.audioGUID == deathSfx && af.isSFX) {
+						af.requestPlay = true;
+						break;
+					}
 				}
 			}
 		}
 	}
-
 
 	isDead = true;
 

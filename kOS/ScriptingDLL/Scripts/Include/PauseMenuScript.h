@@ -64,7 +64,6 @@ public:
 
     bool IsPaused() const { return isPaused; }
 
-private:
     void SetPauseMenuActive(bool active) {
         if (auto* t = ecsPtr->GetComponent<TransformComponent>(pauseMenuCanvasID)) {
             t->LocalTransformation.position = active ? originalCanvasPosition : hiddenPosition;

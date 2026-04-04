@@ -37,6 +37,7 @@
 #include "TankAOEScript.h"
 
 #include "Deathzone.h"
+#include "MuzzleFlash.h"
 
 #include "EnemyHealthScript.h"
 #include "AnimationTestScript.h"
@@ -53,3 +54,9 @@
 #include "NextSceneEventColliderScript.h"
 #include "Ability1Script.h"
 #include "EndSceneScript.h"
+#include "OptionsMenuScript.h"
+
+#include "MainMenuCameraScript.h"
+#include "MainMenuBottleScript.h"
+#include "MainMenuHandBlockScript.h"
+#include "FadeTransition.h"
