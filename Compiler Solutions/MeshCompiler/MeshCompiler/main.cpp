@@ -106,23 +106,23 @@ void ParseAnimation(std::string& serializedVertex,Animation& ani) {
 }
 int main(int argc, char* argv[])
 {	
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	//Create window to be displayed
-	GLFWwindow* window = glfwCreateWindow(1.f, 1.f, "GAM300 Graphics test", NULL, NULL);
-	if (window == NULL) {
-		std::cout << "Failed to create window";
-		glfwTerminate();
-		return -1;
-	}
-	glfwMakeContextCurrent(window);
-	//Load GLAD
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-		std::cout << "Could not load GLAD";
-		return -1;
-	}
+	//glfwInit();
+	//glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	//glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+	//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	////Create window to be displayed
+	//GLFWwindow* window = glfwCreateWindow(1.f, 1.f, "GAM300 Graphics test", NULL, NULL);
+	//if (window == NULL) {
+	//	std::cout << "Failed to create window";
+	//	glfwTerminate();
+	//	return -1;
+	//}
+	//glfwMakeContextCurrent(window);
+	////Load GLAD
+	//if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+	//	std::cout << "Could not load GLAD";
+	//	return -1;
+	//}
 	std::string modelPath{ argv[1] };
 	std::string metaPath{ argv[2] };
 	std::string outputPath{ argv[3] };
