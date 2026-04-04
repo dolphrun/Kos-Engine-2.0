@@ -3,7 +3,11 @@
 #include "Config/pch.h"
 #include "ScriptAdapter/TemplateSC.h"
 #include "PauseMenuScript.h"
-#include "PlayerManagerScript.h"   // needed to write playerCameraSpeedX/Y
+
+
+inline bool  gOptionsMenuActive = false;
+inline float gPlayerCameraSpeedX = 0.65f;
+inline float gPlayerCameraSpeedY = 0.65f;
 
 
 
@@ -56,15 +60,15 @@ public:
     bool wasSfxPlusPressed = false;
 
     // Mouse Sensitivity Slider
-    //utility::GUID mouseSensSliderBarGUID;
-    //ecs::EntityID mouseSensSliderBarID = 0;
-    //utility::GUID mouseSensMinusButtonGUID;
-    //ecs::EntityID mouseSensMinusButtonID = 0;
-    //utility::GUID mousesensPlusButtonGUID;
-    //ecs::EntityID mousesensPlusButtonID = 0;
-    //static int mouseSensLevel;          // 0–10, default 5  (maps to 0.1 – 1.0 speed)
-    //bool wasMouseMinusPressed = false;
-    //bool wasMousePlusPressed = false;
+    utility::GUID mouseSensSliderBarGUID;
+    ecs::EntityID mouseSensSliderBarID = 0;
+    utility::GUID mouseSensMinusButtonGUID;
+    ecs::EntityID mouseSensMinusButtonID = 0;
+    utility::GUID mousesensPlusButtonGUID;
+    ecs::EntityID mousesensPlusButtonID = 0;
+    static int mouseSensLevel;          
+    bool wasMouseMinusPressed = false;
+    bool wasMousePlusPressed = false;
 
     // ---------------------------------------------------------------
     // State
@@ -108,6 +112,7 @@ public:
     void Start() override {
         instance = this;
         isOptionsActive = false;
+        gOptionsMenuActive = false;
 
         // Resolve entity IDs from GUIDs
         optionsMenuCanvasID = ecsPtr->GetEntityIDFromGUID(optionsMenuCanvasGUID);
@@ -125,9 +130,9 @@ public:
         sfxVolumeMinusButtonID = ecsPtr->GetEntityIDFromGUID(sfxVolumeMinusButtonGUID);
         sfxVolumePlusButtonID = ecsPtr->GetEntityIDFromGUID(sfxVolumePlusButtonGUID);
 
-        //mouseSensSliderBarID = ecsPtr->GetEntityIDFromGUID(mouseSensSliderBarGUID);
-        //mouseSensMinusButtonID = ecsPtr->GetEntityIDFromGUID(mouseSensMinusButtonGUID);
-        //mousesensPlusButtonID = ecsPtr->GetEntityIDFromGUID(mousesensPlusButtonGUID);
+        mouseSensSliderBarID = ecsPtr->GetEntityIDFromGUID(mouseSensSliderBarGUID);
+        mouseSensMinusButtonID = ecsPtr->GetEntityIDFromGUID(mouseSensMinusButtonGUID);
+        mousesensPlusButtonID = ecsPtr->GetEntityIDFromGUID(mousesensPlusButtonGUID);
 
         // Cache original options canvas position
         if (auto* t = ecsPtr->GetComponent<ecs::TransformComponent>(optionsMenuCanvasID)) {
@@ -146,14 +151,14 @@ public:
         UpdateMasterSlider();
         UpdateBGMSlider();
         UpdateSFXSlider();
-        //UpdateMouseSlider();
+        UpdateMouseSlider();
 
         // Apply saved sensitivity to player (if the player is already alive)
-        //ApplyMouseSensitivityToPlayer();
+        ApplyMouseSensitivityToPlayer();
 
         std::cout << "[OptionsMenuScript] Start() complete.\n";
         std::cout << "  masterVolumeLevel = " << masterVolumeLevel << "/10\n";
-        //std::cout << "  mouseSensLevel    = " << mouseSensLevel << "/10\n";
+        std::cout << "  mouseSensLevel    = " << mouseSensLevel << "/10\n";
     }
 
     // ---------------------------------------------------------------
@@ -202,19 +207,19 @@ public:
             }
         }
 
-        //// ---- Mouse Sensitivity ----
-        //if (mouseSensMinusButtonID != 0) {
-        //    if (auto* btn = ecsPtr->GetComponent<ecs::ButtonComponent>(mouseSensMinusButtonID)) {
-        //        if (btn->isPressed && !wasMouseMinusPressed) DecreaseMouseSensitivity();
-        //        wasMouseMinusPressed = btn->isPressed;
-        //    }
-        //}
-        //if (mousesensPlusButtonID != 0) {
-        //    if (auto* btn = ecsPtr->GetComponent<ecs::ButtonComponent>(mousesensPlusButtonID)) {
-        //        if (btn->isPressed && !wasMousePlusPressed) IncreaseMouseSensitivity();
-        //        wasMousePlusPressed = btn->isPressed;
-        //    }
-        //}
+        // ---- Mouse Sensitivity ----
+        if (mouseSensMinusButtonID != 0) {
+            if (auto* btn = ecsPtr->GetComponent<ecs::ButtonComponent>(mouseSensMinusButtonID)) {
+                if (btn->isPressed && !wasMouseMinusPressed) DecreaseMouseSensitivity();
+                wasMouseMinusPressed = btn->isPressed;
+            }
+        }
+        if (mousesensPlusButtonID != 0) {
+            if (auto* btn = ecsPtr->GetComponent<ecs::ButtonComponent>(mousesensPlusButtonID)) {
+                if (btn->isPressed && !wasMousePlusPressed) IncreaseMouseSensitivity();
+                wasMousePlusPressed = btn->isPressed;
+            }
+        }
     }
 
     // ---------------------------------------------------------------
@@ -222,6 +227,7 @@ public:
     // ---------------------------------------------------------------
     void OpenOptions() {
         isOptionsActive = true;
+        gOptionsMenuActive = true;
 
         // Hide pause menu via instance
         if (PauseMenuScript::instance)
@@ -237,6 +243,7 @@ public:
 
     void CloseOptions() {
         isOptionsActive = false;
+        gOptionsMenuActive = false;
 
         // Hide options menu
         if (auto* t = ecsPtr->GetComponent<ecs::TransformComponent>(optionsMenuCanvasID)) {
@@ -314,27 +321,27 @@ public:
     }
 
     // ---------------------------------------------------------------
-    // Mouse Sensitivity  (level 1–10 maps to camera speed 0.1–1.0)
+    // Mouse Sensitivity
     // Level 0 is allowed but effectively stops mouse movement entirely;
     // keep minimum at 1 if you prefer a safety floor.
     // ---------------------------------------------------------------
-    //void IncreaseMouseSensitivity() {
-    //    if (mouseSensLevel < 10) {
-    //        mouseSensLevel++;
-    //        ApplyMouseSensitivityToPlayer();
-    //        UpdateMouseSlider();
-    //        std::cout << "[OptionsMenuScript] Mouse Sensitivity: " << mouseSensLevel << "/10\n";
-    //    }
-    //}
+    void IncreaseMouseSensitivity() {
+        if (mouseSensLevel < 10) {
+            mouseSensLevel++;
+            ApplyMouseSensitivityToPlayer();
+            UpdateMouseSlider();
+            std::cout << "[OptionsMenuScript] Mouse Sensitivity: " << mouseSensLevel << "/10\n";
+        }
+    }
 
-    //void DecreaseMouseSensitivity() {
-    //    if (mouseSensLevel > 1) {     // floor at 1 so the player can always look around
-    //        mouseSensLevel--;
-    //        ApplyMouseSensitivityToPlayer();
-    //        UpdateMouseSlider();
-    //        std::cout << "[OptionsMenuScript] Mouse Sensitivity: " << mouseSensLevel << "/10\n";
-    //    }
-    //}
+    void DecreaseMouseSensitivity() {
+        if (mouseSensLevel > 1) {     // floor at 1 so the player can always look around
+            mouseSensLevel--;
+            ApplyMouseSensitivityToPlayer();
+            UpdateMouseSlider();
+            std::cout << "[OptionsMenuScript] Mouse Sensitivity: " << mouseSensLevel << "/10\n";
+        }
+    }
 
 private:
 
@@ -344,13 +351,11 @@ private:
     // Level 5 == 0.5f, same as the default of 0.65f is approximated at level 6/7.
     // Adjust the base multiplier below to taste.
     // ---------------------------------------------------------------
-    //void ApplyMouseSensitivityToPlayer() {
-    //    if (PlayerManagerScript::instance) {
-    //        float speed = mouseSensLevel * 0.1f;   // 0.1 .. 1.0
-    //        PlayerManagerScript::instance->playerCameraSpeedX = speed;
-    //        PlayerManagerScript::instance->playerCameraSpeedY = speed;
-    //    }
-    //}
+    void ApplyMouseSensitivityToPlayer() {
+        float speed = mouseSensLevel * 0.1f;   // 0.1 .. 1.0
+        gPlayerCameraSpeedX = speed;
+        gPlayerCameraSpeedY = speed;
+    }
 
     // ---------------------------------------------------------------
     // Per-slider update helpers
@@ -369,12 +374,12 @@ private:
         ApplySliderVisual(sfxVolumeSliderBarID, sfxVolumeLevel, sfxSliderCache);
     }
 
-  /*  void UpdateMouseSlider() {
+    void UpdateMouseSlider() {
         ApplySliderVisual(mouseSensSliderBarID, mouseSensLevel, mouseSensSliderCache);
-    }*/
+    }
 
     // ---------------------------------------------------------------
-    // Core slider visual logic – now receives its own SliderCache so
+    // Core slider visual logic now receives its own SliderCache so
     // every slider tracks its own original transform independently.
     // ---------------------------------------------------------------
     void ApplySliderVisual(ecs::EntityID sliderBarID, int level, SliderCache& cache) {
@@ -433,6 +438,10 @@ public:
         sfxVolumeMinusButtonGUID, sfxVolumeMinusButtonID,
         sfxVolumePlusButtonGUID, sfxVolumePlusButtonID,
         sfxVolumeLevel,
+        mouseSensSliderBarGUID, mouseSensSliderBarID,
+        mouseSensMinusButtonGUID, mouseSensMinusButtonID,
+        mousesensPlusButtonGUID, mousesensPlusButtonID,
+        mouseSensLevel,
         originalOptionsPosition, hiddenPosition);
 };
 
@@ -441,4 +450,4 @@ inline bool               OptionsMenuScript::isOptionsActive = false;
 inline int                OptionsMenuScript::masterVolumeLevel = 10;
 inline int                OptionsMenuScript::bgmVolumeLevel = 10;
 inline int                OptionsMenuScript::sfxVolumeLevel = 10;
-//inline int                OptionsMenuScript::mouseSensLevel = 5;   // mid-range default
+inline int                OptionsMenuScript::mouseSensLevel = 5;   // mid-range default

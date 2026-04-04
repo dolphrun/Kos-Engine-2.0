@@ -81,7 +81,8 @@
                     "hide": false
                 },
                 "PowerupManagerScript": {
-                    "powerupType": "FIRE"
+                    "powerupType": "FIRE",
+                    "powerupParticlesGUID": "00000000-0000-0000-0000-000000000000"
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -2556,7 +2557,7 @@
                     "absorbLightningVFXPrefab": "c0aa6144-dad2-22b5-9a18-f7305348a895",
                     "absorbAcidVFXPrefab": "f55a0746-4f22-1558-7a37-d7339de62d6f",
                     "absorbingVFXSpawnPoint": "a75b3459-7785-6de7-3d24-0d5616d12a5f",
-                    "muzzleFlashGUID": "7fa59a2b-b738-c1bc-d169-b5cb1f5f7030",
+                    "muzzleFlashPrefab": "00000000-0000-0000-0000-000000000000",
                     "pistolModelObject": "1361fd6e-b3e0-48f2-5ab3-1599fcc561a4",
                     "fireSwordModelObject": "97f3df14-8a82-5e80-3c27-f1cf8b91d87e",
                     "lightningModelObject": "8b880c16-1807-cd1e-54c3-42cdda789d3a",
@@ -2572,7 +2573,8 @@
                         {
                             "cinematicWaypointObjects": "29bdeebe-363a-8d92-260c-b26098f7a5c7"
                         }
-                    ]
+                    ],
+                    "muzzleFlashLocationObject": "00000000-0000-0000-0000-000000000000"
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,
@@ -4821,7 +4823,7 @@
                             }
                         },
                         "UIButtonScript": {
-                            "actionType": 0,
+                            "actionType": 4,
                             "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": false,
@@ -6891,7 +6893,8 @@
                     "hide": false
                 },
                 "PowerupManagerScript": {
-                    "powerupType": "ACID"
+                    "powerupType": "ACID",
+                    "powerupParticlesGUID": "00000000-0000-0000-0000-000000000000"
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -7922,7 +7925,8 @@
                     "hide": false
                 },
                 "PowerupManagerScript": {
-                    "powerupType": "LIGHTNING"
+                    "powerupType": "LIGHTNING",
+                    "powerupParticlesGUID": "00000000-0000-0000-0000-000000000000"
                 },
                 "TransformComponent": {
                     "WorldTransformation": {

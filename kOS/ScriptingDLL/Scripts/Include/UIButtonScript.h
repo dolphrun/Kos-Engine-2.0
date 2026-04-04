@@ -507,17 +507,17 @@ private:
                 OptionsMenuScript::instance->DecreaseSFXVolume();
             break;
 
-        //case ButtonAction::MouseSensitivityUp:
-        //    std::cout << "[UIButtonScript] Action: MouseSensitivityUp\n";
-        //    if (OptionsMenuScript::instance)
-        //        OptionsMenuScript::instance->IncreaseMouseSensitivity();
-        //    break;
+        case ButtonAction::MouseSensitivityUp:
+            std::cout << "[UIButtonScript] Action: MouseSensitivityUp\n";
+            if (OptionsMenuScript::instance)
+                OptionsMenuScript::instance->IncreaseMouseSensitivity();
+            break;
 
-        //case ButtonAction::MouseSensitivityDown:
-        //    std::cout << "[UIButtonScript] Action: MouseSensitivityDown\n";
-        //    if (OptionsMenuScript::instance)
-        //        OptionsMenuScript::instance->DecreaseMouseSensitivity();
-        //    break;
+        case ButtonAction::MouseSensitivityDown:
+            std::cout << "[UIButtonScript] Action: MouseSensitivityDown\n";
+            if (OptionsMenuScript::instance)
+                OptionsMenuScript::instance->DecreaseMouseSensitivity();
+            break;
 
         default:
             std::cout << "[UIButtonScript] Unknown action: " << static_cast<int>(action) << "\n";
