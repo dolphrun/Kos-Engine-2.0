@@ -61,9 +61,9 @@
 #include "MainMenuBottleScript.h"
 #include "MainMenuHandBlockScript.h"
 #include "FadeTransition.h"
-
+#include "CreditsScript.h"
 #include "SplashScreenScript.h"
-
+#include "MenuPt2Script.h"
 #include "QuitWindowConfirmScript.h"
 #include "QuitMenuConfirmScript.h"
 

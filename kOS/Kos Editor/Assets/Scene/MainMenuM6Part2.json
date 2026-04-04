@@ -13,7 +13,7 @@
             "cameraType": 0,
             "fov": 75.0,
             "nearPlane": 0.05000000074505806,
-            "farPlane": 200.0,
+            "farPlane": 104.19999694824219,
             "size": {
                 "x": 1600.0,
                 "y": 900.0
@@ -70,6 +70,55 @@
                     "x": 0.9999997615814209,
                     "y": 0.9999997019767761,
                     "z": 0.999994695186615
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "89af7d27-d256-746a-43f2-2163d8cbe41a",
+        "MenuPt2Script": {},
+        "NameComponent": {
+            "entityName": "Script",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
                 }
             }
         }
