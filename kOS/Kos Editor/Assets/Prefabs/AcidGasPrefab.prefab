@@ -32,10 +32,19 @@
             "start_Lifetime": 3.0,
             "end_Lifetime": 3.0,
             "lifetime_Random_Enable": true,
-            "textureGUID": "00000000-0000-0000-0000-000000000000",
             "start_Velocity": 2.5,
             "playback_State": 0,
             "particleFade": 0,
+            "animationModule": {
+                "textureGUID": [
+                    {
+                        "textureGUID": "fb387d85-750b-0ff7-7e63-5a1fedad99ca"
+                    }
+                ],
+                "framesPerSecond": 24,
+                "isLooping": false,
+                "isPlaying": true
+            },
             "velocityModule": {
                 "enabled": false,
                 "mode": 0,
@@ -84,9 +93,9 @@
                 "enabled": true,
                 "start_Color": {
                     "x": 0.0,
-                    "y": 0.8500000238418579,
+                    "y": 1.0,
                     "z": 0.25,
-                    "w": 0.5
+                    "w": 1.0
                 },
                 "end_Color": {
                     "x": 0.0,
@@ -97,18 +106,18 @@
             },
             "sizeModule": {
                 "enabled": true,
-                "start_Size": 2.0,
-                "end_Size": 1.0
+                "start_Size": 3.0,
+                "end_Size": 1.5
             },
             "rotationModule": {
-                "enabled": false,
+                "enabled": true,
                 "start_Rotation": {
                     "x": 0.0,
                     "y": 0.0,
                     "z": 0.0
                 },
                 "end_Rotation": {
-                    "x": 0.0,
+                    "x": 360.0,
                     "y": 0.0,
                     "z": 0.0
                 },

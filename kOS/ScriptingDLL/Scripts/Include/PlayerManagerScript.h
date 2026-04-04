@@ -6,6 +6,7 @@
 #include "LevelCompleteScript.h"
 #include "ScoreManagerScript.h"
 #include "RoomLockScript.h"
+#include "OptionsMenuScript.h"
 
 // --- FORWARD DECLARATIONS ---
 // Tell the compiler these classes exist first, preventing circular dependency crashes
@@ -129,6 +130,7 @@ public:
 	utility::GUID healthUIObject;
 	utility::GUID loseScreenCanvasObject;
 	utility::GUID winScreenCanvasObject;
+	utility::GUID muzzleFlashLocationObject;
 
 	ecs::EntityID playerCameraObjectID;
 	ecs::EntityID playerGunCameraObjectID;
@@ -141,6 +143,7 @@ public:
 	ecs::EntityID loseScreenCanvasID;
 	ecs::EntityID winScreenCanvasID;
 	ecs::EntityID fireDashID;
+	ecs::EntityID muzzleFlashLocationID;
 
 	ecs::EntityID gameUICanvasID = -1;
 	utility::GUID gameUICanvasObject;
@@ -165,8 +168,7 @@ public:
 	utility::GUID absorbingVFXSpawnPoint;
 	ecs::EntityID absorbVFXSpawnObjectID;
 
-	utility::GUID muzzleFlashGUID;
-	ecs::EntityID muzzleFlashID;
+	utility::GUID muzzleFlashPrefab;
 	bool isMuzzleActive = false;
 	float muzzleTimer = 0.35f;
 	float muzzleCurrTimer = muzzleTimer;
@@ -200,6 +202,11 @@ public:
 	float currentReloadTimer = 0.0f;
 
 	bool autoReload = true;
+
+	//Absorbing details
+	bool isAbsorbing = false;
+	float absorbResetDuration = 0.3f;
+	float absorbTimer = 0.f;
 
 	//Acid Shield Pref
 	float acidShieldCost = 10.f; 
@@ -439,8 +446,8 @@ public:
 		bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
 		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, fireEquipSfxGUID, fireAbsorbSfxGUID, acidEquipSfxGUID, acidShieldSfxGuid, lightningSlowStartSfxGUID,lightningSlowEndSfxGUID, lightningGunSfxGUID,
 		lightningAbsorbSfxGUID, lightningEquipSfxGUID, acidGrenadeGunSfxGUID, acidAbsorbSfxGUID, pauseMenuOpenSfxGUID, pauseMenuCloseSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
-		winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashGUID, pistolModelObject,
-		fireSwordModelObject, lightningModelObject, acidModelObject, gameUICanvasObject, cinematicWaypointObjects)
+		winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashPrefab, pistolModelObject,
+		fireSwordModelObject, lightningModelObject, acidModelObject, gameUICanvasObject, cinematicWaypointObjects, muzzleFlashLocationObject)
 
 		/*REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 			bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
@@ -478,6 +485,7 @@ inline void PlayerManagerScript::Start() {
 	playerArmModelObjectID = ecsPtr->GetEntityIDFromGUID(playerArmModelObject);
 	playerGroundCheckObjectID = ecsPtr->GetEntityIDFromGUID(playerGroundCheckObject);
 	absorbVFXSpawnObjectID = ecsPtr->GetEntityIDFromGUID(absorbingVFXSpawnPoint);
+	muzzleFlashLocationID = ecsPtr->GetEntityIDFromGUID(muzzleFlashLocationObject);
 
 	// PISTOL
 	if (pistolModelObject != utility::GUID{}) {
@@ -547,8 +555,6 @@ inline void PlayerManagerScript::Start() {
 				currAnimState->Trigger("ForcedEntry", animComp, playerController);
 		}
 	};
-
-	muzzleFlashID = ecsPtr->GetEntityIDFromGUID(muzzleFlashGUID);
 
 	auto& profile = graphics->postProcessProfile;
 	Vigniette* vig = reinterpret_cast<Vigniette*>(profile->GetEffect(PPT_Vigniette));
@@ -667,40 +673,41 @@ inline void PlayerManagerScript::Update() {
 		}
 
 	}
+	if (OptionsMenuScript::isOptionsActive) { return; }
+		if (Input->IsKeyTriggered(keys::ESC)) {
+			if (auto* pauseManager = ecsPtr->GetComponent<PauseMenuScript>(pauseMenuManagerID)) {
+				pauseManager->TogglePause();
 
-	if (Input->IsKeyTriggered(keys::ESC)) {
-		if (auto* pauseManager = ecsPtr->GetComponent<PauseMenuScript>(pauseMenuManagerID)) {
-			pauseManager->TogglePause();
+				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 
-			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+					utility::GUID targetMenuSfx = pauseManager->isPaused
+						? pauseMenuOpenSfxGUID   //  opened
+						: pauseMenuCloseSfxGUID; //  closed
 
-				utility::GUID targetMenuSfx = pauseManager->isPaused
-					? pauseMenuOpenSfxGUID   //  opened
-					: pauseMenuCloseSfxGUID; //  closed
+					if (!targetMenuSfx.Empty()) {
+						for (auto& af : ac->audioFiles) {
+							if (af.audioGUID == targetMenuSfx && af.isSFX) {
+								af.requestPlay = true;
+								break;
+							}
+						}
+					}
 
-				if (!targetMenuSfx.Empty()) {
+				}
+				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 					for (auto& af : ac->audioFiles) {
-						if (af.audioGUID == targetMenuSfx && af.isSFX) {
-							af.requestPlay = true;
+						if (af.audioGUID == gunSfxGUID_1) {
+							if (af.channel) {
+								FMOD::Channel* ch = static_cast<FMOD::Channel*>(af.channel);
+								ch->setPaused(pauseManager->isPaused); // true = pause, false = resume
+							}
 							break;
 						}
 					}
 				}
-
-			}
-			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-				for (auto& af : ac->audioFiles) {
-					if (af.audioGUID == gunSfxGUID_1) {
-						if (af.channel) {
-							FMOD::Channel* ch = static_cast<FMOD::Channel*>(af.channel);
-							ch->setPaused(pauseManager->isPaused); // true = pause, false = resume
-						}
-						break;
-					}
-				}
 			}
 		}
-	}
+
 
 
 	if (currPlayerHitPoints <= 0 && !LoseScreenScript::isLoseScreenActive) {
@@ -851,13 +858,13 @@ inline void PlayerManagerScript::Update() {
 		return; // Skip further processing while the timer is active
 	}
 
-	if (muzzleCurrTimer >= 0.f) {
-		muzzleCurrTimer -= ecsPtr->m_GetDeltaTime();
+	//if (muzzleCurrTimer >= 0.f) {
+	//	muzzleCurrTimer -= ecsPtr->m_GetDeltaTime();
 
-		if (muzzleCurrTimer <= 0.f) {
-			ecsPtr->SetActive(muzzleFlashID, false);
-		}
-	}
+	//	if (muzzleCurrTimer <= 0.f) {
+	//		ecsPtr->SetActive(muzzleFlashID, false);
+	//	}
+	//}
 
 	// Absorb VFX auto delete timer
 	if (absorbVFXTimer > 0.f) {
@@ -1786,6 +1793,24 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			chro->blueOffset = 0.f;
 		}
 	}
+	
+	//Absorb Frame Logic
+	auto* absorbParticles = ecsPtr->GetComponent<ParticleComponent>(absorbVFXSpawnObjectID);
+
+	if (absorbParticles)
+	{
+		absorbParticles->trailingModule.endPoint = projectilePointTransform->WorldTransformation.position;
+		
+		
+		if (absorbTimer >= absorbResetDuration)
+		{
+			absorbParticles->playback_State = PlayState::STOP;
+		}
+		else
+		{
+			absorbTimer += ecsPtr->m_GetDeltaTime();
+		}
+	}
 
 	// INTERACT
 	if (Input->IsKeyTriggered(keys::E)) {
@@ -1801,10 +1826,29 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 			if (hit.entityID != 9999999 && ecsPtr->GetComponent<NameComponent>(hit.entityID)->entityTag == "Powerup") {
 				if (auto* powerupComp = ecsPtr->GetComponent<PowerupManagerScript>(hit.entityID)) {
-					hasAbsorbed = true;
-					ScoreManagerScript::AddElementAbsorbed();
+					if (powerupComp->powerupActive) {
+						hasAbsorbed = true;
+						ScoreManagerScript::AddElementAbsorbed();
+					}
 
-					if (powerupComp->powerupType == "FIRE") {
+					//Absorb Particle Logic
+					/// Get position of hit entity iD
+					/// Set start position of particle component of player to be hit 
+					/// Set end position every frame of particle component to be player hand model
+					/// Dynamic trail on by default
+					/// Speed should be relatively high
+					if (absorbParticles && powerupComp->powerupActive)
+					{
+						if (auto* absorbPosition = ecsPtr->GetComponent<TransformComponent>(hit.entityID))
+						{
+							absorbParticles->trailingModule.startPoint = absorbPosition->WorldTransformation.position;
+							absorbParticles->playback_State = PlayState::PLAY;
+							absorbTimer = 0.f;
+						}
+					}
+					
+
+					if (powerupComp->powerupType == "FIRE" && powerupComp->powerupActive) {
 						//playerPowerupHeld = Powerup::FIRE; //DELETE THIS WHEN ANIM FINISH
 						//SwapWeaponModel(Powerup::FIRE); //DELETE THIS WHEN ANIM FINISH
 						pendingPowerup = Powerup::FIRE;
@@ -1827,8 +1871,16 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 						chro->redOffset = 0.015f;
 						chro->greenOffset = -0.015f;
 						chro->blueOffset = 0.f;
+
+						if (absorbParticles)
+						{
+							absorbParticles->colorModule.start_Color = glm::vec4{ 1.f,0.2f,0.2f,1.f };
+							absorbParticles->colorModule.end_Color = glm::vec4{ 1.f,0.5f,0.f,1.f };
+							absorbParticles->trail_Color = glm::vec4{ 1.f,1.f,0.f,1.f };
+						}
+							
 					}
-					else if (powerupComp->powerupType == "ACID") {
+					else if (powerupComp->powerupType == "ACID" && powerupComp->powerupActive) {
 						//playerPowerupHeld = Powerup::ACID;//DELETE THIS WHEN ANIM FINISH
 						//SwapWeaponModel(Powerup::ACID);//DELETE THIS WHEN ANIM FINISH
 						pendingPowerup = Powerup::ACID;
@@ -1850,9 +1902,16 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 						chro->redOffset = 0.015f;
 						chro->greenOffset = -0.015f;
 						chro->blueOffset = 0.f;
-					}
 
-					else if (powerupComp->powerupType == "LIGHTNING")
+
+						if (absorbParticles)
+						{
+							absorbParticles->colorModule.start_Color = glm::vec4{ 0.f,0.4f,0.2f,1.f };
+							absorbParticles->colorModule.end_Color = glm::vec4{ 0.f,0.6f,0.f,1.f };
+							absorbParticles->trail_Color = glm::vec4{ 0.f,1.f,0.f,1.f };
+						}
+					}
+					else if (powerupComp->powerupType == "LIGHTNING" && powerupComp->powerupActive)
 					{
 						//playerPowerupHeld = Powerup::LIGHTNING;//DELETE THIS WHEN ANIM FINISH
 						//SwapWeaponModel(Powerup::LIGHTNING);//DELETE THIS WHEN ANIM FINISH
@@ -1876,10 +1935,15 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 						chro->redOffset = 0.015f;
 						chro->greenOffset = -0.015f;
 						chro->blueOffset = 0.f;
+
+
+						if (absorbParticles)
+						{
+							absorbParticles->colorModule.start_Color = glm::vec4{ 0.f,0.3f,0.3f,1.f };
+							absorbParticles->colorModule.end_Color = glm::vec4{ 0.f,0.6f,0.6f,1.f };
+							absorbParticles->trail_Color = glm::vec4{ 0.f,1.f,1.f,1.f };
+						}
 					}
-
-
-
 
 					//if (powerupComp->powerupType == "FIRE") {
 					//	playerPowerupHeld = Powerup::FIRE;
@@ -1897,46 +1961,51 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 					//}
 
-					currMana = maxMana;
+					if (powerupComp->powerupActive) {
+						currMana = maxMana;
 
 
-					utility::GUID selectedVFX;
+						utility::GUID selectedVFX;
 
-					if (powerupComp->powerupType == "FIRE")
-						selectedVFX = absorbFireVFXPrefab;
-					else if (powerupComp->powerupType == "ACID")
-						selectedVFX = absorbAcidVFXPrefab;
-					else if (powerupComp->powerupType == "LIGHTNING")
-						selectedVFX = absorbLightningVFXPrefab;
+						if (powerupComp->powerupType == "FIRE")
+							selectedVFX = absorbFireVFXPrefab;
+						else if (powerupComp->powerupType == "ACID")
+							selectedVFX = absorbAcidVFXPrefab;
+						else if (powerupComp->powerupType == "LIGHTNING")
+							selectedVFX = absorbLightningVFXPrefab;
 
-					if (selectedVFX != utility::GUID{}) {
-						if (activeAbsorbVFXID != 0) {
-							ecsPtr->DeleteEntity(activeAbsorbVFXID);
-							activeAbsorbVFXID = 0;
+						if (selectedVFX != utility::GUID{}) {
+							if (activeAbsorbVFXID != 0) {
+								ecsPtr->DeleteEntity(activeAbsorbVFXID);
+								activeAbsorbVFXID = 0;
+							}
+
+							std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+							ecs::EntityID absorbVFXID = DuplicatePrefabIntoScene<R_Scene>(currentScene, selectedVFX);
+
+							auto* spawnTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXSpawnObjectID);
+							if (auto* vfxTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXID)) {
+								vfxTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
+								vfxTf->LocalTransformation.rotation = spawnTf->WorldTransformation.rotation;
+							}
+
+							activeAbsorbVFXID = absorbVFXID;
+							absorbVFXTimer = absorbVFXDuration;
 						}
 
-						std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-						ecs::EntityID absorbVFXID = DuplicatePrefabIntoScene<R_Scene>(currentScene, selectedVFX);
-
-						auto* spawnTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXSpawnObjectID);
-						if (auto* vfxTf = ecsPtr->GetComponent<TransformComponent>(absorbVFXID)) {
-							vfxTf->LocalTransformation.position = spawnTf->WorldTransformation.position;
-							vfxTf->LocalTransformation.rotation = spawnTf->WorldTransformation.rotation;
-						}
-
-						activeAbsorbVFXID = absorbVFXID;
-						absorbVFXTimer = absorbVFXDuration;
-					}
-
-					if (animComp && hasAbsorbed)
-					{
-						if (animComp->m_currentStateID)
+						if (animComp && hasAbsorbed)
 						{
-							//playerController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("hasAbsorbed", animComp, playerController);
-							playerController->SetState("Absorbing",animComp);
-							hasAbsorbed = false;
+							if (animComp->m_currentStateID)
+							{
+								playerController->SetState("Absorbing", animComp);
+								hasAbsorbed = false;
+							}
 						}
+
+						// THIS LINE ALWAYS HAS TO BE LAST OK
+						powerupComp->TurnOffPowerup();
 					}
+
 				}
 			}
 		}
@@ -1976,8 +2045,18 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			if (auto* bulletScript = ecsPtr->GetComponent<BulletLogic>(bulletID))
 				bulletScript->direction = GetConvergedDirection();
 
-			ecsPtr->SetActive(muzzleFlashID, true);
-			muzzleCurrTimer = muzzleTimer;
+
+
+			//std::shared_ptr<R_Scene> muzzleFlash = resource->GetResource<R_Scene>(muzzleFlashPrefab);
+			//if (muzzleFlash) {
+			//	std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+			//	ecs::EntityID muzzleFlashID = DuplicatePrefabIntoScene<R_Scene>(currentScene, muzzleFlashPrefab);
+
+			//	if (auto* muzzleFlashTransform = ecsPtr->GetComponent<TransformComponent>(muzzleFlashID))
+			//		muzzleFlashTransform->LocalTransformation.position = ecsPtr->GetComponent<TransformComponent>(muzzleFlashLocationID)->WorldTransformation.position;
+			//}
+
+
 
 			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 				for (auto& af : ac->audioFiles) {
@@ -2339,7 +2418,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 
 		if (playerPowerupHeld == Powerup::FIRE && fireCurrMovementCooldown <= 0.f) {
 			ScoreManagerScript::AddAbilityUsed();
-		
+
 			std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
 			ecs::EntityID fireDashID = DuplicatePrefabIntoScene<R_Scene>(currentScene, fireDashPrefab);
 			ecs::EntityID parentID = entity;
@@ -2349,7 +2428,7 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 				vfxTf->LocalTransformation.position = glm::vec3(1.f, 1.f, 0.f);  // offset
 				vfxTf->LocalTransformation.rotation = glm::vec3(0.f, 0.f, 0.f);
 			}
-				
+
 			//fireDashVfxTimer = fireDashVfxDuration;
 			//ecsPtr->SetActive(fireDashID, true);
 
@@ -2372,9 +2451,9 @@ inline void PlayerManagerScript::PlayerCombatControls() {
 			}
 			// ADD SFX
 
-			
+
 		}
-		
+
 		//Acid SHield
 		else if (playerPowerupHeld == Powerup::ACID && acidCurrShieldCooldown <= 0.f) {
 			ScoreManagerScript::AddAbilityUsed();

@@ -1062,90 +1062,6 @@ void TrailRenderer::InitTrailRendererMeshes()
 	glBindVertexArray(0);
 }
 
-//void TrailRenderer::BuildTrailMesh(
-//	const std::vector<BasicTrailData>& trails,
-//	const glm::vec3& cameraPos)
-//{
-//	vertexBuffer.clear();
-//	indexBuffer.clear();
-//
-//	unsigned int indexOffset = 0;
-//
-//	for (const BasicTrailData& trail : trails)
-//	{
-//		if (trail.points.size() < 2)
-//			continue;
-//
-//		for (size_t i = 0; i < trail.points.size() - 1; i++)
-//		{
-//			const auto& p0 = trail.points[i];
-//			const auto& p1 = trail.points[i + 1];
-//
-//			const float l0 = trail.lifetimes[i];
-//			const float l1 = trail.lifetimes[i + 1];
-//
-//			glm::vec3 dir = glm::normalize(p1 - p0);
-//			glm::vec3 toCamera = glm::normalize(cameraPos - p0);
-//			glm::vec3 side = glm::normalize(glm::cross(dir, toCamera));
-//
-//			float t0 = l0 / trail.maxLifetime;
-//			float t1 = l1 / trail.maxLifetime;
-//
-//			float w0 = trail.width * (1.0f - t0);
-//			float w1 = trail.width * (1.0f - t1);
-//
-//			glm::vec3 p0L = p0 - side * w0 * 0.5f;
-//			glm::vec3 p0R = p0 + side * w0 * 0.5f;
-//			glm::vec3 p1L = p1 - side * w1 * 0.5f;
-//			glm::vec3 p1R = p1 + side * w1 * 0.5f;
-//
-//			auto pushVertex = [&](glm::vec3 pos, float alpha)
-//				{
-//					vertexBuffer.insert(vertexBuffer.end(),
-//						{
-//							pos.x, pos.y, pos.z,
-//							trail.color.r,
-//							trail.color.g,
-//							trail.color.b,
-//							alpha
-//						});
-//				};
-//
-//			float alpha0 = 1.0f - t0;
-//			float alpha1 = 1.0f - t1;
-//
-//			pushVertex(p0L, alpha0);
-//			pushVertex(p0R, alpha0);
-//			pushVertex(p1L, alpha1);
-//			pushVertex(p1R, alpha1);
-//
-//			indexBuffer.insert(indexBuffer.end(),
-//				{
-//					indexOffset + 0,
-//					indexOffset + 2,
-//					indexOffset + 3,
-//
-//					indexOffset + 0,
-//					indexOffset + 3,
-//					indexOffset + 1
-//				});
-//
-//			indexOffset += 4;
-//		}
-//	}
-//
-//	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-//	glBufferData(GL_ARRAY_BUFFER,
-//		vertexBuffer.size() * sizeof(float),
-//		vertexBuffer.data(),
-//		GL_DYNAMIC_DRAW);
-//
-//	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-//	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-//		indexBuffer.size() * sizeof(unsigned int),
-//		indexBuffer.data(),
-//		GL_DYNAMIC_DRAW);
-//}
 
 TrailRenderer::TrailInstance TrailRenderer::BuildOrUpdateTrailInstance(
 	const TrailRenderer::BasicTrailData& trail, const glm::vec3& cameraPos, TrailInstance* existingInstance)
@@ -1250,7 +1166,7 @@ void TrailRenderer::RebuildTrailInstances(const glm::vec3& cameraPos)
 	for (size_t j = i; j < trailsToDraw.size(); ++j)
 		trailsToDraw[j].Cleanup();
 
-	trailsToDraw.resize(trailData.size());
+	//trailsToDraw.resize(trailData.size());
 }
 
 void TrailRenderer::Render(Shader& shader, const CameraData& camera)

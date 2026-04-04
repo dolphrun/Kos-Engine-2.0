@@ -50,7 +50,8 @@
                     "y": 4.0,
                     "z": 6.0
                 }
-            }
+            },
+            "autoFit": false
         },
         "NameComponent": {
             "entityName": "Acid Blast Prefab",
@@ -138,10 +139,19 @@
                     "start_Lifetime": 0.5,
                     "end_Lifetime": 0.5,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 5.0,
                     "playback_State": 0,
                     "particleFade": 1,
+                    "animationModule": {
+                        "textureGUID": [
+                            {
+                                "textureGUID": "fb387d85-750b-0ff7-7e63-5a1fedad99ca"
+                            }
+                        ],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": true,
                         "mode": 0,
@@ -359,10 +369,19 @@
                     "start_Lifetime": 0.25,
                     "end_Lifetime": 0.25,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 10.0,
                     "playback_State": 0,
                     "particleFade": 1,
+                    "animationModule": {
+                        "textureGUID": [
+                            {
+                                "textureGUID": "fb387d85-750b-0ff7-7e63-5a1fedad99ca"
+                            }
+                        ],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": true,
                         "mode": 0,
