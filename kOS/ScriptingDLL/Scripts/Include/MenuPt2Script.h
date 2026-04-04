@@ -16,6 +16,8 @@ public:
 
 
 inline void MenuPt2Script::Start() {
+	ecsPtr->SetTimeScale(1.0f);
+	ecsPtr->SetState(RUNNING);
 	Input->HideCursor(false);  // show cursor as soon as this scene starts
 }
 
