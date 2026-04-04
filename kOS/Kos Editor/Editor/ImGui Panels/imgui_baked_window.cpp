@@ -132,8 +132,7 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 				// Attach name
 				//KEEP THIS
 				std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/DepthMap/" + std::to_string(lcComp) + ".dcm";
-				m_graphicsManager.lightRenderer.dcm[0].SaveDepthCubeMap(filepath);
-
+				m_graphicsManager.lightRenderer.dcm[i].SaveDepthCubeMap(filepath);
 
 				//Add and load asset and assign it to light component
 				//Need to change entity itself
@@ -196,11 +195,11 @@ void gui::ImGuiHandler::DrawBakedWindow() {
 					i++;
 					//Getnerate a GUID
 					
-					std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/DepthMap/" + utility::GenerateGUID().GetToString() + ".dcm";
+					std::string filepath = m_assetManager.GetAssetManagerDirectory() + "/DepthMap/" + std::to_string(lcComp) + ".dcm";
 
 					if (!m_ecs.GetComponent<ecs::LightComponent>(lcComp)->bakedLighting)continue;;
 
-					std::cout << i - 1 << '\n';
+					std::cout<<"VALUE IS " << i - 1 << '\n';
 					m_graphicsManager.lightRenderer.dcm[i - 1].SaveDepthCubeMap(filepath);
 
 
