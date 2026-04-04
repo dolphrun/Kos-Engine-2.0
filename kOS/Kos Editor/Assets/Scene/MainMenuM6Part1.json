@@ -475,7 +475,7 @@
             "isScreenSpace": true
         },
         "NameComponent": {
-            "entityName": "Screen Space Canvas",
+            "entityName": "Transition UI",
             "Layer": 0,
             "entityTag": "Default",
             "isPrefab": false,
