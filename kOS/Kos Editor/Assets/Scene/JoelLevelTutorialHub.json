@@ -13645,31 +13645,31 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -80.0,
-                            "y": -9.306926727294922,
+                            "x": -76.0,
+                            "y": 6.693073272705078,
                             "z": -21.391969680786133
                         },
                         "rotation": {
                             "x": 0.0,
                             "y": -0.0,
-                            "z": 0.0
+                            "z": 89.99998474121094
                         },
                         "scale": {
-                            "x": 0.009999999776482582,
-                            "y": 0.009999999776482582,
+                            "x": 0.009999998845160007,
+                            "y": 0.009999998845160007,
                             "z": 0.009999999776482582
                         }
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": -80.0,
-                            "y": -9.306926727294922,
+                            "x": -76.0,
+                            "y": 6.693073272705078,
                             "z": -21.391969680786133
                         },
                         "rotation": {
                             "x": 0.0,
                             "y": -0.0,
-                            "z": 0.0
+                            "z": 89.99998474121094
                         },
                         "scale": {
                             "x": 0.009999999776482582,
@@ -15386,36 +15386,36 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -63.0,
-                            "y": -7.0,
-                            "z": 0.0
+                            "x": -101.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
                         },
                         "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
                         },
                         "scale": {
-                            "x": 0.009999999776482582,
+                            "x": 0.009999828413128853,
                             "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
+                            "z": 0.009999828413128853
                         }
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": -63.0,
-                            "y": -7.0,
-                            "z": 0.0
+                            "x": -101.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
                         },
                         "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
                         },
                         "scale": {
-                            "x": 0.009999999776482582,
+                            "x": 0.009999828413128853,
                             "y": 0.009999999776482582,
-                            "z": 0.009999999776482582
+                            "z": 0.009999828413128853
                         }
                     }
                 }
@@ -15446,7 +15446,7 @@
                         "position": {
                             "x": -69.0,
                             "y": -7.0,
-                            "z": 0.0
+                            "z": -6.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -15463,7 +15463,7 @@
                         "position": {
                             "x": -69.0,
                             "y": -7.0,
-                            "z": 0.0
+                            "z": -6.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -15502,9 +15502,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -57.0,
+                            "x": -63.0,
                             "y": -7.0,
-                            "z": 0.0
+                            "z": -2.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -15519,9 +15519,9 @@
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": -57.0,
+                            "x": -63.0,
                             "y": -7.0,
-                            "z": 0.0
+                            "z": -2.0
                         },
                         "rotation": {
                             "x": 0.0,
@@ -48040,9 +48040,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -59.44425582885742,
-                            "y": 8.767838478088379,
-                            "z": 8.527215003967285
+                            "x": -24.444255828857422,
+                            "y": 13.767838478088379,
+                            "z": -0.47278499603271484
                         },
                         "rotation": {
                             "x": -89.99998474121094,
@@ -48057,9 +48057,9 @@
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": -59.44425582885742,
-                            "y": 8.767838478088379,
-                            "z": 8.527215003967285
+                            "x": -24.444255828857422,
+                            "y": 13.767838478088379,
+                            "z": -0.47278499603271484
                         },
                         "rotation": {
                             "x": -89.99998474121094,
@@ -48361,6 +48361,1118 @@
                         }
                     }
                 }
+            },
+            {
+                "entityGUID": "2bc97c40-628f-7b35-ebc5-73babdc6728e",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 0.0,
+                            "y": 900.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 200.0,
+                            "y": 1800.0,
+                            "z": 200.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9b1b014a-0e83-6402-ff4b-28b2aba7d5f1"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "f84cabb2-3277-9d67-9939-804df95b3a1d"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Pillar_18M_D",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Pillar_18M_D.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -59.44425582885742,
+                            "y": 8.767838478088379,
+                            "z": 8.527215003967285
+                        },
+                        "rotation": {
+                            "x": -89.99998474121094,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999998845160007,
+                            "z": 0.009999998845160007
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -59.44425582885742,
+                            "y": 8.767838478088379,
+                            "z": 8.527215003967285
+                        },
+                        "rotation": {
+                            "x": -89.99998474121094,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "ca2b1b19-81c6-eb02-d47f-28e6cb5263a3",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 0.0,
+                            "y": 900.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 200.0,
+                            "y": 1800.0,
+                            "z": 200.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9b1b014a-0e83-6402-ff4b-28b2aba7d5f1"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "f84cabb2-3277-9d67-9939-804df95b3a1d"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Pillar_18M_D",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Pillar_18M_D.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -24.444255828857422,
+                            "y": 11.767838478088379,
+                            "z": -0.47278499603271484
+                        },
+                        "rotation": {
+                            "x": -89.99998474121094,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999998845160007,
+                            "z": 0.009999998845160007
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -24.444255828857422,
+                            "y": 11.767838478088379,
+                            "z": -0.47278499603271484
+                        },
+                        "rotation": {
+                            "x": -89.99998474121094,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "1ef17fe9-e215-84f0-7fcf-0174267a4640",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -61.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -61.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "13bc0ef1-bf51-af89-3390-6ce3553112e0",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -101.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -101.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "e3a95963-cd6a-84fe-e1cc-cf40675dbcd8",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -61.87477493286133,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -61.87477493286133,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "345ceac0-a0f6-1850-dd81-d4c2204f7093",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -69.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -69.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "3d8b2f7a-10d1-4f6d-c088-c424c84fac21",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -77.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -77.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "5d7d6d67-f9be-9dc0-fd87-1b78f996da23",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -85.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -85.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "7b8550da-af29-4853-d29f-2d6cbdb2f2d9",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -93.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -93.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "754c116f-2ea2-95a5-e1f3-607139cbb56a",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -45.87477493286133,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -45.87477493286133,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "7b64a646-fc90-bfd0-a641-cba7c669a887",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -53.87477493286133,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -53.87477493286133,
+                            "y": -7.877342700958252,
+                            "z": 7.078413963317871
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "b6464269-3f04-7406-8f4d-8348ab1b2e20",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -45.87477493286133,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -45.87477493286133,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "2ece360a-40cd-79c4-2402-4b999cea2855",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -53.87477493286133,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -53.87477493286133,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "8c10effb-7bbb-5520-1701-dc0398e5640c",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -69.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -69.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "52ae3e6e-eb3d-01f8-2c71-6bbc02c89f55",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -75.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -75.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "c01651fb-24ef-bd71-60ed-d0ec8914a541",
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "32458747-8468-d3c0-cc2f-12266f00ca74"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "7299a31e-7b51-0490-a78b-7f5a5fd1dabe"
+                },
+                "NameComponent": {
+                    "entityName": "M6_Pipes_Small4X",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M6_Pipes_Small4X.prefab",
+                    "hide": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -93.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07415318489074707,
+                            "y": -89.98021697998047,
+                            "z": 0.07395567744970322
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -93.87477111816406,
+                            "y": -7.877342700958252,
+                            "z": -20.921585083007813
+                        },
+                        "rotation": {
+                            "x": -0.07414255291223526,
+                            "y": -89.98021697998047,
+                            "z": 0.07394503057003021
+                        },
+                        "scale": {
+                            "x": 0.009999828413128853,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999828413128853
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "69d988f9-c1fa-1407-e220-c441d19987ec",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 0.0,
+                            "y": 900.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 200.0,
+                            "y": 1800.0,
+                            "z": 200.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9b1b014a-0e83-6402-ff4b-28b2aba7d5f1"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "f84cabb2-3277-9d67-9939-804df95b3a1d"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Pillar_18M_D",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Pillar_18M_D.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -80.0,
+                            "y": -9.306926727294922,
+                            "z": -21.391969680786133
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -80.0,
+                            "y": -9.306926727294922,
+                            "z": -21.391969680786133
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "9ca8f757-e8e3-fd63-b6ab-2ce010f53817",
+                "BoxColliderComponent": {
+                    "isTrigger": false,
+                    "box": {
+                        "center": {
+                            "x": 0.0,
+                            "y": 900.0,
+                            "z": 0.0
+                        },
+                        "size": {
+                            "x": 200.0,
+                            "y": 1800.0,
+                            "z": 200.0
+                        }
+                    },
+                    "autoFit": true
+                },
+                "MaterialComponent": {
+                    "materialGUID": [
+                        {
+                            "materialGUID": "9b1b014a-0e83-6402-ff4b-28b2aba7d5f1"
+                        }
+                    ]
+                },
+                "MeshFilterComponent": {
+                    "meshGUID": "f84cabb2-3277-9d67-9939-804df95b3a1d"
+                },
+                "NameComponent": {
+                    "entityName": "M5_Modular_Pillar_18M_D",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "M5_Modular_Pillar_18M_D.prefab",
+                    "hide": false
+                },
+                "NavMeshComponent": {},
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -76.0,
+                            "y": 8.693073272705078,
+                            "z": -21.391969680786133
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999998845160007,
+                            "y": 0.009999998845160007,
+                            "z": 0.009999999776482582
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -76.0,
+                            "y": 8.693073272705078,
+                            "z": -21.391969680786133
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 89.99998474121094
+                        },
+                        "scale": {
+                            "x": 0.009999999776482582,
+                            "y": 0.009999999776482582,
+                            "z": 0.009999999776482582
+                        }
+                    }
+                }
             }
         ]
     },
@@ -48419,9 +49531,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": -22.8282470703125,
-                    "y": 8.80119514465332,
-                    "z": -3.471827507019043
+                    "x": -72.19842529296875,
+                    "y": 4.80119514465332,
+                    "z": -6.852622032165527
                 },
                 "rotation": {
                     "x": 0.0,
@@ -48436,71 +49548,13 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": -22.8282470703125,
-                    "y": 8.80119514465332,
-                    "z": -3.471827507019043
+                    "x": -72.19842529296875,
+                    "y": 4.80119514465332,
+                    "z": -6.852622032165527
                 },
                 "rotation": {
                     "x": 0.0,
                     "y": 89.9999771118164,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            }
-        }
-    },
-    {
-        "entityGUID": "ed3550e6-21e8-1156-ebcd-08bc3bc60bf7",
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "782eba06-e50c-4c93-c047-c8798a795611"
-                }
-            ]
-        },
-        "MeshFilterComponent": {
-            "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
-        },
-        "NameComponent": {
-            "entityName": "M6_Modular_8M_GroundDecal_Kaboom",
-            "Layer": 0,
-            "entityTag": "Default",
-            "isPrefab": true,
-            "isStatic": false,
-            "prefabName": "M6_Modular_8M_GroundDecal_Kaboom.prefab",
-            "hide": false
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 14.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 14.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
                     "z": 0.0
                 },
                 "scale": {
@@ -48551,7 +49605,7 @@
             "isPrefab": false,
             "isStatic": false,
             "prefabName": "",
-            "hide": false
+            "hide": true
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -48630,7 +49684,7 @@
             "isPrefab": false,
             "isStatic": false,
             "prefabName": "",
-            "hide": false
+            "hide": true
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -48809,126 +49863,6 @@
         ]
     },
     {
-        "entityGUID": "9a963f10-a9bf-7a1b-be7e-d3c9173719a0",
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "1e997bed-3d2e-7731-c09a-93f8459629dc"
-                }
-            ]
-        },
-        "MeshFilterComponent": {
-            "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
-        },
-        "NameComponent": {
-            "entityName": "M6_Modular_8M_GroundDecal_OverHere",
-            "Layer": 0,
-            "entityTag": "Default",
-            "isPrefab": true,
-            "isStatic": false,
-            "prefabName": "M6_Modular_8M_GroundDecal_OverHere.prefab",
-            "hide": false
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 10.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 10.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            }
-        }
-    },
-    {
-        "entityGUID": "edae11ae-8d25-1633-725d-1dcda4658a63",
-        "MaterialComponent": {
-            "materialGUID": [
-                {
-                    "materialGUID": "0d0b45bb-91b4-06e4-3412-76b0a34c2d92"
-                }
-            ]
-        },
-        "MeshColliderComponent": {
-            "isTrigger": false,
-            "convex": false
-        },
-        "MeshFilterComponent": {
-            "meshGUID": "8595bc59-39f8-1118-138b-fc6a0b3582d0"
-        },
-        "NameComponent": {
-            "entityName": "M6_Modular_8M_GroundDecal_Absorb",
-            "Layer": 0,
-            "entityTag": "Default",
-            "isPrefab": true,
-            "isStatic": false,
-            "prefabName": "M6_Modular_8M_GroundDecal_Absorb.prefab",
-            "hide": false
-        },
-        "TransformComponent": {
-            "WorldTransformation": {
-                "position": {
-                    "x": 20.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            },
-            "LocalTransformation": {
-                "position": {
-                    "x": 20.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": -0.0,
-                    "z": 0.0
-                },
-                "scale": {
-                    "x": 0.009999999776482582,
-                    "y": 0.009999999776482582,
-                    "z": 0.009999999776482582
-                }
-            }
-        }
-    },
-    {
         "entityGUID": "6bcd702d-698d-9d62-7b0b-8fa1780ec46b",
         "MeshColliderComponent": {
             "isTrigger": false,
@@ -49083,7 +50017,7 @@
             "isPrefab": false,
             "isStatic": false,
             "prefabName": "",
-            "hide": false
+            "hide": true
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -49976,5 +50910,213 @@
                 ]
             }
         ]
+    },
+    {
+        "entityGUID": "870dd982-a591-f3ce-fa1d-23e1024aa9a2",
+        "CanvasRendererComponent": {
+            "isScreenSpace": false
+        },
+        "NameComponent": {
+            "entityName": "M6_DECALS",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "c293ff36-9fe7-bdb5-0a35-9ff10970feac",
+                "NameComponent": {
+                    "entityName": "Absorb_Decal",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "889609dd-14fa-a800-8b38-72f4be18ccb0",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -5.151175498962402,
+                            "y": 6.392920017242432,
+                            "z": 2.1527717113494873
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -5.151175498962402,
+                            "y": 6.392920017242432,
+                            "z": 2.1527717113494873
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "c951210e-bfb7-8545-ff15-0319b632f55c",
+        "LightComponent": {
+            "lightType": 1,
+            "color": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 4.0
+            },
+            "diffuseStrength": {
+                "x": 36.099998474121094,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "specularStrength": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "linear": 0.09000000357627869,
+            "quadratic": 0.03200000151991844,
+            "direction": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "cutOff": 5.5,
+            "outerCutOff": 10.5,
+            "intesnity": 41.400001525878906,
+            "shadowCast": false,
+            "bakedLighting": false,
+            "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+        },
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "645a692f-2804-6805-33c3-969ec31e8389"
+                }
+            ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "448ff5ff-3732-73c6-9a7d-622633b24227"
+        },
+        "NameComponent": {
+            "entityName": "Point Light Prop",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "Point Light Prop.prefab",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -23.198421478271484,
+                    "y": 11.80119514465332,
+                    "z": -6.852622032165527
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 89.98021697998047,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -23.198421478271484,
+                    "y": 11.80119514465332,
+                    "z": -6.852622032165527
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 89.9999771118164,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            }
+        }
     }
 ]
