@@ -9,6 +9,42 @@
     },
     {
         "entityGUID": "dcbcdb14-c728-a183-0056-4f869c48fcb2",
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "a8842a3c-1b4b-1ce5-80f7-2b2164175d7a",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "823d517f-cf2d-e394-b4be-0dc58b2db432",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
+        },
         "BoxColliderComponent": {
             "isTrigger": true,
             "box": {
@@ -22,7 +58,8 @@
                     "y": 13.399999618530273,
                     "z": 38.900001525878906
                 }
-            }
+            },
+            "autoFit": false
         },
         "NameComponent": {
             "entityName": "LockRoomPrefab",
@@ -71,7 +108,9 @@
                 {
                     "roomEnemyGUIDs": "00000000-0000-0000-0000-000000000000"
                 }
-            ]
+            ],
+            "doorCloseSfxGUID": "a8842a3c-1b4b-1ce5-80f7-2b2164175d7a",
+            "doorOpenSfxGUID": "823d517f-cf2d-e394-b4be-0dc58b2db432"
         },
         "TransformComponent": {
             "WorldTransformation": {

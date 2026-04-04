@@ -6,6 +6,7 @@
 #include "LevelCompleteScript.h"
 #include "ScoreManagerScript.h"
 #include "RoomLockScript.h"
+#include "OptionsMenuScript.h"
 
 // --- FORWARD DECLARATIONS ---
 // Tell the compiler these classes exist first, preventing circular dependency crashes
@@ -672,40 +673,41 @@ inline void PlayerManagerScript::Update() {
 		}
 
 	}
+	if (OptionsMenuScript::isOptionsActive) { return; }
+		if (Input->IsKeyTriggered(keys::ESC)) {
+			if (auto* pauseManager = ecsPtr->GetComponent<PauseMenuScript>(pauseMenuManagerID)) {
+				pauseManager->TogglePause();
 
-	if (Input->IsKeyTriggered(keys::ESC)) {
-		if (auto* pauseManager = ecsPtr->GetComponent<PauseMenuScript>(pauseMenuManagerID)) {
-			pauseManager->TogglePause();
+				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 
-			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+					utility::GUID targetMenuSfx = pauseManager->isPaused
+						? pauseMenuOpenSfxGUID   //  opened
+						: pauseMenuCloseSfxGUID; //  closed
 
-				utility::GUID targetMenuSfx = pauseManager->isPaused
-					? pauseMenuOpenSfxGUID   //  opened
-					: pauseMenuCloseSfxGUID; //  closed
+					if (!targetMenuSfx.Empty()) {
+						for (auto& af : ac->audioFiles) {
+							if (af.audioGUID == targetMenuSfx && af.isSFX) {
+								af.requestPlay = true;
+								break;
+							}
+						}
+					}
 
-				if (!targetMenuSfx.Empty()) {
+				}
+				if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 					for (auto& af : ac->audioFiles) {
-						if (af.audioGUID == targetMenuSfx && af.isSFX) {
-							af.requestPlay = true;
+						if (af.audioGUID == gunSfxGUID_1) {
+							if (af.channel) {
+								FMOD::Channel* ch = static_cast<FMOD::Channel*>(af.channel);
+								ch->setPaused(pauseManager->isPaused); // true = pause, false = resume
+							}
 							break;
 						}
 					}
 				}
-
-			}
-			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
-				for (auto& af : ac->audioFiles) {
-					if (af.audioGUID == gunSfxGUID_1) {
-						if (af.channel) {
-							FMOD::Channel* ch = static_cast<FMOD::Channel*>(af.channel);
-							ch->setPaused(pauseManager->isPaused); // true = pause, false = resume
-						}
-						break;
-					}
-				}
 			}
 		}
-	}
+
 
 
 	if (currPlayerHitPoints <= 0 && !LoseScreenScript::isLoseScreenActive) {
