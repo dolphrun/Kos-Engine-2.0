@@ -4,7 +4,7 @@
 #include "ScriptAdapter/TemplateSC.h"
 #include "PauseMenuScript.h"
 
-
+// Written here, extern-declared in PlayerManagerScript.h and PauseMenuScript.h
 inline bool  gOptionsMenuActive = false;
 inline float gPlayerCameraSpeedX = 0.65f;
 inline float gPlayerCameraSpeedY = 0.65f;
@@ -66,7 +66,7 @@ public:
     ecs::EntityID mouseSensMinusButtonID = 0;
     utility::GUID mousesensPlusButtonGUID;
     ecs::EntityID mousesensPlusButtonID = 0;
-    static int mouseSensLevel;          
+    static int mouseSensLevel;
     bool wasMouseMinusPressed = false;
     bool wasMousePlusPressed = false;
 
@@ -87,9 +87,8 @@ public:
 
 private:
     // ---------------------------------------------------------------
-    // Per-slider transform cache
-    // Each slider stores its own original scale/position so that
-    // UpdateXxxSlider() only touches its own bar.
+    // Per-slider transform cache — one per slider so they don't
+    // bleed into each other (the old version shared one cache).
     // ---------------------------------------------------------------
     struct SliderCache {
         glm::vec3 originalScale = glm::vec3(1.0f);
@@ -102,7 +101,7 @@ private:
     SliderCache sfxSliderCache;
     SliderCache mouseSensSliderCache;
 
-    // Button debounce (same wasPressed pattern as UIButtonScript)
+    // Button debounce
     bool wasMinusPressed = false;
     bool wasPlusPressed = false;
 
@@ -117,7 +116,6 @@ public:
         // Resolve entity IDs from GUIDs
         optionsMenuCanvasID = ecsPtr->GetEntityIDFromGUID(optionsMenuCanvasGUID);
         pauseMenuManagerID = ecsPtr->GetEntityIDFromGUID(pauseMenuManagerGUID);
-
         masterVolumeSliderBarID = ecsPtr->GetEntityIDFromGUID(masterVolumeSliderBarGUID);
         masterVolumeMinusButtonID = ecsPtr->GetEntityIDFromGUID(masterVolumeMinusButtonGUID);
         masterVolumePlusButtonID = ecsPtr->GetEntityIDFromGUID(masterVolumePlusButtonGUID);
@@ -130,14 +128,24 @@ public:
         sfxVolumeMinusButtonID = ecsPtr->GetEntityIDFromGUID(sfxVolumeMinusButtonGUID);
         sfxVolumePlusButtonID = ecsPtr->GetEntityIDFromGUID(sfxVolumePlusButtonGUID);
 
-        mouseSensSliderBarID = ecsPtr->GetEntityIDFromGUID(mouseSensSliderBarGUID);
-        mouseSensMinusButtonID = ecsPtr->GetEntityIDFromGUID(mouseSensMinusButtonGUID);
-        mousesensPlusButtonID = ecsPtr->GetEntityIDFromGUID(mousesensPlusButtonGUID);
+        if (!mouseSensSliderBarGUID.Empty())
+            mouseSensSliderBarID = ecsPtr->GetEntityIDFromGUID(mouseSensSliderBarGUID);
+        if (!mouseSensMinusButtonGUID.Empty())
+            mouseSensMinusButtonID = ecsPtr->GetEntityIDFromGUID(mouseSensMinusButtonGUID);
+        if (!mousesensPlusButtonGUID.Empty())
+            mousesensPlusButtonID = ecsPtr->GetEntityIDFromGUID(mousesensPlusButtonGUID);
 
         // Cache original options canvas position
         if (auto* t = ecsPtr->GetComponent<ecs::TransformComponent>(optionsMenuCanvasID)) {
             originalOptionsPosition = t->LocalTransformation.position;
         }
+
+        // Cache ALL slider original transforms BEFORE any UpdateSliderBar call
+        // modifies them — prevents later sliders reading an already-shrunk scale.
+        CacheSlider(masterVolumeSliderBarID, masterSliderCache);
+        CacheSlider(bgmVolumeSliderBarID, bgmSliderCache);
+        CacheSlider(sfxVolumeSliderBarID, sfxSliderCache);
+        CacheSlider(mouseSensSliderBarID, mouseSensSliderCache);
 
         // Start hidden
         SetOptionsMenuActive(false);
@@ -147,13 +155,13 @@ public:
         audioManager->SetMusicVolume(bgmVolumeLevel / 10.0f);
         audioManager->SetSFXVolume(sfxVolumeLevel / 10.0f);
 
-        // Redraw all sliders (each caches its own transform on first call)
-        UpdateMasterSlider();
-        UpdateBGMSlider();
-        UpdateSFXSlider();
-        UpdateMouseSlider();
+        // Redraw all sliders
+        UpdateSliderBar(masterVolumeSliderBarID, masterVolumeLevel, masterSliderCache);
+        UpdateSliderBar(bgmVolumeSliderBarID, bgmVolumeLevel, bgmSliderCache);
+        UpdateSliderBar(sfxVolumeSliderBarID, sfxVolumeLevel, sfxSliderCache);
+        UpdateSliderBar(mouseSensSliderBarID, mouseSensLevel, mouseSensSliderCache);
 
-        // Apply saved sensitivity to player (if the player is already alive)
+        // Push default sensitivity into globals
         ApplyMouseSensitivityToPlayer();
 
         std::cout << "[OptionsMenuScript] Start() complete.\n";
@@ -168,13 +176,15 @@ public:
         // ---- Master Volume ----
         if (masterVolumeMinusButtonID != 0) {
             if (auto* btn = ecsPtr->GetComponent<ecs::ButtonComponent>(masterVolumeMinusButtonID)) {
-                if (btn->isPressed && !wasMinusPressed) DecreaseMasterVolume();
+                if (btn->isPressed && !wasMinusPressed)
+                    DecreaseMasterVolume();
                 wasMinusPressed = btn->isPressed;
             }
         }
         if (masterVolumePlusButtonID != 0) {
             if (auto* btn = ecsPtr->GetComponent<ecs::ButtonComponent>(masterVolumePlusButtonID)) {
-                if (btn->isPressed && !wasPlusPressed) IncreaseMasterVolume();
+                if (btn->isPressed && !wasPlusPressed)
+                    IncreaseMasterVolume();
                 wasPlusPressed = btn->isPressed;
             }
         }
@@ -229,11 +239,9 @@ public:
         isOptionsActive = true;
         gOptionsMenuActive = true;
 
-        // Hide pause menu via instance
         if (PauseMenuScript::instance)
             PauseMenuScript::instance->SetPauseMenuActive(false);
 
-        // Show options menu
         if (auto* t = ecsPtr->GetComponent<ecs::TransformComponent>(optionsMenuCanvasID)) {
             t->LocalTransformation.position = originalOptionsPosition;
         }
@@ -245,12 +253,10 @@ public:
         isOptionsActive = false;
         gOptionsMenuActive = false;
 
-        // Hide options menu
         if (auto* t = ecsPtr->GetComponent<ecs::TransformComponent>(optionsMenuCanvasID)) {
             t->LocalTransformation.position = hiddenPosition;
         }
 
-        // Restore pause menu via instance
         if (PauseMenuScript::instance)
             PauseMenuScript::instance->SetPauseMenuActive(true);
 
@@ -258,14 +264,17 @@ public:
     }
 
     // ---------------------------------------------------------------
-    // Master Volume
+    // Volume controls
     // ---------------------------------------------------------------
     void IncreaseMasterVolume() {
         if (masterVolumeLevel < 10) {
             masterVolumeLevel++;
             audioManager->SetMasterVolume(masterVolumeLevel / 10.0f);
-            UpdateMasterSlider();
+            UpdateSliderBar(masterVolumeSliderBarID, masterVolumeLevel, masterSliderCache);
             std::cout << "[OptionsMenuScript] Master Volume: " << masterVolumeLevel << "/10\n";
+        }
+        else {
+            std::cout << "[OptionsMenuScript] Master Volume already at max (10/10)\n";
         }
     }
 
@@ -273,19 +282,19 @@ public:
         if (masterVolumeLevel > 0) {
             masterVolumeLevel--;
             audioManager->SetMasterVolume(masterVolumeLevel / 10.0f);
-            UpdateMasterSlider();
+            UpdateSliderBar(masterVolumeSliderBarID, masterVolumeLevel, masterSliderCache);
             std::cout << "[OptionsMenuScript] Master Volume: " << masterVolumeLevel << "/10\n";
+        }
+        else {
+            std::cout << "[OptionsMenuScript] Master Volume already at min (0/10)\n";
         }
     }
 
-    // ---------------------------------------------------------------
-    // BGM Volume
-    // ---------------------------------------------------------------
     void IncreaseBGMVolume() {
         if (bgmVolumeLevel < 10) {
             bgmVolumeLevel++;
             audioManager->SetMusicVolume(bgmVolumeLevel / 10.0f);
-            UpdateBGMSlider();
+            UpdateSliderBar(bgmVolumeSliderBarID, bgmVolumeLevel, bgmSliderCache);
             std::cout << "[OptionsMenuScript] BGM Volume: " << bgmVolumeLevel << "/10\n";
         }
     }
@@ -294,19 +303,16 @@ public:
         if (bgmVolumeLevel > 0) {
             bgmVolumeLevel--;
             audioManager->SetMusicVolume(bgmVolumeLevel / 10.0f);
-            UpdateBGMSlider();
+            UpdateSliderBar(bgmVolumeSliderBarID, bgmVolumeLevel, bgmSliderCache);
             std::cout << "[OptionsMenuScript] BGM Volume: " << bgmVolumeLevel << "/10\n";
         }
     }
 
-    // ---------------------------------------------------------------
-    // SFX Volume
-    // ---------------------------------------------------------------
     void IncreaseSFXVolume() {
         if (sfxVolumeLevel < 10) {
             sfxVolumeLevel++;
             audioManager->SetSFXVolume(sfxVolumeLevel / 10.0f);
-            UpdateSFXSlider();
+            UpdateSliderBar(sfxVolumeSliderBarID, sfxVolumeLevel, sfxSliderCache);
             std::cout << "[OptionsMenuScript] SFX Volume: " << sfxVolumeLevel << "/10\n";
         }
     }
@@ -315,77 +321,58 @@ public:
         if (sfxVolumeLevel > 0) {
             sfxVolumeLevel--;
             audioManager->SetSFXVolume(sfxVolumeLevel / 10.0f);
-            UpdateSFXSlider();
+            UpdateSliderBar(sfxVolumeSliderBarID, sfxVolumeLevel, sfxSliderCache);
             std::cout << "[OptionsMenuScript] SFX Volume: " << sfxVolumeLevel << "/10\n";
         }
     }
 
     // ---------------------------------------------------------------
     // Mouse Sensitivity
-    // Level 0 is allowed but effectively stops mouse movement entirely;
-    // keep minimum at 1 if you prefer a safety floor.
     // ---------------------------------------------------------------
     void IncreaseMouseSensitivity() {
         if (mouseSensLevel < 10) {
             mouseSensLevel++;
             ApplyMouseSensitivityToPlayer();
-            UpdateMouseSlider();
+            UpdateSliderBar(mouseSensSliderBarID, mouseSensLevel, mouseSensSliderCache);
             std::cout << "[OptionsMenuScript] Mouse Sensitivity: " << mouseSensLevel << "/10\n";
         }
     }
 
     void DecreaseMouseSensitivity() {
-        if (mouseSensLevel > 1) {     // floor at 1 so the player can always look around
+        if (mouseSensLevel > 1) {
             mouseSensLevel--;
             ApplyMouseSensitivityToPlayer();
-            UpdateMouseSlider();
+            UpdateSliderBar(mouseSensSliderBarID, mouseSensLevel, mouseSensSliderCache);
             std::cout << "[OptionsMenuScript] Mouse Sensitivity: " << mouseSensLevel << "/10\n";
         }
     }
 
 private:
 
-    // ---------------------------------------------------------------
-    // Writes the current sensitivity level into PlayerManagerScript.
-    // playerCameraSpeedX/Y are the multipliers used in PlayerCameraControls().
-    // Level 5 == 0.5f, same as the default of 0.65f is approximated at level 6/7.
-    // Adjust the base multiplier below to taste.
-    // ---------------------------------------------------------------
     void ApplyMouseSensitivityToPlayer() {
-        float speed = mouseSensLevel * 0.1f;   // 0.1 .. 1.0
+        float speed = mouseSensLevel * 0.1f;
         gPlayerCameraSpeedX = speed;
         gPlayerCameraSpeedY = speed;
     }
 
-    // ---------------------------------------------------------------
-    // Per-slider update helpers
-    // Each one caches its own bar's original transform independently,
-    // so cropping one bar never bleeds into the others.
-    // ---------------------------------------------------------------
-    void UpdateMasterSlider() {
-        ApplySliderVisual(masterVolumeSliderBarID, masterVolumeLevel, masterSliderCache);
-    }
-
-    void UpdateBGMSlider() {
-        ApplySliderVisual(bgmVolumeSliderBarID, bgmVolumeLevel, bgmSliderCache);
-    }
-
-    void UpdateSFXSlider() {
-        ApplySliderVisual(sfxVolumeSliderBarID, sfxVolumeLevel, sfxSliderCache);
-    }
-
-    void UpdateMouseSlider() {
-        ApplySliderVisual(mouseSensSliderBarID, mouseSensLevel, mouseSensSliderCache);
+    // Cache a slider's original transform before anything modifies it
+    void CacheSlider(ecs::EntityID sliderBarID, SliderCache& cache) {
+        if (sliderBarID == 0 || cache.initialized) return;
+        if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(sliderBarID)) {
+            cache.originalScale = tc->LocalTransformation.scale;
+            cache.originalPosition = tc->LocalTransformation.position;
+            cache.initialized = true;
+        }
     }
 
     // ---------------------------------------------------------------
-    // Core slider visual logic now receives its own SliderCache so
-    // every slider tracks its own original transform independently.
+    // Crops + scales the slider bar sprite based on level (0-10).
+    // Each slider now gets its own cache so they don't affect each other.
     // ---------------------------------------------------------------
-    void ApplySliderVisual(ecs::EntityID sliderBarID, int level, SliderCache& cache) {
-        if (sliderBarID == 0) return;
+    void UpdateSliderBar(ecs::EntityID sliderBarID, int level, SliderCache& cache) {
+        if (sliderBarID == 0 || !cache.initialized) return;
 
-        float percentage = (float)level / 10.0f;   // 0.0 -> 1.0
+        float percentage = (float)level / 10.0f;
 
         // UV crop: trim the right side of the sprite
         if (auto* sc = ecsPtr->GetComponent<ecs::SpriteComponent>(sliderBarID)) {
@@ -396,20 +383,12 @@ private:
 
         // Scale + reposition so the LEFT edge stays anchored
         if (auto* tc = ecsPtr->GetComponent<ecs::TransformComponent>(sliderBarID)) {
-            // Cache this slider's original transform on first visit
-            if (!cache.initialized) {
-                cache.originalScale = tc->LocalTransformation.scale;
-                cache.originalPosition = tc->LocalTransformation.position;
-                cache.initialized = true;
-            }
-
             float scaleReduction = cache.originalScale.x * (1.0f - percentage);
 
             tc->LocalTransformation.scale.x = cache.originalScale.x * percentage;
             tc->LocalTransformation.scale.y = cache.originalScale.y;
             tc->LocalTransformation.scale.z = cache.originalScale.z;
 
-            // Shift left by half the lost width so the left edge doesn't move
             tc->LocalTransformation.position.x = cache.originalPosition.x - (scaleReduction * 0.5f);
             tc->LocalTransformation.position.y = cache.originalPosition.y;
             tc->LocalTransformation.position.z = cache.originalPosition.z;
@@ -450,4 +429,4 @@ inline bool               OptionsMenuScript::isOptionsActive = false;
 inline int                OptionsMenuScript::masterVolumeLevel = 10;
 inline int                OptionsMenuScript::bgmVolumeLevel = 10;
 inline int                OptionsMenuScript::sfxVolumeLevel = 10;
-inline int                OptionsMenuScript::mouseSensLevel = 5;   // mid-range default
+inline int                OptionsMenuScript::mouseSensLevel = 5;

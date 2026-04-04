@@ -6,6 +6,8 @@
 #include "LevelCompleteScript.h"
 #include "ScoreManagerScript.h"
 #include "RoomLockScript.h"
+#include "QuitWindowConfirmScript.h"
+#include "QuitMenuConfirmScript.h"
 
 extern bool gOptionsMenuActive;
 extern float gPlayerCameraSpeedX;
@@ -677,6 +679,9 @@ inline void PlayerManagerScript::Update() {
 
 	}
 	if (gOptionsMenuActive) { return; }
+	if (QuitMenuConfirmScript::isQuitMenuConfirmActive) { return; }
+	if (QuitWindowConfirmScript::isQuitWindowConfirmActive) { return; }
+	
 		if (Input->IsKeyTriggered(keys::ESC)) {
 			if (auto* pauseManager = ecsPtr->GetComponent<PauseMenuScript>(pauseMenuManagerID)) {
 				pauseManager->TogglePause();

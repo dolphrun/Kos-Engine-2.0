@@ -168,11 +168,11 @@ public:
                 std::cout << "[UIButtonScript] Key '7' pressed!\n";
             }
             else if (Input->IsKeyTriggered(keys::NUM8)) {
-                shouldTrigger = true; triggeredAction = 8;
+                shouldTrigger = true; triggeredAction = 16;
                 std::cout << "[UIButtonScript] Key '8' pressed!\n";
             }
             else if (Input->IsKeyTriggered(keys::NUM9)) {
-                shouldTrigger = true; triggeredAction = 9;
+                shouldTrigger = true; triggeredAction = 17;
                 std::cout << "[UIButtonScript] Key '9' pressed!\n";
             }
         }
