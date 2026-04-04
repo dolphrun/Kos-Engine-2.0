@@ -217,7 +217,7 @@ public:
 	float acidCurrShieldCooldown = 0.f;
 
 	// LIGHTNING LMB - TIMESLOW PREFS
-	float lightningTimeslowDuration = 2.0f;
+	float lightningTimeslowDuration = 3.0f;
 	float lightningTimeslowCost = 10.0f;
 	float lightningTimeslowCooldown = 4.0f;
 	float lightningCurrTimeslowCooldown = 0.0f;
