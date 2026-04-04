@@ -1,0 +1,68 @@
+[
+    {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
+        "entityGUID": "11f3f273-2c6b-416a-b0e6-af8fe27f79ae",
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "c0e2f723-90a9-e4fd-eaa5-d87bd84db444"
+                }
+            ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "304075df-494f-d5a4-236b-21050a9040ed"
+        },
+        "NameComponent": {
+            "entityName": "M6_Props_Debris_3",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "M6_Props_Debris_3.prefab",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 100.0,
+                    "y": 100.0,
+                    "z": 100.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 100.0,
+                    "y": 100.0,
+                    "z": 100.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            }
+        }
+    }
+]

@@ -262,6 +262,9 @@ void GraphicsManager::gm_RenderToGameFrameBuffer()
 			glBindFramebuffer(GL_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
 			glViewport(0, 0, static_cast<GLsizei>(framebufferManager.sceneBuffer.width), static_cast<GLsizei>(framebufferManager.sceneBuffer.height));
 			gm_RenderDeferredObjects(cd);
+			//glEnable(GL_DEPTH_TEST);
+			//gm_RenderParticles(cd);
+			//glDisable(GL_DEPTH_TEST);
 			glDisable(GL_CULL_FACE);
 			gm_RenderVideo(cd);
 			glEnable(GL_CULL_FACE);

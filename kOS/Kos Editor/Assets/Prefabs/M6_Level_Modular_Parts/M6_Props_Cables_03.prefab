@@ -1,0 +1,68 @@
+[
+    {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
+        "entityGUID": "31ab7d61-3f97-4313-b575-ef3e133cae78",
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "5200d28a-45c5-3c0f-37d2-6a3445dc2320"
+                }
+            ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "3f546020-e2d3-b983-8357-2a312457514b"
+        },
+        "NameComponent": {
+            "entityName": "M6_Props_Cables_03",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "M6_Props_Cables_03.prefab",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 100.0,
+                    "y": 100.0,
+                    "z": 100.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 100.0,
+                    "y": 100.0,
+                    "z": 100.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            }
+        }
+    }
+]
