@@ -50,7 +50,7 @@ void TextRenderer::RenderScreenFonts(const CameraData& camera, Shader& shader)
 			fontShader.Use();
 			glm::vec3 point = textData.position;
 			constexpr float radianConversion = 3.1451f / 180.f;
-			float angle = textData.rotation * radianConversion;
+			float angle = textData.rotation.x * radianConversion;
 
 			glm::mat3 rotationMatrix = {
 			cos(angle), -sin(angle), 0.0f,
@@ -308,6 +308,7 @@ void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader)
 	shader.SetInt("texture_normal1", 2);
 	shader.SetInt("texture_ao1", 4);
 	shader.SetInt("texture_roughness1", 5);
+	shader.SetInt("texture_emissive1", 6);
 	shader.SetBool("isRigged", true);
 	shader.SetVec3("color", glm::vec3{ 1.f,1.f,1.f });
 	for (std::vector<SkinnedMeshData>& meshData : skinnedMeshesToDraw) {
@@ -353,7 +354,7 @@ void SkinnedMeshRenderer::Render(const CameraData& camera, Shader& shader, layer
 }
 
 void LightRenderer::InitializeLightRenderer() {
-	for (int i{ 0 }; i < 16; i++) {
+	for (int i{ 0 }; i < 32; i++) {
 		dcm[i].InitializeMap();
 	}
 	//testDCM.LoadDepthCubeMap("D:/CJJJ2/kOS/Kos Editor/Assets/DepthMap/test.dcm");
@@ -577,6 +578,14 @@ void LightRenderer::Clear()
 	directionLightsToDraw.clear();
 	actualPointLightsToDraw.clear();
 	actualDcm.clear();
+	//Clear dcm
+	for (int i{ 0 }; i < 32; i++) {
+		glViewport(0, 0, static_cast<GLsizei>(1024.f), static_cast<GLsizei>(1024.f));
+		glBindFramebuffer(GL_FRAMEBUFFER, dcm[i].GetFBO());
+		glClear(GL_DEPTH_BUFFER_BIT);
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	}
 }
 
 void DebugRenderer::InitializeDebugRendererMeshes() {
@@ -881,18 +890,18 @@ void ParticleRenderer::Render(const CameraData& camera, Shader& shader, TrailRen
 			std::transform(p.particlePositions.begin(), p.particlePositions.end(),
 				std::back_inserter(instancedBasicParticles),
 				[&, j = 0](const glm::vec3& pos) mutable {
-					if (p.texture_IDs != nullptr) {
-						if (storedIDs.contains(p.texture_IDs->RetrieveTexture()))
+					if (p.texture_IDs[j] != nullptr) {
+						if (storedIDs.contains(p.texture_IDs[j]->RetrieveTexture()))
 						{
-							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], storedIDs[p.texture_IDs->RetrieveTexture()], p.particleType};
+							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j], storedIDs[p.texture_IDs[j++]->RetrieveTexture()], p.particleType};
 						}
 						else
 						{
 							int size = static_cast<int>(textureIDs.size());
-							storedIDs[p.texture_IDs->RetrieveTexture()] = static_cast<unsigned int>(textureIDs.size());
-							textureIDs.push_back(p.texture_IDs->RetrieveTexture());
-							int currentID = storedIDs[p.texture_IDs->RetrieveTexture()];
-							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j++], storedIDs[p.texture_IDs->RetrieveTexture()] , p.particleType};
+							storedIDs[p.texture_IDs[j]->RetrieveTexture()] = static_cast<unsigned int>(textureIDs.size());
+							textureIDs.push_back(p.texture_IDs[j]->RetrieveTexture());
+							int currentID = storedIDs[p.texture_IDs[j]->RetrieveTexture()];
+							return BasicParticleInstance{ pos, p.sizes[j], p.colors[j], p.rotates[j], storedIDs[p.texture_IDs[j++]->RetrieveTexture()] , p.particleType};
 						}
 					}
 					else {
@@ -1053,90 +1062,6 @@ void TrailRenderer::InitTrailRendererMeshes()
 	glBindVertexArray(0);
 }
 
-//void TrailRenderer::BuildTrailMesh(
-//	const std::vector<BasicTrailData>& trails,
-//	const glm::vec3& cameraPos)
-//{
-//	vertexBuffer.clear();
-//	indexBuffer.clear();
-//
-//	unsigned int indexOffset = 0;
-//
-//	for (const BasicTrailData& trail : trails)
-//	{
-//		if (trail.points.size() < 2)
-//			continue;
-//
-//		for (size_t i = 0; i < trail.points.size() - 1; i++)
-//		{
-//			const auto& p0 = trail.points[i];
-//			const auto& p1 = trail.points[i + 1];
-//
-//			const float l0 = trail.lifetimes[i];
-//			const float l1 = trail.lifetimes[i + 1];
-//
-//			glm::vec3 dir = glm::normalize(p1 - p0);
-//			glm::vec3 toCamera = glm::normalize(cameraPos - p0);
-//			glm::vec3 side = glm::normalize(glm::cross(dir, toCamera));
-//
-//			float t0 = l0 / trail.maxLifetime;
-//			float t1 = l1 / trail.maxLifetime;
-//
-//			float w0 = trail.width * (1.0f - t0);
-//			float w1 = trail.width * (1.0f - t1);
-//
-//			glm::vec3 p0L = p0 - side * w0 * 0.5f;
-//			glm::vec3 p0R = p0 + side * w0 * 0.5f;
-//			glm::vec3 p1L = p1 - side * w1 * 0.5f;
-//			glm::vec3 p1R = p1 + side * w1 * 0.5f;
-//
-//			auto pushVertex = [&](glm::vec3 pos, float alpha)
-//				{
-//					vertexBuffer.insert(vertexBuffer.end(),
-//						{
-//							pos.x, pos.y, pos.z,
-//							trail.color.r,
-//							trail.color.g,
-//							trail.color.b,
-//							alpha
-//						});
-//				};
-//
-//			float alpha0 = 1.0f - t0;
-//			float alpha1 = 1.0f - t1;
-//
-//			pushVertex(p0L, alpha0);
-//			pushVertex(p0R, alpha0);
-//			pushVertex(p1L, alpha1);
-//			pushVertex(p1R, alpha1);
-//
-//			indexBuffer.insert(indexBuffer.end(),
-//				{
-//					indexOffset + 0,
-//					indexOffset + 2,
-//					indexOffset + 3,
-//
-//					indexOffset + 0,
-//					indexOffset + 3,
-//					indexOffset + 1
-//				});
-//
-//			indexOffset += 4;
-//		}
-//	}
-//
-//	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-//	glBufferData(GL_ARRAY_BUFFER,
-//		vertexBuffer.size() * sizeof(float),
-//		vertexBuffer.data(),
-//		GL_DYNAMIC_DRAW);
-//
-//	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-//	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-//		indexBuffer.size() * sizeof(unsigned int),
-//		indexBuffer.data(),
-//		GL_DYNAMIC_DRAW);
-//}
 
 TrailRenderer::TrailInstance TrailRenderer::BuildOrUpdateTrailInstance(
 	const TrailRenderer::BasicTrailData& trail, const glm::vec3& cameraPos, TrailInstance* existingInstance)
@@ -1241,7 +1166,7 @@ void TrailRenderer::RebuildTrailInstances(const glm::vec3& cameraPos)
 	for (size_t j = i; j < trailsToDraw.size(); ++j)
 		trailsToDraw[j].Cleanup();
 
-	trailsToDraw.resize(trailData.size());
+	//trailsToDraw.resize(trailData.size());
 }
 
 void TrailRenderer::Render(Shader& shader, const CameraData& camera)

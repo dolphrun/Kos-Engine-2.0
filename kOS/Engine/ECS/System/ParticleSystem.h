@@ -11,6 +11,7 @@ namespace ecs {
         std::vector<glm::vec4> colors;
         std::vector<glm::vec2> sizes;
         std::vector<glm::vec3> rotates;
+        std::vector<R_Texture*> textures;
     };
 
     struct EmissionData {

@@ -112,7 +112,7 @@ namespace scenes {
             }
 
             DeleteAllCacheScenes();
-            cacheScenePath.clear();
+            
         }
         else {
             //store scene path
@@ -332,7 +332,7 @@ namespace scenes {
             auto iter = m_ecs.sceneMap.find(fileName);
             if (iter != m_ecs.sceneMap.end()) {
                 if (iter->second.isPrefab) continue;
-                std::string newPath = path.parent_path().string() + '\\' + path.stem().string() + ".cache";
+                std::string newPath = path.parent_path().string() + '\\' + path.stem().string() + "[Cached]" + path.extension().string();
                 if (std::filesystem::exists(newPath)) {
                     std::filesystem::remove(newPath);
                     std::string metaPath = newPath + ".meta";
@@ -352,6 +352,7 @@ namespace scenes {
         for (auto const& filePath : cacheScenePath) {
             std::filesystem::remove(filePath);
         }
+        cacheScenePath.clear();
     }
 
     void SceneManager::LoadSceneToCurrent(const std::string& currentScene, const std::filesystem::path& filepath) {

@@ -145,6 +145,7 @@ namespace gui {
 		RegisterComponent<ecs::MaterialComponent>();
 		RegisterComponent<ecs::NavMeshComponent>();
 		RegisterComponent<ecs::VideoComponent>();
+		RegisterComponent<ecs::AnimatedSpriteComponent>();
 		//Allocate to map
 		EditorComponentTypeRegistry::CreateAllDrawers(componentDrawers);
 

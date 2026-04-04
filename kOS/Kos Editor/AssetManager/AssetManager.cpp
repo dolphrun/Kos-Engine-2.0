@@ -3,7 +3,44 @@
 #include "Compilers/Compiler.h"
 #include "Configs/ConfigPath.h"
 #include "ECS/ECS.h"
+namespace {
+    // Drop-in replacement for std::system() that bypasses cmd.exe entirely
+    int LaunchCompilerProcess(const std::string& exePath, const std::string& arguments) {
+        STARTUPINFOA si;
+        PROCESS_INFORMATION pi;
 
+        ZeroMemory(&si, sizeof(si));
+        si.cb = sizeof(si);
+        ZeroMemory(&pi, sizeof(pi));
+
+        // CreateProcess requires the full command line (EXE path + arguments)
+        std::string fullCommand = "\"" + exePath + "\" " + arguments;
+
+        // CreateProcessA requires a mutable char array
+        std::vector<char> cmdBuffer(fullCommand.begin(), fullCommand.end());
+        cmdBuffer.push_back('\0');
+
+        if (!CreateProcessA(
+            exePath.c_str(),        // Exact path to the .exe
+            cmdBuffer.data(),       // Mutable command string
+            NULL, NULL, FALSE, 0, NULL, NULL,
+            &si, &pi
+        )) {
+            return static_cast<int>(GetLastError()); // Return actual Windows Error Code
+        }
+
+        // Wait for the compiler to finish
+        WaitForSingleObject(pi.hProcess, INFINITE);
+
+        DWORD exitCode;
+        GetExitCodeProcess(pi.hProcess, &exitCode);
+
+        CloseHandle(pi.hProcess);
+        CloseHandle(pi.hThread);
+
+        return static_cast<int>(exitCode);
+    }
+}
 
 AssetManager::AssetManager()
 {
@@ -206,13 +243,19 @@ std::future<void> AssetManager::Compilefile(const std::filesystem::path& filePat
         {
             std::string compilerPath = std::filesystem::absolute(compilerData.compilerFilePath).string();
             std::string absmetaPath = std::filesystem::absolute(metaPath).string();
-            std::string command = "\"\"" + compilerPath + "\" \"" + inputPath + "\" \"" + absmetaPath + "\" \"" + outputResourcePath + "\"\"";
 
-            compilerTasks.push_back(std::async(std::launch::async, [command]() {
-                int result = std::system(command.c_str());
+            // CLEAN STRING BUILDING: Just the arguments, no outer wrapper quotes needed!
+            std::string arguments = "\"" + inputPath + "\" \"" + absmetaPath + "\" \"" + outputResourcePath + "\"";
+			std::cout << "COMMAND DEBUG: " << arguments << std::endl; 
+            compilerTasks.push_back(std::async(std::launch::async, [compilerPath, arguments]() {
+
+                // Call our robust native Windows API helper
+                int result = LaunchCompilerProcess(compilerPath, arguments);
+
                 if (result != 0) {
-                    // LOGGING_ERROR instead of std::cerr is usually better here
-                    std::cerr << "Command failed with code: " << result << "\nCommand: " << command << std::endl;
+                    std::cerr << "Compiler failed with code: " << result
+                        << "\nEXE: " << compilerPath
+                        << "\nArgs: " << arguments << std::endl;
                 }
                 }));
         }

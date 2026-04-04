@@ -20,8 +20,13 @@ uniform vec4 color;
 
 void main()
 {    
-    gAlbedoSpec =texture(sprite, texCoords) * color;
-    gMaterial.a=entityID;
-    gMaterial.b=uShaderType;
+    
+    vec4 texSample = texture(sprite, texCoords) * color;
+
+    if (texSample.a <= 0.1f)discard;
+
+    gAlbedoSpec = texSample;
+    gMaterial.a = entityID;
+    gMaterial.b = uShaderType;
 }
 )"

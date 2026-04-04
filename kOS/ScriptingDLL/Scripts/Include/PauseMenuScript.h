@@ -6,6 +6,9 @@
 #include "WinScreenScript.h"
 #include "LevelCompleteScript.h"
 
+// Defined in OptionsMenuScript.h -- extern here to avoid circular includes
+extern bool gOptionsMenuActive;
+
 class PauseMenuScript : public TemplateSC {
 public:
     static bool requestRestart;
@@ -35,6 +38,7 @@ public:
 
     void TogglePause() {
         if (LoseScreenScript::isLoseScreenActive || WinScreenScript::isWinScreenActive || LevelCompleteScript::isLevelCompleteActive) return;
+        if (gOptionsMenuActive) return;   // ESC blocked while options menu is open
         isPaused ? ResumeGame() : PauseGame();
     }
 
@@ -64,7 +68,6 @@ public:
 
     bool IsPaused() const { return isPaused; }
 
-private:
     void SetPauseMenuActive(bool active) {
         if (auto* t = ecsPtr->GetComponent<TransformComponent>(pauseMenuCanvasID)) {
             t->LocalTransformation.position = active ? originalCanvasPosition : hiddenPosition;

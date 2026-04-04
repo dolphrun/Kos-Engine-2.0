@@ -50,10 +50,8 @@ namespace audio {
         m_studio = studio;
 
         // Create named groups for independent volume control
-        FMOD::ChannelGroup* musicGroup = nullptr;
-        FMOD::ChannelGroup* sfxGroup = nullptr;
-        s_fmod->createChannelGroup("Music", &musicGroup);
-        s_fmod->createChannelGroup("SFX", &sfxGroup);
+        s_fmod->createChannelGroup("Music", &m_musicGroup);
+        s_fmod->createChannelGroup("SFX", &m_sfxGroup);
     }
 
     void AudioManager::Update() {
@@ -68,7 +66,7 @@ namespace audio {
     void AudioManager::SetPaused(bool paused) {
         s_paused = paused;
 
-        if (m_studio) {
+        if (m_studio) { 
             FMOD::Studio::Bus* masterBus = nullptr;
             if (m_studio->getBus("bus:/", &masterBus) == FMOD_OK && masterBus) {
                 masterBus->setPaused(paused);

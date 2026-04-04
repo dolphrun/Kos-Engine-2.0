@@ -119,7 +119,7 @@ void ScreenSpriteMesh::DrawMesh(const ScreenSpriteData& spriteData, Shader& shad
     shader.Use();
     shader.SetFloat("uShaderType", 2.1f);
     constexpr float radianConversion = 3.14159f / 180.f;
-    float angle = spriteData.rotation * radianConversion;
+    float angle = -spriteData.rotation.x * radianConversion;
 
     shader.SetMat3("projection", camera.GetUIOrthoMtx());
     shader.SetVec3("point", spriteData.position);
@@ -175,13 +175,13 @@ void ScreenSpriteMesh::DrawMeshWorld(const ScreenSpriteData& spriteData, Shader&
     shader.Use();
     shader.SetFloat("uShaderType", 2.1f);
     constexpr float radianConversion = 3.14159f / 180.f;
-    float angle = spriteData.rotation * radianConversion;
+    glm::vec3 angle = spriteData.rotation * radianConversion;
 
     shader.SetMat4("projection", camera.GetPerspMtx());
     shader.SetMat4("view", camera.GetViewMtx());
     shader.SetVec3("point", spriteData.position);
     shader.SetVec2("scale", spriteData.scale);
-    shader.SetFloat("rotation", angle);
+    shader.SetVec3("rotation", angle);
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, spriteData.textureToUse->RetrieveTexture());

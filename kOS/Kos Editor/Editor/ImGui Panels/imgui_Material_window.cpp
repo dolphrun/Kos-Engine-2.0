@@ -27,11 +27,13 @@ void gui::ImGuiHandler::DrawMaterialWindow() {
             std::shared_ptr<R_Material> testMat = m_resourceManager.GetResource<R_Material>(selectedAsset.GUID);
             if (testMat) {
                 //Update material list
+                materialData.materialName = testMat->Names()[0];
                 materialData.data.diffuseMaterialGUID = testMat->md.diffuseMaterialGUID;
                 materialData.data.specularMaterialGUID = testMat->md.specularMaterialGUID;
                 materialData.data.normalMaterialGUID = testMat->md.normalMaterialGUID;
                 materialData.data.ambientOcclusionMaterialGUID = testMat->md.ambientOcclusionMaterialGUID;
                 materialData.data.roughnessMaterialGUID = testMat->md.roughnessMaterialGUID;
+                materialData.data.emissiveMaterialGUID = testMat->md.emissiveMaterialGUID;
 
             }
             else {
@@ -41,6 +43,8 @@ void gui::ImGuiHandler::DrawMaterialWindow() {
                 materialData.data.normalMaterialGUID = utility::GUID{};
                 materialData.data.ambientOcclusionMaterialGUID = utility::GUID{};
                 materialData.data.roughnessMaterialGUID = utility::GUID{};
+                materialData.data.emissiveMaterialGUID = utility::GUID{};
+
             }
         }
         if (!mfb.startCon) {
@@ -56,7 +60,9 @@ void gui::ImGuiHandler::DrawMaterialWindow() {
         std::shared_ptr<R_Texture> norm = m_resourceManager.GetResource<R_Texture>(materialData.data.normalMaterialGUID);
         std::shared_ptr<R_Texture> ao = m_resourceManager.GetResource<R_Texture>(materialData.data.ambientOcclusionMaterialGUID);
         std::shared_ptr<R_Texture> rough = m_resourceManager.GetResource<R_Texture>(materialData.data.roughnessMaterialGUID);
-        PBRMaterial pbrMat{ diff,spec,rough,ao,norm };
+        std::shared_ptr<R_Texture> emission = m_resourceManager.GetResource<R_Texture>(materialData.data.emissiveMaterialGUID);
+
+        PBRMaterial pbrMat{ diff,spec,rough,ao,norm ,emission };
         Camera cam;
         m_graphicsManager.gm_DrawMaterial(pbrMat, mfb.fb);
 

@@ -66,6 +66,7 @@ struct Bloom : public PostProcessEffect {
 	Bloom(const Bloom& other);
 	void UpdateShader();
 	float filterRadius{ 0.0001f };
+	float bloomThreshold{ 1.f };
 	float bloomStrength{ 1.f };
 	static Shader* downSamplingShader;
 	static Shader* upSamplingShader;

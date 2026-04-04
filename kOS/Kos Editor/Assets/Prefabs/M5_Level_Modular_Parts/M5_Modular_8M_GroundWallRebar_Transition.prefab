@@ -1,10 +1,18 @@
 [
     {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
         "entityGUID": "714c4edf-6d0c-da0a-510f-16abda43a3a4",
         "MaterialComponent": {
             "materialGUID": [
                 {
-                    "materialGUID": "1fdc9a34-6a84-6c35-a918-eaaa6277fc34"
+                    "materialGUID": "9d359f6f-be90-6093-1447-9e616483ce81"
                 }
             ]
         },

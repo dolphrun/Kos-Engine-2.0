@@ -14,6 +14,8 @@ public:
 	ScoreManagerScript* scoreManager = nullptr;
 	int scoreValue = 200;
 
+	bool isDeleting = false;
+
 	utility::GUID enemyDeathSfxGUID_1;
 	utility::GUID enemyDeathSfxGUID_2;
 	utility::GUID enemyDeathSfxGUID_3;
@@ -40,20 +42,22 @@ public:
 			}
 		}
 		physicsPtr->GetEventCallback()->OnTriggerStay(entity, [this](const physics::Collision& col) {
-			if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
-				if (auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID)) {
-					enemyScript->TakeDamage(lightningDamage, "LIGHTNING");
+			if (isDeleting) return;
+				
+			auto* nameComp = ecsPtr->GetComponent<NameComponent>(col.otherEntityID);
+			if (!nameComp || nameComp->entityTag != "Enemy") return;
 
-					if (enemyScript->shieldHealth <= 0) {
-						enemyScript->TriggerStagger(0.5f);
-					}
+			auto* enemyScript = ecsPtr->GetComponent<EnemyManagerScript>(col.otherEntityID);
+			if (!enemyScript) return;
+			if (enemyScript->enemyHealth <= 0) return; // already dead, skip
 
-					if (enemyScript->enemyHealth <= 0) {
-						PlayRandomEnemyDeathSFX();
-
-						enemyScript->Die();
-					}
-				}
+			enemyScript->TakeDamage(lightningDamage, "LIGHTNING");
+			if (enemyScript->shieldHealth <= 0) {
+				enemyScript->TriggerStagger(0.5f);
+			}
+			if (enemyScript->enemyHealth <= 0) {
+				PlayRandomEnemyDeathSFX();
+				enemyScript->Die();
 			}
 		});
 	}
@@ -63,13 +67,23 @@ public:
 		//	tc->LocalTransformation.position += direction * lightningSpeed * ecsPtr->m_GetDeltaTime();
 		//}
 
-		if (currentTimer <= lingerTime) {
-			currentTimer += ecsPtr->m_GetDeltaTime();
+		//if (currentTimer <= lingerTime) {
+		//	currentTimer += ecsPtr->m_GetDeltaTime();
 
-			if (currentTimer >= lingerTime) {
-				ecs::EntityID parent = ecsPtr->GetParent(entity).value();
-				ecsPtr->DeleteEntity(parent);
-			}
+		//	if (currentTimer >= lingerTime) {
+		//		ecs::EntityID parent = ecsPtr->GetParent(entity).value();
+		//		ecsPtr->DeleteEntity(parent);
+		//	}
+		//}
+		currentTimer += ecsPtr->m_GetDeltaTime();
+
+		if (currentTimer >= lingerTime) {
+			isDeleting = true;
+			auto parentOpt = ecsPtr->GetParent(entity);
+			if (parentOpt.has_value())
+				ecsPtr->DeleteEntity(parentOpt.value());
+			else
+				ecsPtr->DeleteEntity(entity);
 		}
 	}
 

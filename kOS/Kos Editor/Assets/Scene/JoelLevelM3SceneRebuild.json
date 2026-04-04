@@ -3,7 +3,7 @@
         "SceneData": {
             "skyBoxGUID": [],
             "NavMeshGuid": "ac306523-8c08-8088-be88-701fd8c02b7a",
-            "postProcessingProfile": "c3a79a26-21f4-7f96-81b0-a3d406909579",
+            "postProcessingProfile": "b773310d-91c5-cbfb-ceda-2538c8cb7b4f",
             "ambientIntensity": 1.0
         }
     },
@@ -8734,7 +8734,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -8808,7 +8809,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -8882,7 +8884,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -8956,7 +8959,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -9030,7 +9034,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -21074,7 +21079,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -22660,7 +22666,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -22734,7 +22741,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -22808,7 +22816,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -22882,7 +22891,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -22956,7 +22966,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -23030,7 +23041,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -23104,7 +23116,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -23178,7 +23191,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -23252,7 +23266,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -23326,7 +23341,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -23400,7 +23416,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -23474,7 +23491,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -23548,7 +23566,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -24126,7 +24145,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -24200,7 +24220,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -24274,7 +24295,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -24348,7 +24370,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -24422,7 +24445,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -24496,7 +24520,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -24570,7 +24595,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -24644,7 +24670,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -24718,7 +24745,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -28824,7 +28852,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -28898,7 +28927,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -28972,7 +29002,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -29046,7 +29077,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -29120,7 +29152,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -29194,7 +29227,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -30654,7 +30688,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -30728,7 +30763,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -42646,7 +42682,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -43728,7 +43765,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -43802,7 +43840,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -43876,7 +43915,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -43950,7 +43990,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44024,7 +44065,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44098,7 +44140,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44172,7 +44215,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44246,7 +44290,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44320,7 +44365,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44394,7 +44440,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44468,7 +44515,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44542,7 +44590,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44616,7 +44665,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44690,7 +44740,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44764,7 +44815,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44838,7 +44890,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44912,7 +44965,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -44986,7 +45040,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -45060,7 +45115,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -45134,7 +45190,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -45208,7 +45265,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -45282,7 +45340,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -45356,7 +45415,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -45430,7 +45490,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -45504,7 +45565,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -45578,7 +45640,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -45652,7 +45715,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -45726,7 +45790,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -45800,7 +45865,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -45874,7 +45940,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -45948,7 +46015,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46022,7 +46090,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46096,7 +46165,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46170,7 +46240,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46244,7 +46315,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46318,7 +46390,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46392,7 +46465,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46466,7 +46540,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46540,7 +46615,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46614,7 +46690,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46688,7 +46765,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46762,7 +46840,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46836,7 +46915,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46910,7 +46990,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -46984,7 +47065,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -47058,7 +47140,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -47132,7 +47215,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -47206,7 +47290,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -47280,7 +47365,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -47354,7 +47440,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -47718,7 +47805,8 @@
                             "y": 1800.0,
                             "z": 200.0
                         }
-                    }
+                    },
+                    "autoFit": true
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -49728,7 +49816,7 @@
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Enemy",
                     "isPrefab": true,
                     "isStatic": false,
@@ -49797,7 +49885,7 @@
                         "entityGUID": "f3526aca-6d8e-2688-e46b-2f2b7998c348",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -49853,7 +49941,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Enemy Model",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -49905,7 +49993,7 @@
                         "entityGUID": "c7712a74-ed7d-2428-8e8b-ab3d18836cac",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
@@ -50112,7 +50200,7 @@
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Enemy",
                     "isPrefab": true,
                     "isStatic": false,
@@ -50181,7 +50269,7 @@
                         "entityGUID": "949a3f41-c59f-1d19-6e02-4a8b81477209",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -50237,7 +50325,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Enemy Model",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -50289,7 +50377,7 @@
                         "entityGUID": "bfdac65d-037f-2d4f-299e-fc66f05318c6",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
@@ -50496,7 +50584,7 @@
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Enemy",
                     "isPrefab": true,
                     "isStatic": false,
@@ -50565,7 +50653,7 @@
                         "entityGUID": "e08637c8-e275-dc8d-3b80-8ca7cf96adca",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -50621,7 +50709,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Enemy Model",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -50673,7 +50761,7 @@
                         "entityGUID": "5e55a3af-4b12-df9c-9e3d-1bb978b8e564",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
@@ -50931,7 +51019,7 @@
                 },
                 "NameComponent": {
                     "entityName": "RangedEnemyPrefab",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Enemy",
                     "isPrefab": true,
                     "isStatic": false,
@@ -51000,7 +51088,7 @@
                         "entityGUID": "0d27a310-e620-5051-53eb-2bdeea787fd6",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -51056,7 +51144,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Enemy Model",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -51108,7 +51196,7 @@
                         "entityGUID": "5486ca6b-08c6-e5c9-6f4a-65972749ced4",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -51315,7 +51403,7 @@
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Enemy",
                     "isPrefab": true,
                     "isStatic": false,
@@ -51384,7 +51472,7 @@
                         "entityGUID": "966d5457-6abe-c485-2c1b-7e419cec7f7a",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -51440,7 +51528,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Enemy Model",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -51492,7 +51580,7 @@
                         "entityGUID": "93e6df0f-96c0-6262-8ed6-7bdd04eedee5",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
@@ -51750,7 +51838,7 @@
                 },
                 "NameComponent": {
                     "entityName": "RangedEnemyPrefab",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Enemy",
                     "isPrefab": true,
                     "isStatic": false,
@@ -51819,7 +51907,7 @@
                         "entityGUID": "3df195eb-0728-5609-ac08-742fc4c3074b",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -51875,7 +51963,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Enemy Model",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -51927,7 +52015,7 @@
                         "entityGUID": "56976806-399b-ebd7-6c0b-93a858fb5950",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -52185,7 +52273,7 @@
                 },
                 "NameComponent": {
                     "entityName": "RangedEnemyPrefab",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Enemy",
                     "isPrefab": true,
                     "isStatic": false,
@@ -52254,7 +52342,7 @@
                         "entityGUID": "fe55f4a1-5867-4c5e-955c-76271d0a037e",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -52310,7 +52398,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Enemy Model",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -52362,7 +52450,7 @@
                         "entityGUID": "3c4ad8c9-62ed-9285-d16c-aec84a2c955e",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -52569,7 +52657,7 @@
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Enemy",
                     "isPrefab": true,
                     "isStatic": false,
@@ -52638,7 +52726,7 @@
                         "entityGUID": "9a6eaa23-3fd9-31fd-c640-f3c695bb402f",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -52694,7 +52782,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Enemy Model",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -52746,7 +52834,7 @@
                         "entityGUID": "a3b06752-6fac-c93e-9bfd-a0da6be79115",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
@@ -52953,7 +53041,7 @@
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Enemy",
                     "isPrefab": true,
                     "isStatic": false,
@@ -53022,7 +53110,7 @@
                         "entityGUID": "ce1a962e-1a65-55f2-d2a8-2ca080f4e5de",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -53078,7 +53166,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Enemy Model",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -53130,7 +53218,7 @@
                         "entityGUID": "e088b175-1244-92e5-108b-df7fa7b74687",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
@@ -53337,7 +53425,7 @@
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Enemy",
                     "isPrefab": true,
                     "isStatic": false,
@@ -53406,7 +53494,7 @@
                         "entityGUID": "bef5d6ab-49ed-9eed-5433-b6e0f7be26fb",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -53462,7 +53550,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Enemy Model",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -53514,7 +53602,7 @@
                         "entityGUID": "a0b819d4-7df5-8b89-eec2-b3ff4bc21bff",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
@@ -53721,7 +53809,7 @@
                 },
                 "NameComponent": {
                     "entityName": "EnemyPrefab",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Enemy",
                     "isPrefab": true,
                     "isStatic": false,
@@ -53790,7 +53878,7 @@
                         "entityGUID": "73b731e4-dda5-bce0-1d65-4cf8599efbd0",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -53846,7 +53934,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Enemy Model",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -53898,7 +53986,7 @@
                         "entityGUID": "29fbab0c-dae6-d2dd-3e83-7c9ad2d40f6e",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
@@ -54156,7 +54244,7 @@
                 },
                 "NameComponent": {
                     "entityName": "RangedEnemyPrefab",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Enemy",
                     "isPrefab": true,
                     "isStatic": false,
@@ -54225,7 +54313,7 @@
                         "entityGUID": "ef6bba92-0269-238b-ce05-590b2a9dfb7b",
                         "NameComponent": {
                             "entityName": "Enemy Hurtbox Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -54281,7 +54369,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Enemy Model",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -54333,7 +54421,7 @@
                         "entityGUID": "b2acbed0-ce43-2fee-3ebc-1c59726267f8",
                         "NameComponent": {
                             "entityName": "Enemy Hurt VFX Position",
-                            "Layer": 0,
+                            "Layer": 1,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -54591,7 +54679,7 @@
                 },
                 "NameComponent": {
                     "entityName": "RangedEnemyPrefab",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Enemy",
                     "isPrefab": true,
                     "isStatic": false,
@@ -54831,7 +54919,8 @@
                     "y": 2.200000047683716,
                     "z": 9.0
                 }
-            }
+            },
+            "autoFit": false
         },
         "EventColliderScript": {
             "eventType": 1,
@@ -54900,7 +54989,8 @@
                     "y": 12.399999618530273,
                     "z": 10.399999618530273
                 }
-            }
+            },
+            "autoFit": false
         },
         "NameComponent": {
             "entityName": "LockRoomPrefab",
@@ -59086,7 +59176,8 @@
                                     "y": 217.58926391601563,
                                     "z": 75.29580688476563
                                 }
-                            }
+                            },
+                            "autoFit": true
                         },
                         "MaterialComponent": {
                             "materialGUID": [
@@ -59433,7 +59524,8 @@
                                     "y": 217.58926391601563,
                                     "z": 75.29580688476563
                                 }
-                            }
+                            },
+                            "autoFit": true
                         },
                         "MaterialComponent": {
                             "materialGUID": [
@@ -62892,7 +62984,8 @@
                                     "y": 217.58926391601563,
                                     "z": 75.29580688476563
                                 }
-                            }
+                            },
+                            "autoFit": true
                         },
                         "MaterialComponent": {
                             "materialGUID": [
@@ -63239,7 +63332,8 @@
                                     "y": 217.58926391601563,
                                     "z": 75.29580688476563
                                 }
-                            }
+                            },
+                            "autoFit": true
                         },
                         "MaterialComponent": {
                             "materialGUID": [

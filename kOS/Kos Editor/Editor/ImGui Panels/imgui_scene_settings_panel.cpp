@@ -28,8 +28,11 @@ void gui::ImGuiHandler::DrawSceneSettingsWindow()
     if (ImGui::Begin("Scene Settings", nullptr, ImGuiWindowFlags_HorizontalScrollbar)) {
         if (m_ecs.sceneMap.find(m_activeScene) != m_ecs.sceneMap.end()) {
 
+            static utility::GUID lastGuid;
             SceneData& selectedScene = m_ecs.sceneMap.at(m_activeScene);
+            lastGuid = selectedScene.postProcessingProfile;
             m_ecs.sceneMap.at(m_activeScene).ApplyFunction(DrawComponents{ selectedScene.Names() });
+            if (lastGuid != selectedScene.postProcessingProfile)m_graphicsManager.postProcessProfile = &m_resourceManager.GetResource<R_PostProcessingProfile>(selectedScene.postProcessingProfile)->profile;
         }
 
     }

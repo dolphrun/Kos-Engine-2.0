@@ -12,7 +12,7 @@
         "AudioComponent": {
             "audioFiles": [
                 {
-                    "audioGUID": "2afcabc1-3d62-bb0b-f484-598f81dff049",
+                    "audioGUID": "fb094c49-7e02-d19e-ed11-95c573c635e1",
                     "volume": 1.0,
                     "loop": false,
                     "playOnStart": false,
@@ -28,7 +28,7 @@
                     "studioEventPath": ""
                 },
                 {
-                    "audioGUID": "c5405e79-b219-7670-1235-e1482aae4941",
+                    "audioGUID": "e71b6f50-d7fe-723c-e3c4-82222556871f",
                     "volume": 1.0,
                     "loop": false,
                     "playOnStart": false,
@@ -156,10 +156,10 @@
             "tankEnemyHurtSfxGUID": [],
             "meleeEnemyDeathSfxGUID": [
                 {
-                    "meleeEnemyDeathSfxGUID": "2afcabc1-3d62-bb0b-f484-598f81dff049"
+                    "meleeEnemyDeathSfxGUID": "fb094c49-7e02-d19e-ed11-95c573c635e1"
                 },
                 {
-                    "meleeEnemyDeathSfxGUID": "c5405e79-b219-7670-1235-e1482aae4941"
+                    "meleeEnemyDeathSfxGUID": "e71b6f50-d7fe-723c-e3c4-82222556871f"
                 }
             ],
             "rangedEnemyDeathSfxGUID": [],

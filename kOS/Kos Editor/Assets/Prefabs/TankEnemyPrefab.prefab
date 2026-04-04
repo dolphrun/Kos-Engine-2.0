@@ -162,11 +162,11 @@
             "capsule": {
                 "center": {
                     "x": 0.0,
-                    "y": 1.7000000476837158,
-                    "z": 0.0
+                    "y": 3.9000000953674316,
+                    "z": 0.800000011920929
                 },
-                "radius": 1.7000000476837158,
-                "height": 5.0,
+                "radius": 2.9000000953674316,
+                "height": 10.199999809265137,
                 "capsuleDirection": 1
             }
         },
@@ -174,7 +174,7 @@
             "enemyHealth": 60,
             "enemyMovementSpeed": 3.0,
             "enemyType": "Tank",
-            "enemyAttackRange": 6.0,
+            "enemyAttackRange": 8.0,
             "enemyRangedAttackRange": 15.0,
             "enemyChaseRange": 25.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
@@ -391,9 +391,9 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.019999999552965164,
-                            "y": 0.019999999552965164,
-                            "z": 0.019999999552965164
+                            "x": 0.03999999910593033,
+                            "y": 0.03999999910593033,
+                            "z": 0.03999999910593033
                         }
                     },
                     "LocalTransformation": {
@@ -408,9 +408,9 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.019999999552965164,
-                            "y": 0.019999999552965164,
-                            "z": 0.019999999552965164
+                            "x": 0.03999999910593033,
+                            "y": 0.03999999910593033,
+                            "z": 0.03999999910593033
                         }
                     }
                 }
@@ -430,7 +430,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 3.5272364616394043,
                             "z": 0.0
                         },
                         "rotation": {
@@ -447,7 +447,7 @@
                     "LocalTransformation": {
                         "position": {
                             "x": 0.0,
-                            "y": 2.0,
+                            "y": 3.5272364616394043,
                             "z": 0.0
                         },
                         "rotation": {
@@ -482,10 +482,15 @@
                             "start_Lifetime": 0.25,
                             "end_Lifetime": 0.25,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.0,
                             "playback_State": 0,
                             "particleFade": 0,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -524,7 +529,7 @@
                                     "z": 0.0
                                 },
                                 "cone_Radius": 0.0,
-                                "circle_Radius": 1.75,
+                                "circle_Radius": 4.25,
                                 "circle_Arc": 360.0,
                                 "emit_From_Edge": true,
                                 "edge_Length": 0.0,
@@ -651,7 +656,7 @@
                             "WorldTransformation": {
                                 "position": {
                                     "x": 0.0,
-                                    "y": 2.0795516967773438,
+                                    "y": 3.606788158416748,
                                     "z": 0.0
                                 },
                                 "rotation": {
@@ -703,10 +708,15 @@
                             "start_Lifetime": 0.25,
                             "end_Lifetime": 0.25,
                             "lifetime_Random_Enable": true,
-                            "textureGUID": "00000000-0000-0000-0000-000000000000",
                             "start_Velocity": 0.0,
                             "playback_State": 0,
                             "particleFade": 0,
+                            "animationModule": {
+                                "textureGUID": [],
+                                "framesPerSecond": 24,
+                                "isLooping": false,
+                                "isPlaying": true
+                            },
                             "velocityModule": {
                                 "enabled": false,
                                 "mode": 0,
@@ -745,7 +755,7 @@
                                     "z": 0.0
                                 },
                                 "cone_Radius": 0.0,
-                                "circle_Radius": 2.0,
+                                "circle_Radius": 4.25,
                                 "circle_Arc": 360.0,
                                 "emit_From_Edge": true,
                                 "edge_Length": 0.0,
@@ -872,7 +882,7 @@
                             "WorldTransformation": {
                                 "position": {
                                     "x": 0.0,
-                                    "y": 2.0,
+                                    "y": 3.5272364616394043,
                                     "z": 0.0
                                 },
                                 "rotation": {

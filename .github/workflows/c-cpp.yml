@@ -1,4 +1,4 @@
-name: Build Engine (Windows)
+name: Build and Test
 
 on:
   push:
@@ -27,6 +27,10 @@ jobs:
       - name: Build (Release)
         run: cmake --build kOS/build --config Release -- /m
         shell: powershell
+        
+      - name: Build (Debug)
+        run: cmake --build kOS/build --config Debug -- /m
+        shell: powershell  
 
       - name: Run tests
         run: |

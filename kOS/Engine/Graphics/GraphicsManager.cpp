@@ -262,6 +262,9 @@ void GraphicsManager::gm_RenderToGameFrameBuffer()
 			glBindFramebuffer(GL_FRAMEBUFFER, framebufferManager.sceneBuffer.fbo);
 			glViewport(0, 0, static_cast<GLsizei>(framebufferManager.sceneBuffer.width), static_cast<GLsizei>(framebufferManager.sceneBuffer.height));
 			gm_RenderDeferredObjects(cd);
+			//glEnable(GL_DEPTH_TEST);
+			//gm_RenderParticles(cd);
+			//glDisable(GL_DEPTH_TEST);
 			glDisable(GL_CULL_FACE);
 			gm_RenderVideo(cd);
 			glEnable(GL_CULL_FACE);
@@ -488,6 +491,60 @@ void GraphicsManager::gm_FillDepthCube(const CameraData& camera) {
 	glCullFace(GL_FRONT);
 
 	for (int i{ 0 }; i < lightRenderer.pointLightsToDraw.size(); i++) {
+		//Only render 
+		if (lightRenderer.pointLightsToDraw[i].bakedCon) {
+			//Copyu over bnaked dcm data from bakedDCM to dcm
+			GLuint srcTex = lightRenderer.bakedDCM[i].RetrieveID();
+			GLuint dstTex = lightRenderer.dcm[i].RetrieveID();
+
+			for (int face = 0; face < 6; ++face)
+			{
+				glCopyImageSubData(
+					srcTex, GL_TEXTURE_CUBE_MAP, 0,  // src texture, type, mip level
+					0, 0, face,                       // src x, y, z (face index)
+					dstTex, GL_TEXTURE_CUBE_MAP, 0,  // dst texture, type, mip level
+					0, 0, face,                       // dst x, y, z (face index)
+					1024, 1024, 1                     // width, height, depth (1 face)
+				);
+			}			//Do shadows for thingy
+			glViewport(0, 0, static_cast<GLsizei>(1024.f), static_cast<GLsizei>(1024.f));
+			glBindFramebuffer(GL_FRAMEBUFFER, lightRenderer.dcm[i].GetFBO());
+			//glClear(GL_DEPTH_BUFFER_BIT);
+			pointShadowShader->Use();
+			lightRenderer.dcm[i].FillMap(lightRenderer.pointLightsToDraw[i].position);
+			for (unsigned int j = 0; j < 6; ++j) {
+				pointShadowShader->SetMat4("shadowMatrices[" + std::to_string(j) + "]", lightRenderer.dcm[i].shadowTransforms[j]);
+			}
+			pointShadowShader->SetFloat("far_plane", lightRenderer.dcm[i].far_plane);
+			pointShadowShader->SetVec3("lightPos", lightRenderer.pointLightsToDraw[i].position);
+
+			std::vector<SkinnedMeshData>&  skinnedMeshData = skinnedMeshRenderer.skinnedMeshesToDraw[layer::LAYER1];
+			for (SkinnedMeshData& md : skinnedMeshData)
+			{
+				if (!md.finalBoneMatrices.empty() && md.animationToUse)
+				{
+					//for (int i = 0; i < boneMatrices.size(); i++)
+					//{
+					//    shader.SetMat4("bones[" + std::to_string(i) + "]", boneMatrices[i]);
+					//}
+					pointShadowShader->SetBool("isRigged", true);
+					GLint loc = glGetUniformLocation(pointShadowShader->ID, "bones");
+
+					if (loc != -1)
+					{
+						///shader.SetMat4("bones",)
+						glUniformMatrix4fv(loc, static_cast<GLsizei>(md.finalBoneMatrices.size()), GL_FALSE, &md.finalBoneMatrices[0][0][0]);
+					}
+				}
+				pointShadowShader->SetTrans("model", md.transformation);
+				md.meshToUse->PBRDraw(*pointShadowShader, md.meshMaterial);
+
+			}
+			
+			cubeRenderer.Render(camera, *pointShadowShader, &this->cube);
+
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		}
 		if (!lightRenderer.pointLightsToDraw[i].shadowCon)continue;;
 		//std::cout << i << '\n';
 		glViewport(0, 0, static_cast<GLsizei>(1024.f), static_cast<GLsizei>(1024.f));
@@ -921,6 +978,8 @@ unsigned int* GraphicsManager::gm_PostProcess() {
 			Bloom::bloomShader->Use();
 			Bloom::bloomShader->SetInt("bloomTexture", 0);
 			Bloom::bloomShader->SetFloat("bloomStrength", blmPtr->bloomStrength);
+			Bloom::bloomShader->SetFloat("bloomThreshold", blmPtr->bloomThreshold);
+
 			// Composite bloom result back onto sceneFB
 			glBindFramebuffer(GL_FRAMEBUFFER, sceneFB->fbo);
 			glViewport(0, 0, sceneFB->width, sceneFB->height);

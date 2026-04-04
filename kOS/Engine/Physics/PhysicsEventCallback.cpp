@@ -115,9 +115,20 @@ namespace physics {
     }
 
     void PhysicsEventCallback::ProcessTriggerStay() {
-        for (const auto& pair : m_activeTriggers) {
+
+        auto triggersCopy = m_activeTriggers;
+
+
+        for (const auto& pair : triggersCopy) {
+
+            if (m_activeTriggers.find(pair) == m_activeTriggers.end()) continue;
+            if (!pair.trigger || !pair.other) continue;
+
             unsigned int entityA = static_cast<unsigned int>(reinterpret_cast<uintptr_t>(pair.trigger->userData));
             unsigned int entityB = static_cast<unsigned int>(reinterpret_cast<uintptr_t>(pair.other->userData));
+
+            if (entityA == 0 || entityA == UINT_MAX) continue;
+            if (entityB == 0 || entityB == UINT_MAX) continue;
 
             Collision triggerA{}, triggerB{};
             triggerA.thisEntityID = entityA;

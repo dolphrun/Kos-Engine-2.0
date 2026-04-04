@@ -70,6 +70,7 @@ public:
 	ecs::EntityID enemyHurtboxPositionID;
 
 	ecs::EntityID enemyModelID;
+	ecs::EntityID currentHurtboxID = 0;
 
 	bool attackHurtboxIsSpawn = false;
 
@@ -288,6 +289,10 @@ inline void EnemyManagerScript::Update() {
 		}
 	}
 
+	static float deathSfxCooldown = 0.f;
+	if (deathSfxCooldown > 0.f)
+		deathSfxCooldown -= ecsPtr->m_GetDeltaTime();
+
 	// Cooldown for lunging
 	if (currentAttackCooldown > 0.f) {
 		currentAttackCooldown -= ecsPtr->m_GetDeltaTime();
@@ -329,19 +334,53 @@ inline void EnemyManagerScript::Update() {
 		}
 	}
 
-	// CONSTANTLY LOOK AT PLAYER
+	// LOS Check
+	bool hasLineOfSight = false;
+	glm::vec3 rayOrigin = enemyTransform->WorldTransformation.position;
+	rayOrigin.y += 1.0f; // Shoot from chest height
+
+	glm::vec3 targetCenter = playerTransform->WorldTransformation.position;
+	targetCenter.y += 1.0f; // Aim at player's chest
+
+	glm::vec3 losDir = targetCenter - rayOrigin;
+	float distToPlayer = glm::length(losDir);
+
+	if (distToPlayer > 0.001f) {
+		losDir = glm::normalize(losDir);
+		RaycastHit losHit;
+		losHit.entityID = 9999999;
+
+		auto* rb = ecsPtr->GetComponent<RigidbodyComponent>(entity);
+
+		if (physicsPtr->Raycast(rayOrigin, losDir, distToPlayer, losHit, rb ? rb->actor : nullptr)) {
+			if (losHit.entityID == playerToChaseID) {
+				hasLineOfSight = true;
+			}
+			else {
+				auto* hitName = ecsPtr->GetComponent<NameComponent>(losHit.entityID);
+				if (hitName && hitName->entityTag == "Enemy") hasLineOfSight = true;
+			}
+		}
+		else {
+			hasLineOfSight = true;
+		}
+	}
+
+	// Calc dir
 	glm::vec3 direction = playerTransform->LocalTransformation.position - enemyTransform->LocalTransformation.position;
 	if (glm::length(direction) > 0.001f) direction = glm::normalize(direction);
 
-	if (!isStaggered) {
+	float currentDistToPlayer = glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position);
+
+	// Conditionally look at player
+	// Only rotate if actively attacking OR (within chase range AND has line of sight)
+	if (!isStaggered && (enemyIsAttacking || (currentDistToPlayer <= enemyChaseRange && hasLineOfSight))) {
+
 		// Calculate yaw (rotation around Y axis)
 		float yaw = std::atan2(direction.x, direction.z);
 
 		// Calculate pitch (rotation around X axis)
 		float pitch = std::asin(-direction.y);
-
-		// Roll is typically 0 for forward-facing directions
-		float roll = 0.0f;
 
 		glm::vec3 rotation(0.f, yaw, 0.f);
 		glm::vec3 rotationDegrees = glm::degrees(rotation);
@@ -349,19 +388,20 @@ inline void EnemyManagerScript::Update() {
 		enemyTransform->LocalTransformation.rotation = rotationDegrees;
 	}
 
-	// COMMENTED OUT FOR ANIM
-
-
 	if (animComp)
 	{
 		if (R_Animation* currAnim = resource->GetResource<R_Animation>(enemyController->RetrieveStateByID(animComp->m_currentStateID)->animationGUID).get())
 		{
 			float animDuration = currAnim->GetDuration();
-			//Checking if animation is done
-			if (animComp->m_CurrentTime >= animDuration && !enemyController->RetrieveStateByID(animComp->m_currentStateID)->isLooping)
+			std::string stateName = enemyController->RetrieveStateByID(animComp->m_currentStateID)->name;
+
+			// Soft lock fix
+			bool isAttack = (stateName == "Attacking" || stateName == "Crouching");
+			bool isDone = animComp->m_CurrentTime >= (animDuration * 0.90f);
+
+			// Check at 90% completion, and force Attack states to finish even if they loop pls
+			if (isDone && (!enemyController->RetrieveStateByID(animComp->m_currentStateID)->isLooping || isAttack))
 			{
-				// Only auto-finish for Ranged/Tank attacks now.
-				// Melee will finish when it explicitly lands
 				if (!isLunging) {
 					enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("AnimationFinished", animComp, enemyController);
 					enemyIsAttacking = false;
@@ -377,8 +417,8 @@ inline void EnemyManagerScript::Update() {
 
 		bool forceTankCommit = (enemyType == "Tank" && enemyIsAttacking);
 
-		if ((glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= currentActiveRange && currentAttackCooldown <= 0.f) || forceTankCommit) {
-
+		// --- FIX: MUST HAVE LINE OF SIGHT TO ATTACK ---
+		if (((glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= currentActiveRange && currentAttackCooldown <= 0.f) && hasLineOfSight) || forceTankCommit) {
 			if (!enemyIsAttacking || enemyType != "Tank") {
 				enemyIsAttacking = true;
 				if (animComp)
@@ -445,136 +485,142 @@ inline void EnemyManagerScript::Update() {
 					{
 						std::string stateName = enemyController->RetrieveStateByID(animComp->m_currentStateID)->name;
 
-						utility::GUID attackSfx = GetAttackSFX();
-
-						if (!attackSfx.Empty())
+						if (stateName == "Attacking" || stateName == "Crouching")
 						{
-							if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity))
+
+							utility::GUID attackSfx = GetAttackSFX();
+
+							if (!attackSfx.Empty())
 							{
-								for (auto& af : ac->audioFiles)
+								if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity))
 								{
-									if (af.audioGUID == attackSfx && af.isSFX)
+									for (auto& af : ac->audioFiles)
 									{
-										af.requestPlay = true;
-										break;
+										if (af.audioGUID == attackSfx && af.isSFX)
+										{
+											af.requestPlay = true;
+											break;
+										}
 									}
 								}
 							}
-						}
 
-						// SWITCH SPAWN BEHAVIOR BASED ON STRING
-						if (enemyType == "Ranged" && stateName == "Attacking")
-						{
-							// Ranged: Spawn Bullet
-							std::shared_ptr<R_Scene> bullet = resource->GetResource<R_Scene>(enemyBulletPrefab);
+							// SWITCH SPAWN BEHAVIOR BASED ON STRING
+							if (enemyType == "Ranged" && stateName == "Attacking")
+							{
+								// Ranged: Spawn Bullet
+								std::shared_ptr<R_Scene> bullet = resource->GetResource<R_Scene>(enemyBulletPrefab);
 
-							if (bullet) {
-								std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-								ecs::EntityID bulletID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyBulletPrefab);
+								if (bullet) {
+									std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+									ecs::EntityID bulletID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyBulletPrefab);
 
-								glm::vec3 spawnPos = enemyHurtboxPositionTransform->WorldTransformation.position;
+									glm::vec3 spawnPos = enemyHurtboxPositionTransform->WorldTransformation.position;
 
-								if (auto* bulletTransform = ecsPtr->GetComponent<TransformComponent>(bulletID)) {
-									bulletTransform->LocalTransformation.position = spawnPos;
-								}
-
-								if (auto* bulletScript = ecsPtr->GetComponent<EnemyBulletLogic>(bulletID)) {
-
-									// Target the player's World Position, plus an offset to aim at their chest
-									glm::vec3 targetPos = playerTransform->WorldTransformation.position;
-									targetPos.y += 1.0f; // Dis number to aim higher/lower on the player's body if needed
-
-									glm::vec3 trueDirection = targetPos - spawnPos;
-
-									if (glm::length(trueDirection) > 0.001f) {
-										trueDirection = glm::normalize(trueDirection);
+									if (auto* bulletTransform = ecsPtr->GetComponent<TransformComponent>(bulletID)) {
+										bulletTransform->LocalTransformation.position = spawnPos;
 									}
 
-									bulletScript->direction = trueDirection;
+									if (auto* bulletScript = ecsPtr->GetComponent<EnemyBulletLogic>(bulletID)) {
+
+										// Target the player's World Position, plus an offset to aim at their chest
+										glm::vec3 targetPos = playerTransform->WorldTransformation.position;
+										targetPos.y += 1.0f; // Dis number to aim higher/lower on the player's body if needed
+
+										glm::vec3 trueDirection = targetPos - spawnPos;
+
+										if (glm::length(trueDirection) > 0.001f) {
+											trueDirection = glm::normalize(trueDirection);
+										}
+
+										bulletScript->direction = trueDirection;
+									}
 								}
 							}
+							else if (enemyType == "Tank" && stateName == "Attacking") {
+
+								// Reset cooldown
+								currentAttackCooldown = attackCooldown;
+
+								std::shared_ptr<R_Scene> tankAOE = resource->GetResource<R_Scene>(tankAoePrefab);
+								if (tankAOE) {
+									std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+									ecs::EntityID aoeID = DuplicatePrefabIntoScene<R_Scene>(currentScene, tankAoePrefab);
+
+									ecsPtr->SetParent(entity, aoeID, false);
+
+									if (auto* aoeTransform = ecsPtr->GetComponent<TransformComponent>(aoeID)) {
+										aoeTransform->LocalTransformation.position = glm::vec3(0.f, 0.f, 0.f);
+									}
+
+									// Pass the Tank's ID so it doesn't hurt itself
+									if (auto* aoeScript = ecsPtr->GetComponent<TankAOEScript>(aoeID)) {
+										aoeScript->casterID = entity;
+									}
+								}
+							}
+							else if (stateName == "Crouching")
+							{
+								RigidbodyComponent* rb = ecsPtr->GetComponent<RigidbodyComponent>(entity);
+								if (rb == nullptr || rb->actor == nullptr) return;
+
+								// Melee lunge logic
+								isLunging = true;
+								currentLungeTimer = lungeDuration;
+
+								currentAttackCooldown = attackCooldown;
+
+								//navMeshPtr->RemoveAgent(agentid);
+								navMeshPtr->AgentSetActive(agentid, false);
+
+								glm::vec3 flatDir = glm::vec3(direction.x, 0.f, direction.z);
+								if (glm::length(flatDir) > 0.001f) flatDir = glm::normalize(flatDir);
+
+								lungeVelocity = flatDir * lungeForwardSpeed;
+
+								lungeVelocity.y = lungeUpwardSpeed;
+
+								// Height diff stuff inshallah
+								float heightDiff = playerTransform->LocalTransformation.position.y - enemyTransform->LocalTransformation.position.y;
+								if (heightDiff > 0.5f) {
+									lungeVelocity.y += (heightDiff * 2.0f); // Tweak the float to make them jump higher if needed
+								}
+
+								rb->isKinematic = false;
+								deferredLungeForce = lungeVelocity;
+								applyDeferredLungeForce = true;
+
+								// Hurtbox spawn
+								std::shared_ptr<R_Scene> enemyHurtbox = resource->GetResource<R_Scene>(enemyHurtboxPrefab);
+								if (enemyHurtbox) {
+									std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
+									ecs::EntityID enemyHurtboxID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyHurtboxPrefab);
+
+									currentHurtboxID = enemyHurtboxID;
+
+									ecsPtr->SetParent(entity, enemyHurtboxID, false);
+
+									if (auto* enemyHurtboxTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxID)) {
+										// Push forward a bit
+										enemyHurtboxTransform->LocalTransformation.position = glm::vec3(0.f, 0.5f, 1.f);
+									}
+								}
+
+								// --- LUNGE ANIM TRIGGER ---
+								if (animComp && animComp->m_currentStateID) {
+									enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("Lunge", animComp, enemyController);
+								}
+							}
+
+							attackHurtboxIsSpawn = true;
 						}
-						else if (enemyType == "Tank" && stateName == "Attacking") {
-
-							// Reset cooldown
-							currentAttackCooldown = attackCooldown;
-
-							std::shared_ptr<R_Scene> tankAOE = resource->GetResource<R_Scene>(tankAoePrefab);
-							if (tankAOE) {
-								std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-								ecs::EntityID aoeID = DuplicatePrefabIntoScene<R_Scene>(currentScene, tankAoePrefab);
-
-								ecsPtr->SetParent(entity, aoeID, false);
-
-								if (auto* aoeTransform = ecsPtr->GetComponent<TransformComponent>(aoeID)) {
-									aoeTransform->LocalTransformation.position = glm::vec3(0.f, 0.f, 0.f);
-								}
-
-								// Pass the Tank's ID so it doesn't hurt itself
-								if (auto* aoeScript = ecsPtr->GetComponent<TankAOEScript>(aoeID)) {
-									aoeScript->casterID = entity;
-								}
-							}
-						}
-						else if (stateName == "Crouching")
-						{
-							RigidbodyComponent* rb = ecsPtr->GetComponent<RigidbodyComponent>(entity);
-							if (rb == nullptr || rb->actor == nullptr) return;
-
-							// Melee lunge logic
-							isLunging = true;
-							currentLungeTimer = lungeDuration;
-
-							currentAttackCooldown = attackCooldown;
-
-							//navMeshPtr->RemoveAgent(agentid);
-							navMeshPtr->AgentSetActive(agentid, false);
-
-							glm::vec3 flatDir = glm::vec3(direction.x, 0.f, direction.z);
-							if (glm::length(flatDir) > 0.001f) flatDir = glm::normalize(flatDir);
-
-							lungeVelocity = flatDir * lungeForwardSpeed;
-
-							lungeVelocity.y = lungeUpwardSpeed;
-
-							// Height diff stuff inshallah
-							float heightDiff = playerTransform->LocalTransformation.position.y - enemyTransform->LocalTransformation.position.y;
-							if (heightDiff > 0.5f) {
-								lungeVelocity.y += (heightDiff * 2.0f); // Tweak the float to make them jump higher if needed
-							}
-
-							rb->isKinematic = false;
-							deferredLungeForce = lungeVelocity;
-							applyDeferredLungeForce = true;
-
-							// Hurtbox spawn
-							std::shared_ptr<R_Scene> enemyHurtbox = resource->GetResource<R_Scene>(enemyHurtboxPrefab);
-							if (enemyHurtbox) {
-								std::string currentScene = ecsPtr->GetSceneByEntityID(entity);
-								ecs::EntityID enemyHurtboxID = DuplicatePrefabIntoScene<R_Scene>(currentScene, enemyHurtboxPrefab);
-
-								ecsPtr->SetParent(entity, enemyHurtboxID, false);
-
-								if (auto* enemyHurtboxTransform = ecsPtr->GetComponent<TransformComponent>(enemyHurtboxID)) {
-									// Push forward a bit
-									enemyHurtboxTransform->LocalTransformation.position = glm::vec3(0.f, 0.5f, 1.f);
-								}
-							}
-
-							// --- LUNGE ANIM TRIGGER ---
-							if (animComp && animComp->m_currentStateID) {
-								enemyController->RetrieveStateByID(animComp->m_currentStateID)->Trigger("Lunge", animComp, enemyController);
-							}
-						}
-
-						attackHurtboxIsSpawn = true;
 					}
 				}
 
 			}
 
 		}
-		else if (glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= enemyChaseRange && !isLunging) {
+		else if (glm::distance(enemyTransform->LocalTransformation.position, playerTransform->LocalTransformation.position) <= enemyChaseRange && !isLunging && hasLineOfSight) {
 			// NAVMESH FOLLOW TOWARDS PLAYER
 			navMeshPtr->MoveAgent(agentid, playerTransform->LocalTransformation.position);
 
@@ -734,27 +780,35 @@ inline void EnemyManagerScript::Die() {
 		enemyController->SetState("Death", animComp);
 	}
 
-	utility::GUID deathSfx = GetDeathSFX();
+	static float deathSfxCooldown = 0.f;
 
-	if (!deathSfx.Empty())
-	{
-		if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity))
-		{
-			for (auto& af : ac->audioFiles)
-			{
-				if (af.audioGUID == deathSfx && af.isSFX)
-				{
-					af.requestPlay = true;
-					break;
+	if (deathSfxCooldown <= 0.f) {
+		deathSfxCooldown = 0.15f;
+
+		utility::GUID deathSfx = GetDeathSFX();
+		if (!deathSfx.Empty()) {
+			if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+				for (auto& af : ac->audioFiles) {
+					if (af.audioGUID == deathSfx && af.isSFX) {
+						af.requestPlay = true;
+						break;
+					}
 				}
 			}
 		}
 	}
-
 
 	isDead = true;
 
 	if (!isStaggered) {
 		navMeshPtr->RemoveAgent(agentid);
 	}
+
+	if (currentHurtboxID != 0) {
+		ecsPtr->DeleteEntity(currentHurtboxID);
+		currentHurtboxID = 0; // Clear it out
+	}
+
+	ecsPtr->RemoveComponent<CapsuleColliderComponent>(entity);
+	ecsPtr->RemoveComponent<RigidbodyComponent>(entity);
 }
