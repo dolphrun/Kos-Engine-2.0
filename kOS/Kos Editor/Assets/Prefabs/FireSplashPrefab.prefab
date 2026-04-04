@@ -33,7 +33,7 @@
             "splashDamage": 40,
             "splashSfxGUID": "7460cccf-9904-4e74-cb4b-9bca6b57519e",
             "scoreValue": 200,
-            "timeBeforeDeath": 2.0
+            "timeBeforeDeath": 0.75
         },
         "NameComponent": {
             "entityName": "FireSplashPrefab",
@@ -326,11 +326,11 @@
                 },
                 "ParticleComponent": {
                     "particleType": 0,
-                    "duration": 2.0,
+                    "duration": 0.75,
                     "looping": false,
                     "play_On_Awake": true,
-                    "start_Lifetime": 2.0,
-                    "end_Lifetime": 2.0,
+                    "start_Lifetime": 0.75,
+                    "end_Lifetime": 0.75,
                     "lifetime_Random_Enable": false,
                     "start_Velocity": 0.0,
                     "playback_State": 0,

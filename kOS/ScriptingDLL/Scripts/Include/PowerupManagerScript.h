@@ -12,26 +12,45 @@ public:
 	float powerupCurrentTimeToActive = 5.f;
 	float powerupMaxTimeToActive = 5.f;
 
-	void Start() override {
-		powerupParticlesEntityID = ecsPtr->GetEntityIDFromGUID(powerupParticlesGUID);
-	}
+	//glm::vec3 originalPos;
+	//glm::vec3 narnia{ 1000.f, 1000.f, 1000.f };
 
-	void Update() override {
-		if (powerupCurrentTimeToActive < 5.f) {			
-			powerupCurrentTimeToActive += ecsPtr->m_GetDeltaTime();
+	void Start() override;
 
-			if (powerupCurrentTimeToActive >= 5.f) {
-				powerupActive = true;
-				//ecsPtr->SetActive(powerupParticlesEntityID, true);
-			}
-		}
-	}
+	void Update() override;
 
-	void TurnOffPowerup() {
-		powerupCurrentTimeToActive = 0.f;
-		powerupActive = false;
-		//ecsPtr->SetActive(powerupParticlesEntityID, false);
-	}
+	void TurnOffPowerup();
 
 	REFLECTABLE(PowerupManagerScript, powerupType, powerupParticlesGUID);
 };
+
+inline void PowerupManagerScript::Start() {
+
+}
+
+inline void PowerupManagerScript::Update() {
+	if (powerupCurrentTimeToActive < 5.f) {
+		powerupCurrentTimeToActive += ecsPtr->m_GetDeltaTime();
+
+		if (powerupCurrentTimeToActive >= 5.f) {
+			powerupActive = true;
+
+			//powerupParticlesEntityID = ecsPtr->GetEntityIDFromGUID(powerupParticlesGUID);
+			std::vector<EntityID> children = ecsPtr->GetChild(entity).value();
+			if (children[0]) {
+				ecsPtr->SetActive(children[0], true);
+			}
+		}
+	}
+}
+
+inline 	void PowerupManagerScript::TurnOffPowerup() {
+	powerupCurrentTimeToActive = 0.f;
+	powerupActive = false;
+
+	//powerupParticlesEntityID = ecsPtr->GetEntityIDFromGUID(powerupParticlesGUID)
+	std::vector<EntityID> children = ecsPtr->GetChild(entity).value();
+	if (children[0]) {
+		ecsPtr->SetActive(children[0], false);
+	}
+}

@@ -60,3 +60,5 @@
 #include "MainMenuBottleScript.h"
 #include "MainMenuHandBlockScript.h"
 #include "FadeTransition.h"
+
+#include "SplashScreenScript.h"
