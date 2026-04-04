@@ -4354,7 +4354,7 @@
                                 "x": 1.0,
                                 "y": 1.0
                             },
-                            "useCustomUV": false
+                            "useCustomUV": true
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -4420,7 +4420,7 @@
                                 "x": 1.0,
                                 "y": 1.0
                             },
-                            "useCustomUV": false
+                            "useCustomUV": true
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -4486,7 +4486,7 @@
                                 "x": 1.0,
                                 "y": 1.0
                             },
-                            "useCustomUV": false
+                            "useCustomUV": true
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -4630,7 +4630,7 @@
                                 "x": 1.0,
                                 "y": 1.0
                             },
-                            "useCustomUV": false
+                            "useCustomUV": true
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -4784,7 +4784,7 @@
                                 "x": 1.0,
                                 "y": 1.0
                             },
-                            "useCustomUV": false
+                            "useCustomUV": true
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -4938,7 +4938,7 @@
                                 "x": 1.0,
                                 "y": 1.0
                             },
-                            "useCustomUV": false
+                            "useCustomUV": true
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -5092,7 +5092,7 @@
                                 "x": 1.0,
                                 "y": 1.0
                             },
-                            "useCustomUV": false
+                            "useCustomUV": true
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -9157,7 +9157,7 @@
                 "AnimatorComponent": {
                     "controllerGUID": "a8151059-f46f-1edd-8b81-a36f705c15fb",
                     "m_PlaybackSpeed": 1.0,
-                    "m_CurrentTime": 53.43952941894531,
+                    "m_CurrentTime": 6.4395294189453125,
                     "m_IsPlaying": true,
                     "m_currentStateID": 4,
                     "m_transitioningStateID": 0
@@ -10338,7 +10338,7 @@
                         "x": 1.0,
                         "y": 1.0
                     },
-                    "useCustomUV": false
+                    "useCustomUV": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -10604,7 +10604,7 @@
                     "actionType": 7,
                     "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                     "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
-                    "useKeyboardShortcuts": true,
+                    "useKeyboardShortcuts": false,
                     "wasPressed": false,
                     "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
@@ -10706,7 +10706,7 @@
                     "actionType": 6,
                     "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                     "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
-                    "useKeyboardShortcuts": true,
+                    "useKeyboardShortcuts": false,
                     "wasPressed": false,
                     "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
@@ -10898,7 +10898,7 @@
                         "x": 1.0,
                         "y": 1.0
                     },
-                    "useCustomUV": false
+                    "useCustomUV": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -10940,7 +10940,7 @@
                     "actionType": 9,
                     "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                     "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
-                    "useKeyboardShortcuts": true,
+                    "useKeyboardShortcuts": false,
                     "wasPressed": false,
                     "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
@@ -11000,7 +11000,7 @@
                         "x": 1.0,
                         "y": 1.0
                     },
-                    "useCustomUV": false
+                    "useCustomUV": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -11042,7 +11042,7 @@
                     "actionType": 8,
                     "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                     "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
-                    "useKeyboardShortcuts": true,
+                    "useKeyboardShortcuts": false,
                     "wasPressed": false,
                     "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
@@ -11076,7 +11076,7 @@
                         "x": 1.0,
                         "y": 1.0
                     },
-                    "useCustomUV": false
+                    "useCustomUV": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -11234,7 +11234,7 @@
                         "x": 1.0,
                         "y": 1.0
                     },
-                    "useCustomUV": false
+                    "useCustomUV": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -11276,7 +11276,7 @@
                     "actionType": 11,
                     "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                     "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
-                    "useKeyboardShortcuts": true,
+                    "useKeyboardShortcuts": false,
                     "wasPressed": false,
                     "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
@@ -11378,7 +11378,7 @@
                     "actionType": 10,
                     "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                     "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
-                    "useKeyboardShortcuts": true,
+                    "useKeyboardShortcuts": false,
                     "wasPressed": false,
                     "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
@@ -11412,7 +11412,7 @@
                         "x": 1.0,
                         "y": 1.0
                     },
-                    "useCustomUV": false
+                    "useCustomUV": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -11570,7 +11570,7 @@
                         "x": 1.0,
                         "y": 1.0
                     },
-                    "useCustomUV": false
+                    "useCustomUV": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -11612,7 +11612,7 @@
                     "actionType": 13,
                     "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                     "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
-                    "useKeyboardShortcuts": true,
+                    "useKeyboardShortcuts": false,
                     "wasPressed": false,
                     "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
@@ -11672,7 +11672,7 @@
                         "x": 1.0,
                         "y": 1.0
                     },
-                    "useCustomUV": false
+                    "useCustomUV": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -11714,7 +11714,7 @@
                     "actionType": 12,
                     "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                     "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
-                    "useKeyboardShortcuts": true,
+                    "useKeyboardShortcuts": false,
                     "wasPressed": false,
                     "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
@@ -11774,7 +11774,7 @@
                         "x": 1.0,
                         "y": 1.0
                     },
-                    "useCustomUV": false
+                    "useCustomUV": true
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -11816,11 +11816,310 @@
                     "actionType": 5,
                     "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
                     "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
-                    "useKeyboardShortcuts": true,
+                    "useKeyboardShortcuts": false,
                     "wasPressed": false,
                     "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
                     "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "3d1d2bfd-8799-90bd-0064-989236042d35",
+        "CanvasRendererComponent": {
+            "isScreenSpace": true
+        },
+        "NameComponent": {
+            "entityName": "Quit Menu Canvas",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": true
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "677f64de-9b16-b8f2-4763-cc3d5628884c",
+                "NameComponent": {
+                    "entityName": "Background",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": true
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "09d411d4-735a-c424-4f19-12ef321ca015",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.899999976158142,
+                            "y": 1.899999976158142,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.899999976158142,
+                            "y": 1.899999976158142,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "7daab6cf-717a-01d0-f22e-59baad9b87a2",
+                "NameComponent": {
+                    "entityName": "Yes Button",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": true
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "dd45bbe9-ff4a-ad66-f468-77c874ba1c3d",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -0.030571185052394867,
+                            "y": -0.4610168933868408,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.5,
+                            "y": 0.5,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -0.030571185052394867,
+                            "y": -0.4610168933868408,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.5,
+                            "y": 0.5,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "4acf70af-70b5-7d96-bd2a-0ed8669ec7bf",
+                "NameComponent": {
+                    "entityName": "No Button",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": true
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "c68a885b-3ced-5716-d20e-3016d09ca156",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": -0.5288826823234558,
+                            "y": -0.21016955375671387,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.5,
+                            "y": 0.699999988079071,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": -0.5288826823234558,
+                            "y": -0.21016955375671387,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 0.5,
+                            "y": 0.699999988079071,
+                            "z": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "entityGUID": "4d272746-464a-a656-3f65-7f7793f8e785",
+                "NameComponent": {
+                    "entityName": "Back Button",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": true
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    }
                 }
             }
         ]
