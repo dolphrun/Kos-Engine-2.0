@@ -66,7 +66,7 @@ namespace ecs {
                         m_graphicsManager.gm_PushScreenTextData(ScreenTextData{ childTransform->WorldTransformation.position,
                                                        glm::vec2{ childTransform->WorldTransformation.scale.x,
                                                                   childTransform->WorldTransformation.scale.y},
-                                                                  childTransform->WorldTransformation.rotation.x,
+                                                                  childTransform->WorldTransformation.rotation,
                                                        glm::vec4{ textComp->color.x,textComp->color.y,textComp->color.z,1.f}, 
                                                                   fontResource.get(), textComp->text , textComp->fontSize, false});
                     }

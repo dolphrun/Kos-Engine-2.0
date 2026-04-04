@@ -93,20 +93,15 @@
             "start_Lifetime": 3.0,
             "end_Lifetime": 7.0,
             "lifetime_Random_Enable": true,
-            "textureGUID": [
-                {
-                    "textureGUID": "8523e9f0-9eda-ed9d-7432-79f8d85b9dcb"
-                },
-                {
-                    "textureGUID": "6f49bd99-03ba-db76-7343-c90c3db42c9b"
-                },
-                {
-                    "textureGUID": "4cfdf186-6213-096c-9c62-0f680ff4cb4e"
-                }
-            ],
             "start_Velocity": 5.0,
             "playback_State": 0,
             "particleFade": 1,
+            "animationModule": {
+                "textureGUID": [],
+                "framesPerSecond": 24,
+                "isLooping": false,
+                "isPlaying": true
+            },
             "velocityModule": {
                 "enabled": false,
                 "mode": 0,
@@ -304,5 +299,124 @@
                 }
             }
         }
+    },
+    {
+        "entityGUID": "6b70e2a1-0be2-8551-abee-3aea8c5e3a87",
+        "CanvasRendererComponent": {
+            "isScreenSpace": false
+        },
+        "NameComponent": {
+            "entityName": "canvas",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 15.600000381469727,
+                    "y": -7.400000095367432,
+                    "z": 2.0999999046325684
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 79.4000244140625,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 15.600000381469727,
+                    "y": -7.400000095367432,
+                    "z": 2.0999999046325684
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 79.4000015258789,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "41403d10-8b39-86b0-2287-837e40b819b0",
+                "NameComponent": {
+                    "entityName": "sprite",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": false,
+                    "isStatic": false,
+                    "prefabName": "",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "8523e9f0-9eda-ed9d-7432-79f8d85b9dcb",
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 15.600000381469727,
+                            "y": -7.400000095367432,
+                            "z": 2.0999999046325684
+                        },
+                        "rotation": {
+                            "x": 0.00013175711501389742,
+                            "y": 79.4000244140625,
+                            "z": 0.0002884119749069214
+                        },
+                        "scale": {
+                            "x": 0.9999986886978149,
+                            "y": 1.0,
+                            "z": 0.9999986886978149
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": -0.00015173327119555324,
+                            "y": -0.0,
+                            "z": 0.00005305378363118507
+                        },
+                        "scale": {
+                            "x": 0.9999986886978149,
+                            "y": 1.0,
+                            "z": 0.9999986886978149
+                        }
+                    }
+                }
+            }
+        ]
     }
 ]

@@ -103,7 +103,7 @@ namespace ecs {
                                 childTransform->WorldTransformation.position,
                                 glm::vec2{ childTransform->WorldTransformation.scale.x,
                                           childTransform->WorldTransformation.scale.y},
-                                -childTransform->WorldTransformation.rotation.x,
+                                childTransform->WorldTransformation.rotation,
                                 spriteComp->color,
                                 fontResource.get(),
                                 0, 0, 0, // rows, columns, frameNumber
@@ -172,7 +172,7 @@ namespace ecs {
                             childTransform->WorldTransformation.position,
                             glm::vec2{ childTransform->WorldTransformation.scale.x,
                                       childTransform->WorldTransformation.scale.y},
-                            -childTransform->WorldTransformation.rotation.x,
+                            childTransform->WorldTransformation.rotation,
                             spriteComp->color,
                             fontResource.get(),
                             0, 0, 0, // rows, columns, frameNumber

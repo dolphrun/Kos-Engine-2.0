@@ -53,7 +53,7 @@ struct UIElementData
 {
 	glm::vec3 position{};
 	glm::vec2 scale{};
-	float rotation{};
+	glm::vec3 rotation{};
 	glm::vec4 color{ 1.f };
 };
 

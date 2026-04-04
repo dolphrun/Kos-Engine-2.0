@@ -50,7 +50,7 @@ void TextRenderer::RenderScreenFonts(const CameraData& camera, Shader& shader)
 			fontShader.Use();
 			glm::vec3 point = textData.position;
 			constexpr float radianConversion = 3.1451f / 180.f;
-			float angle = textData.rotation * radianConversion;
+			float angle = textData.rotation.x * radianConversion;
 
 			glm::mat3 rotationMatrix = {
 			cos(angle), -sin(angle), 0.0f,
