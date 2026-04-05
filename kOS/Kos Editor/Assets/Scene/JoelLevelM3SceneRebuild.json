@@ -5515,6 +5515,160 @@
                             "selectSfxGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
                             "hoverSfxGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c"
                         }
+                    },
+                    {
+                        "entityGUID": "3f682453-2a96-9631-dfb5-4bdb24a14b65",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
+                        "ButtonComponent": {
+                            "normalColor": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "hoveredColor": {
+                                "x": 0.800000011920929,
+                                "y": 0.800000011920929,
+                                "z": 0.800000011920929,
+                                "w": 1.0
+                            },
+                            "pressedColor": {
+                                "x": 0.6000000238418579,
+                                "y": 0.6000000238418579,
+                                "z": 0.6000000238418579,
+                                "w": 1.0
+                            },
+                            "normalSprite": "d0e717f1-4235-a2ba-c052-2891f8f6cc0c",
+                            "hoveredSprite": "b1d5fc36-9d4c-3bb3-8e56-1dc1d20acba9",
+                            "pressedSprite": "b1d5fc36-9d4c-3bb3-8e56-1dc1d20acba9",
+                            "useSpriteSwap": true,
+                            "isHovered": false,
+                            "isPressed": false
+                        },
+                        "NameComponent": {
+                            "entityName": "Restart Button",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "d0e717f1-4235-a2ba-c052-2891f8f6cc0c",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": true
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": -0.699999988079071,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.699999988079071,
+                                    "y": 0.699999988079071,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": -0.699999988079071,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.699999988079071,
+                                    "y": 0.699999988079071,
+                                    "z": 1.0
+                                }
+                            }
+                        },
+                        "UIButtonScript": {
+                            "actionType": 22,
+                            "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
+                            "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
+                            "useKeyboardShortcuts": true,
+                            "wasPressed": false,
+                            "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
+                        }
                     }
                 ]
             },
