@@ -85,6 +85,8 @@ public:
 
     utility::GUID next_Scene;
 
+    bool moveToNextScene = false;
+
     REFLECTABLE(MainMenuCameraScript, fadeToBlackGO, next_Scene)
 };
 
@@ -128,6 +130,8 @@ inline void MainMenuCameraScript::Start() {
 
     endTimer = 0.f;
     fadeDelay = 1.5f;
+
+    moveToNextScene = false;
 
 
     auto* tf = ecsPtr->GetComponent<ecs::TransformComponent>(entity);
@@ -177,7 +181,8 @@ inline void MainMenuCameraScript::Update() {
             fadeTriggered = true;
         }
 
-        if (fadeTriggered && endTimer >= (fadeDelay + 2.5f)) {
+        if (fadeTriggered && endTimer >= (fadeDelay + 2.5f) && !moveToNextScene) {
+            moveToNextScene = true;
             Scenes->ClearAllScene();
             Scenes->LoadScene(next_Scene);
         }

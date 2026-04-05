@@ -2383,7 +2383,7 @@
                     },
                     "active": false,
                     "culling": true,
-                    "layer": 1,
+                    "layer": 2,
                     "renderOrder": 0
                 },
                 "NameComponent": {
@@ -2499,7 +2499,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Player Arm Model",
-                            "Layer": 1,
+                            "Layer": 2,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -3086,7 +3086,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Player Arm Model",
-                            "Layer": 1,
+                            "Layer": 2,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -3375,7 +3375,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Fire Sword",
-                            "Layer": 1,
+                            "Layer": 2,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
@@ -3442,7 +3442,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Acid Weapon",
-                            "Layer": 1,
+                            "Layer": 2,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
@@ -3509,7 +3509,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Lightning Weapon",
-                            "Layer": 1,
+                            "Layer": 2,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
@@ -4313,7 +4313,8 @@
                             "cinematicWaypointObjects": "150e4a7a-609c-6c35-43d4-0eb7fff1d6aa"
                         }
                     ],
-                    "muzzleFlashLocationObject": "00000000-0000-0000-0000-000000000000"
+                    "muzzleFlashLocationObject": "00000000-0000-0000-0000-000000000000",
+                    "AHHHHHHHHHHHHHHHH": "3340bc3d-ca6f-b3cd-b15c-265523f696c5"
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,
@@ -89688,6 +89689,219 @@
                 "rotation": {
                     "x": 0.0,
                     "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "4cd54fa3-847e-59da-4135-36d7bc729aa9",
+        "CanvasRendererComponent": {
+            "isScreenSpace": true
+        },
+        "NameComponent": {
+            "entityName": "Transition UI",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "Transition UI.prefab",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        "children": [
+            {
+                "entityGUID": "08288fcd-406c-bd7e-5a10-6b34285c3cd1",
+                "AnimatedSpriteComponent": {
+                    "spriteGUID": [],
+                    "color": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    },
+                    "currentFrame": 0,
+                    "framesPerSecond": 24,
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false,
+                    "isLooping": false
+                },
+                "FadeTransition": {},
+                "NameComponent": {
+                    "entityName": "Fade Transition",
+                    "Layer": 0,
+                    "entityTag": "Default",
+                    "isPrefab": true,
+                    "isStatic": false,
+                    "prefabName": "Transition UI.prefab",
+                    "hide": false
+                },
+                "SpriteComponent": {
+                    "spriteGUID": "989db4ae-dc44-f34e-a975-8d57b4d0bc24",
+                    "color": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 1.0
+                    },
+                    "uvMin": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uvMax": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "useCustomUV": false
+                },
+                "TransformComponent": {
+                    "WorldTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 10.0,
+                            "y": 10.0,
+                            "z": 10.0
+                        }
+                    },
+                    "LocalTransformation": {
+                        "position": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": -0.0,
+                            "z": 0.0
+                        },
+                        "scale": {
+                            "x": 10.0,
+                            "y": 10.0,
+                            "z": 10.0
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "entityGUID": "9b7a1bc9-bf5e-deb7-e6cc-b680f2ef1b06",
+        "BoxColliderComponent": {
+            "isTrigger": true,
+            "box": {
+                "center": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "size": {
+                    "x": 50.0,
+                    "y": 50.0,
+                    "z": 10.0
+                }
+            },
+            "autoFit": false
+        },
+        "EventColliderScript": {
+            "eventType": 1,
+            "eventCanvasObject": "00000000-0000-0000-0000-000000000000",
+            "activationDelay": 0.0,
+            "timer": 0.0,
+            "next_Scene": "45d53f47-8056-d72a-2fba-d2e565e47fb2",
+            "transitionUIObject": "08288fcd-406c-bd7e-5a10-6b34285c3cd1"
+        },
+        "NameComponent": {
+            "entityName": "WIN OBJECT",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -319.1508483886719,
+                    "y": 0.0,
+                    "z": -75.67792510986328
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -319.1508483886719,
+                    "y": 0.0,
+                    "z": -75.67792510986328
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
                     "z": 0.0
                 },
                 "scale": {

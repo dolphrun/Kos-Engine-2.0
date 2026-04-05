@@ -269,6 +269,8 @@ public:
 	ecs::EntityID currentModelID = 0;
 	Powerup pendingPowerup = Powerup::NONE;
 
+	utility::GUID AHHHHHHHHHHHHHHHH;
+
 
 	inline int GetMaxBulletsForCurrentWeapon() const {
 		switch (playerPowerupHeld) {
@@ -420,6 +422,10 @@ public:
 	std::vector<utility::GUID> cinematicWaypointObjects;
 	std::vector<ecs::EntityID> cinematicWaypointIDs;
 
+
+	int cinematicInitFrameDelay = 0;
+	bool cinematicStarted = false;
+
 	// --- FUNCTION DECLARATIONS ONLY --
 	// Implementations are moved to the bottom of the file
 	void Start() override;
@@ -452,7 +458,7 @@ public:
 		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, fireEquipSfxGUID, fireAbsorbSfxGUID, acidEquipSfxGUID, acidShieldSfxGuid, lightningSlowStartSfxGUID,lightningSlowEndSfxGUID, lightningGunSfxGUID,
 		lightningAbsorbSfxGUID, lightningEquipSfxGUID, acidGrenadeGunSfxGUID, acidAbsorbSfxGUID, pauseMenuOpenSfxGUID, pauseMenuCloseSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
 		winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashPrefab, pistolModelObject,
-		fireSwordModelObject, lightningModelObject, acidModelObject, gameUICanvasObject, cinematicWaypointObjects, muzzleFlashLocationObject)
+		fireSwordModelObject, lightningModelObject, acidModelObject, gameUICanvasObject, cinematicWaypointObjects, muzzleFlashLocationObject, AHHHHHHHHHHHHHHHH)
 
 		/*REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 			bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
@@ -485,11 +491,14 @@ inline void PlayerManagerScript::Start() {
 
 	playerCameraObjectID = ecsPtr->GetEntityIDFromGUID(playerCameraObject);
 
-	auto* camTf = ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID);
-	if (camTf) {
-		playerRotationX = camTf->LocalTransformation.rotation.x;
-		playerRotationY = camTf->LocalTransformation.rotation.y;
-	}
+	//auto* camTf = ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID);
+	//if (camTf) {
+	//	playerRotationX = camTf->LocalTransformation.rotation.x;
+	//	playerRotationY = camTf->LocalTransformation.rotation.y;
+	//}
+
+	cinematicInitFrameDelay = 0;
+	cinematicStarted = false;
 
 	playerGunCameraObjectID = ecsPtr->GetEntityIDFromGUID(playerGunCameraObject);
 	playerProjectilePointObjectID = ecsPtr->GetEntityIDFromGUID(playerProjectilePointObject);
@@ -612,11 +621,28 @@ inline void PlayerManagerScript::Start() {
 
 inline void PlayerManagerScript::Update() {
 
+	if (Input->IsKeyTriggered(keys::G)) {
+		Scenes->LoadScene(AHHHHHHHHHHHHHHHH);
+		Scenes->ClearAllScene();
+	}
+
 	if (isCinematicPlaying) {
 		// Safety guard - skip cinematic if no waypoints assigned
 		if (cinematicWaypointPositions.empty()) {
 			isCinematicPlaying = false;
 			return;
+		}
+
+		if (!cinematicStarted) {
+			cinematicInitFrameDelay++;
+			auto* camTf = ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID);
+			if (camTf) {
+				playerRotationX = camTf->LocalTransformation.rotation.x;
+				playerRotationY = camTf->LocalTransformation.rotation.y;
+			}
+			if (cinematicInitFrameDelay < 10)
+				return;
+			cinematicStarted = true;
 		}
 
 		cinematicTimer += ecsPtr->m_GetDeltaTime();
