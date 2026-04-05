@@ -40,7 +40,7 @@ prior written consent of DigiPen Institute of Technology is prohibited.
 				for (int n = 0; n < 2; ++n){
 	                AssetManager assetManager;
 	                try {
-	                    assetManager.Init(configpath::assetFilePath, configpath::resourceFilePath);
+	                    assetManager.Init(configpath::assetFilePath, configpath::resourceFilePath, true);
 	                }
 	                catch (const std::exception& e) {
 	                    std::cout << "[KosEngine Fatal] AssetManager failed: " << e.what() << std::endl;

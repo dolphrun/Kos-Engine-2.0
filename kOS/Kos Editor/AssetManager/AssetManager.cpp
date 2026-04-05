@@ -71,7 +71,7 @@ AssetManager::~AssetManager() {
 }
 
 
-void AssetManager::Init(const std::string& assetDirectory, const std::string& resourceDirectory)
+void AssetManager::Init(const std::string& assetDirectory, const std::string& resourceDirectory, bool CompileOnly)
 {
     m_assetDirectory = assetDirectory;
     m_resourceDirectory = resourceDirectory;
@@ -144,44 +144,49 @@ void AssetManager::Init(const std::string& assetDirectory, const std::string& re
         }
     }
 
-    m_assetWatcher = std::make_unique<Watcher>(m_assetDirectory, std::chrono::milliseconds(1000));
 
-    m_assetWatcher->SetCallback([&](ACTION action, const std::filesystem::path& filePath) {
+    if (!CompileOnly) {
+        m_assetWatcher = std::make_unique<Watcher>(m_assetDirectory, std::chrono::milliseconds(1000));
 
-        CleanupFinishedCompilations();
+        m_assetWatcher->SetCallback([&](ACTION action, const std::filesystem::path& filePath) {
 
-        switch (action)
-        {
-        case ADDED: {
-            LOGGING_INFO("Watcher: Added - " + filePath.string());
-            RegisterAsset(filePath);
+            CleanupFinishedCompilations();
 
-            std::lock_guard<std::mutex> lock(m_compilationMutex);
-            m_activeCompilations.push_back(Compilefile(filePath));
-            break;
-        }
-        case MODIFIED: {
-            LOGGING_INFO("Watcher: Modified - " + filePath.string());
+            switch (action)
+            {
+            case ADDED: {
+                LOGGING_INFO("Watcher: Added - " + filePath.string());
+                RegisterAsset(filePath);
 
-            std::lock_guard<std::mutex> lock(m_compilationMutex);
-            m_activeCompilations.push_back(Compilefile(filePath));
-            break;
-        }
-        case REMOVED:
-            LOGGING_INFO("Watcher: Removed - " + filePath.string());
-            break;
-        default:
-            break;
-        }
-        });
+                std::lock_guard<std::mutex> lock(m_compilationMutex);
+                m_activeCompilations.push_back(Compilefile(filePath));
+                break;
+            }
+            case MODIFIED: {
+                LOGGING_INFO("Watcher: Modified - " + filePath.string());
 
-    m_assetWatcher->SetIgnoreExtension(".meta");
-    m_assetWatcher->Start();
+                std::lock_guard<std::mutex> lock(m_compilationMutex);
+                m_activeCompilations.push_back(Compilefile(filePath));
+                break;
+            }
+            case REMOVED:
+                LOGGING_INFO("Watcher: Removed - " + filePath.string());
+                break;
+            default:
+                break;
+            }
+            });
 
-    folderTexture = std::make_unique<R_Texture>(configpath::folderIconPath);
-    fileTexture = std::make_unique<R_Texture>(configpath::fileIconPath);
-    folderTexture->Load();
-    fileTexture->Load();
+        m_assetWatcher->SetIgnoreExtension(".meta");
+        m_assetWatcher->Start();
+
+        folderTexture = std::make_unique<R_Texture>(configpath::folderIconPath);
+        fileTexture = std::make_unique<R_Texture>(configpath::fileIconPath);
+        folderTexture->Load();
+        fileTexture->Load();
+    }
+
+
 }
 
 
