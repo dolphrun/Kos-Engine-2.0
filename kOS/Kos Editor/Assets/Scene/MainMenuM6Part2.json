@@ -3,7 +3,7 @@
         "SceneData": {
             "skyBoxGUID": [],
             "NavMeshGuid": "00000000-0000-0000-0000-000000000000",
-            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "postProcessingProfile": "4cf73f67-055b-56fa-6b28-f816075db7c2",
             "ambientIntensity": 1.0
         }
     },
