@@ -334,10 +334,14 @@ inline void EnemyManagerScript::Update() {
 	// LOS Check
 	bool hasLineOfSight = false;
 	glm::vec3 rayOrigin = enemyTransform->WorldTransformation.position;
-	rayOrigin.y += 1.0f; // Shoot from chest height
+
+	// Increase val if not at eyes
+	rayOrigin.y += 3.5f;
 
 	glm::vec3 targetCenter = playerTransform->WorldTransformation.position;
-	targetCenter.y += 1.0f; // Aim at player's chest
+
+	// Raise target (check first)
+	targetCenter.y += 1.8f;
 
 	glm::vec3 losDir = targetCenter - rayOrigin;
 	float distToPlayer = glm::length(losDir);
