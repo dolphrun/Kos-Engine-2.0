@@ -680,9 +680,9 @@
                         "z": 0.6000000238418579,
                         "w": 1.0
                     },
-                    "normalSprite": "00594efd-b6f0-489e-7c7f-c985999f4823",
-                    "hoveredSprite": "82443082-3958-8f50-e253-518ce37e5475",
-                    "pressedSprite": "82443082-3958-8f50-e253-518ce37e5475",
+                    "normalSprite": "a72c4073-bc80-153b-3f9a-22c160655ed0",
+                    "hoveredSprite": "f7adceec-a748-7577-38c8-7f75ec2f8c68",
+                    "pressedSprite": "f7adceec-a748-7577-38c8-7f75ec2f8c68",
                     "useSpriteSwap": true,
                     "isHovered": false,
                     "isPressed": false
@@ -697,7 +697,7 @@
                     "hide": false
                 },
                 "SpriteComponent": {
-                    "spriteGUID": "00594efd-b6f0-489e-7c7f-c985999f4823",
+                    "spriteGUID": "a72c4073-bc80-153b-3f9a-22c160655ed0",
                     "color": {
                         "x": 1.0,
                         "y": 1.0,
@@ -782,9 +782,9 @@
                         "z": 0.6000000238418579,
                         "w": 1.0
                     },
-                    "normalSprite": "7ad55f44-7c75-51aa-c145-4b7af063d811",
-                    "hoveredSprite": "6c9dbce3-b332-3724-52a7-2f5c8b52c537",
-                    "pressedSprite": "6c9dbce3-b332-3724-52a7-2f5c8b52c537",
+                    "normalSprite": "d7b08d57-8e68-c479-c4a9-40e106a2113e",
+                    "hoveredSprite": "40e2b38c-e545-c580-d559-8b9c1a34729d",
+                    "pressedSprite": "40e2b38c-e545-c580-d559-8b9c1a34729d",
                     "useSpriteSwap": true,
                     "isHovered": false,
                     "isPressed": false
@@ -799,7 +799,7 @@
                     "hide": false
                 },
                 "SpriteComponent": {
-                    "spriteGUID": "7ad55f44-7c75-51aa-c145-4b7af063d811",
+                    "spriteGUID": "d7b08d57-8e68-c479-c4a9-40e106a2113e",
                     "color": {
                         "x": 1.0,
                         "y": 1.0,
@@ -884,9 +884,9 @@
                         "z": 0.6000000238418579,
                         "w": 1.0
                     },
-                    "normalSprite": "3efb3936-4a9f-1129-c2a6-db5bb3dd92c1",
-                    "hoveredSprite": "aeb1250e-3446-0b22-8b3f-8ad4bb5bfd14",
-                    "pressedSprite": "aeb1250e-3446-0b22-8b3f-8ad4bb5bfd14",
+                    "normalSprite": "da7316ec-4c55-23e6-dd9b-8a33e6f77464",
+                    "hoveredSprite": "e63c410f-1779-088c-d6ab-e147460a7d43",
+                    "pressedSprite": "e63c410f-1779-088c-d6ab-e147460a7d43",
                     "useSpriteSwap": true,
                     "isHovered": false,
                     "isPressed": false
@@ -901,7 +901,7 @@
                     "hide": false
                 },
                 "SpriteComponent": {
-                    "spriteGUID": "3efb3936-4a9f-1129-c2a6-db5bb3dd92c1",
+                    "spriteGUID": "da7316ec-4c55-23e6-dd9b-8a33e6f77464",
                     "color": {
                         "x": 1.0,
                         "y": 1.0,

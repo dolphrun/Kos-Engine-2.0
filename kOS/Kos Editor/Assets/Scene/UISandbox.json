@@ -2574,7 +2574,8 @@
                             "cinematicWaypointObjects": "f3ce6b7f-c9af-e631-62aa-8cfe551bd7db"
                         }
                     ],
-                    "muzzleFlashLocationObject": "00000000-0000-0000-0000-000000000000"
+                    "muzzleFlashLocationObject": "00000000-0000-0000-0000-000000000000",
+                    "AHHHHHHHHHHHHHHHH": "00000000-0000-0000-0000-000000000000"
                 },
                 "RigidbodyComponent": {
                     "mass": 1.0,
@@ -6002,6 +6003,108 @@
                             "resumeSfxGUID": "2638a282-e5e5-deb0-7317-617b459e0780",
                             "selectSfxGUID": "d05c5afb-e6a1-b10a-f1dd-1efc8298f0ee",
                             "hoverSfxGUID": "9beefb21-bd81-ef0b-00d8-20081dc9c59c"
+                        }
+                    },
+                    {
+                        "entityGUID": "3f682453-2a96-9631-dfb5-4bdb24a14b65",
+                        "ButtonComponent": {
+                            "normalColor": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "hoveredColor": {
+                                "x": 0.800000011920929,
+                                "y": 0.800000011920929,
+                                "z": 0.800000011920929,
+                                "w": 1.0
+                            },
+                            "pressedColor": {
+                                "x": 0.6000000238418579,
+                                "y": 0.6000000238418579,
+                                "z": 0.6000000238418579,
+                                "w": 1.0
+                            },
+                            "normalSprite": "d0e717f1-4235-a2ba-c052-2891f8f6cc0c",
+                            "hoveredSprite": "b1d5fc36-9d4c-3bb3-8e56-1dc1d20acba9",
+                            "pressedSprite": "b1d5fc36-9d4c-3bb3-8e56-1dc1d20acba9",
+                            "useSpriteSwap": true,
+                            "isHovered": false,
+                            "isPressed": false
+                        },
+                        "NameComponent": {
+                            "entityName": "Restart Button",
+                            "Layer": 0,
+                            "entityTag": "Default",
+                            "isPrefab": false,
+                            "isStatic": false,
+                            "prefabName": "",
+                            "hide": false
+                        },
+                        "SpriteComponent": {
+                            "spriteGUID": "d0e717f1-4235-a2ba-c052-2891f8f6cc0c",
+                            "color": {
+                                "x": 1.0,
+                                "y": 1.0,
+                                "z": 1.0,
+                                "w": 1.0
+                            },
+                            "uvMin": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "uvMax": {
+                                "x": 1.0,
+                                "y": 1.0
+                            },
+                            "useCustomUV": true
+                        },
+                        "TransformComponent": {
+                            "WorldTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": -0.699999988079071,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.699999988079071,
+                                    "y": 0.699999988079071,
+                                    "z": 1.0
+                                }
+                            },
+                            "LocalTransformation": {
+                                "position": {
+                                    "x": 0.0,
+                                    "y": -0.699999988079071,
+                                    "z": 0.0
+                                },
+                                "rotation": {
+                                    "x": 0.0,
+                                    "y": -0.0,
+                                    "z": 0.0
+                                },
+                                "scale": {
+                                    "x": 0.699999988079071,
+                                    "y": 0.699999988079071,
+                                    "z": 1.0
+                                }
+                            }
+                        },
+                        "UIButtonScript": {
+                            "actionType": 22,
+                            "currentSceneGUID": "00000000-0000-0000-0000-000000000000",
+                            "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
+                            "useKeyboardShortcuts": true,
+                            "wasPressed": false,
+                            "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
+                            "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
+                            "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
                         }
                     }
                 ]
@@ -11711,7 +11814,7 @@
                 "AnimatorComponent": {
                     "controllerGUID": "a8151059-f46f-1edd-8b81-a36f705c15fb",
                     "m_PlaybackSpeed": 1.0,
-                    "m_CurrentTime": 40.93952941894531,
+                    "m_CurrentTime": 51.93952941894531,
                     "m_IsPlaying": true,
                     "m_currentStateID": 4,
                     "m_transitioningStateID": 0

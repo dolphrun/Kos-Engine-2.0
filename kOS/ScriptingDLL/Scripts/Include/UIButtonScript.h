@@ -62,7 +62,8 @@ public:
         QuitToMenuConfirm_Lose = 18,
         QuitToMenuConfirm_Win = 19,
         QuitToWindowConfirm_Lose = 20,
-        QuitToWindowConfirm_Win = 21
+        QuitToWindowConfirm_Win = 21,
+        RestartScene = 22
     };
 
     int actionType = 0;
@@ -172,7 +173,7 @@ public:
                 std::cout << "[UIButtonScript] Key '8' pressed!\n";
             }
             else if (Input->IsKeyTriggered(keys::NUM9)) {
-                shouldTrigger = true; triggeredAction = 17;
+                shouldTrigger = true; triggeredAction = 22;
                 std::cout << "[UIButtonScript] Key '9' pressed!\n";
             }
         }
@@ -338,6 +339,11 @@ private:
                 QuitWindowConfirmScript::instance->Hide();
             break;
 
+        case ButtonAction::RestartScene:
+            std::cout << "[UIButtonScript] Action: RestartScene\n";
+            Scenes->ReloadScene();
+            break;
+
         default:
             std::cout << "[UIButtonScript] Unknown action: " << static_cast<int>(action) << "\n";
             break;
@@ -378,6 +384,7 @@ private:
         case ButtonAction::QuitToMenuConfirm_Win:    return "QuitToMenuConfirm_Win";
         case ButtonAction::QuitToWindowConfirm_Lose: return "QuitToWindowConfirm_Lose";
         case ButtonAction::QuitToWindowConfirm_Win:  return "QuitToWindowConfirm_Win";
+        case ButtonAction::RestartScene:             return "RestartScene";
         default:                                     return "Unknown";
         }
     }
