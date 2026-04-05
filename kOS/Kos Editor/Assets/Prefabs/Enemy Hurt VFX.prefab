@@ -75,10 +75,34 @@
                     "start_Lifetime": 5.0,
                     "end_Lifetime": 5.0,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
-                    "start_Velocity": 5.0,
+                    "start_Velocity": 6.0,
                     "playback_State": 0,
                     "particleFade": 1,
+                    "animationModule": {
+                        "textureGUID": [
+                            {
+                                "textureGUID": "103f0cb7-a155-7eb6-704f-d8f147306b9a"
+                            },
+                            {
+                                "textureGUID": "914c0ba1-7dbf-8a55-4a2c-ac80168f2d87"
+                            },
+                            {
+                                "textureGUID": "f1260f49-bf76-9ad9-9271-30f9f6f7ae44"
+                            },
+                            {
+                                "textureGUID": "29d5042e-3dd7-b779-c7a3-e6664ae68d2b"
+                            },
+                            {
+                                "textureGUID": "8e2e5fbf-8e20-6c7d-dec8-4b5c6a33c6a6"
+                            },
+                            {
+                                "textureGUID": "88e44ceb-5559-588e-6b71-d34394ca2da4"
+                            }
+                        ],
+                        "framesPerSecond": 6,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": false,
                         "mode": 0,
@@ -126,32 +150,32 @@
                     "colorModule": {
                         "enabled": false,
                         "start_Color": {
-                            "x": 0.75,
-                            "y": 0.0,
-                            "z": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0,
                             "w": 1.0
                         },
                         "end_Color": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0,
                             "w": 0.0
                         }
                     },
                     "sizeModule": {
-                        "enabled": false,
-                        "start_Size": 0.20000000298023224,
-                        "end_Size": 0.20000000298023224
+                        "enabled": true,
+                        "start_Size": 2.0,
+                        "end_Size": 1.0
                     },
                     "rotationModule": {
-                        "enabled": false,
+                        "enabled": true,
                         "start_Rotation": {
                             "x": 0.0,
                             "y": 0.0,
                             "z": 0.0
                         },
                         "end_Rotation": {
-                            "x": 0.0,
+                            "x": 360.0,
                             "y": 0.0,
                             "z": 0.0
                         },
@@ -201,7 +225,7 @@
                         "arrivalThreshold": 0.5
                     },
                     "noiseModule": {
-                        "enabled": false,
+                        "enabled": true,
                         "strength": 1.0,
                         "strengthMultiplier": {
                             "x": 1.0,
@@ -229,15 +253,15 @@
                         }
                     },
                     "emissionInterval": 0.0010000000474974513,
-                    "no_Of_Particles": 25,
+                    "no_Of_Particles": 30,
                     "dynamicTrailingEnabled": false,
                     "trail_Color": {
-                        "x": 0.8500000238418579,
-                        "y": 0.0,
+                        "x": 0.0,
+                        "y": 1.0,
                         "z": 0.0,
                         "w": 1.0
                     },
-                    "trailLifeTime": 0.6499999761581421,
+                    "trailLifeTime": 0.15000000596046448,
                     "trailWidth": 0.15000000596046448
                 },
                 "TransformComponent": {
