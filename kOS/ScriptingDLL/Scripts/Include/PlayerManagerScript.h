@@ -269,6 +269,8 @@ public:
 	ecs::EntityID currentModelID = 0;
 	Powerup pendingPowerup = Powerup::NONE;
 
+	utility::GUID AHHHHHHHHHHHHHHHH;
+
 
 	inline int GetMaxBulletsForCurrentWeapon() const {
 		switch (playerPowerupHeld) {
@@ -452,7 +454,7 @@ public:
 		gunSfxGUID_1, gunReloadSfxGUID, fireSlashSfxGUID, fireDashSfxGUID, fireEquipSfxGUID, fireAbsorbSfxGUID, acidEquipSfxGUID, acidShieldSfxGuid, lightningSlowStartSfxGUID,lightningSlowEndSfxGUID, lightningGunSfxGUID,
 		lightningAbsorbSfxGUID, lightningEquipSfxGUID, acidGrenadeGunSfxGUID, acidAbsorbSfxGUID, pauseMenuOpenSfxGUID, pauseMenuCloseSfxGUID, pauseMenuManagerObject, healthUIObject, loseScreenCanvasObject,
 		winScreenCanvasObject, absorbFireVFXPrefab, absorbLightningVFXPrefab, absorbAcidVFXPrefab, absorbingVFXSpawnPoint, muzzleFlashPrefab, pistolModelObject,
-		fireSwordModelObject, lightningModelObject, acidModelObject, gameUICanvasObject, cinematicWaypointObjects, muzzleFlashLocationObject)
+		fireSwordModelObject, lightningModelObject, acidModelObject, gameUICanvasObject, cinematicWaypointObjects, muzzleFlashLocationObject, AHHHHHHHHHHHHHHHH)
 
 		/*REFLECTABLE(PlayerManagerScript, playerCameraObject, playerGunCameraObject, playerProjectilePointObject, playerGunModelPointObject, playerArmModelObject, playerGroundCheckObject,
 			bulletPrefab, fireLMBPrefab, acidLMBPrefab, lightningLMBPrefab, firePrefab, lightningPrefab, fireDashPrefab, lightningDashPrefab, acidShieldPrefab, airBlastPrefab,
@@ -611,6 +613,11 @@ inline void PlayerManagerScript::Start() {
 }
 
 inline void PlayerManagerScript::Update() {
+
+	if (Input->IsKeyTriggered(keys::G)) {
+		Scenes->LoadScene(AHHHHHHHHHHHHHHHH);
+		Scenes->ClearAllScene();
+	}
 
 	if (isCinematicPlaying) {
 		// Safety guard - skip cinematic if no waypoints assigned

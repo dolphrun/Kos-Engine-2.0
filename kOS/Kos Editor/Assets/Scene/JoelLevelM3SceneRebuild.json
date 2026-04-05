@@ -152,7 +152,7 @@
                     },
                     "active": false,
                     "culling": true,
-                    "layer": 1,
+                    "layer": 2,
                     "renderOrder": 0
                 },
                 "NameComponent": {
@@ -268,7 +268,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Player Arm Model",
-                            "Layer": 1,
+                            "Layer": 2,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -855,7 +855,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Player Arm Model",
-                            "Layer": 1,
+                            "Layer": 2,
                             "entityTag": "Default",
                             "isPrefab": true,
                             "isStatic": false,
@@ -1144,7 +1144,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Fire Sword",
-                            "Layer": 1,
+                            "Layer": 2,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
@@ -1211,7 +1211,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Acid Weapon",
-                            "Layer": 1,
+                            "Layer": 2,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
@@ -1278,7 +1278,7 @@
                         },
                         "NameComponent": {
                             "entityName": "Lightning Weapon",
-                            "Layer": 1,
+                            "Layer": 2,
                             "entityTag": "Default",
                             "isPrefab": false,
                             "isStatic": false,
