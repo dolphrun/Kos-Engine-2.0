@@ -54554,6 +54554,42 @@
     },
     {
         "entityGUID": "bf8d89e4-f9e1-053f-3929-3c8890e5bfde",
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "a8842a3c-1b4b-1ce5-80f7-2b2164175d7a",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                },
+                {
+                    "audioGUID": "f28b52ad-a4a9-4f54-c358-592ac3a22a91",
+                    "volume": 1.0,
+                    "loop": false,
+                    "playOnStart": false,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": false,
+                    "isSFX": true,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
+        },
         "BoxColliderComponent": {
             "isTrigger": true,
             "box": {
@@ -54627,8 +54663,8 @@
                     "roomEnemyGUIDs": "1f2fd4cc-664a-d8d4-eab8-0fa32dfaa05f"
                 }
             ],
-            "doorCloseSfxGUID": "00000000-0000-0000-0000-000000000000",
-            "doorOpenSfxGUID": "00000000-0000-0000-0000-000000000000"
+            "doorCloseSfxGUID": "a8842a3c-1b4b-1ce5-80f7-2b2164175d7a",
+            "doorOpenSfxGUID": "f28b52ad-a4a9-4f54-c358-592ac3a22a91"
         },
         "TransformComponent": {
             "WorldTransformation": {
