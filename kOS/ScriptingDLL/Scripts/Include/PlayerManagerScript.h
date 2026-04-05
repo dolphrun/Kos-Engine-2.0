@@ -484,6 +484,13 @@ inline void PlayerManagerScript::Start() {
 	ScoreManagerScript::Initialize();
 
 	playerCameraObjectID = ecsPtr->GetEntityIDFromGUID(playerCameraObject);
+
+	auto* camTf = ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID);
+	if (camTf) {
+		playerRotationX = camTf->LocalTransformation.rotation.x;
+		playerRotationY = camTf->LocalTransformation.rotation.y;
+	}
+
 	playerGunCameraObjectID = ecsPtr->GetEntityIDFromGUID(playerGunCameraObject);
 	playerProjectilePointObjectID = ecsPtr->GetEntityIDFromGUID(playerProjectilePointObject);
 	playerGunModelPointObjectID = ecsPtr->GetEntityIDFromGUID(playerGunModelPointObject);

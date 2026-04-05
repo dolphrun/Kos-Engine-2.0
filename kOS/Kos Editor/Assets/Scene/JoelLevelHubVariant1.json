@@ -95,7 +95,7 @@
             "isPrefab": true,
             "isStatic": false,
             "prefabName": "Game Package.prefab",
-            "hide": true
+            "hide": false
         },
         "TransformComponent": {
             "WorldTransformation": {
@@ -162,7 +162,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -210,7 +210,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -273,7 +273,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SkinnedMeshRendererComponent": {
                             "skinnedMeshGUID": "a74f5446-cca5-3f6a-259a-f13ac2757b50",
@@ -356,7 +356,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -404,7 +404,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "ParticleComponent": {
                             "particleType": 0,
@@ -645,7 +645,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SkinnedMeshRendererComponent": {
                             "skinnedMeshGUID": "b9acf138-25d4-f010-68d2-66397d65be8c",
@@ -712,7 +712,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SkinnedMeshRendererComponent": {
                             "skinnedMeshGUID": "df5619cb-87e1-b4f8-8c75-957d62f00eae",
@@ -779,7 +779,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SkinnedMeshRendererComponent": {
                             "skinnedMeshGUID": "ecd8276e-2da8-2e23-6c30-b8d563b368ec",
@@ -831,7 +831,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -881,7 +881,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -971,7 +971,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -1484,7 +1484,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "",
-                    "hide": true
+                    "hide": false
                 },
                 "PlayerManagerScript": {
                     "playerCameraObject": "401c12be-d52c-d521-768f-a871850b8151",
@@ -1607,9 +1607,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": -41.39068603515625,
-                            "y": 3.699605703353882,
-                            "z": 0.7767000198364258
+                            "x": -13.956915855407715,
+                            "y": 3.699598789215088,
+                            "z": 22.856904983520508
                         },
                         "rotation": {
                             "x": 0.0,
@@ -1624,9 +1624,9 @@
                     },
                     "LocalTransformation": {
                         "position": {
-                            "x": -41.39068603515625,
-                            "y": 3.699605703353882,
-                            "z": 0.7767000198364258
+                            "x": -13.956915855407715,
+                            "y": 3.699598789215088,
+                            "z": 22.856904983520508
                         },
                         "rotation": {
                             "x": 0.0,
@@ -1672,24 +1672,24 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": -41.39068603515625,
-                                    "y": 5.307300567626953,
-                                    "z": 0.7767000198364258
+                                    "x": -13.956915855407715,
+                                    "y": 5.30729341506958,
+                                    "z": 22.856904983520508
                                 },
                                 "rotation": {
                                     "x": 0.0,
-                                    "y": -0.0,
+                                    "y": -89.98021697998047,
                                     "z": 0.0
                                 },
                                 "scale": {
-                                    "x": 1.0,
+                                    "x": 0.9999999403953552,
                                     "y": 1.0,
-                                    "z": 1.0
+                                    "z": 0.9999999403953552
                                 }
                             },
                             "LocalTransformation": {
@@ -1700,7 +1700,7 @@
                                 },
                                 "rotation": {
                                     "x": 0.0,
-                                    "y": 0.0,
+                                    "y": -90.0,
                                     "z": 0.0
                                 },
                                 "scale": {
@@ -1720,24 +1720,24 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "",
-                                    "hide": true
+                                    "hide": false
                                 },
                                 "TransformComponent": {
                                     "WorldTransformation": {
                                         "position": {
-                                            "x": -40.39068603515625,
-                                            "y": 5.307300567626953,
-                                            "z": 0.7767000198364258
+                                            "x": -13.956915855407715,
+                                            "y": 5.30729341506958,
+                                            "z": 23.856904983520508
                                         },
                                         "rotation": {
-                                            "x": 0.0,
-                                            "y": -0.000017077141819754615,
-                                            "z": 0.0
+                                            "x": 180.0,
+                                            "y": -89.98021697998047,
+                                            "z": 180.0
                                         },
                                         "scale": {
-                                            "x": 0.9999998807907104,
+                                            "x": 0.9999998211860657,
                                             "y": 1.0000001192092896,
-                                            "z": 0.9999998807907104
+                                            "z": 0.9999998211860657
                                         }
                                     },
                                     "LocalTransformation": {
@@ -1771,14 +1771,14 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": -41.39068603515625,
-                                    "y": 1.4673726558685303,
-                                    "z": 0.7767000198364258
+                                    "x": -13.956915855407715,
+                                    "y": 1.4673657417297363,
+                                    "z": 22.856904983520508
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -1819,14 +1819,14 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
                                 "position": {
-                                    "x": -40.39068603515625,
-                                    "y": 4.449605941772461,
-                                    "z": 0.7767000198364258
+                                    "x": -12.956915855407715,
+                                    "y": 4.449598789215088,
+                                    "z": 22.856904983520508
                                 },
                                 "rotation": {
                                     "x": 0.0,
@@ -1872,7 +1872,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "Game UI Canvas.prefab",
-                    "hide": true
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -1920,7 +1920,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "e351c60b-1901-61b9-c552-3f646f787f21",
@@ -1986,7 +1986,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "76b092fd-5118-402b-1a16-8b7d628d7286",
@@ -2068,7 +2068,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "0dfd8ac3-6851-9f65-35ce-31279894850c",
@@ -2134,7 +2134,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "85954e03-c605-181a-72de-0e8df4a355ad",
@@ -2216,7 +2216,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "1776dd9e-9311-f406-80a6-a74993197923",
@@ -2282,7 +2282,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "318d7588-5596-eca6-ca7e-5d7af5d9a875",
@@ -2362,7 +2362,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "00000000-0000-0000-0000-000000000000",
@@ -2442,7 +2442,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "00000000-0000-0000-0000-000000000000",
@@ -2522,7 +2522,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "00000000-0000-0000-0000-000000000000",
@@ -2588,7 +2588,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "26b06809-cebf-df1a-80c1-6782c4366403",
@@ -2662,7 +2662,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "00000000-0000-0000-0000-000000000000",
@@ -2728,7 +2728,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "956ebc81-6f4d-b2c4-a208-9f949489add7",
@@ -2815,7 +2815,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Enemy HUD.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "TransformComponent": {
                             "WorldTransformation": {
@@ -2863,7 +2863,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": true
+                                    "hide": false
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "a8994653-aaa4-b27c-5a0b-70a872e07c56",
@@ -2929,7 +2929,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": true
+                                    "hide": false
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "c05af7da-ba16-6799-ba38-e2a4dd1ef801",
@@ -2995,7 +2995,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": true
+                                    "hide": false
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "0dfd8ac3-6851-9f65-35ce-31279894850c",
@@ -3061,7 +3061,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": true
+                                    "hide": false
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "e7cea814-4cbb-3b00-1a41-5f2f601c0341",
@@ -3127,7 +3127,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": true
+                                    "hide": false
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
@@ -3193,7 +3193,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": true
+                                    "hide": false
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
@@ -3259,7 +3259,7 @@
                                     "isPrefab": false,
                                     "isStatic": false,
                                     "prefabName": "Enemy HUD.prefab",
-                                    "hide": true
+                                    "hide": false
                                 },
                                 "SpriteComponent": {
                                     "spriteGUID": "e4bbb1ae-5147-cc65-f18d-7e0a8b10cd5b",
@@ -3332,7 +3332,7 @@
                     "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "Pause Screen Canvas.prefab",
-                    "hide": true
+                    "hide": false
                 },
                 "PauseMenuScript": {
                     "pauseMenuCanvasGUID": "53f83bac-2058-5939-b2a8-134497980574",
@@ -3393,7 +3393,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "6988c495-899e-e79d-0cb8-3cc55bceeedd",
@@ -3459,7 +3459,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "1432a2fc-cfcb-05ad-493f-84aeed00ce8d",
@@ -3525,7 +3525,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "e115a1eb-7c39-2bfa-75bc-c019179fc084",
@@ -3669,7 +3669,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "00594efd-b6f0-489e-7c7f-c985999f4823",
@@ -3823,7 +3823,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "7ad55f44-7c75-51aa-c145-4b7af063d811",
@@ -3977,7 +3977,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "c4e6323c-49f8-6914-17c8-48e7e8ea4374",
@@ -4131,7 +4131,7 @@
                             "isPrefab": true,
                             "isStatic": false,
                             "prefabName": "Pause Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "3efb3936-4a9f-1129-c2a6-db5bb3dd92c1",
@@ -4230,7 +4230,7 @@
                     "isPrefab": false,
                     "isStatic": false,
                     "prefabName": "Lose Screen Canvas.prefab",
-                    "hide": true
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -4278,7 +4278,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -4336,7 +4336,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -4394,7 +4394,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -4452,7 +4452,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -4510,7 +4510,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -4568,7 +4568,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -4626,7 +4626,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -4684,7 +4684,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -4742,7 +4742,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -4800,7 +4800,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -4858,7 +4858,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -4994,7 +4994,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "f08012fe-fdce-8122-e84a-04c32e8a3828",
@@ -5075,7 +5075,7 @@
                     "isPrefab": false,
                     "isStatic": false,
                     "prefabName": "Win Screen Canvas_1.prefab",
-                    "hide": true
+                    "hide": false
                 },
                 "TransformComponent": {
                     "WorldTransformation": {
@@ -5141,7 +5141,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Win Screen Canvas_1.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5225,7 +5225,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Win Screen Canvas_1.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "SpriteComponent": {
                             "spriteGUID": "e7ac63e2-dc50-c7e5-f42a-8c2d3db5eccc",
@@ -5301,7 +5301,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5359,7 +5359,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5417,7 +5417,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5475,7 +5475,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5533,7 +5533,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "Lose Screen Canvas.prefab",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5591,7 +5591,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5649,7 +5649,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5707,7 +5707,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5765,7 +5765,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
@@ -5823,7 +5823,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": true
+                            "hide": false
                         },
                         "TextComponent": {
                             "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
