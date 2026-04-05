@@ -72,3 +72,14 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 5. Push Installer to Itch.io via Butler
+      - name: Publish to Itch.io
+        uses: yeslayla/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          CHANNEL: windows
+          ITCH_USER: jazwinn    # <-- REPLACE THIS
+          ITCH_GAME: alchemication   # <-- REPLACE THIS
+          PACKAGE: Installer/INSTALLER/Alchemication_Setup.exe
+          VERSION: 1.0.${{ github.run_number }}
