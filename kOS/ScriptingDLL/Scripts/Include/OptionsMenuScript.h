@@ -408,19 +408,15 @@ public:
         masterVolumeSliderBarGUID, masterVolumeSliderBarID,
         masterVolumeMinusButtonGUID, masterVolumeMinusButtonID,
         masterVolumePlusButtonGUID, masterVolumePlusButtonID,
-        masterVolumeLevel,
         bgmVolumeSliderBarGUID, bgmVolumeSliderBarID,
         bgmVolumeMinusButtonGUID, bgmVolumeMinusButtonID,
         bgmVolumePlusButtonGUID, bgmVolumePlusButtonID,
-        bgmVolumeLevel,
         sfxVolumeSliderBarGUID, sfxVolumeSliderBarID,
         sfxVolumeMinusButtonGUID, sfxVolumeMinusButtonID,
         sfxVolumePlusButtonGUID, sfxVolumePlusButtonID,
-        sfxVolumeLevel,
         mouseSensSliderBarGUID, mouseSensSliderBarID,
         mouseSensMinusButtonGUID, mouseSensMinusButtonID,
         mousesensPlusButtonGUID, mousesensPlusButtonID,
-        mouseSensLevel,
         originalOptionsPosition, hiddenPosition);
 };
 
