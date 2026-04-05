@@ -15,6 +15,7 @@
 #include <typeinfo>
 
 #define CACHEDSCENE "CommandHistory"
+#define MAX_COMMANDS 20
 
 class CommandHistory {
 	ecs::ECS& m_ecs;
@@ -44,8 +45,8 @@ public:
 	};
 
 	// Data
-	static std::stack<CommandWrapper> commandQueue;
-	static std::stack<CommandWrapper> redoQueue;
+	static std::deque<CommandWrapper> commandQueue;
+	static std::deque<CommandWrapper> redoQueue;
 	std::map<EntityID, EntityID> idRemapping;
 
 	template<typename TCommand, typename... Args>
@@ -54,12 +55,16 @@ public:
 		LOGGING_INFO("Command Added: {} for Entity: [{}]", typeid(TCommand).name(), id);
 		static_assert(std::is_base_of_v<Command, TCommand>, "TCommand must derive from Command");
 		auto cmdPtr = std::make_shared<TCommand>(std::forward<Args>(args)...);
-		commandQueue.push(CommandWrapper{ cmdPtr });
+		commandQueue.emplace_back(CommandWrapper{ cmdPtr });
 
 		if (redoQueue.size()) {
-			//Clear Redo Stack
-			std::stack<CommandWrapper> empty;
+			//Clear Redo deque
+			std::deque<CommandWrapper> empty;
 			redoQueue.swap(empty);
+		}
+
+		if (commandQueue.size() > MAX_COMMANDS) {
+			commandQueue.pop_front();
 		}
 	}
 
@@ -85,6 +90,7 @@ public:
 		void Redo(ecs::ECS& ecs, CommandHistory* hist);
 		std::string sceneName;
 		EntityID parent;
+		bool active = true;
 	};
 
 	//	- Parenting
