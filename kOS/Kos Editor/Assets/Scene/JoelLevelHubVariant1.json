@@ -648,7 +648,7 @@
                             "hide": false
                         },
                         "SkinnedMeshRendererComponent": {
-                            "skinnedMeshGUID": "b9acf138-25d4-f010-68d2-66397d65be8c",
+                            "skinnedMeshGUID": "4b4af728-3911-ecb0-73d2-ca1754dea11b",
                             "materialGUID": "30af4cfd-30a2-9ad2-7512-3f37e269572a"
                         },
                         "TransformComponent": {
@@ -925,7 +925,7 @@
                 "AudioComponent": {
                     "audioFiles": [
                         {
-                            "audioGUID": "bb4e9d90-5c9b-facb-16ec-4ac515015082",
+                            "audioGUID": "3010864a-6c54-e73f-63ba-463ca344b7b5",
                             "volume": 1.0,
                             "loop": true,
                             "playOnStart": true,
@@ -961,7 +961,7 @@
                 "GameManager": {
                     "enemyObjectPrefab": "a3a69a24-9a78-f0fd-f0a9-744fc055ecb2",
                     "enemySpawnpoint": "5e385a2b-11e6-5250-a413-342a15395ff1",
-                    "gameBGM": "bb4e9d90-5c9b-facb-16ec-4ac515015082",
+                    "gameBGM": "3010864a-6c54-e73f-63ba-463ca344b7b5",
                     "ambienceBGM": "8530d606-2ec9-2a44-665d-b50a4a24153f"
                 },
                 "NameComponent": {
