@@ -74,10 +74,37 @@
                     "start_Lifetime": 0.25,
                     "end_Lifetime": 0.25,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 0.0,
                     "playback_State": 0,
                     "particleFade": 0,
+                    "animationModule": {
+                        "textureGUID": [
+                            {
+                                "textureGUID": "e6456543-59c0-690a-fa17-6b08607cd83e"
+                            },
+                            {
+                                "textureGUID": "5e3606e5-d0f2-73b3-1037-885c8a816eed"
+                            },
+                            {
+                                "textureGUID": "d90eaf07-783a-2a6f-05fb-2c8b99bcf06f"
+                            },
+                            {
+                                "textureGUID": "86d9246b-8d68-c5ee-9709-57200be9c00c"
+                            },
+                            {
+                                "textureGUID": "c4c5fcbb-da1d-17b7-97ce-1de465f0971a"
+                            },
+                            {
+                                "textureGUID": "f8578859-e98e-2671-c6e6-600360818340"
+                            },
+                            {
+                                "textureGUID": "519f9cc3-a799-f2c5-25b0-aaf2594ff61b"
+                            }
+                        ],
+                        "framesPerSecond": 24,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": false,
                         "mode": 0,
@@ -116,7 +143,7 @@
                             "z": 0.0
                         },
                         "cone_Radius": 0.0,
-                        "circle_Radius": 1.75,
+                        "circle_Radius": 3.5,
                         "circle_Arc": 360.0,
                         "emit_From_Edge": true,
                         "edge_Length": 0.0,
@@ -125,21 +152,21 @@
                     "colorModule": {
                         "enabled": false,
                         "start_Color": {
-                            "x": 0.699999988079071,
-                            "y": 0.44999998807907104,
+                            "x": 1.600000023841858,
+                            "y": 1.7000000476837158,
                             "z": 0.0,
                             "w": 1.0
                         },
                         "end_Color": {
-                            "x": 0.75,
-                            "y": 0.25,
+                            "x": 1.0,
+                            "y": 1.0,
                             "z": 0.25,
                             "w": 1.0
                         }
                     },
                     "sizeModule": {
                         "enabled": false,
-                        "start_Size": 0.3499999940395355,
+                        "start_Size": 1.5,
                         "end_Size": 0.5
                     },
                     "rotationModule": {
@@ -228,7 +255,7 @@
                         }
                     },
                     "emissionInterval": 0.009999999776482582,
-                    "no_Of_Particles": 15,
+                    "no_Of_Particles": 30,
                     "dynamicTrailingEnabled": false,
                     "trail_Color": {
                         "x": 1.0,
@@ -289,16 +316,43 @@
                 },
                 "ParticleComponent": {
                     "particleType": 0,
-                    "duration": 0.25,
+                    "duration": 0.5,
                     "looping": true,
                     "play_On_Awake": true,
-                    "start_Lifetime": 0.25,
-                    "end_Lifetime": 0.25,
+                    "start_Lifetime": 0.5,
+                    "end_Lifetime": 0.5,
                     "lifetime_Random_Enable": true,
-                    "textureGUID": "00000000-0000-0000-0000-000000000000",
                     "start_Velocity": 0.0,
                     "playback_State": 0,
                     "particleFade": 0,
+                    "animationModule": {
+                        "textureGUID": [
+                            {
+                                "textureGUID": "e6456543-59c0-690a-fa17-6b08607cd83e"
+                            },
+                            {
+                                "textureGUID": "5e3606e5-d0f2-73b3-1037-885c8a816eed"
+                            },
+                            {
+                                "textureGUID": "d90eaf07-783a-2a6f-05fb-2c8b99bcf06f"
+                            },
+                            {
+                                "textureGUID": "86d9246b-8d68-c5ee-9709-57200be9c00c"
+                            },
+                            {
+                                "textureGUID": "c4c5fcbb-da1d-17b7-97ce-1de465f0971a"
+                            },
+                            {
+                                "textureGUID": "f8578859-e98e-2671-c6e6-600360818340"
+                            },
+                            {
+                                "textureGUID": "519f9cc3-a799-f2c5-25b0-aaf2594ff61b"
+                            }
+                        ],
+                        "framesPerSecond": 10,
+                        "isLooping": false,
+                        "isPlaying": true
+                    },
                     "velocityModule": {
                         "enabled": false,
                         "mode": 0,
@@ -337,7 +391,7 @@
                             "z": 0.0
                         },
                         "cone_Radius": 0.0,
-                        "circle_Radius": 2.0,
+                        "circle_Radius": 3.5,
                         "circle_Arc": 360.0,
                         "emit_From_Edge": true,
                         "edge_Length": 0.0,
@@ -346,9 +400,9 @@
                     "colorModule": {
                         "enabled": false,
                         "start_Color": {
-                            "x": 0.75,
-                            "y": 0.0,
-                            "z": 0.0,
+                            "x": 1.0,
+                            "y": -0.20000000298023224,
+                            "z": 1.0,
                             "w": 1.0
                         },
                         "end_Color": {
@@ -360,7 +414,7 @@
                     },
                     "sizeModule": {
                         "enabled": false,
-                        "start_Size": 0.5,
+                        "start_Size": 2.799999952316284,
                         "end_Size": 0.5
                     },
                     "rotationModule": {
@@ -421,7 +475,7 @@
                         "arrivalThreshold": 0.5
                     },
                     "noiseModule": {
-                        "enabled": false,
+                        "enabled": true,
                         "strength": 1.0,
                         "strengthMultiplier": {
                             "x": 1.0,
@@ -449,7 +503,7 @@
                         }
                     },
                     "emissionInterval": 0.009999999776482582,
-                    "no_Of_Particles": 25,
+                    "no_Of_Particles": 50,
                     "dynamicTrailingEnabled": false,
                     "trail_Color": {
                         "x": 1.0,

@@ -62,7 +62,7 @@
                     "y": 0.0,
                     "z": 0.0
                 },
-                "radius": 7.0
+                "radius": 0.15000000596046448
             }
         },
         "TankAOEScript": {
@@ -583,7 +583,11 @@
                     "playback_State": 0,
                     "particleFade": 0,
                     "animationModule": {
-                        "textureGUID": [],
+                        "textureGUID": [
+                            {
+                                "textureGUID": "fb387d85-750b-0ff7-7e63-5a1fedad99ca"
+                            }
+                        ],
                         "framesPerSecond": 24,
                         "isLooping": false,
                         "isPlaying": true
@@ -633,39 +637,39 @@
                         "random_Direction_Amount": 0.0
                     },
                     "colorModule": {
-                        "enabled": false,
+                        "enabled": true,
                         "start_Color": {
-                            "x": 0.5,
-                            "y": 0.5,
-                            "z": 0.5,
-                            "w": 0.3499999940395355
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0,
+                            "w": 1.0
                         },
                         "end_Color": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0,
-                            "w": 0.0
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0,
+                            "w": 0.5
                         }
                     },
                     "sizeModule": {
                         "enabled": false,
-                        "start_Size": 0.3499999940395355,
+                        "start_Size": 2.0,
                         "end_Size": 1.0
                     },
                     "rotationModule": {
-                        "enabled": false,
+                        "enabled": true,
                         "start_Rotation": {
                             "x": 0.0,
                             "y": 0.0,
                             "z": 0.0
                         },
                         "end_Rotation": {
-                            "x": 0.0,
+                            "x": 360.0,
                             "y": 0.0,
                             "z": 0.0
                         },
                         "rotation_Modifier": {
-                            "x": 0.0,
+                            "x": 56.29999923706055,
                             "y": 0.0,
                             "z": 0.0
                         }
@@ -809,7 +813,11 @@
                     "playback_State": 0,
                     "particleFade": 0,
                     "animationModule": {
-                        "textureGUID": [],
+                        "textureGUID": [
+                            {
+                                "textureGUID": "fb387d85-750b-0ff7-7e63-5a1fedad99ca"
+                            }
+                        ],
                         "framesPerSecond": 24,
                         "isLooping": false,
                         "isPlaying": true
@@ -859,39 +867,39 @@
                         "random_Direction_Amount": 0.0
                     },
                     "colorModule": {
-                        "enabled": false,
+                        "enabled": true,
                         "start_Color": {
-                            "x": 0.5,
-                            "y": 0.5,
-                            "z": 0.5,
-                            "w": 0.3499999940395355
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0,
+                            "w": 1.0
                         },
                         "end_Color": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0,
-                            "w": 0.0
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0,
+                            "w": 0.5
                         }
                     },
                     "sizeModule": {
                         "enabled": false,
-                        "start_Size": 0.3499999940395355,
+                        "start_Size": 0.75,
                         "end_Size": 1.0
                     },
                     "rotationModule": {
-                        "enabled": false,
+                        "enabled": true,
                         "start_Rotation": {
                             "x": 0.0,
                             "y": 0.0,
                             "z": 0.0
                         },
                         "end_Rotation": {
-                            "x": 0.0,
+                            "x": 360.0,
                             "y": 0.0,
                             "z": 0.0
                         },
                         "rotation_Modifier": {
-                            "x": 0.0,
+                            "x": 50.0,
                             "y": 0.0,
                             "z": 0.0
                         }
