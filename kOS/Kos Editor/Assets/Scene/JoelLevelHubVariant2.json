@@ -9437,8 +9437,8 @@
                         },
                         "UIButtonScript": {
                             "actionType": 1,
-                            "currentSceneGUID": "e7b4ab7a-7785-aefc-3b3c-f9863cc7dafc",
-                            "targetSceneGUID": "873145a3-c01e-82b3-a4f5-d837cb0a0c51",
+                            "currentSceneGUID": "d2674d42-9fcb-06f6-a0cd-a8dffcaeb74d",
+                            "targetSceneGUID": "c58a9f88-28e0-7fac-d261-534cae5b070a",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
                             "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
@@ -25672,8 +25672,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "8858e985-0c5b-9800-7c2d-d28b5781fb1e"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -25761,8 +25761,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "97dc80f9-69d1-cf4d-34f5-872dff1f4882"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -25850,8 +25850,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "87317f3f-72d9-545a-db59-dbf620b33b96"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -25939,7 +25939,7 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
+                    "bakedLighting": true,
                     "depthMapGUID": "00000000-0000-0000-0000-000000000000"
                 },
                 "MaterialComponent": {
@@ -26028,8 +26028,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "0df35f07-3da7-ecba-685f-6a21e031e5b3"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -26117,7 +26117,7 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
+                    "bakedLighting": true,
                     "depthMapGUID": "00000000-0000-0000-0000-000000000000"
                 },
                 "MaterialComponent": {
@@ -26295,8 +26295,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "792a5b07-c1f1-054f-08ce-65b346a33070"
                 },
                 "MaterialComponent": {
                     "materialGUID": [
@@ -26384,8 +26384,8 @@
                     "outerCutOff": 10.5,
                     "intesnity": 41.400001525878906,
                     "shadowCast": false,
-                    "bakedLighting": false,
-                    "depthMapGUID": "00000000-0000-0000-0000-000000000000"
+                    "bakedLighting": true,
+                    "depthMapGUID": "792a5b07-c1f1-054f-08ce-65b346a33070"
                 },
                 "MaterialComponent": {
                     "materialGUID": [

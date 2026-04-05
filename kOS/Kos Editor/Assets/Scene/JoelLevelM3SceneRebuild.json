@@ -9443,8 +9443,8 @@
                         },
                         "UIButtonScript": {
                             "actionType": 1,
-                            "currentSceneGUID": "e7b4ab7a-7785-aefc-3b3c-f9863cc7dafc",
-                            "targetSceneGUID": "873145a3-c01e-82b3-a4f5-d837cb0a0c51",
+                            "currentSceneGUID": "7d1be7c7-26e7-58c8-67b5-c3640955da4c",
+                            "targetSceneGUID": "c58a9f88-28e0-7fac-d261-534cae5b070a",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
                             "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
