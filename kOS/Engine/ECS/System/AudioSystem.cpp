@@ -250,7 +250,11 @@ namespace ecs {
 				}
 
 				FMOD::Channel* ch = nullptr;
-				if (system->playSound(sound, nullptr, true, &ch) == FMOD_OK && ch) {
+				FMOD::ChannelGroup* targetGroup = af.isSFX
+					? m_audioManager.GetSFXGroup()
+					: m_audioManager.GetMusicGroup();
+
+				if (system->playSound(sound, targetGroup, true, &ch) == FMOD_OK && ch) {
 
 					ch->setVolume(std::clamp(af.volume, 0.0f, 1.0f));
 

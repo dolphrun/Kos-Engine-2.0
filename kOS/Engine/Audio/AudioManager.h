@@ -30,6 +30,9 @@ namespace audio {
 
         float GetMasterVolume() const { return m_masterVolume; }
 
+        FMOD::ChannelGroup* GetMusicGroup() const { return m_musicGroup; }
+        FMOD::ChannelGroup* GetSFXGroup()   const { return m_sfxGroup; }
+
     private:
         FMOD::System* s_fmod = nullptr;
         FMOD::Studio::System* m_studio = nullptr; 
