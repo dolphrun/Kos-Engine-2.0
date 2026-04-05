@@ -5,8 +5,9 @@
 class TurnOffLight : public TemplateSC {
 public:
     utility::GUID roomLock;
+    std::vector<utility::GUID> listOfLights;
     void Start()    override;
-    REFLECTABLE(TurnOffLight,roomLock)
+    REFLECTABLE(TurnOffLight,roomLock, listOfLights)
 };
 inline void TurnOffLight::Start() {
     physicsPtr->GetEventCallback()->OnTriggerExit(entity, [this](const physics::Collision& col) {
@@ -26,7 +27,12 @@ inline void TurnOffLight::Start() {
                     }
                 }
             }
-
+            for (const auto& lightGUID : listOfLights) {
+                ecs::EntityID lightID = ecsPtr->GetEntityIDFromGUID(lightGUID);
+                if (lightID != 0) {
+                    ecsPtr->SetActive(lightID, false);
+                }
+            }
         }
         });
 }
