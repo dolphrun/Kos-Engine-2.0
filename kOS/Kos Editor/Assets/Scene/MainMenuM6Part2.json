@@ -76,7 +76,29 @@
     },
     {
         "entityGUID": "89af7d27-d256-746a-43f2-2163d8cbe41a",
-        "MenuPt2Script": {},
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "3010864a-6c54-e73f-63ba-463ca344b7b5",
+                    "volume": 1.0,
+                    "loop": true,
+                    "playOnStart": true,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": true,
+                    "isSFX": false,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
+        },
+        "MenuPt2Script": {
+            "mainmenuBGMGUID": "3010864a-6c54-e73f-63ba-463ca344b7b5"
+        },
         "NameComponent": {
             "entityName": "Script",
             "Layer": 0,

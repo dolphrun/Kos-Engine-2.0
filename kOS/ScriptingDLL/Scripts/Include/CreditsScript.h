@@ -10,16 +10,28 @@ public:
 	utility::GUID next_Scene;
 	float creditsDuration = 10.0f;  // Set this in the inspector to match your video length
 	float timer = 0.0f;
+	utility::GUID creditsBGMGUID;
 
 	void Start() override;
 	void Update() override;
 
-	REFLECTABLE(CreditsScript, creditsDuration, next_Scene);
+	REFLECTABLE(CreditsScript, creditsDuration, next_Scene, creditsBGMGUID);
 };
 
 
 inline void CreditsScript::Start() {
 	timer = 0.0f;
+
+	// Play BGM on start
+	if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+		for (auto& af : ac->audioFiles) {
+			if (af.audioGUID == creditsBGMGUID && af.isBGM) {
+				af.requestPlay = true;
+				break;
+			}
+		}
+	}
+
 }
 
 inline void CreditsScript::Update() {

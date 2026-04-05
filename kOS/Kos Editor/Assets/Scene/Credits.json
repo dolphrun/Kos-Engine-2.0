@@ -9,6 +9,9 @@
     },
     {
         "entityGUID": "36e0f6cf-7d76-0e22-cd3c-3cc344cdf4a6",
+        "AudioListenerComponent": {
+            "active": true
+        },
         "CameraComponent": {
             "cameraType": 0,
             "fov": 45.0,
@@ -76,9 +79,30 @@
     },
     {
         "entityGUID": "5b528fb2-c429-b5c0-428d-096501efe657",
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "a3502fde-6f68-8053-d418-b1fb4385ced5",
+                    "volume": 1.0,
+                    "loop": true,
+                    "playOnStart": true,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": true,
+                    "isSFX": false,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
+        },
         "CreditsScript": {
             "creditsDuration": 11.0,
-            "next_Scene": "c58a9f88-28e0-7fac-d261-534cae5b070a"
+            "next_Scene": "c58a9f88-28e0-7fac-d261-534cae5b070a",
+            "creditsBGMGUID": "a3502fde-6f68-8053-d418-b1fb4385ced5"
         },
         "NameComponent": {
             "entityName": "Script",

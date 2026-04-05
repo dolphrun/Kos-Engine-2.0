@@ -10,8 +10,9 @@ public:
 
 	void Start() override;
 	void Update() override;
+	utility::GUID mainmenuBGMGUID;
 
-	REFLECTABLE(MenuPt2Script);
+	REFLECTABLE(MenuPt2Script, mainmenuBGMGUID);
 };
 
 
@@ -19,6 +20,16 @@ inline void MenuPt2Script::Start() {
 	ecsPtr->SetTimeScale(1.0f);
 	ecsPtr->SetState(RUNNING);
 	Input->HideCursor(false);  // show cursor as soon as this scene starts
+
+	// Play BGM on start
+	if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
+		for (auto& af : ac->audioFiles) {
+			if (af.audioGUID == mainmenuBGMGUID && af.isBGM) {
+				af.requestPlay = true;
+				break;
+			}
+		}
+	}
 }
 
 inline void MenuPt2Script::Update() {
