@@ -6348,28 +6348,24 @@
                     "masterVolumeMinusButtonID": 0,
                     "masterVolumePlusButtonGUID": "fab3d1a9-8024-6352-bbd4-2b5f63596084",
                     "masterVolumePlusButtonID": 0,
-                    "masterVolumeLevel": 10,
                     "bgmVolumeSliderBarGUID": "e1d66b2a-79cf-bf0f-7449-6bd9e370272c",
                     "bgmVolumeSliderBarID": 0,
                     "bgmVolumeMinusButtonGUID": "faedabfc-9ac7-01ac-1192-ce652536b6ba",
                     "bgmVolumeMinusButtonID": 0,
                     "bgmVolumePlusButtonGUID": "811ae4db-c736-b419-f0a9-37ef1745fb47",
                     "bgmVolumePlusButtonID": 0,
-                    "bgmVolumeLevel": 10,
                     "sfxVolumeSliderBarGUID": "0c724841-a2b0-f1cd-247b-55e0407c392b",
                     "sfxVolumeSliderBarID": 0,
                     "sfxVolumeMinusButtonGUID": "a5a9281f-0591-2861-1146-bcf581ebb878",
                     "sfxVolumeMinusButtonID": 0,
                     "sfxVolumePlusButtonGUID": "57be0e44-e54d-dcf5-3a08-52d9b459de8a",
                     "sfxVolumePlusButtonID": 0,
-                    "sfxVolumeLevel": 10,
                     "mouseSensSliderBarGUID": "79f16682-491f-45df-80b8-8a16d75bde36",
                     "mouseSensSliderBarID": 0,
                     "mouseSensMinusButtonGUID": "2a8d2d4a-bf96-216c-4807-0075b1f22237",
                     "mouseSensMinusButtonID": 0,
                     "mousesensPlusButtonGUID": "f9125518-624a-7d05-ed6b-fa004d1507a8",
                     "mousesensPlusButtonID": 0,
-                    "mouseSensLevel": 5,
                     "originalOptionsPosition": {
                         "x": 0.0,
                         "y": 0.0,
@@ -30230,6 +30226,122 @@
                     "x": 1.0,
                     "y": 1.0,
                     "z": 1.0
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "fdeed226-2aa5-f177-237b-1a6bdf523e83",
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "7636bf92-bafc-d56c-2072-4f4d2187e9eb"
+                }
+            ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "147a832f-b8ef-88bb-38ae-c317de576bd9"
+        },
+        "NameComponent": {
+            "entityName": "M6_Alchemication_ORB",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "M6_Alchemication_ORB.prefab",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -14.149999618530273,
+                    "y": 2.430000066757202,
+                    "z": 4.329999923706055
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.019999999552965164,
+                    "y": 0.019999999552965164,
+                    "z": 0.019999999552965164
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -14.149999618530273,
+                    "y": 2.430000066757202,
+                    "z": 4.329999923706055
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.019999999552965164,
+                    "y": 0.019999999552965164,
+                    "z": 0.019999999552965164
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "000429ed-67a2-354a-73b4-fc5639ae0adc",
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "7636bf92-bafc-d56c-2072-4f4d2187e9eb"
+                }
+            ]
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "147a832f-b8ef-88bb-38ae-c317de576bd9"
+        },
+        "NameComponent": {
+            "entityName": "M6_Alchemication_ORB",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "M6_Alchemication_ORB.prefab",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": -12.93260669708252,
+                    "y": 2.430000066757202,
+                    "z": 4.329999923706055
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.019999999552965164,
+                    "y": 0.019999999552965164,
+                    "z": 0.019999999552965164
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": -12.93260669708252,
+                    "y": 2.430000066757202,
+                    "z": 4.329999923706055
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.019999999552965164,
+                    "y": 0.019999999552965164,
+                    "z": 0.019999999552965164
                 }
             }
         }
