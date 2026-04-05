@@ -367,7 +367,7 @@
                 },
                 "NameComponent": {
                     "entityName": "Enemy Model",
-                    "Layer": 0,
+                    "Layer": 1,
                     "entityTag": "Default",
                     "isPrefab": true,
                     "isStatic": false,
