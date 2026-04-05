@@ -86,7 +86,7 @@ namespace ecs {
                     }
 
                 }
-                continue;;
+                continue;
             }
 
             for (EntityID childID : childEntities.value())

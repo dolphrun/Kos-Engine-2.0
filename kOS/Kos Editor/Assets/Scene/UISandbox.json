@@ -2565,13 +2565,13 @@
                     "gameUICanvasObject": "633d8af2-15c0-434b-4a26-f9093932c2e4",
                     "cinematicWaypointObjects": [
                         {
-                            "cinematicWaypointObjects": "b66db183-76c0-e5b3-99bc-e898bbba271d"
+                            "cinematicWaypointObjects": "f3ce6b7f-c9af-e631-62aa-8cfe551bd7db"
                         },
                         {
-                            "cinematicWaypointObjects": "0163c348-ea15-1c6d-a726-c3cb81562d5f"
+                            "cinematicWaypointObjects": "f3ce6b7f-c9af-e631-62aa-8cfe551bd7db"
                         },
                         {
-                            "cinematicWaypointObjects": "29bdeebe-363a-8d92-260c-b26098f7a5c7"
+                            "cinematicWaypointObjects": "f3ce6b7f-c9af-e631-62aa-8cfe551bd7db"
                         }
                     ],
                     "muzzleFlashLocationObject": "00000000-0000-0000-0000-000000000000"
@@ -12704,5 +12704,53 @@
                 }
             }
         ]
+    },
+    {
+        "entityGUID": "f3ce6b7f-c9af-e631-62aa-8cfe551bd7db",
+        "NameComponent": {
+            "entityName": "a",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        }
     }
 ]
