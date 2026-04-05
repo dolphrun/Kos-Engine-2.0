@@ -10,7 +10,7 @@ public:
 	int fireLMBDamage = 30;
 	glm::vec3 direction;
 
-	float timeBeforeDeath = 0.3f;
+	float timeBeforeDeath = 0.35f;
 	float currentTimer = 0.f;
 
 	ScoreManagerScript* scoreManager = nullptr;
@@ -46,7 +46,7 @@ inline void FireLMB::Start() {
 			}
 		}
 
-	physicsPtr->GetEventCallback()->OnTriggerEnter(entity, [this](const physics::Collision& col) {
+	physicsPtr->GetEventCallback()->OnTriggerStay(entity, [this](const physics::Collision& col) {
 		if (ecsPtr->GetComponent<NameComponent>(col.otherEntityID)->entityTag == "Enemy") {
 			// ADD SFX OF ENEMY DEATH HERE - DONE
 			PlayRandomEnemyDeathSFX();
