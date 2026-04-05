@@ -727,8 +727,8 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.569599986076355,
-                            "y": 0.3199999928474426,
+                            "x": 1.0,
+                            "y": 0.6399999856948853,
                             "z": 0.3199999928474426
                         }
                     },
@@ -744,8 +744,8 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.569599986076355,
-                            "y": 0.3199999928474426,
+                            "x": 1.0,
+                            "y": 0.6399999856948853,
                             "z": 0.3199999928474426
                         }
                     }
@@ -820,7 +820,7 @@
                     "WorldTransformation": {
                         "position": {
                             "x": -0.0314117968082428,
-                            "y": -0.5214729309082031,
+                            "y": -0.47999998927116394,
                             "z": 0.0
                         },
                         "rotation": {
@@ -829,15 +829,15 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.45017799735069275,
-                            "y": 0.25290900468826294,
-                            "z": 0.25290900468826294
+                            "x": 0.6499999761581421,
+                            "y": 0.6000000238418579,
+                            "z": 5.300000190734863
                         }
                     },
                     "LocalTransformation": {
                         "position": {
                             "x": -0.0314117968082428,
-                            "y": -0.5214729309082031,
+                            "y": -0.47999998927116394,
                             "z": 0.0
                         },
                         "rotation": {
@@ -846,9 +846,9 @@
                             "z": 0.0
                         },
                         "scale": {
-                            "x": 0.45017799735069275,
-                            "y": 0.25290900468826294,
-                            "z": 0.25290900468826294
+                            "x": 0.6499999761581421,
+                            "y": 0.6000000238418579,
+                            "z": 5.300000190734863
                         }
                     }
                 },
@@ -977,7 +977,7 @@
                     "isPrefab": false,
                     "isStatic": false,
                     "prefabName": "",
-                    "hide": false
+                    "hide": true
                 },
                 "OptionsMenuScript": {
                     "optionsMenuCanvasGUID": "e2482f0d-5fd0-56e3-bd66-668163fbabd1",
@@ -1069,7 +1069,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "ed06a21f-0694-668b-2e37-7021cd26df19",
@@ -1135,7 +1135,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "e28d937a-d0c0-9bcd-076a-d2cf49cdfc6d",
@@ -1201,7 +1201,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "d4c3f15c-d1f0-9ded-1edd-1408ecad4bf8",
@@ -1293,7 +1293,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "a447324a-22b8-bd2a-f707-2b8d490f7d74",
@@ -1369,7 +1369,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "aeeb9692-2178-963d-2495-37ddf16bf2a2",
@@ -1435,7 +1435,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "45dc8322-8af2-74c7-7d7b-4662798e4b4d",
@@ -1527,7 +1527,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "a447324a-22b8-bd2a-f707-2b8d490f7d74",
@@ -1603,7 +1603,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "626bfe13-dbd5-faac-0d09-66921e8fc272",
@@ -1669,7 +1669,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "0bcef17a-a1f5-0af9-2c90-d5cd97798568",
@@ -1761,7 +1761,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "a447324a-22b8-bd2a-f707-2b8d490f7d74",
@@ -1837,7 +1837,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "1723cffd-cd4b-c978-bcce-a77664cd8bc6",
@@ -1903,7 +1903,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "78131072-89cb-44e9-51f9-cef2d5bf32b0",
@@ -1995,7 +1995,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "8826881d-6c55-f500-c9fa-d9ac44d933c6",
@@ -2097,7 +2097,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "a447324a-22b8-bd2a-f707-2b8d490f7d74",
@@ -2199,7 +2199,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "70aee67b-0852-afa3-cf4d-904394a69396",
@@ -2301,7 +2301,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "8826881d-6c55-f500-c9fa-d9ac44d933c6",
@@ -2403,7 +2403,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "8826881d-6c55-f500-c9fa-d9ac44d933c6",
@@ -2505,7 +2505,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "8826881d-6c55-f500-c9fa-d9ac44d933c6",
@@ -2586,7 +2586,7 @@
                     "isPrefab": false,
                     "isStatic": false,
                     "prefabName": "",
-                    "hide": false
+                    "hide": true
                 },
                 "QuitWindowConfirmScript": {
                     "quitWindowCanvasGUID": "6af68853-40c9-563f-cec8-826e74f36319",
@@ -2648,7 +2648,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "a59450ab-9341-6c7d-6730-3bff72c8432e",
@@ -2740,7 +2740,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "c68a885b-3ced-5716-d20e-3016d09ca156",
@@ -2842,7 +2842,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "89326b49-5885-d608-9e76-67288469231d",
@@ -2944,7 +2944,7 @@
                             "isPrefab": false,
                             "isStatic": false,
                             "prefabName": "",
-                            "hide": false
+                            "hide": true
                         },
                         "SpriteComponent": {
                             "spriteGUID": "c65978c5-5bfc-42f3-71be-7dd9156234bd",
