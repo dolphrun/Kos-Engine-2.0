@@ -420,6 +420,10 @@ public:
 	std::vector<utility::GUID> cinematicWaypointObjects;
 	std::vector<ecs::EntityID> cinematicWaypointIDs;
 
+
+	int cinematicInitFrameDelay = 0;
+	bool cinematicStarted = false;
+
 	// --- FUNCTION DECLARATIONS ONLY --
 	// Implementations are moved to the bottom of the file
 	void Start() override;
@@ -485,11 +489,14 @@ inline void PlayerManagerScript::Start() {
 
 	playerCameraObjectID = ecsPtr->GetEntityIDFromGUID(playerCameraObject);
 
-	auto* camTf = ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID);
-	if (camTf) {
-		playerRotationX = camTf->LocalTransformation.rotation.x;
-		playerRotationY = camTf->LocalTransformation.rotation.y;
-	}
+	//auto* camTf = ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID);
+	//if (camTf) {
+	//	playerRotationX = camTf->LocalTransformation.rotation.x;
+	//	playerRotationY = camTf->LocalTransformation.rotation.y;
+	//}
+
+	cinematicInitFrameDelay = 0;
+	cinematicStarted = false;
 
 	playerGunCameraObjectID = ecsPtr->GetEntityIDFromGUID(playerGunCameraObject);
 	playerProjectilePointObjectID = ecsPtr->GetEntityIDFromGUID(playerProjectilePointObject);
@@ -617,6 +624,18 @@ inline void PlayerManagerScript::Update() {
 		if (cinematicWaypointPositions.empty()) {
 			isCinematicPlaying = false;
 			return;
+		}
+
+		if (!cinematicStarted) {
+			cinematicInitFrameDelay++;
+			auto* camTf = ecsPtr->GetComponent<TransformComponent>(playerCameraObjectID);
+			if (camTf) {
+				playerRotationX = camTf->LocalTransformation.rotation.x;
+				playerRotationY = camTf->LocalTransformation.rotation.y;
+			}
+			if (cinematicInitFrameDelay < 10)
+				return;
+			cinematicStarted = true;
 		}
 
 		cinematicTimer += ecsPtr->m_GetDeltaTime();
