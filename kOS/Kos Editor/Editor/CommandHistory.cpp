@@ -1,15 +1,15 @@
 #include "CommandHistory.h"
 #include "imgui.h"
 
-std::stack<CommandHistory::CommandWrapper> CommandHistory::commandQueue;
-std::stack<CommandHistory::CommandWrapper> CommandHistory::redoQueue;
+std::deque<CommandHistory::CommandWrapper> CommandHistory::commandQueue;
+std::deque<CommandHistory::CommandWrapper> CommandHistory::redoQueue;
 
 static bool onSceneLoadedDel = false;
 
 void CommandHistory::Init() {
 	m_ecs.AddScene(CACHEDSCENE, SceneData());
 	m_ecs.sceneMap[CACHEDSCENE].isPrefab = true;
-	m_sceneManager.SetSceneActive(CACHEDSCENE, false);
+	m_sceneManager.SetSceneActive(CACHEDSCENE, true);
 
 	if (!onSceneLoadedDel) {
 		m_sceneManager.onSceneLoaded.Add([this](SceneData Data) {	Clear(); });
@@ -20,23 +20,28 @@ void CommandHistory::Init() {
 void CommandHistory::Update() {
 	if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) {
 		if (ImGui::IsKeyPressed(ImGuiKey_Z)){
-			if (commandQueue.size() <= 0) return;
-			redoQueue.push(commandQueue.top());
-			commandQueue.top().Get()->Undo(m_ecs, this);
-			commandQueue.pop();
+			if (commandQueue.empty()) return;
+			auto cmd = commandQueue.back();
+			commandQueue.pop_back();
+			cmd.Get()->Undo(m_ecs, this);
+			redoQueue.push_back(cmd);
 		}
 		else if (ImGui::IsKeyPressed(ImGuiKey_Y)) {
-			if (redoQueue.size() <= 0) return;
-			commandQueue.push(redoQueue.top());
-			redoQueue.top().Get()->Redo(m_ecs, this);
-			redoQueue.pop();
+			if (redoQueue.empty()) return;
+			auto cmd = redoQueue.back();
+			redoQueue.pop_back();
+			cmd.Get()->Redo(m_ecs, this);
+			commandQueue.push_back(cmd);
+			if (commandQueue.size() > MAX_COMMANDS) {
+				commandQueue.pop_front();
+			}
 		}
 	}
 }
 
 void CommandHistory::Clear() {
-	std::stack<CommandWrapper> empty1;
-	std::stack<CommandWrapper> empty2;
+	std::deque<CommandWrapper> empty1;
+	std::deque<CommandWrapper> empty2;
 	redoQueue.swap(empty1);
 	commandQueue.swap(empty2);
 }
@@ -83,6 +88,7 @@ CommandHistory::DeleteGameObject::DeleteGameObject(EntityID _id, std::string _sc
 	if (ecs.GetParent(_id).has_value()) {
 		parent = ecs.GetParent(_id).value();
 	}
+	active = !ecs.GetComponent<ecs::NameComponent>(_id)->hide;
 	ecs.RemoveParent(_id);
 	EntityID newID = ecs.DuplicateEntity(_id, CACHEDSCENE);
 	hist->RegisterRemapID(id, newID);
@@ -97,7 +103,7 @@ void CommandHistory::DeleteGameObject::Undo(ecs::ECS& ecs, CommandHistory* hist)
 	}
 	ecs.DeleteEntity(currentID);
 	hist->RegisterRemapID(id, newID);
-	ecs.SetActive(newID, true);
+	ecs.SetActive(newID, active);
 }
 
 void CommandHistory::DeleteGameObject::Redo(ecs::ECS& ecs, CommandHistory* hist) {

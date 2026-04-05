@@ -17,10 +17,10 @@ endif()
 
 # Global compiler warnings
 if(MSVC)
-	add_compile_options(/W3 /bigobj)
+	add_compile_options(/W0 /bigobj)
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 else()	
-    add_compile_options(-Wall -Wextra -pedantic -Wshadow -Wconversion)
+    add_compile_options(-Wall -Wextra -pedantic -Wshadow -Wconversion -w)
 endif()
 
 # Subprojects

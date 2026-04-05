@@ -29,7 +29,8 @@
             "renderOrder": 0
         },
         "MainMenuCameraScript": {
-            "fadeToBlackGO": "4b1a85a5-0265-9e46-ad74-fb964a198c7a"
+            "fadeToBlackGO": "4b1a85a5-0265-9e46-ad74-fb964a198c7a",
+            "next_Scene": "c58a9f88-28e0-7fac-d261-534cae5b070a"
         },
         "NameComponent": {
             "entityName": "Camera",
@@ -43,35 +44,35 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": -0.2911914587020874,
+                    "x": -0.5925987958908081,
                     "y": 10.74423885345459,
-                    "z": 0.0
+                    "z": -0.03418612480163574
                 },
                 "rotation": {
-                    "x": 0.1640477478504181,
-                    "y": -0.15789857506752014,
-                    "z": 0.15151537954807281
+                    "x": 0.16402500867843628,
+                    "y": -0.1578707993030548,
+                    "z": 0.15151189267635345
                 },
                 "scale": {
                     "x": 1.0,
-                    "y": 1.0,
+                    "y": 0.999992311000824,
                     "z": 0.9999949336051941
                 }
             },
             "LocalTransformation": {
                 "position": {
-                    "x": -0.2911914587020874,
+                    "x": -0.5925987958908081,
                     "y": 10.74423885345459,
-                    "z": 0.0
+                    "z": -0.03418612480163574
                 },
                 "rotation": {
-                    "x": 0.1640477478504181,
-                    "y": -0.15789858996868134,
-                    "z": 0.15151536464691162
+                    "x": 0.16402499377727509,
+                    "y": -0.1578707993030548,
+                    "z": 0.15151189267635345
                 },
                 "scale": {
                     "x": 1.0,
-                    "y": 1.0,
+                    "y": 0.9999923706054688,
                     "z": 0.9999949336051941
                 }
             }
@@ -475,12 +476,12 @@
             "isScreenSpace": true
         },
         "NameComponent": {
-            "entityName": "Screen Space Canvas",
+            "entityName": "Transition UI",
             "Layer": 0,
             "entityTag": "Default",
-            "isPrefab": false,
+            "isPrefab": true,
             "isStatic": false,
-            "prefabName": "",
+            "prefabName": "Transition UI.prefab",
             "hide": false
         },
         "TransformComponent": {
@@ -522,33 +523,12 @@
         "children": [
             {
                 "entityGUID": "4b1a85a5-0265-9e46-ad74-fb964a198c7a",
-                "AnimatedSpriteComponent": {
-                    "spriteGUID": [],
-                    "color": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0,
-                        "w": 1.0
-                    },
-                    "currentFrame": 0,
-                    "framesPerSecond": 24,
-                    "uvMin": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "uvMax": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "useCustomUV": false,
-                    "isLooping": false
-                },
                 "FadeTransition": {},
                 "NameComponent": {
                     "entityName": "Fade Transition",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "",
                     "hide": false
@@ -559,7 +539,7 @@
                         "x": 0.0,
                         "y": 0.0,
                         "z": 0.0,
-                        "w": 1.0
+                        "w": 0.0
                     },
                     "uvMin": {
                         "x": 0.0,
@@ -896,6 +876,69 @@
                     "x": 1.0,
                     "y": 1.0,
                     "z": 1.0
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "76bb3c51-06a7-13ba-33ec-ef3119242fe0",
+        "MaterialComponent": {
+            "materialGUID": [
+                {
+                    "materialGUID": "ca782be7-6ebe-5b12-b196-6b1c8b113428"
+                }
+            ]
+        },
+        "MeshColliderComponent": {
+            "isTrigger": false,
+            "convex": false
+        },
+        "MeshFilterComponent": {
+            "meshGUID": "07a995fd-a881-e7f9-11c9-9996c4e7f0c5"
+        },
+        "NameComponent": {
+            "entityName": "M5_Modular_Wall_40M",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": true,
+            "isStatic": false,
+            "prefabName": "M5_Modular_Wall_40M.prefab",
+            "hide": false
+        },
+        "NavMeshComponent": {},
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 15.319963455200195,
+                    "y": -7.14942741394043,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 15.319963455200195,
+                    "y": -7.14942741394043,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 0.009999999776482582,
+                    "y": 0.009999999776482582,
+                    "z": 0.009999999776482582
                 }
             }
         }

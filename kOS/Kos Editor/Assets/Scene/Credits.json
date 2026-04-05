@@ -1,0 +1,206 @@
+[
+    {
+        "SceneData": {
+            "skyBoxGUID": [],
+            "NavMeshGuid": "00000000-0000-002c-0000-01a1d13476c0",
+            "postProcessingProfile": "00000000-0000-0000-0000-000000000000",
+            "ambientIntensity": 1.0
+        }
+    },
+    {
+        "entityGUID": "36e0f6cf-7d76-0e22-cd3c-3cc344cdf4a6",
+        "AudioListenerComponent": {
+            "active": true
+        },
+        "CameraComponent": {
+            "cameraType": 0,
+            "fov": 45.0,
+            "nearPlane": 0.05000000074505806,
+            "farPlane": 200.0,
+            "size": {
+                "x": 1600.0,
+                "y": 900.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "active": false,
+            "culling": false,
+            "layer": 0,
+            "renderOrder": 0
+        },
+        "NameComponent": {
+            "entityName": "Camera",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "5b528fb2-c429-b5c0-428d-096501efe657",
+        "AudioComponent": {
+            "audioFiles": [
+                {
+                    "audioGUID": "a3502fde-6f68-8053-d418-b1fb4385ced5",
+                    "volume": 1.0,
+                    "loop": true,
+                    "playOnStart": true,
+                    "hasPlayed": false,
+                    "pan": 0.0,
+                    "isBGM": true,
+                    "isSFX": false,
+                    "use3D": false,
+                    "minDistance": 1.0,
+                    "maxDistance": 20.0,
+                    "sourceType": 0,
+                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                    "studioEventPath": ""
+                }
+            ]
+        },
+        "CreditsScript": {
+            "creditsDuration": 12.0,
+            "next_Scene": "c58a9f88-28e0-7fac-d261-534cae5b070a",
+            "creditsBGMGUID": "a3502fde-6f68-8053-d418-b1fb4385ced5"
+        },
+        "NameComponent": {
+            "entityName": "Script",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.705436646938324
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.705436646938324
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        }
+    },
+    {
+        "entityGUID": "155a9ebf-7e02-c70e-8851-62da19e75e25",
+        "NameComponent": {
+            "entityName": "Video",
+            "Layer": 0,
+            "entityTag": "Default",
+            "isPrefab": false,
+            "isStatic": false,
+            "prefabName": "",
+            "hide": false
+        },
+        "TransformComponent": {
+            "WorldTransformation": {
+                "position": {
+                    "x": 2.9800000190734863,
+                    "y": 0.0,
+                    "z": 0.00543665885925293
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -90.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 2.1999998092651367,
+                    "y": 1.4500000476837158,
+                    "z": 0.9999997615814209
+                }
+            },
+            "LocalTransformation": {
+                "position": {
+                    "x": 2.9800000190734863,
+                    "y": 0.0,
+                    "z": 0.00543665885925293
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": -89.98021697998047,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 2.200000047683716,
+                    "y": 1.4500000476837158,
+                    "z": 0.9999997615814209
+                }
+            }
+        },
+        "VideoComponent": {
+            "videoGUID": "279d50ca-d822-af2c-45df-5b4e7f318e5e",
+            "pause": false,
+            "loop": false
+        }
+    }
+]

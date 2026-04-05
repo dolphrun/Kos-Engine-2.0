@@ -10,6 +10,8 @@
 
 class WinScreenScript : public TemplateSC {
 public:
+
+    static WinScreenScript* instance;
     // Static flag to indicate if win screen is active
     static bool isWinScreenActive;
 
@@ -44,6 +46,7 @@ public:
     bool hasShownWinScreen = false;
 
     void Start() override {
+        instance = this;
         isWinScreenActive = false;
         winScreenCanvasID = ecsPtr->GetEntityIDFromGUID(winScreenCanvasGUID);
 
@@ -144,12 +147,14 @@ public:
         std::cout << "WIN SCREEN HIDDEN" << std::endl;
     }
 
-private:
     void SetWinScreenActive(bool active) {
         if (auto* t = ecsPtr->GetComponent<TransformComponent>(winScreenCanvasID)) {
             t->LocalTransformation.position = active ? originalCanvasPosition : hiddenPosition;
         }
     }
+
+private:
+
 
     void UpdateTimeTakenText() {
         if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(timeTakenValueID)) {
@@ -197,3 +202,4 @@ public:
 
 // Static definition
 bool WinScreenScript::isWinScreenActive = false;
+inline WinScreenScript* WinScreenScript::instance = nullptr;

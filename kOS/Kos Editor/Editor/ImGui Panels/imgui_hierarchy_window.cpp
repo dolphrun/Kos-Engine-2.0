@@ -130,9 +130,9 @@ namespace gui
                         // save "prefab"
                         m_sceneManager.SaveScene(m_activeScene);
                         std::string prefabName = m_activeScene;
+
                         // set current prefab back to inactive
                         m_sceneManager.SetSceneActive(m_activeScene, false);
-
                         m_prefabManager.UpdateAllPrefab(m_activeScene);
 
                         // set back scene's active state
@@ -141,6 +141,9 @@ namespace gui
                             if (sceneData.isPrefab == false)
                             {
                                 m_sceneManager.SetSceneActive(scene, m_savedSceneState.find(scene)->second);
+                            }
+                            else {
+                                m_sceneManager.SetSceneActive(scene,false);
                             }
                         }
 

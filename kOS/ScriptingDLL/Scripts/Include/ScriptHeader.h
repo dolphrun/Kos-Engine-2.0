@@ -49,6 +49,7 @@
 #include "UIButtonScript.h"
 #include "NEW_HealthBarUIScript.h"
 #include "CutSceneScript.h"
+#include "CutsceneAutoScript.h"
 #include "ManaUIScript.h"
 #include "AmmoUIScript.h"
 #include "NextSceneEventColliderScript.h"
@@ -60,5 +61,10 @@
 #include "MainMenuBottleScript.h"
 #include "MainMenuHandBlockScript.h"
 #include "FadeTransition.h"
-
+#include "CreditsScript.h"
 #include "SplashScreenScript.h"
+#include "MenuPt2Script.h"
+#include "QuitWindowConfirmScript.h"
+#include "QuitMenuConfirmScript.h"
+
+#include "TurnOffLight.h"

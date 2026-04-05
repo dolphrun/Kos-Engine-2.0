@@ -159,8 +159,8 @@
             "enemyMovementSpeed": 5.0,
             "enemyType": "Ranged",
             "enemyAttackRange": 2.5,
-            "enemyRangedAttackRange": 70.0,
-            "enemyChaseRange": 75.0,
+            "enemyRangedAttackRange": 40.0,
+            "enemyChaseRange": 50.0,
             "playerToChase": "dc3cc8b0-f51e-12d5-0ab2-8c8d690d90e8",
             "enemyHurtboxPrefab": "bfbe5968-8f63-b074-ac3f-5597fcc00dd1",
             "enemyBulletPrefab": "8393af65-4300-ebba-36fa-0720e42087f2",
@@ -250,9 +250,9 @@
         "TransformComponent": {
             "WorldTransformation": {
                 "position": {
-                    "x": 23.768556594848633,
-                    "y": 3.9802656173706055,
-                    "z": -30.937253952026367
+                    "x": -45.2314453125,
+                    "y": 1.616478443145752,
+                    "z": -46.937255859375
                 },
                 "rotation": {
                     "x": 0.0,
@@ -267,9 +267,9 @@
             },
             "LocalTransformation": {
                 "position": {
-                    "x": 23.768556594848633,
-                    "y": 3.9802656173706055,
-                    "z": -30.937253952026367
+                    "x": -45.2314453125,
+                    "y": 1.616478443145752,
+                    "z": -46.937255859375
                 },
                 "rotation": {
                     "x": 0.0,
@@ -285,7 +285,7 @@
         },
         "children": [
             {
-                "entityGUID": "6ac4caf1-1df9-0909-bbf9-fe20ccb6c10f",
+                "entityGUID": "c8b004b9-95f3-97a7-617e-35f46abf2728",
                 "NameComponent": {
                     "entityName": "Enemy Hurtbox Position",
                     "Layer": 0,
@@ -298,9 +298,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 22.918556213378906,
-                            "y": 7.120265960693359,
-                            "z": -30.937253952026367
+                            "x": -46.081443786621094,
+                            "y": 4.756478309631348,
+                            "z": -46.937255859375
                         },
                         "rotation": {
                             "x": 0.0,
@@ -333,7 +333,7 @@
                 }
             },
             {
-                "entityGUID": "d1da72a6-0fc8-5697-f8fa-1f906b4de168",
+                "entityGUID": "a45d6a15-0d29-d8cd-66ec-51c64a808869",
                 "AnimatorComponent": {
                     "controllerGUID": "baa80405-5c48-fba2-0cde-edc56c8d415d",
                     "m_PlaybackSpeed": 1.0,
@@ -358,9 +358,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 23.768556594848633,
-                            "y": 3.9802656173706055,
-                            "z": -30.937253952026367
+                            "x": -45.2314453125,
+                            "y": 1.616478443145752,
+                            "z": -46.937255859375
                         },
                         "rotation": {
                             "x": 0.0,
@@ -393,12 +393,12 @@
                 }
             },
             {
-                "entityGUID": "eb22ef3e-5cf8-3da9-51bf-f0a9bb5b0ce6",
+                "entityGUID": "e8049a15-4cad-7b90-5dd7-5019ba2ed7fc",
                 "NameComponent": {
                     "entityName": "Enemy Hurt VFX Position",
                     "Layer": 0,
                     "entityTag": "Default",
-                    "isPrefab": false,
+                    "isPrefab": true,
                     "isStatic": false,
                     "prefabName": "",
                     "hide": false
@@ -406,9 +406,9 @@
                 "TransformComponent": {
                     "WorldTransformation": {
                         "position": {
-                            "x": 23.768556594848633,
-                            "y": 7.230066776275635,
-                            "z": -30.937253952026367
+                            "x": -45.2314453125,
+                            "y": 4.866279602050781,
+                            "z": -46.937255859375
                         },
                         "rotation": {
                             "x": 0.0,

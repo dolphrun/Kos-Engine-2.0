@@ -372,7 +372,7 @@ namespace ecs {
 
 		//checks if component already exist
 		if (!m_entityMap[ID].test(GetComponentKey<T>())) {
-			LOGGING_POPUP("Entity Component has already been removed");
+			//LOGGING_POPUP("Entity Component has already been removed");
 			return;
 		}
 

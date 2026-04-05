@@ -10,6 +10,8 @@
 
 class LoseScreenScript : public TemplateSC {
 public:
+    static LoseScreenScript* instance;
+
     // Static flag to indicate if lose screen is active
     static bool isLoseScreenActive;
 
@@ -36,6 +38,7 @@ public:
     bool hasShownLoseScreen = false;
 
     void Start() override {
+        instance = this;
         isLoseScreenActive = false;
         loseScreenCanvasID = ecsPtr->GetEntityIDFromGUID(loseScreenCanvasGUID);
 
@@ -99,12 +102,14 @@ public:
         std::cout << "LOSE SCREEN HIDDEN" << std::endl;
     }
 
-private:
     void SetLoseScreenActive(bool active) {
         if (auto* t = ecsPtr->GetComponent<TransformComponent>(loseScreenCanvasID)) {
             t->LocalTransformation.position = active ? originalCanvasPosition : hiddenPosition;
         }
     }
+
+private:
+
 
     void UpdateTimeTakenText() {
         if (auto* textComp = ecsPtr->GetComponent<ecs::TextComponent>(timeTakenValueID)) {
@@ -152,3 +157,4 @@ public:
 
 // Static definition
 bool LoseScreenScript::isLoseScreenActive = false;
+inline LoseScreenScript* LoseScreenScript::instance = nullptr;

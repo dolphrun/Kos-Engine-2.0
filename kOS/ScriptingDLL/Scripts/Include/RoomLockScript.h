@@ -112,6 +112,12 @@
             if (nameComp->entityTag == "Player") {
                 playerInside = false;
                 std::cout << "[RoomLock] Player left trigger zone.\n";
+                //for (const auto& lightGUID : pointLightList) {
+                //    ecs::EntityID lightID = ecsPtr->GetEntityIDFromGUID(lightGUID);
+                //    if (lightID != 0) {
+                //        ecsPtr->SetActive(lightID, false);
+                //    }
+                //}
             }
             });
     }

@@ -92,27 +92,18 @@ namespace scenes {
             for (auto const& scene : scenesToClear) {
                 ImmediateClearScene(scene);
             }
-            const std::string cacheExt("[Cached]");
             for (auto& filePath : cacheScenePath) {
-                std::string fileName = filePath.filename().string();
-                size_t pos = fileName.find(cacheExt);
-                if (pos != std::string::npos) {
-                    fileName.erase(pos, cacheExt.size());
-                }
-                ImmediateLoadScene(filePath, fileName);
+                ImmediateLoadScene(filePath, filePath.filename().replace_extension(".json").string());
             }
             // Change File Path for loadScenePath since filepath for cached scenes will contain [Cached]
             for (auto& [scene, filePath] : loadScenePath) {
-                std::string path = filePath.string();
-                size_t pos = path.find(cacheExt);
-                if (pos != std::string::npos) {
-                    path.erase(pos, cacheExt.size());
-                    filePath = path;
+                if (filePath.extension() == ".cache") {
+                    LOGGING_INFO(filePath.string());
+                    filePath = filePath.replace_extension(".json");
                 }
             }
 
-            DeleteAllCacheScenes();
-            
+            DeleteAllCacheScenes();          
         }
         else {
             //store scene path
@@ -121,8 +112,7 @@ namespace scenes {
                 const auto& scenepathloc = loadScenePath.find(scene.first);
                 if (scenepathloc != loadScenePath.end()) {
                     scenepath.push_back(scenepathloc->second.string());
-                }
-                
+                }     
             }
 
             //clear all scenes
@@ -202,6 +192,7 @@ namespace scenes {
         for (auto& scenes : m_ecs.sceneMap) {
             //skip prefabs
             if (includeprefab && scenes.second.isPrefab) continue;
+            std::cout << scenes.first << std::endl;
             SaveScene(scenes.first);
         }
     }
@@ -235,7 +226,6 @@ namespace scenes {
 
 	bool SceneManager::ImmediateLoadScene(const std::filesystem::path& scene, const std::string forcedSceneName)
 	{
-
 		if (m_ecs.sceneMap.find(scene.filename().string()) != m_ecs.sceneMap.end()) {
 
 			LOGGING_WARN("Scene already loaded");
@@ -254,6 +244,7 @@ namespace scenes {
 
 		}
 		std::string scenename = forcedSceneName.empty() ? scene.filename().string() : forcedSceneName;
+        LOGGING_INFO("Key: {}, Path: {}", scenename, scene.string());
 
 		//contain scene path
 		loadScenePath[scenename] = scene;
@@ -332,17 +323,11 @@ namespace scenes {
             auto iter = m_ecs.sceneMap.find(fileName);
             if (iter != m_ecs.sceneMap.end()) {
                 if (iter->second.isPrefab) continue;
-                std::string newPath = path.parent_path().string() + '\\' + path.stem().string() + "[Cached]" + path.extension().string();
-                if (std::filesystem::exists(newPath)) {
-                    std::filesystem::remove(newPath);
-                    std::string metaPath = newPath + ".meta";
-                    if (std::filesystem::exists(metaPath)) {
-                        std::filesystem::remove(metaPath);
-                    }
-                }
-                cacheScenePath.push_back(newPath);
-                m_serialization.SaveScene(fileName, newPath);
+                std::string newPath = path.parent_path().string() + '\\' + path.stem().string() + ".cache";
 
+                cacheScenePath.push_back(newPath);
+
+                m_serialization.SaveScene(fileName, newPath);
                 SetFileAttributesA(newPath.c_str(), GetFileAttributesA(newPath.c_str()) | FILE_ATTRIBUTE_HIDDEN);
             }
         }

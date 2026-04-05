@@ -210,8 +210,10 @@ void gui::ImGuiHandler::DrawComponentWindow()
                                         m_prefabManager.SetPrefabStatus(m_lastClickedEntityId, true);
                                         m_prefabManager.OverwriteScenePrefab(m_lastClickedEntityId);
                                         m_prefabManager.UpdateAllPrefab(nc->prefabName);
-                                        // Disable scene to disable all prefab components (eg. Mesh Component & Particle Component)
-                                        m_sceneManager.SetSceneActive(nc->prefabName, false);
+                                        // Disable scene to Deregister Entities in Prefab.
+                                        for (const auto& [scene, sceneData] : m_ecs.sceneMap)
+                                            if (sceneData.isPrefab)
+                                                m_sceneManager.SetSceneActive(scene, false);
                                     }
                                     catch (...) {
                                         LOGGING_ERROR("Prefab overwrite, failed");
@@ -224,6 +226,9 @@ void gui::ImGuiHandler::DrawComponentWindow()
                                 if (ImGui::Button("Revert to Prefab [All]", { ImGui::GetContentRegionAvail().x, 0 })) {
                                     try {
                                         m_prefabManager.UpdateAllPrefab(nc->prefabName);
+                                        for (const auto& [scene, sceneData] : m_ecs.sceneMap)
+                                            if (sceneData.isPrefab)
+                                                m_sceneManager.SetSceneActive(scene, false);
                                     }
                                     catch (...) {
                                         LOGGING_ERROR("Prefab revert, failed");
@@ -276,6 +281,7 @@ void gui::ImGuiHandler::DrawComponentWindow()
                 if (EntitySignature.test(key) && ComponentName != ecs::NameComponent::classname()) {
                     auto* component = m_ecs.GetIComponent<ecs::Component*>(ComponentName, entityID);
 
+                    if (component == nullptr) continue;
                     //ImGui::PushID(ImguiID++);
                     //if (componentDrawers.find(ComponentName) != componentDrawers.end()) {
                     //    auto& editorAction = componentDrawers[ComponentName];
@@ -599,6 +605,7 @@ void gui::ImGuiHandler::DrawEntityChanges(std::map<EntityID, std::pair<EntityID,
     ecs::NameComponent* nc = m_ecs.GetComponent<ecs::NameComponent>(entityID);
     if (childList.has_value()) {
         std::string name = nc->entityName;
+        ImGui::PushID(entityID);
         if (ImGui::TreeNodeEx(name.c_str(), ImGuiTreeNodeFlags_DefaultOpen)) {
             DrawComponentChanges(result, entityID, root);
 
@@ -607,19 +614,22 @@ void gui::ImGuiHandler::DrawEntityChanges(std::map<EntityID, std::pair<EntityID,
             }
             ImGui::TreePop();
         }
+        ImGui::PopID();
     }
     else {
+        ImGui::PushID(entityID);
         if (ImGui::TreeNodeEx(nc->entityName.c_str(), ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_DefaultOpen)) {
             DrawComponentChanges(result, entityID, root);
             ImGui::TreePop();
         }
+        ImGui::PopID();
     }
 }
 
 void gui::ImGuiHandler::DrawComponentChanges(std::map<EntityID, std::pair<EntityID, ecs::ComponentSignature>>& result, ecs::EntityID entityID, ecs::EntityID root) {
-    int IMGUI_ID = 0;
+    int IMGUI_ID = entityID;
     ecs::NameComponent* nc = m_ecs.GetComponent<ecs::NameComponent>(entityID);
-    if (result.find(entityID) != result.end()) {
+    if (result.find(entityID) != result.end() && result.size() > 0) {
         if (result.find(entityID)->second.first < 0) return;
 
         const auto& componentKey = m_ecs.GetComponentKeyData();
@@ -632,12 +642,22 @@ void gui::ImGuiHandler::DrawComponentChanges(std::map<EntityID, std::pair<Entity
                     // Look for component of prefab and set data into me
                     m_prefabManager.RevertToPrefab_Component(entityID, ComponentName, result.find(entityID)->second.first);
                     m_prefabManager.CompareAll(result, root);
+                    for (const auto& [scene, sceneData] : m_ecs.sceneMap)
+                        if (sceneData.isPrefab)
+                            m_sceneManager.SetSceneActive(scene, false);
+                    ImGui::PopID();
+                    return;
                 }
                 ImGui::SameLine();
                 if (ImGui::Button("Overwrite Prefab")) {
                     // Look for component of prefab and set data from me
                     m_prefabManager.OverwritePrefab_Component(entityID, ComponentName, nc->prefabName, result.find(entityID)->second.first);
                     m_prefabManager.CompareAll(result, root);
+                    for (const auto& [scene, sceneData] : m_ecs.sceneMap)
+                        if (sceneData.isPrefab)
+                            m_sceneManager.SetSceneActive(scene, false);
+                    ImGui::PopID();
+                    return;
                 }
                 ImGui::PopID();
             }

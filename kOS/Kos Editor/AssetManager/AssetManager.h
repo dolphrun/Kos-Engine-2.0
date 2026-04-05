@@ -13,7 +13,7 @@ public:
 
     ~AssetManager();
 
-    void Init(const std::string& assetDirectory, const std::string& resourceDirectory);
+    void Init(const std::string& assetDirectory, const std::string& resourceDirectory, bool watcher = false);
 
     utility::GUID RegisterAsset(const std::filesystem::path& filepath);
 

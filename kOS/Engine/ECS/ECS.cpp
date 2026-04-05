@@ -462,7 +462,7 @@ namespace ecs{
 	std::optional<std::vector<EntityID>> ECS::GetChild(EntityID parent)
 	{
 		TransformComponent* parentTransform = GetComponent<TransformComponent>(parent);
-		if (parentTransform->m_childID.size() <= 0) {
+		if (parentTransform->m_childID.size() <= 0 && parentTransform) {
 			return std::optional<std::vector<EntityID>>();
 		}
 

@@ -3,7 +3,6 @@
 ![C++](https://img.shields.io/badge/C%2B%2B-20-blue.svg)
 ![CMake](https://img.shields.io/badge/Build-CMake-green.svg)
 ![Tests](https://img.shields.io/badge/Testing-GoogleTest-orange.svg)
-![Pipeline](https://img.shields.io/badge/CI-Bitbucket%20Pipelines-blue.svg)
 ![Status](https://img.shields.io/badge/Status-Active-success.svg)
 
 KosEngine 2.0 is an ongoing **modular, high-performance 3D game engine** built with **modern C++**, featuring **compile-time reflection**, a **powerful asset system**, **PhysX integration**, and a **robust 3D rendering architecture**. 

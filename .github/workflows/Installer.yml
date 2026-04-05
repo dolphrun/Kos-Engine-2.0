@@ -11,7 +11,8 @@ permissions:
   
 jobs:
   build-and-package-windows:
-    runs-on: self-hosted
+    #runs-on: self-hosted
+    runs-on: windows-latest
     
     steps:
       - name: Checkout code
@@ -31,7 +32,7 @@ jobs:
       # 1.5 Compile Assets to Resource Folder
       - name: Compile Assets via KosEngine
         working-directory: .\kOS\bin\Release
-        continue-on-error: true
+        #continue-on-error: true
         run: .\Kos_Editor.exe --pack-assets
         shell: cmd
 
@@ -71,4 +72,14 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
+
+      # 5. Download and install Butler natively
+      - name: Setup Butler
+        uses: remarkablegames/setup-butler@v2
+
+      # 6. Push Installer to Itch.io 
+      - name: Publish to Itch.io
+        shell: powershell
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: butler push Installer/INSTALLER/Alchemication_Setup.exe CJJAlchemication/alchemication:windows --userversion 1.0.${{ github.run_number }}

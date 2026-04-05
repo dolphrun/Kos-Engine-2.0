@@ -152,7 +152,8 @@ namespace prefab
         LOGGING_INFO("Save Prefab Successful");
 
         /*******************************SERIALIZATION END******************************************/
-
+        LOGGING_INFO("{}", filename);
+        m_sceneManager.ImmediateClearScene(filename);
         // load prefab
         LoadPrefab(path);
     }
@@ -180,8 +181,8 @@ namespace prefab
 
         for (const auto& [id, signature] : m_ecs.GetEntitySignatureData()) {
             ecs::NameComponent* nc = m_ecs.GetComponent<ecs::NameComponent>(id);
-            ecs::TransformComponent* tc = m_ecs.GetComponent<ecs::TransformComponent>(id);
             if (nc->isPrefab && (nc->prefabName == prefabSceneName)) {
+                ecs::TransformComponent* tc = m_ecs.GetComponent<ecs::TransformComponent>(id);
                 ecs::NameComponent* parentNC = m_ecs.GetComponent<ecs::NameComponent>(tc->m_parentID);
                 if ((parentNC && (parentNC->prefabName != prefabSceneName)) || !tc->m_haveParent){
                     DeepUpdatePrefab(prefabID, id, true);
@@ -190,7 +191,6 @@ namespace prefab
         }
     }
 
-    // A = Prefab , B = ID
     void PrefabManager::DeepUpdatePrefab(ecs::EntityID idA, ecs::EntityID idB, bool updateParentTransform) {
         if (idA == idB) return;
         const auto signatureA = m_ecs.GetEntitySignature(idA);
@@ -283,10 +283,14 @@ namespace prefab
 
         auto action = m_ecs.componentAction[componentName];
         auto entitySignature = m_ecs.GetEntitySignature(entityID);
+        // If obj has component, duplicate into prefab
         if (entitySignature.test(m_ecs.GetComponentKey(componentName))) {
+            action->DuplicateComponent(entityID, comparedID);
+        }
+        // else if obj doent have component, delete prefab's
+        else {
             action->RemoveComponent(comparedID);
         }
-        action->DuplicateComponent(entityID, comparedID);
 
         // Update all Associated Prefabs;
         for (const auto& [id, signature] : m_ecs.GetEntitySignatureData()) {
@@ -305,17 +309,25 @@ namespace prefab
     void PrefabManager::RevertToPrefab_Component(ecs::EntityID entityID, const std::string& componentName, ecs::EntityID comparedID) {
         if (comparedID == entityID) return;
 
-        auto entitySignature = m_ecs.GetEntitySignature(entityID);
         auto action = m_ecs.componentAction[componentName];
+        auto comparedSignature = m_ecs.GetEntitySignature(comparedID);
+        // If Compared does not have component, remove Entity's component
+        if (!comparedSignature.test(m_ecs.GetComponentKey(componentName))) {
+            action->RemoveComponent(entityID);
+            return;
+        }
+
+        auto entitySignature = m_ecs.GetEntitySignature(entityID);
+        // If Entity has component that compared does not, remove it. 
         if (entitySignature.test(m_ecs.GetComponentKey(componentName))) {
             action->RemoveComponent(entityID);
         }
-        action->DuplicateComponent(comparedID, entityID);
+         action->DuplicateComponent(comparedID, entityID);
     }
 
     void PrefabManager::LoadPrefab(const std::filesystem::path& filepath) {
-
         auto scenename = filepath.filename();
+        LOGGING_INFO("Loading Prefab: {}", scenename.string());
 
 
         m_sceneManager.ImmediateLoadScene(filepath);
