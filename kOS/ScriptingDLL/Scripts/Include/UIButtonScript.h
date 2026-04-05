@@ -341,6 +341,7 @@ private:
 
         case ButtonAction::RestartScene:
             std::cout << "[UIButtonScript] Action: RestartScene\n";
+            audioManager->StopAll();
             Scenes->ReloadScene();
             break;
 
