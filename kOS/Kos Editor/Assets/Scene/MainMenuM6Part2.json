@@ -865,6 +865,58 @@
             },
             {
                 "entityGUID": "990f5c56-b6bf-4428-858c-7fd6fbe34ffe",
+                "AudioComponent": {
+                    "audioFiles": [
+                        {
+                            "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        },
+                        {
+                            "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                            "volume": 1.0,
+                            "loop": false,
+                            "playOnStart": false,
+                            "hasPlayed": false,
+                            "pan": 0.0,
+                            "isBGM": false,
+                            "isSFX": true,
+                            "use3D": false,
+                            "minDistance": 1.0,
+                            "maxDistance": 20.0,
+                            "sourceType": 0,
+                            "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                            "studioEventPath": ""
+                        }
+                    ]
+                },
                 "ButtonComponent": {
                     "normalColor": {
                         "x": 1.0,
@@ -960,9 +1012,9 @@
                     "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                     "useKeyboardShortcuts": true,
                     "wasPressed": false,
-                    "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
-                    "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
-                    "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                    "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                    "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                    "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
                 }
             },
             {
@@ -1256,6 +1308,58 @@
                     },
                     {
                         "entityGUID": "fab3d1a9-8024-6352-bbd4-2b5f63596084",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -1351,9 +1455,9 @@
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
-                            "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                            "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
                         }
                     },
                     {
@@ -1490,6 +1594,58 @@
                     },
                     {
                         "entityGUID": "811ae4db-c736-b419-f0a9-37ef1745fb47",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -1585,9 +1741,9 @@
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
-                            "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                            "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
                         }
                     },
                     {
@@ -1724,6 +1880,58 @@
                     },
                     {
                         "entityGUID": "57be0e44-e54d-dcf5-3a08-52d9b459de8a",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -1819,9 +2027,9 @@
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
-                            "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                            "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
                         }
                     },
                     {
@@ -1958,6 +2166,58 @@
                     },
                     {
                         "entityGUID": "2a8d2d4a-bf96-216c-4807-0075b1f22237",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -2053,13 +2313,65 @@
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
-                            "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                            "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
                         }
                     },
                     {
                         "entityGUID": "f9125518-624a-7d05-ed6b-fa004d1507a8",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -2155,13 +2467,65 @@
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
-                            "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                            "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
                         }
                     },
                     {
                         "entityGUID": "477a2cb3-98b6-c9a2-1e6a-88f6f259962f",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -2257,13 +2621,65 @@
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
-                            "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                            "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
                         }
                     },
                     {
                         "entityGUID": "5355b1ad-10fb-5264-43c6-a095d5440c44",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -2359,13 +2775,65 @@
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
-                            "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                            "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
                         }
                     },
                     {
                         "entityGUID": "6fe1ff4b-bd6c-bf80-9afb-f8cbde98cac2",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -2461,13 +2929,65 @@
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
-                            "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                            "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
                         }
                     },
                     {
                         "entityGUID": "cc1f7a80-75e2-e74d-58ec-07da3b9222ed",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -2563,9 +3083,9 @@
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
-                            "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                            "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
                         }
                     }
                 ]
@@ -2703,6 +3223,58 @@
                     },
                     {
                         "entityGUID": "851e2c57-7598-0da2-3278-e4e609192ace",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -2798,13 +3370,65 @@
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
-                            "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                            "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
                         }
                     },
                     {
                         "entityGUID": "85ea09ac-6189-4600-60ad-9f5de764f467",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -2900,13 +3524,65 @@
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": false,
                             "wasPressed": false,
-                            "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                            "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
                         }
                     },
                     {
                         "entityGUID": "cf98f894-9806-4581-f07f-7bf709d9bc41",
+                        "AudioComponent": {
+                            "audioFiles": [
+                                {
+                                    "audioGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                },
+                                {
+                                    "audioGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0",
+                                    "volume": 1.0,
+                                    "loop": false,
+                                    "playOnStart": false,
+                                    "hasPlayed": false,
+                                    "pan": 0.0,
+                                    "isBGM": false,
+                                    "isSFX": true,
+                                    "use3D": false,
+                                    "minDistance": 1.0,
+                                    "maxDistance": 20.0,
+                                    "sourceType": 0,
+                                    "audioBankGUID": "00000000-0000-0000-0000-000000000000",
+                                    "studioEventPath": ""
+                                }
+                            ]
+                        },
                         "ButtonComponent": {
                             "normalColor": {
                                 "x": 1.0,
@@ -3002,9 +3678,9 @@
                             "targetSceneGUID": "00000000-0000-0000-0000-000000000000",
                             "useKeyboardShortcuts": true,
                             "wasPressed": false,
-                            "resumeSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "selectSfxGUID": "00000000-0000-0000-0000-000000000000",
-                            "hoverSfxGUID": "00000000-0000-0000-0000-000000000000"
+                            "resumeSfxGUID": "1daa1bc6-b0f1-cc95-24b9-1d2332d6eb2e",
+                            "selectSfxGUID": "2d88d994-a911-748c-23ac-6317888c659a",
+                            "hoverSfxGUID": "2e97a9a7-4b18-a6de-d2ac-70c6f72585e0"
                         }
                     }
                 ]
