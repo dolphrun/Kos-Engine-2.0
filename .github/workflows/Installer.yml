@@ -73,13 +73,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # 5. Push Installer to Itch.io via Butler
+      # 5. Download the official Windows version of Itch.io Butler
+      - name: Download Itch.io Butler
+        shell: powershell
+        run: |
+          Invoke-WebRequest -Uri "https://broth.itch.ovh/butler/windows-amd64/LATEST/archive/default" -OutFile "butler.zip"
+          Expand-Archive -Path "butler.zip" -DestinationPath "butler-bin" -Force
+
+      # 6. Push Installer to Itch.io using the Butler executable
       - name: Publish to Itch.io
-        uses: yeslayla/butler-publish-itchio-action@master
+        shell: powershell
         env:
-          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
-          CHANNEL: windows
-          ITCH_USER: jazwinn    # <-- REPLACE THIS
-          ITCH_GAME: alchemication   # <-- REPLACE THIS
-          PACKAGE: Installer/INSTALLER/Alchemication_Setup.exe
-          VERSION: 1.0.${{ github.run_number }}
+          # The Butler executable automatically looks for this exact environment variable
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: |
+          .\butler-bin\butler.exe push Installer/INSTALLER/Alchemication_Setup.exe CJJAlchemication/alchemication:windows --userversion 1.0.${{ github.run_number }}
