@@ -197,64 +197,6 @@
                         }
                     }
                 }
-            },
-            {
-                "entityGUID": "c8f6ac26-ad8e-45d1-76b9-a80cc672afc7",
-                "NameComponent": {
-                    "entityName": "Text",
-                    "Layer": 0,
-                    "entityTag": "Default",
-                    "isPrefab": false,
-                    "isStatic": false,
-                    "prefabName": "",
-                    "hide": false
-                },
-                "TextComponent": {
-                    "fontGUID": "7c849437-f520-f246-6742-d47c3e0d9657",
-                    "text": "Press K to Skip",
-                    "color": {
-                        "x": 1.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "fontSize": 90.0
-                },
-                "TransformComponent": {
-                    "WorldTransformation": {
-                        "position": {
-                            "x": 0.3773244321346283,
-                            "y": 0.800000011920929,
-                            "z": 0.0
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    },
-                    "LocalTransformation": {
-                        "position": {
-                            "x": 0.3773244321346283,
-                            "y": 0.800000011920929,
-                            "z": -0.705436646938324
-                        },
-                        "rotation": {
-                            "x": 0.0,
-                            "y": -0.0,
-                            "z": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                }
             }
         ]
     },
