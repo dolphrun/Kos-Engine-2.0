@@ -72,3 +72,14 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 5. Download and install Butler natively
+      - name: Setup Butler
+        uses: remarkablegames/setup-butler@v2
+
+      # 6. Push Installer to Itch.io 
+      - name: Publish to Itch.io
+        shell: powershell
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: butler push Installer/INSTALLER/Alchemication_Setup.exe CJJAlchemication/alchemication:windows --userversion 1.0.${{ github.run_number }}

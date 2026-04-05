@@ -9,6 +9,9 @@
     },
     {
         "entityGUID": "7e10d56e-bbe3-ac18-242d-6ad445fffe7e",
+        "AudioListenerComponent": {
+            "active": true
+        },
         "CameraComponent": {
             "cameraType": 0,
             "fov": 75.0,

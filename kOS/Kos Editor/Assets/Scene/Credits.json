@@ -100,7 +100,7 @@
             ]
         },
         "CreditsScript": {
-            "creditsDuration": 11.0,
+            "creditsDuration": 12.0,
             "next_Scene": "c58a9f88-28e0-7fac-d261-534cae5b070a",
             "creditsBGMGUID": "a3502fde-6f68-8053-d418-b1fb4385ced5"
         },

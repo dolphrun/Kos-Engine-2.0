@@ -23,33 +23,29 @@ void main()
     float sz = sin(rotation.z);
 
     mat3 rotX = mat3(
-        1, 0, 0,
-        0, cx, -sx,
-        0, sx, cx
+        vec3(1,  0,   0),   // col 0
+        vec3(0,  cx, sx),   // col 1
+        vec3(0, -sx, cx)    // col 2
     );
 
     mat3 rotY = mat3(
-        cy, 0, sy,
-        0, 1, 0,
-        -sy, 0, cy
+        vec3( cy, 0, -sy),  // col 0
+        vec3(  0, 1,   0),  // col 1
+        vec3( sy, 0,  cy)   // col 2
     );
 
     mat3 rotZ = mat3(
-        cz, -sz, 0,
-        sz,  cz, 0,
-        0,   0,  1
+        vec3( cz, sz, 0),   // col 0
+        vec3(-sz, cz, 0),   // col 1
+        vec3(  0,  0, 1)    // col 2
     );
 
     mat3 rotationMatrix = rotZ * rotY * rotX;
-
-    // Apply rotation first (object space)
-    vec3 rotatedVertex = rotationMatrix * vertex;
-
     // Then scale in local axes
-    vec3 scaledVertex = vec3(rotatedVertex.xy * scale, rotatedVertex.z);
+    vec3 scaledVertex =vec3(vertex.xy * scale, vertex.z);
 
     // Then translate
-    vec3 worldPos = point + scaledVertex;
+    vec3 worldPos = point + rotationMatrix * scaledVertex;
 
     gl_Position = projection * view * vec4(worldPos, 1.0);
 }

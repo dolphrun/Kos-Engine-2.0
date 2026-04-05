@@ -21,6 +21,9 @@ public:
 
 
 inline void CutsceneAutoScript::Start() {
+	ecsPtr->SetTimeScale(1.0f);
+	ecsPtr->SetState(RUNNING);
+
 	v_ID = ecsPtr->GetEntityIDFromGUID(video_GUID);
 	if (auto* ac = ecsPtr->GetComponent<ecs::AudioComponent>(entity)) {
 		for (auto& af : ac->audioFiles) {

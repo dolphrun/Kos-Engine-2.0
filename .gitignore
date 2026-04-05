@@ -14,7 +14,7 @@
 *.ini
 *.set
 *.cache
-.ini
+*.ini
 .vs
 .tmp
 .github

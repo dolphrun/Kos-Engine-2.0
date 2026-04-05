@@ -150,7 +150,7 @@
                 "CutsceneAutoScript": {
                     "video_GUID": "155a9ebf-7e02-c70e-8851-62da19e75e25",
                     "audio": "5db844ca-1731-436a-3fd7-4e54dae6eaf5",
-                    "next_Scene": "00000000-0000-0000-0000-000000000000"
+                    "next_Scene": "2d6549aa-8233-4b8f-44a7-964730532953"
                 },
                 "NameComponent": {
                     "entityName": "Script",

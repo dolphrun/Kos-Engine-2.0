@@ -83,7 +83,9 @@ public:
     utility::GUID fadeToBlackGO;
     ecs::EntityID fadeToBlackGOID;
 
-    REFLECTABLE(MainMenuCameraScript, fadeToBlackGO)
+    utility::GUID next_Scene;
+
+    REFLECTABLE(MainMenuCameraScript, fadeToBlackGO, next_Scene)
 };
 
 #include "FadeTransition.h"
@@ -173,6 +175,11 @@ inline void MainMenuCameraScript::Update() {
                 fTB->TransitionToBlack(2.0f);
             }
             fadeTriggered = true;
+        }
+
+        if (fadeTriggered && endTimer >= (fadeDelay + 2.5f)) {
+            Scenes->ClearAllScene();
+            Scenes->LoadScene(next_Scene);
         }
 
         // --- UPDATE CAMERA SHAKE ---

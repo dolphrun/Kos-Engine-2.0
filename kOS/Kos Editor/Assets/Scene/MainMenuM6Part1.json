@@ -29,7 +29,8 @@
             "renderOrder": 0
         },
         "MainMenuCameraScript": {
-            "fadeToBlackGO": "4b1a85a5-0265-9e46-ad74-fb964a198c7a"
+            "fadeToBlackGO": "4b1a85a5-0265-9e46-ad74-fb964a198c7a",
+            "next_Scene": "c58a9f88-28e0-7fac-d261-534cae5b070a"
         },
         "NameComponent": {
             "entityName": "Camera",
